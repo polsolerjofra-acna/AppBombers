@@ -63,6 +63,15 @@ export const tema18Electricitat = {
             "1) VOLTATGE (V, en Volts): és la PRESSIÓ de la bomba que empeny els electrons perquè surtin a córrer. Sense pressió (0 V), els electrons no es mouen! 2) INTENSITAT (I, en Amperes): és el CABAL, quants electrons passen per un punt cada segon (l'amplada del riu elèctric: és la intensitat la que mata en una electrocució!). 3) RESISTÈNCIA (R, en Ohms Ω): són les pedres o un estrenyiment dins la mànega que frenen el pas dels electrons i transformen el frec en calor. 4) Ah vs. Wh en bateries: els Ah (capacitat) són només la mida del dipòsit sense saber a quina pressió surt; els Wh (energia real) són els litres multiplicats per la pressió (E = V × Ah)! 5) SENTIT REAL vs. CONVENCIONAL: en realitat els electrons negatius corren del pol - al +, però històricament els esquemes es dibuixen al revés (del + al -).",
           takeaway:
             'V = pressió que empeny. I = cabal que passa (perill mortal). R = fre al pas del corrent. Energia (Wh) = Voltatge (V) × Capacitat (Ah).'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla Mnemotècnica · Sentit dels electrons a la bateria',
+          acronym: 'Teoria = molt guai (surt del +)  |  Realitat = no tot és tan bo (surt del -)',
+          trick:
+            '• En TEORIA (sentit convencional dels esquemes) la vida és molt guai → el corrent surt del pol POSITIU (+).\n• A la REALITAT (sentit real dels electrons) no tot és tan bo → els electrons surten del pol NEGATIU (-).',
+          example:
+            'Si pregunten pel sentit REAL dels electrons en una bateria: sempre del NEGATIU (-) al POSITIU (+).'
         }
       ]
     },

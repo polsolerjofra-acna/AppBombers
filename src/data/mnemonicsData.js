@@ -127,5 +127,25 @@ export const INITIAL_MNEMONICS = [
     ],
     explanation:
       'Una història per no fallar-la mai: de petit vivia al Maresme (costa Est de Catalunya) i decreixia perquè era petit (Lluna minvant/decreixent = mira a l\'Est). Ara em faig gran i visc al Pallars (ponent/Oest) i creixo (Lluna creixent = mira a l\'Oest)!'
+  },
+  {
+    id: 'mnem-electrons-bateria',
+    topicNumber: 11,
+    topicId: 'tema-11',
+    category: 'Electricitat',
+    title: 'Sentit dels electrons a la bateria: Teoria vs. Realitat',
+    acronym: 'Teoria = molt guai (surt del +)  |  Realitat = no tot és tan bo (surt del -)',
+    rules: [
+      {
+        code: 'Sentit Convencional (Teoria)',
+        meaning: 'En teoria la vida és molt guai → surt del pol POSITIU (+)'
+      },
+      {
+        code: 'Sentit Real (Electrons)',
+        meaning: 'A la realitat no tot és tan bo → surt del pol NEGATIU (-)'
+      }
+    ],
+    explanation:
+      'Per no confondre mai el sentit convencional dels esquemes amb el moviment real dels electrons en una bateria: en teoria la vida és molt guai (surt del +), però a la realitat no tot és tan bo (els electrons surten del -).'
   }
 ];
