@@ -13339,7 +13339,10 @@ async function loadPrivateProgress(uid) {
   if (!fb || !uid) return null;
   const ref = doc(fb.db, 'studyProfiles', uid, 'private', 'progress');
   const snap = await getDoc(ref);
-  return snap.exists() ? snap.data()?.state || null : null;
+  if (!snap.exists()) return null;
+  const data = snap.data() || {};
+  const { updatedAt: _u, uid: _uid, ...rest } = data;
+  return Object.keys(rest).length > 0 ? rest : null;
 }
 
 async function saveCloudProgress(user, summaryPayload, fullProgressState) {
@@ -13349,26 +13352,33 @@ async function saveCloudProgress(user, summaryPayload, fullProgressState) {
   const publicRef = doc(fb.db, 'studyProfiles', user.uid);
   const privateRef = doc(fb.db, 'studyProfiles', user.uid, 'private', 'progress');
 
+  const publicData = {
+    uid: user.uid,
+    displayName: (user.displayName || user.email || 'Opositor').slice(0, 60),
+    ...summaryPayload,
+    updatedAt: serverTimestamp()
+  };
+  if (user.photoURL && /^https?:\/\//.test(user.photoURL) && user.photoURL.length <= 500) {
+    publicData.photoURL = user.photoURL;
+  }
+
+  const privateData = {
+    uid: user.uid,
+    pageStatus: fullProgressState.pageStatus || {},
+    topicStatus: fullProgressState.topicStatus || {},
+    quizResults: fullProgressState.quizResults || {},
+    spacedRepetition: fullProgressState.spacedRepetition || {},
+    studySessions: (fullProgressState.studySessions || []).slice(0, 1000),
+    pomodoroStats: fullProgressState.pomodoroStats || {},
+    dailyActivity: (fullProgressState.dailyActivity || []).slice(-366),
+    streakDays: fullProgressState.streakDays || 1,
+    lastActiveDate: fullProgressState.lastActiveDate || '',
+    updatedAt: serverTimestamp()
+  };
+
   await Promise.all([
-    setDoc(
-      publicRef,
-      {
-        uid: user.uid,
-        displayName: (user.displayName || user.email || 'Opositor').slice(0, 60),
-        photoURL: user.photoURL || '',
-        ...summaryPayload,
-        updatedAt: serverTimestamp()
-      },
-      { merge: true }
-    ),
-    setDoc(
-      privateRef,
-      {
-        state: fullProgressState,
-        updatedAt: serverTimestamp()
-      },
-      { merge: true }
-    )
+    setDoc(publicRef, publicData, { merge: true }),
+    setDoc(privateRef, privateData, { merge: true })
   ]);
 }
 
