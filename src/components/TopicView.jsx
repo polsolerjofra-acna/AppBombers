@@ -16,8 +16,10 @@ import EasyExplanationCard from './content/EasyExplanationCard';
 import NumericTable from './content/NumericTable';
 import MnemonicCard from './content/MnemonicCard';
 import DiagramContainer from './content/DiagramContainer';
+import TopicOutlineCard from './content/TopicOutlineCard';
 import QuizView from './quiz/QuizView';
 import PageMnemonicsBox from './PageMnemonicsBox';
+import { TOPIC_OUTLINES } from '../data/topicOutlines';
 
 const MAX_PAGES_PER_TOPIC = 10;
 
@@ -36,8 +38,9 @@ export default function TopicView({
   const pages = (topic.pages || []).slice(0, MAX_PAGES_PER_TOPIC);
   const totalPages = pages.length;
 
+  const outline = TOPIC_OUTLINES[topic.id] || null;
   const [activeTab, setActiveTab] = useState('study'); // 'study' | 'quiz'
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [currentPageIndex, setCurrentPageIndex] = useState(outline ? -1 : 0);
   const [roundJustCompleted, setRoundJustCompleted] = useState(null);
 
   const roundsCompleted = (progress.topicRounds && progress.topicRounds[topic.id]) || 0;
@@ -54,7 +57,7 @@ export default function TopicView({
       setCurrentPageIndex(sumIdx >= 0 ? sumIdx : Math.max(0, totalPages - 2));
     } else {
       setActiveTab('study');
-      setCurrentPageIndex(0);
+      setCurrentPageIndex(outline ? -1 : 0);
     }
   }, [topic.id, initialTarget]);
 
@@ -223,7 +226,9 @@ export default function TopicView({
             <div className="flex-1 min-w-[220px] max-w-md ml-auto">
               <div className="flex items-center justify-between text-xs font-semibold mb-1.5">
                 <span className="text-slate-600 dark:text-slate-300">
-                  Pàgina {currentPageIndex + 1} de {totalPages} (màx. 10 pàg.)
+                  {currentPageIndex === -1
+                    ? `Índex Esquema · ${totalPages} pàgines de temari`
+                    : `Pàgina ${currentPageIndex + 1} de ${totalPages} (màx. 10 pàg.)`}
                 </span>
                 <span className="text-red-600 dark:text-red-400">
                   {completedPagesCount}/{totalPages} estudiades ({readingProgressPercentage}% lectura)
@@ -239,9 +244,21 @@ export default function TopicView({
           )}
         </div>
 
-        {/* Selector ràpid de pàgines (destacant pàgines de Resum i Formulari Final) */}
+        {/* Selector ràpid de pàgines (destacant Índex, Resum i Formulari Final) */}
         {activeTab === 'study' && (
           <div className="mt-4 flex items-center gap-2 flex-wrap">
+            {outline && (
+              <button
+                onClick={() => setCurrentPageIndex(-1)}
+                className={`h-8 px-3 rounded-lg text-xs font-bold border transition-all flex items-center gap-1.5 ${
+                  currentPageIndex === -1
+                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                    : 'bg-indigo-50/70 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:border-indigo-400'
+                }`}
+              >
+                <span>🗂️ Índex Esquema</span>
+              </button>
+            )}
             {pages.map((p, idx) => {
               const pNum = p.pageNumber || idx + 1;
               const pStatus = topicPagesStatus[pNum];
@@ -303,11 +320,21 @@ export default function TopicView({
       ) : (
         <>
           {/* Targeta Destacada "Anàlisi d'Importància" a l'inici del tema */}
-          {currentPageIndex === 0 && topic.importance && (
+          {currentPageIndex <= 0 && topic.importance && (
             <ImportanceCard data={normalizeImportance(topic.importance)} />
           )}
 
-          {/* Capçalera de la Pàgina Actual + Botons per marcar la pàgina */}
+          {currentPageIndex === -1 && outline ? (
+            <TopicOutlineCard
+              topic={topic}
+              outline={outline}
+              onStartReading={() => {
+                setCurrentPageIndex(0);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          ) : (
+          /* Capçalera de la Pàgina Actual + Botons per marcar la pàgina */
           <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 shadow-sm space-y-6">
             <div className="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
               <div>
@@ -506,6 +533,7 @@ export default function TopicView({
               </button>
             </div>
           </div>
+          )}
         </>
       )}
     </div>
