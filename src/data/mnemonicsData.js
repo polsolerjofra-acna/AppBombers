@@ -77,5 +77,29 @@ export const INITIAL_MNEMONICS = [
     ],
     explanation:
       'Combina la regla visual "PaVo / Te" per recordar què multiplica i què divideix, amb Gran Via (Gay-Lussac = Volum), BTT (Boyle = Temperatura) i CP (Charles = Pressió).'
+  },
+  {
+    id: 'mnem-pressions-arterials',
+    topicNumber: 28,
+    topicId: 'tema-28',
+    category: 'Assistència Sanitària',
+    title: 'Pressions arterials: Normal (120/80), Hipertensió i Hipotensió',
+    acronym: 'Des de 120/80 → ↑ +2 / +1 = 140/90  |  ↓ -3 / -2 = 90/60',
+    rules: [
+      {
+        code: 'Base Normal',
+        meaning: '120 / 80 mmHg (sistòlica / diastòlica)'
+      },
+      {
+        code: '↑ Hipertensió (+2 / +1)',
+        meaning: 'Suma +20 a la màxima i +10 a la mínima des de 120/80 → 140 / 90 mmHg'
+      },
+      {
+        code: '↓ Hipotensió (-3 / -2)',
+        meaning: 'Resta -30 a la màxima i -20 a la mínima des de 120/80 → 90 / 60 mmHg'
+      }
+    ],
+    explanation:
+      'A partir de la pressió normal 120/80: si puges (↑), sumes +2 desenes a la sistòlica i +1 desena a la diastòlica (140/90). Si baixes (↓), restes -3 desenes a la sistòlica i -2 desenes a la diastòlica (90/60).'
   }
 ];

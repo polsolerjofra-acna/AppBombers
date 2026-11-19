@@ -83,6 +83,14 @@ export const tema13AssistenciaSanitaria = {
             ['E — Temperatura Corporal (Tª)', '• Normal: 36,0 °C a 37,5 °C.', '• HIPOTÈRMIA: ≤ 35,0 °C (Lleu 35-32 °C | Moderada 32-28 °C | Greu < 28 °C).\n• Febrícula: 37,5-38 °C | Febre: > 38 °C | Hiperpirèxia / Cop de calor: > 40 °C.']
           ],
           footnote: 'Memoritza l’estimació de PA pel pols: Radial ≥ 80-90 mmHg | Carotidi ≥ 60 mmHg. I les 3 pupil·les: Isocòriques (iguals), Miosi (petites), Midriasi (grans), Anisocòria (desiguals = TCE!).'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla Mnemotècnica · Pressions Arterials (140/90 · 120/80 · 90/60)',
+          acronym: 'Base 120/80  |  ↑ +2 / +1 → 140/90  |  ↓ -3 / -2 → 90/60',
+          trick:
+            'Parteix sempre de la pressió arterial normal (120/80):\n• Cap amunt (↑ Hipertensió): suma +2 desenes a la sistòlica (+20) i +1 desena a la diastòlica (+10) → 140 / 90 mmHg.\n• Cap avall (↓ Hipotensió): resta -3 desenes a la sistòlica (-30) i -2 desenes a la diastòlica (-20) → 90 / 60 mmHg.',
+          example: '120/80 (+2/+1) = 140/90 | 120/80 (-3/-2) = 90/60.'
         }
       ]
     },
