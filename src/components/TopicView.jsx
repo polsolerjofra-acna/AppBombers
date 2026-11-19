@@ -38,9 +38,17 @@ export default function TopicView({
   const pages = (topic.pages || []).slice(0, MAX_PAGES_PER_TOPIC);
   const totalPages = pages.length;
 
-  const outline = TOPIC_OUTLINES[topic.id] || null;
+  const rawOutline = TOPIC_OUTLINES[topic.id] || null;
+  const schemas = Array.isArray(rawOutline)
+    ? rawOutline
+    : rawOutline?.schemas
+    ? rawOutline.schemas
+    : rawOutline
+    ? [rawOutline]
+    : [];
+  const hasSchemas = schemas.length > 0;
   const [activeTab, setActiveTab] = useState('study'); // 'study' | 'quiz'
-  const [currentPageIndex, setCurrentPageIndex] = useState(outline ? -1 : 0);
+  const [currentPageIndex, setCurrentPageIndex] = useState(hasSchemas ? -1 : 0);
   const [roundJustCompleted, setRoundJustCompleted] = useState(null);
 
   const roundsCompleted = (progress.topicRounds && progress.topicRounds[topic.id]) || 0;
@@ -57,7 +65,7 @@ export default function TopicView({
       setCurrentPageIndex(sumIdx >= 0 ? sumIdx : Math.max(0, totalPages - 2));
     } else {
       setActiveTab('study');
-      setCurrentPageIndex(outline ? -1 : 0);
+      setCurrentPageIndex(hasSchemas ? -1 : 0);
     }
   }, [topic.id, initialTarget]);
 
@@ -71,7 +79,8 @@ export default function TopicView({
   const completedPagesCount = Object.values(topicPagesStatus).filter(
     (s) => s === 'completed'
   ).length;
-  const readingProgressPercentage = Math.round(((currentPageIndex + 1) / totalPages) * 100);
+  const readingProgressPercentage =
+    currentPageIndex < 0 ? 0 : Math.round(((currentPageIndex + 1) / totalPages) * 100);
 
   const summaryPagesCount = pages.filter((p) => p.isSummary).length;
   const hasFormulaSheet = pages.some((p) => p.isFormulaSheet);
@@ -79,6 +88,9 @@ export default function TopicView({
   const goPrev = () => {
     if (currentPageIndex > 0) {
       setCurrentPageIndex((i) => i - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (currentPageIndex === 0 && hasSchemas) {
+      setCurrentPageIndex(-schemas.length);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -247,18 +259,30 @@ export default function TopicView({
         {/* Selector ràpid de pàgines (destacant Índex, Resum i Formulari Final) */}
         {activeTab === 'study' && (
           <div className="mt-4 flex items-center gap-2 flex-wrap">
-            {outline && (
-              <button
-                onClick={() => setCurrentPageIndex(-1)}
-                className={`h-8 px-3 rounded-lg text-xs font-bold border transition-all flex items-center gap-1.5 ${
-                  currentPageIndex === -1
-                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                    : 'bg-indigo-50/70 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:border-indigo-400'
-                }`}
-              >
-                <span>🗂️ Índex Esquema</span>
-              </button>
-            )}
+            {schemas.map((sch, sIdx) => {
+              const targetIdx = -(sIdx + 1);
+              const isCurrent = currentPageIndex === targetIdx;
+              return (
+                <button
+                  key={`schema-${sIdx}`}
+                  onClick={() => setCurrentPageIndex(targetIdx)}
+                  className={`h-8 px-3 rounded-lg text-xs font-bold border transition-all flex items-center gap-1.5 ${
+                    isCurrent
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                      : 'bg-indigo-50/70 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:border-indigo-400'
+                  }`}
+                >
+                  <span>
+                    🗂️{' '}
+                    {sch.shortLabel
+                      ? sch.shortLabel
+                      : schemas.length > 1
+                      ? `Esquema ${sIdx + 1}`
+                      : 'Índex Esquema'}
+                  </span>
+                </button>
+              );
+            })}
             {pages.map((p, idx) => {
               const pNum = p.pageNumber || idx + 1;
               const pStatus = topicPagesStatus[pNum];
@@ -324,15 +348,37 @@ export default function TopicView({
             <ImportanceCard data={normalizeImportance(topic.importance)} />
           )}
 
-          {currentPageIndex === -1 && outline ? (
-            <TopicOutlineCard
-              topic={topic}
-              outline={outline}
-              onStartReading={() => {
-                setCurrentPageIndex(0);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            />
+          {currentPageIndex < 0 && schemas[Math.abs(currentPageIndex) - 1] ? (
+            (() => {
+              const sIdx = Math.abs(currentPageIndex) - 1;
+              const activeSchema = schemas[sIdx];
+              const hasNextSchema = sIdx < schemas.length - 1;
+              return (
+                <TopicOutlineCard
+                  topic={topic}
+                  outline={activeSchema}
+                  schemaIndex={sIdx}
+                  totalSchemas={schemas.length}
+                  onPrevSchema={
+                    sIdx > 0
+                      ? () => {
+                          setCurrentPageIndex(-sIdx);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                      : null
+                  }
+                  nextLabel={
+                    hasNextSchema
+                      ? `Següent Esquema (${schemas[sIdx + 1].shortLabel || sIdx + 2})`
+                      : 'Començar Pàgina 1'
+                  }
+                  onStartReading={() => {
+                    setCurrentPageIndex(hasNextSchema ? -(sIdx + 2) : 0);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                />
+              );
+            })()
           ) : (
           /* Capçalera de la Pàgina Actual + Botons per marcar la pàgina */
           <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 shadow-sm space-y-6">
@@ -509,7 +555,7 @@ export default function TopicView({
             <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-4">
               <button
                 onClick={goPrev}
-                disabled={currentPageIndex === 0}
+                disabled={currentPageIndex === 0 && !hasSchemas}
                 className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-4 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-200 disabled:opacity-40 disabled:pointer-events-none hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
