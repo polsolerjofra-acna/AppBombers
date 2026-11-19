@@ -13,6 +13,7 @@ import EasyExplanationCard from './content/EasyExplanationCard';
 import NumericTable from './content/NumericTable';
 import MnemonicCard from './content/MnemonicCard';
 import DiagramContainer from './content/DiagramContainer';
+import PageMnemonicsBox from './PageMnemonicsBox';
 
 // Calcula quants minuts aproximats porta llegir una pàgina de teoria segons paraules i blocs
 function estimatePageMinutes(page, speedFactor = 1.0) {
@@ -266,12 +267,66 @@ export default function QuickStudyView({
                     </div>
                   );
                 }
-                if (block.type === 'easy') return <EasyExplanationCard key={idx} data={block} />;
-                if (block.type === 'table') return <NumericTable key={idx} data={block} />;
-                if (block.type === 'mnemonic') return <MnemonicCard key={idx} data={block} />;
-                if (block.type === 'diagram') return <DiagramContainer key={idx} data={block} />;
+                if (block.type === 'easy') {
+                  return (
+                    <EasyExplanationCard
+                      key={idx}
+                      title={block.title}
+                      metaphor={block.metaphor}
+                      explanation={block.explanation}
+                      takeaway={block.takeaway}
+                    />
+                  );
+                }
+                if (block.type === 'table') {
+                  return (
+                    <NumericTable
+                      key={idx}
+                      title={block.title}
+                      subtitle={block.subtitle}
+                      headers={block.headers || block.columns || []}
+                      rows={block.rows || []}
+                      footnote={block.footnote || block.note}
+                    />
+                  );
+                }
+                if (block.type === 'mnemonic') {
+                  return (
+                    <MnemonicCard
+                      key={idx}
+                      type={block.variant || (block.formula ? 'formula' : 'mnemonic')}
+                      title={block.title}
+                      acronym={block.acronym}
+                      formula={block.formula || block.rule}
+                      variables={
+                        block.variables ||
+                        (block.items || []).map((it) => ({
+                          symbol: it.key,
+                          meaning: it.value
+                        }))
+                      }
+                      trick={block.trick || block.explanation}
+                      example={block.example}
+                    />
+                  );
+                }
+                if (block.type === 'diagram') {
+                  return (
+                    <DiagramContainer
+                      key={idx}
+                      title={block.title}
+                      caption={block.caption}
+                      diagramType={block.diagramType}
+                      customSvg={block.customSvg}
+                    />
+                  );
+                }
                 return null;
               })}
+              <PageMnemonicsBox
+                topicId={current.topic.id}
+                pageNumber={current.pageNumber}
+              />
             </div>
 
             <div className="pt-5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">

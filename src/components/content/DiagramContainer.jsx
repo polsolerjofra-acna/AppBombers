@@ -1043,6 +1043,36 @@ export default function DiagramContainer({ title, caption, diagramType, customSv
             <text x="340" y="322" textAnchor="middle" fontSize="10.5" fill="#475569">4 nivells estructurals: 1. Divisió/Regió (estratègica) → 2. Àrea (tàctica) → 3. Unitat (operativa) → 4. Grup/Parc (execució)</text>
           </svg>
         );
+      case 'gas_laws':
+        return (
+          <svg viewBox="0 0 680 260" className="w-full h-auto font-sans" role="img" aria-label="Lleis dels gasos Boyle Charles Gay-Lussac">
+            <rect width="680" height="260" rx="14" fill="#f8fafc" />
+            <text x="20" y="28" fontSize="13.5" fontWeight="700" fill="#0f172a">LLEIS DELS GASOS: "PaVo" BEUEN "Te" · BTT · CP · GRAN VIA</text>
+
+            <rect x="20" y="48" width="200" height="175" rx="10" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+            <text x="120" y="74" textAnchor="middle" fontSize="13" fontWeight="700" fill="#1e40af">BOYLE (BTT)</text>
+            <text x="120" y="94" textAnchor="middle" fontSize="11" fontWeight="600" fill="#2563eb">Temperatura constant</text>
+            <text x="120" y="130" textAnchor="middle" fontSize="15" fontWeight="800" fill="#0f172a">P₁ · V₁ = P₂ · V₂</text>
+            <text x="120" y="160" textAnchor="middle" fontSize="10.5" fill="#334155">Si puges Pressió → baixa Volum</text>
+            <text x="120" y="180" textAnchor="middle" fontSize="10.5" fill="#334155">(ampolla ERA / xeringa)</text>
+
+            <rect x="240" y="48" width="200" height="175" rx="10" fill="#fef3c7" stroke="#f59e0b" strokeWidth="1.5" />
+            <text x="340" y="74" textAnchor="middle" fontSize="13" fontWeight="700" fill="#92400e">CHARLES (CP)</text>
+            <text x="340" y="94" textAnchor="middle" fontSize="11" fontWeight="600" fill="#b45309">Pressió constant</text>
+            <text x="340" y="130" textAnchor="middle" fontSize="15" fontWeight="800" fill="#0f172a">V₁ / T₁ = V₂ / T₂</text>
+            <text x="340" y="160" textAnchor="middle" fontSize="10.5" fill="#334155">Si puges T (K) → puja Volum</text>
+            <text x="340" y="180" textAnchor="middle" fontSize="10.5" fill="#334155">(globus / fum calent puja)</text>
+
+            <rect x="460" y="48" width="200" height="175" rx="10" fill="#fef2f2" stroke="#ef4444" strokeWidth="1.5" />
+            <text x="560" y="74" textAnchor="middle" fontSize="13" fontWeight="700" fill="#991b1b">GAY-LUSSAC (Gran Via)</text>
+            <text x="560" y="94" textAnchor="middle" fontSize="11" fontWeight="600" fill="#dc2626">Volum constant</text>
+            <text x="560" y="130" textAnchor="middle" fontSize="15" fontWeight="800" fill="#0f172a">P₁ / T₁ = P₂ / T₂</text>
+            <text x="560" y="160" textAnchor="middle" fontSize="10.5" fill="#334155">Si puges T (K) → puja Pressió</text>
+            <text x="560" y="180" textAnchor="middle" fontSize="10.5" fill="#334155">(ampolla rígida al foc)</text>
+
+            <text x="340" y="244" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#0f172a">Sempre Temperatura en Kelvin: T(K) = °C + 273 | Equació general: (P·V)/T = cte</text>
+          </svg>
+        );
       default:
         return null;
     }

@@ -17,6 +17,7 @@ import NumericTable from './content/NumericTable';
 import MnemonicCard from './content/MnemonicCard';
 import DiagramContainer from './content/DiagramContainer';
 import QuizView from './quiz/QuizView';
+import PageMnemonicsBox from './PageMnemonicsBox';
 
 const MAX_PAGES_PER_TOPIC = 10;
 
@@ -471,6 +472,10 @@ export default function TopicView({
                     return null;
                 }
               })}
+              <PageMnemonicsBox
+                topicId={topic.id}
+                pageNumber={currentPageNumber}
+              />
             </div>
 
             {/* Peu de Paginació ("Anterior" / "Següent") */}
