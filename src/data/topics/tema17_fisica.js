@@ -35,7 +35,17 @@ export const tema17Fisica = {
           heading: '2.1–2.5. Les 7 Magnituds Fonamentals del SI, Escalars vs. Vectors i Parell de Forces',
           paragraphs: [
             "El Sistema Internacional d'Unitats (SI) es basa en 7 magnituds fonamentals: Longitud (metre, m), Massa (quilogram, kg), Temps (segon, s), Temperatura termodinàmica (kelvin, K), Intensitat de corrent elèctric (ampere, A), Quantitat de substància (mol, mol) i Intensitat lluminosa (candela, cd).",
-            "Les magnituds ESCALARS queden definides només amb un número i la seva unitat (massa, temperatura, temps, energia, pressió), mentre que les magnituds VECTORIALS necessiten 4 elements: mòdul (intensitat), direcció (recta d'acció), sentit (punta de la fletxa) i punt d'aplicació (força, velocitat, acceleració)."
+            "Les magnituds ESCALARS queden definides només amb un número i la seva unitat (massa, temperatura, temps, energia, pressió).",
+            "Les magnituds VECTORIALS necessiten 4 elements: mòdul (intensitat), direcció (recta d'acció), sentit (punta de la fletxa) i punt d'aplicació (força, velocitat, acceleració)."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.6. No confondre! Parell/Moment de Forces (N·m) vs. Treball Mecànic (J)',
+          paragraphs: [
+            "Tant el Moment de gir (M = F · d · sin α) com el Treball (W = F · d · cos α) multipliquen una força (N) per una distància (m), però signifiquen coses totalment diferents:",
+            "• Moment o Parell (M): és una magnitud VECTORIAL que fa GIRAR; la força actua perpendicular al braç de palanca (sin 90° = 1) i la seva unitat es deixa sempre com Newton-metre (N·m), MAI Joule.",
+            "• Treball (W): és una magnitud ESCALAR que mesura transferència d'energia en DESPLAÇAR un cos al llarg de la força (cos 0° = 1) i la seva unitat és el Joule (J = N·m)."
           ]
         },
         {
@@ -59,7 +69,7 @@ export const tema17Fisica = {
           metaphor:
             'Imagina que algú et diu "camina 5 passos" (incomplet!) i després intenta obrir la porta pesada del parc empenyent pel pany vs. per les frontisses.',
           explanation:
-            "1) ESCALAR vs. VECTOR: Una magnitud ESCALAR només necessita un número i la unitat (dir 'peso 75 kg' o 'fa 25 °C' ja ho explica tot). Un VECTOR és una fletxa amb 4 dades obligatòries: força (mòdul), camí (direcció), cap a quin costat va (sentit) i on toques (punt d'aplicació). Empènyer un cotxe cap endavant no té res a veure amb empènyer-lo cap enrere! 2) MOMENT DE FORÇA (M = F · d): El Moment és la força que fa GIRAR coses. Si empenys una porta just al costat de les frontisses (braç d molt curt), et deixes l'esquena; si empenys pel mànec de fora (braç d llarg), l'obres amb un dit! Per això una clau anglesa llarga afluixa cargols rovellats sense esforç.",
+            "1) ESCALAR vs. VECTOR: Una magnitud ESCALAR només necessita un número i la unitat (dir 'peso 75 kg' o 'fa 25 °C' ja ho explica tot). Un VECTOR és una fletxa amb 4 dades obligatòries: força (mòdul), camí (direcció), cap a quin costat va (sentit) i on toques (punt d'aplicació). Empènyer un cotxe cap endavant no té res a veure amb empènyer-lo cap enrere!\n\n2) MOMENT DE FORÇA (M = F · d): El Moment és la força que fa GIRAR coses. Si empenys una porta just al costat de les frontisses (braç d molt curt), et deixes l'esquena; si empenys pel mànec de fora (braç d llarg), l'obres amb un dit! Per això una clau anglesa llarga afluixa cargols rovellats sense esforç.",
           takeaway:
             'Escalar = només un número (massa, Tª, energia). Vector = fletxa (força, velocitat). Moment = Força × distància al punt de gir (com més llarg el mànec, menys força fas!).'
         },
@@ -128,7 +138,7 @@ export const tema17Fisica = {
           metaphor:
             'Pensa en l’Autoescala recolzada a una façana com si fos una escala de mà gegant dibuixant un triangle a la paret.',
           explanation:
-            "1) Regla 3-4-5 sense calculadora: si muntes un apuntalament i vols saber si fa 90° exactes sense escaire, marca 3 pams (60 cm) a terra, 4 pams (80 cm) a la paret i la diagonal ha de mesurar exactament 5 pams (100 cm). 2) El truc de 'CO-sinus = CO-stat': en el triangle de l'Autoescala, el COSINUS va sempre amb el costat que està a-CO-stat o CO-ntigu al terra (distància horitzontal d = L · cos α). El SINUS és el que puja cap al cel (Sostre / alçada h = L · sin α). 3) Càlcul mental a 60°: 30 m × 0,5 = 15 m a terra, i 30 m × 0,866 ≈ 26 m amunt!",
+            "1) Regla 3-4-5 sense calculadora: si muntes un apuntalament i vols saber si fa 90° exactes sense escaire, marca 3 pams (60 cm) a terra, 4 pams (80 cm) a la paret i la diagonal ha de mesurar exactament 5 pams (100 cm).\n\n2) El truc de 'CO-sinus = CO-stat': en el triangle de l'Autoescala, el COSINUS va sempre amb el costat que està a-CO-stat o CO-ntigu al terra (distància horitzontal d = L · cos α). El SINUS és el que puja cap al cel (Sostre / alçada h = L · sin α).\n\n3) Càlcul mental a 60°: 30 m × 0,5 = 15 m a terra, i 30 m × 0,866 ≈ 26 m amunt!",
           takeaway:
             'COS = al COstat per terra (distància a la façana). SIN = puja al Sostre (alçada). Regla 3-4-5 = angle recte perfecte de 90°.'
         }
@@ -144,8 +154,9 @@ export const tema17Fisica = {
           type: 'text',
           heading: '4.1. Moviment Rectilini Uniforme (MRU), Uniformement Accelerat (MUA) i Circular',
           paragraphs: [
-            "En el Moviment Rectilini Uniforme (MRU) la velocitat és constant i l'acceleració és zero (d = v · t). En el Moviment Uniformement Accelerat (MUA) hi ha una acceleració constant (positiva si accelera o en caiguda lliure g = 9,8 m/s²; negativa si frena).",
-            "En el Moviment Circular (com el rodet d'una bomba centrífuga o un camió prenent una corba de radi r), encara que la rapidesa sigui constant, el vector velocitat canvia contínuament de direcció gràcies a l'ACCELERACIÓ CENTRÍPETA (a_c), dirigida sempre cap al centre de la corba."
+            "• MRU (Moviment Rectilini Uniforme): la velocitat és constant i l'acceleració és zero (d = v · t). Serveix per calcular temps de desplaçament a velocitat de creuer.",
+            "• MUA (Moviment Uniformement Accelerat): hi ha una acceleració constant a (positiva si accelera, com en caiguda lliure g = 9,8 m/s²; negativa si frena). Les seves equacions permeten calcular la distància de frenada d'un camió o la velocitat d'impacte en caure una eina.",
+            "• Moviment Circular: encara que la rapidesa sigui constant (com el rodet d'una bomba o un camió en una corba de radi r), el vector velocitat canvia contínuament de direcció gràcies a l'ACCELERACIÓ CENTRÍPETA (a_c = v² / r = ω² · r), dirigida sempre cap al centre de la corba."
           ]
         },
         {
@@ -169,7 +180,7 @@ export const tema17Fisica = {
           metaphor:
             'Imagina frenar una bicicleta costa avall o entrar massa ràpid en una rotonda mullada:',
           explanation:
-            "1) Truc de la Frenada (sense memoritzar fórmules llargues): si el camió va a 20 m/s (72 km/h) i perd 5 m/s cada segon fins a parar-se (0 m/s), triga 20 ÷ 5 = 4 segons. Quina ha estat la seva velocitat mitjana mentre frenava? La meitat de 20, és a dir 10 m/s! Doncs 10 m/s × 4 s = 40 metres recorreguts! 2) Caiguda lliure: la gravetat et fa guanyar uns 10 m/s (9,8 m/s²) cada segon que caus. 3) El parany del QUADRAT (v²): tant la distància de frenada com la força centrífuga que et fa bolcar en una corba (a_c = v²/r) porten v al quadrat. Si entres a una corba al DOBLE de velocitat, necessites 4 VEGADES més adherència (2² = 4) i 4 VEGADES més metres per frenar!",
+            "1) Truc de la Frenada (sense memoritzar fórmules llargues): si el camió va a 20 m/s (72 km/h) i perd 5 m/s cada segon fins a parar-se (0 m/s), triga 20 ÷ 5 = 4 segons. Quina ha estat la seva velocitat mitjana mentre frenava? La meitat de 20, és a dir 10 m/s! Doncs 10 m/s × 4 s = 40 metres recorreguts!\n\n2) Caiguda lliure: la gravetat et fa guanyar uns 10 m/s (9,8 m/s²) cada segon que caus.\n\n3) El parany del QUADRAT (v²): tant la distància de frenada com la força centrífuga que et fa bolcar en una corba (a_c = v²/r) porten v al quadrat. Si entres a una corba al DOBLE de velocitat, necessites 4 VEGADES més adherència (2² = 4) i 4 VEGADES més metres per frenar!",
           takeaway:
             'Velocitat × 2 ⇒ Distància de frenada × 4 i Força de bolcada × 4. Per calcular una frenada ràpida: (v_inicial ÷ 2) × temps.'
         }
@@ -185,8 +196,12 @@ export const tema17Fisica = {
           type: 'text',
           heading: '4.2–4.3. Les 3 Lleis de Newton, Xocs Viàris i Estabilitat de l’Autoescala',
           paragraphs: [
-            "Les 3 Lleis de Newton regeixen tota la dinàmica: 1a) Llei de la Inèrcia (si ∑F = 0, el cos segueix en repòs o MRU; per això en una frenada els objectes no lligats dins la cabina surten disparats endavant), 2a) Llei Fonamental de la Dinàmica (F = m · a; el Pes és P = m · g) i 3a) Principi d'Acció i Reacció (tota força genera una reacció igual i de sentit oposat, com la reacció cap enrere d'una llança d'aigua en obrir-la).",
-            "Perquè una estructura o una Autoescala (AEA) estigui en EQUILIBRI ESTÀTIC complet, s'han de complir simultàniament dues condicions: 1) Equilibri de translació (∑F = 0, no llisca) i 2) Equilibri de rotació (∑M = 0, no bolca). Un vehicle no bolca mentre la línia vertical que baixa des del seu Centre de Masses (CdM) caigui DINS del polígon de sustentació format pels estabilitzadors (potes)."
+            "Les 3 Lleis de Newton regeixen tota la dinàmica:",
+            "• 1a Llei (Inèrcia): si ∑F = 0, el cos segueix en repòs o en MRU (per això en una frenada els objectes no lligats dins la cabina surten disparats endavant).",
+            "• 2a Llei (Dinàmica): F = m · a (el Pes és P = m · g, la força amb què la gravetat atrau una massa).",
+            "• 3a Llei (Acció i Reacció): tota força genera una reacció d'igual mòdul i direcció, però de sentit oposat sobre l'altre cos (com el retrocés d'una llança d'aigua en obrir-la).",
+            "Perquè una estructura o una Autoescala (AEA) estigui en EQUILIBRI ESTÀTIC complet, s'han de complir simultàniament dues condicions: 1) Equilibri de translació (∑F = 0, no llisca) i 2) Equilibri de rotació (∑M = 0, no bolca).",
+            "Un vehicle no bolca mentre la línia vertical que baixa des del seu Centre de Masses (CdM) caigui DINS del polígon de sustentació format pels estabilitzadors (potes)."
           ]
         },
         {
@@ -209,7 +224,7 @@ export const tema17Fisica = {
           metaphor:
             'Pensa en anar dret al metro sense agafar-te, en obrir una mànega a pressió i en aguantar l’equilibri obrint les cames:',
           explanation:
-            "1a Llei (INÈRCIA = mandra física): els objectes volen seguir fent el que feien. Si el camió frena de cop, una motxilla solta a la cabina 'no s'entera' que has frenat i surt disparada endavant! 2a Llei (F = m · a): com més pesa un camió (m), molta més força (F) cal per accelerar-lo o aturar-lo. 3a Llei (ACCIÓ-REACCIÓ): quan l'aigua surt disparada cap endavant pel broquet de la llança, l'aigua et dona una empenta exactament igual cap enrere! En XOCS (p = m · v): és un estira-i-arronsa entre masses amb signe (+ dreta, - esquerra); sempre arrossega el que porta més moment net (+60.000 guanya i s'emporta tots dos junts). ESTABILITAT AEA: l'Autoescala és com una persona de peu amb les cames obertes (les potes estabilitzadores). Mentre el teu melic (Centre de Masses) caigui DINS de les sabates, no bolques; si surt fora de la base, caus!",
+            "1a Llei (INÈRCIA = mandra física): els objectes volen seguir fent el que feien. Si el camió frena de cop, una motxilla solta a la cabina 'no s'entera' que has frenat i surt disparada endavant!\n\n2a Llei (F = m · a): com més pesa un camió (m), molta més força (F) cal per accelerar-lo o aturar-lo.\n\n3a Llei (ACCIÓ-REACCIÓ): quan l'aigua surt disparada cap endavant pel broquet de la llança, l'aigua et dona una empenta exactament igual cap enrere!\n\nXOCS (p = m · v): és un estira-i-arronsa entre masses amb signe (+ dreta, - esquerra); sempre arrossega el que porta més moment net (+60.000 guanya i s'emporta tots dos junts).\n\nESTABILITAT AEA: l'Autoescala és com una persona de peu amb les cames obertes (les potes estabilitzadores). Mentre el teu melic (Centre de Masses) caigui DINS de les sabates, no bolques; si surt fora de la base, caus!",
           takeaway:
             '1a = Mandra (lliga el material!). 2a = F = m·a. 3a = Retrocés de la llança. Estabilitat AEA = el Centre de Masses ha de caure sempre DINS el polígon de les potes.'
         }
@@ -226,7 +241,8 @@ export const tema17Fisica = {
           heading: '4.4. Treball (W), Energies (Ec, Ep), Fregament (μ) i Potència (P)',
           paragraphs: [
             "En física, només es realitza TREBALL mecànic (W = F · d · cos α, en Joules) quan hi ha desplaçament en la direcció de la força. Si sostens una llitera quieta sense caminar (d = 0) o camines en horitzontal mentre el pes és vertical (α = 90° ⇒ cos 90° = 0), el treball físic sobre el pes és ZERO!",
-            "La Força de Fregament (F_f = μ · F_N) s'oposa sempre al lliscament i depèn del coeficient de fregament (μ) i de la força Normal perpendicular al pla (F_N), però NO depèn de l'àrea aparent de contacte. El coeficient de fregament ESTÀTIC (μ_e, per començar a moure un cos) és sempre més gran que el DINÀMIC (μ_d, un cop ja llisca). La resistència aerodinàmica de l'aire creix amb el quadrat de la velocitat (v²)."
+            "No confondre Energia (J) vs. Potència (W)! L'Energia (E_c = ½·m·v², E_p = m·g·h) i el Treball (W) es mesuren en Joules (J) i indiquen quanta feina total s'ha fet o emmagatzemat. La Potència (P = W / t = F · v) es mesura en Watts (W = J/s) i indica a quina RAPIDESA fas aquest treball: dues bombes poden pujar la mateixa aigua (mateixa energia), però la de més potència ho fa en menys temps.",
+            "La Força de Fregament (F_f = μ · F_N) s'oposa sempre al lliscament i depèn de μ i de la força Normal perpendicular al pla (F_N), però NO depèn de l'àrea aparent de contacte. El fregament ESTÀTIC (μ_e, per començar a moure) és sempre més gran que el DINÀMIC (μ_d, ja en moviment). La resistència aerodinàmica de l'aire creix amb v²."
           ]
         },
         {
@@ -250,7 +266,7 @@ export const tema17Fisica = {
           metaphor:
             'Imagina la diferència entre fer feina útil pujant maons a la bastida i quedar-te quiet aguantant una motxilla esperant l’autobús:',
           explanation:
-            "1) TREBALL (W): en física no cobres per cansar-te, cobres només per MOURE coses en la direcció que fas força! Si aguantes una llitera quieta sense moure-la (d = 0) o la portes caminant en horitzontal sense pujar-la (90° respecte al pes vertical), el treball físic contra el pes és ZERO Joules. 2) ENERGIA (E_p i E_c): l'Energia Potencial (m·g·h) és com tenir diners estalviats a dalt d'un tobogan; quan caus, aquells estalvis es transformen en velocitat (Energia Cinètica ½·m·v²). 3) FREGAMENT (μ): costa molt més començar a empènyer un moble aturat (fregament ESTÀTIC, μ_e alt) que mantenir-lo lliscant un cop ja es mou (fregament DINÀMIC, μ_d més baix)! I no depèn de si té molta o poca superfície de contacte, només del pes i del tipus de terra. 4) RENDIMENT (η = 80%): de cada 100 W que gasta el motor, 20 W es perden en calor i 80 W aixequen la càrrega!",
+            "1) TREBALL (W): en física no cobres per cansar-te, cobres només per MOURE coses en la direcció que fas força! Si aguantes una llitera quieta sense moure-la (d = 0) o la portes caminant en horitzontal sense pujar-la (90° respecte al pes vertical), el treball físic contra el pes és ZERO Joules.\n\n2) ENERGIA (E_p i E_c): l'Energia Potencial (m·g·h) és com tenir diners estalviats a dalt d'un tobogan; quan caus, aquells estalvis es transformen en velocitat (Energia Cinètica ½·m·v²).\n\n3) FREGAMENT (μ): costa molt més començar a empènyer un moble aturat (fregament ESTÀTIC, μ_e alt) que mantenir-lo lliscant un cop ja es mou (fregament DINÀMIC, μ_d més baix)! I no depèn de si té molta o poca superfície de contacte, només del pes i del tipus de terra.\n\n4) RENDIMENT (η = 80%): de cada 100 W que gasta el motor, 20 W es perden en calor i 80 W aixequen la càrrega!",
           takeaway:
             'Sense desplaçament en la direcció de la força ⇒ W = 0. Costa més arrencar (μ estàtic) que seguir lliscant (μ dinàmic). Potència = rapidesa en fer el treball.'
         }
@@ -267,7 +283,10 @@ export const tema17Fisica = {
           heading: '5.1–5.2. Avantatge Mecànic (AM), Els 3 Gèneres de Palanca i Pla Inclinat',
           paragraphs: [
             "Una màquina simple no crea energia ni redueix el treball total (W_entrada = W_sortida), sinó que permet multiplicar la força a canvi d'augmentar la distància recorreguda. L'Avantatge Mecànic és AM = F_sortida / F_entrada = d_entrada / d_sortida.",
-            "Les PALANQUES es classifiquen segons quin element queda AL MIG: 1r Gènere (FULCRE al mig: alicates, tisores, pota de cabra, balancí; pot tenir AM > 1, = 1 o < 1), 2n Gènere (RESISTÈNCIA/càrrega al mig: carretó d'obra, trencanous, perpalina recolzada a la punta; SEMPRE té AM > 1 perquè el braç de força és més llarg que el de resistència!) i 3r Gènere (FORÇA aplicada al mig: autoescala AEA on el pistó hidràulic empeny a prop de la base, braç d'excavadora, pinces, canya de pescar; SEMPRE té AM < 1: es perd força però es guanya gran abast i velocitat a la punta!)."
+            "Les PALANQUES es classifiquen segons quin element queda AL MIG:",
+            "• 1r Gènere (FULCRE al mig): alicates, tisores, pota de cabra, balancí; pot tenir AM > 1, = 1 o < 1.",
+            "• 2n Gènere (RESISTÈNCIA/càrrega al mig): carretó d'obra, trencanous, perpalina recolzada a la punta; SEMPRE té AM > 1 perquè el braç de força és més llarg que el de resistència.",
+            "• 3r Gènere (FORÇA aplicada al mig): autoescala AEA on el pistó hidràulic empeny prop de la base, braç d'excavadora, pinces; SEMPRE té AM < 1 (es perd força però es guanya gran abast i velocitat a la punta!)."
           ]
         },
         {
@@ -297,7 +316,7 @@ export const tema17Fisica = {
           metaphor:
             'En física ningú et regala energia gratis: el que t’estalvies en FORÇA ho pagues sempre recorrent més METRES!',
           explanation:
-            "1) AVANTATGE MECÀNIC (AM): si una palanca o rampa té AM = 4, fas 4 cops menys força, però hauràs d'empènyer 4 vegades més distància! 2) 1r GÈNERE (Fulcre al mig — balancí / pota de cabra): el suport és al centre; segons on el posis guanyes força o distància. 3) 2n GÈNERE (Resistència al mig — carretó d'obra): la càrrega pesada va entre la roda i les teves mans; com que tu agafes els mànecs més llargs, SEMPRE guanyes força (AM > 1)! 4) 3r GÈNERE (Força al mig — Autoescala AEA / braç humà): el pistó hidràulic empeny prop de la base (molt curt) i la cistella és lluny a la punta! Per això el pistó ha de fer una força brutal (SEMPRE perds força: AM < 1!), però amb un petit moviment del pistó la cistella arriba molt alt i molt ràpid! 5) PLA INCLINAT: pujar una moto per una rampa llarga costa poca força perquè reparteixes la pujada en molts metres.",
+            "1) AVANTATGE MECÀNIC (AM): si una palanca o rampa té AM = 4, fas 4 cops menys força, però hauràs d'empènyer 4 vegades més distància!\n\n2) 1r GÈNERE (Fulcre al mig — balancí / pota de cabra): el suport és al centre; segons on el posis guanyes força o distància.\n\n3) 2n GÈNERE (Resistència al mig — carretó d'obra): la càrrega pesada va entre la roda i les teves mans; com que tu agafes els mànecs més llargs, SEMPRE guanyes força (AM > 1)!\n\n4) 3r GÈNERE (Força al mig — Autoescala AEA / braç humà): el pistó hidràulic empeny prop de la base (molt curt) i la cistella és lluny a la punta! Per això el pistó ha de fer una força brutal (SEMPRE perds força: AM < 1!), però amb un petit moviment del pistó la cistella arriba molt alt i molt ràpid!\n\n5) PLA INCLINAT: pujar una moto per una rampa llarga costa poca força perquè reparteixes la pujada en molts metres.",
           takeaway:
             '1r = Fulcre al mig. 2n = Càrrega al mig (carretó: SEMPRE AM > 1). 3r = Força al mig (Autoescala: SEMPRE AM < 1 per guanyar abast i velocitat!).'
         }
@@ -314,8 +333,12 @@ export const tema17Fisica = {
           heading: '5.3–5.4. El Torn / Cabrestant i les Politges Fixes, Mòbils i Polispasts',
           paragraphs: [
             "El TORN o CABRESTANT funciona com una palanca contínua de 360° on la força del motor actua amb un braç gran (R) i el cable estira des del radi del tambor d'enrotllament (r): F_in · R = F_out · r ⇒ F_out = M_motor / r.",
-            "Conseqüència operativa crítica en els cabrestants dels camions de bombers (BUP/BRP): com que el moment del motor (M) és constant, la força de tracció del cable (F_out = M / r) és INVERSAMENT proporcional al radi d'enrotllament (r). Per tant, la FORÇA MÀXIMA nominal del cabrestant s'obté només a la PRIMERA CAPA de cable (quan el tambor està gairebé buit i r és mínim). A l'última capa (tambor ple de cable), el radi r és més gran i el cabrestant pot perdre fins a un 30–40% de força de tracció!",
-            "En les POLITGES: 1) Politja FIXA: només canvia la direcció de la força per treballar més còmodes (AM = 1; F = P). 2) Politja MÒBIL (s'enduu la càrrega): com que el pes es reparteix entre 2 ramals de corda, redueix l'esforç a la meitat (AM = 2; F = P/2) a canvi d'estirar el doble de corda. 3) Politja mòbil INVERTIDA (utilitzada en cilindres d'ascensors hidràulics i trams d'autoescales): el pistó empeny l'eix de la politja mòbil amb el doble de força (AM = 0,5) per aconseguir que la cabina o l'escala pugi el DOBLE de distància i al doble de velocitat!"
+            "Conseqüència operativa crítica en els cabrestants dels camions de bombers (BUP/BRP): com que el moment del motor (M) és constant, la força de tracció del cable (F_out = M / r) és INVERSAMENT proporcional al radi d'enrotllament (r).",
+            "Per tant, la FORÇA MÀXIMA nominal del cabrestant s'obté només a la PRIMERA CAPA de cable (quan el tambor està gairebé buit i r és mínim). A l'última capa (tambor ple de cable), el radi r és més gran i el cabrestant pot perdre fins a un 30–40% de força de tracció!",
+            "Tipus de POLITGES:",
+            "• Politja FIXA: només canvia la direcció de la força per treballar més còmodes (AM = 1; F = P).",
+            "• Politja MÒBIL: es desplaça amb la càrrega i reparteix el pes entre 2 ramals (AM = 2; F = P/2), a canvi de cobrar el doble de corda.",
+            "• Politja mòbil INVERTIDA (pistons d'ascensors hidràulics i trams d'autoescala): el pistó empeny l'eix de la politja mòbil amb el doble de força (AM = 0,5) per aconseguir que la cabina o escala pugi el DOBLE de distància i al doble de velocitat!"
           ]
         },
         {
@@ -339,7 +362,7 @@ export const tema17Fisica = {
           metaphor:
             'Imagina enrotllar un fil al voltant d’un llapis prim vs. una ampolla ampla fent girar el canell amb la mateixa força:',
           explanation:
-            "1) EL CABRESTANT (1a capa = màxima força!): el motor del cabrestant sempre gira amb la mateixa potència (M). A la 1a capa, el cable s'enrotlla arran del ferro del tambor (radi r molt petit, com el llapis): el motor fa molta força sobre un radi curt! Però quan s'acumulen capes de cable i el tambor s'engrosseix (radi r gran, com l'ampolla), el cable estira des de molt més lluny del centre i perd un 30–40% de força! (Per això, si vols màxima tracció, desenrotlla gairebé tot el cable!). 2) POLITGES i POLISPASTS: una politja FIXA al sostre no redueix el pes (AM = 1), només et deixa estirar cap avall. Una politja MÒBIL lligada a la llitera reparteix el pes entre 2 cordes (AM = 2, fas la meitat de força però reculls el doble de corda!). I si l'inverteixes amb un pistó hidràulic (AM = 0,5), el pistó fa el doble de força perquè l'escala o ascensor pugi el DOBLE de ràpid!",
+            "1) EL CABRESTANT (1a capa = màxima força!): el motor del cabrestant sempre gira amb la mateixa potència (M). A la 1a capa, el cable s'enrotlla arran del ferro del tambor (radi r molt petit, com el llapis): el motor fa molta força sobre un radi curt! Però quan s'acumulen capes de cable i el tambor s'engrosseix (radi r gran, com l'ampolla), el cable estira des de molt més lluny del centre i perd un 30–40% de força! (Per això, si vols màxima tracció, desenrotlla gairebé tot el cable!).\n\n2) POLITGES i POLISPASTS: una politja FIXA al sostre no redueix el pes (AM = 1), només et deixa estirar cap avall. Una politja MÒBIL lligada a la llitera reparteix el pes entre 2 cordes (AM = 2, fas la meitat de força però reculls el doble de corda!). I si l'inverteixes amb un pistó hidràulic (AM = 0,5), el pistó fa el doble de força perquè l'escala o ascensor pugi el DOBLE de ràpid!",
           takeaway:
             'Cabrestant: màxima força a la 1a CAPA (radi r mínim). Polispast simple: l’Avantatge Mecànic és el nombre de cordes paral·leles que aguanten la càrrega.'
         }
@@ -581,6 +604,32 @@ export const tema17Fisica = {
       ],
       correctIndex: 1,
       explanation: 'En una palanca de 3r gènere (com unes pinces o l’avantbraç humà), la potència queda entre el fulcre i la resistència (bp ≤ br), de manera que AM = bp / br ≤ 1. No multiplica la força, sinó que permet guanyar velocitat i recorregut.'
+    },
+    {
+      id: 't9-q16',
+      difficulty: 'Mitjà',
+      question: 'Quina diferència física i d’unitats hi ha entre el Treball mecànic (W) i el Moment o Parell de forces (M)?',
+      options: [
+        'El Treball (W = F·d·cos α) és una magnitud escalar expressada en Joules (J), mentre que el Moment (M = F·d·sin α) és una magnitud vectorial que produeix gir i s’expressa en N·m (mai en Joules)',
+        'El Moment de forces s’expressa sempre en Joules i el Treball en Watts',
+        'Són exactament la mateixa magnitud física perquè tots dos multipliquen força per distància',
+        'El Treball només existeix en moviments circulars i el Moment només en moviments rectilinis'
+      ],
+      correctIndex: 0,
+      explanation: 'Tot i compartir dimensions (N·m), el Treball és energia transferida per un desplaçament paral·lel (escalar, Joules) i el Moment és capacitat de fer girar mitjançant un braç perpendicular (vectorial, N·m).'
+    },
+    {
+      id: 't9-q17',
+      difficulty: 'Fàcil',
+      question: 'Dues motobombes pugen exactament 1.000 litres d’aigua a un dipòsit situat a 20 metres d’alçada: la bomba A ho fa en 10 segons i la bomba B en 20 segons. Quina afirmació és correcta?',
+      options: [
+        'Totes dues fan el mateix treball/energia útil (m·g·h), però la bomba A desenvolupa el doble de potència (W = J/s)',
+        'La bomba A fa el doble de treball mecànic que la bomba B',
+        'La bomba B desenvolupa el doble de potència que la bomba A perquè treballa més estona',
+        'Totes dues tenen la mateixa potència i diferent energia potencial'
+      ],
+      correctIndex: 0,
+      explanation: 'L’energia o treball útil depèn només de la massa i l’alçada (m·g·h, idèntic en totes dues), però la Potència (P = W / t) mesura la rapidesa en fer aquest treball: a la meitat de temps, el doble de potència.'
     }
   ]
 };

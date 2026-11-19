@@ -32,11 +32,19 @@ export const tema2FuncioPublica = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Classes de personal, interins i accés a la funció pública',
+          heading: '1.1 Classes de personal i límits del personal interí',
           paragraphs: [
             'A l\'àmbit d\'aplicació, l\'art. 3 del Text Únic (TU) cita 7 col·lectius i hi inclou expressament els BOMBERS; l\'art. 4 de l\'EBEP cita 8 col·lectius amb legislació específica pròpia i els bombers NO hi són. L\'art. 9.2 EBEP reserva l\'exercici de potestats públiques exclusivament a funcionaris (per això un bomber no pot ser laboral).',
-            'Pel que fa al personal interí, l\'art. 10 EBEP fixa límits temporals: places vacants màxim 3 anys; substitució el temps estrictament necessari; programes temporals màxim 3 anys ampliables 12 mesos; excés o acumulació de tasques màxim 9 mesos dins d\'un període de 18 mesos. El TU (art. 124) té 3 supòsits sense aquests terminis.',
-            'En selecció, el concurs de mèrits pot suposar màxim un 40% de la puntuació (art. 49 TU), i als tribunals del TU no hi pot participar qui hagi preparat aspirants els 2 anys anteriors (hi ha assessor lingüístic amb veu però sense vot); l\'EBEP art. 60 exclou càrrecs polítics, interins i eventuals. La pèrdua de condició té 6 causes al TU (inclou defunció) i 5 a l\'EBEP (sense defunció). La jubilació forçosa és als 65 anys (prolongable fins als 70). L\'art. 41 TU regula la segona activitat (mateix cos, localitat i titulació).'
+            'Pel que fa al personal interí, l\'art. 10 EBEP fixa límits temporals: places vacants màxim 3 anys; substitució el temps estrictament necessari; programes temporals màxim 3 anys ampliables 12 mesos; excés o acumulació de tasques màxim 9 mesos dins d\'un període de 18 mesos. El TU (art. 124) té 3 supòsits sense aquests terminis.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '1.2 Selecció, pèrdua de condició, jubilació i segona activitat',
+          paragraphs: [
+            'En selecció, el concurs de mèrits pot suposar màxim un 40% de la puntuació (art. 49 TU). Als tribunals del TU no hi pot participar qui hagi preparat aspirants els 2 anys anteriors (hi ha assessor lingüístic amb veu però sense vot); l\'art. 60 EBEP exclou càrrecs polítics, interins i eventuals.',
+            'La pèrdua de la condició de funcionari té 6 causes al TU (inclou la defunció) i 5 a l\'EBEP (sense defunció). La jubilació forçosa és als 65 anys (prolongable fins als 70).',
+            'L\'art. 41 TU regula la segona activitat: adscripció a altres llocs dins el mateix cos, localitat i grup de titulació quan es perden les condicions físiques o psíquiques per al servei actiu.'
           ]
         },
         {
@@ -64,11 +72,18 @@ export const tema2FuncioPublica = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1 Retribucions bàsiques i complements',
+          heading: '2.1 Retribucions bàsiques i complements (TU vs EBEP)',
           paragraphs: [
-            'Atenció a les retribucions bàsiques: el TU (art. 102) en llista 3 (sou, triennis i pagues extraordinàries de juny i desembre), mentre l\'EBEP (art. 23) només en llista 2 (sou i triennis; situa les pagues extres a part). El TU (art. 103) preveu 6 complements: destinació, específic (només 1 per lloc de treball), productivitat (públic), gratificacions per serveis extraordinaris, complement variable (nocturnitat, festivitat i guàrdies de torn!) i carrera.',
-            'En carrera professional: horitzontal (pujar de grau sense canviar de lloc), vertical (canviar de lloc) i promoció interna (requereix 2 anys d\'antiguitat; al TU màx. 65% de places per a funcionaris, mín. 20%). L\'art. 99 TU garanteix medicina preventiva gratuïta com a mínim cada 2 anys. L\'art. 14.j bis EBEP reconeix la desconnexió digital.',
-            'Davant una ordre il·legal: al TU (art. 108.b) es demana confirmació per escrit i, si persisteix la discrepància, s\'eleva al cap superior immediat (mai es compleix si és delicte); l\'EBEP (art. 54) parla d\'"infracció manifesta" i preveu posar-ho en coneixement dels òrgans d\'inspecció.'
+            'No confondre les retribucions bàsiques! El TU (art. 102) en llista 3: sou, triennis i pagues extraordinàries (juny i desembre). En canvi, l\'EBEP (art. 23) només en llista 2: sou i triennis (situa les pagues extraordinàries en un apartat propi diferenciat).',
+            'El TU (art. 103) preveu 6 retribucions complementàries: destinació, específic (només 1 per lloc de treball), productivitat (públic), gratificacions per serveis extraordinaris, complement variable (nocturnitat, festivitat i guàrdies de torn!) i carrera.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.2 Carrera professional, medicina preventiva i ordre il·legal',
+          paragraphs: [
+            'Carrera professional: horitzontal (pujar de grau sense canviar de lloc), vertical (canviar de lloc) i promoció interna (requereix 2 anys d\'antiguitat; al TU màx. 65% de places per a funcionaris, mín. 20%). L\'art. 99 TU garanteix medicina preventiva gratuïta com a mínim cada 2 anys, i l\'art. 14.j bis EBEP reconeix la desconnexió digital.',
+            'No confondre la resposta davant una ordre il·legal! Al TU (art. 108.b) es demana confirmació per escrit i, si persisteix la discrepància, s\'eleva al cap superior immediat (mai es compleix si és delicte); l\'EBEP (art. 54) parla d\'"infracció manifesta" i preveu posar-ho en coneixement dels òrgans d\'inspecció.'
           ]
         },
         {
@@ -98,10 +113,19 @@ export const tema2FuncioPublica = {
       blocks: [
         {
           type: 'text',
-          heading: '3.1 Situacions administratives i grau personal',
+          heading: '3.1 Situacions administratives: 8 al TU vs 5 a l\'EBEP',
           paragraphs: [
-            'L\'EBEP preveu 5 situacions (servei actiu, serveis especials, servei en altres AAPP, excedència, suspensió de funcions). El TU n\'afegeix 3 més fins a 8: excedència forçosa, excedència voluntària incentivada (dura 5 anys) i expectativa de destinació (a més, el TU l\'anomena "suspensió d\'ocupació").',
-            'Excedència per interès particular (TU): exigeix 5 anys de serveis previs i un mínim de 2 anys de permanència; no té sou, no computa ni reserva lloc. Excedència per cura de familiars: màxim 3 anys, sense requisit de temps previ, computa a tots els efectes i reserva el lloc de treball durant 2 anys. Suspensió: si supera 6 mesos fa perdre el lloc; la suspensió ferma dura màxim 6 anys; la provisional dura 3 mesos prorrogables 3 mesos més (només per faltes greus o molt greus). El grau personal es consolida amb 2 anys consecutius o 3 amb interrupció, i puja de 2 en 2 nivells cada 2 anys.'
+            'L\'EBEP preveu 5 situacions bàsiques: servei actiu, serveis especials, servei en altres AAPP, excedència i suspensió de funcions.',
+            'El Text Únic català n\'afegeix 3 més fins a 8: excedència forçosa, excedència voluntària incentivada (dura 5 anys) i expectativa de destinació (a més, el TU anomena la suspensió "suspensió d\'ocupació").'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '3.2 Excedències, suspensió de funcions i grau personal',
+          paragraphs: [
+            'No confondre els tipus d\'excedència! L\'excedència per interès particular (TU) exigeix 5 anys de serveis previs i un mínim de 2 anys de permanència; no té sou, no computa ni reserva lloc.',
+            'En canvi, l\'excedència per cura de familiars dura màxim 3 anys, NO exigeix temps previ, computa a tots els efectes (triennis, carrera) i reserva el lloc de treball durant 2 anys (el 3r any reserva un lloc de mateix nivell i localitat).',
+            'Suspensió: si supera 6 mesos fa perdre el lloc; la suspensió ferma dura màxim 6 anys; la provisional dura 3 mesos prorrogables 3 mesos més (només per faltes greus o molt greus). El grau personal es consolida amb 2 anys consecutius o 3 amb interrupció, i puja de 2 en 2 nivells cada 2 anys.'
           ]
         },
         {
@@ -152,7 +176,7 @@ export const tema2FuncioPublica = {
             ['Greu', '2 anys', '2 anys (coincideixen!)'],
             ['Lleu', '2 mesos', '6 mesos']
           ],
-          footnote: 'Fixa\'t que s\'inverteixen els extrems: al TU les molt greus triguen el doble (6a) i les lleus un terç (2m) respecte a l\'EBEP!'
+          footnote: 'Fixa\'t que s\'inverteixen els extrems! A més, a l\'EBEP (art. 97.1), les FALTES lleus prescriuen als 6 mesos, mentre que les SANCIONS per faltes lleus prescriuen a l\'1 any! Al TU/Decret 243/1995 tant faltes com sancions lleus prescriuen als 2 mesos.'
         }
       ]
     },
@@ -350,6 +374,110 @@ export const tema2FuncioPublica = {
       ],
       correctIndex: 0,
       explanation: 'Lleu ≤ 15 dies; Greu > 15 dies fins a 1 any; Molt greu > 1 any fins a < 6 anys (o separació definitiva).'
+    },
+    {
+      id: 't2-q11',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA respecte a les diferències entre el Text Únic (DL 1/1997) i l\'EBEP (RDL 5/2015)?',
+      options: [
+        'L\'edat mínima d\'accés a la funció pública és de 16 anys al Text Únic català i de 18 anys a l\'EBEP',
+        'El Text Únic inclou expressament els bombers al seu article 3, mentre que l\'EBEP no els inclou a l\'article 4 de legislació específica pròpia',
+        'Les vacances ordinàries són d\'1 mes al Text Únic i de 22 dies hàbils a l\'EBEP',
+        'La pèrdua de la condició de funcionari té 6 causes al Text Únic (inclou defunció) i 5 a l\'EBEP'
+      ],
+      correctIndex: 0,
+      explanation: 'És a l\'inrevés: l\'edat mínima d\'accés és de 18 anys al Text Únic (art. 45) i de 16 anys a l\'EBEP (art. 56).'
+    },
+    {
+      id: 't2-q12',
+      difficulty: 'Difícil',
+      question: 'Segons l\'article 97.1 de l\'EBEP, quin és el termini de prescripció de les FALTES lleus i de les SANCIONS imposades per faltes lleus?',
+      options: [
+        'Les faltes lleus prescriuen als 6 mesos i les sancions per faltes lleus a l\'1 any',
+        'Tant les faltes com les sancions lleus prescriuen als 2 mesos',
+        'Tant les faltes com les sancions lleus prescriuen als 6 mesos',
+        'Les faltes lleus prescriuen als 2 mesos i les sancions per faltes lleus als 6 mesos'
+      ],
+      correctIndex: 0,
+      explanation: 'Trampa clàssica de l\'art. 97.1 EBEP: faltes lleus = 6 mesos; sancions lleus = 1 any (mentre que al TU/Decret 243/1995 són 2 mesos per a totes dues).'
+    },
+    {
+      id: 't2-q13',
+      difficulty: 'Mitjà',
+      question: 'Quina diferència hi ha entre l\'excedència voluntària per interès particular (TU) i l\'excedència per cura de familiars?',
+      options: [
+        'La d\'interès particular exigeix 5 anys de serveis previs i no reserva lloc; la de cura de familiars no exigeix temps previ, computa a tots els efectes i reserva el lloc 2 anys (màxim 3 anys)',
+        'La d\'interès particular dura màxim 3 anys i reserva el lloc durant 2 anys',
+        'La de cura de familiars exigeix 2 anys de serveis previs i no computa per a triennis',
+        'Cap de les dues excedències computa a efectes de carrera ni reserva el lloc de treball'
+      ],
+      correctIndex: 0,
+      explanation: 'Interès particular (TU): 5 anys previs, mínim 2 de permanència, sense sou, còmput ni reserva. Cura de familiars: màx. 3 anys, sense temps previ, computa tot i reserva el lloc durant 2 anys.'
+    },
+    {
+      id: 't2-q14',
+      difficulty: 'Mitjà',
+      question: 'Quants anys de serveis en un mateix nivell calen per consolidar el grau personal i quina és la regla d\'ascens de nivells?',
+      options: [
+        '2 anys consecutius o 3 amb interrupció; puja de 2 en 2 nivells cada 2 anys (amb límit de l\'interval del cos)',
+        '1 any consecutiu o 2 amb interrupció; puja d\'1 en 1 nivell cada any',
+        '3 anys consecutius o 5 amb interrupció; puja de 2 en 2 nivells cada 3 anys',
+        '2 anys consecutius sempre (no s\'admet interrupció)'
+      ],
+      correctIndex: 0,
+      explanation: 'El grau personal es consolida amb 2 anys consecutius o 3 amb interrupció en un lloc d\'aquell nivell o superior, i avança de 2 en 2 nivells cada 2 anys.'
+    },
+    {
+      id: 't2-q15',
+      difficulty: 'Difícil',
+      question: 'Quina afirmació és INCORRECTA sobre el règim d\'incompatibilitats (Llei 21/1987)?',
+      options: [
+        'Les activitats privades compatibles poden ocupar fins al 60% de la jornada ordinària i permeten participar fins al 25% en el capital de l\'empresa relacionada',
+        'Es prohibeix intervenir en assumptes privats relacionats amb el lloc públic durant els 2 anys posteriors al cessament',
+        'Estan exempts d\'autorització els cursos o conferències fins a un màxim de 75 hores l\'any',
+        'Per al personal de la Generalitat i bombers, l\'òrgan competent per autoritzar la compatibilitat és Funció Pública'
+      ],
+      correctIndex: 0,
+      explanation: 'La jornada privada ha de ser ≤ 50% de l\'ordinària (no 60%) i la participació en el capital d\'una empresa relacionada no pot superar el 10% (no 25%).'
+    },
+    {
+      id: 't2-q16',
+      difficulty: 'Mitjà',
+      question: 'Quina és la diferència entre la "llicència per assumptes propis" de l\'art. 95 del Text Únic i els "dies per assumptes particulars" de l\'art. 48.k de l\'EBEP?',
+      options: [
+        'La llicència del TU dura fins a 6 mesos cada 2 anys sense retribució; els assumptes particulars de l\'EBEP són 6 dies retribuïts a l\'any',
+        'Tots dos són 6 dies retribuïts a l\'any i signifiquen exactament el mateix',
+        'La llicència del TU és de 6 dies sense sou i l\'EBEP dóna 6 mesos amb sou',
+        'La llicència del TU només s\'aplica als bombers interins per estudis oficials'
+      ],
+      correctIndex: 0,
+      explanation: 'No confondre: Llicència per assumptes propis (art. 95 TU) = màxim 6 mesos cada 2 anys sense cobrar; Assumptes particulars (art. 48.k EBEP) = 6 dies lliures retribuïts.'
+    },
+    {
+      id: 't2-q17',
+      difficulty: 'Difícil',
+      question: 'Què passa amb el lloc de treball d\'un funcionari quan pateix una suspensió de funcions, i quina és la durada màxima de la suspensió provisional i de la suspensió ferma?',
+      options: [
+        'Si la suspensió supera els 6 mesos fa perdre el lloc; la provisional dura màxim 3 mesos (prorrogable 3 mesos més) i la ferma màxim 6 anys',
+        'Només fa perdre el lloc si supera els 2 anys; la provisional dura fins a 1 any i la ferma fins a 10 anys',
+        'La suspensió provisional es pot acordar fins i tot per faltes lleus i dura 6 mesos sense pròrroga',
+        'Cap suspensió fa perdre la destinació ni l\'antiguitat'
+      ],
+      correctIndex: 0,
+      explanation: 'Suspensió > 6 mesos = pèrdua del lloc de treball. Suspensió provisional (només faltes greus/molt greus) = 3 mesos prorrogables 3 mesos més. Suspensió ferma = màxim 6 anys.'
+    },
+    {
+      id: 't2-q18',
+      difficulty: 'Fàcil',
+      question: 'Segons el procediment disciplinari del Decret 243/1995, quin termini màxim té el procediment ordinari i qui imposa les sancions per faltes molt greus?',
+      options: [
+        'Durada màxima de 6 mesos; les sancions per faltes molt greus les imposa el Conseller (titular del departament)',
+        'Durada màxima de 3 mesos; les sancions per faltes molt greus les imposa el Director General de Bombers',
+        'Durada màxima de 12 mesos; les imposa sempre el President de la Generalitat',
+        'S\'aplica el procediment sumari (5+5+3 dies) també per a les faltes molt greus'
+      ],
+      correctIndex: 0,
+      explanation: 'El procediment ordinari dura com a màxim 6 mesos (l\'incoa el Secretari General i les sancions per faltes molt greus les imposa el Conseller). El procediment sumari (5+5+3 dies) és per a faltes lleus.'
     }
   ]
 };

@@ -9,7 +9,7 @@ export const tema15RescatUrba = {
     title: "Radar d'Examen — Tema 33 (MAN.SVXX.000 V.1): Rescat Urbà (Alçada i Ascensors)",
     frequency: 'Molt Alta (4-6 preguntes fixes sobre RD 2177/2004 >2 m, cordes, polispasts, AEA i 3 sèries d’ascensors)',
     summary:
-      "Manual estructurat en 3 grans capítols: 1. Introducció (les 3 tipologies de rescat urbà), 2. Intervencions en alçada (marc normatiu >2 m, cordes de doble homologació, nusos, polispasts 2:1 / 3:1 / 6:1, SAS ≥2 punts, les 10 maniobres, sistemes contra caigudes i seguretat en AEA amb torreta + motor aturat + MGO) i 3. Intervencions en ascensors (electromecànics vs. hidràulics vs. gearless i la regla d'or d'activar mínim 2 de les 3 sèries elèctriques de seguretat). Inclou 4 pàgines de desenvolupament + 2 pàgines finals de Resum Executiu.",
+      "Manual de rescat urbà en 3 capítols: tipologies (alçada, sota rasant, ascensors), intervencions en alçada (RD 2177/2004 > 2 m, corda de doble homologació EN 1891 A + EN 892, nusos, polispasts 2:1/3:1/6:1, SAS ≥ 2 punts, Retenció vs. Suspensió vs. Anticaigudes i seguretat AEA) i ascensors (Electromecànic vs. Hidràulic vs. MRL i activar ≥ 2 de les 3 sèries elèctriques).",
     hotTopics: [
       'Cap. 1-2.1: Les 3 tipologies de rescat urbà i marc legal (Llei 31/1995, RD 486/1997, RD 1215/1997 i RD 2177/2004 → es considera treball en alçada a partir de > 2 METRES!).',
       'Cap. 2.2: Cordes de Bombers amb DOBLE HOMOLOGACIÓ (semiestàtica EN 1891 Tipus A + dinàmica simple EN 892), nusos (vuit, ballestrinca, dinàmic UIAA, Prusik i Machard), politges i polispasts (2:1, 3:1 i 6:1) i SAS (Sistema d’Ancoratge de Seguretat amb mínim 2 punts i angle < 60° / màx 120°).',
@@ -71,12 +71,29 @@ export const tema15RescatUrba = {
           footnote: 'Factor de Caiguda (FC = Altura de la caiguda / Longitud de corda disponible): va de 0 (ancoratge a sobre del cap, corda tensa) a 2 (ancoratge als peus, caiguda del doble de la longitud de la corda).'
         },
         {
+          type: 'text',
+          heading: '⚠️ No confondre! Retenció vs. Posicionament/Suspensió vs. Anticaigudes',
+          paragraphs: [
+            "• RETENCIÓ (Limitació): Impedeix físicament arribar a la vora (no hi pot haver caiguda; FC = 0). És el sistema més segur i prioritari.",
+            "• POSICIONAMENT / SUSPENSIÓ: Manté el bomber en tensió o penjat amb mans lliures (anella ventral/esternal). Obliga SEMPRE a portar una 2a corda independent anticaigudes!",
+            "• ANTICAIGUDES: No evita la caiguda, sinó que l'atura limitant el xoc a < 6 kN. Es connecta EXCLUSIVAMENT a les anelles 'A' (esternal o dorsal) i exigeix calcular el tirant d'aire sota els peus."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.3. Les 10 Maniobres en Alçada i 2.4.2. Seguretat en Autoescala (AEA)',
+          paragraphs: [
+            "Les 10 maniobres del manual inclouen: 1) retenció, 2) línia de vida horitzontal, 3) progressió per escala, 4) ràpel autofrenant, 5) ascens per corda fixa, 6) descens de víctima, 7) hissat amb polispast (2:1/3:1), 8) rescat de company suspès, 9) estabilització de llitera i 10) combinades amb AEA.",
+            "Quan s'ancoren cordes a l'Autoescala (AEA) cal complir 3 regles d'or: 1) operador permanent a la torreta, 2) MOTOR ATURAT un cop posicionada i ancorada la corda, i 3) treballar dins dels límits MGO."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '2.3. Les 10 Maniobres Bàsiques en Alçada i 2.4.2. Seguretat en Autoescala (AEA)',
+          title: 'Regla Mnemotècnica · Seguretat de Cordes en Autoescala (AEA)',
           acronym: 'SEGURETAT CORDA EN AEA: 1. Operador a TORRETA  +  2. MOTOR ATURAT (quan s’ancora)  +  3. Mode MGO',
           trick:
-            "• LES 10 MANIOBRES EN ALÇADA DEL MANUAL (2.3):\n  1) Sistema de retenció | 2) Progressió horitzontal assegurada (línia de vida) | 3) Progressió vertical per escala (assegurat en punta o des de baix) | 4) Descens (ràpel) per corda amb descensor autofrenant | 5) Ascens per corda fixa | 6) Evacuació/descens de víctima des de dalt (amb triangle d'evacuació o llitera) | 7) Hissat de víctima amb polispast (2:1 / 3:1) | 8) Rescat d'un company suspès en una corda | 9) Estabilització i assegurament de llitera horitzontal/inclinada | 10) Maniobres combinades amb el paquet de rescat i l'Autoescala (AEA).\n\n• LES 3 REGLES D'OR DE SEGURETAT QUAN S'ANCOREN CORDES A L'AUTOESCALA (AEA) (2.4.2):\n  1) Sempre hi ha d'haver un bomber operador al lloc de comandament principal de la TORRETA (base de l'escala) vigilant l'operació.\n  2) Un cop l'escala i la cistella estan posicionades i s'ancora el sistema de cordes per treballar en suspensió, s'ha de mantenir el MOTOR ATURAT (per evitar qualsevol moviment accidental dels comandaments hidràulics que estiri la corda i provoqui un accident fatal!).\n  3) Treballar dins dels límits del sistema de control i pes de la cistella (MGO / punts d'ancoratge homologats de la cistella o últim tram).",
+            "• Per què s'atura el motor de l'AEA quan s'hi ancoren cordes? Per evitar qualsevol moviment hidràulic accidental que estiri la corda i provoqui un accident fatal.\n• Sempre un bomber vigilant a la torreta principal i respectant els límits de càrrega del mode MGO.",
           example: 'Si una corda està ancorada a la cistella de l’AEA i a la paret d’un edifici, un moviment accidental del braç de l’AEA trencaria la corda o l’estructura → per això s’atura el motor!'
         }
       ]
@@ -98,6 +115,15 @@ export const tema15RescatUrba = {
             ['3.1.3. Ascensor Sense Cambra de Màquines (MRL / Gearless)', 'El motor compacte d’imants permanents (Gearless, sense reductor) està instal·lat a DINS mateix del forat superior de l’ascensor. L’armari de maniobra està al replà de l’última planta.', 'Es mou des del quadre exterior del replà mitjançant la botonera elèctrica de socors (alimentada per bateria SAI) o l’alliberament del fre a polsacions controlant els LED indicadors de nivell de planta.']
           ],
           footnote: 'Memoritza aquesta diferència: Electromecànic amb contrapès = pot pujar o baixar (si hi ha poc pes a la cabina, en obrir fre PUJA!) | Hidràulic = amb la vàlvula manual NOMÉS POT BAIXAR!'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Electromecànic vs. Hidràulic vs. MRL (Gearless)',
+          paragraphs: [
+            "• ELECTROMECÀNIC (amb cambra de màquines): Té contrapès (cabina buida + 50% càrrega màxima). Si la cabina té poca càrrega (1 persona), en obrir el fre manualment la cabina tendirà a PUJAR sola!",
+            "• HIDRÀULIC (pistó d'oli, sense contrapès): Accionant la vàlvula vermella d'emergència, l'oli retorna al dipòsit i la cabina NOMÉS POT BAIXAR per gravetat (mai pujar manualment).",
+            "• MRL (Gearless sense cambra de màquines): El motor és dins el forat superior i el quadre al replà de l'última planta (es mou amb botonera de socors alimentada per SAI)."
+          ]
         }
       ]
     },
@@ -108,12 +134,20 @@ export const tema15RescatUrba = {
       subtitle: 'Comunicació, anivellament de cabina i obligació d’activar mínim 2 de les 3 sèries elèctriques.',
       blocks: [
         {
+          type: 'text',
+          heading: '3.3. Regla d’Or en Ascensors: Activar Mínim 2 de les 3 Sèries Elèctriques',
+          paragraphs: [
+            "Abans que cap bomber entri al forat de l'ascensor, al fossat inferior o pugi al sostre de la cabina, cal tallar la força motriu i bloquejar qualsevol moviment obrint com a mínim 2 DE LES 3 SÈRIES ELÈCTRIQUES DE SEGURETAT:",
+            "1) Sèrie 1: Obertura i bloqueig d'una porta exterior de planta (clau triangular). 2) Sèrie 2: Botó vermell STOP del fossat inferior. 3) Sèrie 3: Botó vermell STOP del sostre de cabina."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '3.3. La Regla d’Or de Seguretat en Ascensors: Activar MÍNIM 2 de les 3 Sèries Elèctriques!',
+          title: '3.3. Regla Mnemotècnica · Les 3 Sèries Elèctriques de Seguretat en Ascensors',
           acronym: 'ACTIVAR MÍNIM 2 DE LES 3 SÈRIES:  1. Porta de Planta  +  2. STOP del Fossat  +  3. STOP del Sostre de Cabina',
           trick:
-            "Abans que un bomber entri al forat de l'ascensor, al fossat inferior o pugi al sostre de la cabina, és OBLIGATORI bloquejar el moviment accidental de l'aparell obrint com a mínim 2 DE LES 3 SÈRIES ELÈCTRIQUES DE SEGURETAT del circuit de l'ascensor (a més de tallar el diferencial/força general a la cambra de màquines):\n• SÈRIE 1: Obertura i bloqueig d'una PORTA EXTERIOR DE PLANTA amb la clau triangular (en obrir l'enclavament de la porta exterior, s'obre la sèrie de portes i l'ascensor no pot arrencar).\n• SÈRIE 2: Premuda del botó vermell de STOP DEL FOSSAT (situat a la part inferior del forat de l'ascensor).\n• SÈRIE 3: Premuda del botó vermell de STOP DEL SOSTRE DE CABINA (o commutador d'inspecció sobre el sostre de la cabina).",
+            "• 1. Porta de planta oberta/bloquejada (clau triangular) + 2. STOP del fossat + 3. STOP del sostre de cabina.\n• Regla obligatòria abans d'accedir al forat o sostre: mínim 2 de les 3 sèries obertes (a més de tallar força general).",
           example: 'Si el tribunal pregunta: "Quantes sèries elèctriques de seguretat s’han d’activar com a mínim abans d’accedir al forat o sostre d’un ascensor?", la resposta exacta del manual és: Com a mínim 2 de les 3 sèries!'
         },
         {
@@ -176,7 +210,7 @@ export const tema15RescatUrba = {
           title: 'Els 5 Paranys del Tribunal al Tema 33 (Rescat Urbà)',
           acronym: 'DOBLE HOMOLOGACIÓ | RETENCIÓ vs ANTICAIGUDES (A) | AEA MOTOR ATURAT | HIDRÀULIC NOMÉS BAIXA | 2 DE 3 SÈRIES',
           trick:
-            "1) CORDA DE BOMBERS (DOBLE HOMOLOGACIÓ):\n• Si et pregunten quin tipus de corda s'utilitza al paquet de rescat de Bombers segons MAN.SVXX.000: té DOBLE HOMOLOGACIÓ (semiestàtica + dinàmica simple).\n\n2) RETENCIÓ vs. SUSPENSIÓ vs. ANTICAIGUDES:\n• Retenció = impedeix arribar a la vora (no hi pot haver caiguda).\n• Suspensió/Posicionament = treballar penjat en tensió (requereix sempre una 2a corda anticaigudes!).\n• Anticaigudes = atura la caiguda un cop produïda; és l'únic que exigeix connectar-se a l'anella 'A' i vigilar l'alçada lliure sota els peus!\n\n3) CORDES ANCORADES A L'AUTOESCALA (AEA):\n• Un cop muntat l'ancoratge de cordes a la cistella o escala, el MOTOR DE L'AEA HA D'ESTAR ATURAT i sempre amb un bomber vigilant a la TORRETA.\n\n4) ASCENSOR ELECTROMECÀNIC vs. HIDRÀULIC:\n• Electromecànic (amb contrapès): en obrir el fre amb poca càrrega a la cabina, la cabina PUJA perquè el contrapès pesa més.\n• Hidràulic (amb pistó d'oli): prement la vàlvula vermella d'emergència, la cabina NOMÉS POT BAIXAR.\n\n5) LES 3 SÈRIES ELÈCTRIQUES DE L'ASCENSOR:\n• Sèrie 1: Porta exterior de planta (clau triangular).\n• Sèrie 2: Botó STOP del fossat.\n• Sèrie 3: Botó STOP del sostre de cabina.\n• Regla: Cal activar-ne com a mínim 2 DE LES 3!",
+            "1) CORDA DE BOMBERS: Doble homologació (Semiestàtica EN 1891 Tipus A + Dinàmica simple EN 892).\n2) PROTECCIÓ CONTRA CAIGUDES: Retenció (impedeix caure, FC=0) | Suspensió (requereix 2a corda anticaigudes) | Anticaigudes (anella 'A', calcula alçada lliure).\n3) AEA AMB CORDES: Operador a torreta + MOTOR ATURAT un cop ancorada + mode MGO.\n4) ASCENSORS: Electromecànic amb poca càrrega PUJA en obrir fre; Hidràulic amb vàlvula manual NOMÉS BAIXA.\n5) 3 SÈRIES ASCENSOR: Cal activar-ne mínim 2 de 3 (Porta planta, STOP fossat, STOP sostre cabina).",
           example: 'Si un bomber puja al sostre d’una cabina d’ascensor: obre i bloqueja la porta de planta (Sèrie 1) i prem el botó STOP del sostre de cabina (Sèrie 3) → ja té 2 de les 3 sèries activades!'
         }
       ]
@@ -338,6 +372,84 @@ export const tema15RescatUrba = {
       ],
       correctIndex: 1,
       explanation: "Quan la cabina queda per sobre del replà hi ha risc mortal de caiguda pel buit inferior cap al fossat, per la qual cosa és obligatori tapar-lo físicament abans de rescatar ningú. En els MRL (Gearless), el motor és dins del forat i l'armari de maniobra al replà superior."
+    },
+    {
+      id: 'q33-13',
+      difficulty: 'Difícil',
+      question: "Respecte als tres sistemes de protecció contra caigudes en alçada (Retenció, Posicionament/Suspensió i Anticaigudes) del manual MAN.SVXX.000, assenyala quina afirmació és INCORRECTA:",
+      options: [
+        "El sistema de retenció (limitació) impedeix físicament que el bomber arribi a la zona amb risc de caiguda i treballa amb factor de caiguda 0.",
+        "El sistema de posicionament o suspensió s'ha de combinar obligatòriament amb una segona corda independent de seguretat (sistema anticaigudes).",
+        "El sistema anticaigudes es connecta exclusivament a les anelles marcades amb la lletra 'A' (esternal o dorsal) i limita la força de xoc a menys de 6 kN.",
+        "El sistema de retenció es connecta exclusivament a l'anella dorsal 'A' i la seva funció és aturar la caiguda un cop el bomber ja ha caigut al buit."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: aquesta definició correspon al sistema ANTICAIGUDES. El sistema de RETENCIÓ impedeix arribar al precipici perquè no hi pugui haver caiguda."
+    },
+    {
+      id: 'q33-14',
+      difficulty: 'Mitjà',
+      question: "Un bomber treballa en alçada ancorat a l'alçada dels peus amb un cap d'ancoratge amb absorbidor d'energia d'1 metre de longitud. Si pateix una caiguda vertical de 2 metres, quin és el Factor de Caiguda (FC) i quina força màxima de xoc sobre el cos garanteix el sistema anticaigudes?",
+      options: [
+        "FC = 0,5 | Força de xoc màxima < 15 kN.",
+        "FC = 2 (altura caiguda 2 m ÷ longitud corda 1 m) | Força de xoc limitada a < 6 kN (calculem també l'alçada lliure sota els peus).",
+        "FC = 1 | Força de xoc limitada a < 20 kN.",
+        "FC = 0 | No cal calcular l'alçada lliure sota els peus."
+      ],
+      correctIndex: 1,
+      explanation: "FC = Altura de caiguda / Longitud de corda disponible = 2 m / 1 m = 2 (factor màxim). Els sistemes anticaigudes limiten la força d'impacte a < 6 kN i exigeixen verificar el tirant d'aire (alçada lliure) sota els peus."
+    },
+    {
+      id: 'q33-15',
+      difficulty: 'Fàcil',
+      question: "En la tècnica de nusos reglamentaris (apartat 2.2.2 de MAN.SVXX.000), quin nus s'empra per a bloqueig/amarratge a una estructura, quin per a fre/assegurament i quins dos són nusos autoblocants?",
+      options: [
+        "Amarratge = Ballestrinca | Fre/assegurament = Dinàmic (UIAA) | Autoblocants = Prusik i Machard.",
+        "Amarratge = Prusik | Fre = Nus del vuit | Autoblocants = Ballestrinca i pla.",
+        "Amarratge = Dinàmic UIAA | Fre = Machard | Autoblocants = Nus del vuit i ballestrinca.",
+        "Tots els nusos augmenten un 25% la resistència nominal de la corda."
+      ],
+      correctIndex: 0,
+      explanation: "Ballestrinca = amarratge a estructura; Dinàmic (UIAA) = fre/assegurament; Prusik i Machard = nusos autoblocants amb cordino; Vuit = ancoratge/encordament."
+    },
+    {
+      id: 'q33-16',
+      difficulty: 'Mitjà',
+      question: "En un ascensor electromecànic d'adherència amb cambra de màquines aturat entre la planta 3 i la planta 4 amb una única persona de 65 kg a dins, s'accedeix a la cambra de màquines, es talla la força i s'obre manualment el fre mecànic. Cap a on tendirà a moure's la cabina per si sola?",
+      options: [
+        "Sempre baixarà fins al fossat perquè la cabina amb una persona pesa més que el contrapès.",
+        "Tendirà a PUJAR cap amunt, perquè el contrapès està equilibrat per a la cabina buida + el 50% de la càrrega màxima i pesa més que la cabina amb una sola persona.",
+        "No es mourà mai en cap direcció en alliberar el fre.",
+        "S'activarà automàticament la vàlvula vermella d'oli hidràulic."
+      ],
+      correctIndex: 1,
+      explanation: "En un ascensor electromecànic el contrapès pesa com la cabina buida més el 50% de la càrrega nominal. Amb només 1 persona a dins, el contrapès pesa més i, en alliberar el fre, la cabina tendeix a PUJAR."
+    },
+    {
+      id: 'q33-17',
+      difficulty: 'Difícil',
+      question: "Respecte al protocol d'actuació i seguretat en rescats d'ascensors (apartats 3.2 i 3.3 de MAN.SVXX.000), quina afirmació és INCORRECTA?",
+      options: [
+        "Abans d'entrar al forat, fossat o sostre de cabina és obligatori activar com a mínim 2 de les 3 sèries elèctriques (porta exterior de planta, STOP del fossat i STOP del sostre de cabina).",
+        "En desconnectar l'interruptor general trifàsic de força motriu, cal mantenir connectat el circuit monofàsic d'enllumenat i ventilació de la cabina.",
+        "És molt més segur anivellar primer la cabina amb un replà de planta que extreure els ocupants a través d'un desnivell.",
+        "Si s'ha de fer una extracció amb la cabina més alta que el replà perquè el paracaigudes s'ha encunyat, cal obrir la porta ràpidament sense tapar el buit inferior perquè els ocupants saltin fora."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: quan la cabina queda més alta que el replà s'obre un buit mortal cap al fossat sota el faldó de la cabina, i és OBLIGATORI tapar-lo i bloquejar-lo físicament (amb tauler, escala o bomber assegurat) abans de treure cap víctima."
+    },
+    {
+      id: 'q33-18',
+      difficulty: 'Mitjà',
+      question: "Per hissar una llitera amb un pes total de 180 kg mitjançant un polispast compost 6:1 muntat amb politges mòbils sense considerar fregaments, quina força teòrica s'ha d'aplicar a la corda i quants metres de corda cal cobrar per pujar la càrrega 2 metres?",
+      options: [
+        "Força = 90 kg | Longitud de corda = 4 metres.",
+        "Força = 60 kg | Longitud de corda = 6 metres.",
+        "Força = 30 kg (180 ÷ 6) | Longitud de corda = 12 metres (2 m × 6).",
+        "Força = 180 kg | Longitud de corda = 2 metres."
+      ],
+      correctIndex: 2,
+      explanation: "Un polispast 6:1 divideix la força necessària per 6 (180 ÷ 6 = 30 kg), però a canvi cal recollir 6 vegades més longitud de corda respecte al desplaçament de la càrrega (2 m × 6 = 12 m)."
     }
   ]
 };

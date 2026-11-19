@@ -32,12 +32,37 @@ export const tema7GuardiaOrganigrama = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Posicions operatives (art. 7), centres (art. 12) i 5 nivells (art. 21)',
+          heading: '1.1 Centre vs Posició de guàrdia, modalitats i Cap de Bombers',
           paragraphs: [
-            'El Decret 276/2016 (en vigor des de l\'1 d\'octubre de 2016, 23 articles) distingeix entre Centre de guàrdia (espai físic) i Posició de guàrdia (exercici de funcions), en 2 modalitats: disponibilitat immediata i localització. El relleu es regula per Instrucció del Director General. El Subdirector General Operatiu (Cap de Bombers) és un inspector en localització; el seu suplent obligatori ha de ser inspector habilitat com a cap operatiu (preferentment amb nivell de Subdirecció General).',
-            'Les 4 posicions operatives (art. 7) són: Cap operatiu (màxim, inspector, habilitació SÍ, 9 funcions), Cap territorial (alt, inspector/sotsinspector, habilitació SÍ, 11 funcions — només aquests dos primers tenen PAGI i brífings!), Sotscap territorial (intermedi, sotsinspector/oficial/sergent, habilitació SÍ, només disponibilitat immediata, 9 funcions) i Cap de sortida (bàsic, sergent/caporal/bomber 1a al mateix nivell, NO requereix habilitació, 7 funcions). Escala de dades: Cap de sortida recull → Sotscap garanteix → Cap territorial supervisa.',
-            'Els 3 centres de coordinació (art. 12) són: SCB (Cap coord. SCB = inspector habilitat, 17 funcions, activa CCB, supervisa TRI), SCT (operativament de la Sala, funcionalment de la Divisió; Cap coord. SCT = inspector o sotsinspector habilitat, determina el nivell de comandament segons art. 22) i els Parcs de Bombers (Cap de torn = sergent > caporal > bomber 1a per prelació/antiguitat categoria, 8 funcions). Els 5 nivells de comandament (art. 21, desenvolupats per Circular del DG) van del Nivell 1 (Cap de sortida) al Nivell 5 (Subdirector General Operatiu).'
+            'El Decret 276/2016 (en vigor des de l\'1 d\'octubre de 2016, 23 articles) distingeix entre Centre de guàrdia (espai físic) i Posició de guàrdia (exercici de funcions), en 2 modalitats: disponibilitat immediata i localització.',
+            'El relleu es regula per Instrucció del Director General (mentre que els 5 nivells de comandament de l\'art. 21 es desenvolupen per Circular del DG, art. 23).',
+            'El Subdirector General Operatiu (Cap de Bombers) és un inspector en modalitat de localització; el seu suplent obligatori ha de ser inspector habilitat com a cap operatiu (preferentment amb nivell de Subdirecció General).'
           ]
+        },
+        {
+          type: 'text',
+          heading: '1.2 Les 4 posicions operatives (art. 7): habilitació, PAGI i escala de dades',
+          paragraphs: [
+            '• Cap operatiu (nivell màxim): inspector, habilitació SÍ, 9 funcions. Té PAGI i brífings.\n• Cap territorial (alt): inspector o sotsinspector, habilitació SÍ, 11 funcions. Té PAGI i brífings (només aquests dos primers tenen PAGI i brífings!).',
+            '• Sotscap territorial (intermedi): sotsinspector, oficial o sergent, habilitació SÍ, 9 funcions. ATENCIÓ: només treballa en disponibilitat immediata!\n• Cap de sortida (bàsic): sergent, caporal o bomber de 1a al mateix nivell, NO requereix habilitació, 7 funcions.',
+            'Escala de dades: Cap de sortida les recull → Sotscap territorial en garanteix la recollida → Cap territorial les supervisa.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '1.3 Els 3 centres de coordinació (art. 12) i els 5 nivells de comandament',
+          paragraphs: [
+            '• SCB (Sala Central de Bombers): Cap coord. SCB = inspector habilitat, 17 funcions, activa el CCB i supervisa la TRI.\n• SCT (Sala de Control Territorial): depèn operativament de la Sala i funcionalment de la Divisió; Cap coord. SCT = inspector o sotsinspector habilitat, i determina el nivell de comandament segons l\'art. 22.',
+            '• Parcs de Bombers (SÍ són centres de coordinació de guàrdia!): Cap de torn = sergent > caporal > bomber de 1a per prelació/antiguitat de categoria, 8 funcions. Els 5 nivells de comandament (art. 21) van del Nivell 1 (Cap de sortida) al Nivell 5 (Subdirector General Operatiu).'
+          ]
+        },
+        {
+          type: 'easy',
+          title: 'Mode Nen Petit · No confondre el Cap de Sortida amb el Cap de Torn!',
+          metaphor: 'Un és qui mana dins del camió quan surts al foc; l\'altre és qui organitza tot el parc aquell dia.',
+          explanation:
+            'El CAP DE SORTIDA (art. 7) és una posició operativa al carrer (Nivell 1): pot ser sergent, caporal o bomber de 1a al mateix nivell i NO necessita habilitació.\nEl CAP DE TORN (art. 12) dirigeix un centre de coordinació (el Parc de Bombers): segueix prelació estricta (sergent > caporal > bomber 1a) i té 8 funcions al parc.',
+          takeaway: 'Cap de sortida = posició operativa sense habilitació (7 funcions). Cap de torn = cap del centre "Parc" (8 funcions).'
         },
         {
           type: 'diagram',
@@ -56,11 +81,19 @@ export const tema7GuardiaOrganigrama = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1 Departament, DGPEIS i els 4 nivells estructurals',
+          heading: '2.1 Departament d\'Interior (7+3) i DGPEIS (5 SG + 1 Àrea)',
           paragraphs: [
-            'El Departament té 7 òrgans (Secretaria General + 6 Direccions Generals, inclosa la DGPEIS) i 3 organismes adscrits (SCT Trànsit, ISPC i CAT112). La DGPEIS s\'estructura en 6 òrgans directes: 5 Subdireccions Generals (SG Operativa [inspector/a en cap], SG Tècnica, SG Contractació i Pressupost, SG Persones i Organització, i la nova SG Assumptes Jurídics i Institucionals) més 1 Àrea de Comunicació i Premsa (única àrea que penja directe del DG, vinculació laboral).',
-            'Els 4 nivells estructurals del Cos són: 1) Divisió / Regió (estratègica); 2) Àrea central / regional (tàctica); 3) Unitat central / regional (operativa); 4) Grup / Parc (execució).',
-            'La SG Operativa (16 funcions al consolidat) compta amb 4 Divisions centrals: 1) Planificació i Gestió (3 àrees: Planif. Recursos, Bombers Voluntaris, Logística [nova 2026]); 2) Emergències Climàtiques i GOE (5 òrgans: Gestió GOE, Emerg. Meteorològiques, Àrea GRAF, Àrea GEA [Unitat Muntanya (GRAE Muntanya + GRAE Caní) i Unitat Aquàtica (GRAE Subaquàtic)] i Unitat GEM [laboral]); 3) Operacions (Àrea Innovació i Desenv. [2 unitats], Àrea Tècnica d\'Emergències [3 unitats: Riscos Tecnològics, Col·lapses, Incendis Estructurals — NO hi ha Unitat d\'Accidents de Mobilitat!] i Unitat Prevenció Operativa); 4) Divisió de Coordinació d\'Emergències (abans Sala Central; Àrea Mitjans Aeris, Àrea Sala Central i Unitat Suport Operatiu).'
+            'El Departament té 7 òrgans (Secretaria General + 6 Direccions Generals, inclosa la DGPEIS) i 3 organismes adscrits (SCT Trànsit, ISPC i CAT112).',
+            'La DGPEIS s\'estructura en 6 òrgans directes: 5 Subdireccions Generals (SG Operativa [inspector/a en cap], SG Tècnica, SG Contractació i Pressupost, SG Persones i Organització, i la nova SG Assumptes Jurídics i Institucionals) més 1 Àrea de Comunicació i Premsa (única àrea que penja directe del DG, vinculació laboral).',
+            'Els 4 nivells estructurals del Cos són: 1) Divisió / Regió (estratègica); 2) Àrea central / regional (tàctica); 3) Unitat central / regional (operativa); 4) Grup / Parc (execució).'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.2 Les 4 Divisions centrals de la SG Operativa (16 funcions al consolidat)',
+          paragraphs: [
+            '1) Divisió de Planificació i Gestió (3 àrees): Àrea de Planificació de Recursos, Àrea de Bombers Voluntaris i Àrea de Logística (nova 2026!).\n2) Divisió d\'Emergències Climàtiques i GOE (5 òrgans): Gestió GOE, Emergències Meteorològiques, Àrea GRAF, Àrea GEA [Unitat Muntanya (GRAE Muntanya + GRAE Caní) i Unitat Aquàtica (GRAE Subaquàtic)] i Unitat GEM [personal laboral].',
+            '3) Divisió d\'Operacions: Àrea d\'Innovació i Desenvolupament [2 unitats], Àrea Tècnica d\'Emergències [3 unitats: Riscos Tecnològics, Col·lapses, Incendis Estructurals — NO hi ha Unitat d\'Accidents de Mobilitat!] i Unitat de Prevenció Operativa.\n4) Divisió de Coordinació d\'Emergències (abans Sala Central): Àrea de Mitjans Aeris, Àrea de Sala Central i Unitat de Suport Operatiu.'
           ]
         },
         {
@@ -281,6 +314,110 @@ export const tema7GuardiaOrganigrama = {
       ],
       correctIndex: 0,
       explanation: 'El Cap de torn segueix la prelació sergent > caporal > bomber 1a, i el Sotscap territorial només actua en disponibilitat immediata.'
+    },
+    {
+      id: 't7-q11',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA respecte al Decret 276/2016 de guàrdies del Cos de Bombers?',
+      options: [
+        'Els Parcs de Bombers no tenen la consideració de centres de coordinació de guàrdia segons l\'article 12',
+        'El Decret distingeix entre Centre de guàrdia (espai físic) i Posició de guàrdia (exercici de funcions)',
+        'Les dues modalitats de guàrdia són disponibilitat immediata i localització',
+        'El relleu de guàrdia es regula per Instrucció del Director General'
+      ],
+      correctIndex: 0,
+      explanation: 'Segons l\'art. 12 del Decret 276/2016, els 3 centres de coordinació de guàrdia són: SCB, SCT i els Parcs de Bombers.'
+    },
+    {
+      id: 't7-q12',
+      difficulty: 'Difícil',
+      question: 'Quins requisits ha de complir el suplent obligatori del Subdirector General Operatiu (Cap de Bombers) segons el Decret 276/2016?',
+      options: [
+        'Ha de ser un inspector habilitat com a cap operatiu, preferentment amb nivell orgànic de Subdirecció General',
+        'Pot ser qualsevol sotsinspector habilitat com a cap territorial',
+        'Ha de ser un oficial en modalitat de disponibilitat immediata',
+        'El designa cada parc de bombers per torns rotatius'
+      ],
+      correctIndex: 0,
+      explanation: 'El Subdirector General Operatiu (Nivell 5, inspector en localització) té un suplent obligatori que ha de ser inspector habilitat com a cap operatiu (preferentment amb nivell de Subdirecció General).'
+    },
+    {
+      id: 't7-q13',
+      difficulty: 'Mitjà',
+      question: 'Quantes funcions té atribuïdes el Cap de coordinació de l\'SCB (art. 12) i quines tasques clau desenvolupa?',
+      options: [
+        '17 funcions; activa el CCB i supervisa la TRI',
+        '11 funcions; elabora el PAGI i els brífings territorials',
+        '8 funcions; recull les dades dels caps de sortida',
+        '9 funcions; només determina el nivell de comandament de l\'art. 22'
+      ],
+      correctIndex: 0,
+      explanation: 'El Cap de coordinació de l\'SCB (inspector habilitat) té 17 funcions, activa el CCB i supervisa la TRI. Determinar el nivell de comandament (art. 22) correspon al Cap de coordinació de l\'SCT.'
+    },
+    {
+      id: 't7-q14',
+      difficulty: 'Mitjà',
+      question: 'Quins són els 3 organismes autònoms o entitats adscrits al Departament d\'Interior i quina àrea penja directament del Director General de la DGPEIS?',
+      options: [
+        'Organismes adscrits: SCT (Trànsit), ISPC i CAT112 · Àrea directa del DG: Àrea de Comunicació i Premsa (vinculació laboral)',
+        'Organismes adscrits: SEM, Forestals i ADF · Àrea directa del DG: Àrea de Logística',
+        'Organismes adscrits: SCT, ISPC i Protecció Civil · Àrea directa del DG: Àrea GRAF',
+        'El Departament d\'Interior no té organismes adscrits ni cap àrea directa del DG'
+      ],
+      correctIndex: 0,
+      explanation: 'Els 3 organismes adscrits al Departament d\'Interior són SCT (Trànsit), ISPC i CAT112; l\'Àrea de Comunicació i Premsa (laboral) és l\'única àrea que penja directe del DGPEIS.'
+    },
+    {
+      id: 't7-q15',
+      difficulty: 'Difícil',
+      question: 'Quines dues Regions d\'Emergències no disposen de Sala Territorial pròpia (6 Sales per a 8 Regions) i de quina Sala depenen?',
+      options: [
+        'Terres de l\'Ebre es connecta a Tarragona i Pirineus es connecta a Lleida',
+        'Catalunya Central es connecta a Metro Nord i Girona a Metro Sud',
+        'Pirineus es connecta a Girona i Terres de l\'Ebre a Lleida',
+        'Totes 8 Regions tenen Sala Territorial pròpia des del Decret 16/2026'
+      ],
+      correctIndex: 0,
+      explanation: 'Hi ha 8 Regions però 6 Sales Territorials: Terres de l\'Ebre → Tarragona, i Pirineus → Lleida. En canvi, de les 7 Unitats de Prevenció, Terres de l\'Ebre SÍ en té i només Pirineus depèn de Lleida.'
+    },
+    {
+      id: 't7-q16',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA sobre les Unitats de Prevenció i les Unitats Territorials de la DGPEIS?',
+      options: [
+        'Les 7 Unitats de Prevenció depenen orgànicament de la Regió d\'Emergències i funcionalment de la Subdirecció General Tècnica',
+        'Les 19 Unitats Territorials es distribueixen en 3 a Metro Nord, 3 a Metro Sud, 3 a Girona i 2 a cadascuna de les 5 Regions restants',
+        'Les Unitats Territorials inspeccionen els parcs, però els parcs depenen de l\'Àrea d\'Operacions de la Regió',
+        'La Subdirecció General Tècnica compta amb 5 àrees tècniques al text consolidat vigent'
+      ],
+      correctIndex: 0,
+      explanation: 'És a l\'inrevés: les 7 Unitats de Prevenció depenen ORGÀNICAMENT de la Subdirecció General Tècnica i FUNCIONALMENT de la Regió d\'Emergències.'
+    },
+    {
+      id: 't7-q17',
+      difficulty: 'Mitjà',
+      question: 'Dins de quina Divisió s\'integra la nova Àrea de Logística (2026) i de quina Àrea formen part els grups GRAE Muntanya, GRAE Caní i GRAE Subaquàtic?',
+      options: [
+        'L\'Àrea de Logística s\'integra a la Divisió de Planificació i Gestió; els GRAE s\'integren a l\'Àrea GEA (Unitat Muntanya i Unitat Aquàtica) dins d\'Emergències Climàtiques i GOE',
+        'L\'Àrea de Logística s\'integra a la SG Tècnica; els GRAE pengen de la Divisió d\'Operacions',
+        'L\'Àrea de Logística s\'integra a la Divisió de Coordinació d\'Emergències; la Unitat GEM és l\'encarregada dels GRAE',
+        'L\'Àrea de Logística depèn directe del DGPEIS juntament amb Comunicació i Premsa'
+      ],
+      correctIndex: 0,
+      explanation: 'Àrea de Logística (nova 2026) → Divisió de Planificació i Gestió. Àrea GEA (Unitat Muntanya [GRAE Muntanya + Caní] i Unitat Aquàtica [GRAE Subaquàtic]) → Divisió d\'Emergències Climàtiques i GOE.'
+    },
+    {
+      id: 't7-q18',
+      difficulty: 'Fàcil',
+      question: 'Quina és la nova Subdirecció General creada pel Decret 16/2026 dins de la DGPEIS i quantes funcions té la SG Operativa al text consolidat?',
+      options: [
+        'SG d\'Assumptes Jurídics i Institucionals (fa un total de 5 SG); la SG Operativa té 16 funcions al consolidat',
+        'SG de Mitjans Aeris; la SG Operativa té 13 funcions',
+        'SG de Voluntaris i Logística; la SG Operativa té 12 funcions',
+        'SG de Coordinació d\'Emergències; la SG Operativa té 10 funcions'
+      ],
+      correctIndex: 0,
+      explanation: 'El Decret 16/2026 crea la 5a Subdirecció General (SG d\'Assumptes Jurídics i Institucionals), amplia les funcions de la SG Operativa de 13 a 16 i crea la 8a Regió (Pirineus).'
     }
   ]
 };

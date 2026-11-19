@@ -49,6 +49,15 @@ export const tema6EpiEra = {
             ['Categoria III', 'Riscos molt greus amb conseqüències MORTALS o irreversibles per a la salut.', 'Marcatge "CE + 4 dígits" (ex: CE 0158) que identifiquen l’organisme notificat que controla la producció anualment.', 'TOTS els EPI principals d’intervenció: ERA, vestit d’incendi estructural (EN 469), cascs de bomber, guants de foc, botes de bomber, vestits NRBQ i arnesos anticaigudes.']
           ],
           footnote: 'Pregunta clàssica: Què indiquen els 4 números al costat del marcatge CE (ex: CE 0158)? Indiquen que és un EPI de Categoria III i identifiquen l’organisme notificat controlador!'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Categoria I vs. II vs. III d’EPI',
+          paragraphs: [
+            "• Categoria I (risc mínim, danys lleus reversibles): autocertificació del fabricant i marcatge 'CE' sol.",
+            "• Categoria II (risc intermedi, ni mínim ni mortal): examen UE de tipus per organisme notificat i marcatge 'CE' sol.",
+            "• Categoria III (risc molt greu, MORTAL o irreversible): examen UE de tipus + control anual de producció, identificat pel marcatge 'CE + 4 dígits' (tots els EPI d'intervenció de bombers: ERA, EN 469, cascs, botes, guants de foc, arnesos i vestits químics)."
+          ]
         }
       ]
     },
@@ -101,10 +110,12 @@ export const tema6EpiEra = {
       blocks: [
         {
           type: 'text',
-          heading: '3.1–3.2. Equips Filtrants vs. Aïllants i Arquitectura de l’ERA (UNE-EN 137)',
+          heading: '3.1–3.2. Equips Filtrants vs. Aïllants i Circuit Obert vs. Tancat',
           paragraphs: [
-            "Els equips filtrants (mascaretes FFP1, FFP2 i FFP3 o filtres de gasos) depenen de l'atmosfera ambient i MAI es poden utilitzar en incendis en espais tancats ni quan l'oxigen és inferior al 19,5% (o el tòxic és desconegut o molt concentrat). En aquests escenaris és obligatori un Equip Aïllant Autònom: l'ERA de circuit obert d'aire comprimit a pressió positiva (norma UNE-EN 137 Tipus 2 per a bombers, amb màscara facial completa UNE-EN 136 Classe 3).",
-            "L'ERA consta de 5 parts principals: 1) Ampolla d'aire comprimit (composada o d'acer, de 6 L o 6,8 L a 300 bar), 2) Espatllera ergonòmica amb arnés, 3) Manoreductor (1a etapa), 4) Regulador a demanda o pulmobanda (2a etapa) + Màscara facial, i 5) Unitat de control electrònic / Manòmetre + Xiulet d'alarma + Dispositiu d'Home Mort (PASS)."
+            "Els equips filtrants (mascaretes FFP1/FFP2/FFP3 o filtres de gasos) depenen de l'atmosfera ambient: MAI es poden utilitzar en incendis en espais tancats, amb O₂ < 19,5% o davant d'un tòxic desconegut/molt concentrat.",
+            "En aquests escenaris cal un Equip Aïllant Autònom (ERA). L'equip reglamentari habitual a Bombers és l'ERA de CIRCUIT OBERT d'aire comprimit a pressió positiva (UNE-EN 137 Tipus 2 amb màscara UNE-EN 136 Classe 3): l'aire exhalat s'expulsa directament a l'exterior.",
+            "No confondre! ERA de Circuit Obert vs. Circuit Tancat (regeneració): Al circuit obert (300 bar) l'aire s'expulsa fora i l'autonomia operativa és d'uns 30–45 min. Al circuit tancat (per a túnels llargs o mines), l'aire exhalat es recicla passant per un cartutx absorbent de CO₂ i s'enriqueix amb O₂, oferint 2–4 hores d'autonomia però amb aire més calent i més resistència.",
+            "L'ERA de circuit obert consta de 5 parts: 1) Ampolla d'aire (6 L acer o 6,8 L composite a 300 bar), 2) Espatllera amb arnés, 3) Manoreductor (1a etapa), 4) Pulmobanda + Màscara (2a etapa) i 5) Unitat de control / Manòmetre + Xiulet + Home Mort (PASS)."
           ]
         },
         {
@@ -193,7 +204,7 @@ export const tema6EpiEra = {
           subtitle: 'Procediment des de l’escenari de l’incendi fins a la bugaderia industrial especialitzada',
           headers: ['Nivell (Secció)', 'On i Quan es Realitza?', 'Accions Obligatòries del Protocol SGO'],
           rows: [
-            ['4.2.2. Neteja IN SITU (Al lloc del servei)', 'Immediatament després de sortir de la zona calenta, abans de pujar al camió.', '1) Mantenir l’ERA o mascareta FFP3 posada mentre es raspalla l’EPI en sec o es renta amb aigua a baixa pressió per treure el sutge gruixut.\n2) Retirar l’EPI evitant tocar la cara exterior amb les mans nues.\n3) Introduir les peces contaminades dins de BOSSES ESTANQUES (o solubles en aigua) i guardar-les al maleter/cofre exterior del vehicle (PROHIBIT entrar EPI bruts a la cabina del camió!).\n4) Rentat de mans, cara i coll amb tovalloletes humides in situ.'],
+            ['4.2.2. Neteja IN SITU (Al lloc del servei)', 'Immediatament després de sortir de la zona calenta, abans de pujar al camió.', '1) Mantenir ERA o FFP3 posada en raspallar el sutge en sec o rentar a baixa pressió.\n2) Retirar l’EPI sense tocar l’exterior contaminat.\n3) Embossar les peces en bosses estanques i guardar-les al cofre exterior (MAI a la cabina!).\n4) Neteja de mans, cara i coll in situ.'],
             ['4.2.3. Neteja A PARC (Zona Bruta)', 'En arribar al parc de bombers, a la zona de neteja d’EPI.', 'Dutxa immediata del bomber ("dins la primera hora") i rentat superficial d’eines, botes, casc i espatllera d’ERA a la zona bruta del parc. Mai entrar amb l’EPI d’intervenció a les dependències de descans, menjador o dormitoris!'],
             ['4.2.4. Neteja AVANÇADA (Descontaminació profunda)', 'Servei de bugaderia industrial especialitzada.', 'Enviament de la bossa tancada (jaqueta, cubrepantaló, guants, sotacasc) al centre de rentat avançat per a desinfecció tèrmica/química controlada, re-impregnació hidròfuga i revisió de costures i bandes reflectants.']
           ],
@@ -413,6 +424,84 @@ export const tema6EpiEra = {
       ],
       correctIndex: 1,
       explanation: "El xiulet acústic EN 137 s'activa a 55 ± 5 bar amb una potència ≥ 90 dB (consumint ~5 L/min si és pneumàtic). La caputxa de rescat s'endolla a la presa auxiliar de mitjana pressió (6-8 bar) i divideix l'autonomia per dos en compartir aire."
+    },
+    {
+      id: 'q20-13',
+      difficulty: 'Mitjà',
+      question: "Quina diferència funcional hi ha entre un ERA de circuit obert (reglamentari habitual a Bombers) i un ERA de circuit tancat o de regeneració?",
+      options: [
+        "En el circuit obert s'inhala aire de l'ambient filtrat i en el tancat s'utilitza aire comprimit a 300 bar expulsat a l'exterior.",
+        "En el circuit obert l'aire exhalat s'expulsa directament a l'atmosfera, mentre que en el circuit tancat l'aire exhalat es recicla eliminant el CO₂ amb un cartutx absorbent i afegint-hi oxigen per oferir llarga autonomia (2–4 h).",
+        "El circuit tancat només es pot usar en incendis forestals a l'aire lliure.",
+        "No hi ha diferència: tots dos tenen exactament la mateixa autonomia de 30 minuts."
+      ],
+      correctIndex: 1,
+      explanation: "Al circuit obert (EN 137) l'aire exhalat surt fora a cada respiració; al circuit tancat l'aire es regenera en circuit tancat retenint el CO₂ i aportant O₂, fet que permet autonomies de 2 a 4 hores (túnels llargs, mines), tot i aportar aire més calent."
+    },
+    {
+      id: 'q20-14',
+      difficulty: 'Mitjà',
+      question: "En relació amb les categories d'EPI del Reglament (UE) 2016/425, quina de les afirmacions següents és INCORRECTA?",
+      options: [
+        "La Categoria I cobreix riscos mínims i permet l'autocertificació del fabricant amb marcatge CE simple.",
+        "La Categoria II cobreix riscos de gravetat intermèdia (ni mínims ni mortals) i requereix examen UE de tipus per un organisme notificat.",
+        "La Categoria III cobreix riscos molt greus amb conseqüències mortals o irreversibles i porta el marcatge CE seguit de 4 dígits.",
+        "Els guants de foc (EN 659) i els cascs estructurals (EN 443) pertanyen a la Categoria II perquè només protegeixen de riscos mecànics intermedis."
+      ],
+      correctIndex: 3,
+      explanation: "Afirmació incorrecta: els guants de foc (EN 659), els cascs de bomber (EN 443), les botes (EN 15090), l'EPI estructural (EN 469), l'ERA i els arnesos pertanyen tots a la Categoria III (riscos mortals o irreversibles)."
+    },
+    {
+      id: 'q20-15',
+      difficulty: 'Difícil',
+      question: "Un bomber treballa amb una ampolla de 6,8 L a 300 bar i en un moment d'estrès extrem i pujada d'escales carregat assoleix un consum de 100 L/min. Quina és la seva autonomia operativa de treball aplicant la reserva de seguretat del 25%?",
+      options: [
+        "30,6 minuts.",
+        "20,4 minuts.",
+        "15,3 minuts.",
+        "10,2 minuts."
+      ],
+      correctIndex: 2,
+      explanation: "Volum total = 6,8 × 300 = 2.040 L. Volum útil (75%) = 1.530 L. A un consum extrem de 100 L/min: 1.530 / 100 = 15,3 minuts fins al marge de reserva del 25%."
+    },
+    {
+      id: 'q20-16',
+      difficulty: 'Fàcil',
+      question: "Quin tipus de vestit de protecció química correspon a una actuació de retirada d'amiant o fibrociment amb risc de partícules sòlides en suspensió, i quin a una protecció limitada contra esquitxades líquides lleugeres?",
+      options: [
+        "Tipus 5 (partícules sòlides, ISO 13982-1) i Tipus 6 (esquitxades lleugeres, EN 13034).",
+        "Tipus 1a (partícules) i Tipus 2 (esquitxades).",
+        "Tipus 3 (partícules) i Tipus 4 (esquitxades).",
+        "Tipus 6 (partícules) i Tipus 5 (gasos hermètics)."
+      ],
+      correctIndex: 0,
+      explanation: "Dins dels vestits químics Tipus 1 a 6: el Tipus 5 (UNE-EN ISO 13982-1) protegeix contra partícules sòlides en suspensió (ex. amiant) i el Tipus 6 (UNE-EN 13034) contra petites esquitxades líquides sense pressió."
+    },
+    {
+      id: 'q20-17',
+      difficulty: 'Mitjà',
+      question: "Quines normes UNE-EN corresponen respectivament a la roba d'incendi forestal (EPI lleuger), als guants d'incendi estructural i al sotacasc (capuz) ignífug?",
+      options: [
+        "Roba forestal: UNE-EN 469 | Guants foc: UNE-EN 388 | Sotacasc: UNE-EN 443.",
+        "Roba forestal: UNE-EN 15614 (ISO 15384) | Guants foc: UNE-EN 659 | Sotacasc: UNE-EN 13911.",
+        "Roba forestal: UNE-EN 16471 | Guants foc: UNE-EN 15090 | Sotacasc: ISO 20471.",
+        "Roba forestal: UNE-EN 136 | Guants foc: UNE-EN 137 | Sotacasc: UNE-EN 943."
+      ],
+      correctIndex: 1,
+      explanation: "Segons la taula de normes del manual: roba forestal = UNE-EN 15614 / ISO 15384; guants d'incendi estructural = UNE-EN 659 (els de rescat mecànic són EN 388); sotacasc = UNE-EN 13911."
+    },
+    {
+      id: 'q20-18',
+      difficulty: 'Mitjà',
+      question: "Dins del protocol de gestió de contaminants del capítol 4 (MAN.SEGU.000), quines accions corresponen al nivell de neteja 'A Parc'?",
+      options: [
+        "Raspallar l'EPI en sec abans de pujar al camió i posar-lo en bosses estanques.",
+        "Enviar la jaqueta i el cubrepantaló en bossa tancada a la bugaderia industrial per a re-impregnació hidròfuga.",
+        "Dutxa immediata del bomber ('dins la primera hora') i rentat superficial d'eines, botes, casc i espatllera d'ERA a la zona bruta del parc, sense entrar l'EPI brut a les zones de vida.",
+        "Netejar el vestit estructural amb aire comprimit dins del dormitori del parc."
+      ],
+      correctIndex: 2,
+      explanation: "El nivell 'A parc' (4.2.3) inclou la dutxa immediata del bomber ('dins la primera hora') i la neteja superficial de casc, botes, eines i espatllera a la zona bruta, mantenint els EPI contaminats fora de menjador i dormitoris."
     }
   ]
 };

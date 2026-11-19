@@ -142,7 +142,8 @@ export const tema1TeoriaFoc = {
           heading: '8.2–8.5. Superfície/Massa, Humitat, Temperatura i Ventilació (ILC vs. ILV)',
           paragraphs: [
             "• Relació Superfície/Massa (8.2): Com més dividit està un sòlid (encenalls o pols en suspensió vs. tronc massís), més superfície està en contacte amb l'O₂ i més ràpid crema (la pols en suspensió arriba a deflagrar).\n• Humitat (8.3): L'aigua continguda al combustible (especialment en forestal) absorbeix calor per evaporar-se (539 cal/g), retardant la ignició.",
-            "• Ventilació (8.4): Un incendi en les seves fases inicials o a l'aire lliure és un ILC (Incendi Limitat pel Combustible: té O₂ de sobres i creix segons el combustible disponible). Quan l'incendi es desenvolupa dins d'un recinte tancat i consumeix l'oxigen, passa a ser un ILV (Incendi Limitat per la Ventilació: queden molts gasos de piròlisi calents per sobre del LSI esperant que algú obri una porta o finestra per inflamar-se!)."
+            "• Ventilació — ILC (8.4): Un incendi en les seves fases inicials o a l'aire lliure és un Incendi Limitat pel Combustible (ILC): té O₂ de sobres i la seva evolució depèn del combustible disponible.",
+            "• Ventilació — ILV (8.4): Quan l'incendi es desenvolupa dins d'un recinte tancat i consumeix l'oxigen (< 15% O₂), passa a ser un Incendi Limitat per la Ventilació (ILV): queden molts gasos de piròlisi calents per sobre del LSI esperant que algú obri una porta o finestra per inflamar-se (risc de Backdraft!)."
           ]
         },
         {
@@ -198,8 +199,8 @@ export const tema1TeoriaFoc = {
           subtitle: 'Diferències físiques, indicadors previs i règim de ventilació (Capítol 11 MAN.GRAL.008)',
           headers: ['Fenomen Extrem', 'Definició i Règim (ILC / ILV)', 'Indicadors i Valors Crítics', 'Actuació Operativa'],
           rows: [
-            ['Flashover (Combustió Generalitzada Sobtada)', 'Transició ràpida on TOTS els combustibles d’un recinte ventilat s’inflamen gairebé alhora per RADIACIÓ tèrmica des del coixí de fums del sostre. (Passa d’ILC a incendi totalment desenvolupat).', 'Tª al sostre ≈ 500–600 °C i flux radiant al terra ≈ 20 kW/m².aparició de llengües de foc al sostre (Rollover / Ángeles bailando).', 'Refredament dels gasos del sostre amb polsacions curtes d’aigua polvoritzada i mantenir-se ajupit sota el pla neutre.'],
-            ['Backdraft (Explosió de Fums)', 'Deflagració violenta en un recinte TANCat en règim ILV (O₂ < 15%, gasos calents per sobre del LSI) quan s’obre una porta/finestra i entra aire fresc que porta la mescla dins del rang LII-LSI.', 'Fum groguenc/marró dens que surt a polsacions ("l’incendi respira"), vidres negres de sutge i molt calents, absència de flames visibles, silenci o xiulets d’aspiració.', 'NO obrir la porta! Ventilar per la part més alta (coberta) o refredar des de l’exterior abans de qualsevol aportació d’aire.'],
+            ['Flashover (Combustió Generalitzada Sobtada)', 'Transició ràpida on TOTS els combustibles d’un recinte ventilat s’inflamen gairebé alhora per RADIACIÓ tèrmica des del coixí de fums del sostre. (Passa d’ILC a incendi totalment desenvolupat).', 'Tª al sostre ≈ 500–600 °C i flux radiant al terra ≈ 20 kW/m². Aparició de llengües de foc al sostre (Rollover / Ángeles bailando).', 'Refredament dels gasos del sostre amb polsacions curtes d’aigua polvoritzada i mantenir-se ajupit sota el pla neutre.'],
+            ['Backdraft (Explosió de Fums)', 'Deflagració violenta en un recinte TANCAT en règim ILV (O₂ < 15%, gasos calents per sobre del LSI) quan s’obre una porta/finestra i entra aire fresc que porta la mescla dins del rang LII-LSI.', 'Fum groguenc/marró dens que surt a polsacions ("l’incendi respira"), vidres negres de sutge i molt calents, absència de flames visibles, silenci o xiulets d’aspiració.', 'NO obrir la porta! Ventilar per la part més alta (coberta) o refredar des de l’exterior abans de qualsevol aportació d’aire.'],
             ['Boil-over (Rebrollada)', 'Projecció violenta d’un tanc obert de petroli cru o hidrocarbur pesant amb un fons d’aigua quan l’ona de calor (150-300 °C) arriba al fons i vaporitza l’aigua de cop (×1.700 volum).', 'Només passa en hidrocarburs de destil·lació àmplia (cru, fueloil) amb coixí d’aigua al fons del tanc.', 'Controlar l’ona de calor amb càmera tèrmica o pintura termosensible i evacuar si l’ona toca l’aigua del fons.'],
             ['Slop-over i Froth-over', 'Vessament menys violent d’oli/asfalt calent pel contacte superficial amb aigua.', 'Slop-over: quan tirem aigua/escuma sobre la superfície d’un tanc en flames. Froth-over: espumeig sense incendi quan entra aigua a asfalt calent.', 'Aplicar escuma suaument per les parets del tanc.'],
             ['BLEVE', 'Boiling Liquid Expanding Vapor Explosion: explosió física (i bola de foc si és inflamable) per ruptura catastròfica d’un recipient tancat que conté un líquid sobreescalfat molt per sobre del seu punt d’ebullició a 1 atm.', 'Flama dardo incidint sobre la FASE GAS de la cisterna (on l’acer no està refrigerat pel líquid interior), xiulets de la vàlvula d’alleujament.', 'Refrigerar intensivament la FASE GAS de la cisterna des de lluny amb monitors (>100-500 m).']
@@ -541,6 +542,19 @@ export const tema1TeoriaFoc = {
       ],
       correctIndex: 2,
       explanation: "El CO₂ és un agent net i dielèctric: no condueix l'electricitat, s'evapora sense deixar residus i NO produeix corrosió electrònica, motiu pel qual és apte per a quadres elèctrics i equips electrònics."
+    },
+    {
+      id: 'q8-18',
+      difficulty: 'Mitjà',
+      question: "Quina diferència hi ha entre el Punt d'Inflamació (Flash Point), el Punt de Combustió (Fire Point) i el Punt d'Autoignició d'un combustible líquid?",
+      options: [
+        "Al punt d'inflamació s'encén amb font externa però s'apaga en retirar-la; al de combustió manté la flama (≥ 5 s) en retirar la font; i a l'autoignició s'inflama sol sense font externa.",
+        "Al punt d'inflamació no cal cap font d'ignició externa; al d'autoignició sí que cal una espurna.",
+        "El punt de combustió sempre és inferior al punt d'inflamació.",
+        "La gasolina té un punt d'autoignició més baix (~100 °C) que el gasoil (~450 °C)."
+      ],
+      correctIndex: 0,
+      explanation: "Flash Point = s'encén amb flama externa però s'apaga si la retires. Fire Point = uns graus per sobre, manté la combustió ≥ 5 s sense la font. Autoignició = s'encén espontàniament sense font externa (gasoil ~220 °C < gasolina ~280 °C)."
     }
   ]
 };

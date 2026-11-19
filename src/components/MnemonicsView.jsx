@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Lightbulb, Plus, ArrowUpRight, Trash2, Sparkles } from 'lucide-react';
-import { INITIAL_MNEMONICS } from '../data/mnemonicsData';
+import { Lightbulb, Plus, ArrowUpRight, Trash2, Sparkles, Hash } from 'lucide-react';
+import {
+  INITIAL_MNEMONICS,
+  MAJOR_SYSTEM_DIGITS,
+  FITXER_MENTAL
+} from '../data/mnemonicsData';
 
 const CUSTOM_STORAGE_KEY = 'bombers_custom_mnemonics_v1';
 
@@ -8,6 +12,8 @@ export default function MnemonicsView({ topics, onSelectTopic }) {
   const [search, setSearch] = useState('');
   const [selectedTopicFilter, setSelectedTopicFilter] = useState('all');
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showPhoneticTable, setShowPhoneticTable] = useState(false);
+  const [phoneticQuery, setPhoneticQuery] = useState('');
   const [customMnemonics, setCustomMnemonics] = useState(() => {
     try {
       const saved = localStorage.getItem(CUSTOM_STORAGE_KEY);
@@ -95,14 +101,90 @@ export default function MnemonicsView({ topics, onSelectTopic }) {
             </p>
           </div>
 
-          <button
-            onClick={() => setShowAddForm((v) => !v)}
-            className="inline-flex items-center gap-1.5 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            <span>{showAddForm ? 'Tancar formulari' : 'Afegir regla / anotació'}</span>
-          </button>
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => setShowPhoneticTable((v) => !v)}
+              className={`inline-flex items-center gap-1.5 rounded-2xl border px-4 py-2.5 text-xs font-extrabold transition-colors ${
+                showPhoneticTable
+                  ? 'bg-indigo-600 text-white border-indigo-600'
+                  : 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:border-indigo-400'
+              }`}
+            >
+              <Hash className="w-4 h-4" />
+              <span>{showPhoneticTable ? 'Tancar Codi Fonètic' : 'Codi Fonètic (0–100)'}</span>
+            </button>
+            <button
+              onClick={() => setShowAddForm((v) => !v)}
+              className="inline-flex items-center gap-1.5 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              <span>{showAddForm ? 'Tancar formulari' : 'Afegir regla / anotació'}</span>
+            </button>
+          </div>
         </div>
+
+        {showPhoneticTable && (
+          <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900 bg-indigo-50/50 dark:bg-indigo-950/20 p-4 sm:p-5 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="text-sm sm:text-base font-extrabold text-indigo-950 dark:text-indigo-200">
+                  Sistema Mnemotècnic Major (0–9) i Fitxer Mental (0–100)
+                </h2>
+                <p className="text-xs text-indigo-800/80 dark:text-indigo-300/80">
+                  Cerca qualsevol número (ex. 16, 30, 55, 94) o paraula clau per crear associacions ràpides.
+                </p>
+              </div>
+              <input
+                type="text"
+                value={phoneticQuery}
+                onChange={(e) => setPhoneticQuery(e.target.value)}
+                placeholder="Cerca número o imatge (ex: 30, MAR, ZORRO)..."
+                className="w-full sm:w-64 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-semibold"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              {MAJOR_SYSTEM_DIGITS.map((d) => (
+                <div
+                  key={d.digit}
+                  className="rounded-xl border border-indigo-200/80 dark:border-indigo-800 bg-white dark:bg-slate-900 px-3 py-2 text-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-black text-indigo-600 dark:text-indigo-400 text-sm">
+                      {d.digit}
+                    </span>
+                    <span className="font-extrabold text-slate-800 dark:text-slate-200">
+                      {d.consonants}
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                    {d.peg}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2 max-h-64 overflow-y-auto pr-1">
+              {FITXER_MENTAL.filter((entry) => {
+                if (!phoneticQuery.trim()) return true;
+                const q = phoneticQuery.toLowerCase();
+                return entry.n === q || entry.n.includes(q) || entry.words.toLowerCase().includes(q);
+              }).map((entry) => (
+                <div
+                  key={entry.n}
+                  className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 px-2.5 py-1.5 text-xs"
+                >
+                  <span className="font-black text-red-600 dark:text-red-400 mr-1.5">
+                    {entry.n}
+                  </span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-300">
+                    {entry.words}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {showAddForm && (
           <form

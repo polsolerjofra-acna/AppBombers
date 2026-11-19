@@ -9,7 +9,7 @@ export const tema9IncendisEstructurals = {
     title: "Radar d'Examen — Tema 24 (MAN.INES.000 v.1): Incendis Estructurals",
     frequency: 'Molt Alta (5-7 preguntes fixes sobre façanes A-B-C-D, cabals Ø25/Ø45, recerca i CACE)',
     summary:
-      "Manual de 5 capítols operatius: 1. Introducció (Flying 1990, Windsor 2005, Badalona 2020), 2. Coneixements bàsics i Façanes A-B-C-D, 3. Valoració (6 cares, Planta 8 AEA, Ruta freda i lectura del fum), 4. Maniobres (cabals 250/400 L/min, 5 parts de línia, atac a gasos O/Z/8, ordre de recerca per visibilitat i ventilació) i 5. Seguretat (zonatge 15 m vs 2×Alçada, CACE, Codi Vermell/SOS i entrada en 4 fases). Inclou 5 pàgines de desenvolupament + 2 pàgines finals de Resum Executiu.",
+      "Manual de 5 capítols operatius: Introducció (Flying 1990, Windsor 2005, Badalona 2020), Coneixements bàsics i Façanes A-B-C-D, Valoració (6 cares, Planta 8 AEA, Ruta freda i lectura del fum), Maniobres (cabals 250/400 L/min, 5 parts de línia, atac a gasos O/Z/8, recerca i ventilació) i Seguretat (zonatge 15 m vs 2×Alçada, CACE, Codi Vermell/SOS i entrada en 4 fases).",
     hotTopics: [
       'Cap. 1-2: Incendis històrics (Flying 1990, Windsor 2005, Badalona 2020), tipologies constructives i nomenclatura de façanes A, B, C, D en sentit HORARI.',
       'Cap. 3: Valoració de les 6 cares del sinistre, límit d’abast de l’AEA (Planta 8 / 30 m), Ruta Freda vs. Ruta Calenta i els 4 atributs de lectura del fum (Volum, Velocitat, Densitat, Color).',
@@ -32,9 +32,12 @@ export const tema9IncendisEstructurals = {
       blocks: [
         {
           type: 'text',
-          heading: '1. Introducció: Els 3 Grans Incendis Històrics de Referència al Manual',
+          heading: '1. Introducció: Els 3 Grans Incendis Històrics de Referència',
           paragraphs: [
-            "El manual MAN.INES.000 inicia l'estudi recordant tres incendis estructurals que van marcar un abans i un després en l'operativa i la normativa: 1) Discoteca Flying (Saragossa, 1990: 43 morts per inhalació de fums i gasos tòxics cianhídrics/CO en un local subterrani), 2) Torre Windsor (Madrid, 2005: gratacel de 106 m on el foc es va propagar verticalment pels buits de façana i patis sense sectorització horitzontal, fent col·lapsar l'estructura metàl·lica superior) i 3) Nau ocupada de Badalona (2020: gran incendi estructural amb víctimes mortals i col·lapse parcial que va evidenciar la importància del control d'accessos, la lectura d'estabilitat estructural i el zonatge exterior)."
+            "El manual MAN.INES.000 inicia l'estudi recordant tres incendis estructurals que van marcar un abans i un després en l'operativa i la normativa.",
+            "1) Discoteca Flying (Saragossa, 1990): 43 morts per inhalació de fums i gasos tòxics (CO i HCN) en un local subterrani amb evacuació bloquejada.",
+            "2) Torre Windsor (Madrid, 2005): gratacel de 106 m on el foc es va propagar verticalment pels buits de façana i patis sense sectorització horitzontal, fent col·lapsar l'estructura metàl·lica superior.",
+            "3) Nau ocupada de Badalona (2020): gran incendi estructural amb víctimes mortals i col·lapse parcial que va evidenciar la importància del control d'accessos, l'estabilitat estructural i el zonatge exterior."
           ]
         },
         {
@@ -50,6 +53,14 @@ export const tema9IncendisEstructurals = {
             ['Plantes i Interiors', 'PB (Planta Baixa), PL+1, PL+2... i Soterranis S-1, S-2... Quadrants interiors A, B, C, D.', 'Permet ubicar qualsevol binomi per ràdio amb precisió quirúrgica (ex: "Binomi 1 a PL+3, façana B").']
           ],
           footnote: 'Memoritza: Mirant l’edifici des del carrer principal (Façana A), a la teva esquerra tens la Façana B, al darrere la C i a la teva dreta la D (sentit horari en planta).'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Façanes A-B-C-D (Urbà) vs. Sectors (Forestal)',
+          paragraphs: [
+            "En incendis estructurals, mirant l'edifici des de la façana principal (A), les façanes B (esquerra), C (posterior) i D (dreta) es numeren sempre en SENTIT HORARI en planta.",
+            "No ho confonguis amb incendis forestals: allà el Sector 0 és la cua i, mirant cap al cap, els sectors imparells (1, 3...) van a l'esquerra i els parells (2, 4...) a la dreta."
+          ]
         },
         {
           type: 'mnemonic',
@@ -90,6 +101,14 @@ export const tema9IncendisEstructurals = {
             ['3.4. Les 3 Vies de Propagació', '1) Per Flames (contacte/autoexposició exterior per finestres)\n2) Per Fums i Gasos calents (convecció per escales, patis i falsos sostres)\n3) Per Partícules inflamades o Degoteig (paveses o plàstics fosos que cauen).', 'El tancament de la porta del pis incendiat (Confinament / Antiventilació) talla de cop la propagació per fums cap a l’escala!']
           ],
           footnote: 'Els 4 atributs de la lectura del fum: VOLUM + VELOCITAT + DENSITAT + COLOR (VVDC).'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Flashover vs. Backdraft (Explosió de Fum)',
+          paragraphs: [
+            "• FLASHOVER (Inflamació Generalitzada): Es produeix en un incendi ventilat (controlat pel combustible) quan la radiació tèrmica del coixí de gasos calents (~500-600 °C) fa entrar en ignició simultània totes les superfícies combustibles del recinte. Signes: llengües de foc al sostre (rollover), radiació extrema i baixada ràpida del pla neutre.",
+            "• BACKDRAFT (Explosió de Fum): Es produeix en un incendi ofegat / limitat per ventilació (ILV) amb molt gas de piròlisi sense cremar per falta d'oxigen. Si s'obre de cop una porta o finestra, entra aire fresc i es produeix una deflagració violenta cap a l'exterior. Signes: fum dens groguenc-marronós que 'respira' a polsacions, vidres ennegrits per sutge i absència de flama visible."
+          ]
         }
       ]
     },
@@ -128,6 +147,15 @@ export const tema9IncendisEstructurals = {
             ['5. Atac Transicional (Ofensiu des de l’exterior)', 'Raig sòlid dirigit amb angle fix al SOSTRE de l’habitació per una finestra exterior (10-20 s)', 'Redueix dràsticament la temperatura interior i evita el Flashover MENTRE el binomi interior puja per l’escala per entrar per la porta (no empeny el foc cap a dins si es tira amb raig compacte al sostre sense moure la llança en cercle!).']
           ],
           footnote: 'Pregunta molt típica: Quins tres traços es dibuixen amb la llança en el refredament de gasos? La "O", la "Z" i el "8" (polsacions curtes < 1 s o llargues d’1 a 5 s).'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Atac Transicional vs. Refredament de Gasos (3D) vs. Atac Indirecte',
+          paragraphs: [
+            "• ATAC TRANSICIONAL: Es fa des de l'EXTERIOR per una finestra dirigint un raig sòlid amb angle fix contra el SOSTRE (10–20 s), sense moure'l en cercles. L'objectiu és abatre ràpidament la potència del foc abans que entri el binomi interior, sense empènyer vapor cap a l'escala.",
+            "• REFREDAMENT DE GASOS (Atac 3D): Es fa des de l'INTERIOR sobre el coixí de fums amb con obert (30°–60°) i polsacions curtes (< 1 s) o llargues (1–5 s) dibuixant 'O', 'Z' o '8'. Busca inertitzar els gasos sense mullar parets per no generar vapor escaldant.",
+            "• ATAC INDIRECTE: Es projecta aigua a sostre i parets d'un recinte tancat SENSE víctimes per generar una gran massa de vapor (1 L → 1.700 L) que sufoqui el foc. Prohibit si hi pot haver ocupants vius a dins!"
+          ]
         }
       ]
     },
@@ -138,12 +166,20 @@ export const tema9IncendisEstructurals = {
       subtitle: 'Prioritat de recerca (Baixa → Mitja → Mínima → Alta), tècniques de rastreig i VPP vs. VPN.',
       blocks: [
         {
+          type: 'text',
+          heading: '⚠️ No confondre! VPP (Pressió Positiva) vs. VPN (Pressió Negativa)',
+          paragraphs: [
+            "• VPP (Pressió Positiva): El ventilador s'ubica a l'EXTERIOR (a 1,5–2,5 m de la porta d'entrada) bufant aire net cap endins. Regla d'or: obrir SEMPRE la sortida de fums (1–2× l'entrada) ABANS d'engegar el ventilador i tenir el focus localitzat amb línia d'aigua a punt.",
+            "• VPN (Pressió Negativa): L'extractor es col·loca a la finestra o conducte ASPIRANT el fum cap a fora (depressió). S'empra en atmosferes inflamables/explosives (equips ATEX) o per desenfumar locals petits post-incendi."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
           title: '4.3.1. Ordre Oficial de Prioritat de Recerca segons la Visibilitat (PARANY D’EXAMEN!)',
           acronym: '1r BAIXA (6–10 m)  →  2n MITJA (> 10 m)  →  3r MÍNIMA (< 6 m)  →  4t ALTA (Sense fum)',
           trick:
-            "Per què el manual MAN.INES.000 posa en 1r lloc la Visibilitat BAIXA (6 a 10 m) i deixa la Visibilitat MÍNIMA (< 6 m) en 3r lloc?\n• Perquè a les zones de Visibilitat BAIXA (6–10 m) i MITJA (> 10 m) les víctimes tenen una ALTA PROBABILITAT DE SUPERVIVÈNCIA però s'estan intoxicant ràpidament si no les traiem ja, i a més el binomi pot escorcollar-les molt ràpid!\n• En canvi, a la zona de Visibilitat MÍNIMA (< 6 m, a tocar del focus en flames), les condicions són extremes, la recerca a cegues és molt lenta i sovint cal abatre primer el focus del foc.\n• Memoritza els metres exactes de cada llindar:\n  1r) Visibilitat BAIXA = de 6 a 10 metres.\n  2n) Visibilitat MITJA = més de 10 metres (amb fum).\n  3r) Visibilitat MÍNIMA = menys de 6 metres.\n  4t) Visibilitat ALTA = zona lliure de fum.",
+            "• Per què 1r Visibilitat BAIXA (6–10 m) i 2n MITJA (> 10 m)? Les víctimes tenen alta probabilitat de sobreviure però s'intoxiquen ràpid, i el binomi pot rastrejar molt de pressa.\n• Per què 3r MÍNIMA (< 6 m)? A tocar del focus la visibilitat és nul·la, l'avanç és molt lent i sovint cal abatre primer les flames.\n• 4t ALTA: Zona lliure de fum (sense risc immediat).",
           example: 'Si el test pregunta: "Quina zona es prioritza en 1r lloc en una recerca de víctimes segons la visibilitat?", la resposta correcta és SEMPRE: 1r Visibilitat Baixa (6–10 m)!'
         },
         {
@@ -181,12 +217,23 @@ export const tema9IncendisEstructurals = {
           footnote: 'Memoritza les dues distàncies de zonatge en façana: 15 metres (ordinària per caiguda d’objectes) vs. 2 × Alçada de l’edifici (si hi ha risc de col·lapse estructural).'
         },
         {
+          type: 'text',
+          heading: '5.7. Procediment d’Entrada Segura en 4 Fases (Obertura de Porta)',
+          paragraphs: [
+            "Abans d'obrir la porta d'un recinte incendiat, el binomi (EPI complet, sotacasc, ERA connectat i línia purgada a 6–7 bar) executa 4 fases seqüencials:",
+            "• FASE 1 (Valoració prèvia): Observar sortida de fum, comprovar frontisses, tocar la porta de baix a dalt amb el dors de la mà (o càmera tèrmica) i revisar el pom.",
+            "• FASE 2 (Posicionament i obertura de control): Un bomber es protegeix al costat del pany i el punta de llança a punt; s'obre la porta uns centímetres (2–3 s) per llegir el pla neutre i si el fum surt o aspira aire.",
+            "• FASE 3 (Refredament de gasos): Si hi ha gasos calents, polsació curta polvoritzada al coixí superior i tancament parcial per deixar actuar el vapor.",
+            "• FASE 4 (Progressió interior): Entrada ajupits sota el pla neutre, posant sempre una falca a la porta perquè no es tanqui darrere el binomi, i avançant amb O/Z/8."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '5.7. Les 4 Fases del Procediment d’Entrada Segura (Obertura de Porta a Recinte Incendiat)',
-          acronym: 'FASE 1: Avaluar porta/Tª  →  FASE 2: Posició i Test de fum  →  FASE 3: Refredar gasos  →  FASE 4: Entrar sota pla neutre',
+          title: 'Regla Ràpida · Les 4 Fases d’Entrada Segura i Codi Vermell vs. SOS',
+          acronym: 'FASE 1: Valorar porta → FASE 2: Test 2–3 s → FASE 3: Refredar gasos → FASE 4: Entrar amb falca',
           trick:
-            "Abans d'obrir la porta d'un recinte incendiat, el binomi (amb EPI complet, sotacasc posat, ERA connectat a la màscara i línia d'aigua purgada a 6-7 bar) executa les 4 fases:\n• FASE 1 (Valoració prèvia de la porta): Observar per on surt el fum, comprovar cap a quin costat obre (frontisses), tocar la porta de baix a dalt amb el dors de la mà (o càmera tèrmica) i comprovar el pom.\n• FASE 2 (Posicionament i obertura de control): Un bomber es col·loca ajupit al costat del pany (protegit pel mur) i el punta de llança al costat amb la llança a punt; s'obre la porta només uns centímetres (2-3 segons) per observar el pla neutre i si el fum surt o aspira aire.\n• FASE 3 (Control i refredament de gasos): Si hi ha gasos calents, el punta de llança projecta una polsació curta d'aigua polvoritzada cap a la capa superior de fums i es torna a ajustar la porta per deixar actuar el vapor.\n• FASE 4 (Progressió interior): Entrada del binomi ajupit (de genolls/gatejant per sota del pla neutre), mantenint el control de la porta (amb falca o mànega perquè no es tanqui de cop amb pany!) i refredant el coixí de gasos amb O/Z/8.",
+            "• Codi Vermell = Emergència col·lectiva per a TOT el sector (retirada immediata per col·lapse o fenomen extrem).\n• SOS = Emergència individual d'un bomber o binomi atrapat/sense aire (s'activa l'equip SOS).",
           example: 'Mai posar-se de peu davant del marc de la porta mentre s’obre: els gasos a 600 °C surten per la meitat superior del marc!'
         }
       ]
@@ -234,7 +281,7 @@ export const tema9IncendisEstructurals = {
           title: 'Els 5 Punts Crítics del Tema 24 que Sempre Pregunta el Tribunal',
           acronym: 'FAÇANES HORÀRIES | BIFURCACIÓ (Planta -1) | RECERCA (Baixa 6-10m) | VPP (Sortida abans) | CODI VERMELL vs SOS',
           trick:
-            "1) FAÇANES A-B-C-D: Mirant la façana principal (A), girant en sentit horari en planta, la façana B queda a l'ESQUERRA i la D queda a la DRETA.\n2) RUTA FREDA vs. RUTA CALENTA: La bifurcació i el bucle de reserva de mànega es munten SEMPRE a la Ruta Freda (a la planta inferior a la del foc). Mai es connecta ni es purga a la Ruta Calenta.\n3) PRIORITAT DE RECERCA: No caiguis en el parany de marcar 'Mínima (<6 m)' com a primera opció! L'ordre oficial és: 1r Baixa (6-10 m) → 2n Mitja (>10 m) → 3r Mínima (<6 m) → 4t Alta.\n4) VENTILACIÓ VPP i ATAC TRANSICIONAL:\n• En VPP: sempre obrir la sortida de fums ABANS d'engegar el ventilador a l'entrada.\n• En Atac Transicional: tirar aigua amb raig des de l'exterior amb angle fix contra el SOSTRE de l'habitació (sense remoure en cercles) per abatre la temperatura sense empènyer els gasos cap a l'escala.\n5) CODI VERMELL vs. SOS:\n• Codi Vermell = Alerta per a tots els bombers (evacuació/retirada immediata del sector per perill estructural o fenomen extrem).\n• SOS = Alerta d'un bomber o binomi en perill que necessita ser rescatat per l'equip SOS.",
+            "1) FAÇANES A-B-C-D: Sentit horari mirant la façana principal A (B = esquerra, C = posterior, D = dreta).\n2) RUTA FREDA: Bifurcació i reserva de mànega sempre 1 planta per sota del foc.\n3) RECERCA: 1r Baixa (6–10 m) → 2n Mitja (>10 m) → 3r Mínima (<6 m) → 4t Alta.\n4) VPP vs TRANSICIONAL: En VPP obrir sortida ABANS d'engegar; en transicional raig sòlid fix al sostre des de fora.\n5) CODI VERMELL vs SOS: Codi Vermell = retirada col·lectiva; SOS = rescat individual de binomi.",
           example: 'Si l’incendi és a la Planta 4 (PL+4), la bifurcació es col·loca al replà de la Planta 3 (PL+3, Ruta Freda).'
         }
       ]
@@ -461,6 +508,32 @@ export const tema9IncendisEstructurals = {
       ],
       correctIndex: 1,
       explanation: "Els 4 atributs de lectura del fum són Volum, Velocitat, Densitat i Color. Un fum fosc/dens que surt a alta pressió i velocitat per escletxes altes sense flama visible delata una forta pressió interior i gasos combustibles calents en un ILV."
+    },
+    {
+      id: 'q24-18',
+      difficulty: 'Mitjà',
+      question: "Quina diferència fonamental distingeix un 'Flashover' d'un 'Backdraft' en la dinàmica d'un incendi estructural?",
+      options: [
+        "El Flashover es produeix en un incendi limitat per ventilació (ILV) en obrir una porta, mentre que el Backdraft es produeix per radiació en un incendi ventilat.",
+        "El Flashover és la inflamació generalitzada de totes les superfícies per radiació tèrmica en un incendi ventilat (controlat pel combustible), mentre que el Backdraft és l'explosió sobtada de gasos de piròlisi acumulats en un ILV quan entra oxigen de cop.",
+        "Tots dos termes són sinònims exactes i presenten sempre flames visibles intenses abans de produir-se.",
+        "El Backdraft només es produeix a l'exterior d'edificis amb façana ventilada."
+      ],
+      correctIndex: 1,
+      explanation: "El Flashover és una transició tèrmica per radiació en un incendi ventilat (~500–600 °C), mentre que el Backdraft és una explosió provocada per l'aportació sobtada d'aire en un incendi ofegat (ILV) carregat de gasos de piròlisi sense cremar."
+    },
+    {
+      id: 'q24-19',
+      difficulty: 'Mitjà',
+      question: "Respecte a les tècniques d'aplicació d'aigua al manual MAN.INES.000, quina afirmació sobre l'atac indirecte és INCORRECTA?",
+      options: [
+        "L'atac indirecte consisteix a projectar aigua cap al sostre i les parets d'un recinte tancat des de l'exterior per generar una gran massa de vapor d'aigua (expansió 1 L → 1.700 L).",
+        "L'atac indirecte NO s'ha d'utilitzar si hi pot haver víctimes vives dins del compartiment, ja que el vapor escaldant i el desplaçament d'aire són letals.",
+        "L'atac indirecte és sinònim exacte del refredament de gasos (atac 3D), i consisteix a fer polsacions curtes < 1 s en forma de 'O', 'Z' o '8' mentre avancem dins d'un pis amb víctimes.",
+        "A diferència de l'atac indirecte, en el refredament de gasos es busca evaporar microgotes al coixí de fums sense mullar les parets calentes."
+      ],
+      correctIndex: 2,
+      explanation: "És incorrecte: l'atac indirecte (massiu per generar vapor i sufocar un recinte tancat sense víctimes) és diferent del refredament de gasos 3D (polsacions O/Z/8 al núvol de fum sense mullar parets)."
     }
   ]
 };

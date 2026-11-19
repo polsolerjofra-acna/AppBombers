@@ -9,7 +9,7 @@ export const tema27Inundacions = {
     title: "Radar d'Examen — Tema 34 (MAN.SVMN.001 v.1): Inundacions, Període de Retorn i SMC",
     frequency: 'Molt Alta (3-4 preguntes fixes sobre T10/T50/T100/T500, llindars SMC 20/40 mm i 100/200 mm, maniobres i límits Douglas)',
     summary:
-      "Aquest manual és ple de taules numèriques i conceptes d'examen: impacte mundial (> 40% dels desastres) i riuades històriques a Catalunya (Vallès 1962 ~1.000 morts, 1971 21 morts, Francolí 2019), erosió a la part exterior del meandre, la taula del Període de Retorn (T10 = 10%, T50 = 2%, T100 = 1%, T500 = 0,2%), els llindars SMP del Servei Meteorològic de Catalunya (Intensitat 30 min: Baix > 20 mm / Alt > 40 mm; Acumulació 24 h: Baix > 100 mm / Alt > 200 mm; escala 0 a 6), les 3 categories de maniobres aquàtiques (Indirectes [prioritàries!], Directes i Combinades amb sistema desembragable), els límits per a no especialistes (Mar ≤ 2,5 m Grau 4 Douglas; Riu ≤ Grau 3; no desembossar) i el zonatge (Zona Calenta = Zona d'Aigua + Zona Humida). Inclou 4 pàgines d'estudi i 2 pàgines finals de Resum.",
+      "Manual d'inundacions i rescat aquàtic: impacte (> 40%) i riuades històriques (Vallès 1962 ~1.000 morts, Francolí 2019), dinàmica fluvial (meandre exterior i aiguabarreig), Període de Retorn (T10=10%, T50=2%, T100=1%, T500=0,2%), llindars SMC (30 min >20/>40 mm; 24 h >100/>200 mm, escala 0–6), maniobres (Indirectes prioritàries, Combinades desembragables), límits Douglas (≤2,5 m / Grau 4) i zonatge aquàtic.",
     hotTopics: [
       'Cap. 1: Les inundacions representen > 40% dels desastres naturals mundials. Episodis a Catalunya: Vallès Occidental 1962 (≈ 1.000 morts), Bages/Baix Llobregat 1971 (21 morts), Francolí 2019 (amb GREC). Mesures estructurals (dics, basses laminació) vs. no estructurals (INUNCAT).',
       'Cap. 2: Meandre (erosió i risc d’esfondrament del marge a la PART EXTERIOR de la corba!), Aiguabarreig (confluència) i Període de Retorn (P = 1/T: T10 = 10% [freqüent T10/T25]; T50 = 2% [ocasional T50/T100]; T100 = 1% [urbanisme]; T500 = 0,2% [excepcional]).',
@@ -33,15 +33,17 @@ export const tema27Inundacions = {
           type: 'text',
           heading: '1. Impacte de les Inundacions (> 40%) i Episodis Històrics a Catalunya',
           paragraphs: [
-            "Les inundacions constitueixen el risc natural més freqüent i destructiu del planeta, representant MÉS DEL 40% (> 40%) de tots els desastres naturals a escala mundial. A Catalunya destaquen episodis tràgics citats al manual MAN.SVMN.001: les riuades del Vallès Occidental del setembre de 1962 (amb prop de ≈ 1.000 morts, la major catàstrofe hidrològica contemporània), les inundacions del Bages i Baix Llobregat de 1971 (21 morts), els aiguats de Tarragona de 1994, la riuada del riu Francolí i l'Espluga de Francolí d'octubre de 2019 (on va intervenir el GREC per valorar edificis col·lapsats pels torrents) i els episodis recurrents a les Terres de l'Ebre (Alcanar 2018, 2021 i 2023).",
-            "La protecció davant d'inundacions combina MESURES ESTRUCTURALS (obres d'enginyeria física: dics, canalitzacions, basses de laminació i xarxes de clavegueram) i MESURES NO ESTRUCTURALS (planificació urbanística, cartografia de zones inundables, sistemes d'alerta meteorològica i el pla especial INUNCAT). El GRAE Subaquàtic (amb seu a Cerdanyola) disposa d'embarcacions pneumàtiques tipus RAFT, propulsors aquàtics, robots submarins ROV i equips de busseig."
+            "Les inundacions representen MÉS DEL 40% (> 40%) de tots els desastres naturals mundials. A Catalunya destaquen les riuades del Vallès Occidental de 1962 (≈ 1.000 morts), les de 1971 al Bages i Baix Llobregat (21 morts), Tarragona 1994, el riu Francolí el 2019 (amb actuació del GREC) i les Terres de l'Ebre (Alcanar 2018, 2021, 2023).",
+            "La protecció combina MESURES ESTRUCTURALS (dics, canalitzacions, basses de laminació, clavegueram) i MESURES NO ESTRUCTURALS (urbanisme, mapes de risc, alertes SMC i el pla INUNCAT).",
+            "El GRAE Subaquàtic (amb seu a Cerdanyola) disposa d'embarcacions pneumàtiques tipus RAFT, propulsors aquàtics, robots submarins ROV i equips de busseig."
           ]
         },
         {
           type: 'text',
           heading: '2.1–2.4. Dinàmica Fluvial (Meandres i Aiguabarreig) i Període de Retorn (T)',
           paragraphs: [
-            "Un curs fluvial es divideix en curs Alt (capçalera de forta pendent i erosió), curs Mitjà (transport i formació de corbes o meandres) i curs Baix (plana al·luvial i delta de sedimentació). A Catalunya són molt perillosos els torrents, rieres i rambles de règim efímer o intermitent que generen crescudes sobtades (*flash floods*). Punts crítics d'un riu: 1) MEANDRE (corba del riu): a la PART EXTERIOR de la corba la velocitat de l'aigua és màxima, erosiona i soscava la base del talús i pot fer esfondrar el marge sota el pes d'un vehicle o dels bombers! (a la part interior de la corba l'aigua va lenta i diposita sediments); 2) AIGUABARREIG: punt de confluència on s'ajunten dos rius i es multiplica sobtadament el cabal i la turbulència."
+            "Un riu es divideix en curs Alt (erosió), Mitjà (transport i meandres) i Baix (sedimentació i delta). A Catalunya, les rieres i rambles de règim efímer generen crescudes sobtades molt perilloses (flash floods).",
+            "• MEANDRE: A la PART EXTERIOR de la corba la velocitat i l'erosió són màximes i el talús es pot esfondrar sota un camió o bomber (a l'interior hi ha sedimentació). • AIGUABARREIG: Confluència de dos rius on es multiplica el cabal i la turbulència."
           ]
         },
         {
@@ -67,10 +69,19 @@ export const tema27Inundacions = {
       blocks: [
         {
           type: 'text',
-          heading: '3.1–3.3. Avisos SMP del Servei Meteorològic de Catalunya (SMC) i Visors Hidrològics',
+          heading: '3.1–3.3. Avisos SMP del Servei Meteorològic de Catalunya (SMC) i Visors',
           paragraphs: [
-            "El Servei Meteorològic de Catalunya (SMC) emet avisos de Situació Meteorològica de Perill (SMP) per pluja basats en dos paràmetres diferents amb un llindar baix i un llindar alt (que és exactament el DOBLE del baix!): 1) INTENSITAT DE PLUJA (quantitat caiguda en només 30 MINUTS: xàfecs torrencials): Llindar Baix > 20 mm / 30 min | Llindar Alt > 40 mm / 30 min. 2) ACUMULACIÓ DE PLUJA (quantitat acumulada en 24 HORES: temporals persistents): Llindar Baix > 100 mm / 24 h | Llindar Alt > 200 mm / 24 h (recorda que 1 mm de pluja equival exactament a 1 litre per metre quadrat: 1 mm = 1 L/m²).",
-            "La Matriu de Perill de l'SMC creua la probabilitat amb la superació del llindar i assigna un nivell numèric en una escala de 0 a 6: Nivell 0 (Verd = sense perill); Nivells 1, 2 i 3 (Grocs i Taronja = superació del llindar baix); Nivells 4, 5 i 6 (Taronja i Vermell = superació del llindar alt, perill molt alt o extrem). Per seguir en temps real el cabal dels rius en m³/s, els Bombers consulten el visor d'Aforadors de l'ACA (Agència Catalana de l'Aigua, per a les conques internes de Catalunya) i el visor SAIH Ebro (per a la conca de l'Ebre, com el Segre o la Noguera Pallaresa)."
+            "L'SMC emet avisos de Situació Meteorològica de Perill (SMP) per pluja amb dos paràmetres (1 mm = 1 L/m²): 1) INTENSITAT EN 30 MINUTS (xàfecs torrencials: Baix > 20 mm / Alt > 40 mm) i 2) ACUMULACIÓ EN 24 HORES (temporals persistents: Baix > 100 mm / Alt > 200 mm).",
+            "La Matriu de Perill de l'SMC assigna un nivell de 0 a 6: Nivell 0 = Verd (sense perill); Nivells 1–3 = llindar baix superat (Groc/Taronja); Nivells 4–6 = llindar alt superat (Taronja/Vermell).",
+            "Per seguir el cabal dels rius en m³/s en temps real consultem els Aforadors de l'ACA (conques internes de Catalunya) i el visor SAIH Ebro (conca de l'Ebre)."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Període de Retorn (T10/T100/T500) i Llindars SMC (30 min vs. 24 h)',
+          paragraphs: [
+            "• PERÍODE DE RETORN (P = 1/T): T50 NO vol dir 50% anual, sinó 1/50 = 2% anual! T10 = 10% (freqüent); T100 = 1% (referència urbanística); T500 = 0,2% (excepcional).",
+            "• LLINDARS SMC: En 30 minuts = 20 mm (baix) i 40 mm (alt); en 24 hores = 100 mm (baix) i 200 mm (alt). El llindar alt és sempre el DOBLE del baix."
           ]
         },
         {
@@ -95,10 +106,11 @@ export const tema27Inundacions = {
       blocks: [
         {
           type: 'text',
-          heading: '4.1–4.4. Buidatge, Contenció, Potabilització i Les 3 Categories de Rescat Aquàtic',
+          heading: '4.1–4.4. Buidatge, Potabilització i Les 3 Categories de Rescat Aquàtic',
           paragraphs: [
-            "En inundacions, les tasques de suport inclouen: 1) Buidatge o esgotament (amb autobombes, motobombes, electrobombes submergibles, turbobombes, hidroerenjadors i bombes de llots per a aigua amb fang/sòlids), 2) Contenció i desviament (amb sacs terrers, gabions o barreres mòbils) i 3) Potabilització d'emergència (consta de 2 fases: 1a Clarificació [decantació/filtració de terbolesa] i 2a Desinfecció [cloració per eliminar patògens]).",
-            "El Capítol 4.4 classifica les maniobres de RESCAT AQUÀTIC en 3 categories segons el nivell d'exposició dels bombers: 1) MANIOBRES INDIRECTES (es realitzen des de fora de l'aigua SENSE que cap bomber entri al corrent: llançar una bossa de rescat amb corda flotant, allargar una perxa o mànega inflada d'aire, o accedir des de dalt amb l'Autoescala AEA o un pont; són SEMPRE LES PRIORITÀRIES per seguretat!), 2) MANIOBRES DIRECTES (el rescatador entra nedant a l'aigua per agafar una víctima inconscient o esgotada; comporten un risc molt alt!) i 3) MANIOBRES COMBINADES (el rescatador entra a l'aigua però va assegurat amb una corda des de la riba: ATENCIÓ, la corda mai no es pot nuar fixa al cos, sinó que ha d'anar connectada obligatòriament a l'anella del SISTEMA DESEMBRAGABLE [zafada ràpida] de l'armilla d'aigües braves o subjectar un cap flotant, perquè si el corrent l'enfonsa es pugui alliberar a l'instant!)."
+            "Les tasques de suport inclouen buidatge (autobombes, motobombes, electrobombes submergibles, turbobombes, hidroerenjadors i bombes de llots per a fang), contenció (sacs terrers, gabions) i potabilització en 2 fases: 1a Clarificació + 2a Desinfecció.",
+            "Les maniobres de rescat aquàtic es divideixen en 3 categories: 1) INDIRECTES (des de fora amb bossa de rescat, perxa, mànega inflada o AEA: són SEMPRE PRIORITÀRIES!), 2) DIRECTES (nedant fins a la víctima, risc molt alt) i 3) COMBINADES (entrar assegurat amb corda).",
+            "⚠️ En maniobres COMBINADES la corda MAI es lliga fixa al cos: va al sistema DESEMBRAGABLE (zafada ràpida) de l'armilla o a un cap flotant per evitar morir ofegat per la força del corrent!"
           ]
         },
         {
@@ -134,7 +146,7 @@ export const tema27Inundacions = {
           metaphor:
             'Tres regles vitals que salven vides i punts a l’examen:',
           explanation:
-            "• 1. Mai t'apropis a la vora d'una riera (Zona Humida) amb el jaquetó i les botes d'incendi estructural: si rellisques i caus a l'aigua, el vestit de foc absorbeix desenes de quilos d'aigua i t'enfonsa com una pedra! A la Zona Humida es va amb armilla d'aigües braves.\n• 2. Al riu, on poses el vigia i on poses el salvavides? El GUAITA va AIGÜES AMUNT (per veure venir els troncs i cotxes arrossegats abans que t'atropellin!), i el company amb la corda de salvament va AIGÜES AVALL (per poder-te pescar si el corrent se t'emporta!).\n• 3. Llindars de pluja del SMC: en 30 minuts és '20 i el doble (40 mm)'; en 24 hores afegeix zeros: '100 i el doble (200 mm)'!",
+            "• 1. ZONA HUMIDA = ARMILLA I CASC (mai jaquetó ni botes de foc!): si caus a l'aigua, el vestit de foc pesa desenes de quilos i t'enfonsa.\n• 2. AL RIU: Guaita AIGÜES AMUNT (avisa de troncs i crescudes) | Equip de Seguretat AIGÜES AVALL (pesca amb bosses de rescat).\n• 3. LLINDARS SMC: 30 min = >20 i el doble (>40 mm) | 24 h = >100 i el doble (>200 mm)!",
           takeaway: 'SMC 30 min = >20 / >40 mm | SMC 24 h = >100 / >200 mm | Mar màx. = 2,5 m (Grau 4) | Riu màx. = Grau 3.'
         }
       ]
@@ -315,6 +327,110 @@ export const tema27Inundacions = {
       ],
       correctIndex: 1,
       explanation: 'Apartat 3.3 del manual: l’ACA gestiona els aforadors de les conques internes i la CHE gestiona el sistema SAIH Ebro.'
+    },
+    {
+      id: 't34-q11',
+      difficulty: 'Mitjà',
+      question: 'Durant una riuada en un meandre pronunciat amb una persona dalt d’un vehicle atrapat al marge exterior, un bomber pretén acostar-se a la vora de la riba exterior amb el jaquetó i les botes d’incendi estructural per llançar una corda. Quins dos riscos greus incompleix segons MAN.SVMN.001?',
+      options: [
+        'Cap risc, perquè a la part exterior del meandre l’aigua va més lenta i el jaquetó de foc sura com una armilla.',
+        'Incompleix que a la part exterior del meandre hi ha màxima erosió i risc de col·lapse del marge sota el pes, i que a la Zona Humida està prohibit l’EPI de foc (s’amara i enfonsa) sent obligatòria l’armilla de flotació i casc.',
+        'Només incompleix l’ordre de potabilització de l’aigua.',
+        'El risc afecta únicament a la corba interior del meandre on hi ha sedimentació.'
+      ],
+      correctIndex: 1,
+      explanation: 'Doble risc clàssic: 1) la corba exterior del meandre pateix màxima velocitat, soscavació i risc d’esfondrament; 2) a la Zona Humida és obligatori portar armilla de flotació i casc, i mai EPI estructural de foc.'
+    },
+    {
+      id: 't34-q12',
+      difficulty: 'Mitjà',
+      question: 'En un episodi meteorològic a Catalunya s’han registrat 45 mm de pluja en 30 minuts en una comarca del litoral, i 130 mm acumulats en 24 hores en una comarca del Pirineu. Quins llindars SMP del Servei Meteorològic de Catalunya s’han superat en cada cas?',
+      options: [
+        '45 mm/30 min = Llindar baix d’intensitat | 130 mm/24 h = Llindar alt d’acumulació.',
+        '45 mm/30 min = Llindar ALT d’intensitat (> 40 mm/30 min) | 130 mm/24 h = Llindar BAIX d’acumulació (> 100 mm/24 h, sense arribar a > 200 mm).',
+        'Cap dels dos supera el llindar baix de l’SMC.',
+        'Tots dos superen el llindar alt (Nivell 6).'
+      ],
+      correctIndex: 1,
+      explanation: 'Intensitat en 30 min: Baix > 20 mm / Alt > 40 mm (45 mm supera el llindar alt). Acumulació en 24 h: Baix > 100 mm / Alt > 200 mm (130 mm supera el llindar baix, però no l’alt).'
+    },
+    {
+      id: 't34-q13',
+      difficulty: 'Fàcil',
+      question: 'A l’escala de la Matriu de Perill de l’SMC (de 0 a 6), a quins graus correspon la superació del llindar baix i a quins la del llindar alt, i a quants litres per metre quadrat equival 1 mm de precipitació?',
+      options: [
+        'Llindar baix: graus 1–3 | Llindar alt: graus 4–6 | 1 mm = 1 L/m².',
+        'Llindar baix: graus 0–2 | Llindar alt: graus 3–5 | 1 mm = 10 L/m².',
+        'Llindar baix: graus 4–6 | Llindar alt: graus 1–3 | 1 mm = 0,1 L/m².',
+        'Només existeix escala d’1 a 3 i 1 mm = 100 L/m².'
+      ],
+      correctIndex: 0,
+      explanation: 'La Matriu de Perill SMC va de 0 (Verd, sense perill) a 6: els nivells 1–3 corresponen a la superació del llindar baix i els nivells 4–6 a la superació del llindar alt. 1 mm de pluja equival exactament a 1 L/m².'
+    },
+    {
+      id: 't34-q14',
+      difficulty: 'Difícil',
+      question: 'Respecte a la classificació oficial dels Períodes de Retorn (T) i zones inundables del Capítol 2.4 de MAN.SVMN.001, assenyala quina afirmació és INCORRECTA:',
+      options: [
+        'Un període de retorn T = 10 anys correspon a una probabilitat anual del 10% (zona d’inundació freqüent).',
+        'Un període de retorn T = 100 anys correspon a una probabilitat anual de l’1% i és la referència principal en planificació urbanística.',
+        'Un període de retorn T = 500 anys correspon a una probabilitat anual del 0,2% (zona d’inundació excepcional).',
+        'Un període de retorn T = 50 anys significa que cada any hi ha exactament un 50% de probabilitat que es produeixi la riuada.'
+      ],
+      correctIndex: 3,
+      explanation: 'És incorrecte: la probabilitat anual és P = (1 / T) × 100. Per a T = 50 anys, P = 1/50 = 0,02 = 2% anual (mai el 50%!).'
+    },
+    {
+      id: 't34-q15',
+      difficulty: 'Difícil',
+      question: 'Sobre les categories de rescat aquàtic i les normes de seguretat al riu (MAN.SVMN.001 Cap. 4–5), assenyala quina afirmació és INCORRECTA:',
+      options: [
+        'Les maniobres indirectes (bossa de rescat, perxa, AEA) sense que el bomber entri dins l’aigua són sempre les prioritàries.',
+        'En les maniobres combinades, la corda que assegura el rescatador des de la riba ha d’anar connectada al sistema desembragable (zafada ràpida) de l’armilla o a un cap flotant.',
+        'En un rescat amb corda en corrent fort, el procediment més segur és lligar la corda directament al cos del rescatador amb un nus de vuit fix perquè el corrent no el separi de la línia.',
+        'La regla de seguretat al riu estableix "Un dins / un fora", amb un guaita situat aigües amunt i un equip de seguretat situat aigües avall.'
+      ],
+      correctIndex: 2,
+      explanation: 'És incorrecte (i mortal!): lligar un bomber amb un nus fix al cos dins d’un corrent fort provoca que la pressió hidrodinàmica l’enfonsi sota l’aigua sense poder alliberar-se; ha d’anar sempre a un sistema desembragable.'
+    },
+    {
+      id: 't34-q16',
+      difficulty: 'Mitjà',
+      question: 'D’acord amb l’escala de l’estat de la mar de Douglas i la graduació d’aigües braves (Cap. 5.1 de MAN.SVMN.001), quin és el límit màxim d’onatge i de grau de riu per a dotacions no especialistes (no GRAE)?',
+      options: [
+        'Al mar fins a Grau 4 Douglas (Forta Maror: 1,25 a 2,5 m; evitar entrar amb > 2,5 m = Grau 5 Maregassa) i en rius fins a Grau 3 (evitar Grau > 3 i maniobres de desembossament).',
+        'Al mar fins a Grau 6 Douglas (4 a 6 m) i en rius fins a Grau 5.',
+        'Al mar màxim 0,5 m (Grau 2) i en rius Grau 1 exclusivament.',
+        'No hi ha cap límit d’onatge si el bomber porta botes d’intervenció urbana.'
+      ],
+      correctIndex: 0,
+      explanation: 'El manual fixa com a límits per a no especialistes: al mar evitar onatge > 2,5 m (Maregassa Grau 5; topall Grau 4 Forta Maror 1,25–2,5 m), en rius evitar Grau > 3 i no entrar per desembossar (efecte sifó).'
+    },
+    {
+      id: 't34-q17',
+      difficulty: 'Fàcil',
+      question: 'Dins la gestió del risc d’inundacions (Cap. 1 de MAN.SVMN.001), quin exemple correspon a una mesura NO estructural i quina és la seu del GRAE Subaquàtic?',
+      options: [
+        'Mesura no estructural = construcció d’un dic de contenció | Seu GRAE Subaquàtic = Lleida.',
+        'Mesura no estructural = pla especial INUNCAT, cartografia de zones inundables i sistemes d’alerta meteorològica | Seu GRAE Subaquàtic = Cerdanyola del Vallès.',
+        'Mesura no estructural = bassa de laminació i canalització | Seu GRAE Subaquàtic = Valls.',
+        'Mesura no estructural = xarxa de clavegueram | Seu GRAE Subaquàtic = Olot.'
+      ],
+      correctIndex: 1,
+      explanation: 'Les mesures estructurals són obres d’enginyeria física (dics, basses, canalitzacions); les no estructurals inclouen planificació urbanística, cartografia, alertes i el pla INUNCAT. El GRAE Subaquàtic té la base a Cerdanyola.'
+    },
+    {
+      id: 't34-q18',
+      difficulty: 'Fàcil',
+      question: 'En una intervenció d’esgotament d’un soterrani negat d’aigua amb abundant fang i sòlids en suspensió (apartat 4.1), quin equip de bombament específic és el més indicat i com s’anomena la confluència de dos rius on es multiplica sobtadament el cabal?',
+      options: [
+        'Bomba de llots | Aiguabarreig.',
+        'Turbobomba d’aigua neta | Meandre interior.',
+        'Motobomba d’alta pressió d’incendis | Delta.',
+        'Llança de Ø25 en con obert | Curs alt.'
+      ],
+      correctIndex: 0,
+      explanation: 'Per bombejar aigua carregada de fang i sòlids en suspensió s’utilitzen bombes de llots. La confluència de dos rius s’anomena aiguabarreig.'
     }
   ]
 };

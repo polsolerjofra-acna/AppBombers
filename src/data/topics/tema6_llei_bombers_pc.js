@@ -32,10 +32,20 @@ export const tema6LleiBombersPc = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Naturalesa, agents de l\'autoritat i escales (art. 15)',
+          heading: '1.1 Naturalesa, prestació vs requisa i agents de l\'autoritat',
           paragraphs: [
-            'La Llei 5/1994 té 70 articles vius (79 + 3 bis - 12 derogats). L\'article 3 distingeix entre prestació personal obligatòria (NO s\'indemnitza) i requisa de béns (SÍ s\'indemnitza). Tenen condició d\'agent de l\'autoritat els membres del Cos de Bombers de la Generalitat i dels serveis locals en acte de servei — i fora de servei si s\'acrediten prèviament en situació d\'urgència. Els bombers voluntaris (vinculats per nomenament, ni funcionaris ni laborals) i els bombers d\'empresa (habilitats per l\'ISPC) NO són agents de l\'autoritat.',
-            'L\'art. 13 enumera 10 funcions (salvament marítim a requeriment). El comandament superior correspon al titular del Departament; en el sinistre mana el Cos llevat que s\'activi un pla de protecció civil. L\'organització territorial bàsica és Parc → Zona (comarcal) → Brigada. Municipis > 20.000 hab.: servei mínim obligatori (o dispensa / actuació subsidiària de la Generalitat). Jubilació forçosa: 65 anys (DA 7a); escala bàsica en extinció des de l\'1-1-2024 (DT 12a).'
+            'La Llei 5/1994 té 70 articles vius (79 + 3 bis - 12 derogats). L\'article 3 distingeix entre prestació personal obligatòria (NO s\'indemnitza) i requisa de béns (SÍ s\'indemnitza).',
+            'Tenen condició d\'agent de l\'autoritat els membres del Cos de Bombers de la Generalitat i dels serveis locals en acte de servei — i fora de servei si s\'acrediten prèviament en situació d\'urgència.',
+            'No confondre! Els bombers voluntaris (vinculats per nomenament, ni funcionaris ni laborals) i els bombers d\'empresa (habilitats per l\'ISPC) NO tenen la condició d\'agent de l\'autoritat.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '1.2 Funcions (art. 13), organització territorial i municipis > 20.000 hab.',
+          paragraphs: [
+            'L\'art. 13 enumera 10 funcions (salvament marítim a requeriment). El comandament superior correspon al titular del Departament; en el sinistre mana el Cos llevat que s\'activi un pla de protecció civil.',
+            'L\'organització territorial bàsica és Parc → Zona (comarcal) → Brigada. Els municipis de més de 20.000 habitants tenen servei mínim obligatori (o dispensa / actuació subsidiària de la Generalitat).',
+            'Jubilació forçosa: 65 anys (DA 7a); l\'escala bàsica està declarada en extinció des de l\'1-1-2024 (DT 12a).'
           ]
         },
         {
@@ -62,10 +72,10 @@ export const tema6LleiBombersPc = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1 Deures (arts. 36–38) i Faltes (arts. 41–45)',
+          heading: '2.1 Deures (arts. 36–38) i Faltes (arts. 41–45) — Matisos clau',
           paragraphs: [
             'L\'article 36.f obliga a romandre al lloc de treball fins a l\'arribada del relleu O si la gravetat del sinistre ho exigeix. La lletra h (modificada pel DL 14/2025) regula les incompatibilitats. La instrucció d\'expedients disciplinaris l\'incoa sempre la Direcció General.',
-            'El quadre de faltes de la Llei 5/1994 (7 molt greus, 7 greus, 3 lleus) té matisos molt fins que cauen contínuament a examen: consumir alcohol en servei és falta GREU, però embriagar-se o consumir drogues és falta MOLT GREU; no acudir a les crides estant en servei és MOLT GREU, mentre que no comparèixer estant lliure de servei amb ordre expressa és GREU; portar malament l\'uniforme o no fer el relleu adequadament sense gravetat és LLEU.'
+            'Quadre de faltes (7 molt greus, 7 greus, 3 lleus) — No confondre!:\n• Alcohol: consumir alcohol en servei = falta GREU; embriagar-se o consumir drogues = falta MOLT GREU.\n• Crides d\'emergència: no acudir estant en servei = MOLT GREU; no comparèixer estant lliure de servei amb ordre expressa = GREU.\n• Faltes lleus (3): portar malament l\'uniforme o no fer el relleu adequadament quan no revesteixi gravetat.'
           ]
         },
         {
@@ -316,6 +326,110 @@ export const tema6LleiBombersPc = {
       ],
       correctIndex: 0,
       explanation: 'La Comissió de Protecció Civil de Catalunya és l\'òrgan encarregat d\'homologar els plans municipals i d\'autoprotecció.'
+    },
+    {
+      id: 't6-q11',
+      difficulty: 'Mitjà',
+      question: 'Segons l\'article 3 de la Llei 5/1994, quina diferència econòmica hi ha entre la prestació personal obligatòria i la requisa de béns en una emergència?',
+      options: [
+        'La prestació personal obligatòria NO dóna dret a indemnització; la requisa de béns SÍ que s\'indemnitza',
+        'Totes dues s\'indemnitzen sempre pel seu valor de mercat',
+        'Cap de les dues s\'indemnitza en situacions de catàstrofe',
+        'La prestació personal s\'indemnitza al doble del salari mínim i la requisa no s\'indemnitza'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 3 Llei 5/1994: la col·laboració personal ciutadana (prestació personal obligatòria) no s\'indemnitza; en canvi, la requisa o ocupació temporal de béns sí dóna dret a indemnització.'
+    },
+    {
+      id: 't6-q12',
+      difficulty: 'Difícil',
+      question: 'Com qualifica la Llei 5/1994 la conducta de no acudir a les crides estant lliure de servei malgrat haver rebut ordre expressa de comparèixer?',
+      options: [
+        'Falta greu (mentre que no acudir estant de servei és falta molt greu)',
+        'Falta molt greu en tots dos casos',
+        'Falta lleu si no s\'ha produït un incendi forestal',
+        'No constitueix falta disciplinària si el bomber estava en dia festiu'
+      ],
+      correctIndex: 0,
+      explanation: 'Trampa clàssica de la Llei 5/1994: no acudir estant en servei = Molt greu; no comparèixer estant lliure de servei amb ordre expressa = Greu.'
+    },
+    {
+      id: 't6-q13',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA respecte a la Llei 5/1994 de prevenció, extinció d\'incendis i salvaments?',
+      options: [
+        'Els bombers d\'empresa tenen la condició d\'agent de l\'autoritat quan actuen dins el recinte industrial',
+        'En el sinistre mana el Cos de Bombers, llevat que s\'activi un pla de protecció civil',
+        'L\'article 36.f obliga a romandre al lloc de treball fins a l\'arribada del relleu o si la gravetat del sinistre ho exigeix',
+        'La instrucció dels expedients disciplinaris correspon sempre a la Direcció General'
+      ],
+      correctIndex: 0,
+      explanation: 'Només tenen la condició d\'agent de l\'autoritat els membres del Cos de Bombers de la Generalitat i dels serveis locals; ni els bombers voluntaris ni els bombers d\'empresa (habilitats per l\'ISPC) ho són.'
+    },
+    {
+      id: 't6-q14',
+      difficulty: 'Mitjà',
+      question: 'Quines antiguitats exigeix l\'article 15 (i normes de promoció) per accedir per promoció interna a les escales Executives i Superior del Cos de Bombers?',
+      options: [
+        '3 anys com a oficial per a Sotsinspector (Executiva, Grup B) i 3 anys com a sotsinspector per a Inspector (Superior, Grup A)',
+        '2 anys com a oficial per a Sotsinspector i 5 anys com a sotsinspector per a Inspector',
+        '4 anys com a sergent per a Sotsinspector i 2 anys com a oficial per a Inspector',
+        'Es pot accedir directament des de l\'Escala de suport (EPAF C2) a Sotsinspector amb 3 anys d\'antiguitat'
+      ],
+      correctIndex: 0,
+      explanation: 'Per promocionar a Sotsinspector (Grup B) calen 3 anys com a oficial, i a Inspector (Grup A) calen 3 anys com a sotsinspector (fins al 65% de les places). L\'Escala de suport NO pot promocionar a les altres escales.'
+    },
+    {
+      id: 't6-q15',
+      difficulty: 'Fàcil',
+      question: 'A la Llei 4/1997 de Protecció Civil, què distingeix la "Previsió" de la "Prevenció"?',
+      options: [
+        'La previsió analitza i determina on són els riscos (Mapa de Protecció Civil, art. 12); la prevenció evita que el risc es produeixi mitjançant inspecció i vigilància',
+        'La previsió s\'ocupa dels simulacres escolars i la prevenció de les multes',
+        'La prevenció fa els mapes de risc i la previsió ordena l\'evacuació',
+        'Són termes sinònims sense diferència legal a la Llei 4/1997'
+      ],
+      correctIndex: 0,
+      explanation: 'Previsió = conèixer i localitzar el risc (Mapa de Protecció Civil, art. 12). Prevenció = mesures d\'inspecció i vigilància per evitar que passi.'
+    },
+    {
+      id: 't6-q16',
+      difficulty: 'Mitjà',
+      question: 'Quins són els 4 Grups d\'actuació i les 3 infraestructures bàsiques de l\'estructura d\'un Pla de Protecció Civil (Llei 4/1997)?',
+      options: [
+        '4 Grups: Intervenció, Ordre, Sanitari i Logístic · 3 Infraestructures: CRA, CCO i CCA',
+        '4 Grups: Bombers, Mossos, SEM i Voluntaris · 3 Infraestructures: CECAT, 112 i SCB',
+        '4 Grups: Direcció, Assessor, Premsa i Intervenció · 3 Infraestructures: Parc, Zona i Brigada',
+        '3 Grups: Intervenció, Ordre i Logístic · 4 Infraestructures: CRA, CCO, CCA i SCT'
+      ],
+      correctIndex: 0,
+      explanation: 'Els plans s\'articulen en Comitè d\'Emergència (Director + Consell Assessor + Gabinet Informació), 4 Grups d\'actuació (Intervenció, Ordre, Sanitari, Logístic) i 3 infraestructures (CRA, CCO, CCA).'
+    },
+    {
+      id: 't6-q17',
+      difficulty: 'Difícil',
+      question: 'Quina afirmació és INCORRECTA respecte als 6 Plans Especials i al règim sancionador de la Llei 4/1997?',
+      options: [
+        'Els Plans Especials (inundacions, sísmics, químics, mercaderies perilloses, forestals i volcànics) necessiten homologació posterior de la Comissió de Protecció Civil de Catalunya un cop aprovats pel Govern',
+        'El Govern pot imposar sancions per infraccions molt greus de fins a 100 milions de pessetes',
+        'No acudir a una mobilització real és infracció greu, mentre que no acudir a un simulacre és infracció lleu',
+        'Els simulacres als centres escolars s\'han de fer com a mínim 1 cop l\'any'
+      ],
+      correctIndex: 0,
+      explanation: 'El PROCICAT i els 6 Plans Especials els aprova el Govern amb informe previ de la Comissió de PC de Catalunya i NO necessiten homologació posterior (només s\'homologuen els plans municipals i d\'autoprotecció).'
+    },
+    {
+      id: 't6-q18',
+      difficulty: 'Mitjà',
+      question: 'Quin límit màxim de sanció per infraccions molt greus pot imposar un Alcalde d\'un municipi de 35.000 habitants i un Conseller segons la Llei 4/1997?',
+      options: [
+        'Alcalde (20.000–50.000 hab.): fins a 10 milions de pessetes · Conseller: fins a 25 milions de pessetes',
+        'Alcalde (20.000–50.000 hab.): fins a 2 milions de pessetes · Conseller: fins a 10 milions de pessetes',
+        'Alcalde (20.000–50.000 hab.): fins a 25 milions de pessetes · Conseller: fins a 100 milions de pessetes',
+        'Els alcaldes no tenen potestat sancionadora a la Llei 4/1997'
+      ],
+      correctIndex: 0,
+      explanation: 'Escala de límits màxims per faltes molt greus (Llei 4/1997): Alcalde <20.000 hab. (2M pta), 20.000–50.000 hab. (10M pta), >50.000 hab. (25M pta); Conseller (25M pta); Govern (100M pta).'
     }
   ]
 };

@@ -32,10 +32,20 @@ export const tema19Instalacions = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1–2.2. Tipus d’Instal·lacions, Autoconsum Solar, Grups Electrògens i Xarxa',
+          heading: '2.1. Autoconsum solar (On-grid vs. Híbrid) i Grups Electrògens',
           paragraphs: [
-            "Les instal·lacions d'autoconsum fotovoltaic poden ser: 1) Sense excedents o connectades a xarxa (ON-GRID): l'inversor té protecció 'anti-illa' i deixa d'injectar AC si es talla el subministrament del carrer, però ATENCIÓ: els panells solars i el cablejat DC fins a l'inversor continuen en tensió mentre rebin llum (fins a 1.000–1.500 V DC)! 2) Instal·lacions HÍBRIDES amb bateries: les bateries domèstiques treballen a 48 V DC, però les industrials o d'alt voltatge arriben fins a 800 V DC. Pel que fa als grups electrògens: els portàtils de Bombers no tenen connexió a terra de neutre (esquema IT) i per això no porten diferencial convencional, mentre que els grups fixos d'edificis/hospitals tenen ARRENCADA AUTOMÀTICA quan detecten un tall de xarxa (risc de realimentació sobtada si no es desconnecten!).",
-            "En la xarxa pública: 1) GENERACIÓ: Centrals de fons (nuclears, funcionen contínuament), de regulació (hidràuliques i cicle combinat) i de punta. 2) TRANSPORT (Alta Tensió de 220 kV i 400 kV): operat en exclusiva per Red Eléctrica de España (REE). Les torres porten a la punta superior el CABLE DE GUARDA (parallamps connectat a terra, sense tensió funcional). 3) DISTRIBUCIÓ (operada per e-distribución/Endesa, Peusa, Bassols, etc.): Mitja Tensió (MT: d'1 kV a 36 kV; línies aèries de 3 cables nus sense neutre!) i Baixa Tensió (BT: ≤ 1.000 V en AC [230/400 V] i ≤ 1.500 V en DC; línies de 4 cables trenats o nus: 3 fases + 1 neutre connectat a terra al Centre de Transformació)."
+            "Instal·lacions fotovoltaiques d'autoconsum:",
+            "• Sense excedents o connectades a xarxa (ON-GRID): l'inversor té protecció 'anti-illa' i deixa d'injectar AC si es talla el subministrament del carrer. ATENCIÓ: els panells solars i el cablejat DC fins a l'inversor continuen en tensió mentre rebin llum (fins a 1.000–1.500 V DC)!",
+            "• Instal·lacions HÍBRIDES amb bateries: les bateries domèstiques treballen habitualment a 48 V DC, però les industrials o d'alt voltatge arriben fins a 800 V DC.",
+            "Grups electrògens: els portàtils de Bombers no tenen connexió a terra de neutre (esquema IT) i per això no porten diferencial convencional. En canvi, els grups fixos d'edificis i hospitals tenen ARRENCADA AUTOMÀTICA quan detecten un tall de xarxa (risc de realimentació sobtada si no es desconnecten!)."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.2. Xarxa Pública: Generació, Transport (REE) i Distribució (MT vs. BT)',
+          paragraphs: [
+            "• 1) GENERACIÓ: Centrals de fons (nuclears, funcionen contínuament), de regulació (hidràuliques i cicle combinat) i de punta.\n• 2) TRANSPORT (Alta Tensió de 220 kV i 400 kV): operat en exclusiva per Red Eléctrica de España (REE). Les torres porten a la punta superior el CABLE DE GUARDA (parallamps connectat a terra, sense tensió funcional).",
+            "• 3) DISTRIBUCIÓ (operada per e-distribución/Endesa, Peusa, Bassols, etc.): Mitja Tensió (MT: d'1 kV a 36 kV; línies aèries de 3 cables nus sense neutre!) i Baixa Tensió (BT: ≤ 1.000 V en AC [230/400 V] i ≤ 1.500 V en DC; línies de 4 cables trenats o nus: 3 fases + 1 neutre connectat a terra al Centre de Transformació)."
           ]
         },
         {
@@ -71,8 +81,17 @@ export const tema19Instalacions = {
           type: 'text',
           heading: '2.2.6. Els 7 Elements de la Instal·lació d’Enllaç (en Ordre des del Carrer fins al Pis)',
           paragraphs: [
-            "La instal·lació d'enllaç uneix la xarxa de distribució pública amb la instal·lació interior dels usuaris seguint aquest ordre estricte: 1) ESCOMESA (tram de la companyia fins a la façana), 2) CGP (Caixa General de Protecció: conté els FUSIBLES generals de l'edifici; marca la frontera entre companyia i propietat), 3) LGA (Línia General d'Alimentació: uneix la CGP amb la cambra de comptadors), 4) IGM (Interruptor General de Maniobra: obligatori abans dels comptadors sempre que hi hagi MÉS DE 2 USUARIS, permet tallar tot l'edifici d'un sol cop de palanca!), 5) Centralització de Comptadors (amb l'embarrat general i fusibles de seguretat individuals; si és 1 o 2 usuaris s'integra amb la CGP en una CPM —Caixa de Protecció i Mesura—), 6) DI (Derivació Individual: puja des del comptador de cada veí fins al seu pis) i 7) Quadre General de Comandament i Protecció (interior de l'habitatge)."
+            "La instal·lació d'enllaç uneix la xarxa de distribució pública amb la instal·lació interior dels usuaris seguint aquest ordre estricte:\n• 1) ESCOMESA: tram de la companyia des de la xarxa fins a la façana.\n• 2) CGP (Caixa General de Protecció): conté els FUSIBLES generals de l'edifici i marca la frontera entre companyia i propietat.\n• 3) LGA (Línia General d'Alimentació): uneix la CGP amb la cambra de comptadors.",
+            "• 4) IGM (Interruptor General de Maniobra): obligatori abans dels comptadors sempre que hi hagi MÉS DE 2 USUARIS (> 2), permet tallar tot l'edifici d'un sol cop de palanca!\n• 5) Centralització de Comptadors: embarrat general i fusibles de seguretat individuals.\n• 6) DI (Derivació Individual): puja des del comptador de cada veí fins al seu pis.\n• 7) Quadre General de Comandament i Protecció (interior de l'habitatge)."
           ]
+        },
+        {
+          type: 'easy',
+          title: 'Mode Nen Petit · No confondre CGP vs. CPM vs. IGM!',
+          metaphor: 'Imagina la porta d’entrada de l’electricitat a casa teva: en una casa unifamiliar tot cap en una capseta, però en un bloc de pisos cal un interruptor mestre per a tots els veïns.',
+          explanation:
+            "• CGP (Caixa General de Protecció): és la caixa exterior amb els FUSIBLES generals (frontera companyia–propietat). S'usa en edificis amb 3 o més usuaris.\n\n• CPM (Caixa de Protecció i Mesura): quan només hi ha 1 o 2 usuaris (casa unifamiliar o adossada), la CGP i el comptador van fusionats en UNA sola caixa al mur exterior (en aquest cas NO hi ha LGA ni IGM!).\n\n• IGM (Interruptor General de Maniobra): és la palanca de tall general que trobem ABANS dels comptadors quan hi ha MÉS DE 2 USUARIS (> 2). Permet deixar tot el bloc sense llum d'un sol cop sense haver d'extreure fusibles de la CGP!",
+          takeaway: '1 o 2 usuaris = CPM (CGP + comptador junts, sense IGM). Més de 2 usuaris = CGP + LGA + IGM + Centralització de comptadors.'
         },
         {
           type: 'diagram',
@@ -108,8 +127,12 @@ export const tema19Instalacions = {
           type: 'text',
           heading: '2.4–2.6. Detecció de Tensió, 5 Regles d’Or i Equipament Dielèctric de Bombers',
           paragraphs: [
-            "Els Bombers disposen de 5 aparells de verificació elèctrica: 1) Detector de tensió sense contacte (tipus llapis que pita i s'il·lumina en detectar camp elèctric AC: ATENCIÓ, si pita hi ha tensió segur, però si NO pita no garanteix l'absència de tensió perquè no detecta corrent continu DC ni cables apantallats o molt humits!), 2) Tornavís buscapols (només per a baixa tensió 230 V), 3) Discriminador de tensió, 4) Voltímetre / Multímetre (Tester: mesura tensió en paral·lel i resistència) i 5) Pinça amperimètrica (mesura la intensitat I abraçant UN sol conductor pel seu camp magnètic sense tallar el cable).",
-            "Pel que fa als EPIs i eines davant risc elèctric (Cap. 2.6): 1) Eines manuals dielèctriques (alicates, tornavisos taronges/vermells) certificades fins a 1.000 V, 2) Perxa de salvament (mai s'ha d'ultrapassar amb les mans l'anell de guarda o límit d'empunyadura!), 3) Guants dielèctrics de làtex/elastòmer (els guants d'intervenció de cuir o tèxtils NO són aïllants elèctrics i menys si estan suats o mullats!), 4) Botes i Banqueta / Estora aïllant, 5) Escales de fibra de vidre (mai d'alumini prop de cables!) i 6) CASC D'INTERVENCIÓ PESANT: està certificat com a aïllant elèctric fins a 440 V!"
+            "Els Bombers disposen de 5 aparells de verificació elèctrica:",
+            "• 1) Detector de tensió sense contacte (tipus llapis): si pita hi ha tensió segur, però si NO pita NO garanteix l'absència de tensió (no detecta DC ni cables apantallats o molt humits!).",
+            "• 2) Tornavís buscapols (només BT 230 V), 3) Discriminador de tensió, 4) Voltímetre / Multímetre (mesura V en paral·lel i R) i 5) Pinça amperimètrica (mesura I abraçant UN sol conductor sense tallar-lo).",
+            "EPIs i eines davant risc elèctric (Cap. 2.6):",
+            "• 1) Eines manuals dielèctriques (taronges/vermelles) fins a 1.000 V, 2) Perxa de salvament (mai ultrapassar l'anell de guarda!) i 3) Guants dielèctrics de làtex (els de cuir o tèxtils NO són aïllants!).",
+            "• 4) Botes i Banqueta / Estora aïllant, 5) Escales de fibra de vidre (mai d'alumini prop de cables!) i 6) Casc d'intervenció pesant certificat com a aïllant elèctric fins a 440 V."
           ]
         },
         {
@@ -132,8 +155,9 @@ export const tema19Instalacions = {
           type: 'text',
           heading: '3.1. Aigua Potable (Ordre del Comptador General i Muntants) i 3.2. Sanejament',
           paragraphs: [
-            "En una instal·lació d'aigua potable d'edifici, l'armari o fornícula del COMPTADOR GENERAL a planta baixa conté exactament 6 elements en aquest ordre de pas de l'aigua: 1) Clau de tall general → 2) Filtre tipus Y (amb malla d'acer inoxidable de 25 a 50 μm per retenir sorres) → 3) Comptador general → 4) Aixeta de prova (per comprovar el comptador) → 5) Vàlvula de retenció (antiretorn perquè l'aigua de l'edifici no torni mai a la xarxa pública) → 6) Clau de sortida. A la base de cada columna o muntant ascendent hi ha: 1) Vàlvula de retenció, 2) Clau de tall i 3) Aixeta de buidatge (i a la part més alta de l'edifici una vàlvula purgadora d'aire).",
-            "En les instal·lacions de SANEJAMENT i evacuació es distingeixen: aigües negres o fecals (provenen dels vàters), aigües grises (piques, dutxes, rentadores) i aigües pluvials (pluja). Les xarxes poden ser unitàries (tot va al mateix col·lector) o separatives (residuals per una banda i pluvials per l'altra). El SIFÓ hidràulic sota cada aparell reté un tap d'aigua permanent de 5 cm que impedeix que les males olors i gasos tòxics de la claveguera entrin al pis."
+            "Aigua potable — Armari del comptador general (6 elements en ordre de pas de l'aigua):\n1) Clau de tall general → 2) Filtre tipus Y (malla d'acer inoxidable de 25 a 50 μm per retenir sorres) → 3) Comptador general → 4) Aixeta de prova → 5) Vàlvula de retenció (antiretorn perquè l'aigua no torni a la xarxa pública) → 6) Clau de sortida.",
+            "A la base de cada muntant ascendent hi ha: 1) Vàlvula de retenció, 2) Clau de tall i 3) Aixeta de buidatge (i dalt de tot de l'edifici una vàlvula purgadora d'aire).",
+            "Sanejament i evacuació:\n• Tipus d'aigües: negres o fecals (vàters), grises (piques, dutxes, rentadores) i pluvials (pluja).\n• Xarxes: unitàries (tot al mateix col·lector) o separatives (residuals i pluvials separades).\n• Sifó hidràulic: reté un tap d'aigua permanent de 5 cm que impedeix l'entrada de gasos tòxics i olors de la claveguera al pis."
           ]
         },
         {
@@ -160,9 +184,9 @@ export const tema19Instalacions = {
           type: 'text',
           heading: '4.1–4.2. GLP vs. Gas Natural, Canonades i Graus d’Accessibilitat (1, 2 i 3)',
           paragraphs: [
-            "Els Gasos Liquats del Petroli (GLP: Butà i Propà) són MÉS PESANTS que l'aire (s'acumulen a soterranis i parts baixes!). La bombona domèstica tradicional és el model UD-125 de 12,5 kg de butà. El Gas Natural (90–95% metà CH₄) és MÉS LLEUGER que l'aire (puja cap al sostre i es dissipa fàcilment ventilant per dalt); com que és inodor, s'odoritza amb mercaptans (THT).",
-            "Materials de les canonades de gas: 1) Acer (xarxes d'alta i mitja pressió), 2) Polietilè —PE, de color groc/taronja— (exclusivament per a xarxes ENTERRADES exteriors; està totalment PROHIBIT a l'interior d'edificis perquè es fon amb el foc!) i 3) Coure o acer inoxidable (instal·lacions vistes interiors; si travessen falsos sostres, cambres o murs han d'anar EMBEINADES dins d'una beina d'acer ventilada; el tub flexible d'aparells mòbils com cuines pot mesurar com a màxim 1,5 metres!).",
-            "Tots els aparells a gas de potència superior a 4,7 kW (≥ 4,7 kW, com escalfadors i calderes) estan obligats a tenir conducte d'evacuació de fums a l'exterior. Els aparells poden ser de CIRCUIT OBERT (agafen l'oxigen del mateix local: cuines, estufes catalítiques → alt risc de CO si no hi ha reixetes de ventilació!) o de CIRCUIT ESTANC (cambra de combustió hermètica amb tub concèntric que agafa l'aire de la façana i treu els fums fora: calderes modernes)."
+            "Els Gasos Liquats del Petroli (GLP: Butà i Propà) són MÉS PESANTS que l'aire (s'acumulen a soterranis i parts baixes; bombona domèstica UD-125 = 12,5 kg de butà). El Gas Natural (90–95% metà CH₄) és MÉS LLEUGER que l'aire (puja cap al sostre) i s'odoritza amb mercaptans (THT).",
+            "Materials de les canonades de gas:\n• 1) Acer: xarxes d'alta i mitja pressió.\n• 2) Polietilè (PE, color groc/taronja): EXCLUSIVAMENT per a xarxes ENTERRADES exteriors (totalment PROHIBIT a l'interior d'edificis perquè es fon amb el foc!).\n• 3) Coure o acer inoxidable: instal·lacions vistes interiors (si travessen falsos sostres, cambres o murs han d'anar embeinades en acer ventilat; tub flexible ≤ 1,5 m).",
+            "Evacuació de fums i tipus d'aparells:\n• Tots els aparells a gas de potència ≥ 4,7 kW (escalfadors i calderes) estan obligats a tenir conducte d'evacuació de fums a l'exterior.\n• Circuit OBERT (agafen l'O₂ del local: cuines, estufes catalítiques → risc de CO sense ventilació) vs. Circuit ESTANC (cambra hermètica amb tub concèntric que agafa l'aire de fora i treu els fums fora: calderes modernes)."
           ]
         },
         {
@@ -437,6 +461,32 @@ export const tema19Instalacions = {
       ],
       correctIndex: 1,
       explanation: 'És totalment incorrecte: està prohibit situar comptadors centralitzats de gas natural per sota del 1r soterrani (no es permet al 2n soterrani o inferiors), i la porta del recinte ha d’obrir sempre cap enfora (cap a l’exterior), mai cap endins.'
+    },
+    {
+      id: 't12-q16',
+      difficulty: 'Mitjà',
+      question: 'En una instal·lació elèctrica d’enllaç, quina diferència hi ha entre la CGP, la CPM i l’IGM?',
+      options: [
+        'La CGP conté els fusibles generals de l’edifici; la CPM fusiona CGP i comptador en edificis d’1 o 2 usuaris (sense LGA ni IGM); i l’IGM és l’interruptor obligatori abans dels comptadors quan hi ha més de 2 usuaris',
+        'La CPM és obligatòria en edificis de més de 20 habitatges i l’IGM només s’instal·la en cases unifamiliars',
+        'La CGP es troba sempre dins de cada pis al costat dels PIAs',
+        'L’IGM substitueix l’Interruptor Diferencial de 30 mA de cada habitatge'
+      ],
+      correctIndex: 0,
+      explanation: 'CGP = Caixa General de Protecció (fusibles generals). CPM = Caixa de Protecció i Mesura (integra CGP + comptador per a 1 o 2 usuaris). IGM = Interruptor General de Maniobra (obligatori abans de la centralització de comptadors si > 2 usuaris).'
+    },
+    {
+      id: 't12-q17',
+      difficulty: 'Difícil',
+      question: 'En un incendi d’una nau amb plaques fotovoltaiques connectades a xarxa (on-grid), tallem el subministrament elèctric general del carrer i l’inversor s’atura per protecció anti-illa. Quina afirmació és correcta sobre el risc elèctric residual?',
+      options: [
+        'Mentre hi hagi llum solar (o focus potents), els panells i el tram de cablejat en Corrent Continu (DC) fins a l’inversor continuen amb tensió perillosa (fins a 1.000–1.500 V DC), i un detector sense contacte AC pot no detectar-ho',
+        'En saltar la protecció anti-illa de l’inversor, tota la instal·lació fotovoltaica queda a 0 V de manera automàtica',
+        'Els cables que baixen de les plaques porten corrent altern de 230 V i s’anul·len en baixar l’IGA del quadre',
+        'Si el detector sense contacte no pita al costat d’un cable soterrat o apantallat, garanteix al 100% l’absència de tensió'
+      ],
+      correctIndex: 0,
+      explanation: 'L’anti-illa només desconnecta la sortida AC cap a la xarxa; els panells generen DC mentre rebin llum fins a l’inversor (1.000–1.500 V DC). A més, el detector sense contacte només detecta camps AC i pot fallar amb cables apantallats o en DC.'
     }
   ]
 };

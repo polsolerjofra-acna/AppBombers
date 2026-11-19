@@ -32,10 +32,37 @@ export const tema16Hidraulica = {
       blocks: [
         {
           type: 'text',
-          heading: '2. Propietats dels Líquids i 3.1–3.2. Pressió Hidrostàtica',
+          heading: '2. Propietats dels Líquids (MAN.GRAL.009)',
           paragraphs: [
-            "Els líquids són fluids pràcticament incompressibles amb volum propi però forma variable. Les seves propietats crítiques al manual MAN.GRAL.009 són: 1) Densitat (ρ = m/V; aigua dolça = 1.000 kg/m³ = 1 kg/L; aigua de mar ≈ 1.025–1.030 kg/m³), 2) Pressió de vapor (Pv: pressió a la qual el líquid bull a una Tª donada; per a l'aigua a 25 °C és de 0,0316 bar i a 100 °C és d'1,013 bar = 1 atm), 3) Viscositat dinàmica (resistència interna al flux per fregament entre capes; unitat SI: Pa·s; en els líquids la viscositat DISMINUEIX quan augmenta la temperatura!) i 4) Tensió superficial (força de cohesió per ponts d'hidrogen; es redueix amb tensioactius/escumògens per crear aigua humectant).",
-            "El Teorema Fundamental de la Hidrostàtica (Stevin) demostra que la pressió en qualsevol punt d'un líquid en repòs depèn EXCLUSIVAMENT de la profunditat vertical (h), la densitat (ρ) i la gravetat (g), i NO depèn mai de la forma del recipient ni del volum total d'aigua (Paradoxa Hidrostàtica de Stevin i Vasos Comunicants)."
+            "Els líquids són fluids pràcticament incompressibles: tenen volum propi però s'adapten a la forma del recipient. En hidràulica de bombers hi ha quatre propietats clau que condicionen el bombament i l'extinció:",
+            "• Densitat (ρ = m/V): massa per unitat de volum. L'aigua dolça té ρ = 1.000 kg/m³ (1 kg/L), mentre que l'aigua de mar és lleugerament més densa (1.025–1.030 kg/m³).",
+            "• Pressió de vapor (Pv): pressió a la qual un líquid comença a bullir (passa a gas) a una temperatura donada. Per a l'aigua a 25 °C és de 0,0316 bar, i a 100 °C arriba a 1,013 bar (1 atm).",
+            "• Viscositat dinàmica (Pa·s): resistència interna del fluid a fluir per fregament entre capes. En els líquids, la viscositat DISMINUEIX quan puja la temperatura (al contrari que en els gasos).",
+            "• Tensió superficial: força de cohesió entre molècules a la superfície (per ponts d'hidrogen). Els escumògens i tensioactius la redueixen per crear 'aigua humectant' que penetra millor en combustibles sòlids."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '3.1–3.2. Teorema Fundamental de la Hidrostàtica (Stevin)',
+          paragraphs: [
+            "En un líquid en repòs, la pressió en qualsevol punt depèn EXCLUSIVAMENT de tres factors: la densitat (ρ), la gravetat (g) i la profunditat o alçada vertical (h) des de la superfície lliure.",
+            "No depèn mai de la forma del recipient ni de la quantitat total d'aigua que contingui. Això explica la Paradoxa Hidrostàtica de Stevin i el principi dels Vasos Comunicants: un tub estret de 10 m d'alçada exerceix al fons exactament la mateixa pressió (1 bar) que un pantà de 10 m de fondària."
+          ]
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Pressió Absoluta vs. Manomètrica i Estàtica vs. Dinàmica',
+          paragraphs: [
+            "• Pressió Manomètrica o Relativa (P_rel) vs. Absoluta (P_abs): Els manòmetres dels camions de bombers mesuren sempre pressió relativa (prenen com a zero la pressió atmosfèrica exterior; si el circuit és obert, marquen 0 bar). La pressió absoluta parteix del buit perfecte: P_abs = P_atm + P_rel.",
+            "• Pressió Estàtica vs. Pressió Dinàmica: La pressió estàtica és la força perpendicular que exerceix el fluid contra les parets de la mànega (hi és tant si l'aigua està quieta com si circula). La pressió dinàmica (½·ρ·v²) només existeix quan el fluid es mou i representa l'energia cinètica del cabal circulant."
+          ]
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Cavitació vs. Cop d’ariet',
+          paragraphs: [
+            "• Cavitació (problema de DEPRESSIÓ a l'aspiració): Quan la pressió absoluta dins del rodet cau fins a la pressió de vapor (0,0316 bar a 25 °C), l'aigua bull en fred i forma bombolles de vapor que implosionen violentament contra els àleps, fent soroll de 'grava' i picant el metall.",
+            "• Cop d'ariet (problema de SOBREPRESSIÓ a la impulsió): Es produeix per un tancament o obertura brusca d'una llança o vàlvula. La columna d'aigua en moviment frena de cop i transforma tota l'energia cinètica en una ona de sobrepressió destructiva que pot rebentar mànegues i bombes. S'evita obrint i tancant les llances lentament."
           ]
         },
         {
@@ -87,6 +114,14 @@ export const tema16Hidraulica = {
             'La pressió és idèntica a tots dos pistons (P₁ = P₂). Si la superfície de sortida S₂ és 20 vegades més gran que S₁, la força es multiplica per 20 (a canvi de recórrer 20 vegades menys distància: F₁·d₁ = F₂·d₂).'
         },
         {
+          type: 'text',
+          heading: 'No confondre! Cavitació vs. Cop d’ariet',
+          paragraphs: [
+            "• Cavitació (problema de DEPRESSIÓ a l'aspiració): Quan la pressió absoluta dins del rodet cau fins a la pressió de vapor (0,0316 bar a 25 °C), l'aigua bull en fred i forma bombolles de vapor que implosionen violentament contra els àleps, fent soroll de 'grava' i picant el metall.",
+            "• Cop d'ariet (problema de SOBREPRESSIÓ a la impulsió): Es produeix per un tancament o obertura brusca d'una llança o vàlvula. La columna d'aigua en moviment frena de cop i transforma tota l'energia cinètica en una ona de sobrepressió destructiva que pot rebentar mànegues i bombes. S'evita obrint i tancant les llances lentament."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'formula',
           title: 'Càlcul 2: Equació de la Premsa Hidràulica (Força, Superfície i Radi)',
@@ -116,6 +151,14 @@ export const tema16Hidraulica = {
             "Una bomba d'incendis NO 'xucla' l'aigua per si mateixa: el seu sistema d'encebament extreu l'aire del manegot d'aspiració per crear una depressió (buit), i és la PRESSIÓ ATMOSFÈRICA exterior que actua sobre la superfície de la bassa o piscina qui empeny l'aigua cap amunt per dins del manegot.",
             "A nivell del mar (1 atm = 101.325 Pa = 1,013 bar = 760 mmHg), la columna màxima d'aigua que l'atmosfera pot sostenir en un buit perfecte és de 10,328 metres (10,33 m.c.a.). A la pràctica operativa, a causa de la pressió de vapor de l'aigua, les pèrdues de càrrega al manegot i que el buit mai és del 100%, l'alçada màxima d'aspiració real d'una autobomba és de 7 a 8 metres.",
             "Quan pugem en altitud (muntanya), la pressió atmosfèrica disminueix a raó d'aproximadament -0,129 m.c.a. per cada 100 metres de desnivell positiu. Així, a un llac del Pirineu a 2.000 m d'altitud, la columna teòrica baixa de 10,33 m a 7,75 m!"
+          ]
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Cavitació vs. Cop d’ariet',
+          paragraphs: [
+            "• Cavitació (problema de DEPRESSIÓ a l'aspiració): Quan la pressió absoluta dins del rodet cau fins a la pressió de vapor (0,0316 bar a 25 °C), l'aigua bull en fred i forma bombolles de vapor que implosionen violentament contra els àleps, fent soroll de 'grava' i picant el metall.",
+            "• Cop d'ariet (problema de SOBREPRESSIÓ a la impulsió): Es produeix per un tancament o obertura brusca d'una llança o vàlvula. La columna d'aigua en moviment frena de cop i transforma tota l'energia cinètica en una ona de sobrepressió destructiva que pot rebentar mànegues i bombes. S'evita obrint i tancant les llances lentament."
           ]
         },
         {
@@ -161,8 +204,9 @@ export const tema16Hidraulica = {
           type: 'text',
           heading: '4.1–4.3. Règim Laminar vs. Turbulent, Continuïtat i Bernoulli',
           paragraphs: [
-            "En hidrodinàmica, el règim d'un fluid depèn del Nombre de Reynolds (Re): si és baix el flux és LAMINAR (capes ordenades sense barrejar-se, velocitat màxima al centre de la canonada); si és alt és TURBULENT (remolins caòtics amb major fregament; és el règim habitual dins les mànegues de bombers). El cabal volumètric (Q = V/t = S·v) es mesura en m³/s o L/min (1 m³/s = 1.000 L/s = 60.000 L/min).",
-            "El Teorema de Bernoulli estableix que en un fluid ideal la suma de la pressió estàtica (P), la pressió dinàmica o cinètica (½·ρ·v²) i la pressió potencial o geomètrica (ρ·g·h) es manté constant. Quan una canonada s'estreny (Efecte Venturi), la velocitat augmenta bruscament i la pressió estàtica cau en picat creant una depressió capaç d'aspirar escumogen (proporcionador Z2/Z4) o aigua (hidroerenjador)."
+            "El comportament d'un fluid en moviment ve marcat pel Nombre de Reynolds (Re): si és baix tenim règim LAMINAR (capes paral·leles ordenades sense barreja, amb velocitat màxima al centre); si és alt tenim règim TURBULENT (remolins caòtics amb més fregament; és el règim habitual a les mànegues de bombers).",
+            "El cabal volumètric (Q = V/t = S·v) indica el volum d'aigua que passa per una secció cada segon (1 m³/s = 1.000 L/s = 60.000 L/min). Per l'Equació de Continuïtat, en un fluid incompressible el cabal que entra és igual al que surt: si la canonada s'estreny, l'aigua accelera.",
+            "El Teorema de Bernoulli expressa la conservació de l'energia al llarg d'una canonada ideal: la suma de pressió estàtica (P), pressió dinàmica (½·ρ·v²) i pressió geomètrica (ρ·g·h) és constant. Per tant, en un estrenyiment (Efecte Venturi), com que la velocitat puja molt, la pressió estàtica cau en picat i crea una succió útil per aspirar escumogen (proporcionador Z2/Z4) o buidar soterranis (hidroerenjador)."
           ]
         },
         {
@@ -171,6 +215,14 @@ export const tema16Hidraulica = {
           diagramType: 'venturi',
           caption:
             'A l’estrenyiment A₂ la secció disminueix → la velocitat v₂ es dispara (Continuïtat) → la pressió estàtica P₂ cau per sota de l’atmosfèrica (Bernoulli), succionant l’escumogen o buidant soterranis amb l’hidroerenjador.'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Cavitació vs. Cop d’ariet',
+          paragraphs: [
+            "• Cavitació (problema de DEPRESSIÓ a l'aspiració): Quan la pressió absoluta dins del rodet cau fins a la pressió de vapor (0,0316 bar a 25 °C), l'aigua bull en fred i forma bombolles de vapor que implosionen violentament contra els àleps, fent soroll de 'grava' i picant el metall.",
+            "• Cop d'ariet (problema de SOBREPRESSIÓ a la impulsió): Es produeix per un tancament o obertura brusca d'una llança o vàlvula. La columna d'aigua en moviment frena de cop i transforma tota l'energia cinètica en una ona de sobrepressió destructiva que pot rebentar mànegues i bombes. S'evita obrint i tancant les llances lentament."
+          ]
         },
         {
           type: 'mnemonic',
@@ -197,10 +249,11 @@ export const tema16Hidraulica = {
       blocks: [
         {
           type: 'text',
-          heading: '4.4–4.5. Pèrdues de Càrrega Lineals i Singulars i Mànegues en Sèrie vs. Paral·lel',
+          heading: '4.4–4.5. Pèrdues de Càrrega i Mànegues en Sèrie vs. Paral·lel',
           paragraphs: [
-            "En un fluid real amb viscositat, el fregament contra les parets de la mànega (pèrdues lineals o contínues) i els canvis de direcció o secció en bifurcacions, colzes, reduccions i vàlvules (pèrdues singulars o locals) provoquen una caiguda irreversible de pressió anomenada Pèrdua de Càrrega (ΔPf o J).",
-            "Segons l'equació de Darcy-Weisbach, la pèrdua de càrrega és directament proporcional a la rugositat (f), a la longitud de la mànega (L) i al QUADRAT de la velocitat o del cabal (v² o Q²), i inversament proporcional al diàmetre (D, o D⁵ en funció del cabal Q)."
+            "En els fluids reals, la viscositat provoca pèrdues irreversibles de pressió anomenades Pèrdues de Càrrega (ΔPf o J). Poden ser lineals (fregament continu contra les parets de la mànega) o singulars (xocs i turbulències en colzes, bifurcacions, reduccions i vàlvules).",
+            "Segons Darcy-Weisbach, la pèrdua de càrrega creix proporcionalment amb la rugositat (f), la longitud (L) i el QUADRAT de la velocitat o del cabal (v² o Q²), i disminueix molt ràpidament quan augmenta el diàmetre (inversament proporcional a D⁵ en funció del cabal).",
+            "No confondre! Instal·lacions en Sèrie vs. en Paral·lel: En SÈRIE (mànegues una rere l'altra per guanyar distància), hi passa el MATEIX cabal per totes i les pèrdues de càrrega se SUMEN. En PARAL·LEL (dues línies bessones entre bomba i col·lector), el cabal es REPARTEIX a la meitat (Q/2) per cada branca i la pèrdua de càrrega cau a la QUARTA PART (ΔPf / 4)."
           ]
         },
         {
@@ -209,6 +262,14 @@ export const tema16Hidraulica = {
           diagramType: 'fire_elevation',
           caption:
             'La bomba (PB) ha de vèncer 3 sumands: la pressió requerida a la punta de llança (PL = 6 bar), les pèrdues per fregament a les mànegues (ΔPf) i el desnivell geomètric (+1 bar per cada 10 m de pujada).'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Cavitació vs. Cop d’ariet',
+          paragraphs: [
+            "• Cavitació (problema de DEPRESSIÓ a l'aspiració): Quan la pressió absoluta dins del rodet cau fins a la pressió de vapor (0,0316 bar a 25 °C), l'aigua bull en fred i forma bombolles de vapor que implosionen violentament contra els àleps, fent soroll de 'grava' i picant el metall.",
+            "• Cop d'ariet (problema de SOBREPRESSIÓ a la impulsió): Es produeix per un tancament o obertura brusca d'una llança o vàlvula. La columna d'aigua en moviment frena de cop i transforma tota l'energia cinètica en una ona de sobrepressió destructiva que pot rebentar mànegues i bombes. S'evita obrint i tancant les llances lentament."
+          ]
         },
         {
           type: 'mnemonic',
@@ -222,7 +283,7 @@ export const tema16Hidraulica = {
             { symbol: '± ΔP_g', meaning: 'Pressió geomètrica per desnivell: + (h / 10) bar si la llança és més ALTA que la bomba; - (h / 10) bar si és més BAIXA' }
           ],
           trick:
-            "Mànegues en SÈRIE vs. en PARAL·LEL (Pregunta clàssica d'examen!):\n• En SÈRIE (una darrere l'altra per arribar més lluny): passa el MATEIX cabal per totes (Q_tot = Q₁ = Q₂) i les pèrdues de càrrega se SUMEN (ΔP_tot = ΔP₁ + ΔP₂).\n• En PARAL·LEL (dues línies bessones entre bomba i col·lector): tenen la MATEIXA pèrdua de càrrega (ΔP_tot = ΔP₁ = ΔP₂) i el cabal es REPARTEIX a la meitat per cada línia (Q/2), fent que la pèrdua de càrrega es redueixi a la QUARTA PART (ΔPf / 4)!",
+            "Mànegues en SÈRIE vs. en PARAL·LEL: En SÈRIE passa el mateix cabal (Q_tot = Q₁ = Q₂) i les pèrdues se SUMEN. En PARAL·LEL la pèrdua és igual a les dues línies (ΔP₁ = ΔP₂) i, en dividir el cabal a la meitat (Q/2), la pèrdua total es redueix a la QUARTA PART (ΔPf / 4)!",
           example:
             'Problema resolt: Volem alimentar una llança a PL = 6 bar situada a un 4t pis (h = +20 m) amb 120 m de mànega Ø45 (pèrdua J = 1,5 bar cada 100 m per al cabal escollit). Quina pressió PB hem de posar a la bomba?\n• ΔP_f = (120 / 100) × 1,5 = 1,2 × 1,5 = 1,8 bar.\n• ΔP_g = +20 m / 10 = +2,0 bar.\n• P_B = 6 + 1,8 + 2,0 = 9,8 bar.'
         }
@@ -236,10 +297,13 @@ export const tema16Hidraulica = {
       blocks: [
         {
           type: 'text',
-          heading: '5.1–5.3. Bombes Centrífugues vs. Volumètriques i Encebament',
+          heading: '5.1–5.3. Bombes Centrífugues vs. Bombes Volumètriques',
           paragraphs: [
-            "Les bombes es divideixen en dos grans grups: 1) TURBOBOMBES o BOMBES CENTRÍFUGUES (les principals d'impulsió d'aigua dels camions de bombers i la turbobomba d'achique accionada per aigua): l'aigua entra axialment pel centre del RODET (impulsor d'àleps que pot ser obert per a aigües brutes o tancat per a màxim rendiment en aigua neta), és accelerada per força centrífuga cap a la perifèria i entra al DIFUSOR o VOLUTA (carcassa en espiral de secció creixent que frena la velocitat i la transforma en pressió estàtica segons Bernoulli). Si cal molta pressió (alta pressió de 40 bar), s'acoblen diversos rodets en sèrie (bomba multicel·lular o multietapa).",
-            "2) BOMBES VOLUMÈTRIQUES o de Desplaçament Positiu (desplacen un volum fix de fluid en cada cicle; s'utilitzen com a bombes d'ENCEBAMENT per fer el buit a l'aspiració, per dosificar escumogen o en grups hidràulics d'oli): es divideixen en ROTATIVES (d'engranatges, de lòbuls, de paletes lliscants i peristàltica) i ALTERNATIVES o Recíproques (de membrana/diafragma, d'èmbol o pistó, i la bomba d'encebament de PISTONS AXIALS dels nous BRP Scania)."
+            "Les bombes hidràuliques es classifiquen en dos grans grups segons com transfereixen l'energia al fluid: turbobombes (centrífugues) i bombes volumètriques (de desplaçament positiu).",
+            "1) Bombes Centrífugues (Turbobombes): són les bombes principals d'impulsió d'aigua dels camions i les turbobombes d'achique. L'aigua entra axialment al RODET (obert per a aigües brutes; tancat per a màxim rendiment en aigua neta).",
+            "El rodet l'accelera cap a la perifèria fins a la VOLUTA (carcassa en espiral de secció creixent) que transforma la velocitat en pressió estàtica. Per assolir alta pressió (40 bar), s'acoblen diversos rodets en sèrie (bomba multicel·lular).",
+            "2) Bombes Volumètriques (Desplaçament Positiu): capturen i empenyen un volum fix de fluid en cada cicle. Es divideixen en ROTATIVES (engranatges, lòbuls, paletes lliscants, peristàltica) i ALTERNATIVES (membrana, pistó i la bomba de PISTONS AXIALS dels BRP Scania). A Bombers s'usen per fer el buit a l'encebament, dosificar escumogen i en grups hidràulics.",
+            "No confondre! Una bomba centrífuga NO és autoencebant (si entra aire perd la impulsió), però permet tancar les llances breument sense rebentar el circuit. En canvi, una bomba volumètrica SÍ que és autoencebant, però si obstruïm la sortida sense vàlvula de descàrrega pot rebentar per sobrepressió."
           ]
         },
         {
@@ -271,10 +335,12 @@ export const tema16Hidraulica = {
       blocks: [
         {
           type: 'text',
-          heading: '6.1–6.5. Estructura de les Mànegues, Peces d’Acció i Llances (6 bar)',
+          heading: '6.1–6.5. Estructura de les Mànegues, Raccords, Llances i Monitors',
           paragraphs: [
-            "Les mànegues d'impulsió modernes de Bombers de la Generalitat tenen una estructura de 4 CAPES (de dins cap a fora): 1) Recobriment intern llis (caucho/EPDM que minimitza la pèrdua de càrrega), 2) Capa intermèdia d'adherència, 3) Teixit tèxtil trenat d'alta tenacitat (polièster/poliamida que suporta la pressió) i 4) Recobriment extern protector (resistent a l'abrasió, calor i productes químics). Les mànegues flexibles d'impulsió (Ø25, Ø45 i Ø70) porten raccords BARCELONA (3 patilles simètriques), mentre que els manegots rígids d'aspiració (Ø110 mm i Ø80 mm en motobombes) porten raccords STORZ (2 ganxos amb més estanquitat al buit).",
-            "Les llances combinades treballen a una pressió nominal òptima de 6 bar (amb selecció de cabal i con d'obertura: efecte ple d'abast, con d'atac de 30°–45° per refredar gasos i pantalla de protecció de 120°). Quan el cabal supera els 500 L/min (llança de Ø70), la força de reacció supera l'esforç segur de 2 bombers i és obligatori utilitzar MONITORS (portàtils o de sostre, de fins a 2.000–4.000 L/min). L'abast horitzontal màxim d'un monitor en aire amb resistència aerodinàmica s'aconsegueix amb un angle d'inclinació de 30° a 35° (en el buit teòric seria 45°)."
+            "Les mànegues d'impulsió modernes de Bombers tenen 4 CAPES (de dins cap a fora): 1) Recobriment intern llis (cautxú/EPDM que redueix el fregament), 2) Capa intermèdia d'adherència, 3) Teixit tèxtil trenat d'alta tenacitat (suporta la pressió) i 4) Recobriment extern protector contra abrasió, calor i químics.",
+            "No confondre els raccords! Les mànegues flexibles d'impulsió (Ø25, Ø45 i Ø70) porten raccords BARCELONA (3 patilles simètriques), mentre que els manegots rígids d'aspiració (Ø110 mm en camions i Ø80 mm en motobombes) porten raccords STORZ (2 ganxos amb millor estanquitat al buit).",
+            "Les llances combinades treballen a una pressió nominal de 6 bar (amb selecció de cabal i con: doll ple per a abast, con d'atac de 30°–45° per refredar gasos i pantalla de 120° per a protecció tèrmica).",
+            "Quan el cabal supera els 500 L/min (llança de Ø70), la força de reacció supera l'esforç segur de 2 bombers i és obligatori emprar MONITORS (portàtils o de sostre, de fins a 2.000–4.000 L/min). L'abast horitzontal màxim real d'un monitor en aire s'aconsegueix amb un angle de 30° a 35° (en el buit teòric seria 45°)."
           ]
         },
         {
@@ -290,6 +356,14 @@ export const tema16Hidraulica = {
             ['Manegot rígid Ø 80 mm (Motobomba)', '2 m (o 2,5 m)', 'Depressió (Buit)', '≈ 5,0 L/m', '≈ 10 L per manegot de 2 m · Raccord STORZ']
           ],
           footnote: 'Memoritza la regla 10 – 30 – 77 L (o 0,5 – 1,5 – 4 L/m) i les pressions 40 – 20 – 18 bar per a Ø25, Ø45 i Ø70!'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Cavitació vs. Cop d’ariet',
+          paragraphs: [
+            "• Cavitació (problema de DEPRESSIÓ a l'aspiració): Quan la pressió absoluta dins del rodet cau fins a la pressió de vapor (0,0316 bar a 25 °C), l'aigua bull en fred i forma bombolles de vapor que implosionen violentament contra els àleps, fent soroll de 'grava' i picant el metall.",
+            "• Cop d'ariet (problema de SOBREPRESSIÓ a la impulsió): Es produeix per un tancament o obertura brusca d'una llança o vàlvula. La columna d'aigua en moviment frena de cop i transforma tota l'energia cinètica en una ona de sobrepressió destructiva que pot rebentar mànegues i bombes. S'evita obrint i tancant les llances lentament."
+          ]
         },
         {
           type: 'mnemonic',

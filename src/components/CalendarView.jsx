@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 
 const WEEKDAYS = ['Dl', 'Dt', 'Dc', 'Dj', 'Dv', 'Ds', 'Dg'];
+const EBBINGHAUS_STAGES = [1, 3, 7, 14, 30, 60];
 const MONTHS_CA = [
   'Gener',
   'Febrer',
@@ -93,6 +94,28 @@ export default function CalendarView({
 
   const topicsWithRound1 = topics.filter((t) => (topicRounds[t.id] || 0) >= 1).length;
   const topicsWithRound2 = topics.filter((t) => (topicRounds[t.id] || 0) >= 2).length;
+
+  const plus7Date = new Date(todayISO + 'T12:00:00');
+  plus7Date.setDate(plus7Date.getDate() + 7);
+  const plus7ISO = plus7Date.toISOString().split('T')[0];
+
+  const dueNowTopics = topics.filter((t) => {
+    const sp = spacedMap[t.id];
+    return sp?.nextReviewAt && sp.nextReviewAt <= todayISO;
+  });
+  const upcoming7Topics = topics.filter((t) => {
+    const sp = spacedMap[t.id];
+    return sp?.nextReviewAt && sp.nextReviewAt > todayISO && sp.nextReviewAt <= plus7ISO;
+  });
+  const consolidatedTopics = topics.filter((t) => {
+    const sp = spacedMap[t.id];
+    return sp && (sp.reviewStage || 0) >= 3;
+  });
+  const activeSpacedTopics = topics
+    .filter((t) => Boolean(spacedMap[t.id]?.nextReviewAt))
+    .sort((a, b) =>
+      (spacedMap[a.id]?.nextReviewAt || '').localeCompare(spacedMap[b.id]?.nextReviewAt || '')
+    );
 
   const handleCompleteRoundClick = (topic) => {
     const prevRounds = topicRounds[topic.id] || 0;
@@ -199,6 +222,54 @@ export default function CalendarView({
           >
             {dailyEmailEnabled ? 'Avisos 01:00 AM: Activats ✓' : 'Avisos 01:00 AM: Desactivats'}
           </button>
+        </div>
+
+        {/* Barra d'estat de la Corba de l'Oblit (Ebbinghaus) */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+          <div className="rounded-2xl border border-red-200 dark:border-red-900/50 bg-red-50/70 dark:bg-red-950/30 p-3.5">
+            <div className="text-[11px] font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300">
+              Pendents Avui / Endarrerits
+            </div>
+            <div className="text-2xl font-extrabold text-red-600 dark:text-red-400 mt-1">
+              {dueNowTopics.length}
+            </div>
+            <div className="text-[11px] text-red-700/80 dark:text-red-300/80">
+              Prioritat màxima d&apos;oblit
+            </div>
+          </div>
+          <div className="rounded-2xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/70 dark:bg-blue-950/30 p-3.5">
+            <div className="text-[11px] font-extrabold uppercase tracking-wider text-blue-700 dark:text-blue-300">
+              Pròxims 7 Dies
+            </div>
+            <div className="text-2xl font-extrabold text-blue-600 dark:text-blue-400 mt-1">
+              {upcoming7Topics.length}
+            </div>
+            <div className="text-[11px] text-blue-700/80 dark:text-blue-300/80">
+              Repassos programats
+            </div>
+          </div>
+          <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/70 dark:bg-emerald-950/30 p-3.5">
+            <div className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+              Consolidats (≥ 14d)
+            </div>
+            <div className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400 mt-1">
+              {consolidatedTopics.length}
+            </div>
+            <div className="text-[11px] text-emerald-700/80 dark:text-emerald-300/80">
+              Memòria a llarg termini
+            </div>
+          </div>
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 p-3.5">
+            <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+              Cicle Ebbinghaus
+            </div>
+            <div className="text-xs font-extrabold text-slate-800 dark:text-slate-200 mt-1.5">
+              1d → 3d → 7d → 14d → 30d → 60d
+            </div>
+            <div className="text-[11px] text-slate-500 mt-0.5">
+              {activeSpacedTopics.length}/{topics.length} temes en seguiment
+            </div>
+          </div>
         </div>
       </div>
 
@@ -374,6 +445,10 @@ export default function CalendarView({
             ].map(({ topic, kind }, idx) => {
               const rounds = topicRounds[topic.id] || 0;
               const isSecondOrMore = rounds >= 1;
+              const sp = spacedMap[topic.id];
+              const stageIdx = sp ? sp.reviewStage || 0 : 0;
+              const stageDays = EBBINGHAUS_STAGES[stageIdx] || 1;
+              const isOverdue = kind === 'review' && sp?.nextReviewAt && sp.nextReviewAt < todayISO;
 
               return (
                 <div
@@ -392,6 +467,16 @@ export default function CalendarView({
                         >
                           {kind === 'review' ? 'Repàs Oblit' : 'Estudi'}
                         </span>
+                        {kind === 'review' && sp && (
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+                            Etapa {stageIdx + 1}/{EBBINGHAUS_STAGES.length} · +{stageDays}d
+                          </span>
+                        )}
+                        {isOverdue && (
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-amber-500 text-slate-950">
+                            Endarrerit ({sp.nextReviewAt})
+                          </span>
+                        )}
                         <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                           {rounds === 0 ? '1a Volta' : `Volta ${rounds + 1} (${rounds} ✓)`}
                         </span>
@@ -475,6 +560,77 @@ export default function CalendarView({
           </div>
         </div>
       </div>
+
+      {/* Cua completa de la Corba de l'Oblit */}
+      {activeSpacedTopics.length > 0 && (
+        <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-sm space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h2 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">
+                Seguiment de la Corba de l&apos;Oblit ({activeSpacedTopics.length} temes actius)
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Ordenats per urgència de repàs. Cada repàs o test aprovat (≥ 60%) avança al següent interval: 1d → 3d → 7d → 14d → 30d → 60d.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {activeSpacedTopics.map((t) => {
+              const sp = spacedMap[t.id];
+              const stageIdx = sp.reviewStage || 0;
+              const interval = EBBINGHAUS_STAGES[stageIdx] || 1;
+              const isDue = sp.nextReviewAt <= todayISO;
+
+              return (
+                <div
+                  key={`ebbinghaus-${t.id}`}
+                  className={`rounded-2xl border p-3.5 flex flex-col justify-between gap-2.5 ${
+                    isDue
+                      ? 'border-red-300 dark:border-red-900 bg-red-50/60 dark:bg-red-950/20'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/40'
+                  }`}
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+                        Etapa {stageIdx + 1}/6 (+{interval}d)
+                      </span>
+                      <span
+                        className={`text-[10px] font-extrabold px-2 py-0.5 rounded-md ${
+                          isDue
+                            ? 'bg-red-600 text-white'
+                            : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                        }`}
+                      >
+                        {sp.nextReviewAt <= todayISO ? 'Toca Avui!' : sp.nextReviewAt}
+                      </span>
+                    </div>
+                    <h4 className="text-xs font-extrabold text-slate-900 dark:text-white line-clamp-1">
+                      Tema {t.number} · {t.title}
+                    </h4>
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => onOpenTopic(t.id, 'summary')}
+                      className="flex-1 py-1.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-bold"
+                    >
+                      Repassar
+                    </button>
+                    <button
+                      onClick={() => onMarkTopicReviewed(t.id)}
+                      className="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold"
+                    >
+                      Fet ✓
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

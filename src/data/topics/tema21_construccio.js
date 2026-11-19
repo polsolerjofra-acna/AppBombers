@@ -31,10 +31,31 @@ export const tema21Construccio = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1–2.3. Accions (Permanents, Variables, Accidentals) i Els 6 Esforços Mecànics',
+          heading: '2.1. Accions (Càrregues) sobre l’Edifici',
           paragraphs: [
-            "Les càrregues o accions que actuen sobre una edificació es classifiquen en 3 grups: 1) Accions PERMANENTS (actuen sempre amb el mateix valor: el pes propi de l'estructura, forjats, murs i paviments), 2) Accions VARIABLES (canvien amb el temps: sobrecàrrega d'ús per persones i mobiliari, pressió del vent, pes de la neu i variacions tèrmiques) i 3) Accions ACCIDENTALS (fenòmens excepcionals de curta durada però gran intensitat: incendi, explosió, impacte de vehicle o sisme). Perquè l'edifici no caigui, el terreny i els suports generen REACCIONS iguals i de sentit contrari (∑F = 0 i ∑M = 0).",
-            "A l'interior dels elements estructurals apareixen 6 tipus d'ESFORÇOS mecànics: 1) TRACCIÓ (forces que estiren i tendeixen a allargar la peça: cables, tirants, tensor d'encavallada; l'acer i la fusta hi treballen molt bé), 2) COMPRESSIÓ (forces que aixafen i escurcen la peça: pilars, murs de càrrega, arcs, voltes i fonaments; la pedra, el maó i el formigó hi són excel·lents), 3) FLEXIÓ (càrrega perpendicular a l'eix que corba una peça horitzontal com una biga, jàssera o balcó/mènsula: combina COMPRESSIÓ a les fibres superiors i TRACCIÓ a les inferiors, o a l'inrevés en un voladís/balcó on la tracció és a dalt!), 4) TORSIÓ (forces que retorcen la peça sobre el seu eix longitudinal: bigues perimetrals), 5) TALLANT o Cisallament (forces paral·leles de sentit contrari que tendeixen a guillotinar la peça prop dels punts de recolzament de les bigues) i 6) VINCLAMENT o Pandeig (inestabilitat i doblegament lateral sobtat d'elements verticals o esvelts sotmesos a compressió, com pilars metàl·lics o murs alts; la calor d'un incendi l'accelera dràsticament!)."
+            "Les càrregues que suporta una edificació es classifiquen en tres grups: 1) Permanents (actuen sempre amb el mateix valor: pes propi de l'estructura, forjats, murs i paviments), 2) Variables (oscil·len amb el temps: sobrecàrrega d'ús, vent, neu i variacions tèrmiques) i 3) Accidentals (curta durada però gran intensitat: incendi, explosió, impacte o sisme).",
+            "Perquè l'edifici es mantingui estable en equilibri estàtic, els suports i el terreny han de generar reaccions iguals i de sentit contrari (∑F = 0 i ∑M = 0)."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.2. Els 6 Esforços Mecànics Estructurals',
+          paragraphs: [
+            "Les càrregues externes generen sis tipus d'esforços interns dins dels elements constructius:",
+            "• Tracció: forces que estiren i allarguen la peça (cables, tirants, tensor d'encavallada). L'acer i la fusta hi treballen molt bé.",
+            "• Compressió: forces que aixafen i escurcen la peça (pilars, murs de càrrega, arcs i fonaments). Pedra, maó i formigó hi són excel·lents.",
+            "• Flexió: càrrega perpendicular a l'eix que corba una peça horitzontal (biga, jàssera o balcó). Combina compressió en una cara i tracció a l'altra.",
+            "• Torsió: forces que retorcen la peça al voltant del seu eix longitudinal (bigues perimetrals o de vora).",
+            "• Tallant (o cisallament): forces paral·leles de sentit contrari que tendeixen a guillotinar la peça, màximes prop dels suports de les bigues.",
+            "• Vinclament (o pandeig): inestabilitat i doblegament lateral sobtat d'una peça vertical o esvelta sotmesa a compressió (pilars metàl·lics o murs alts). La calor d'un incendi l'accelera dràsticament."
+          ]
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Vinclament vs. Flexió (i on va l’acer en Formigó Armat)',
+          paragraphs: [
+            "• Flexió vs. Vinclament: La flexió apareix en peces horitzontals (bigues) per una càrrega transversal que fa panxa. El vinclament apareix en peces verticals esveltes (pilars) comprimides axialment quan perden rigidesa lateral (en pilars d'acer a > 500 °C és crític).",
+            "• On va l'acer del formigó armat? Sempre a la zona sotmesa a TRACCIÓ: en una biga recolzada als dos extrems, la cara inferior s'estira (acer a BAIX); en un balcó o mènsula en voladís, és la cara superior qui s'estira (acer a DALT)."
           ]
         },
         {
@@ -63,7 +84,7 @@ export const tema21Construccio = {
           metaphor:
             'Agafa una regla de plàstic, una goma elàstica i un espagueti cru per entendre tots els esforços d’un edifici en 30 segons:',
           explanation:
-            "1) LES 3 CÀRREGUES: Permanents = la motxilla buida que l'edifici sempre porta (el seu propi pes); Variables = les persones, mobles, vent o neu; Accidentals = una bufetada sobtada (incendi, explosió, sisme). 2) ELS 6 ESFORÇOS: Tracció = estirar una goma; Compressió = aixafar una llauna de refresc dreta; Flexió = doblegar una regla recolzada pels extrems (la cara de DALT s'aixafa/compressió i la de BAIX s'estira/tracció — i en un balcó que penja passa al revés!); Tallant = unes tisores que intenten guillotinar la biga just al suport del pilar; Torsió = escórrer un drap retorçant-lo; Vinclament = prémer un espagueti en vertical fins que es doblega de sobte cap a un costat! 3) FORMIGÓ ARMAT i FOC: el formigó sol és un campió sent aixafat (1.000 kg/cm²) però es trenca amb res si l'estires (< 25 kg/cm²). Per això li fiquem barres d'acer a la zona que s'estira (a BAIX en bigues normals; a DALT en balcons)! En un incendi, si l'acer supera els 500 °C perd rigidesa de cop i els pilars pateixen vinclament; la fusta gruixuda, en canvi, fa una crosta protectora de carbó que retarda la pèrdua de resistència!",
+            "• Càrregues: Permanents = pes de l'edifici; Variables = gent, vent, neu; Accidentals = foc, explosió, sisme.\n• Els 6 esforços: Tracció (estirar goma) · Compressió (aixafar llauna) · Flexió (doblegar regla horitzontal) · Tallant (tisores al suport de la biga) · Torsió (escórrer un drap) · Vinclament (prémer un espagueti en vertical fins que s'arqueja de cop!).\n• Foc: l'acer a > 500 °C perd rigidesa (vinclament ràpid); la fusta gruixuda crea una crosta de carbó que retarda la pèrdua de resistència.",
           takeaway:
             'Bigues = Flexió al mig (compressió dalt, tracció baix → acer a baix; balcons → acer a dalt) i Tallant als extrems. Pilars al foc = risc de Vinclament (> 500 °C en acer).'
         },
@@ -88,8 +109,9 @@ export const tema21Construccio = {
           type: 'text',
           heading: '3.1–3.2. Conglomerants (Pasta, Morter i Formigó) i Mesures dels Maons',
           paragraphs: [
-            "Els conglomerants són materials en pols que barrejats amb aigua s'endureixen: 1) PASTA = Conglomerant + Aigua; 2) MORTER = Conglomerant + Aigua + Sorra (àrid fi, per unir maons o arrebossar); 3) FORMIGÓ = Ciment + Aigua + Sorra + Grava (àrid gros; si porta barres d'acer és formigó armat, i si els cables es tensen abans d'abocar el formigó és formigó pretensat).",
-            "En les obres de fàbrica de MAÓ ceràmic, les 3 dimensions del maó són: LLARG (soga), TRAVÉS (tizón, que és sempre la meitat del llarg menys 1 cm de junta de morter!) i GRUIX (canto). Les 3 cares del maó són: PLA (tabla, la cara més gran), CANTELL (canto, la cara llarga i estreta) i CAP o TESTA (la cara curta). Llegint des de fora com estan col·locats els maons d'una paret, un bomber sap quin gruix té i si és un envà o un mur de càrrega!"
+            "Els conglomerants són materials en pols que s'endureixen en barrejar-los amb aigua: 1) PASTA = Conglomerant + Aigua; 2) MORTER = Conglomerant + Aigua + Sorra (àrid fi, per unir maons o arrebossar); 3) FORMIGÓ = Ciment + Aigua + Sorra + Grava (àrid gros; amb barres d'acer és formigó armat, i amb cables tesats prèviament és pretensat).",
+            "Les 3 dimensions del maó ceràmic són: LLARG (soga), TRAVÉS (tizón, la meitat del llarg menys 1 cm de junta) i GRUIX (canto). Les 3 cares són: PLA (tabla, cara gran), CANTELL (canto, llarga i estreta) i CAP o TESTA (cara curta).",
+            "Observant des de fora quina cara queda a la vista, un bomber dedueix a l'instant el gruix del mur i si es tracta d'un envà no estructural (4–10 cm) o d'un mur de càrrega (15 o 30 cm)."
           ]
         },
         {
@@ -121,7 +143,7 @@ export const tema21Construccio = {
           title: 'Regla Mnemotècnica · Guix-Calç-Ciment (EX-NE-RE), Pasta-Morter-Formigó i Aïllants al Foc',
           acronym: 'Guix = EXpandeix  |  Calç = NEutra  |  Ciment = REtrau   |   P → M → F',
           trick:
-            "1) Barreja creixent (P-M-F): Pasta (+aigua) → Morter (+sorra) → Formigó (+grava). 2) Volum en endurir-se (EX-NE-RE): el Guix s'EXpandeix (es desfà amb aigua i oxida el ferro → només interiors!); la Calç és NEutra i molt flexible (façanes sense esquerdes); el Ciment té REtracció (s'encongeix, endureix sota l'aigua i té la màxima resistència). 3) Aïllants al foc: origen mineral (llana de roca/vidre, perlita, vermiculita) = incombustibles/ignífugs; escumes plàstiques (PU, XPS, EPS) = molt combustibles!",
+            "• Barreja creixent (P-M-F): Pasta (+aigua) → Morter (+sorra) → Formigó (+grava).\n• Volum en endurir-se (EX-NE-RE): Guix s'EXpandeix (es desfà amb aigua i oxida el ferro → interiors); Calç és NEutra i flexible (exteriors); Ciment té REtracció (endureix sota aigua i màxima resistència).\n• Aïllants al foc: minerals (llana de roca/vidre, perlita, vermiculita) = incombustibles; escumes (PU, XPS, EPS) = molt combustibles.",
           example:
             'Recorda les mides de referència: Maó Català = regla escolar de 30 × 15 cm | Maó Castellà = 25 × 12,5 cm.'
         }
@@ -135,12 +157,18 @@ export const tema21Construccio = {
       blocks: [
         {
           type: 'text',
-          heading: '4.1–4.4. Classificació d’Elements Estructurals (Fonaments, Verticals i Horitzontals) i No Estructurals',
+          heading: '4.1–4.2. Fonaments (≤ 3 m vs. > 3 m) i Elements Verticals',
           paragraphs: [
-            "1) FONAMENTS (transmeten totes les càrregues de l'edifici al terreny ferm): El manual els divideix segons la seva profunditat en SUPERFICIALS o Directes (profunditat ≤ 3 metres: sabates aïllades sota un pilar, sabates combinades/corregudes sota murs de càrrega o fileres de pilars, lloses de fonamentació quan el terreny és fluix, encepats i bigues de lligam o centradores) i PROFUNDS (profunditat > 3 metres quan el terreny ferm és molt avall: pilots i micropilots que treballen per punta o per fregament lateral, murs pantalla per a soterranis profunds i murs de contenció).",
-            "2) ELEMENTS VERTICALS (treballen a compressió i vinclament): Murs de càrrega (gruix de 20 a 60 cm, de pedra, tàpia, maó massís o bloc de formigó), Pilars (elements lineals verticals de formigó armat, acer HEB o fusta), Pantalles estructurals (murs de formigó armat que donen rigidesa a l'edifici contra el vent i el sisme, habituals al nucli d'ascensors i escales) i Pilastres (pilar adossat a un mur).",
-            "3) ELEMENTS HORITZONTALS (treballen a flexió i tallant): Forjats (sostres/terres que reben el pes directe de les persones: de biguetes de fusta o metàl·liques amb revoltó ceràmic o volta catalana, forjats unidireccionals de biguetes de formigó i revoltons/bovedilles, i forjats reticulars o bidireccionals amb casetons i lloses massisses), Bigues (recullen les biguetes del forjat) i JÀSSERES (bigues mestres principals de gran cantell que recullen altres bigues per salvar grans obertures i portar el pes als pilars!).",
-            "4) ELEMENTS NO ESTRUCTURALS: Tancaments exteriors (façanes lleugeres o murs cortina, cobertes i soleres) i Divisions interiors (envans i falsos sostres: no aguanten l'edifici, però en edificis vells que han cedit els envans poden haver entrat en càrrega i si s'enderroquen de cop el sostre pot baixar!)."
+            "1) FONAMENTS (transmeten les càrregues al terreny ferm): Es divideixen segons la profunditat en SUPERFICIALS o directes (profunditat ≤ 3 metres: sabates aïllades, sabates combinades/corregudes, lloses de fonamentació, encepats i bigues de lligam o centradores) i PROFUNDS (profunditat > 3 metres quan la roca ferma és avall: pilots i micropilots per punta o fregament, murs pantalla per a soterranis i murs de contenció).",
+            "2) ELEMENTS VERTICALS (treballen a compressió i risc de vinclament): Murs de càrrega (gruix 20–60 cm de pedra, tàpia, maó massís o bloc), Pilars (elements lineals de formigó armat, acer HEB o fusta), Pantalles estructurals (murs de formigó armat contra vent i sisme al nucli d'escales/ascensors) i Pilastres (pilars adossats a un mur)."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '4.3–4.4. Elements Horitzontals (Biga vs. Jàssera) i Elements No Estructurals',
+          paragraphs: [
+            "3) ELEMENTS HORITZONTALS (treballen a flexió i tallant): Forjats (biguetes de fusta/metall/formigó amb revoltó ceràmic o volta catalana, forjats reticulars amb casetons i lloses massisses), Bigues (recullen les biguetes) i JÀSSERES (bigues mestres principals de gran cantell que recullen altres bigues per salvar grans obertures i portar el pes als pilars).",
+            "4) ELEMENTS NO ESTRUCTURALS: Tancaments exteriors (façanes lleugeres o murs cortina, cobertes) i Divisions interiors (envans i falsos sostres). Alerta operativa: en edificis antics que han cedit, un envà pot haver entrat en càrrega accidentalment i si s'enderroca de cop el forjat superior pot baixar!"
           ]
         },
         {
@@ -161,7 +189,7 @@ export const tema21Construccio = {
           metaphor:
             'Imagina caminar sobre neu tova amb raquetes amples (Sabates) vs. clavar bastons llargs fins a tocar la roca de sota (Pilots):',
           explanation:
-            "1) FONAMENTS (≤ 3 m vs. > 3 m): si la terra forta és a prop (≤ 3 m), poses sabates o una llosa (com raquetes per repartir el pes i no enfonsar-te). Si els primers metres són fang tou (> 3 m), baixes pilots o micropilots ben profunds fins a recolzar-te a la roca ferma! 2) BIGUETA → BIGA → JÀSSERA: pensa en rius que s'ajunten: les biguetes petites del sostre aboquen el pes a les bigues, i les bigues l'aboquen a la JÀSSERA (la biga mestra gegant que porta el pes fins als pilars)! 3) ENVANS EN CÀRREGA (alerta bomber!): un envà (4–10 cm) no hauria d'aguantar el sostre; però en edificis vells on les bigues de fusta han cedit amb els anys, s'acaben recolzant sobre l'envà! Si l'enderroques de cop sense apuntalar, el sostre de dalt baixa!",
+            "• Fonaments (≤ 3 m vs. > 3 m): amb roca a prop (≤ 3 m) posem sabates o llosa; amb fang tou (> 3 m) baixem pilots fins a la roca.\n• Bigueta → Biga → Jàssera: les biguetes aboquen el pes a les bigues, i aquestes a la Jàssera (biga mestra).\n• Alerta envans: un envà (4–10 cm) no és portant, però en edificis vells on el sostre ha cedit hi pot recolzar i si s'enderroca pot provocar un esfondrament.",
           takeaway:
             '≤ 3 m = Superficials (sabates, llosa). > 3 m = Profunds (pilots, mur pantalla). Jàssera = biga mestra que recull altres bigues. Vigila els envans antics que hagin entrat en càrrega!'
         }
@@ -175,10 +203,19 @@ export const tema21Construccio = {
       blocks: [
         {
           type: 'text',
-          heading: '5.3–5.5. El Principi de Jerarquia Estructural i Els 3 Grans Sistemes Constructius',
+          heading: '5.3. El Principi de Jerarquia Estructural',
           paragraphs: [
-            "El PRINCIPI DE JERARQUIA ESTRUCTURAL estableix l'ordre estricte en què es transmeten i s'acumulen les càrregues des de dalt fins al terreny: 1r) Biguetes i revoltons del forjat → 2n) Bigues → 3r) JÀSSERES (bigues mestres) → 4t) Pilars o Murs de càrrega → 5è) Fonaments → 6è) Terreny. Regla vital per a Bombers: com més avall en la jerarquia es troba un element, més elements depenen d'ell i més catastròfica és la seva fallada! Si falla una bigueta només cau un tros de sostre entre dues biguetes; si falla una JÀSSERA o un PILAR de planta baixa, pot col·lapsar tot l'edifici en cadena!",
-            "El manual classifica els edificis segons la llum (distància entre suports): A) Sistemes per a LLUMS PETITES (4 a 8 m): 1) Sistema tradicional de MURS DE CÀRREGA (sistema UNITARI on les parets tanquen i aguanten l'edifici alhora; l'estabilitat depèn de la trava a les cantonades i dels forjats; inclou la casa medieval, la CASA DE COS tradicional catalana —amb una amplada característica entre parets mitgeres de 3,5 a 4,5 metres!— i els edificis d'eixample de 5–7 plantes fins als anys 1960–1970) i 2) Sistema de PILARS I FORJATS o Porticat (sistema SEPARAT generalitzat a partir dels anys 1970, on l'esquelet de pilars i bigues de formigó o acer és independent de la façana; el punt crític és el nus o unió rígida pilar-forjat). B) Sistemes per a GRANS LLUMS (> 8 m, naus industrials i pavellons): Sistema de PÒRTICS o encavallades (d'acer laminat, de fusta laminada o de formigó prefabricat amb bigues 'delta' a dues aigües molt habituals als polígons des dels anys 1990)."
+            "Les càrregues es transmeten de dalt cap avall en un ordre estricte: 1r) Biguetes i revoltons del forjat → 2n) Bigues → 3r) Jàsseres (bigues mestres) → 4t) Pilars o Murs de càrrega → 5è) Fonaments → 6è) Terreny.",
+            "Regla vital per a Bombers: com més avall a la cadena es troba un element, més pisos depenen d'ell i més global és el col·lapse si falla. Si falla una bigueta cau un pany de sostre; si falla una jàssera o un pilar de planta baixa pot col·lapsar tot l'edifici en cadena."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '5.4–5.5. Sistemes Constructius: Unitari vs. Separat vs. Pòrtics',
+          paragraphs: [
+            "• Llums petites (4 a 8 m) — Sistema UNITARI (Murs de càrrega, fins anys 1960–70): les parets fan de tancament i d'estructura alhora; l'estabilitat depèn de la trava a les cantonades i dels forjats. Inclou la casa medieval, la 'casa de cos' catalana (amplada típica entre mitgeres de 3,5 a 4,5 m) i els edificis d'eixample.",
+            "• Llums petites (4 a 8 m) — Sistema SEPARAT (Pilars i forjats, des dels anys 1970): l'esquelet de pilars i bigues (formigó armat o acer) suporta tot l'edifici amb independència de la façana. El punt crític és el nus rígid pilar-forjat.",
+            "• Grans llums (> 8 m) — Sistema de PÒRTICS o encavallades: habitual en naus industrials i pavellons (acer laminat, fusta laminada o formigó prefabricat amb bigues 'delta' a dues aigües des dels anys 1990)."
           ]
         },
         {
@@ -195,7 +232,7 @@ export const tema21Construccio = {
           metaphor:
             'La jerarquia estructural és com un arbre (fulles → branques → tronc → arrels) o la torre del joc Jenga:',
           explanation:
-            "1) REGLA JENGA (on col·lapsa més greu): si cau una fulla (bigueta), només cau aquell racó de sostre. Però com més avall vas a la cadena Bi-Bi-Jà-Pi-Fo (si falla una Jàssera o un Pilar de planta baixa), arrossega tots els pisos de dalt en cadena! 2) SISTEMA UNITARI (Murs de càrrega, fins anys 60–70): a les cases antigues i de l'Eixample, la mateixa paret de maó tanca la casa del fred I aguanta tot el pes (tot en un!). La 'casa de cos' catalana mesura 3,5 a 4,5 m d'ample perquè era el màxim que resistien les bigues de fusta tradicionals! 3) SISTEMA SEPARAT (Pilars i forjats, des dels 70): ara separem les feines! Primer construïm un esquelet de pilars i bigues que ho aguanta tot, i després pengem la façana de pell independent (pots fer tota la paret de vidre sense que caigui l'edifici!). I en naus industrials (> 8 m) posem pòrtics per tenir grans espais sense pilars al mig.",
+            "• Regla Jenga: com més avall falli la cadena Bi-Bi-Jà-Pi-Fo (jàssera o pilar de planta baixa), més pisos arrossega.\n• Sistema Unitari (fins anys 60–70): el mur tanca i aguanta l'edifici alhora (casa de cos catalana = 3,5–4,5 m d'ample).\n• Sistema Separat (des dels 70): esquelet independent de la façana; en naus (> 8 m) s'usen pòrtics.",
           takeaway:
             'Com més avall a Bi-Bi-Jà-Pi-Fo, més global és el col·lapse. Fins anys 70 = Unitari (murs = estructura + tancament; casa de cos 3,5–4,5 m). Des dels 70 = Separat (esquelet independent). > 8 m = Pòrtics.'
         }

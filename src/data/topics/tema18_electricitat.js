@@ -34,8 +34,11 @@ export const tema18Electricitat = {
           type: 'text',
           heading: '2–3. Naturalesa de l’Electricitat i les 6 Magnituds Fonamentals',
           paragraphs: [
-            "El corrent elèctric és el moviment ordenat d'electrons lliures a través d'un conductor. Atenció a la diferència històrica d'examen: el SENTIT REAL dels electrons va sempre del pol NEGATIU (-) al POSITIU (+), però per convenció internacional el SENTIT CONVENCIONAL del corrent es dibuixa del pol POSITIU (+) al NEGATIU (-).",
-            "Segons la seva estructura atòmica, els materials són: 1) Conductors (metalls amb 1–3 electrons de valència lliures: coure, plata, alumini, aigua amb sals), 2) Aïllants o Dielèctrics (electrons fortament lligats: vidre, porcellana, cautxú, aire sec, aigua pura destil·lada) i 3) Semiconductors (4 electrons de valència com el Silici i el Germani, base de l'electrònica i les plaques fotovoltaiques). En els metalls, la resistència elèctrica AUGMENTA quan puja la temperatura!"
+            "El corrent elèctric és el moviment ordenat d'electrons lliures a través d'un conductor.",
+            "No confondre Sentit REAL vs. Sentit CONVENCIONAL! El SENTIT REAL dels electrons (càrregues negatives) va sempre del pol NEGATIU (-) cap al POSITIU (+). En canvi, per convenció històrica anterior al descobriment de l'electró, el SENTIT CONVENCIONAL del corrent als esquemes es dibuixa del pol POSITIU (+) cap al NEGATIU (-).",
+            "Segons la seva estructura atòmica, els materials es divideixen en 3 grups:",
+            "• Conductors: metalls amb 1–3 electrons de valència lliures (coure, plata, alumini, aigua amb sals). En els metalls, la resistència elèctrica AUGMENTA quan puja la temperatura.",
+            "• Aïllants o Dielèctrics: electrons fortament lligats (vidre, porcellana, cautxú, aire sec, aigua pura destil·lada). • Semiconductors: 4 electrons de valència (Silici i Germani, base de l'electrònica i les plaques solars)."
           ]
         },
         {
@@ -60,7 +63,7 @@ export const tema18Electricitat = {
           metaphor:
             'Imagina una mànega de bombers o una canonada d’aigua per on circulen electrons com si fossin gotes:',
           explanation:
-            "1) VOLTATGE (V, en Volts): és la PRESSIÓ de la bomba que empeny els electrons perquè surtin a córrer. Sense pressió (0 V), els electrons no es mouen! 2) INTENSITAT (I, en Amperes): és el CABAL, quants electrons passen per un punt cada segon (l'amplada del riu elèctric: és la intensitat la que mata en una electrocució!). 3) RESISTÈNCIA (R, en Ohms Ω): són les pedres o un estrenyiment dins la mànega que frenen el pas dels electrons i transformen el frec en calor. 4) Ah vs. Wh en bateries: els Ah (capacitat) són només la mida del dipòsit sense saber a quina pressió surt; els Wh (energia real) són els litres multiplicats per la pressió (E = V × Ah)! 5) SENTIT REAL vs. CONVENCIONAL: en realitat els electrons negatius corren del pol - al +, però històricament els esquemes es dibuixen al revés (del + al -).",
+            "1) VOLTATGE (V, en Volts): és la PRESSIÓ de la bomba que empeny els electrons perquè surtin a córrer. Sense pressió (0 V), els electrons no es mouen!\n\n2) INTENSITAT (I, en Amperes): és el CABAL, quants electrons passen per un punt cada segon (l'amplada del riu elèctric: és la intensitat la que mata en una electrocució!).\n\n3) RESISTÈNCIA (R, en Ohms Ω): són les pedres o un estrenyiment dins la mànega que frenen el pas dels electrons i transformen el frec en calor.\n\n4) Ah vs. Wh en bateries: els Ah (capacitat) són només la mida del dipòsit sense saber a quina pressió surt; els Wh (energia real) són els litres multiplicats per la pressió (E = V × Ah)!\n\n5) SENTIT REAL vs. CONVENCIONAL: en realitat els electrons negatius corren del pol - al +, però històricament els esquemes es dibuixen al revés (del + al -).",
           takeaway:
             'V = pressió que empeny. I = cabal que passa (perill mortal). R = fre al pas del corrent. Energia (Wh) = Voltatge (V) × Capacitat (Ah).'
         },
@@ -86,7 +89,8 @@ export const tema18Electricitat = {
           heading: '4.1–4.3. Llei d’Ohm, Efecte Joule i per què es transporta l’energia a 400 kV',
           paragraphs: [
             "La Llei d'Ohm (Georg Simon Ohm) estableix que la intensitat de corrent (I) que circula per un circuit és directament proporcional a la tensió aplicada (V) i inversament proporcional a la resistència del conductor (R).",
-            "L'Efecte Joule explica per què s'escalfen els cables i es produeixen incendis elèctrics per sobrecàrrega: el pas dels electrons xocant contra els àtoms del conductor dissipa energia en forma de CALOR proporcionalment a la resistència (R), al temps (t) i al QUADRAT de la intensitat (I²). Per això les línies d'alta tensió transporten l'electricitat a 220 kV o 400 kV: en elevar moltíssim el voltatge V (per a una mateixa potència P = V · I), es redueix dràsticament la intensitat I i es minimitzen les pèrdues de calor per efecte Joule (P_perduda = I² · R)!"
+            "L'Efecte Joule (Q = I² · R · t) explica per què s'escalfen els cables i es produeixen incendis elèctrics per sobrecàrrega: el pas dels electrons xocant contra els àtoms del conductor dissipa calor proporcionalment a la resistència (R), al temps (t) i al QUADRAT de la intensitat (I²).",
+            "Per això les línies d'alta tensió transporten l'electricitat a 220 kV o 400 kV: en elevar moltíssim el voltatge V (per a una mateixa potència P = V · I), es redueix dràsticament la intensitat I i es minimitzen les pèrdues de calor per efecte Joule (P_perduda = I² · R)!"
           ]
         },
         {
@@ -117,7 +121,7 @@ export const tema18Electricitat = {
           metaphor:
             'Pensa en un passadís estret on una multitud empeny una porta quan algú treu de cop totes les barreres:',
           explanation:
-            "1) CURTCIRCUIT (R → 0): si dos cables pelats es toquen sense passar per cap estufa o bombeta, desapareix el fre (R baixa gairebé a zero). A la Llei d'Ohm (I = V / R), si divideixes 230 V entre gairebé zero, la intensitat I es dispara a milers d'Amperes en un segon! 2) EFECTE JOULE (Q = I² · R · t): els electrons xoquen i escalfen el coure, però amb el QUADRAT de la intensitat! Si passa el triple de corrent (×3), la calor al cable no es triplica, es multiplica per 9 (3² = 9) i fon el plàstic fins a fer foc! 3) ALTA TENSIO (400 kV): per portar energia lluny sense malgastar-la escalfant cables, les línies pugen molt la pressió (400.000 V); com que P = V · I, pujant molt V pots baixar moltíssim I i reduir gairebé a zero les pèrdues de calor I² · R!",
+            "1) CURTCIRCUIT (R → 0): si dos cables pelats es toquen sense passar per cap estufa o bombeta, desapareix el fre (R baixa gairebé a zero). A la Llei d'Ohm (I = V / R), si divideixes 230 V entre gairebé zero, la intensitat I es dispara a milers d'Amperes en un segon!\n\n2) EFECTE JOULE (Q = I² · R · t): els electrons xoquen i escalfen el coure, però amb el QUADRAT de la intensitat! Si passa el triple de corrent (×3), la calor al cable no es triplica, es multiplica per 9 (3² = 9) i fon el plàstic fins a fer foc!\n\n3) ALTA TENSIÓ (400 kV): per portar energia lluny sense malgastar-la escalfant cables, les línies pugen molt la pressió (400.000 V); com que P = V · I, pujant molt V pots baixar moltíssim I i reduir gairebé a zero les pèrdues de calor I² · R!",
           takeaway:
             'Curtcircuit = R cau a 0 ⇒ I es dispara ⇒ calor I²·R crema la instal·lació. Alta tensió (400 kV) = pujar V per baixar I i no perdre calor.'
         }
@@ -134,7 +138,8 @@ export const tema18Electricitat = {
           heading: '5.2. Connexió en Sèrie vs. en Paral·lel i Aplicació als EPI Dielèctrics',
           paragraphs: [
             "En un circuit en SÈRIE els receptors es connecten un darrere l'altre formant un únic camí: per tots hi passa exactament la MATEIXA intensitat (I), la tensió total es reparteix (V_tot = V₁ + V₂) i les resistències se SUMEN (R_total = R₁ + R₂ + R₃). Si un element s'obre o es fon, s'interromp tot el circuit.",
-            "Aplicació vital per al bomber (Cap. 5.2 del manual): Quan un bomber utilitza EPIs i eines dielèctriques (guants aïllants + botes dielèctriques + banqueta o estora aïllant + perxa), està col·locant totes aquestes enormes resistències en SÈRIE amb la resistència del seu propi cos! Com que en sèrie les resistències se sumen (R_total = R_guants + R_cos + R_botes + R_banqueta), la resistència total es dispara a milions d'Ohms i, segons la Llei d'Ohm (I = V / R_total), la intensitat que podria travessar el cos es redueix a gairebé zero!",
+            "Aplicació vital per al bomber (Cap. 5.2): quan un bomber utilitza EPIs i eines dielèctriques (guants aïllants + botes dielèctriques + banqueta o estora aïllant + perxa), col·loca totes aquestes enormes resistències en SÈRIE amb la resistència del seu propi cos!",
+            "Com que en sèrie les resistències se sumen (R_total = R_guants + R_cos + R_botes + R_banqueta), la resistència total es dispara a milions d'Ohms i, per la Llei d'Ohm (I = V / R_total), la intensitat que travessaria el cos cau a gairebé zero.",
             "En un circuit en PARAL·LEL tots els receptors es connecten als mateixos dos conductors (com tots els endolls i llums d'un habitatge a 230 V): tots reben la MATEIXA tensió (V), la intensitat es divideix per cada branca (I_tot = I₁ + I₂) i la resistència total equivalent és MÉS PETITA que la menor de les resistències!"
           ]
         },
@@ -172,7 +177,7 @@ export const tema18Electricitat = {
           metaphor:
             'Imagina una carretera d’un sol carril amb 3 peatges seguits (Sèrie) vs. una autopista amb 3 carrils paral·lels oberts alhora (Paral·lel):',
           explanation:
-            "1) SÈRIE (peatges un darrere l'altre): tots els electrons passen obligatòriament per totes les barreres (mateixa I), i les resistències se SUMEN (R_tot = R₁ + R₂). Quan et poses guants + botes + banqueta dielèctrics, els poses en SÈRIE amb el teu cos: sumes milions d'Ohms al camí i el corrent no pot travessar-te! 2) PARAL·LEL (endollar coses a un lladre): cada aparell que endolles a 230 V obre un carril nou en paral·lel. Com que hi ha més camins per passar, la resistència total BAIXA i el cabal total (I_tot = I₁ + I₂ + I₃) PUJA per l'únic cable de la paret... fins que el cable es sobreescalfa i crema! 3) TRAMPA HIDRÀULICA: perquè passi l'aigua has d'OBRIR la vàlvula; però perquè passin els electrons has de TANCAR el pont llevadís (circuit TANCAT = passa corrent; circuit OBERT = no passa!).",
+            "1) SÈRIE (peatges un darrere l'altre): tots els electrons passen obligatòriament per totes les barreres (mateixa I), i les resistències se SUMEN (R_tot = R₁ + R₂). Quan et poses guants + botes + banqueta dielèctrics, els poses en SÈRIE amb el teu cos: sumes milions d'Ohms al camí i el corrent no pot travessar-te!\n\n2) PARAL·LEL (endollar coses a un lladre): cada aparell que endolles a 230 V obre un carril nou en paral·lel. Com que hi ha més camins per passar, la resistència total BAIXA i el cabal total (I_tot = I₁ + I₂ + I₃) PUJA per l'únic cable de la paret... fins que el cable es sobreescalfa i crema!\n\n3) TRAMPA HIDRÀULICA: perquè passi l'aigua has d'OBRIR la vàlvula; però perquè passin els electrons has de TANCAR el pont llevadís (circuit TANCAT = passa corrent; circuit OBERT = no passa!).",
           takeaway:
             'Sèrie = 1 sol camí, R se suma (EPIs dielèctrics). Paral·lel = múltiples camins, R baixa i puja I_tot (endolls). Vàlvula OBERTA = Circuit TANCAT!'
         }
@@ -188,9 +193,9 @@ export const tema18Electricitat = {
           type: 'text',
           heading: '7.1–7.4. DC vs. AC (50 Hz), Monofàsic (230 V) vs. Trifàsic (400 V) i Càrregues R-L-C',
           paragraphs: [
-            "En Corrent Continu (DC: bateries, plaques solars, TRAM/Metro/FGC/ADIF convencional) els electrons circulen sempre en el mateix sentit i amb tensió constant. En Corrent Altern (AC: xarxa elèctrica i AVE 25 kV) la tensió oscil·la seguint una ona sinusoïdal. A Europa la freqüència és de 50 Hz: fa 50 cicles complets cada segon (cada cicle dura 1/50 = 0,02 s = 20 mil·lisegons) i el corrent canvia de sentit 100 vegades per segon (2 vegades per cicle)!",
-            "La xarxa de Baixa Tensió es distribueix amb 4 conductors (3 Fases L₁, L₂, L₃ o R, S, T desfasades 120° entre si + 1 Neutre N): 1) Subministrament MONOFÀSIC (1 Fase + Neutre): Tensió eficaç (RMS) = 230 V (amb un valor de pic màxim de V_pic = 230 × √2 ≈ 325 V). 2) Subministrament TRIFÀSIC (3 Fases + Neutre): Tensió de línia entre dues fases = 400 V eficaços (230 × √3 ≈ 400 V, amb un valor de pic de 566 V!).",
-            "En AC existeixen 3 tipus de receptors: 1) Càrregues RESISTIVES pures (estufes, bombetes incandescents: V i I van en fase, sense desfasament; símil mecànic = barra rígida), 2) Càrregues INDUCTIVES (bobines de motors i transformadors: creen camps magnètics i fan que la intensitat I vagi ENDARRERIDA respecte a la tensió V; símil = molla) i 3) Càrregues CAPACITIVES (condensadors: creen camps elèctrics i fan que la intensitat I vagi AVANÇADA respecte a V; s'usen en indústries per compensar l'efecte dels motors!)."
+            "• Corrent Continu (DC): els electrons circulen sempre en el mateix sentit i amb tensió constant (bateries, plaques solars, TRAM/Metro/FGC/ADIF convencional).\n• Corrent Altern (AC): la tensió oscil·la seguint una ona sinusoïdal (xarxa elèctrica i AVE 25 kV). A Europa la freqüència és de 50 Hz: fa 50 cicles complets cada segon (cada cicle dura 1/50 = 20 ms) i el corrent canvia de sentit 100 vegades per segon (2 cops per cicle)!",
+            "La xarxa de Baixa Tensió porta 4 conductors (3 Fases L₁, L₂, L₃ o R, S, T desfasades 120° + 1 Neutre N):\n• Subministrament MONOFÀSIC (1 Fase + Neutre): 230 V eficaços RMS (valor de pic = 230 × √2 ≈ 325 V).\n• Subministrament TRIFÀSIC (3 Fases + Neutre): tensió de línia entre dues fases = 400 V eficaços (230 × √3 ≈ 400 V; valor de pic ≈ 566 V).",
+            "En AC existeixen 3 tipus de receptors:\n• Càrregues RESISTIVES pures (estufes, incandescents): V i I van en fase (sense desfasament; símil = barra rígida).\n• Càrregues INDUCTIVES (motors, bobines, transformadors): creen camps magnètics i la intensitat I va ENDARRERIDA respecte a V (símil = molla).\n• Càrregues CAPACITIVES (condensadors): la intensitat I va AVANÇADA respecte a V (s'usen per compensar l'efecte dels motors)."
           ]
         },
         {
@@ -199,7 +204,7 @@ export const tema18Electricitat = {
           metaphor:
             'El Corrent Continu (DC) és un riu que baixa sempre recte en un sol sentit; el Corrent Altern (AC) és una serra manual que va endavant i enrere 50 cops cada segon!',
           explanation:
-            "1) DC vs. AC (50 Hz): en DC (piles, bateries de cotxes elèctrics, plaques solars) els electrons van sempre en línia recta del - al +. En AC (els endolls de casa a 50 Hz), els electrons vibren amunt i avall 50 vegades cada segon (cada cicle va i torna, de manera que canvia de sentit 100 cops per segon!). Tot i anar endavant i enrere, igual que una serra talla la fusta anant i tornant, el corrent altern entrega energia constantment! 2) MONOFÀSIC (230 V) vs. TRIFÀSIC (400 V): el monofàsic és pedalar amb 1 sola cama (1 cable de Fase amb força + 1 Neutre de tornada a 230 V). El trifàsic és un motor amb 3 pistons sincronitzats a 120° que empenyen sense parar (3 Fases L₁, L₂, L₃ + 1 Neutre). Entre qualsevol Fase i el Neutre tens 230 V; però si toques dues Fases diferents alhora (que estan desfasades!), la diferència de pressió entre elles puja a 400 V (230 × √3)!",
+            "1) DC vs. AC (50 Hz): en DC (piles, bateries de cotxes elèctrics, plaques solars) els electrons van sempre en línia recta del - al +. En AC (els endolls de casa a 50 Hz), els electrons vibren amunt i avall 50 vegades cada segon (cada cicle va i torna, de manera que canvia de sentit 100 cops per segon!). Tot i anar endavant i enrere, igual que una serra talla la fusta anant i tornant, el corrent altern entrega energia constantment!\n\n2) MONOFÀSIC (230 V) vs. TRIFÀSIC (400 V): el monofàsic és pedalar amb 1 sola cama (1 cable de Fase amb força + 1 Neutre de tornada a 230 V). El trifàsic és un motor amb 3 pistons sincronitzats a 120° que empenyen sense parar (3 Fases L₁, L₂, L₃ + 1 Neutre). Entre qualsevol Fase i el Neutre tens 230 V; però si toques dues Fases diferents alhora (que estan desfasades!), la diferència de pressió entre elles puja a 400 V (230 × √3)!",
           takeaway:
             'DC = sempre un sentit (bateries, plaques). AC 50 Hz = canvia de sentit 100 cops/s. Fase + Neutre = 230 V | Fase + Fase = 400 V (valor pic = RMS × √2 ≈ 325 V i 566 V).'
         },
@@ -240,9 +245,11 @@ export const tema18Electricitat = {
           type: 'text',
           heading: '7.5. Els 4 Convertidors d’Energia i 8. Principis d’Electromagnetisme',
           paragraphs: [
-            "Per adaptar el corrent entre xarxa, bateries i motors s'utilitzen 4 convertidors: 1) RECTIFICADOR (converteix AC → DC mitjançant un pont de díodes, com el carregador del mòbil o dels portàtils d'emissora al parc), 2) INVERSOR o ONDULADOR (converteix DC → AC, com l'inversor d'una instal·lació de plaques solars fotovoltaiques o d'un vehicle elèctric), 3) Convertidor DC/DC (eleva step-up o redueix step-down la tensió en corrent continu) i 4) Convertidor AC/AC (variadors de freqüència per regular les rpm dels motors).",
-            "L'Electromagnetisme es fonamenta en dues lleis simètriques: 1) Tot corrent elèctric que circula per un conductor crea un CAMP MAGNÈTIC al seu voltant (Oersted; principi de les pinces amperimètriques i dels electroimants dels magnetotèrmics) i 2) Tot camp magnètic VARIABLE que travessa una bobina indueix en ella una tensió i un corrent elèctric (Llei de Faraday; principi dels generadors/alternadors i dels transformadors).",
-            "Pregunta clau d'examen sobre TRANSFORMADORS: Un transformador consta de dues bobines (primari i secundari) enrotllades sobre un nucli de ferro sense contacte elèctric directe entre elles. Només funciona en CORRENT ALTERN (AC) perquè necessita un camp magnètic que variï contínuament per induir tensió al secundari (si li connectes corrent continu DC constant, no transforma res i es crema la bobina!)."
+            "Per adaptar el corrent entre xarxa, bateries i motors s'utilitzen 4 convertidors:",
+            "• 1) RECTIFICADOR (AC → DC): mitjançant díodes (carregador de mòbil o portàtils d'emissora). • 2) INVERSOR o ONDULADOR (DC → AC): plaques solars fotovoltaiques o vehicle elèctric.",
+            "• 3) Convertidor DC/DC: eleva (step-up) o redueix (step-down) la tensió en corrent continu. • 4) Convertidor AC/AC: variadors de freqüència per regular les rpm dels motors.",
+            "L'Electromagnetisme es fonamenta en dues lleis simètriques:\n• 1) Llei d'Oersted: tot corrent elèctric que circula per un conductor crea un CAMP MAGNÈTIC al seu voltant (principi de les pinces amperimètriques i dels electroimants dels magnetotèrmics).\n• 2) Llei de Faraday: tot camp magnètic VARIABLE que travessa una bobina indueix en ella tensió i corrent elèctric (principi dels generadors/alternadors i transformadors).",
+            "Pregunta clau sobre TRANSFORMADORS: un transformador consta de dues bobines (primari i secundari) sobre un nucli de ferro sense contacte elèctric directe. Només funciona en CORRENT ALTERN (AC) perquè necessita un camp magnètic variable; en DC constant no indueix res i crema la bobina!"
           ]
         },
         {
@@ -264,7 +271,7 @@ export const tema18Electricitat = {
           metaphor:
             'Pensa en dos imants un al costat de l’altre sense tocar-se: si deixes un imant quiet, l’altre no es mou; només si el mous sense parar, l’altre balla!',
           explanation:
-            "1) EL SECRET DEL TRANSFORMADOR: dins d'un transformador les dues bobines de coure NO es toquen mai! L'energia salta de l'una a l'altra a través d'un camp magnètic que ha de CANVIAR sense parar (inducció de Faraday). Com que el Corrent Altern (AC) puja i baixa 100 cops cada segon, fa ballar el camp magnètic i indueix electricitat a l'altra bobina. Si hi connectessis Corrent Continu (DC), el camp magnètic quedaria congelat i quiet: no passaria res al secundari i la bobina es cremaria! 2) RECTIFICADOR vs. INVERSOR: un RECTIFICADOR (AC → DC) 'rectifica' una ona sinusoïdal corbada per deixar-la recta i plana (carregador de mòbil/portàtils); un INVERSOR (DC → AC) fa l'inrevés, agafa energia plana de bateries o plaques solars i la converteix en ona alterna de 230 V!",
+            "1) EL SECRET DEL TRANSFORMADOR: dins d'un transformador les dues bobines de coure NO es toquen mai! L'energia salta de l'una a l'altra a través d'un camp magnètic que ha de CANVIAR sense parar (inducció de Faraday). Com que el Corrent Altern (AC) puja i baixa 100 cops cada segon, fa ballar el camp magnètic i indueix electricitat a l'altra bobina. Si hi connectessis Corrent Continu (DC), el camp magnètic quedaria congelat i quiet: no passaria res al secundari i la bobina es cremaria!\n\n2) RECTIFICADOR vs. INVERSOR: un RECTIFICADOR (AC → DC) 'rectifica' una ona sinusoïdal corbada per deixar-la recta i plana (carregador de mòbil/portàtils); un INVERSOR (DC → AC) fa l'inrevés, agafa energia plana de bateries o plaques solars i la converteix en ona alterna de 230 V!",
           takeaway:
             'Transformador = NOMÉS AC (necessita camp magnètic variable). Rectificador = posa recte l’altern (AC → DC). Inversor = fa l’inrevés (DC → AC).'
         },
@@ -289,9 +296,11 @@ export const tema18Electricitat = {
           type: 'text',
           heading: '9.1–9.2. Efectes Fisiològics del Corrent, Tensions Segures i Tensió de Pas',
           paragraphs: [
-            "La gravetat d'una electrocució depèn principalment de la INTENSITAT (I, en mA) que travessa el cos i del temps d'exposició. En Corrent Altern (AC a 50 Hz), a partir d'uns 10 mA es produeix la tetanització muscular (la mà queda enganxada al cable sense poder-se deixar anar), i el llindar crític mortal de FIBRIL·LACIÓ VENTRICULAR del cor se situa en 30 mA (0,03 A, que és exactament el valor pel qual salten els interruptors diferencials domèstics!). En Corrent Continu (DC) és més fàcil deixar anar el conductor i no es produeix fibril·lació ventricular a baixos mA, sinó electròlisi de la sang i cremades internes profundes.",
+            "La gravetat d'una electrocució depèn principalment de la INTENSITAT (I, en mA) que travessa el cos i del temps d'exposició. En Corrent Altern (AC a 50 Hz): a ~0,5 mA percepció, a ~10 mA tetanització muscular (la mà queda enganxada) i a 30 mA (0,03 A) el llindar mortal de FIBRIL·LACIÓ VENTRICULAR (valor dels diferencials domèstics!).",
+            "En Corrent Continu (DC) és més fàcil deixar anar el conductor i no es produeix fibril·lació ventricular a baixos mA, però sí electròlisi de la sang i cremades internes profundes.",
             "La resistència del cos humà baixa dràsticament si la pell està mullada o suada. Per això el Reglament Electrotècnic estableix les TENSIONS DE SEGURETAT màximes: en ambient SEC són de 50 V en AC i 120 V en DC; en ambient HUMIT o mullat es redueixen a la meitat exacta: 25 V en AC i 60 V en DC.",
-            "Quan un cable d'alta o mitja tensió cau a terra, es crea un embut o con de potencials concèntrics al voltant del punt de contacte. Si camines amb gambades normals, un peu queda a un anell de més voltatge que l'altre i aquesta diferència de potencial (TENSIÓ DE PAS) fa que el corrent et pugi per una cama i et baixi per l'altra. La maniobra d'autoprotecció obligatòria és allunyar-se fent PASSOS MOLT PETITS arrossegant els peus ben junts i tocant-se entre si (o saltant amb tots dos peus junts sense caure mai a terra!)."
+            "Tensió de Pas (cable a terra): quan un cable d'alta o mitja tensió cau a terra, es crea un embut de potencials concèntrics al voltant del punt de contacte. Si camines amb gambades normals, la diferència de voltatge entre tots dos peus fa circular corrent per les cames.",
+            "Maniobra obligatòria d'autoprotecció: allunyar-se fent PASSOS MOLT PETITS arrossegant els peus ben junts i tocant-se entre si (o saltant amb tots dos peus junts sense caure mai a terra!)."
           ]
         },
         {
@@ -321,7 +330,7 @@ export const tema18Electricitat = {
           metaphor:
             'Al quadre elèctric de casa tens dos vigilants amb feines totalment diferents: un salva PERSONES (Diferencial) i l’altre salva CABLES (Magnetotèrmic):',
           explanation:
-            "1) INTERRUPTOR DIFERENCIAL (ID de 30 mA — Salva PERSONES): és un comptador que vigila que tots els electrons que entren per la Fase tornin pel Neutre. Si entren 10,00 A i només en tornen 9,97 A (falten 30 mA = 0,03 A, just el llindar de fibril·lació mortal del cor humà!), vol dir que s'escapen cap a terra electrocutant algú i talla la llum a l'instant! 2) INTERRUPTOR MAGNETOTÈRMIC (Salva CABLES): té dues alarmes internes: la TÈRMICA (una làmina bimetàl·lica que s'escalfa i es doblega a poc a poc si endolles massa aparells = sobrecàrrega) i la MAGNÈTICA (un electroimant que dispara en mil·lisegons si passa un pic brutal de cop = curtcircuit). 3) TENSIÓ DE PAS (peus junts!): un cable d'alta tensió a terra crea anells de voltatge al sòl com les onades d'una pedra en un llac. Si fas una passa llarga, un peu trepitja 5.000 V i l'altre 1.000 V i el corrent et puja per una cama i baixa per l'altra! Si avances arrossegant els PEUS BEN JUNTS amb passets minúsculs, tots dos peus trepitgen el mateix voltatge i el corrent no té motiu per pujar!",
+            "1) INTERRUPTOR DIFERENCIAL (ID de 30 mA — Salva PERSONES): és un comptador que vigila que tots els electrons que entren per la Fase tornin pel Neutre. Si entren 10,00 A i només en tornen 9,97 A (falten 30 mA = 0,03 A, just el llindar de fibril·lació mortal del cor humà!), vol dir que s'escapen cap a terra electrocutant algú i talla la llum a l'instant!\n\n2) INTERRUPTOR MAGNETOTÈRMIC (Salva CABLES): té dues alarmes internes: la TÈRMICA (una làmina bimetàl·lica que s'escalfa i es doblega a poc a poc si endolles massa aparells = sobrecàrrega) i la MAGNÈTICA (un electroimant que dispara en mil·lisegons si passa un pic brutal de cop = curtcircuit).\n\n3) TENSIÓ DE PAS (peus junts!): un cable d'alta tensió a terra crea anells de voltatge al sòl com les onades d'una pedra en un llac. Si fas una passa llarga, un peu trepitja 5.000 V i l'altre 1.000 V i el corrent et puja per una cama i baixa per l'altra! Si avances arrossegant els PEUS BEN JUNTS amb passets minúsculs, tots dos peus trepitgen el mateix voltatge i el corrent no té motiu per pujar!",
           takeaway:
             'Diferencial (30 mA) = fuita a terra (protegeix vides contra fibril·lació). Magnetotèrmic = sobrecàrrega (tèrmic) i curtcircuit (magnètic, protegeix cables). Cable a terra = passos minúsculs amb peus junts!'
         }
@@ -560,6 +569,32 @@ export const tema18Electricitat = {
       ],
       correctIndex: 1,
       explanation: 'Per la llei de Faraday-Lenz, un transformador necessita un flux magnètic variable (AC) per induir força electromotriu al secundari. En DC constant (dΦ/dt = 0) no transfereix energia al secundari i el corrent elevat per la baixa resistència del coure pot cremar el bobinat.'
+    },
+    {
+      id: 't11-q16',
+      difficulty: 'Fàcil',
+      question: 'Quina diferència hi ha entre el sentit REAL dels electrons i el sentit CONVENCIONAL del corrent elèctric en un circuit?',
+      options: [
+        'En el sentit real, els electrons circulen del pol negatiu (-) al pol positiu (+); en el sentit convencional dels esquemes, es dibuixa del pol positiu (+) al pol negatiu (-)',
+        'En el sentit real els electrons van del pol positiu (+) al negatiu (-)',
+        'El sentit convencional només s’utilitza en corrent altern i mai en corrent continu',
+        'Tots dos van sempre del pol negatiu (-) al pol positiu (+)'
+      ],
+      correctIndex: 0,
+      explanation: 'Històricament es va convenir que el corrent anava de (+) a (-). Quan es va descobrir l’electró (càrrega negativa), es va veure que el moviment físic real dels electrons va del pol negatiu (-) al positiu (+).'
+    },
+    {
+      id: 't11-q17',
+      difficulty: 'Mitjà',
+      question: 'Segons la regla mnemotècnica "CIVIL" per a càrregues en corrent altern (AC), com es comporta la intensitat (I) respecte a la tensió (V) en una càrrega inductiva (bobina/motor) i en una capacitiva (condensador)?',
+      options: [
+        'En una càrrega capacitiva (C), la intensitat I va AVANÇADA respecte a V; en una càrrega inductiva (L), la intensitat I va ENDARRERIDA respecte a V',
+        'En una càrrega inductiva (L), la intensitat I va avançada respecte a V',
+        'En una càrrega resistiva pura (R), la intensitat va endarrerida 90° respecte a V',
+        'En càrregues capacitives no hi ha cap desfasament entre V i I'
+      ],
+      correctIndex: 0,
+      explanation: 'CIVIL: en un Condensador (C), I va davant de V (avançada); en una bobina inductiva (L), V va davant i I va endarrerida. En càrregues resistives pures (R), V i I van en fase.'
     }
   ]
 };

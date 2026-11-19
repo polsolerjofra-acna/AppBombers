@@ -9,7 +9,7 @@ export const tema12RiscosNrbq = {
     title: "Radar d'Examen — Tema 27 (MAN.RRTT.000 v.1): Riscos Tecnològics i NRBQ",
     frequency: 'Molt Alta (5-7 preguntes fixes sobre GRIT, Kemler ADR, Font-Flux-Diana, 12 Maniobres i ABD)',
     summary:
-      "Manual de 5 capítols que defineix l'operativa davant d'incidents Nuclears, Radiològics, Biològics i Químics: 1. Introducció (GRIT 2020/2021, 3 reactors, 234 instal·lacions RADCAT, 9M tones i 164 establiments Seveso), 2. Coneixements bàsics (SGA/CLP, panell taronja ADR i codis Kemler, cisternes, NFPA 704, detectors Raman/FTIR), 3. Valoració (Anàlisi Font→Flux→Diana vs. Intervenció Diana→Flux→Font), 4. Maniobres (les 12 maniobres ofensives, taponament <1,5 bar, lona, ATEX i despressurització fase gas) i 5. Seguretat (Zonificació, ABD dins Zona Calenta abans d'entrar, hipoclorit 0,5% i vestits EN 943). Inclou 5 pàgines de desenvolupament + 2 pàgines finals de Resum Executiu.",
+      "Manual de 5 capítols sobre incidents NRBQ: grup GRIT (2020/2021) i riscos a Catalunya (3 reactors, 234 instal·lacions RADCAT, 164 Seveso), identificació ADR/Kemler/NFPA/Raman-FTIR, ordre d'anàlisi (Font→Flux→Diana) vs. intervenció (Diana→Flux→Font), les 12 maniobres ofensives (<1,5 bar, fase gas) i seguretat (ABD dins Zona Calenta, hipoclorit 0,5%, EN 943).",
     hotTopics: [
       'Cap. 1: Creació del GRIT (2020 i operatiu l’1 de maig de 2021), dades de Catalunya (3 reactors nuclears [Ascó I, Ascó II, Vandellòs II], 234 instal·lacions radioactives [RADCAT], 9 milions de tones MMPP/any i 164 establiments Seveso [PLASEQCAT/TRANSCAT]).',
       'Cap. 2: Panell taronja ADR (40×30 cm: dalt Codi Kemler, baix Codi ONU de 4 xifres), codis Kemler especials (X, 22, 323, 333, X423, 44, 539, 606, 90, 99), secció de cisternes (el·líptica = líquids sense pressió vs. circular = gasos/líquids a pressió), diamant NFPA 704 (Blau-Vermell-Groc-Blanc) i detectors (explosímetre %LII, PID, Raman i FTIR).',
@@ -31,6 +31,14 @@ export const tema12RiscosNrbq = {
       subtitle: '3 reactors nuclears, 234 instal·lacions radioactives, 9M tones MMPP, 164 Seveso i efecte dòmino.',
       blocks: [
         {
+          type: 'text',
+          heading: '1.3–1.4. El Grup GRIT i les 4 Amenaces NRBQ a Catalunya',
+          paragraphs: [
+            "El Grup de Riscos Tecnològics (GRIT) es va crear el 2020 i va entrar en servei l'1 de maig de 2021 per donar resposta avançada en detecció química (Raman/FTIR), taponaments i descontaminació.",
+            "A Catalunya, el risc químic (9 M tones MMPP/any i 164 establiments Seveso) és el més freqüent, seguit del radiològic (234 instal·lacions RADCAT) i el nuclear (3 reactors actius: Ascó I, Ascó II i Vandellòs II)."
+          ]
+        },
+        {
           type: 'table',
           title: '1.3–1.8. Radiografia Oficial del Risc NRBQ a Catalunya i el Grup GRIT (MAN.RRTT.000 Cap. 1)',
           subtitle: 'Xifres literals del primer capítol del manual que cauen als exàmens',
@@ -38,7 +46,7 @@ export const tema12RiscosNrbq = {
           rows: [
             ['1.3. GRIT (Grup de Riscos Tecnològics)', 'Creat l’any 2020 i operatiu l’1 de maig de 2021', 'Unitat especialitzada de Bombers de la Generalitat en intervenció avançada NRBQ, assessorament químic, detecció Raman/FTIR, taponaments complexos i descontaminació.'],
             ['1.4.1. Risc Nuclear (N)', '3 reactors nuclears actius a Catalunya (Ascó I, Ascó II i Vandellòs II)', 'Reaccions de fissió nuclear. Pla estatal PENTA (Pla d’Emergència Nuclear de Tarragona). Radiacions ionitzants d’alta energia.'],
-            ['1.4.2. Risc Radiològic (R)', '234 instal·lacions radioactives autoritzades a Catalunya', 'Hospitals (radioteràpia/medicina nuclear), indústries (gammagrafia), centres de recerca i transport d’isòtops. Pla Especial RADCAT.Tipus de radiació: Alfa (α, s’atura amb un full de paper/pell però molt perillosa si s’inhalen/ingereixen partícules), Beta (β, s’atura amb làmina d’alumini/metacrilat) i Gamma / Raigs X (γ, electromagnètica molt penetrant, exigeix blindatge de plom/formigó).'],
+            ['1.4.2. Risc Radiològic (R)', '234 instal·lacions radioactives autoritzades a Catalunya', 'Hospitals (radioteràpia), indústria (gammagrafia) i recerca (Pla RADCAT). Radiació Alfa (α: paper/pell, molt perillosa inhalada), Beta (β: alumini/metacrilat) i Gamma (γ: blindatge plom/formigó).'],
             ['1.4.3. Risc Biològic (B)', '4 Grups de Risc (Grup 1 lleu a Grup 4 letal sense vacuna)', 'Bacteris (carbunc/àntrax), virus (Ebola), fongs, paràsits o toxines (ricina, botulisme). Caracteritzat pel període d’incubació i contagi.'],
             ['1.4.4. Risc Químic (Q)', '• 9 milions de tones de MMPP transportades a l’any per Catalunya.\n• 164 establiments industrials afectats per la Directiva Seveso.', 'És el risc tecnològic més freqüent per als bombers. Plans Especials: PLASEQCAT / PLASEQTA (indústria fixa) i TRANSCAT (transport per carretera i ferrocarril).'],
             ['1.8. Efecte Dòmino', 'Concatenació d’accidents on un primer sinistre (incendi/explosió) n’activa un segon en un dipòsit o planta veïna.', 'Multiplica la gravetat de l’emergència (ex: una BLEVE o dardo de foc que impacta sobre una cisterna contigua).']
@@ -53,6 +61,14 @@ export const tema12RiscosNrbq = {
       title: '2. Identificació de Matèries Perilloses: SGA/CLP, Panell ADR (Kemler/ONU), Cisternes i Detectors',
       subtitle: 'Les 9 classes ADR, codis Kemler especials (X, 22, 333, 539, 606), diamant NFPA 704 i Raman/FTIR.',
       blocks: [
+        {
+          type: 'text',
+          heading: '2.2. Identificació Visual: Panell Taronja ADR i Secció de Cisternes',
+          paragraphs: [
+            "El panell taronja ADR (40 × 30 cm) mostra a dalt el Codi Kemler (perill; una 'X' davant prohibeix tirar aigua) i a baix el Codi ONU de 4 xifres que identifica la substància.",
+            "Per la secció transversal distingim ràpidament la càrrega: el·líptica o 'caixa de maleta' = líquids a pressió atmosfèrica (hidrocarburs); circular perfecta = gasos o líquids a pressió."
+          ]
+        },
         {
           type: 'table',
           title: '2.2.2. Les 9 Classes ADR i lectura del Panell Taronja (40 × 30 cm: Codi Kemler / Codi ONU)',
@@ -88,12 +104,21 @@ export const tema12RiscosNrbq = {
       subtitle: 'Inversió d’ordre entre Anàlisi i Intervenció, taponament (<1,5 bar), lona i despressurització en fase gas.',
       blocks: [
         {
+          type: 'text',
+          heading: '⚠️ No confondre! Ordre d’Anàlisi (Font → Flux → Diana) vs. Ordre d’Intervenció (Diana → Flux → Font)',
+          paragraphs: [
+            "• ELEMENTS: FONT = el recipient o canonada amb fuita; FLUX = l'agent perillós que s'escapa (núvol o vessament); DIANA = els receptors vulnerables (persones, bombers, medi ambient).",
+            "• ORDRE D'ANÀLISI (entendre què passa): S'estudia de l'origen al receptor → 1r FONT → 2n FLUX → 3r DIANA.",
+            "• ORDRE D'INTERVENCIÓ (què fem primer): És exactament A L'INVERS → 1r DIANA (salvar/confinar persones) → 2n FLUX (abatre núvol / fer dics) → 3r FONT (taponar o tancar vàlvula)."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '3.2. Esquema Conceptual Font-Flux-Diana: Ordre d’Anàlisi vs. Ordre d’Intervenció (PARANY!)',
+          title: '3.2. Regla Mnemotècnica Font-Flux-Diana (Anàlisi vs. Intervenció)',
           acronym: 'ANÀLISI: 1r Font → 2n Flux → 3r Diana   |   INTERVENCIÓ (ACCIÓ): 1r DIANA → 2n FLUX → 3r FONT!',
           trick:
-            "Aquesta és una de les preguntes preferides del tribunal sobre MAN.RRTT.000:\n• DEFINICIONS:\n  - FONT = El continent o recipient que pateix l'accident (la cisterna, el bidó o la canonada trencada).\n  - FLUX = L'agent perillós que s'escapa i es propaga pel medi (el núvol tòxic a l'aire o el toll líquid que corre cap al riu).\n  - DIANA = Els receptors vulnerables exposats al flux (les persones, la població, els bombers o el medi ambient).\n\n• ORDRE D'ANÀLISI (Com entenem què està passant): Seguim el camí físic del tòxic: 1r FONT → 2n FLUX → 3r DIANA.\n• ORDRE D'INTERVENCIÓ / PRIORITAT D'ACCIÓ (Què fem primer quan arribem): Exactament A L'INVERS!\n  1r) Actuem sobre la DIANA (rescatar víctimes, confinar o evacuar la població, protegir els bombers).\n  2n) Actuem sobre el FLUX (abatre el núvol de gas amb cortina d'aigua, fer dics de terra per aturar el líquid, tapar embornals).\n  3r) Actuem sobre la FONT (taponar l'esquerda de la cisterna, tancar la vàlvula o transvasar el dipòsit).",
+            "• Anàlisi = segueix el camí físic del tòxic (Font → Flux → Diana).\n• Acció operativa = comença sempre per les persones (1r Diana → 2n Flux → 3r Font).",
           example: 'Si hi ha una fuita de clor: 1r Salvem/confinem les persones (DIANA) → 2n Abatem el núvol de clor amb cortina d’aigua (FLUX) → 3r Taponem la vàlvula de la bombona (FONT).'
         },
         {
@@ -134,6 +159,14 @@ export const tema12RiscosNrbq = {
             ['5.5. Normativa de Vestits Químics', '• UNE-EN 465 / EN 14605: Tipus 3 (raig líquid) i Tipus 4 (esprai líquid).\n• UNE-EN 943-1 i EN 943-2 (ET): Vestits Tipus 1 hermètics a gasos (1a = ERA dins del vestit; 1b = ERA fora del vestit; 1c = línia d’aire; ET = Equips d’Emergència).', 'Amb un vestit encapsulat Tipus 1a (EN 943-2 ET), el temps real de treball efectiu és de només ~15-20 minuts perquè cal reservar aire de l’ERA per passar pel passadís de descontaminació abans de treure’s el vestit!']
           ],
           footnote: 'Memoritza: ABD = muntada ABANS d’entrar i situada DINS de la Zona Calenta (al límit amb la Temperada) | Hipoclorit sòdic = 0,5%.'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Ubicació de l’ABD i Irradiació vs. Contaminació',
+          paragraphs: [
+            "• ABD (Àrea Bàsica de Descontaminació): No es munta a la Zona Temperada ni al final, sinó DINS la Zona Calenta (al límit amb la Temperada) i ha d'estar operativa ABANS que entri el primer binomi.",
+            "• IRRADIACIÓ vs. CONTAMINACIÓ: La irradiació és rebre radiació externa (cessa en allunyar-se; es combat amb Distància, Temps i Blindatge). La contaminació implica pols o líquid radioactiu adherit o inhalat (persisteix fins a descontaminar; es prevé amb vestit estanc + ERA)."
+          ]
         }
       ]
     },
@@ -183,7 +216,7 @@ export const tema12RiscosNrbq = {
           title: 'Els 4 Paranys Clàssics del Tribunal al Tema 27 (NRBQ)',
           acronym: 'DIANA-FLUX-FONT | ABD DINS ZONA CALENTA | IRRADIACIÓ vs CONTAMINACIÓ | ABSORCIÓ vs ADSORCIÓ',
           trick:
-            "1) FONT-FLUX-DIANA vs. DIANA-FLUX-FONT:\n• Quan el tribunal pregunta per la seqüència d'estudi o ANÀLISI del sinistre: Font → Flux → Diana.\n• Quan pregunta per la prioritat operativa d'INTERVENCIÓ o acció dels bombers: 1r DIANA (persones) → 2n FLUX (núvol/vessament) → 3r FONT (recipient).\n\n2) ON ES COL·LOCA L'ABD (Àrea Bàsica de Descontaminació)?\n• Molts opositors fallen marcant 'Zona Temperada'. El manual MAN.RRTT.000 (secció 5.4) diu explícitament que l'ABD d'urgència dels bombers s'instal·la DINS DE LA ZONA CALENTA (a la frontera de sortida) i ha d'estar muntada ABANS que entri el primer binomi!\n\n3) IRRADIACIÓ vs. CONTAMINACIÓ RADIOLÒGICA:\n• Irradiació = rebre radiació (com la llum d'una bombeta) sense tocar la font; si t'allunyes, cessa a l'instant (es combat amb Distància, Temps i Blindatge).\n• Contaminació = tenir pols o líquid radioactiu enganxat a la pell, a l'EPI o als pulmons (continues rebent dosi encara que t'allunyis → es prevé amb vestit estanc + ERA i s'elimina rentant a la descontaminació!).\n\n4) ABSORCIÓ vs. ADSORCIÓ:\n• Absorció (amb B d'Esponga): el líquid entra dins la massa de l'absorbent (sepiolita, terra) i n'augmenta el volum.\n• Adsorció (amb D d'Adhesió): les molècules queden retingudes a la superfície dels microporus (carbó actiu).",
+            "1) FONT-FLUX-DIANA vs. DIANA-FLUX-FONT: Anàlisi = Font → Flux → Diana; Intervenció operativa = 1r Diana → 2n Flux → 3r Font.\n2) UBICACIÓ DE L'ABD: Muntada ABANS d'entrar i situada DINS la Zona Calenta (al límit amb la Temperada).\n3) IRRADIACIÓ vs. CONTAMINACIÓ: Irradiació cessa en allunyar-se (Distància, Temps, Blindatge); Contaminació requereix vestit + ERA + descontaminació.\n4) ABSORCIÓ vs. ADSORCIÓ: Absorció = entra dins la massa (sepiolita); Adsorció = s'adhereix a la superfície (carbó actiu).",
           example: 'Si un pacient ha estat només IRRADIAT per una font Gamma segellada (sense pols ni contacte físic), NO emet radiació ni contamina els bombers o l’ambulància!'
         }
       ]
@@ -410,6 +443,32 @@ export const tema12RiscosNrbq = {
       ],
       correctIndex: 0,
       explanation: "El Reglament CLP exigeix nom i dades del proveïdor, quantitat nominal (en públic general), identificadors del producte, pictogrames, paraula d'advertència, frases H i frases P; la data de fabricació NO és un element obligatori de l'etiqueta de perill CLP."
+    },
+    {
+      id: 'q27-18',
+      difficulty: 'Difícil',
+      question: "En una fuita d'amoníac (NH₃) d'una cisterna industrial, un bomber afirma que l'ordre d'anàlisi del sinistre és Diana → Flux → Font i que l'ABD s'instal·la un cop surt el primer binomi dins la Zona Freda. Què és correcte segons MAN.RRTT.000?",
+      options: [
+        "L'afirmació del bomber és completament correcta.",
+        "És doble error: l'ordre d'anàlisi és Font → Flux → Diana (mentre que l'ordre d'intervenció és 1r Diana → 2n Flux → 3r Font), i l'ABD s'ha de muntar dins la Zona Calenta (al límit amb la Temperada) ABANS que entri el primer binomi.",
+        "L'ordre d'anàlisi és Font → Flux → Diana, però l'ABD es munta al final dins la Zona Freda.",
+        "L'ordre d'intervenció comença sempre taponant la Font i l'ABD es munta al CCA."
+      ],
+      correctIndex: 1,
+      explanation: "Doble trampa clàssica: Anàlisi = Font → Flux → Diana; Intervenció = 1r Diana → 2n Flux → 3r Font; i l'ABD es munta DINS la Zona Calenta (a la frontera) abans d'entrar el primer binomi."
+    },
+    {
+      id: 'q27-19',
+      difficulty: 'Mitjà',
+      question: "Davant d'una font encapsulada de radiació Gamma que no s'ha trencat ni ha alliberat pols radioactiva, un treballador ha rebut irradiació externa. Quina afirmació és INCORRECTA?",
+      options: [
+        "Un vestit químic hermètic Tipus 1a per si sol no atura la radiació Gamma penetrant, que requereix blindatge de plom o formigó i aplicar Distància, Temps i Blindatge.",
+        "La irradiació externa cessa en el moment en què la persona s'allunya de la font o s'interposa un blindatge adequat.",
+        "Com que només ha estat irradiat externament sense contaminació superficial ni interna, el pacient no emet radiació ni contamina l'ambulància.",
+        "Tot pacient irradiat externament per una font segellada emet radiació Gamma contínua i contamina qualsevol superfície que toqui encara que no hi hagi partícules adherides."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: la irradiació externa sense transferència de material radioactiu no converteix el pacient en radioactiu ni en font de contaminació per als equips d'emergència."
     }
   ]
 };

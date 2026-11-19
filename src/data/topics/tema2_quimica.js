@@ -91,7 +91,7 @@ export const tema2Quimica = {
           metaphor:
             'Imagina que els electrons (e⁻) són joguines i els àtoms són nens al pati de l’escola:',
           explanation:
-            "• 1. ENLLAÇ IÒNIC (El robatori): Un nen molt fort (No-Metall com el Clor) li ROBA la joguina a un nen que no la vol (Metall com el Sodi). El qui roba queda negatiu (Anió Cl⁻) i l'altre positiu (Catió Na⁺), i com que els pols oposats s'atreuen, queden enganxats formant un cristall dur (sal). Si és sòlid els ions estan engabiats i NO condueix el corrent; però si el fons o el poses en aigua, queden lliures i SÍ condueix!\n• 2. ENLLAÇ COVALENT APOLAR (Compartir com bessons): Dos nens amb la mateixa força (No-Metall + No-Metall iguals o simètrics, com O₂, N₂, metà CH₄, benzina o gasoil) COMPARTEIXEN la joguina exactament al mig. Cap banda té càrrega (no té pols). Per això la benzina i l'oli són APOLARS i fugen de l'aigua!\n• 3. ENLLAÇ COVALENT POLAR (Compartir amb un acaparador): Dos nens comparteixen la joguina, però un és molt més avariciós (l'Oxigen de l'aigua H₂O estira molt més fort que l'Hidrogen). La joguina passa més estona al costat de l'Oxigen (pol negatiu δ⁻) que de l'Hidrogen (pol positiu δ⁺). La molècula es converteix en un petit IMANT (dipol)! L'aigua, l'alcohol i l'acetona són POLARS (per això l'alcohol es beu l'aigua de l'escuma normal i cal escuma ANTIALCOHOL!).\n• 4. ENLLAÇ METÀL·LIC (La piscina comunitària): Tots els nens (Metalls: ferro, coure, alumini) deixen les seves joguines lliures en una gran piscina comuna ('mar d'electrons'). Com que els electrons corren lliures per tot arreu, els metalls condueixen l'electricitat i la calor SEMPRE i es poden doblegar sense trencar-se.",
+            "• 1. ENLLAÇ IÒNIC (El robatori): Un nen molt fort (No-Metall com el Clor) li ROBA la joguina a un nen que no la vol (Metall com el Sodi). El qui roba queda negatiu (Anió Cl⁻) i l'altre positiu (Catió Na⁺), i com que els pols oposats s'atreuen, queden enganxats formant un cristall dur (sal). Si és sòlid els ions estan engabiats i NO condueix el corrent; però si el fons o el poses en aigua, queden lliures i SÍ condueix!\n\n• 2. ENLLAÇ COVALENT APOLAR (Compartir com bessons): Dos nens amb la mateixa força (No-Metall + No-Metall iguals o simètrics, com O₂, N₂, metà CH₄, benzina o gasoil) COMPARTEIXEN la joguina exactament al mig. Cap banda té càrrega (no té pols). Per això la benzina i l'oli són APOLARS i fugen de l'aigua!\n\n• 3. ENLLAÇ COVALENT POLAR (Compartir amb un acaparador): Dos nens comparteixen la joguina, però un és molt més avariciós (l'Oxigen de l'aigua H₂O estira molt més fort que l'Hidrogen). La joguina passa més estona al costat de l'Oxigen (pol negatiu δ⁻) que de l'Hidrogen (pol positiu δ⁺). La molècula es converteix en un petit IMANT (dipol)! L'aigua, l'alcohol i l'acetona són POLARS (per això l'alcohol es beu l'aigua de l'escuma normal i cal escuma ANTIALCOHOL!).\n\n• 4. ENLLAÇ METÀL·LIC (La piscina comunitària): Tots els nens (Metalls: ferro, coure, alumini) deixen les seves joguines lliures en una gran piscina comuna ('mar d'electrons'). Com que els electrons corren lliures per tot arreu, els metalls condueixen l'electricitat i la calor SEMPRE i es poden doblegar sense trencar-se.",
           takeaway:
             'Regla d’or per a incendis de líquids ("El semblant dissol el semblant"): Aigua = POLAR (s’ajunta amb alcohols polars → cal escuma AR antialcohol) | Hidrocarburs (benzina/gasoil) = APOLARS (suren sobre l’aigua sense barrejar-s’hi → escuma convencional).'
         },
@@ -116,7 +116,10 @@ export const tema2Quimica = {
           heading: '4.1. Els 7 Tipus de Reaccions Químiques i 4.2. Lleis Ponderals',
           paragraphs: [
             "En una reacció química, els reactius trenquen els seus enllaços i es reorganitzen per formar productes amb propietats diferents, però els àtoms ni es creen ni es destrueixen.",
-            "El manual MAN.GRAL.004 classifica les reaccions en 7 tipus: 1) Síntesi (A + B → AB), 2) Descomposició (AB → A + B, com la piròlisi per calor o l'electròlisi), 3) Desplaçament o substitució simple (A + BC → AC + B), 4) Doble substitució (AB + CD → AD + CB), 5) Àcid-base o neutralització (Àcid + Base → Sal + Aigua), 6) Oxidació-reducció o REDOX (transferència d'electrons, incloent tota combustió) i 7) Precipitació (formació d'un sòlid insoluble)."
+            "El manual MAN.GRAL.004 classifica les reaccions en 7 tipus:",
+            "• 1) Síntesi (A + B → AB) i 2) Descomposició (AB → A + B, com la piròlisi per calor o l'electròlisi).",
+            "• 3) Desplaçament simple (A + BC → AC + B) i 4) Doble substitució (AB + CD → AD + CB).",
+            "• 5) Àcid-base o neutralització (Àcid + Base → Sal + Aigua), 6) REDOX (tota combustió) i 7) Precipitació (formació de sòlid insoluble)."
           ]
         },
         {
@@ -140,7 +143,7 @@ export const tema2Quimica = {
           metaphor:
             'Una reacció química no crea màgia: simplement desmunta una construcció de Lego per muntar-ne una altra amb exactament les mateixes peces!',
           explanation:
-            "1) LAVOISIER (Conservació de massa): si entren 80 grams de peces Lego (16 g metà + 64 g oxigen), a l'altre costat de la fletxa n'han de sortir exactament 80 grams en total (36 g aigua + 44 g CO₂). Ni un gram es perd! 2) PROUST (Proporcions): per fer aigua (H₂O), sempre fan falta 1 g d'hidrogen per cada 8 g d'oxigen; si poses oxigen de més, sobra sense reaccionar. 3) ÀCID-BASE i pH (0–7–14): l'escala de pH mesura com d'agressiu és un líquid. El 7 és NEUTRE (aigua pura). De 0 a <7 són ÀCIDS (salfumant, vinagre, suc gàstric) i de >7 a 14 són BASES o alcalins (lleixiu, sosa càustica, amoníac). Quan barreges un àcid fort amb una base forta (neutralització: Àcid + Base → Sal + Aigua), es compensen mútuament i tornen cap a pH 7!",
+            "1) LAVOISIER (Conservació de massa): si entren 80 grams de peces Lego (16 g metà + 64 g oxigen), a l'altre costat de la fletxa n'han de sortir exactament 80 grams en total (36 g aigua + 44 g CO₂). Ni un gram es perd!\n\n2) PROUST (Proporcions): per fer aigua (H₂O), sempre fan falta 1 g d'hidrogen per cada 8 g d'oxigen; si poses oxigen de més, sobra sense reaccionar.\n\n3) ÀCID-BASE i pH (0–7–14): l'escala de pH mesura com d'agressiu és un líquid. El 7 és NEUTRE (aigua pura). De 0 a <7 són ÀCIDS (salfumant, vinagre, suc gàstric) i de >7 a 14 són BASES o alcalins (lleixiu, sosa càustica, amoníac). Quan barreges un àcid fort amb una base forta (neutralització: Àcid + Base → Sal + Aigua), es compensen mútuament i tornen cap a pH 7!",
           takeaway:
             'Lavoisier = mateixos grams abans i després. pH < 7 = Àcid | pH = 7 = Neutre | pH > 7 = Base (Àcid + Base → Sal + Aigua).'
         },
@@ -204,7 +207,7 @@ export const tema2Quimica = {
           metaphor:
             'Pensa que un MOL és simplement "una dotzena de químic", i una equació química és la recepta per fer entrepans de pernil:',
           explanation:
-            "1) EL MOL (n = m / M): al supermercat no compres ous d'un en un, compres dotzenes (12 ous). Com que els àtoms són minúsculs, els químics els compten en paquets gegants anomenats MOLS (6,022·10²³ unitats). Una dotzena de melons pesa molt més que una dotzena de maduixes; igualment, 1 mol d'O₂ pesa 32 g i 1 mol d'H₂O només pesa 18 g! 2) VOLUM MOLAR (22,4 L): si poses 1 mol de QUALSEVOL gas (sigui metà lleuger o CO₂ pesant) a 0 °C i 1 atm, sempre infla un globus de 22,4 litres exactes! 3) REACTIU LIMITANT: si la recepta d'un entrepà és '2 llesques de pa + 1 tall de pernil', i a la cuina tens 10 llesques de pa (5 entrepans) però només 3 talls de pernil, quants entrepans faràs? Només 3! El pernil s'acaba primer i atura la cuina: el pernil és el REACTIU LIMITANT i el pa que sobra és el reactiu en excés!",
+            "1) EL MOL (n = m / M): al supermercat no compres ous d'un en un, compres dotzenes (12 ous). Com que els àtoms són minúsculs, els químics els compten en paquets gegants anomenats MOLS (6,022·10²³ unitats). Una dotzena de melons pesa molt més que una dotzena de maduixes; igualment, 1 mol d'O₂ pesa 32 g i 1 mol d'H₂O només pesa 18 g!\n\n2) VOLUM MOLAR (22,4 L): si poses 1 mol de QUALSEVOL gas (sigui metà lleuger o CO₂ pesant) a 0 °C i 1 atm, sempre infla un globus de 22,4 litres exactes!\n\n3) REACTIU LIMITANT: si la recepta d'un entrepà és '2 llesques de pa + 1 tall de pernil', i a la cuina tens 10 llesques de pa (5 entrepans) però només 3 talls de pernil, quants entrepans faràs? Només 3! El pernil s'acaba primer i atura la cuina: el pernil és el REACTIU LIMITANT i el pa que sobra és el reactiu en excés!",
           takeaway:
             'Recepta d’estequiometria en 3 passos: 1) Passa els grams a mols (÷ M) → 2) Compara mols amb la recepta per trobar el Reactiu Limitant → 3) Passa el resultat a grams (× M) o a litres de gas C.N. (× 22,4 L).'
         }
@@ -221,8 +224,9 @@ export const tema2Quimica = {
           heading: '6.1–6.2. Canvis d’Estat, Evaporació vs. Ebullició i Punt Crític (Tc, Pc)',
           paragraphs: [
             "Els canvis d'estat endotèrmics (absorbeixen calor) són: Fusió (sòlid → líquid), Vaporització (líquid → gas) i Sublimació (sòlid → gas). Els exotèrmics (alliberen calor) són: Solidificació, Condensació/Liquació i Sublimació inversa o regressiva.",
-            "Diferència clau d'examen: L'EVAPORACIÓ és un fenomen lent i exclusivament superficial que es produeix a qualsevol temperatura; l'EBULLICIÓ és un fenomen tumultuós en tota la massa del líquid que es produeix quan la seva Pressió de Vapor iguala la pressió exterior.",
-            "El Punt Crític ve definit per la Temperatura Crítica (Tc, temperatura màxima per sobre de la qual un gas NO es pot liquar mai per més que el comprimim) i la Pressió Crítica (Pc, pressió mínima necessària per liquar el gas a la seva Tc). Per sota de Tc parlem de VAPOR (es pot liquar per compressió, com el propà o butà); per sobre de Tc parlem de GAS permanent (com l'aire o el metà a temperatura ambient)."
+            "No confondre Evaporació vs. Ebullició! L'EVAPORACIÓ és un fenomen lent i exclusivament superficial que es produeix a qualsevol temperatura. L'EBULLICIÓ és un fenomen tumultuós en tota la massa del líquid que es produeix a la Temperatura d'Ebullició (Te), quan la Pressió de Vapor del líquid iguala la pressió exterior (per això Te puja si augmenta la pressió!).",
+            "No confondre Temperatura d'Ebullició (Te) vs. Temperatura Crítica (Tc)! La Te depèn de la pressió exterior; en canvi, la Temperatura Crítica (Tc) és un límit absolut de la substància: per sobre de Tc (GAS permanent, com l'aire o el metà a 20 °C) el gas NO es pot liquar mai per molta pressió que s'apliqui!",
+            "Per sota de Tc parlem de VAPOR (sí que es liqua comprimint-lo, com el propà o el butà; la Pressió Crítica Pc és la pressió mínima necessària per liquar el gas just a la seva Tc)."
           ]
         },
         {
@@ -253,7 +257,7 @@ export const tema2Quimica = {
           metaphor:
             'Pensa en un bassal al sol, una olla bullint als fogons i una xeringa de plàstic tapada amb el dit:',
           explanation:
-            "1) EVAPORACIÓ vs. EBULLICIÓ: l'evaporació és quan s'eixuga un bassal a 20 °C a poc a poc, només per la superfície. L'ebullició és l'olla a 100 °C fent bombolles violentes des de dins de tot el líquid alhora! 2) GAS vs. VAPOR (Temperatura Crítica Tc): un VAPOR (com el butà o el propà) està per sota de la seva Tc: si el comprimeixes fort dins d'un encenedor o bombona, el pots tornar líquid! Un GAS permanent (com l'aire de l'ERA a temperatura ambient) està per sobre de la seva Tc: per molt que el xafis amb una premsa gegant, les molècules tenen massa energia i MAI es tornen líquides només comprimint! 3) BOYLE-MARIOTTE (T = constant): tapa una xeringa plena d'aire amb el dit i prem l'èmbol fins a la meitat d'espai (de 10 mL a 5 mL). Com que hi ha els mateixos xocs en la meitat d'espai, la pressió a dins es multiplica per 2!",
+            "1) EVAPORACIÓ vs. EBULLICIÓ: l'evaporació és quan s'eixuga un bassal a 20 °C a poc a poc, només per la superfície. L'ebullició és l'olla a 100 °C fent bombolles violentes des de dins de tot el líquid alhora!\n\n2) GAS vs. VAPOR (Temperatura Crítica Tc): un VAPOR (com el butà o el propà) està per sota de la seva Tc: si el comprimeixes fort dins d'un encenedor o bombona, el pots tornar líquid! Un GAS permanent (com l'aire de l'ERA a temperatura ambient) està per sobre de la seva Tc: per molt que el xafis amb una premsa gegant, les molècules tenen massa energia i MAI es tornen líquides només comprimint!\n\n3) BOYLE-MARIOTTE (T = constant): tapa una xeringa plena d'aire amb el dit i prem l'èmbol fins a la meitat d'espai (de 10 mL a 5 mL). Com que hi ha els mateixos xocs en la meitat d'espai, la pressió a dins es multiplica per 2!",
           takeaway:
             'Sota de Tc = Vapor (liquable per pressió). Sobre de Tc = Gas (no liquable per molta pressió que facis). Boyle: meitat de volum = doble de pressió.'
         }
@@ -270,7 +274,8 @@ export const tema2Quimica = {
           heading: '6.3. Transformació Isòcora (Gay-Lussac), Isobàrica (Charles) i Gasos Ideals',
           paragraphs: [
             "En totes les lleis dels gasos on intervé la temperatura és OBLIGATORI treballar en l'escala absoluta Kelvin: T (K) = T (°C) + 273.",
-            "• Llei de Gay-Lussac (procés ISÒCOR, a volum constant V = cte): En un recipient rígid com un cilindre metàl·lic d'ERA o de GLP, la pressió absoluta és directament proporcional a la temperatura en Kelvin (P₁/T₁ = P₂/T₂).\n• Llei de Charles (procés ISOBÀRIC, a pressió constant P = cte): El volum d'un gas és directament proporcional a la seva temperatura absoluta (V₁/T₁ = V₂/T₂): per això els fums calents es dilaten, perden densitat i pugen al sostre."
+            "• Llei de Gay-Lussac (procés ISÒCOR, a volum constant V = cte): En un recipient rígid com un cilindre metàl·lic d'ERA o de GLP, la pressió absoluta és directament proporcional a la temperatura en Kelvin (P₁/T₁ = P₂/T₂).",
+            "• Llei de Charles (procés ISOBÀRIC, a pressió constant P = cte): El volum d'un gas és directament proporcional a la seva temperatura absoluta (V₁/T₁ = V₂/T₂): per això els fums calents es dilaten, perden densitat i pugen al sostre."
           ]
         },
         {
@@ -344,7 +349,7 @@ export const tema2Quimica = {
           metaphor:
             'Imagina pujar una escala fins a un trampolí (Calor Sensible) i després fer un salt gegant a l’aigua (Calor Latent):',
           explanation:
-            "1) EXO vs. ENDO: EXOtèrmica = treu calor cap a l'EXterior (com un foc que escalfa l'habitació: ΔH < 0). ENDOtèrmica = s'empassa calor cap a DINS (com el gel desfent-se o l'aigua evaporant-se: ΔH > 0). 2) CALOR SENSIBLE (puja el termòmetre): quan tires 1 L d'aigua a 20 °C al foc, cada grau que s'escalfa fins a 100 °C només roba 1 kcal (total = 80 kcal). 3) CALOR LATENT (el termòmetre es clava a 100 °C!): un cop a 100 °C, per trencar els forts ponts d'hidrogen i convertir aquell litre d'aigua en vapor a 100 °C, l'aigua xucla de l'incendi 539 kcal de cop — gairebé 7 VEGADES més calor sense pujar ni un grau el termòmetre!",
+            "1) EXO vs. ENDO: EXOtèrmica = treu calor cap a l'EXterior (com un foc que escalfa l'habitació: ΔH < 0). ENDOtèrmica = s'empassa calor cap a DINS (com el gel desfent-se o l'aigua evaporant-se: ΔH > 0).\n\n2) CALOR SENSIBLE (puja el termòmetre): quan tires 1 L d'aigua a 20 °C al foc, cada grau que s'escalfa fins a 100 °C només roba 1 kcal (total = 80 kcal).\n\n3) CALOR LATENT (el termòmetre es clava a 100 °C!): un cop a 100 °C, per trencar els forts ponts d'hidrogen i convertir aquell litre d'aigua en vapor a 100 °C, l'aigua xucla de l'incendi 539 kcal de cop — gairebé 7 VEGADES més calor sense pujar ni un grau el termòmetre!",
           takeaway:
             'Escalfar de 20 a 100 °C = 80 kcal/L. Vaporitzar a 100 °C = 539 kcal/L (Total = 619 kcal/L). Si l’aigua cau a terra sense evaporar-se, perds el 87% del seu poder d’extinció!'
         }
@@ -400,7 +405,7 @@ export const tema2Quimica = {
           metaphor:
             'Com es tradueixen la densitat, conductivitat, viscositat i tensió superficial en una intervenció real:',
           explanation:
-            "1) DENSITAT DE GASOS (Aire = 1): si pesa menys d'1 (Metà 0,55), s'escapa cap al sostre com un globus d'heli; si pesa més d'1 (Propà 1,5 o Butà 2,0), cau com aigua invisible i s'embassa als soterranis! 2) CONDUCTIVITAT TÈRMICA (20×): l'aire sec dins del teu EPI t'aïlla com un abric de plomes; però l'aigua condueix la calor 20 VEGADES més ràpid que l'aire! Si mulles l'EPI, la calor travessa el vestit directe cap a la pell. 3) VISCOSITAT (Mel vs. Fum): si escalfes un líquid (oli/mel), es fa més fluid (baixa la viscositat). Si escalfes un gas, les molècules xoquen com boges i li costa més fluir (puja la viscositat!). 4) TENSIÓ SUPERFICIAL: les gotes d'aigua fan boletes per culpa dels ponts d'hidrogen i reboten sobre un matalàs; els humectants trenquen aquesta pell perquè l'aigua penetri fins al fons de la brasa.",
+            "1) DENSITAT DE GASOS (Aire = 1): si pesa menys d'1 (Metà 0,55), s'escapa cap al sostre com un globus d'heli; si pesa més d'1 (Propà 1,5 o Butà 2,0), cau com aigua invisible i s'embassa als soterranis!\n\n2) CONDUCTIVITAT TÈRMICA (20×): l'aire sec dins del teu EPI t'aïlla com un abric de plomes; però l'aigua condueix la calor 20 VEGADES més ràpid que l'aire! Si mulles l'EPI, la calor travessa el vestit directe cap a la pell.\n\n3) VISCOSITAT (Mel vs. Fum): si escalfes un líquid (oli/mel), es fa més fluid (baixa la viscositat). Si escalfes un gas, les molècules xoquen com boges i li costa més fluir (puja la viscositat!).\n\n4) TENSIÓ SUPERFICIAL: les gotes d'aigua fan boletes per culpa dels ponts d'hidrogen i reboten sobre un matalàs; els humectants trenquen aquesta pell perquè l'aigua penetri fins al fons de la brasa.",
           takeaway:
             'Gas d < 1 puja | d > 1 baixa al soterrani. Aigua = 20× més conductora que l’aire. Amb calor: líquids MENYS viscosos, gasos MÉS viscosos.'
         }
@@ -630,6 +635,19 @@ export const tema2Quimica = {
       ],
       correctIndex: 2,
       explanation: "La massa molar de l'aigua (H₂O) és 2 × 1 + 16 = 18 g/mol; per tant, 1 mol d'aigua té una massa de 18 grams, no de 12 grams."
+    },
+    {
+      id: 'q10-18',
+      difficulty: 'Mitjà',
+      question: "Quina diferència fonamental hi ha entre la Temperatura d'Ebullició (Te) i la Temperatura Crítica (Tc) d'una substància?",
+      options: [
+        "La Te depèn de la pressió exterior (és la Tª a la qual la pressió de vapor iguala la pressió externa), mentre que la Tc és un valor fix intrínsec per sobre del qual el gas no es pot liquar per cap pressió.",
+        "La Te és sempre superior a la Tc en qualsevol líquid.",
+        "La Tc varia linealment amb la pressió atmosfèrica i la Te és sempre invariant.",
+        "Per sobre de la Te una substància mai pot passar a estat líquid encara que s'augmenti la pressió."
+      ],
+      correctIndex: 0,
+      explanation: "La Temperatura d'Ebullició (Te) augmenta si puja la pressió (ex. olla a pressió o BLEVE). La Temperatura Crítica (Tc), en canvi, és el límit absolut per sobre del qual cap pressió pot liquar el gas."
     }
   ]
 };

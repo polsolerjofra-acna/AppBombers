@@ -9,7 +9,7 @@ export const tema26MediNatural = {
     title: "Radar d'Examen — Tema 31 (MAN.SVMN.000 v.1): GRAE, GRCR i Metodologies de Recerca",
     frequency: 'Molt Alta (3-4 preguntes sobre creació GRAE 1997 i les 4 seus, GRCR 2007/2022 i les 2 seus, tipus de recerca i UPA)',
     summary:
-      "Aquest manual estructura totes les intervencions de muntanya i recerca de persones desaparegudes al medi natural: història i seus del GRAE (creat el 1997 de la fusió GRM + GRS; 4 seus de muntanya: Cerdanyola, Olot, la Seu d'Urgell i Valls) i del GRCR (creat el 2007 i consolidat el 2022 amb 2 seus: Lleida i Vic), la diferència entre Rescat, Evacuació, Guiatge, Acompanyament i Recerca, les 8 maniobres amb cordes, les 4 metodologies de recerca humana (Extensiva, Intensiva per línies/sectors, Punts probables i Contenció), Rastreig vs. Venteig caní i la protecció sagrada de l'UPA (Últim Punt d'Albirament). Inclou 4 pàgines d'estudi i 2 pàgines finals de Resum.",
+      "Manual de salvaments i recerques al medi natural: història i seus del GRAE (1997: Cerdanyola, Olot, la Seu d'Urgell, Valls) i GRCR (2007/2022: Lleida, Vic), tipologia (Rescat, Evacuació, Guiatge, Acompanyament, Recerca), les 8 maniobres amb cordes, metodologies de recerca (Extensiva, Intensiva, Punts probables, Contenció), Rastreig vs. Venteig i protecció de l'UPA.",
     hotTopics: [
       'Cap. 1: Llei 5/1994, plans NEUCAT i ALLAUCAT. GRAE creat l’any 1997 (fusió GRM Muntanya + GRS Subaquàtic) amb 4 seus de muntanya: Cerdanyola, Olot, la Seu d’Urgell i Valls (+ GEM). GRCR (Grup Caní de Recerca) creat el 2007 i consolidat el 2022 amb 2 seus fixes: Lleida i Vic.',
       'Cap. 2-4: Diferència entre Rescat (ferit o bloquejat), Evacuació (preventiva per risc extern), Guiatge (remot per telèfon a persona il·lesa), Acompanyament (presencial sense maniobra tècnica) i Recerca (sense comunicació). Les 8 maniobres amb cordes (4.2).',
@@ -50,6 +50,14 @@ export const tema26MediNatural = {
             ['4. Acompanyament (Presencial!)', 'Auxili PRESENCIAL d’una persona il·lesa o esgotada fins a lloc segur SENSE maniobra tècnica complexa', 'Els bombers caminen amb ella donant-li abric, llum o aigua'],
             ['5. Recerca', 'Operatiu per localitzar una persona DESAPAREGUDA de qui es desconeix la ubicació i NO hi ha comunicació', 'S’activa l’UPA i les metodologies extensiva, intensiva i canina']
           ]
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Guiatge vs. Acompanyament i Rescat vs. Evacuació',
+          paragraphs: [
+            "• GUIATGE vs. ACOMPANYAMENT: Tots dos són per a persones il·leses. El Guiatge es fa de manera REMOTA (per telèfon/app quan hi ha comunicació); l'Acompanyament és PRESENCIAL sobre el terreny caminant amb ella sense maniobra tècnica.",
+            "• RESCAT vs. EVACUACIÓ: El Rescat auxilia una persona ferida o bloquejada físicament; l'Evacuació treu persones il·leses preventivament per un risc extern (allau, riuada, foc)."
+          ]
         }
       ]
     },
@@ -64,7 +72,8 @@ export const tema26MediNatural = {
           heading: '4.1–4.2. Les 8 Maniobres Oficials amb Cordes en Salvament al Medi Natural',
           paragraphs: [
             "Quan els bombers d'un parc convencional (no GRAE) intervenen en un talús, barranc o pista forestal amb desnivell, utilitzen l'equipament de salvament en alçada per garantir la seguretat del binomi i de la víctima.",
-            "El Capítol 4.2 del manual MAN.SVMN.000 enumera exactament les 8 MANIOBRES AMB CORDES que es poden realitzar: 1) Ancoratges (naturals com arbres o roques sanes, i artificials com vehicles o claus), 2) Ràpel (descens controlat per corda amb davallador autofrenant), 3) Ascens tipus escalada (progressió assegurada), 4) Ascens per corda fixa (amb bloquejadors / puny + pedal), 5) Tirolina (pas aeri tensat per salvar un obstacle o riera; reservada a especialistes GRAE per les enormes tensions que genera!), 6) Assegurament de víctima (amb triangle d'evacuació, arnès o llitera), 7) Polispast (sistema de politges per hissar càrregues amb avantatge mecànic) i 8) Passamans (corda horitzontal o inclinada fixada a la paret per protegir el pas dels bombers i la víctima per una cornisa o talús exposat)."
+            "El Capítol 4.2 enumera les 8 MANIOBRES AMB CORDES: 1) Ancoratges (naturals com arbres/roques i artificials com vehicles), 2) Ràpel (descens controlat amb davallador), 3) Ascens tipus escalada i 4) Ascens per corda fixa (amb bloquejadors).",
+            "Les quatre restants són: 5) Tirolina (pas aeri tensat reservat a especialistes GRAE per les altes tensions que genera!), 6) Assegurament de víctima (triangle d'evacuació, arnès o llitera), 7) Polispast (hissat amb avantatge mecànic) i 8) Passamans (corda horitzontal/inclinada en cornises o talussos)."
           ]
         },
         {
@@ -90,11 +99,28 @@ export const tema26MediNatural = {
       blocks: [
         {
           type: 'text',
-          heading: '5.1–5.6. Les Metodologies de Recerca i l’Ús del Grup Caní (Rastreig vs. Venteig)',
+          heading: '5.1–5.4. Les 4 Metodologies de Recerca Humana en Medi Natural',
           paragraphs: [
-            "En una recerca de persones desaparegudes (boletaires, excursionistes, persones amb Alzheimer o nens), el manual defineix 4 metodologies humanes i 2 canines: 1) RECERCA EXTENSIVA (1a fase immediata): batuda ràpida al llarg de pistes, camins principals i carenes; parteix de la hipòtesi que la persona està EN MOVIMENT; requereix POC personal, cobreix molta superfície a ALTA velocitat, però té poca minuciositat fora del camí. 2) RECERCA INTENSIVA: parteix de la hipòtesi que la persona està ESTÀTICA (ferida, esgotada o inconscient) i es divideix en dues modalitats: a) Intensiva per LÍNIES NATURALS (explorar els vorals, marges, barrancs i fins a 10–20 m a banda i banda dels camins i rius; té una ALTA EFECTIVITAT NOCTURNA amb llanternes i crida i escolta!) i b) Intensiva per SECTORS (batuda d'escombrat amb una filera de cercadors avançant en paral·lel cobrint el 100% d'una parcel·la; requereix MOLT personal i és de baixa velocitat però màxima minuciositat). 3) RECERCA DE PUNTS PROBABLES: comprovació directa de masies abandonades, cabanes, coves, miradors o llocs freqüentats per la víctima. 4) RECERCA PER CONTENCIÓ: tancar primer un perímetre exterior (amb patrulles a les cruïlles i carreteres) i anar tancant el cercle cap al centre; s'aplica quan es disposa de molt personal des del primer minut, especialment en desaparicions de NENS PETITS!",
-            "En la RECERCA CANINA (GRCR, Cap. 5.6) s'utilitzen dues especialitats: A) Gossos de RASTREIG (treballen amb arnès i corretja llarga seguint el rastre d'olor específic deixat sobre el TERRA per aquella persona concreta a partir d'una mostra d'olor seva [roba] i sortint des de l'UPA!) i B) Gossos de VENTEIG (treballen solts escombrant grans sectors o allaus per detectar qualsevol con d'olor humana viva dispers a l'AIRE; exigeix que el sector estigui lliure d'altres cercadors!).",
-            "6.1. L'UPA (Últim Punt d'Albirament): és l'últim lloc físic confirmat on es té constància certa que va ser vista la persona desapareguda (o on ha aparegut el seu vehicle estacionat). La primera dotació que arriba ha d'ABALISAR I PROTEGIR L'UPA immediatament perquè ningú el trepitgi ni contamini l'olor per als gossos de rastreig! El Centre de Comandament s'ha d'ubicar en un lloc accessible i proper, però suficientment ALLUNYAT de l'UPA."
+            "1) RECERCA EXTENSIVA (1a fase): Batuda ràpida per pistes, camins principals i carenes. Parteix de la hipòtesi que la víctima està EN MOVIMENT; usa poc personal a alta velocitat.",
+            "2) RECERCA INTENSIVA: Parteix de la hipòtesi que la víctima està ESTÀTICA (ferida o inconscient). Modalitat a) Per Línies Naturals (vorals, marges i barrancs fins a 10–20 m de camins; ALTA EFECTIVITAT NOCTURNA). Modalitat b) Per Sectors (escombrat lent en paral·lel amb molt personal).",
+            "3) PUNTS PROBABLES: Comprovació directa de refugis, masies, coves, fonts o miradors. 4) CONTENCIÓ: Tancar primer un perímetre exterior i reduir el cèrcol cap al centre; ideal quan hi ha molt personal d'inici (ex. NENS PETITS)."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '5.6. Recerca Canina (GRCR) i 6.1. Protecció de l’UPA',
+          paragraphs: [
+            "• Gossos de RASTREIG: Segueixen amb arnès i corretja el rastre d'olor específic sobre el TERRA d'una persona concreta, partint d'una mostra d'olor seva i sortint des de l'UPA.",
+            "• Gossos de VENTEIG: Treballen solts escombrant grans sectors o allaus per detectar olor humana genèrica dispersa a l'AIRE (exigeix zona lliure d'altres cercadors).",
+            "• UPA (Últim Punt d'Albirament): Últim lloc confirmat on es va veure la víctima (o el seu cotxe). Cal abalisar-lo i protegir-lo de seguida; el Centre de Comandament s'ubica a prop però ALLUNYAT de l'UPA per no contaminar l'olor!"
+          ]
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Extensiva vs. Intensiva i Rastreig vs. Venteig',
+          paragraphs: [
+            "• EXTENSIVA = persona EN MOVIMENT (pistes, ràpida, poc personal) vs. INTENSIVA = persona ESTÀTICA (Línies naturals = nocturna; Sectors = escombrat lent amb molt personal).",
+            "• RASTREIG = olor específica al TERRA des de l'UPA amb peça de roba vs. VENTEIG = olor humana a l'AIRE en sector buit de gent."
           ]
         },
         {
@@ -132,7 +158,7 @@ export const tema26MediNatural = {
           metaphor:
             'Imagina que se t’ha perdut l’avi boletaire al bosc:',
           explanation:
-            "• 1. Primer fas una RECERCA EXTENSIVA: envies 2 cotxes ràpids a recórrer totes les pistes forestals pensant que l'avi encara CAMINA (víctima en moviment).\n• 2. Si es fa de nit i no ha sortit a cap pista, penses que ha caigut en un marge i no es pot moure (víctima ESTÀTICA) → fas una RECERCA INTENSIVA PER LÍNIES NATURALS mirant amb llanternes els vorals dels camins i torrents (funciona genial de nit!).\n• 3. L'endemà al matí amb 50 persones fas una INTENSIVA PER SECTORS (pinta el bosc caminant en fila índia paral·lela).\n• I els gossos del GRCR: el gos de RASTREIG porta el nas enganxat al TERRA seguint les petjades exactes de l'avi des del seu cotxe (UPA) després d'ensumar un jersei seu; en canvi, el gos de VENTEIG corre amb el nas aixecat a l'AIRE buscant qualsevol persona que respiri dins d'un sector buit!",
+            "• 1. EXTENSIVA: Envies 2 vehicles per pistes pensant que l'avi encara CAMINA (en moviment).\n• 2. INTENSIVA PER LÍNIES NATURALS: Si es fa fosc i creus que ha caigut (ESTÀTIC), mires vorals i marges amb llanternes (molt efectiva de nit!).\n• 3. INTENSIVA PER SECTORS: De dia amb 50 persones pintes el bosc en paral·lel.\n• 4. GOSSOS: RASTREIG = nas al TERRA des de l'UPA amb roba seva | VENTEIG = nas a l'AIRE en sector buit!",
           takeaway: 'Extensiva = En moviment (pistes) | Intensiva = Estàtica (Línies naturals = nocturna; Sectors = escombrat) | Rastreig = terra (UPA) | Venteig = aire.'
         },
         {
@@ -322,6 +348,110 @@ export const tema26MediNatural = {
       ],
       correctIndex: 1,
       explanation: 'Apartat 2.2 del manual: quan les persones no estan ferides ni bloquejades però se les treu preventivament davant d’un perill extern, es tracta d’una Evacuació.'
+    },
+    {
+      id: 't31-q11',
+      difficulty: 'Mitjà',
+      question: 'S’activa un dispositiu ampli de recerca immediatament després de desaparèixer un nen de 5 anys en una zona boscosa propera a un càmping, amb disponibilitat immediata de desenes d’efectius de Bombers i Mossos. Quina metodologia de recerca humana és la més indicada d’entrada?',
+      options: [
+        'Recerca intensiva per sectors sense cap control perimetral.',
+        'Recerca per CONTENCIÓ (tancant primer un perímetre exterior a pistes, cruïlles i carreteres per anar tancant el cercle cap al centre).',
+        'Guiatge remot per telèfon mòbil.',
+        'Recerca exclusiva amb helicòpter sense suport a terra.'
+      ],
+      correctIndex: 1,
+      explanation: 'Apartat 5.4 del manual: la recerca per contenció tanca un perímetre exterior cap al centre i és la metodologia idònia quan es disposa de molt personal immediat, especialment en desaparicions de nens petits.'
+    },
+    {
+      id: 't31-q12',
+      difficulty: 'Mitjà',
+      question: 'A les 23:30 h, un boletaire sense mòbil ni llanterna no ha tornat al seu cotxe. Després d’una batuda ràpida per pistes sense èxit, el comandament decideix buscar a peu fins a 10–20 m a banda i banda dels marges dels camins i torrents. Quina metodologia s’aplica i per què?',
+      options: [
+        'Recerca extensiva, perquè pressuposa que la víctima corre ràpidament pel bosc.',
+        'Recerca intensiva per LÍNIES NATURALS, perquè pressuposa víctima estàtica prop d’un camí/rierol i presenta una alta efectivitat nocturna.',
+        'Recerca per contenció, perquè només hi ha 4 bombers disponibles.',
+        'Recerca canina per venteig dins de l’edifici del Centre de Comandament.'
+      ],
+      correctIndex: 1,
+      explanation: 'La recerca intensiva per línies naturals explora vorals, marges i barrancs propers (10–20 m) sota la hipòtesi de víctima estàtica i destaca per la seva alta efectivitat nocturna amb llanternes i crida i escolta.'
+    },
+    {
+      id: 't31-q13',
+      difficulty: 'Difícil',
+      question: 'Respecte a les metodologies de recerca humana en el medi natural (MAN.SVMN.000), assenyala quina afirmació és INCORRECTA:',
+      options: [
+        'La recerca extensiva parteix de la hipòtesi que la víctima està en moviment i utilitza poc personal a alta velocitat per pistes i camins.',
+        'La recerca intensiva per sectors realitza un escombrat total en paral·lel, requereix molt personal, té baixa velocitat i màxima minuciositat.',
+        'La recerca de punts probables comprova directament refugis, masies abandonades, coves, fonts o miradors freqüentats.',
+        'La recerca extensiva parteix de la hipòtesi que la víctima està inconscient i immòbil fora dels camins, per la qual cosa és la metodologia més lenta i minuciosa de totes.'
+      ],
+      correctIndex: 3,
+      explanation: 'És incorrecte: la recerca extensiva pressuposa víctima EN MOVIMENT i és ràpida amb poc personal per camins i pistes; la que pressuposa víctima estàtica/inconscient i és lenta i minuciosa és la recerca intensiva per sectors.'
+    },
+    {
+      id: 't31-q14',
+      difficulty: 'Difícil',
+      question: 'Sobre l’actuació del Grup Caní de Recerca (GRCR) i la gestió de l’UPA (Últim Punt d’Albirament) al manual MAN.SVMN.000, quina afirmació és INCORRECTA?',
+      options: [
+        'Els gossos de rastreig segueixen l’olor específica sobre el terra a partir d’una mostra d’olor de la persona desapareguda i sortint des de l’UPA.',
+        'Els gossos de venteig treballen solts detectant cons d’olor humana genèrica dispersa a l’aire, i requereixen que la zona estigui lliure d’altres cercadors.',
+        'La primera dotació que arriba a l’UPA ha d’abalisar-lo i protegir-lo immediatament perquè ningú no contamini el rastre olfactiu.',
+        'Per coordinar millor l’operatiu, el Centre de Comandament i l’estacionament de tots els camions s’han d’ubicar just damunt mateix de l’UPA.'
+      ],
+      correctIndex: 3,
+      explanation: 'És incorrecte: aparcar camions o muntar el Centre de Comandament damunt de l’UPA destrueix i contamina el rastre olfactiu per als gossos de rastreig. El CCA s’ha d’ubicar a prop però ALLUNYAT de l’UPA.'
+    },
+    {
+      id: 't31-q15',
+      difficulty: 'Mitjà',
+      question: 'Una dotació de bombers localitza un excursionista perdut però COMPLETAMENT IL·LÈS, lleugerament esgotat, sense cap lesió ni bloqueig físic, i l’acompanya caminant pel sender fins al seu vehicle donant-li aigua i llum sense fer cap maniobra tècnica de cordes. Com classifica el Capítol 2 aquesta intervenció?',
+      options: [
+        'Guiatge.',
+        'Acompanyament.',
+        'Rescat.',
+        'Evacuació.'
+      ],
+      correctIndex: 1,
+      explanation: 'L’Acompanyament és l’auxili PRESENCIAL d’una persona il·lesa o esgotada fins a lloc segur sense maniobres tècniques. (El Guiatge és remot per telèfon; el Rescat és amb persona ferida o bloquejada; l’Evacuació és preventiva per un risc extern).'
+    },
+    {
+      id: 't31-q16',
+      difficulty: 'Mitjà',
+      question: 'Dins les 8 maniobres amb cordes descrites a l’apartat 4.2 del manual MAN.SVMN.000, quina maniobra queda reservada als especialistes GRAE per les enormes tensions mecàniques que genera sobre els ancoratges, i quin angle màxim s’ha de respectar en la triangulació d’ancoratges?',
+      options: [
+        'El passamans queda reservat al GRAE | L’angle de triangulació ha de ser sempre de 150°.',
+        'La tirolina queda reservada al GRAE | Els ancoratges redundants (mínim 2 punts) han de mantenir un angle < 60° entre cintes.',
+        'El ràpel queda reservat al GRAE | Només cal 1 punt d’ancoratge amb angle de 120°.',
+        'El polispast 2:1 queda reservat al GRAE | L’angle òptim és de 90°.'
+      ],
+      correctIndex: 1,
+      explanation: 'Segons el manual, la tirolina (pas aeri tensat) es reserva als especialistes GRAE per les elevades tensions que genera. Els ancoratges han de ser redundants (mínim 2 punts) i amb un angle < 60° entre cintes.'
+    },
+    {
+      id: 't31-q17',
+      difficulty: 'Fàcil',
+      question: 'Quina seu del GRAE a Catalunya concentra també la base del GRAE Subaquàtic i l’helicòpter de rescat amb grua i personal mèdic del GEM, i quins dos plans especials de protecció civil s’integren al Capítol 1 de MAN.SVMN.000?',
+      options: [
+        'Seu d’Olot | Plans INFOCAT i INUNCAT.',
+        'Seu de Cerdanyola del Vallès | Plans NEUCAT (nevades) i ALLAUCAT (allaus), sota el marc de la Llei 5/1994.',
+        'Seu de Valls | Plans PLASEQCAT i TRANSCAT.',
+        'Seu de la Seu d’Urgell | Plans PENTA i RADCAT.'
+      ],
+      correctIndex: 1,
+      explanation: 'A Cerdanyola del Vallès hi ha una de les 4 seus del GRAE Muntanya (juntament amb Olot, la Seu d’Urgell i Valls), a més del GRAE Subaquàtic i l’helicòpter de rescat amb grua i metge del GEM. Els plans del Capítol 1 són NEUCAT i ALLAUCAT.'
+    },
+    {
+      id: 't31-q18',
+      difficulty: 'Fàcil',
+      question: 'Quina és la diferència principal entre la Recerca Intensiva per Sectors i la Recerca de Punts Probables segons el Capítol 5 del manual MAN.SVMN.000?',
+      options: [
+        'La intensiva per sectors fa un escombrat en línia paral·lela cobrint el 100% d’una parcel·la (molt personal, baixa velocitat, màxima minuciositat), mentre que la de punts probables comprova directament llocs d’interès concrets (masies, refugis, coves, fonts).',
+        'La intensiva per sectors es fa només en vehicle tot terreny a gran velocitat i la de punts probables tanca un perímetre amb 100 patrulles.',
+        'La de punts probables és exclusiva dels gossos de venteig i la intensiva per sectors és exclusiva de l’helicòpter.',
+        'Totes dues pressuposen que la víctima camina a gran velocitat per carreteres asfaltades.'
+      ],
+      correctIndex: 0,
+      explanation: 'La recerca intensiva per sectors pentina minuciosament tota una parcel·la en paral·lel (molt personal, baixa velocitat); la de punts probables envia equips ràpids a comprovar refugis, cabanes, masies o zones freqüentades.'
     }
   ]
 };

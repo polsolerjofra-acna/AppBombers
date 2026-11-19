@@ -9,7 +9,7 @@ export const tema10IncendisForestals = {
     title: "Radar d'Examen — Tema 25 (MAN.INVE.000 v.1): Incendis Forestals",
     frequency: 'Molt Alta (5-7 preguntes fixes sobre 6 Generacions, CPS Campbell, Eines, 3 Etapes vs 4 Fases i LACES)',
     summary:
-      "Manual de 5 capítols que sintetitza tota la doctrina forestal de Bombers de la Generalitat i GRAF: 1. Introducció (fites 1982-2006, paradoxa 99%/90% i les 6 Generacions), 2. Coneixements bàsics (parts, sectors 0/imparells/parells, alineació de flama i conat <1 ha vs. GIF >500 ha), 3. Valoració (4 patrons i CPS de Campbell 0/3 a 3/3), 4. Maniobres (cadena d'eines manuals Motxilla→Batefocs→Pulaski→Pala, 3 Etapes d'extinció vs. 4 Fases INFOCAT) i 5. Seguretat (RAF, LACES amb R ≥ 4 × Lf i les 3 situacions d'atrapament en autobomba). Inclou 5 pàgines de desenvolupament + 2 pàgines finals de Resum Executiu.",
+      "Manual de 5 capítols amb la doctrina forestal de Bombers i GRAF: fites històriques (1982–2006) i 6 Generacions, parts i sectors (0/imparells/parells), patrons i CPS de Campbell (0/3 a 3/3), cadena d'eines manuals (Motxilla→Batefocs→Pulaski→Pala), 3 Etapes d'extinció vs. 4 Fases INFOCAT, i seguretat RAF/LACES (R ≥ 4×Lf) i atrapament en autobomba.",
     hotTopics: [
       'Cap. 1: Fites històriques (1982 FOC VERD, 1986, 1994, 1999 creació GRAF 1/03/1999, 2006), Paradoxa de l’extinció (99% conats = <10% superfície; <1% GIF = 90% superfície!) i les 6 Generacions d’incendis forestals.',
       'Cap. 2: Parts del foc, Sectorització (Sector 0 = cua; imparells 1, 3 = flanc esquerre; parells 2, 4 = flanc dret), Gran Triad (Topografia, Meteorologia [Regla del 30-30-30], Combustible [1h, 10h, 100h, 1.000h]), llargada de flama (<1 m, 1-3 m, >5 m) i Conat (<1 ha), IF (1-500 ha), GIF (>500 ha).',
@@ -30,6 +30,14 @@ export const tema10IncendisForestals = {
       title: '1. Fites Històriques (1982–2006), Paradoxa de l’Extinció (99%/90%) i les 6 Generacions',
       subtitle: 'Evolució dels incendis a Catalunya, creació dels GRAF (1/03/1999) i classificació de Castellnou.',
       blocks: [
+        {
+          type: 'text',
+          heading: '1.1–1.4. La Paradoxa de l’Extinció i l’Evolució en 6 Generacions',
+          paragraphs: [
+            "La Paradoxa de l'Extinció explica per què la gestió forestal és clau: el 99% dels incendis s'apaguen com a conats i cremen menys del 10% de la superfície, mentre que menys de l'1% (els Grans Incendis Forestals, GIF) són responsables del 90% de les hectàrees cremades.",
+            "L'abandonament rural i el canvi climàtic han fet evolucionar els incendis des de focs de pastures (1a generació) fins a focs de capçades (3a), Interfície Urbà-Forestal IUF (4a), simultaneïtat de GIF (5a) i megaincendis amb pirocumulonimbus (6a)."
+          ]
+        },
         {
           type: 'table',
           title: '1.1 i 1.5. Cronologia Oficial dels Incendis Forestals a Catalunya (MAN.INVE.000 Cap. 1)',
@@ -68,12 +76,20 @@ export const tema10IncendisForestals = {
       subtitle: 'Geometria del foc, regla del 30-30-30, combustibles (1h-1000h), Lf (<1 m / 1-3 m / >5 m) i GIF (>500 ha).',
       blocks: [
         {
+          type: 'text',
+          heading: '⚠️ No confondre! Numeració de Sectors Forestals vs. Façanes Urbanes',
+          paragraphs: [
+            "En incendis forestals, la referència es pren mirant SEMPRE des de la CUA cap al CAP de l'incendi: la Cua és el Sector 0 (punt d'ancoratge), el Flanc Esquerre rep els sectors IMPARELLS (1, 3, 5...) i el Flanc Dret rep els sectors PARELLS (2, 4, 6...).",
+            "No ho confonguis amb les façanes A-B-C-D d'edificis (on B és esquerra i D és dreta en sentit horari mirant A)."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
           title: '2.1–2.2. Parts de l’Incendi i Numeració Oficial de Sectors Forestals',
           acronym: 'SECTOR 0 = CUA  |  IMPARELLS (1, 3, 5) = FLANC ESQUERRE  |  PARELLS (2, 4, 6) = FLANC DRET',
           trick:
-            "• PARTS DEL FOC (2.1): Cap (front d'avanç més ràpid i intens), Cua (origen o part oposada a l'avanç), Flanc Esquerre i Flanc Dret (mirant sempre des de la cua cap al cap en la direcció d'avanç del foc!), Dits, Bosses o entrants, Illes (zones verdes no cremades a dins) i Focus secundaris (fora del perímetre per paveses).\n• NUMERACIÓ DE SECTORS (2.2): Mirant des de la cua cap al cap:\n  - Sector 0 = Cua (punt d'ancoratge de les maniobres!).\n  - Sectors IMPARELLS (Sector 1, Sector 3, Sector 5...) = pugen pel FLANC ESQUERRE.\n  - Sectors PARELLS (Sector 2, Sector 4, Sector 6...) = pugen pel FLANC DRET.",
+            "• Parts del foc: Cap (front més ràpid), Cua (origen), Flanc Esquerre i Dret (mirant de cua a cap), Dits, Bosses, Illes (zones verdes internes) i Focus secundaris (per paveses).\n• Sectors: 0 = Cua | Imparells (1, 3...) = Flanc Esquerre | Parells (2, 4...) = Flanc Dret.",
           example: 'Si el Cap d’Intervenció t’assigna el "Sector 3", saps immediatament que vas a la part mitjana-alta del Flanc Esquerre!'
         },
         {
@@ -111,12 +127,21 @@ export const tema10IncendisForestals = {
           footnote: 'Diferència clau: INDRAFT = vent d’aspiració cap a dins de l’incendi | DOWNDRAFT = desplom descendent de la columna que escampa el foc en 360°.'
         },
         {
+          type: 'text',
+          heading: '3.3. Sistema de Predicció de Campbell (CPS): Alineació (0/3 a 3/3) i 5 Passos',
+          paragraphs: [
+            "El sistema CPS de Doug Campbell avalua l'ALINEACIÓ DE 3 FACTORS (de 0/3 a 3/3): 1) Pendent (+1 si puja costa amunt), 2) Vent (+1 si bufa a favor) i 3) Orientació Solar (+1 si el vessant està assolellat i preescalfat: Est al matí, Sud al migdia, Oest a la tarda).",
+            "Quan hi ha plena alineació (3/3), l'atac directe fracassa. Els punts d'inflexió (trigger points) com carenes, colls o girs de barranc indiquen on el foc passarà de 3/3 a 1/3 (finestra d'oportunitat) o d'1/3 a 3/3 (perill imminent).",
+            "Els 5 passos de la lògica CPS són: 1) Observar alineació actual, 2) Preveure canvis, 3) Identificar oportunitats (0/3 o 1/3), 4) Definir maniobra segura i 5) Establir llindars LACES."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '3.3. Sistema de Predicció de Campbell (CPS): Alineació de Forces (0/3 a 3/3) i 5 Passos',
+          title: 'Regla Ràpida · CPS de Campbell (Alineació de Forces)',
           acronym: '3 FORCES D’ALINEACIÓ:  1. Pendent (A favor)  +  2. Vent (A favor)  +  3. Orientació Solar (Preescalfat)',
           trick:
-            "Doug Campbell explica els canvis bruscos d'intensitat i velocitat del foc mitjançant l'ALINEACIÓ DE 3 FACTORS (de 0/3 fora d'alineació fins a 3/3 en plena alineació):\n1) PENDENT: El foc puja costa amunt (+1) o baixa costa avall (0).\n2) VENT: El vent bufa en la mateixa direcció d'avanç (+1) o en contra (0).\n3) ORIENTACIÓ SOLAR (Exposició/Insolació): El combustible del vessant està calent i sec al sol (+1: vessant Est al matí, Sud al migdia, Oest a la tarda) o fred a l'ombra/obaga (0).\n\n• Quan l'incendi està en 3/3 (Puja pendent + Vent a favor + Vessant assolellat), la intensitat és màxima i l'atac directe fracassa. Els Punts Crítics o 'punts de gallet' (trigger points) són els girs de barranc, colls o canvis d'hora on el foc passa de 1/3 a 3/3 (perill) o de 3/3 a 1/3 (oportunitat d'atac!).\n• ELS 5 PASSOS DE LA LÒGICA CPS (3.3.3):\n  1) Observar el comportament actual i l'alineació de forces.\n  2) Preveure com canviarà l'alineació més endavant (punts d'inflexió del terreny/hora).\n  3) Identificar les oportunitats (on el foc perdrà alineació: 0/3 o 1/3).\n  4) Definir l'objectiu i la maniobra tàctica segura.\n  5) Establir els llindars de seguretat i retirada (LACES).",
+            "• 3/3 (Puja pendent + Vent a favor + Vessant al sol) → Intensitat màxima, prohibit atac frontal.\n• Oportunitat d'atac → Quan el foc perd alineació (0/3 o 1/3) en passar una carena o a l'obaga.",
           example: 'Un foc que a les 16:00 h de la tarda puja per un vessant Oest (assolellat) amb vent d’Oest a favor té una alineació 3/3: prohibida qualsevol maniobra frontal!'
         }
       ]
@@ -128,12 +153,20 @@ export const tema10IncendisForestals = {
       subtitle: 'Ordre d’eines (Motxilla → Batefocs → Pulaski → Pala), estesa de mànegues i estats oficials del foc.',
       blocks: [
         {
+          type: 'text',
+          heading: '4.1.2. Atac Directe Manual vs. Atac Indirecte (Foc Tècnic)',
+          paragraphs: [
+            "L'atac directe amb eines manuals només és viable quan la llargada de flama és inferior a 1 metre (Lf < 1 m) i la velocitat d'avanç és inferior a 1 km/h, treballant en fila amb separació mínima de 3 m entre operadors.",
+            "Quan Lf > 5 m o l'atac directe no és segur, s'aplica atac indirecte a distància del front (línies de defensa o foc tècnic amb cremes d'eixamplament i contrafocs)."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
           title: '4.1.2. Ordre Exacte de la Cadena d’Eines Manuals en Atac Directe (Lf < 1 m i v < 1 km/h)',
           acronym: '1r MOTXILLA D’AIGUA  →  2n BATEFOCS  →  3r PULASKI  →  4t PALA   (Separació ≥ 3 m)',
           trick:
-            "L'atac directe amb eines manuals només és viable quan la llargada de flama és INFERIOR A 1 METRE (Lf < 1 m) i la velocitat de propagació és INFERIOR A 1 KM/H. Els bombers avancen en fila per la vora del foc (amb separació de seguretat entre operadors) en aquest ordre estricte:\n• 1r MOTXILLA D'AIGUA (Extintor de motxilla ~18-20 L): Refreda i abaixa la flama inicial.\n• 2n BATEFOCS: Sufoca la flama restant colpejant i mantenint la pala de goma sobre la vora cap a dins del cremat.\n• 3r PULASKI (Destral-aixada): Talla arrels, matolls i obre el solc fins a terra mineral (eina mixta de tall i cavat).\n• 4t PALA (o McLeod): Raspa, neteja fins a terra mineral i llança terra mineral sobre les brases cap a l'interior del cremat per segellar la línia!",
+            "• 1r MOTXILLA D'AIGUA (~18–20 L): Refreda i abaixa la flama inicial.\n• 2n BATEFOCS: Sufoca la flama restant colpejant cap a dins del cremat.\n• 3r PULASKI (Destral-aixada): Talla arrels i obre el solc fins a terra mineral.\n• 4t PALA (o McLeod): Raspa fins a sòl mineral i llança terra sobre les brases.",
           example: 'Recorda l’acció de cada un: 1r Refreda (Motxilla) → 2n Sufoca (Batefocs) → 3r Talla i cava (Pulaski) → 4t Raspa i enterra (Pala).'
         },
         {
@@ -146,6 +179,14 @@ export const tema10IncendisForestals = {
             ['4.5. Les 4 FASES d’Evolució de l’Incendi (Estat global INFOCAT)', '1) Incendi ACTIU\n2) Incendi ESTABILITZAT\n3) Incendi CONTROLAT\n4) Incendi EXTINGIT', '• 1. Actiu: Les flames es propaguen lliurement i existeixen fronts que creixen fora de la capacitat immediata de contenció.\n• 2. Estabilitzat: L’incendi encara no està envoltat per una línia completa, però ja NO avança lliurement i evoluciona dins de les línies i previsions d’extinció.\n• 3. Controlat: Tot el perímetre està envoltat per una línia de control contínua fins a sòl mineral (o humida) i ja no pot créixer, tot i que a l’interior poden quedar punts calents o fumaroles.\n• 4. Extingit: Ja no queda calor ni cap brasa amb possibilitat de revifar l’incendi.']
           ],
           footnote: 'No les barregis mai! 3 ETAPES de treball = Atac → Remat → Rereguarda | 4 FASES de l’incendi = Actiu → Estabilitzat → Controlat → Extingit.'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Fases del Foc (INFOCAT) vs. Etapes d’Extinció (Equips)',
+          paragraphs: [
+            "• 4 FASES DE L'INCENDI (INFOCAT): Indiquen l'estat global del foc → 1) Actiu (avança lliurement), 2) Estabilitzat (ja no avança lliurement però falta tancar perímetre), 3) Controlat (tot el perímetre envoltat per línia de control contínua), 4) Extingit (sense calor ni brases).",
+            "• 3 ETAPES DE LES TASQUES D'EXTINCIÓ: Indiquen què fan els equips → 1) Atac (aturar la flama), 2) Remat (liquidar punts calents al perímetre) i 3) Rereguarda (vigilància per evitar revifalles)."
+          ]
         },
         {
           type: 'mnemonic',
@@ -164,6 +205,14 @@ export const tema10IncendisForestals = {
       title: '5. Seguretat en Incendis Forestals: Protocol RAF, LACES (R ≥ 4×Lf) i Atrapament en Autobomba',
       subtitle: 'Reagrupament-Autoprotecció-Fugida, càlcul del radi de Zona Segura i les 3 Situacions d’Atrapament.',
       blocks: [
+        {
+          type: 'text',
+          heading: '5.3–5.4. Protocols RAF i LACES en Incendis Forestals',
+          paragraphs: [
+            "El protocol RAF marca els passos davant un canvi brusc de comportament del foc: Reagrupament de tota la dotació, Autoprotecció i Fugida cap a la Zona Segura per una ruta coneguda.",
+            "El protocol LACES (Lookouts, Anchor/Awareness, Communications, Escape routes, Safety zones) exigeix que la Zona Segura tingui un radi mínim R ≥ 4 × Lf on sobreviure sense cabina ni manta."
+          ]
+        },
         {
           type: 'mnemonic',
           variant: 'formula',
@@ -203,6 +252,14 @@ export const tema10IncendisForestals = {
       subtitle: 'Totes les xifres numèriques d’Incendis Forestals per memoritzar abans de l’examen.',
       blocks: [
         {
+          type: 'text',
+          heading: '1.1–1.4. La Paradoxa de l’Extinció i l’Evolució en 6 Generacions',
+          paragraphs: [
+            "La Paradoxa de l'Extinció explica per què la gestió forestal és clau: el 99% dels incendis s'apaguen com a conats i cremen menys del 10% de la superfície, mentre que menys de l'1% (els Grans Incendis Forestals, GIF) són responsables del 90% de les hectàrees cremades.",
+            "L'abandonament rural i el canvi climàtic han fet evolucionar els incendis des de focs de pastures (1a generació) fins a focs de capçades (3a), Interfície Urbà-Forestal IUF (4a), simultaneïtat de GIF (5a) i megaincendis amb pirocumulonimbus (6a)."
+          ]
+        },
+        {
           type: 'table',
           title: 'Síntesi Numèrica Imprescindible d’Examen — Tema 25 (Incendis Forestals)',
           subtitle: 'Els 15 valors oficials del manual MAN.INVE.000 que més es pregunten a l’oposició',
@@ -241,7 +298,7 @@ export const tema10IncendisForestals = {
           title: 'Els 5 Paranys del Tribunal al Tema 25 (Incendis Forestals)',
           acronym: 'SECTORS (Imparell=Esq) | EINES (M-B-Pu-Pa) | 3 ETAPES vs 4 FASES | ESTABILITZAT vs CONTROLAT | R ≥ 4×Lf',
           trick:
-            "1) SECTORS FORESTALS: Sector 0 = Cua. Mirant de la cua cap al cap: a l'ESQUERRA van els IMPARELLS (1, 3, 5) i a la DRETA van els PARELLS (2, 4, 6).\n2) CADENA D'EINES MANUALS: Només per a flama < 1 m i velocitat < 1 km/h. L'ordre és inalterable: 1r Motxilla → 2n Batefocs → 3r Pulaski → 4t Pala.\n3) 3 ETAPES DE TREBALL vs. 4 FASES DEL FOC:\n• Si et pregunten per les 3 ETAPES de l'extinció: Atac, Remat i Rereguarda.\n• Si et pregunten per les 4 FASES de l'incendi (INFOCAT): Actiu, Estabilitzat, Controlat i Extingit.\n4) ESTABILITZAT vs. CONTROLAT:\n• Estabilitzat = el foc ja no avança lliurement i evoluciona dins les línies previstes, però el perímetre encara NO està 100% tancat.\n• Controlat = tot el perímetre està envoltat per una línia de control contínua i assegurada (tot i que a dins puguin fumejar punts calents).\n5) LACES (Lookouts, Anchor/Awareness, Communications, Escape routes, Safety zones): El radi d'una Zona Segura ha de ser com a mínim 4 VEGADES l'alçada o llargada de flama (R ≥ 4 × Lf).",
+            "1) SECTORS FORESTALS: Sector 0 = Cua; mirant de cua a cap, ESQUERRA = Imparells (1, 3, 5) i DRETA = Parells (2, 4, 6).\n2) EINES MANUALS (Lf < 1 m, v < 1 km/h): 1r Motxilla → 2n Batefocs → 3r Pulaski → 4t Pala.\n3) 3 ETAPES vs. 4 FASES: Etapes (equips) = Atac, Remat, Rereguarda; Fases (INFOCAT) = Actiu, Estabilitzat, Controlat, Extingit.\n4) ESTABILITZAT vs. CONTROLAT: Estabilitzat = no avança lliurement però perímetre incomplet; Controlat = perímetre 100% tancat.\n5) LACES: Radi de Zona Segura R ≥ 4 × Lf (sobreviure sense cabina ni autoprotecció).",
           example: 'Si una flama de capçades fa 15 metres de llargada (Lf = 15 m), el radi mínim de la Zona Segura fins al combustible és 4 × 15 = 60 metres.'
         }
       ]
@@ -468,6 +525,32 @@ export const tema10IncendisForestals = {
       ],
       correctIndex: 1,
       explanation: "La cadena d'eines manuals segueix l'ordre inalterable Motxilla (refreda) → Batefocs (sufoca) → Pulaski (talla/cava) → Pala (raspa i enterra), donant pas després a les etapes de Remat (liquidació) i Rereguarda (vigilància)."
+    },
+    {
+      id: 'q25-18',
+      difficulty: 'Mitjà',
+      question: "Quina diferència exacta existeix entre un incendi en fase 'Estabilitzat' i un incendi en fase 'Controlat' segons la classificació INFOCAT del manual MAN.INVE.000?",
+      options: [
+        "En fase Controlat encara hi ha fronts de flama avançant lliurement fora de les línies previstes, mentre que en Estabilitzat ja no queda cap brasa calenta.",
+        "En fase Estabilitzat l'incendi ja no avança lliurement i evoluciona dins les previsions però el perímetre encara NO està completament envoltat; en fase Controlat tot el perímetre està tancat per una línia de control contínua (tot i poder quedar punts calents dins).",
+        "Tots dos termes corresponen a les Etapes dels equips d'extinció i són sinònims operatius.",
+        "Un incendi passa directament d'Actiu a Extingit sense fases intermèdies."
+      ],
+      correctIndex: 1,
+      explanation: "Estabilitzat significa evolució dins les línies previstes però sense perímetre tancat al 100%; Controlat significa tot el perímetre envoltat per línia de control contínua (fins a sòl mineral o humida) sense possibilitat de creixement."
+    },
+    {
+      id: 'q25-19',
+      difficulty: 'Difícil',
+      question: "En un incendi forestal, el comandament assigna un vehicle al Sector 4 mentre un segon vehicle rep l'ordre d'iniciar una crema d'eixamplament des d'una pista segura. On treballa el primer vehicle i com es classifica la maniobra del segon?",
+      options: [
+        "Sector 4 = Flanc esquerre (mirant de cua a cap) | Crema d'eixamplament = Atac directe.",
+        "Sector 4 = Flanc dret (sectors parells mirant de la cua cap al cap) | Crema d'eixamplament (foc tècnic) = Maniobra d'atac indirecte.",
+        "Sector 4 = Cua de l'incendi | Crema d'eixamplament = Etapa de rereguarda.",
+        "Sector 4 = Façana posterior (sentit horari urbà) | Crema d'eixamplament = Situació 3 d'atrapament."
+      ],
+      correctIndex: 1,
+      explanation: "Mirant de la cua (Sector 0) cap al cap, els sectors parells (2, 4, 6...) corresponen al flanc dret. Les maniobres amb foc tècnic (cremes d'eixamplament i contrafocs) formen part de l'atac indirecte."
     }
   ]
 };

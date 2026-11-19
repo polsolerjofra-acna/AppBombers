@@ -77,19 +77,29 @@ export const tema3AssistenciesTecniques = {
           footnote: 'El rebot o "kickback" es produeix quan el QUART SUPERIOR de la punta de l’espasa toca fusta o un obstacle: l’espasa surt disparada cap a la cara de l’operador!'
         },
         {
+          type: 'text',
+          heading: '3.3–3.4. Zonatge (AGO: Zona A vs. Zona B) i Tècniques de Tall',
+          paragraphs: [
+            "No confondre! Zona A vs. Zona B (Àrea de Gestió Operativa): La ZONA A és el perímetre d'abatiment (radi = 2,5 × alçada de l'arbre), on només pot entrar el binomi de treball. La ZONA B és el radi immediat d'acció de la màquina (2 metres al voltant del motoserrista): mentre la cadena gira, NINGÚ més (ni el company del binomi!) pot entrar dins d'aquests 2 metres.",
+            "Tall vertical d'abatiment (a 1 metre del terra en arbres tensats o descalçats): 1r Entall de direcció (falca a 45°, profunditat 1/4 a 1/3 del diàmetre); 2n Tall d'abatiment horitzontal lleugerament per sobre de la base de l'entall deixant sempre la FRONTISSA (10% del diàmetre, que guia la caiguda i MAI s'ha de tallar); 3r Vies d'escapament a 45° cap enrere.",
+            "Tall horitzontal de tronc recolzat (en voladís o en pont): SEMPRE s'inicia amb un 1r tall d'alleujament (1/3 del diàmetre) a la ZONA DE COMPRESSIÓ (on la fusta es tanca i pinçaria l'espasa) i s'acaba amb el 2n tall definitiu (2/3) a la ZONA DE TRACCIÓ (on s'obre)."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '3.3. Àrea de Gestió Operativa (AGO) i Tècniques de Tall (3.4)',
-          acronym: 'ZONA A = 2,5 × Alçada arbre (Binomi)   |   ZONA B = 2 metres (NOMÉS Motoserrista)',
+          title: 'Regla Mnemotècnica · AGO (2,5×h / 2 m) i Talls de Motoserra',
+          acronym: 'ZONA A = 2,5 × h (Binomi)   |   ZONA B = 2 m (NOMÉS Motoserrista)',
           trick:
-            "• ZONA A (Perímetre d'abatiment): Radi igual a 2,5 VEGADES l'alçada de l'arbre (en terreny amb pendent o vent pot ampliar-se). Dins la Zona A només hi pot haver el binomi de treball.\n• ZONA B (Radi d'acció de l'eina): Radi de 2 METRES al voltant del motoserrista. Mentre la cadena gira, NINGÚ (ni tan sols l'ajudant del binomi!) pot entrar dins dels 2 metres!\n• TALL VERTICAL D'ABATIMENT (3.4.1): Es realitza a 1 METRE d'alçada del terra quan l'arbre està tensat o descalçat: 1r Entall de direcció (falca oberta de 45° i profunditat 1/4 a 1/3 del diàmetre), 2n Tall d'abatiment horitzontal lleugerament per sobre de la base de l'entall deixant sempre la FRONTISSA (10% del diàmetre, que guia la caiguda i MAI s'ha de tallar!), i 3r Vies d'escapament a 45° cap enrere en sentit oposat a la caiguda.\n• TALL HORITZONTAL DE TRONC EN TERRA (3.4.2): Si té 1 punt de suport (voladís) o 2 punts de suport (pont): SEMPRE es fa un 1r tall d'alleujament (1/3 del diàmetre) a la ZONA DE COMPRESSIÓ (on les fibres s'ajunten i pinçarien l'espasa) i el 2n tall definitiu (2/3) a la ZONA DE TRACCIÓ (on les fibres s'obren).",
+            "• En tronc en terra (pont o voladís): primer alleuja 1/3 on s'AIXAFA (Compressió) i després talla 2/3 on s'OBRE (Tracció).\n• En abatiment vertical: deixa sempre un 10% de FRONTISSA i fuig per una de les dues vies d'escapament a 45° cap enrere.",
           example: 'Tronc recolzat als dos extrems com un pont: la part de dalt es comprimeix i la de baix es tracciona → 1r tall per DALT (1/3) i 2n tall per BAIX (2/3).'
         },
         {
           type: 'text',
           heading: '3.5. EPI Obligatori de Motoserrista (Inclou FFP3)',
           paragraphs: [
-            "L'EPI específic per operar amb motoserra segons el manual MAN.ATXX.000 (secció 3.5) consta de: Casc amb pantalla facial de malla/visera i protectors auditius (orelletes), ulleres de seguretat, MASCARETA FFP3 (per protegir de la pols de serradures, espores fúngiques i fums d'escapament de 2 temps!), jaqueta, guants anticall, pantalons o zahones anticall (amb fibres blocadores que encallen el pinyó a l'instant) i botes de seguretat amb puntera i protecció anticall."
+            "L'EPI específic per operar amb motoserra (secció 3.5 de MAN.ATXX.000) inclou casc amb pantalla facial de malla i protectors auditius, ulleres de seguretat i MASCARETA FFP3 (contra pols de serradures, espores fúngiques i fums de motor de 2 temps).",
+            "Es completa amb jaqueta, guants anticall, pantalons o zahones anticall (amb fibres llargues que embussen el pinyó a l'instant en cas de contacte) i botes de seguretat amb puntera i protecció anticall."
           ]
         }
       ]
@@ -186,7 +196,7 @@ export const tema3AssistenciesTecniques = {
           title: 'Els 6 Paranys Clàssics del Tribunal al Tema 16',
           acronym: 'SERPS (Sac vs Rígid) | CAVALL (Mai coll) | REBOT (Quart superior) | COMPRESSIÓ (1r) | AEA (A dalt) | SEPIOLITA',
           trick:
-            "1) SERPS: Autòctona → Sac de roba lligat | Exòtica o verinosa → Recipient rígid tancat.\n2) ANIMALS GRANS: Porc → llaç al morro (maxil·lar superior) | Cavall/vaca → tapar ulls i cintes per tòrax/abdomen (MAI estirar pel coll, potes ni banyes). Captura química NOMÉS per veterinari.\n3) REBOT (KICKBACK) DE MOTOSERRA: Es produeix sempre per contacte amb el QUART SUPERIOR de la punta de l'espasa.\n4) TRONC EN TERRA: Sempre 1r tall (1/3) a la zona de COMPRESSIÓ i 2n tall (2/3) a la zona de TRACCIÓ.\n5) SANEJAMENT AMB AUTOESCALA (AEA): La cistella sempre per SOBRE o al LATERAL de la cornisa/element, mai a sota.\n6) NETEJA DE CALÇADA: En olis i hidrocarburs usar sempre absorbent (sepiolita) i recollir en sec; prohibit tirar aigua a pressió cap als embornals.",
+            "• SERPS: Autòctona → Sac de roba lligat | Exòtica/verinosa → Recipient rígid tancat.\n• ANIMALS: Porc → llaç al morro | Cavall/vaca → cintes tòrax/abdomen (MAI coll/potes) | Captura química → NOMÉS veterinari.\n• MOTOSERRA: Rebot = quart superior de la punta | Tronc = 1r Compressió (1/3), 2n Tracció (2/3).\n• SANEJAMENT AEA i CALÇADA: Cistella AEA per sobre o lateral | Vessaments d'oli = sepiolita en sec (MAI aigua a pressió).",
           example: 'Si et pregunten qui pot entrar dins dels 2 metres (Zona B) per ajudar el motoserrista mentre talla: NINGÚ (0 persones a menys de 2 m).'
         }
       ]
@@ -343,6 +353,84 @@ export const tema3AssistenciesTecniques = {
       ],
       correctIndex: 0,
       explanation: "Segons l'apartat 5.3, els vessaments d'olis o hidrocarburs s'absorbeixen amb sepiolita i es recullen en sec, prohibint projectar aigua a pressió cap al clavegueram perquè el contamina i estén la superfície relliscosa."
+    },
+    {
+      id: 'q16-13',
+      difficulty: 'Mitjà',
+      question: "En una intervenció d'accés a habitatge on no hi ha emergència vital immediata i la porta està tancada amb voltes de clau (forrellat passat), quin ha de ser l'ordre de prioritat operatiu segons el manual?",
+      options: [
+        'Trencar directament la porta amb un mall i un separador hidràulic.',
+        'Requerir presència policial (si no és emergència vital) i prioritzar l’accés menys destructiu: 1r finestra o balcó accessible, i si no és possible, extracció/fresat únicament del bombí.',
+        'Intentar passar una radiografia pel resbaló, ja que sempre obra els forrellats girats.',
+        'Entrar sense policia ni ordre judicial en tots els casos per ser servei públic.'
+      ],
+      correctIndex: 1,
+      explanation: "Sense emergència vital immediata cal requerir la policia i triar la via menys destructiva (finestra/balcó); la làmina de mica només obre el resbaló (no el forrellat girat), de manera que si s'ha d'obrir la porta es limita el dany al bombí."
+    },
+    {
+      id: 'q16-14',
+      difficulty: 'Mitjà',
+      question: "En relació amb les intervencions amb animals (Capítol 2 de MAN.ATXX.000), quina de les afirmacions següents és INCORRECTA?",
+      options: [
+        'La captura química mitjançant dards anestèsics només la pot preparar i disparar personal veterinari qualificat.',
+        'En fauna salvatge (cabirols, senglars), cal minimitzar sorolls i llums i cobrir el cap per prevenir la miopatia de captura.',
+        'Les abelles (Apis mellifera) es poden eliminar directament amb insecticida per evitar segones sortides.',
+        'Per capturar ovelles o cabres cal subjectar-les pel coll/barbeta i la gropa, sense estirar mai de la llana ni les banyes.'
+      ],
+      correctIndex: 2,
+      explanation: "Afirmació incorrecta: l'abella (Apis mellifera) és una espècie protegida i NO es mata amb insecticida; s'ha de recollir l'eixam en una caixa amb la reina (preferentment al capvespre o de nit)."
+    },
+    {
+      id: 'q16-15',
+      difficulty: 'Fàcil',
+      question: "Quin element de seguretat de la motoserra s'activa automàticament per inèrcia en cas de rebot (kickback) i s'ha d'accionar sempre manualment abans d'engegar la màquina o caminar amb el motor en marxa?",
+      options: [
+        'El captador de cadena.',
+        'El limitador de profunditat.',
+        'El fre de cadena.',
+        'El fiador de l’accelerador.'
+      ],
+      correctIndex: 2,
+      explanation: "El fre de cadena bloqueja la cadena a l'instant tant manualment (amb el dors del canell esquerre) com per inèrcia davant d'un rebot."
+    },
+    {
+      id: 'q16-16',
+      difficulty: 'Difícil',
+      question: "Ens trobem un tronc gruixut caigut que està en voladís (recolzat només per un extrem a un marge i l'altre extrem suspès a l'aire). On es troba la zona de compressió i com l'hem de tallar?",
+      options: [
+        'La compressió és a la cara superior → 1r tall d’1/3 per dalt i 2n tall de 2/3 per baix.',
+        'La compressió és a la cara inferior (s’aixafa pel pes de la punta) → 1r tall d’1/3 per baix i 2n tall de 2/3 per dalt.',
+        'Tot el tronc està a tracció pura → es talla d’un sol cop de dalt a baix.',
+        'Tot el tronc està a compressió → es talla d’un sol cop de baix a dalt.'
+      ],
+      correctIndex: 1,
+      explanation: "En un voladís (a diferència d'un pont recolzat als dos extrems), la part SUPERIOR s'estira (tracció) i la part INFERIOR s'aixafa (compressió). Per tant, el 1r tall d'alleujament (1/3) es fa per BAIX (compressió) i el 2n tall (2/3) per DALT (tracció)."
+    },
+    {
+      id: 'q16-17',
+      difficulty: 'Mitjà',
+      question: "Quina peça interna del cilindre (bombí europeu) gira solidàriament amb el rotor un cop alineats els pitons i acciona directament el mecanisme del forrellat del pany?",
+      options: [
+        'El resbaló bisellat.',
+        'La lleva central.',
+        'El contrapitó.',
+        'El captador.'
+      ],
+      correctIndex: 1,
+      explanation: "La lleva central del bombí és la peça metàl·lica que gira i empeny o retira el forrellat del pany. Quan s'extreu o es trenca el bombí, s'introdueix una eina per girar aquesta lleva."
+    },
+    {
+      id: 'q16-18',
+      difficulty: 'Fàcil',
+      question: "En una intervenció nocturna amb himenòpters (abelles o vespes), quin detall d'EPI i quin horari d'actuació recomana el manual MAN.ATXX.000?",
+      options: [
+        'Actuar al migdia amb màxima calor solar i només amb el casc d’incendi forestal.',
+        'Actuar preferentment al capvespre o de nit amb EPI complet d’apicultor (granota blanca, careta de reixeta i guants segellats amb cinta).',
+        'Actuar amb l’equip d’intervenció estructural sense guants i ruixant aigua freda al rusc.',
+        'Actuar de matinada amb mascareta FFP1 i botes d’aigua.'
+      ],
+      correctIndex: 1,
+      explanation: "Cal utilitzar l'EPI complet d'apicultor ben segellat i actuar al capvespre o de nit, quan els insectes són dins del rusc o niu i tenen molta menys activitat."
     }
   ]
 };

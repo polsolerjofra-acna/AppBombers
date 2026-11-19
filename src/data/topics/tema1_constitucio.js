@@ -32,11 +32,19 @@ export const tema1Constitucio = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Fitxa tècnica, reformes i Títol Preliminar',
+          heading: '1.1 Fitxa tècnica i les 3 reformes de la CE',
           paragraphs: [
-            'La Constitució Espanyola va ser aprovada per les Corts Generals, ratificada pel poble en referèndum i publicada al BOE el 29 de desembre de 1978, entrant en vigor el mateix dia (Disposició Final). Consta de Preàmbul (sense força normativa), 169 articles distribuïts en un Títol Preliminar (arts. 1–9) i 10 Títols numerats, més 4 disposicions addicionals, 9 transitòries, 1 derogatòria i 1 final.',
-            'Només ha tingut 3 reformes: 1992 (art. 13.2 sufragi passiu estrangers), 2011 (art. 135 estabilitat pressupostària) i 2024 (art. 49, vigent des del 15/02/2024, substituint "disminuïts" per "persones amb discapacitat").',
-            'L\'article 1 defineix Espanya com un Estat social i democràtic de Dret, amb sobirania nacional al poble i Monarquia parlamentària. Els 4 valors superiors són: llibertat, justícia, igualtat i pluralisme polític. L\'article 9.3 garanteix 7 principis: legalitat, jerarquia normativa, publicitat de les normes, irretroactivitat de les disposicions sancionadores no favorables o restrictives de drets individuals, seguretat jurídica, responsabilitat i interdicció de l\'arbitrarietat.'
+            'La Constitució Espanyola va ser aprovada per les Corts Generals, ratificada pel poble en referèndum i publicada al BOE el 29 de desembre de 1978, entrant en vigor el mateix dia (Disposició Final).',
+            'Consta de Preàmbul (sense força normativa), 169 articles distribuïts en un Títol Preliminar (arts. 1–9) i 10 Títols numerats, més 4 disposicions addicionals, 9 transitòries, 1 derogatòria i 1 final.',
+            'Només ha tingut 3 reformes: 1992 (art. 13.2 sufragi passiu estrangers), 2011 (art. 135 estabilitat pressupostària) i 2024 (art. 49, vigent des del 15/02/2024, substituint "disminuïts" per "persones amb discapacitat").'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '1.2 Títol Preliminar: definició d\'Estat (art. 1) i 7 principis (art. 9.3)',
+          paragraphs: [
+            'L\'article 1 defineix Espanya com un Estat social i democràtic de Dret, amb sobirania nacional al poble espanyol i forma política de Monarquia parlamentària. Els 4 valors superiors de l\'ordenament són: llibertat, justícia, igualtat i pluralisme polític.',
+            'L\'article 9.3 garanteix 7 principis constitucionals: legalitat, jerarquia normativa, publicitat de les normes, irretroactivitat de les disposicions sancionadores no favorables o restrictives de drets individuals, seguretat jurídica, responsabilitat i interdicció de l\'arbitrarietat dels poders públics.'
           ]
         },
         {
@@ -66,8 +74,18 @@ export const tema1Constitucio = {
           type: 'text',
           heading: '2.1 Classificació del Títol I (arts. 10–55) i Protecció Civil',
           paragraphs: [
-            'L\'article 10 (fora de capítols) consagra la dignitat de la persona. El Capítol II es divideix en Secció 1a (arts. 15–29, drets fonamentals i llibertats públiques: ex. art. 17.2 detenció preventiva màxim 72 hores; art. 27 educació) i Secció 2a (arts. 30–38). Dins la Secció 2a hi ha l\'article 30.4, base constitucional de la Protecció Civil: es poden establir deures als ciutadans en casos de greu risc, catàstrofe o calamitat pública.',
-            'El Capítol III (arts. 39–52) recull els principis rectors (art. 40.2 seguretat i higiene en el treball, art. 45 medi ambient, art. 49 persones amb discapacitat). El Capítol IV fixa les garanties: el recurs d\'empara davant el TC (art. 53.2) NOMÉS protegeix l\'article 14 (igualtat), la Secció 1a (arts. 15–29) i l\'objecció de consciència (art. 30.2).'
+            'L\'article 10 (fora de capítols) consagra la dignitat de la persona. El Capítol II es divideix en Secció 1a (arts. 15–29, drets fonamentals i llibertats públiques: ex. art. 17.2 detenció preventiva màxim 72 hores; art. 27 educació) i Secció 2a (arts. 30–38, drets i deures dels ciutadans).',
+            'Dins la Secció 2a hi ha l\'article 30.4, base constitucional de la Protecció Civil: per llei es poden establir deures als ciutadans en casos de greu risc, catàstrofe o calamitat pública.',
+            'El Capítol III (arts. 39–52) recull els principis rectors de la política social i econòmica (art. 40.2 seguretat i higiene en el treball, art. 45 medi ambient, art. 49 persones amb discapacitat).'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.2 Garanties dels drets (art. 53 CE) — No confondre els 3 nivells!',
+          paragraphs: [
+            'Nivell màxim (art. 53.2): recurs preferent i sumari davant els tribunals ordinaris + recurs d\'empara davant el TC. NOMÉS protegeix l\'art. 14 (igualtat), la Secció 1a (arts. 15–29) i l\'objecció de consciència (art. 30.2).',
+            'Nivell ordinari (art. 53.1): vincula tots els poders públics, exigeix regulació per llei que respecti el contingut essencial. Protegeix tot el Capítol II (arts. 14–38), però només els arts. 15–29 exigeixen Llei Orgànica (art. 81).',
+            'Nivell informador (art. 53.3): els principis rectors (arts. 39–52) informen la legislació i la pràctica judicial, però només es poden al·legar davant la jurisdicció d\'acord amb les lleis que els desenvolupin.'
           ]
         },
         {
@@ -99,11 +117,29 @@ export const tema1Constitucio = {
       blocks: [
         {
           type: 'text',
-          heading: '3.1 Òrgans constitucionals i Administració Pública',
+          heading: '3.1 La Corona (Títol II) i les Corts Generals (Títol III)',
           paragraphs: [
-            'La Corona (Títol II): Regència d\'1, 3 o 5 persones. Les Corts Generals (Títol III): Congrés (300–400 diputats, actualment 350) i Senat (4 per província peninsular). La Diputació Permanent té un mínim de 21 membres. La iniciativa legislativa popular requereix un mínim de 500.000 signatures. El Senat té 2 mesos (20 dies naturals si és urgent) per vetar (majoria absoluta) o esmenar; el Congrés aixeca el veto per majoria absoluta o per simple passats 2 mesos.',
-            'Govern i Administració (Títol IV): Si passen 2 mesos des de la primera votació d\'investidura sense candidat elegit, es dissolen les Corts (art. 99). L\'article 103 fixa els 5 principis d\'actuació de l\'Administració: eficàcia, jerarquia, descentralització, desconcentració i coordinació. El Consell d\'Estat (art. 107) és l\'òrgan consultiu suprem del Govern.',
-            'CGPJ (art. 122.3): President del TS + 20 membres (12 jutges/magistrats + 4 Congrés + 4 Senat per majoria 3/5) amb mandat de 5 anys. Tribunal Constitucional (arts. 159–162): 12 membres (4 Congrés, 4 Senat per 3/5, 2 Govern, 2 CGPJ) per 9 anys (renovats per terços cada 3 anys; president 3 anys). Poden interposar recurs d\'inconstitucionalitat: President del Govern, Defensor del Poble, 50 diputats, 50 senadors, governs i assemblees de CCAA.'
+            'La Corona (Títol II): la Regència pot ser d\'1, 3 o 5 persones. Els actes del Rei requereixen sempre ratificació (refrendament), excepte en els supòsits del seu àmbit privat/casa reial.',
+            'Les Corts Generals (Títol III): Congrés (300–400 diputats, actualment 350) i Senat (4 per província peninsular). La Diputació Permanent té un mínim de 21 membres. La iniciativa legislativa popular requereix un mínim de 500.000 signatures (no procedeix en matèries de Llei Orgànica, tributàries, internacionals ni prerrogativa de gràcia).',
+            'Tràmit legislatiu: el Senat té 2 mesos (20 dies naturals si és urgent) per vetar per majoria absoluta o esmenar; el Congrés aixeca el veto immediatament per majoria absoluta o per majoria simple passats 2 mesos.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '3.2 Govern, Administració (art. 103 CE) i normes amb rang de llei',
+          paragraphs: [
+            'Govern (Títol IV): si passen 2 mesos des de la primera votació d\'investidura sense candidat elegit, es dissolen les Corts (art. 99). L\'article 103 fixa els 5 principis d\'actuació de l\'Administració: eficàcia, jerarquia, descentralització, desconcentració i coordinació. El Consell d\'Estat (art. 107) és l\'òrgan consultiu suprem del Govern.',
+            'No confondre! Llei Orgànica (art. 81, majoria absoluta del Congrés en votació final sobre el conjunt; regula drets fonamentals 15–29, Estatuts i règim electoral) vs Llei Ordinària (majoria simple).',
+            'No confondre! Decret Llei (art. 86, el dicta el Govern en casos d\'extraordinària i urgent necessitat; l\'ha de convalidar o derogar el Congrés en 30 dies; mai pot afectar institucions bàsiques, Títol I, règim CCAA ni dret electoral) vs Decret Legislatiu (arts. 82–85, delegació prèvia de les Corts mitjançant llei de bases o llei ordinària per refondre textos).'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '3.3 CGPJ (art. 122.3) i Tribunal Constitucional (arts. 159–162)',
+          paragraphs: [
+            'CGPJ (art. 122.3): President del Tribunal Suprem + 20 vocals (12 jutges/magistrats + 4 a proposta del Congrés + 4 a proposta del Senat, aquests per majoria de 3/5), amb mandat de 5 anys.',
+            'Tribunal Constitucional (arts. 159–162): 12 membres (4 Congrés i 4 Senat per majoria de 3/5, 2 Govern i 2 CGPJ) amb mandat de 9 anys, renovats per terços cada 3 anys (President per 3 anys).',
+            'Legitimats per al recurs d\'inconstitucionalitat (art. 162.1.a): President del Govern, Defensor del Poble, 50 diputats, 50 senadors, governs i assemblees de les CCAA (el recurs d\'empara el pot posar qualsevol persona amb interès legítim, el Defensor del Poble i el Ministeri Fiscal).'
           ]
         },
         {
@@ -131,11 +167,20 @@ export const tema1Constitucio = {
       blocks: [
         {
           type: 'text',
-          heading: '4.1 Estructura, símbols, drets i institucions',
+          heading: '4.1 Estructura, llengua, símbols i Aran (STC 31/2010)',
           paragraphs: [
-            'L\'EAC (LO 6/2006) té 223 articles en 7 Títols més Preliminar, 15 addicionals, 2 transitòries, 1 derogatòria i 4 finals. El Preàmbul esmenta "nació" (sense eficàcia jurídica interpretativa segons la STC 31/2010), mentre l\'art. 1 defineix Catalunya com a "nacionalitat" i norma institucional bàsica. L\'art. 6.1 declara el català llengua pròpia (l\'incís "i preferent" va ser ANUL·LAT per la STC 31/2010) i l\'aranès oficial a tot Catalunya.',
-            'Els 3 símbols nacionals de l\'art. 8 són: la Bandera, la Diada (11 de setembre) i l\'himne (Els Segadors). L\'escut NO hi figura! L\'Aran (art. 11) té entitat territorial singular i règim jurídic especial amb el Conselh Generau d\'Aran.',
-            'Parlament (100–150 diputats, mandat 4 anys; llei electoral 2/3; Decret llei art. 64 requereix validació en 30 dies improrrogables). President de la Generalitat (2 mesos sense investidura = dissolució; el suplent no pot plantejar qüestió de confiança, nomenar/cessar consellers ni dissoldre el Parlament). Consell de Garanties Estatutàries (arts. 76–77): 2/3 elegits pel Parlament (3/5) i 1/3 pel Govern; dictàmens NO vinculants (art. 76.4 anul·lat). Síndic de Greuges i Sindicatura de Comptes: elegits per 3/5 del Parlament. El Títol III Cap. II (Consell de Justícia, arts. 97–100) NO és vigent (anul·lat STC 31/2010).'
+            'L\'EAC (LO 6/2006) té 223 articles en 7 Títols més Preliminar, 15 disposicions addicionals, 2 transitòries, 1 derogatòria i 4 finals. El Preàmbul esmenta "nació" (sense eficàcia jurídica interpretativa segons la STC 31/2010), mentre l\'art. 1 defineix Catalunya com a "nacionalitat" i norma institucional bàsica.',
+            'L\'art. 6.1 declara el català llengua pròpia (l\'incís "i preferent" va ser ANUL·LAT per la STC 31/2010) i l\'aranès oficial a tot Catalunya.',
+            'Els 3 símbols nacionals de l\'art. 8 són: la Bandera, la Diada (11 de setembre) i l\'himne (Els Segadors). L\'escut NO hi figura! L\'Aran (art. 11) té entitat territorial singular i règim jurídic especial amb el Conselh Generau d\'Aran.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '4.2 Institucions de la Generalitat (Parlament, President i Òrgans estatutaris)',
+          paragraphs: [
+            'Parlament: format per entre 100 i 150 diputats per un mandat de 4 anys; la llei electoral catalana exigeix majoria de 2/3. El Decret llei (art. 64 EAC) requereix validació del Parlament en 30 dies improrrogables.',
+            'President de la Generalitat: si passen 2 mesos des de la primera votació d\'investidura sense elecció, es dissol automàticament el Parlament. En cas de suplència, el suplent NO pot plantejar qüestió de confiança, nomenar/cessar consellers ni dissoldre el Parlament.',
+            'Òrgans de garantia i control: Consell de Garanties Estatutàries (arts. 76–77: 2/3 elegits pel Parlament per 3/5 i 1/3 pel Govern; dictàmens NO vinculants perquè l\'art. 76.4 va ser anul·lat). Síndic de Greuges i Sindicatura de Comptes: elegits per 3/5 del Parlament. El Títol III Cap. II (Consell de Justícia, arts. 97–100) NO és vigent (anul·lat per la STC 31/2010).'
           ]
         },
         {
@@ -192,6 +237,16 @@ export const tema1Constitucio = {
             ['Director General (art. 14)', '5 facultats: gestió àmbit assignat i informe anual al Conseller sobre funcionament del servei']
           ],
           footnote: 'Les comissions interdepartamentals (art. 49) les crea el Govern i tenen 5 continguts tancats. L\'art. 50 preveu òrgans temporals a termini fix.'
+        },
+        {
+          type: 'text',
+          heading: '5.2 No confondre! Delegació vs Avocació vs Suplència i Acte Nul vs Anul·lable',
+          paragraphs: [
+            'Delegació de competències: es cedeix l\'EXERCICI (mai la titularitat) a un altre òrgan, s\'ha de publicar (DOGC/BOE), és revocable i els actes s\'imputen a l\'òrgan delegant. En canvi, l\'Avocació és el moviment invers: l\'òrgan superior atrau per a si un assumpte concret d\'un òrgan dependent per acord motivat (sense recurs autònom).',
+            'Suplència: substitució temporal del titular de l\'òrgan per vacant, absència o malaltia, sense alterar la competència de l\'òrgan (art. 9 Llei 13/1989 / art. 13 LRJSP). No s\'ha de confondre amb la delegació de signatura (només signar resolucions ja adoptades sense publicació) ni amb l\'encomana de gestió (activitats materials o tècniques).',
+            'Acte nul de ple dret (art. 47 Llei 39/2015): es produeix per vicis greus taxats (lesió drets d\'empara, incompetència manifesta per matèria/territori, contingut impossible, delicte o absència total de procediment). Té efectes des de l\'origen (ex tunc), no prescriu i no es pot convalidar.',
+            'Acte anul·lable (art. 48 Llei 39/2015): és la regla general per qualsevol altra infracció de l\'ordenament (inclosa la desviació de poder). Té efectes cap al futur, es pot convalidar i el defecte de forma només anul·la si genera indefensió o manca de requisits indispensables.'
+          ]
         }
       ]
     },
@@ -391,6 +446,110 @@ export const tema1Constitucio = {
       ],
       correctIndex: 0,
       explanation: 'L\'art. 64 EAC fixa 30 dies improrrogables per convalidar un Decret llei, i l\'art. 16 de la Llei 13/1989 prohibeix que les circulars tinguin potestat reglamentària.'
+    },
+    {
+      id: 't1-q11',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA respecte a la reforma constitucional pel procediment agreujat (art. 168 CE)?',
+      options: [
+        'Un cop aprovada per 2/3 de les Corts, el referèndum és potestatiu i només es fa si el demana una desena part d\'una Cambra en 15 dies',
+        'S\'aplica a la revisió total de la CE, al Títol Preliminar, a la Secció 1a del Capítol II del Títol I i al Títol II',
+        'Exigeix la dissolució immediata de les Corts després de l\'aprovació inicial per majoria de 2/3 de cada Cambra',
+        'Les noves Cambres elegides han de ratificar la decisió i aprovar el nou text per majoria de 2/3 abans del referèndum obligatori'
+      ],
+      correctIndex: 0,
+      explanation: 'El referèndum potestatiu (si el demana 1/10 d\'una Cambra en 15 dies) correspon al procediment ordinari (art. 167 CE). A l\'art. 168 CE el referèndum és SEMPRE obligatori.'
+    },
+    {
+      id: 't1-q12',
+      difficulty: 'Difícil',
+      question: 'Quins drets queden protegits pel recurs d\'empara davant el Tribunal Constitucional segons l\'article 53.2 de la CE?',
+      options: [
+        'L\'article 14 (igualtat), la Secció 1a del Capítol II (arts. 15–29) i l\'objecció de consciència (art. 30.2)',
+        'Tot el Títol I sencer, incloent els principis rectors del Capítol III',
+        'Només els articles 15 al 29, excloent l\'article 14 i l\'article 30.2',
+        'Els articles 14 al 38 (tot el Capítol II) i l\'article 45 sobre medi ambient'
+      ],
+      correctIndex: 0,
+      explanation: 'L\'art. 53.2 CE limita el recurs d\'empara davant el TC a l\'art. 14, la Secció 1a (arts. 15–29) i l\'objecció de consciència (art. 30.2).'
+    },
+    {
+      id: 't1-q13',
+      difficulty: 'Mitjà',
+      question: 'En relació amb els estats excepcionals de l\'article 116 CE, quina afirmació és INCORRECTA?',
+      options: [
+        'L\'estat d\'excepció el declara el Govern sense autorització prèvia del Congrés per un màxim de 15 dies',
+        'L\'estat d\'alarma el declara el Govern donant compte al Congrés per un màxim de 15 dies, prorrogables pel Congrés',
+        'L\'estat de setge el declara la majoria absoluta del Congrés a proposta exclusiva del Govern',
+        'Mentre estigui declarat qualsevol dels tres estats, no es pot dissoldre el Congrés ni iniciar una reforma constitucional (art. 169)'
+      ],
+      correctIndex: 0,
+      explanation: 'L\'estat d\'excepció el declara el Govern AMB autorització prèvia del Congrés i per un màxim de 30 dies (prorrogables pel mateix termini). 15 dies i sense autorització prèvia és l\'estat d\'alarma.'
+    },
+    {
+      id: 't1-q14',
+      difficulty: 'Difícil',
+      question: 'En l\'Administració pública, què distingeix la delegació de competències de l\'avocació i de la suplència?',
+      options: [
+        'En la delegació es cedeix l\'exercici (no la titularitat) i els actes s\'imputen al delegant; en l\'avocació el superior atrau un assumpte concret; en la suplència es substitueix temporalment el titular sense alterar la competència',
+        'En la delegació es transfereix la titularitat definitiva de la competència i els actes s\'imputen al delegat',
+        'L\'avocació requereix publicació obligatòria al DOGC i contra el seu acord hi cap recurs d\'alçada autònom',
+        'La suplència només es pot acordar per raons tècniques o econòmiques i canvia la titularitat de l\'òrgan'
+      ],
+      correctIndex: 0,
+      explanation: 'Delegació = cessió d\'exercici (no titularitat), publicació i imputació al delegant. Avocació = atracció d\'un assumpte per l\'òrgan superior motivadament (sense recurs autònom). Suplència = substitució temporal del titular per vacant/absència/malaltia.'
+    },
+    {
+      id: 't1-q15',
+      difficulty: 'Difícil',
+      question: 'Quin dels vicis següents determina que un acte administratiu sigui NUL DE PLE DRET (i no merament anul·lable)?',
+      options: [
+        'Que l\'acte hagi estat dictat per un òrgan manifestament incompetent per raó de la matèria o del territori',
+        'Que l\'acte presenti un defecte de forma sense generar indefensió ni mancar de requisits indispensables',
+        'Que l\'acte incorri en desviació de poder',
+        'Que l\'acte es dicti fora del termini establert quan no hi hagi termini essencial'
+      ],
+      correctIndex: 0,
+      explanation: 'La incompetència manifesta per raó de la matèria o del territori és causa de nul·litat de ple dret (art. 47.1.b LPACAP). La desviació de poder és causa d\'anul·labilitat (art. 48), i la incompetència jeràrquica es pot convalidar.'
+    },
+    {
+      id: 't1-q16',
+      difficulty: 'Mitjà',
+      question: 'Quin precepte constitucional és la base de la Protecció Civil en preveure l\'establiment de deures ciutadans en casos de greu risc, catàstrofe o calamitat pública?',
+      options: [
+        'Article 30.4 CE (Secció 2a del Capítol II del Títol I)',
+        'Article 40.2 CE (Capítol III, principis rectors)',
+        'Article 104.1 CE (Forces i Cossos de Seguretat)',
+        'Article 15.1 CE (Dret a la vida i integritat física)'
+      ],
+      correctIndex: 0,
+      explanation: 'L\'article 30.4 CE estableix textualment: "Mitjançant llei podran regular-se els deures dels ciutadans en els casos de greu risc, catàstrofe o calamitat pública".'
+    },
+    {
+      id: 't1-q17',
+      difficulty: 'Fàcil',
+      question: 'Segons la Llei 13/1989, qui resol els conflictes d\'atribucions dins d\'un mateix Departament i qui té la condició de 2a autoritat del departament i cap superior de tot el personal?',
+      options: [
+        'El Conseller resol els conflictes interns (i suscita els interdepartamentals); el Secretari General és la 2a autoritat i cap superior del personal',
+        'El Secretari General resol tots els conflictes; el Director General és cap superior del personal',
+        'El President de la Generalitat resol els conflictes interns; el Conseller és cap de personal',
+        'El Director General resol els conflictes interns; el Subdirector General és la 2a autoritat'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 12 Llei 13/1989: el Conseller resol conflictes dins del seu departament i els suscita amb altres. Art. 13: el Secretari General és la 2a autoritat i cap superior de tot el personal.'
+    },
+    {
+      id: 't1-q18',
+      difficulty: 'Mitjà',
+      question: 'Respecte a la reforma de l\'Estatut d\'Autonomia (LO 6/2006) i les competències de Bombers a l\'EAC, quina afirmació és INCORRECTA?',
+      options: [
+        'El salvament marítim (art. 132.3 EAC) és competència exclusiva de la Generalitat, igual que la protecció civil',
+        'La protecció civil i la prevenció i extinció d\'incendis (art. 132.1 EAC) són competència exclusiva de la Generalitat, respectant les competències locals i la seguretat pública estatal',
+        'En matèria de seguretat nuclear (art. 132.4 EAC), la Generalitat només té participació en l\'execució',
+        'L\'article 84.2.f EAC reconeix als governs locals competència pròpia en protecció civil i prevenció d\'incendis'
+      ],
+      correctIndex: 0,
+      explanation: 'Segons l\'art. 132.3 EAC, el salvament marítim és competència EXECUTIVA (no exclusiva), i la seguretat nuclear (132.4) només participació en l\'execució.'
     }
   ]
 };

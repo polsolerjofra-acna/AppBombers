@@ -33,7 +33,8 @@ export const tema11IncendisVaris = {
           type: 'text',
           heading: '1–2.5. Estadística, Riscos d’un Vehicle en Flames i Zonatge de 25 Metres',
           paragraphs: [
-            "Segons les dades estadístiques del manual MAN.INXX.000 (any 2023), els incendis de contenidors i els incendis de vehicles constitueixen el gruix principal de les sortides per incendis no estructurals ni forestals a Catalunya. Un vehicle modern conté més de 150-200 kg de plàstics, escumes de poliuretà, cautxú i fluids que en cremar alliberen un còctel altament tòxic: CO, HCN (cianur d'hidrogen), HCl (clorur d'hidrogen) i, en bateries d'ió liti, fluorur d'hidrogen (HF). Per això l'ús de l'EPI pesant complet i l'ERA és OBLIGATORI des del primer instant.",
+            "Segons les dades estadístiques del manual MAN.INXX.000 (any 2023), els incendis de contenidors i els incendis de vehicles constitueixen el gruix principal de les sortides per incendis no estructurals ni forestals a Catalunya.",
+            "Un vehicle modern conté 150–200 kg de plàstics, escumes de poliuretà, cautxú i fluids que en cremar alliberen CO, HCN (cianur d'hidrogen), HCl i, en bateries d'ió liti, fluorur d'hidrogen (HF). Per això l'EPI pesant complet i l'ERA són obligatoris des del primer instant.",
             "ZONATGE OFICIAL (Secció 2.5): Es fixa un perímetre de seguretat (Zona Calenta) de MÍNIM 25 METRES al voltant del vehicle incendiat."
           ]
         },
@@ -81,6 +82,16 @@ export const tema11IncendisVaris = {
             ['5. Hidrogen (H₂ - Pila de combustible FCEV)', 'Gas comprimit a 350 bar o 700 bar', 'Fusible tèrmic TPRD.', '• Flama gairebé INVISIBLE de dia → usar sempre CÀMERA TÈRMICA per detectar el dardo abans d’acostar-s’hi. No refredar el TPRD ni apagar el dardo.']
           ],
           footnote: 'Resum d’or: GLP = SÍ aigua al dipòsit | GNC = PROHIBIT aigua als cilindres! | GNL = DESACONSELLAT aigua al tanc criogènic! | EV = Molta aigua + monitoritzar ≥ 1 HORA!'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! GNC (200 bar) vs. GNL (-162 °C) vs. H₂ (350/700 bar) vs. GLP (8–10 bar)',
+          paragraphs: [
+            "• GLP (8–10 bar, vàlvula de molla ~27 bar): SÍ que es refrigera el dipòsit amb aigua per evitar la BLEVE, però sense apagar la flama del dardo mentre surti gas.",
+            "• GNC (200 bar, fusible tèrmic TPRD ~110 °C): PROHIBIT tirar aigua als cilindres! Si refredes el TPRD, impedeixes que s'obri i el cilindre pot rebentar mecànicament.",
+            "• GNL (-162 °C criogènic): DESACONSELLAT tirar aigua al tanc o a la bassa! L'aigua aporta calor i dispara la vaporització (risc de RPT).",
+            "• Hidrogen H₂ (350/700 bar): Flama gairebé invisible de dia; inspeccionar amb càmera tèrmica i no refredar el TPRD ni apagar el dardo."
+          ]
         }
       ]
     },
@@ -90,6 +101,14 @@ export const tema11IncendisVaris = {
       title: '3–4. Incendis de Contenidors, Pneumàtics i Abocadors (Risc d’Enfonsament i Biològic V.2)',
       subtitle: 'Tàctiques per fracció selectiva, xoc tèrmic del vidre verd, contenidors soterrats i novetats V.2.',
       blocks: [
+        {
+          type: 'text',
+          heading: '3–4. Novetats V.2 en Contenidors, Pneumàtics i Abocadors',
+          paragraphs: [
+            "En contenidors de superfície la primera prioritat és protegir vehicles i façanes. La Versió 2 del manual posa èmfasi en el risc de xoc tèrmic al contenidor verd (vidre que esclata en rebre aigua freda) i en el risc biològic als contenidors de resta/orgànica.",
+            "En contenidors soterrats està prohibit baixar al fossat (extinció per inundació o escuma des de fora). En abocadors, el foc subterrani en somort crea cavitats ocultes amb risc greu d'enfonsament i risc biològic."
+          ]
+        },
         {
           type: 'table',
           title: '3.2–3.6 i 4.2–4.4. Operativa en Contenidors, Pneumàtics i Abocadors (MAN.INXX.000 V.2)',
@@ -152,7 +171,7 @@ export const tema11IncendisVaris = {
           title: 'El Semàfor de l’Aigua en Vehicles de Gas i Elèctrics (Pregunta Segura d’Examen!)',
           acronym: 'GLP = SÍ AIGUA  |  GNC = PROHIBIT AIGUA!  |  GNL = NO AIGUA!  |  EV = MOLTA AIGUA + 1 HORA',
           trick:
-            "Aquesta és la pregunta més discriminatòria de tot el manual MAN.INXX.000:\n• GLP (8-10 bar, vàlvula de molla): SÍ que es tira aigua al dipòsit per refredar-lo i abaixar la pressió (sense apagar la flama de la vàlvula).\n• GNC (200 bar, vàlvula per fusible tèrmic TPRD): PROHIBIT tirar aigua als cilindres! L'aigua refreda el fusible TPRD, impedeix que es fongui als ~110 °C per despressuritzar el tanc i provoca l'explosió mecànica del cilindre a 200 bar.\n• GNL (-162 °C criogènic): DESACONSELLAT tirar aigua al dipòsit o sobre el líquid vessat! L'aigua està 175 °C més calenta que el GNL i accelera brutalment la seva vaporització.\n• ELÈCTRIC (EV - Bateria Li-ion): SÍ, projectar gran quantitat d'aigua a la bateria per aturar el Thermal Runaway i monitoritzar amb càmera tèrmica durant MÍNIM 1 HORA després de l'extinció.",
+            "• GLP (8–10 bar, vàlvula molla): SÍ aigua al dipòsit per baixar pressió (NO apagar la flama).\n• GNC (200 bar, fusible TPRD ~110 °C): PROHIBIT aigua als cilindres (refredar el TPRD impedeix la despressurització i fa rebentar el tanc).\n• GNL (-162 °C criogènic): DESACONSELLAT aigua al tanc o toll (aporta calor i provoca vaporització/RPT).\n• EV (Li-ion): Molta aigua a la bateria + monitoritzar amb càmera tèrmica mínim 1 HORA.",
           example: 'Si en un examen llegeixes "cilindres a 200 bar amb vàlvula fusible tèrmic (GNC)", marca sempre: PROHIBIT aplicar aigua sobre els cilindres!'
         }
       ]
@@ -374,6 +393,32 @@ export const tema11IncendisVaris = {
       ],
       correctIndex: 1,
       explanation: "El procediment estableix emplaçar el camió a la part alta del pendent i a sobrevent, mantenir 25 m de zonatge, identificar el combustible amb EPI complet + ERA i aproximar-se en angle de 45° (mai frontal ni posterior per evitar projeccions de pistons/para-xocs) amb mànega de Ø25."
+    },
+    {
+      id: 'q26-18',
+      difficulty: 'Mitjà',
+      question: "En quin d'aquests tipus de propulsió SÍ que està indicat refrigerar el dipòsit amb abundant aigua (sense apagar el dardo de la vàlvula) i en quin es produeix una flama gairebé invisible de dia?",
+      options: [
+        "Refrigerar dipòsit amb aigua = GNC (200 bar) | Flama invisible de dia = Gasolina E10.",
+        "Refrigerar dipòsit amb aigua = GLP (8–10 bar, vàlvula de molla) | Flama invisible de dia = Hidrogen H₂ (350/700 bar).",
+        "Refrigerar dipòsit amb aigua = GNL (-162 °C) | Flama invisible de dia = GLP.",
+        "En cap combustible gasós es pot aplicar aigua ni s'utilitza càmera tèrmica."
+      ],
+      correctIndex: 1,
+      explanation: "En GLP (8–10 bar) sí que es refrigera el dipòsit sense apagar el dardo de la vàlvula de molla; en H₂ (350/700 bar) la flama és gairebé invisible de dia i cal càmera tèrmica abans d'apropar-s'hi."
+    },
+    {
+      id: 'q26-19',
+      difficulty: 'Fàcil',
+      question: "Segons l'etiquetatge europeu UNE-EN 16942 al manual MAN.INXX.000, quina afirmació sobre els codis XTL, E85 i B100 és INCORRECTA?",
+      options: [
+        "E85 s'identifica dins d'un cercle i correspon a gasolina amb fins a un 85% d'etanol (punt d'inflamació aproximat de -40 °C).",
+        "B100 s'identifica dins d'un quadrat i correspon a biodièsel pur.",
+        "XTL s'identifica dins d'un quadrat i correspon a dièsel parafínic sintètic (punt d'inflamació > 62 °C).",
+        "XTL i B100 s'identifiquen amb un rombe perquè són gasos liquats emmagatzemats a -162 °C."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: tant B100 com XTL són combustibles dièsel i porten l'etiqueta QUADRADA (punt d'inflamació > 62 °C); el rombe es reserva per als combustibles gasosos (LPG, CNG, LNG, H₂)."
     }
   ]
 };

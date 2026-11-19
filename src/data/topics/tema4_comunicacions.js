@@ -50,6 +50,15 @@ export const tema4Comunicacions = {
             ['2.6.2. Prioritat dels missatges', '1r Emergència / Seguretat vital (SOS / Codi Vermell) → 2n Operatius urgents → 3r Rutinaris', 'Un missatge de perill imminent o atrapament té prioritat absoluta i interromp qualsevol trànsit de ràdio.']
           ],
           footnote: 'Memoritza les dues xifres del PTT: micròfon a 2–3 cm de la boca i esperar 1–2 segons després de prémer el botó abans de començar a parlar.'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Simplex vs. Semidúplex vs. Dúplex',
+          paragraphs: [
+            "• Simplex: comunicació en un sol sentit cada vegada utilitzant una única freqüència directa entre equips (ex: Mode DMO punt a punt). Cal prémer el PTT per torns.",
+            "• Semidúplex: comunicació alternativa (només parla un a la vegada prement el PTT), però utilitzant dues freqüències diferents a través d'una estació base o repetidor (ex: Mode TMO a la xarxa RESCAT).",
+            "• Dúplex: comunicació simultània en tots dos sentits sense prémer PTT (com una trucada telefònica convencional)."
+          ]
         }
       ]
     },
@@ -127,6 +136,14 @@ export const tema4Comunicacions = {
             ['4. Mode Repetidor (DMO Repeater)', 'Un terminal o emissora rep el senyal DMO i el reemet en DMO (DMO → DMO) sense connectar amb TMO.', 'Amplia el radi d’abast entre dos portàtils en mode directe quan estan massa lluny o separats per un turó/obstacle.']
           ],
           footnote: 'Parany d’examen: GATEWAY (Pont) = connecta DMO ↔ TMO | REPETIDOR = amplia DMO ↔ DMO.'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Pont de Ràdio (Gateway) vs. Mode Repetidor',
+          paragraphs: [
+            "• Pont de Ràdio (Gateway): l'emissora del camió actua de passarel·la entre un grup en DMO (bombers a l'interior d'un soterrani sense cobertura) i la xarxa troncal TMO (Sala de Control o CCA).",
+            "• Mode Repetidor (DMO Repeater): NO connecta amb la xarxa TMO ni amb la Sala de Control; simplement repeteix senyals DMO → DMO per superar un obstacle local (un turó o edifici) i ampliar l'abast entre portàtils."
+          ]
         }
       ]
     },
@@ -201,7 +218,7 @@ export const tema4Comunicacions = {
           title: 'Les 4 Regles d’Or de Comunicacions per a l’Examen',
           acronym: 'RECEPTOR DE EMISSOR | TMO vs DMO | GATEWAY vs REPETIDOR | Z-5 vs Z-6',
           trick:
-            "1) FÓRMULA D'INICI: Sempre «[RECEPTOR] de [EMISSOR]». Si el BUP de Girona vol parlar amb Control Girona, ha de dir: «Control Girona de BUP Girona».\n2) TMO vs. DMO: TMO utilitza les 317 antenes (TBS) de la xarxa RESCAT; DMO és comunicació directa aparell a aparell sense passar per cap infraestructura.\n3) PONT (GATEWAY) vs. REPETIDOR: El Pont de ràdio (Gateway) instal·lat a l'autobomba connecta un grup en DMO amb la xarxa TMO. El Mode Repetidor només repeteix senyal DMO a DMO per guanyar distància local.\n4) RETORN Z-5 vs. Z-6: Si tornes d'un incendi amb les ampolles d'ERA buides i sense aigua, marques Z-6 (Retorn NO disponible). Si tornes d'una falsa alarma amb el camió al 100%, marques Z-5 (Retorn disponible).",
+            "• FÓRMULA D'INICI: Sempre «[RECEPTOR] de [EMISSOR]» (ex: «Control Girona de BUP Girona»).\n• TMO vs. DMO: TMO usa les 317 antenes (TBS) de RESCAT; DMO és directe terminal a terminal sense xarxa.\n• GATEWAY vs. REPETIDOR: Gateway enllaça DMO ↔ TMO (pel camió); Repetidor només amplia DMO ↔ DMO.\n• RETORN Z-5 vs. Z-6: Z-5 = torna disponible | Z-6 = torna NO disponible (sense aigua, ERA buit o avaria).",
           example: 'Un binomi entra a un pàrquing soterrani (-3) sense cobertura de xarxa RESCAT: ha de passar a Canal Directe (DMO) i activar el Pont (Gateway) del camió si vol enllaçar amb TMO.'
         }
       ]
@@ -363,6 +380,84 @@ export const tema4Comunicacions = {
       ],
       correctIndex: 3,
       explanation: "A l'alfabet ICAO, Q és Quebec, W és Whiskey i X és X-ray; i el codi Z-9 correspon a 'Sortida en comissió de servei (No urgent)'."
+    },
+    {
+      id: 'q17-13',
+      difficulty: 'Mitjà',
+      question: "Quina diferència tècnica existeix entre el mode de transmissió Simplex i el mode Semidúplex en ràdio operativa?",
+      options: [
+        'En Simplex tots dos interlocutors poden parlar simultàniament sense prémer el PTT.',
+        'En Simplex s’utilitza una única freqüència directa per torns (ex. DMO), mentre que en Semidúplex s’utilitzen dues freqüències a través d’una estació base o repetidor però igualment per torns prement el PTT (ex. TMO).',
+        'El Semidúplex només existeix en ràdio analògica VHF i el Simplex només en telefonia mòbil.',
+        'En Semidúplex no cal fer pausa després de prémer el PTT.'
+      ],
+      correctIndex: 1,
+      explanation: 'Tant en Simplex (1 freqüència directa, DMO) com en Semidúplex (2 freqüències via estació base/repetidor, TMO) cal prémer el PTT i parlar per torns; només el Dúplex permet parlar i escoltar alhora.'
+    },
+    {
+      id: 'q17-14',
+      difficulty: 'Mitjà',
+      question: "Un binomi treballa en un túnel ferroviari sense cobertura de xarxa RESCAT (en DMO), però necessita que el seu trànsit de veu arribi fins al Centre de Comandament Avançat (CCA) que opera en TMO. Quina funció ha d'activar l'autobomba situada a la boca del túnel?",
+      options: [
+        'El Mode Repetidor DMO.',
+        'El Pont de ràdio (Gateway / Passarel·la).',
+        'El codi Z-8 de fora de servei.',
+        'La tecla "#" durant 5 segons.'
+      ],
+      correctIndex: 1,
+      explanation: 'El Pont de ràdio (Gateway) de l’emissora del camió enllaça els terminals en DMO amb la xarxa troncal TMO. El mode repetidor només reemet DMO → DMO.'
+    },
+    {
+      id: 'q17-15',
+      difficulty: 'Difícil',
+      question: "En relació amb l'organització dels canals en una gran emergència (Capítol 4 de MAN.COMU.000), quina afirmació és INCORRECTA?",
+      options: [
+        'El Canal de Trànsit (en TMO) enllaça la Sala de Control Territorial amb els vehicles durant els desplaçaments.',
+        'El Canal de Servei (en TMO) enllaça el Cap d’Intervenció/CCA amb els Caps de Sector i la Sala de Control.',
+        'El Canal Directe funciona sempre en mode TMO d’alta potència per garantir l’enllaç directe amb la Sala Central des de soterranis.',
+        'El Canal de Sector (tàctic) serveix per a la comunicació interna dins d’un sector operatiu entre el Cap de Sector i les seves dotacions.'
+      ],
+      correctIndex: 2,
+      explanation: 'Afirmació incorrecta: el Canal Directe treballa sempre en mode DMO (punt a punt sense xarxa), precisament per garantir la comunicació entre binomis dins d’edificis, túnels o soterranis on NO arriba la cobertura TMO.'
+    },
+    {
+      id: 'q17-16',
+      difficulty: 'Fàcil',
+      question: "Quin codi ZULU indica que un vehicle ja ha entrat de nou al seu parc de bombers, i quin indica que es troba temporalment fora de servei (inoperatiu per manteniment o avaria)?",
+      options: [
+        'Z-1 (Arribada al parc) i Z-9 (Fora de servei).',
+        'Z-7 (Arribada al parc) i Z-8 (Fora de servei / Inoperatiu).',
+        'Z-5 (Arribada al parc) i Z-6 (Fora de servei).',
+        'Z-0 (Arribada al parc) i Z-3 (Fora de servei).'
+      ],
+      correctIndex: 1,
+      explanation: 'Segons l’Annex 2: Z-7 = Arribada al parc; Z-8 = Fora de servei (Inoperatiu). Z-1 indica "Disponible al parc" i Z-6 "Retorn al parc NO disponible".'
+    },
+    {
+      id: 'q17-17',
+      difficulty: 'Mitjà',
+      question: "Durant una comunicació per ràdio, el receptor respon «Espereu» per comprovar una dada al mapa. Què ha de fer l'emissor si passen 35 segons sense obtenir resposta?",
+      options: [
+        'Premer el botó taronja d’emergència SOS per forçar el canal.',
+        'Canviar immediatament al Canal de Trànsit i enviar un Z-3.',
+        'Tornar a interpel·lar el receptor per confirmar que continua a l’escolta, segons la regla dels 30 segons.',
+        'Esperar un mínim de 5 minuts en silenci absolut.'
+      ],
+      correctIndex: 2,
+      explanation: 'Segons la regla dels 30 segons (apartat 3.5.3 del manual), si després d’un "Espereu" passen més de 30 segons sense resposta, l’emissor ha de tornar a cridar el receptor.'
+    },
+    {
+      id: 'q17-18',
+      difficulty: 'Fàcil',
+      question: "Quina és la prioritat absoluta en les comunicacions per ràdio a Bombers (secció 2.6.2), i què significa el grau '2' en l'escala de qualitat del senyal d'1 a 5?",
+      options: [
+        'Prioritat màxima: missatges rutinaris de parc | Grau 2 = Llegible sense cap dificultat.',
+        'Prioritat màxima: missatges d’emergència o seguretat vital (SOS / perill imminent) | Grau 2 = Llegible amb molta dificultat (entretallat).',
+        'Prioritat màxima: confirmacions Z-0 | Grau 2 = Perfectament llegible.',
+        'Prioritat màxima: ordre del Cap de Torn per canviar de sector | Grau 2 = Il·legible.'
+      ],
+      correctIndex: 1,
+      explanation: 'Els missatges d’emergència o seguretat vital tenen prioritat absoluta i interrompen qualsevol trànsit. A l’escala 1–5: 1 = il·legible, 2 = llegible amb molta dificultat, 3 = amb certa dificultat, 4 = llegible, 5 = perfectament llegible.'
     }
   ]
 };

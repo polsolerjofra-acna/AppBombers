@@ -56,6 +56,14 @@ export const tema5Vehicles = {
             ['3.5. BNP (Bomba Nodrissa Pesant)', '≥ 8.000 litres (8.000 a 12.000 L)', 'Pesant 2 o 3 eixos', 'Abastament massiu d’aigua a altres autobombes (alimentació en incendi industrial o forestal sense hidrants). Cabina simple (2-3 places).']
           ],
           footnote: 'Les autobombes d’extinció (BUL, BUP, BRP) munten bomba centrífuga combinada: Baixa Pressió (10-15 bar, gran cabal 2.000-3.000 L/min) i Alta Pressió (35-40 bar, 250-400 L/min).'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! BUP vs. BRP i BUL vs. BNP',
+          paragraphs: [
+            "• BUP vs. BRP: Totes dues porten al voltant de 3.000–3.500 L d'aigua, però la BUP és 4×2 urbana/carretera (amb equip d'excarceració i escumogen), mentre que la BRP és 4×4 tot terreny amb reductora, bloqueig de diferencials i ruixadors d'autoprotecció (amb reserva pròpia de ~300–500 L).",
+            "• BUL vs. BNP: La BUL és compacta (1.000–2.000 L, cabina doble per a 5–6 bombers) per a nuclis antics estrets; la BNP és pesant (≥ 8.000 L, cabina simple de 2–3 places) pensada únicament per abastir d'aigua altres autobombes."
+          ]
         }
       ]
     },
@@ -114,6 +122,15 @@ export const tema5Vehicles = {
             ['UPC', 'Unitat de Personal i Càrrega', 'Pick-up 4×4 o furgó mixt per al transport de personal (relleus, GRAF, EPAF) i material lleuger o avituallament.']
           ],
           footnote: 'Gradació dels vehicles de comandament segons la magnitud del sinistre: UCL (Lleugera) → UCM (Mitjana) → UCP (Pesant).'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Classe B (SVB) vs. Classe C (SVA) vs. VIR (RD 836/2012)',
+          paragraphs: [
+            "• Classe A1 / A2: NO assistencials (A1 = llitera individual sense assistència en ruta; A2 = transport col·lectiu).",
+            "• Classe B (SVB) vs. Classe C (SVA): La Classe B dona Suport Vital Bàsic; la Classe C és una UVI mòbil de Suport Vital Avançat (metge/infermer, respirador, desfibril·lador).",
+            "• VIR (Vehicle d'Intervenció Ràpida): Porta l'equip sanitari i material SVA fins a l'emergència molt ràpidament, però NO pot traslladar pacients en llitera."
+          ]
         }
       ]
     },
@@ -138,8 +155,9 @@ export const tema5Vehicles = {
           type: 'text',
           heading: '7. Consideracions Operatives, Conducció d’Urgència i Revisió Diària',
           paragraphs: [
-            "Al començament de cada guàrdia (canvi de torn), la dotació entrant té l'obligació de realitzar la REVISIÓ DIÀRIA del vehicle assignat: verificació de nivells (combustible, oli, refrigerant, AdBlue i ple total de la cisterna d'aigua i escumogen), pressió de pneumàtics i circuit de frens d'aire, engegada de motor i connexió de la presa de força (PTO) de la bomba, comprovació de senyals prioritaris (V-1 blaus i acústics), emissora RESCAT i inventari complet d'armaris (ERA a 300 bar, llanternes, eines).",
-            "En conducció d'urgència, els vehicles prioritaris tenen preferència de pas quan circulen amb els senyals lluminosos (i acústics si cal) activats, sota la responsabilitat del conductor de no posar en perill cap usuari de la via i d'estacionar el vehicle protegint l'escena i garantint sempre una via de sortida."
+            "Al començament de cada guàrdia (canvi de torn), la dotació entrant realitza la REVISIÓ DIÀRIA del vehicle assignat: comprovació de nivells (combustible, oli, refrigerant, AdBlue i cisterna d'aigua/escumogen plena), pressió de pneumàtics i circuit de frens pneumàtics.",
+            "També s'engega el motor per verificar la presa de força (PTO) de la bomba, els senyals prioritaris (V-1 blaus i acústics), l'emissora RESCAT i l'inventari complet d'armaris (ampolles d'ERA a 300 bar, llanternes i eines).",
+            "En conducció d'urgència, els vehicles prioritaris tenen preferència quan circulen amb els senyals lluminosos i acústics activats, sota responsabilitat del conductor de garantir la seguretat i estacionar protegint l'escena amb una via de sortida lliure."
           ]
         }
       ]
@@ -187,7 +205,7 @@ export const tema5Vehicles = {
           title: 'Regles Mnemotècniques per Clavar les Preguntes del Tema 18',
           acronym: 'X.YY.ZZ = Regió.Parc.Vehicle | BUL-BUP-BRP-BNP (1k-3k-3k5-8k) | A1-A2-B-C (RD 836/2012)',
           trick:
-            "1) ESCALA DE LITRES D'AUTOBOMBA:\n• BUL = 1.000–2.000 L (Lleugera urbana)\n• BUP = >3.000 L (Pesant urbana 4×2)\n• BRP = ~3.000–3.500 L (Rural pesant 4×4 amb autoprotecció)\n• BNP = ≥8.000 L (Nodrissa d'abastament)\n\n2) GRUA PESADA vs. GRUA LLEUGERA:\n• Grua Pesada = aixecament i arrossegament de vehicles pesants (camions/autobusos) en sinistres viaris.\n• Grua Lleugera = rescat d'animals grans (cavalls/bòvids) i càrregues moderades.\n\n3) FSV vs. FRQ:\n• FSV = Furgó de Salvaments Varis (apuntalaments, bombes d'esgotament, generadors, eines de rescat).\n• FRQ = Furgó de Risc Químic (vestits hermètics NRBQ Tipus 1, taponament de fuites, transvasament ATEX i descontaminació).\n\n4) RD 836/2012 (AMBULÀNCIES):\n• A1 (1 pacient no assistencial) | A2 (2 o més pacients, col·lectiva no assistencial) | B (Bàsic, SVB) | C (Crítics/Avançat, SVA).",
+            "• LITRES D'AUTOBOMBA: BUL (1.000–2.000 L, estreta) | BUP (>3.000 L, 4×2) | BRP (~3.000–3.500 L, 4×4 autoprotecció) | BNP (≥8.000 L, nodrissa).\n• GRUA PESADA vs. LLEUGERA: Pesada = camions/autobusos bolcats | Lleugera = animals grans (cavalls/vaques) i càrregues mitjanes.\n• FSV vs. FRQ: FSV = Salvaments Varis (apuntalaments, esgotament) | FRQ = Risc Químic (vestits Tipus 1, ATEX, descontaminació).\n• RD 836/2012: A1 (individual) / A2 (col·lectiva) no assistencials | B (SVB) | C (SVA) | VIR (sense llitera).",
           example: 'Si et pregunten quin vehicle 4×4 té aproximadament 3.000-3.500 L i sistema d’autoprotecció per a foc forestal: BRP (Bomba Rural Pesant).'
         }
       ]
@@ -349,6 +367,84 @@ export const tema5Vehicles = {
       ],
       correctIndex: 3,
       explanation: "Els helicòpters utilitzen helibalde (Bambi Bucket) o dipòsit ventral amb snorkel; a la revisió diària del canvi de torn es comprova, entre d'altres, que les ampolles d'ERA estiguin a 300 bar."
+    },
+    {
+      id: 'q18-13',
+      difficulty: 'Mitjà',
+      question: "En la codificació operativa X.YY.ZZ dels vehicles de Bombers de la Generalitat, si ens assignen el vehicle 5.12.40, què indica el nombre '12'?",
+      options: [
+        'Que pertany a la Regió d’Emergències 12.',
+        'Que és el Parc de Bombers número 12 dins de la Regió d’Emergències 5.',
+        'Que la seva cisterna té 12.000 litres de capacitat.',
+        'Que és una autoescala de 12 metres d’alçada.'
+      ],
+      correctIndex: 1,
+      explanation: 'En el format X.YY.ZZ, X (5) és la Regió d’Emergències, YY (12) és el codi del Parc dins la Regió, i ZZ (40) és el tipus funcional i ordre de vehicle.'
+    },
+    {
+      id: 'q18-14',
+      difficulty: 'Difícil',
+      question: "En relació amb les autobombes de Bombers de la Generalitat (Capítol 3 de MAN.EQIP.000), quina de les afirmacions següents és INCORRECTA?",
+      options: [
+        'La BUL disposa de cabina doble per a 5–6 bombers i una cisterna d’entre 1.000 i 2.000 litres per accedir a carrers estrets.',
+        'La BNP compta amb una cisterna de ≥ 8.000 litres i una cabina doble de 6 places per fer atacs interiors amb mànegues de Ø45.',
+        'La BRP té tracció 4×4 amb reductora i bloqueig de diferencials, i incorpora un dipòsit de reserva per als ruixadors d’autoprotecció de cabina i rodes.',
+        'La BUP supera els 3.000 litres d’aigua i transporta equip complet d’excarceració, ERA i bomba combinada de baixa/alta pressió.'
+      ],
+      correctIndex: 1,
+      explanation: 'Afirmació incorrecta: la BNP (Bomba Nodrissa Pesant, ≥ 8.000 L) té cabina SIMPLE de 2–3 places, perquè la seva funció és l’abastament massiu d’aigua a altres autobombes, no el transport d’una dotació completa d’atac.'
+    },
+    {
+      id: 'q18-15',
+      difficulty: 'Mitjà',
+      question: "Quin vehicle especialitzat NO té cisterna d'aigua pròpia i transporta apuntalaments, bombes d'esgotament d'aigua, generadors elèctrics i il·luminació per a assistències tècniques i rescat urbà?",
+      options: [
+        'FSV (Furgó de Salvaments Varis).',
+        'FRQ (Furgó de Risc Químic).',
+        'BUL (Bomba Urbana Lleugera).',
+        'BNP (Bomba Nodrissa Pesant).'
+      ],
+      correctIndex: 0,
+      explanation: 'Segons l’apartat 4.3 del manual, l’FSV (Furgó de Salvaments Varis) no té cisterna i carrega equipament d’apuntalaments, esgotaments, generadors, il·luminació i rescat urbà.'
+    },
+    {
+      id: 'q18-16',
+      difficulty: 'Mitjà',
+      question: "Quina diferència operativa hi ha entre un avió AVA (càrrega en terra) i un avió amfibi (tipus Foca / Canadair) dins dels Mitjans Aeris (Capítol 6)?",
+      options: [
+        'L’AVA càrrega a terra (~3.100 L, sovint amb retardant químic), mentre que l’amfibi (~5.500–6.000 L) pot carregar aigua lliscant directament sobre el mar o un pantà.',
+        'L’amfibi només pot carregar 500 litres amb helibalde i l’AVA és un helicòpter pesant.',
+        'L’AVA només actua en incendis urbans i l’amfibi en riscos químics.',
+        'Cap diferència: tots dos carreguen exclusivament en pistes d’aeroport.'
+      ],
+      correctIndex: 0,
+      explanation: 'Dins dels avions d’extinció (3.000 a 6.000 L), els AVA carreguen en bases terrestres (~3.100 L amb aigua o retardant), mentre que els amfibis (Foca/Canadair, ~5.500–6.000 L) carreguen directament lliscant sobre superfícies d’aigua.'
+    },
+    {
+      id: 'q18-17',
+      difficulty: 'Fàcil',
+      question: "En una gran emergència que requereix desplegar un furgó adaptat amb taula de treball, comunicacions RESCAT múltiples i pantalles SIG per reunir els comandaments del CCA (emergència de tipus mitjà), quin vehicle s'activa?",
+      options: [
+        'UPC (Unitat de Personal i Càrrega).',
+        'UCL (Unitat de Comandament Lleugera).',
+        'UCM (Unitat de Comandament Mitjana).',
+        'VIR (Vehicle d’Intervenció Ràpida).'
+      ],
+      correctIndex: 2,
+      explanation: 'Segons la secció 5.2, la UCM (Unitat de Comandament Mitjana) és el furgó adaptat amb taula, comunicacions RESCAT i pantalles SIG per a emergències mitjanes (UCL és el 4×4 inicial i UCP el camió/mòdul de grans emergències).'
+    },
+    {
+      id: 'q18-18',
+      difficulty: 'Fàcil',
+      question: "Quin vehicle s'utilitza principalment per al transport de personal (relleus, GRAF, EPAF) i material lleuger o avituallament dins de l'estructura logística (apartat 5.3)?",
+      options: [
+        'UPC (Unitat de Personal i Càrrega).',
+        'AEA (Autoescala Automàtica).',
+        'FSV (Furgó de Salvaments Varis).',
+        'Clase A1.'
+      ],
+      correctIndex: 0,
+      explanation: 'La UPC (Unitat de Personal i Càrrega, habitualment pick-up 4×4 o furgó mixt) es destina al transport de personal i material lleuger/avituallament.'
     }
   ]
 };

@@ -32,11 +32,18 @@ export const tema3PrlEpi = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Àmbit (art. 3.2), definicions (art. 4) i principis (art. 15)',
+          heading: '1.1 Àmbit (art. 3.2) i definicions clau (art. 4)',
           paragraphs: [
             'L\'article 3.2 NO exclou el cos de bombers com a col·lectiu, sinó que exclou les activitats de protecció civil i peritatge forense en situacions de greu risc, catàstrofe i calamitat pública (on la Llei "inspirarà" la normativa específica). En la resta del dia a dia al parc, la LPRL s\'aplica plenament.',
-            'L\'article 4 recull 8 definicions clau: risc laboral (probabilitat + severitat), risc greu i imminent (exposició probable en un futur immediat que pugui causar dany greu), equip de treball (qualsevol màquina/aparell/eina) i EPI (equip portat o subjectat pel treballador per protegir-se).',
-            'L\'article 15 fixa 9 principis d\'acció preventiva, encapçalats per: a) Evitar els riscos; b) Avaluar els que no es puguin evitar; c) Combatre\'ls a l\'origen; ... i h) Anteposar la protecció col·lectiva a la individual. L\'art. 15.4 obliga a preveure les distraccions o imprudències NO temeràries. L\'art. 16 exigeix Pla de prevenció, Avaluació de riscos i Planificació preventiva. L\'art. 17.2 consagra l\'EPI com l\'última barrera.'
+            'L\'article 4 recull 8 definicions clau: risc laboral (probabilitat + severitat), risc greu i imminent (exposició probable en un futur immediat que pugui causar dany greu), equip de treball (qualsevol màquina/aparell/eina) i EPI (equip portat o subjectat pel treballador per protegir-se).'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '1.2 Els 9 principis d\'acció preventiva (art. 15) i l\'EPI (art. 17.2)',
+          paragraphs: [
+            'L\'article 15 fixa 9 principis en ordre jeràrquic estricte: a) Evitar els riscos; b) Avaluar els que no es puguin evitar; c) Combatre\'ls a l\'origen; ... fins a h) Anteposar la protecció col·lectiva a la individual.',
+            'L\'art. 15.4 obliga l\'empresari a preveure les distraccions o imprudències NO temeràries que pogués cometre el treballador. L\'art. 16 exigeix Pla de prevenció, Avaluació de riscos i Planificació preventiva, i l\'art. 17.2 consagra l\'EPI com l\'última barrera.'
           ]
         },
         {
@@ -64,11 +71,26 @@ export const tema3PrlEpi = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1 Risc greu i imminent (art. 21 vs 44), salut i organització',
+          heading: '2.1 Paralització per risc greu i imminent: art. 21 vs art. 44 (No confondre!)',
           paragraphs: [
-            'Davant un risc greu i imminent (art. 21), el treballador té dret a interrompre l\'activitat i abandonar el lloc. Si l\'empresari no adopta mesures, els representants legals poden acordar la paralització per majoria i comunicar-ho a l\'empresa i a l\'autoritat laboral, que la ratifica o anul·la en 24 hores. En canvi, si la paralització l\'ordena un Inspector de Treball (art. 44), l\'empresa la pot impugnar en 3 dies hàbils i l\'autoritat resol en 24 hores.',
-            'La vigilància de la salut (art. 22) és voluntària amb 3 excepcions (imprescindible per avaluar efectes, risc per a tercers/propi treballador o disposició legal); a l\'empresa només arriben les conclusions sobre aptitud. L\'art. 23 exigeix 5 documents (inclosa notificació d\'accidents amb incapacitat > 1 dia). L\'art. 26 protegeix la maternitat en 4 esglaons (adaptació → canvi de lloc → suspensió amb prestació → extensió a lactància < 9 mesos).',
-            'Organització preventiva (art. 30): fins a 10 treballadors (o 25 en 1 sol centre) ho pot assumir l\'empresari; > 500 treballadors (o 250–500 en activitats Annex I) exigeix Servei de Prevenció Propi. Els recursos preventius (art. 32 bis) requereixen formació mínima de nivell bàsic.'
+            'Via interna (art. 21 LPRL): davant un risc greu i imminent, el treballador té dret a interrompre l\'activitat i abandonar el lloc. Si l\'empresari no adopta mesures, els representants legals dels treballadors poden acordar per majoria la paralització de l\'activitat i comunicar-ho immediatament a l\'empresa i a l\'autoritat laboral, la qual ratifica o anul·la la paralització en 24 hores.',
+            'Via d\'Inspecció de Treball (art. 44 LPRL): quan qui ordena la paralització immediata és l\'Inspector de Treball i Seguretat Social, l\'empresa la pot impugnar davant l\'autoritat laboral en el termini de 3 dies hàbils, i l\'autoritat laboral resol també en 24 hores.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.2 Vigilància de la salut (art. 22), documentació (23) i maternitat (26)',
+          paragraphs: [
+            'La vigilància de la salut (art. 22) és voluntària amb 3 excepcions (imprescindible per avaluar efectes sobre la salut, risc per a tercers o el propi treballador, o disposició legal); a l\'empresa només arriben les conclusions sobre l\'aptitud.',
+            'L\'art. 23 exigeix 5 documents (inclosa la notificació d\'accidents amb incapacitat > 1 dia). L\'art. 26 protegeix la maternitat en 4 esglaons: adaptació del lloc → canvi de lloc → suspensió amb prestació → extensió a la lactància natural (< 9 mesos).'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.3 Organització preventiva (art. 30) i recursos preventius (art. 32 bis)',
+          paragraphs: [
+            'Modalitats organitzatives (art. 30): fins a 10 treballadors (o fins a 25 en un únic centre) ho pot assumir personalment l\'empresari; més de 500 treballadors (o 250–500 en activitats perilloses de l\'Annex I) exigeix Servei de Prevenció Propi.',
+            'Els recursos preventius (art. 32 bis) vigilen el compliment de les activitats preventives en riscos especials o activitats simultànies i requereixen formació mínima de nivell bàsic.'
           ]
         },
         {
@@ -97,10 +119,21 @@ export const tema3PrlEpi = {
       blocks: [
         {
           type: 'text',
-          heading: '3.1 RD 773/1997 i Reglament (UE) 2016/425',
+          heading: '3.1 RD 773/1997: exclusions (art. 2.2), elecció (art. 6) i informació (art. 8)',
           paragraphs: [
-            'L\'article 2.2 del RD 773/1997 llista 7 exclusions del concepte d\'EPI — la lletra b) són els "equips dels serveis de socors i salvament" —, però l\'art. 17.2 LPRL continua obligant igualment a donar protecció adequada. L\'elecció (art. 6) segueix 3 passos estrictes: 1) Analitzar i avaluar riscos; 2) Definir característiques de l\'EPI; 3) Comparar amb els equips disponibles. L\'art. 7 estableix l\'ús personal en principi i seguir les instruccions del fabricant. L\'art. 8 obliga a informar prèviament, preferentment per escrit. L\'Annex IV està suprimit (queden I cos, II equip, III activitat).',
-            'El Reglament (UE) 2016/425 classifica el RISC, no l\'equip: Categoria I (5 riscos mínims, inclou T ≤ 50 °C); Categoria II (tots els no inclosos a I ni III); Categoria III (13 supòsits de mort o danys irreversibles: manca d\'oxigen, altes T ≈ 100 °C, baixes T -50 °C, caigudes d\'altura, tensió elèctrica, ofegament, serres de cadena, alta pressió, bala/arma blanca, soroll nociu...) i exigeix marcatge CE seguit de 4 xifres de l\'organisme notificat.'
+            'L\'article 2.2 del RD 773/1997 llista 7 exclusions del concepte d\'EPI — la lletra b) són els "equips dels serveis de socors i salvament" —, però l\'art. 17.2 LPRL continua obligant igualment a donar protecció adequada.',
+            'L\'elecció de l\'EPI (art. 6) segueix 3 passos estrictes: 1) Analitzar i avaluar els riscos; 2) Definir les característiques necessàries de l\'EPI; 3) Comparar-les amb els equips disponibles.',
+            'L\'art. 7 estableix l\'ús personal en principi i seguir les instruccions del fabricant. L\'art. 8 obliga a informar prèviament el treballador, PREFERENTMENT per escrit (no obligatòriament!). L\'Annex IV està suprimit (queden Annex I parts del cos, II llista orientativa d\'equips i III activitats).'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '3.2 Reglament (UE) 2016/425: classificació del RISC (Categories I, II i III)',
+          paragraphs: [
+            'El Reglament (UE) 2016/425 classifica el RISC del qual protegeix l\'equip, NO l\'equip en si mateix:',
+            '• Categoria I: 5 riscos mínims (inclou manipulació de peces calentes amb T ≤ 50 °C).',
+            '• Categoria II: riscos intermedis (tots els no inclosos ni a la I ni a la III).',
+            '• Categoria III: 13 supòsits de risc mortal o danys irreversibles (manca d\'oxigen, altes T ≥ 100 °C, baixes T ≤ -50 °C, caigudes d\'altura, tensió elèctrica, ofegament, serres de cadena, alta pressió, bala/arma blanca, soroll nociu...); exigeix marcatge CE seguit de 4 xifres de l\'organisme notificat.'
           ]
         },
         {
@@ -311,6 +344,110 @@ export const tema3PrlEpi = {
       ],
       correctIndex: 0,
       explanation: 'Amb parts mòbils, un guant massa resistent a l\'esquinçament (≥ 1) no es trenca si s\'enganxa i pot arrossegar la mà cap a la màquina.'
+    },
+    {
+      id: 't3-q11',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA respecte a la paralització d\'activitats per risc greu i imminent a la LPRL?',
+      options: [
+        'Quan la paralització l\'ordenen els representants dels treballadors (art. 21.3), l\'empresa disposa de 3 dies hàbils per impugnar-la davant l\'Inspector de Treball',
+        'A l\'art. 21.3, l\'autoritat laboral ha de ratificar o anul·lar la paralització en un termini de 24 hores',
+        'Quan la paralització l\'ordena l\'Inspector de Treball (art. 44), l\'empresa la pot impugnar en 3 dies hàbils davant l\'autoritat laboral',
+        'Tant a l\'art. 21.3 com a l\'art. 44, l\'autoritat laboral resol en un termini de 24 hores'
+      ],
+      correctIndex: 0,
+      explanation: 'El termini de 3 dies hàbils per impugnar correspon únicament a la paralització ordenada per l\'Inspector de Treball (art. 44 LPRL), no a la dels representants de l\'art. 21.3.'
+    },
+    {
+      id: 't3-q12',
+      difficulty: 'Mitjà',
+      question: 'Segons l\'article 15.4 de la Llei 31/1995, quines actuacions del treballador ha de preveure l\'efectivitat de les mesures preventives?',
+      options: [
+        'Les distraccions o imprudències no temeràries que pogués cometre el treballador',
+        'Només les imprudències temeràries i els actes dolosos',
+        'Únicament les errades tècniques de les màquines, mai el factor humà',
+        'Exclusivament les distraccions fora de l\'horari laboral'
+      ],
+      correctIndex: 0,
+      explanation: 'L\'art. 15.4 LPRL exigeix que les mesures preventives prevegin les distraccions o imprudències NO temeràries del treballador.'
+    },
+    {
+      id: 't3-q13',
+      difficulty: 'Difícil',
+      question: 'Quin règim sancionador s\'aplica a les Administracions Públiques quan incompleixen la normativa de PRL segons l\'article 45 de la LPRL?',
+      options: [
+        'S\'imposen mesures correctores (requeriments), però NO multes o sancions econòmiques; a més, els arts. 46–52 de la LPRL estan derogats',
+        'S\'imposen les mateixes multes econòmiques que a les empreses privades segons els arts. 46–52 de la LPRL',
+        'S\'ordena el tancament definitiu del centre de treball públic',
+        'Només s\'apliquen sancions econòmiques si hi ha un Comitè de Seguretat i Salut'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 45 LPRL: a les AAPP no se\'ls imposen multes econòmiques sinó mesures correctores. Els arts. 46–52 van quedar derogats en passar a la LISOS.'
+    },
+    {
+      id: 't3-q14',
+      difficulty: 'Mitjà',
+      question: 'Quines són les 3 excepcions en què la vigilància de la salut (art. 22 LPRL) deixa de ser voluntària per al treballador?',
+      options: [
+        'Quan sigui imprescindible per avaluar efectes sobre la salut, per verificar si l\'estat del treballador pot ser un perill per a ell o tercers, o quan ho estableixi una disposició legal',
+        'Sempre que ho demani el delegat sindical, el cap de parc o cada 6 mesos per defecte',
+        'Únicament en empreses de més de 500 treballadors o en treballs administratius',
+        'La vigilància de la salut és sempre voluntària sense cap excepció'
+      ],
+      correctIndex: 0,
+      explanation: 'L\'art. 22.1 LPRL fixa aquestes 3 excepcions taxades (sempre amb informe previ dels representants dels treballadors), i l\'empresa només rep conclusions d\'aptitud.'
+    },
+    {
+      id: 't3-q15',
+      difficulty: 'Difícil',
+      question: 'A partir de quina plantilla mínima és obligatori constituir un Servei de Prevenció Propi segons l\'art. 30 LPRL i el Reglament dels Serveis de Prevenció?',
+      options: [
+        'Més de 500 treballadors (o entre 250 i 500 en activitats de l\'Annex I)',
+        'Més de 50 treballadors en qualsevol sector',
+        'Més de 250 treballadors en activitats d\'oficina i més de 100 en indústria',
+        'Més de 1.000 treballadors sempre'
+      ],
+      correctIndex: 0,
+      explanation: 'Servei de Prevenció Propi: > 500 treballadors en general, o entre 250 i 500 si realitza activitats perilloses de l\'Annex I. (L\'empresari pot assumir-ho fins a 10 treballadors, o 25 en un sol centre).'
+    },
+    {
+      id: 't3-q16',
+      difficulty: 'Mitjà',
+      question: 'Quin és l\'ordre estricte dels 3 passos per escollir un EPI segons l\'article 6 del RD 773/1997?',
+      options: [
+        '1) Analitzar i avaluar riscos → 2) Definir característiques de l\'EPI → 3) Comparar amb els equips disponibles',
+        '1) Comparar preus al mercat → 2) Provar l\'EPI → 3) Avaluar els riscos',
+        '1) Lliurar l\'EPI al treballador → 2) Redactar instruccions → 3) Avaluar el risc residual',
+        '1) Definir característiques → 2) Comprar Categoria III → 3) Analitzar riscos'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 6 RD 773/1997: 1r Analitzar/avaluar riscos; 2n Definir característiques necessàries; 3r Comparar amb els equips existents. (I l\'Annex IV està suprimit).'
+    },
+    {
+      id: 't3-q17',
+      difficulty: 'Difícil',
+      question: 'Quina afirmació és INCORRECTA respecte a la Guia Tècnica de l\'INSST i els EPI?',
+      options: [
+        'La resistència a la perforació dels guants protegeix també contra punxades d\'agulles hipodèrmiques',
+        'El factor de caiguda ideal de treball en sistemes anticaigudes és el Factor 0 (ancoratge per sobre del cap)',
+        'La Guia Tècnica de l\'INSST no és jurídicament vinculant',
+        'La roba de protecció contra el fred cobreix temperatures d\'entre -5 °C i -50 °C'
+      ],
+      correctIndex: 0,
+      explanation: 'La Guia Tècnica de l\'INSST adverteix expressament que la resistència a la perforació mecànica dels guants NO inclou les agulles hipodèrmiques.'
+    },
+    {
+      id: 't3-q18',
+      difficulty: 'Fàcil',
+      question: 'Quin nivell de protecció tèrmica correspon a un EPI de Categoria I segons el Reglament (UE) 2016/425?',
+      options: [
+        'Riscos mínims, com la manipulació de peces calentes a temperatures no superiors a 50 °C',
+        'Altes temperatures equivalents a 100 °C o més, amb flama o radiació',
+        'Baixes temperatures iguals o inferiors a -50 °C',
+        'Tots els equips destinats a protegir contra caigudes d\'altura'
+      ],
+      correctIndex: 0,
+      explanation: 'T ≤ 50 °C és Categoria I (5 riscos mínims). Altes T (≥ 100 °C), baixes T (≤ -50 °C) i caigudes d\'altura són Categoria III (13 riscos mortals/irreversibles).'
     }
   ]
 };

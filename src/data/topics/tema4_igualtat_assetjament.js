@@ -32,10 +32,20 @@ export const tema4IgualtatAssetjament = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Llei 19/2020 (Títols I–III) i Llei 17/2015 (Cap. I, III, IV)',
+          heading: '1.1 Llei 19/2020 d\'Igualtat de Tracte i No-discriminació (Títols I–III)',
           paragraphs: [
-            'La Llei 19/2020 (30 de desembre, 52 articles; entren els Títols I–III) protegeix contra la discriminació per qualsevol motiu amb una llista oberta de 12 lletres (a–l) i defineix 10 fòbies específiques. L\'art. 15 garanteix la lectura fàcil; l\'art. 21.4 prohibeix els perfils racials policials; l\'art. 26 distingeix l\'acció administrativa (26.2, sense partits polítics) de l\'acció judicial (26.3, amb partits polítics i autorització expressa de la persona afectada). El Pla de país té vigència quadriennal (art. 28).',
-            'La Llei 17/2015 (21 de juliol, 64 articles; entren Cap. I, III, IV) té 11 finalitats i 8 principis. Fixa la representació paritària (60%–40% tendint al 50%). L\'article 15 obliga el sector públic a elaborar plans d\'igualtat cada 2 anys amb avaluació quadriennal — i l\'article 15.4.c hi esmenta expressament el Cos de Bombers! L\'art. 16 exigeix paritat als tribunals de selecció i l\'art. 17.2 preveu auditories de gènere. La STC 159/2016 va anul·lar els articles 33, 40, 44 i parts dels 36, 39 i 41.'
+            'La Llei 19/2020 (30 de desembre, 52 articles; entren els Títols I–III) protegeix contra la discriminació per qualsevol motiu amb una llista oberta de 12 lletres (a–l) i defineix 10 fòbies específiques.',
+            'L\'art. 15 garanteix l\'accessibilitat i la lectura fàcil; l\'art. 21.4 prohibeix els perfils racials en l\'actuació policial; i el Pla de país té vigència quadriennal (art. 28).',
+            'L\'art. 26 distingeix l\'acció popular administrativa (art. 26.2, SENSE partits polítics) de l\'acció judicial (art. 26.3, AMB partits polítics i autorització expressa de la persona afectada).'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '1.2 Llei 17/2015 d\'Igualtat Efectiva de Dones i Homes (Cap. I, III, IV)',
+          paragraphs: [
+            'La Llei 17/2015 (21 de juliol, 64 articles; entren Cap. I, III, IV) té 11 finalitats i 8 principis. Fixa la representació paritària (60%–40% tendint al 50%) i exigeix paritat als tribunals de selecció (art. 16) i auditories de gènere (art. 17.2).',
+            'L\'article 15 obliga el sector públic a elaborar plans d\'igualtat cada 2 anys amb avaluació quadriennal — i l\'article 15.4.c hi esmenta expressament el Cos de Bombers!',
+            'Atenció a la STC 159/2016: va anul·lar els articles 33, 40, 44 i parts dels articles 36, 39 i 41 de la Llei 17/2015.'
           ]
         },
         {
@@ -76,6 +86,14 @@ export const tema4IgualtatAssetjament = {
             ['Inversió càrrega prova', 'Art. 22.4: "indicis RACIONALS i fonamentats" (tot)', 'Art. 32.2.e: "indicis fonamentats" (només sexual/sexe)', 'Remissió legal']
           ],
           footnote: 'Memoritza: "Vexatori = 19/2020" · "Molest = 17/2015 (sexe) i Protocol (sexual)" · "Una dona = només 17/2015".'
+        },
+        {
+          type: 'easy',
+          title: 'Mode Nen Petit · Assetjament sexual vs per raó de sexe (No confondre!)',
+          metaphor: 'Tots dos fan un entorn intimidatori o "molest", però un té contingut sexual i l\'altre ataca algú pel fet de ser home o dona.',
+          explanation:
+            '1) ASSETJAMENT SEXUAL (ap. 4 Protocol): comportament verbal, no verbal o físic d\'ÍNDOLE SEXUAL (acudits sexuals, tocaments, xantatge sexual).\n2) ASSETJAMENT PER RAÓ DE SEXE (art. 2.o Llei 17/2015): comportament EN FUNCIÓ DEL SEXE d\'una persona (menysprear una bombera o un bomber pel seu sexe o embaràs/paternitat), sense que hi hagi desig ni contingut sexual.',
+          takeaway: 'Sexual = d\'índole sexual. Per raó de sexe = en funció del sexe.'
         }
       ]
     },
@@ -262,6 +280,110 @@ export const tema4IgualtatAssetjament = {
       ],
       correctIndex: 0,
       explanation: 'La STC 159/2016 va anul·lar els arts. 33, 40, 44 i fragments dels arts. 36, 39 i 41.'
+    },
+    {
+      id: 't4-q11',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA respecte a la Llei 19/2020 d\'igualtat de tracte i no-discriminació?',
+      options: [
+        'Recull una llista tancada de 10 motius de discriminació sense possibilitat d\'ampliació',
+        'Prohibeix l\'ús de perfils racials per part dels cossos policials (art. 21.4)',
+        'Garanteix l\'accessibilitat i la lectura fàcil (art. 15)',
+        'El Pla de país en matèria d\'igualtat de tracte té vigència quadriennal (art. 28)'
+      ],
+      correctIndex: 0,
+      explanation: 'La Llei 19/2020 conté una llista OBERTA de 12 motius (lletres a–l) que acaba amb "qualsevol altra circumstància", i defineix 10 fòbies específiques.'
+    },
+    {
+      id: 't4-q12',
+      difficulty: 'Difícil',
+      question: 'En quines dues normes apareix el mot "interpretació" dins de la definició de discriminació indirecta?',
+      options: [
+        'A la Llei 17/2015 i al Protocol d\'assetjament 2023 (NO apareix a la Llei 19/2020)',
+        'Només a la Llei 19/2020',
+        'A totes tres normes (19/2020, 17/2015 i Protocol 2023)',
+        'Només al Protocol d\'assetjament 2023'
+      ],
+      correctIndex: 0,
+      explanation: 'La definició de discriminació indirecta inclou el terme "interpretació" a la Llei 17/2015 i al Protocol 2023, però NO a la Llei 19/2020.'
+    },
+    {
+      id: 't4-q13',
+      difficulty: 'Mitjà',
+      question: 'Quants principis i quantes finalitats estableix la Llei 17/2015 d\'igualtat efectiva de dones i homes?',
+      options: [
+        '11 finalitats i 8 principis',
+        '12 finalitats i 10 principis',
+        '8 finalitats i 11 principis',
+        '9 apartats sense principis'
+      ],
+      correctIndex: 0,
+      explanation: 'La Llei 17/2015 (64 articles; entren Cap. I, III i IV) estableix 11 finalitats i 8 principis.'
+    },
+    {
+      id: 't4-q14',
+      difficulty: 'Mitjà',
+      question: 'Quina diferència hi ha entre l\'assetjament sexual i l\'assetjament per raó de sexe?',
+      options: [
+        'L\'assetjament sexual és un comportament d\'índole sexual; l\'assetjament per raó de sexe es produeix en funció del sexe d\'una persona amb el propòsit o efecte d\'atemptar contra la seva dignitat',
+        'L\'assetjament per raó de sexe només pot ser físic i l\'assetjament sexual només verbal',
+        'No hi ha cap diferència jurídica ni conceptual entre ambdós',
+        'L\'assetjament per raó de sexe només s\'aplica fora de l\'àmbit laboral'
+      ],
+      correctIndex: 0,
+      explanation: 'Assetjament sexual = comportament verbal, no verbal o físic d\'índole sexual. Assetjament per raó de sexe = en funció del sexe d\'una persona (sense contingut sexual).'
+    },
+    {
+      id: 't4-q15',
+      difficulty: 'Difícil',
+      question: 'Segons el Protocol d\'assetjament de 2023, quin requisit determina que el Protocol sigui aplicable en un cas concret?',
+      options: [
+        'Que la víctima formi part de l\'àmbit subjectiu inclòs dins del Protocol (encara que la persona presumptament assetjadora sigui externa)',
+        'Només s\'aplica si tant la víctima com la persona assetjadora són funcionaris de carrera',
+        'Només s\'aplica si la denúncia es presenta davant un jutjat penal',
+        'S\'aplica únicament quan els fets passen dins d\'un parc de bombers fora de servei'
+      ],
+      correctIndex: 0,
+      explanation: 'El Protocol 2023 s\'aplica sempre que la VÍCTIMA estigui inclosa en l\'àmbit subjectiu del Protocol.'
+    },
+    {
+      id: 't4-q16',
+      difficulty: 'Mitjà',
+      question: 'Quines mesures preveuen els articles 16 i 17.2 de la Llei 17/2015 per a les administracions públiques catalanes?',
+      options: [
+        'La composició paritària als tribunals i comissions de selecció (art. 16) i la realització d\'auditories de gènere (art. 17.2)',
+        'La prohibició de perfils racials (art. 16) i la lectura fàcil (art. 17.2)',
+        'L\'avaluació del Protocol per l\'OPPI cada 3 anys',
+        'L\'acció popular judicial amb partits polítics'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 16 Llei 17/2015 = paritat als tribunals de selecció; art. 17.2 = auditories de gènere. (Perfils racials 21.4, lectura fàcil 15 i acció popular 26 són de la Llei 19/2020).'
+    },
+    {
+      id: 't4-q17',
+      difficulty: 'Fàcil',
+      question: 'Quin dia va ser ratificat per Acord de Govern el Protocol per a la prevenció, la detecció, l\'actuació i la resolució de situacions d\'assetjament de 2023?',
+      options: [
+        'El 28 de març de 2023 (aprovat a la Mesa el 9 de març de 2023)',
+        'El 30 de desembre de 2020',
+        'El 21 de juliol de 2015',
+        'El 9 de març de 2024'
+      ],
+      correctIndex: 0,
+      explanation: 'Aprovat a la Mesa el 9 de març de 2023 i ratificat per Acord de Govern el 28 de març de 2023.'
+    },
+    {
+      id: 't4-q18',
+      difficulty: 'Difícil',
+      question: 'Quina afirmació és INCORRECTA sobre els terminis i l\'estructura comparada del Tema 4?',
+      options: [
+        'Els terminis 5, 15 i 10 del Protocol d\'assetjament 2023 es computen en dies naturals',
+        'L\'article 15.4.c de la Llei 17/2015 esmenta expressament el Cos de Bombers en relació amb els plans d\'igualtat cada 2 anys',
+        'La Llei 19/2020 té 52 articles (n\'entren els Títols I–III) i la Llei 17/2015 en té 64 (n\'entren els Capítols I, III i IV)',
+        'L\'avaluació triennal del Protocol 2023 correspon a l\'OPPI'
+      ],
+      correctIndex: 0,
+      explanation: 'Els terminis del Protocol 2023 (5 dies per contactar, 15 dies per a l\'informe, 10 dies per a la resolució) són sempre DIES HÀBILS, mai naturals.'
     }
   ]
 };

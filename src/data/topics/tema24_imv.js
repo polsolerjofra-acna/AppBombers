@@ -9,7 +9,7 @@ export const tema24Imv = {
     title: "Radar d'Examen — Tema 29 (MAN.SANI.001 V.1): IMV, Protocol APCAT i Triatge START",
     frequency: 'Molt Alta (3-4 preguntes fixes sobre llindars APCAT ≥6 / ≥10, algorisme START ≤1 min, 2 maniobres salvadores i filiació)',
     summary:
-      "Aquest manual és d'estudi obligatori al mil·límetre: definició d'IMV i els dos llindars oficials del Protocol APCAT a Catalunya (≥ 6 víctimes greus/mortals o ≥ 10 que requereixen trasllat hospitalari), el mètode de triatge bàsic START (≤ 1 minut per víctima, les 2 úniques maniobres salvadores permeses i els 4 passos: Camina → Respira [> 30 rpm] → Pols radial → Ordres simples), triatge avançat META, Cèl·lula d'Avaluació (3 membres: 1 Bombers + 1 SEM + 1 Mossos), equivalència de zonatge (1r i 2n cercle de Mossos vs. Zona Calenta/Tèbia/Freda) i qui fa la filiació de cada grup de víctimes. Inclou 4 pàgines d'estudi i 2 pàgines finals de Resum.",
+      "Manual del Protocol APCAT a Catalunya: definició d'IMV i llindars oficials (≥ 6 greus/mortals o ≥ 10 trasllats), triatge bàsic START (≤ 1 min, 2 maniobres salvadores, pols radial i 4 passos), triatge avançat META vs. SALT, Cèl·lula d'Avaluació (Bombers + SEM + Mossos), equivalència de cercles i zonatge, i responsabilitat en la filiació.",
     hotTopics: [
       'Cap. 1: Definició d’IMV (desproporció entre necessitats i recursos) i Llindars oficials del Protocol APCAT: ≥ 6 víctimes greus o mortals, O BÉ ≥ 10 víctimes que requereixen trasllat hospitalari.',
       'Cap. 2: Triatge Bàsic START (Simple Triage And Rapid Treatment): temps màxim ≤ 1 minut per víctima. Les 2 ÚNIQUES maniobres salvadores permeses durant el triatge: 1) Obrir la via aèria (i posar cànula de Guedel o PLS) i 2) Controlar una hemorràgia externa greu (compressió / torniquet).',
@@ -58,11 +58,20 @@ export const tema24Imv = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1–2.5. Principis del Triatge, Mètode START i Altres Mètodes (META, CareFlight, SALT)',
+          heading: '2.1–2.4. Principis del Triatge Bàsic START (≤ 1 min) i les 2 Maniobres Salvadores',
           paragraphs: [
-            "El triatge és un procés dinàmic, continu i ràpid de classificació de víctimes segons la seva gravetat i probabilitat de supervivència. El triatge BÀSIC (1r triatge a la zona d'impacte, realitzat per Bombers o primers intervinents) utilitza a Catalunya el mètode funcional START (Simple Triage And Rapid Treatment). El temps màxim per triar una víctima amb el mètode START no pot superar 1 MINUT (≤ 60 segons, idealment 30 s)!",
-            "Durant el triatge START només estan permeses 2 ÚNIQUES MANIOBRES SALVADORES ràpides abans de passar a la següent víctima: 1) OBRIR LA VIA AÈRIA (maniobra front-mentó o tracció mandibular, col·locant una cànula orofaríngia de Guedel o deixant la víctima en Posició Lateral de Seguretat PLS perquè no es torni a obstruir) i 2) CONTROLAR UNA HEMORRÀGIA EXTERNA EXSANGUINANT (amb compressió directa, embenat compressiu o TORNIQUET). En cas de dubte entre dos colors, sempre s'assigna el color de PRIORITAT SUPERIOR (el més greu)!",
-            "Altres mètodes citats al manual: META (Model Extrahospitalari de Triatge Avançat: triatge mèdic avançat realitzat pel SEM a l'Àrea Sanitària), CareFlight (mètode funcional australià ultraràpid de 15 s que no compta rpm), TSI / RTS (basats en índexs de lesions anatòmiques/fisiològiques, d'ús hospitalari) i SALT (Sort, Assess, Lifesaving Interventions, Treatment/Transport: mètode mixt nord-americà)."
+            "El triatge és un procés dinàmic, continu i ràpid de classificació segons gravetat i probabilitat de supervivència. A Catalunya, el 1r triatge a la zona d'impacte (fet per Bombers o primers intervinents) usa el mètode funcional START (Simple Triage And Rapid Treatment).",
+            "El temps màxim per triar cada víctima amb START és d'1 MINUT (≤ 60 s, idealment 30 s). En cas de dubte entre dos colors, s'assigna sempre el de PRIORITAT SUPERIOR (el més greu)!",
+            "Només estan permeses 2 ÚNIQUES MANIOBRES SALVADORES abans de passar a la víctima següent: 1) Obrir la via aèria (front-mentó o tracció mandibular, amb cànula de Guedel o PLS) i 2) Controlar una hemorràgia externa exsanguinant (compressió o torniquet). No es fa RCP!"
+          ]
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! START vs. META vs. SALT (i CareFlight / TSI-RTS)',
+          paragraphs: [
+            "• START (1r Triatge Bàsic): Realitzat a la zona d'impacte per primers intervinents (≤ 1 min) basat en paràmetres funcionals (caminar, respiració, pols radial, ordres).",
+            "• META (Model Extrahospitalari de Triatge Avançat): 2n triatge mèdic avançat realitzat pel SEM a l'Àrea Sanitària (Zona Freda) per prioritzar estabilització i evacuació hospitalària.",
+            "• SALT (Sort, Assess, Lifesaving Interventions, Treatment/Transport): Mètode mixt nord-americà que ordena primer per moviments globals abans de valorar individualment. CareFlight és ultraràpid (15 s, sense comptar rpm) i TSI/RTS són índexs hospitalaris anatòmics/fisiològics."
           ]
         },
         {
@@ -95,10 +104,18 @@ export const tema24Imv = {
       blocks: [
         {
           type: 'text',
-          heading: '3.2–3.8. Cèl·lula d’Avaluació (3 membres), Comandament, Zonatge i Filiació de Víctimes',
+          heading: '3.2–3.3. Cèl·lula d’Avaluació (3 Membres) i Comandament Operatiu',
           paragraphs: [
-            "Quan s'activa un IMV sota el Protocol APCAT, el primer pas de coordinació in situ és constituir la CÈL·LULA D'AVALUACIÓ inicial, integrada exactament per 3 REPRESENTANTS (els comandaments més caracteritzats dels 3 cossos): 1 comandament de BOMBERS + 1 comandament del SEM + 1 comandament dels MOSSOS D'ESQUADRA (o Policia). Pel que fa al Comandament Operatiu global de l'incident: correspon als MOSSOS D'ESQUADRA sempre que hi hagi sospita d'il·lícit penal, atemptat terrorista o ordre públic, i correspon als BOMBERS en tota la resta d'escenaris (accidents de trànsit, ferroviaris, incendis, explosions accidentals, col·lapses o riscos naturals).",
-            "Equivalència de Zonatge entre Bombers i Mossos d'Esquadra (Cap. 3.4 del manual — Pregunta d'examen!): Els Bombers divideixen l'escenari en 3 zones (Zona Calenta o d'intervenció, Zona Tèbia o de socors, i Zona Freda o base), mentre que el Grup d'Ordre (Mossos) estableix 2 Cercles de Seguretat: 1) El PRIMER CERCLE DE SEGURETAT de Mossos engloba conjuntament la ZONA CALENTA + la ZONA TÈBIA de Bombers (on es fa el rescat, el triatge bàsic i la noria de rescat cap a la frontera de l'àrea sanitària); 2) El SEGON CERCLE DE SEGURETAT de Mossos equival a la ZONA FREDA de Bombers (on s'instal·len l'Àrea Sanitària/CMA del SEM, el Centre de Comandament Avançat CCA i les nories d'ambulàncies)."
+            "En activar-se un IMV sota el Protocol APCAT, el primer pas in situ és constituir la CÈL·LULA D'AVALUACIÓ inicial, formada per 3 representants: 1 comandament de Bombers + 1 comandament del SEM + 1 comandament dels Mossos d'Esquadra (o Policia).",
+            "El Comandament Operatiu global correspon als Mossos d'Esquadra sempre que hi hagi sospita d'il·lícit penal, atemptat o ordre públic, i als Bombers en tota la resta d'escenaris (accidents de trànsit, ferroviaris, incendis, col·lapses o riscos naturals)."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Equivalència de Zonatge (Cercles de Mossos vs. Zones de Bombers)',
+          paragraphs: [
+            "• 1r CERCLE DE SEGURETAT (Mossos) = ZONA CALENTA + ZONA TÈBIA (Bombers): Àrea d'intervenció directa on es fa el rescat, el triatge bàsic START i la 1a noria de rescat.",
+            "• 2n CERCLE DE SEGURETAT (Mossos) = ZONA FREDA (Bombers): Àrea segura on s'instal·len l'Àrea Sanitària / CMA del SEM (triatge avançat META), el CCA i les nories d'ambulàncies."
           ]
         },
         {
@@ -126,7 +143,7 @@ export const tema24Imv = {
           metaphor:
             'Pensa en el triatge START com un filtre de 4 portes on tothom que falla una prova rep targeta VERMELLA:',
           explanation:
-            "• Porta 1 (Cames): Camina? → SÍ = VERD (ja ha acabat!). Si no camina, passa a la Porta 2.\n• Porta 2 (Pulmons): Respira? → Si NO respira, li obres la boca (front-mentó/Guedel): si segueix sense respirar = NEGRE; si arrenca a respirar = VERMELL directe! Si ja respirava des del principi, mires si va massa ràpid: més de 30 respiracions/min (> 30 rpm) = VERMELL! Si respira a ≤ 30 rpm, passa a la Porta 3.\n• Porta 3 (Canell): Té pols radial al canell? → Si NO té pols radial = VERMELL! Si sí que té pols radial, passa a l'última porta.\n• Porta 4 (Cervell): Obeeix ordres simples ('obri els ulls', 'estrenyi'm la mà')? → Si NO obeeix = VERMELL! Si SÍ obeeix (ha superat Pulmons ≤30 + Pols radial + Cervell però no pot caminar) = GROC!",
+            "• Porta 1 (Cames): Camina? → SÍ = VERD. Si no camina, passa a la Porta 2.\n• Porta 2 (Pulmons): Respira? Si NO, obres via aèria: segueix sense respirar = NEGRE; arrenca = VERMELL! Si respira > 30 rpm = VERMELL; ≤ 30 rpm passa a la Porta 3.\n• Porta 3 (Canell): Té pols radial? → NO = VERMELL. Si en té, passa a la Porta 4.\n• Porta 4 (Cervell): Obeeix ordres simples? → NO = VERMELL; SÍ = GROC!",
           takeaway: 'Per ser GROC no pot caminar però ha d’aprovar les 3 proves: Respira ≤ 30 rpm + TÉ pols radial + OBEEIX ordres simples!'
         },
         {
@@ -316,6 +333,110 @@ export const tema24Imv = {
       ],
       correctIndex: 1,
       explanation: 'Regla general del Capítol 2 del manual MAN.SANI.001: davant del dubte entre dues categories de triatge, s’assigna sempre la de prioritat superior (més greu).'
+    },
+    {
+      id: 't29-q11',
+      difficulty: 'Mitjà',
+      question: 'Quina diferència operativa distingeix el mètode START, el mètode META i el mètode SALT descrits al manual MAN.SANI.001?',
+      options: [
+        'START és el triatge mèdic hospitalari; META és el 1r triatge que fan els bombers a la zona calenta; SALT és un índex de lesions anatòmiques exclusiu d’UCI.',
+        'START és el 1r triatge bàsic funcional a la zona d’impacte (≤ 1 min); META és el 2n triatge mèdic avançat realitzat pel SEM a l’Àrea Sanitària; SALT és un mètode mixt nord-americà (Sort, Assess, Lifesaving Interventions, Treatment/Transport).',
+        'Tots tres mètodes són idèntics i només canvien d’idioma segons la comarca.',
+        'META i SALT prohibeixen el control d’hemorràgies i obliguen a fer RCP a totes les víctimes negres.'
+      ],
+      correctIndex: 1,
+      explanation: 'START s’aplica en el 1r triatge bàsic (≤ 1 min); META (Model Extrahospitalari de Triatge Avançat) és el 2n triatge sanitari del SEM a l’Àrea Sanitària; i SALT és un mètode mixt nord-americà citat al manual juntament amb CareFlight i TSI/RTS.'
+    },
+    {
+      id: 't29-q12',
+      difficulty: 'Mitjà',
+      question: 'En un sinistre ferroviari amb múltiples víctimes, trobes un passatger que no pot caminar per dolor lumbar, respira espontàniament a 34 rpm, té pols radial fort i respon coherentment al seu nom. Quin color START li correspon?',
+      options: [
+        'VERD, perquè parla amb coherència.',
+        'GROC, perquè té pols radial i obeeix ordres simples.',
+        'VERMELL (Prioritat 1), perquè presenta una freqüència respiratòria superior a 30 rpm (> 30 rpm) al pas 2 de l’algorisme.',
+        'NEGRE, perquè supera les 30 respiracions per minut.'
+      ],
+      correctIndex: 2,
+      explanation: 'En l’algorisme START, una freqüència respiratòria > 30 rpm classifica la víctima immediatament com a VERMELLA (Prioritat 1), sense esperar a comprovar el pols ni l’estat mental.'
+    },
+    {
+      id: 't29-q13',
+      difficulty: 'Mitjà',
+      question: 'Durant el triatge START d’un accident d’autocar, una víctima que no pot caminar respira a 22 rpm, però en palpar-li el canell NO detectes pols radial. Quin color se li ha d’assignar?',
+      options: [
+        'GROC, perquè respira a menys de 30 rpm.',
+        'VERMELL (Prioritat 1), perquè l’absència de pols radial indica hipoperfusió / xoc greu al pas 3.',
+        'NEGRE, perquè sense pols radial es considera morta.',
+        'VERD, si encara mou les mans.'
+      ],
+      correctIndex: 1,
+      explanation: 'Al pas 3 del mètode START (prioritzant el pols radial sobre el reompliment capil·lar), l’absència de pols radial classifica la víctima directament com a VERMELLA.'
+    },
+    {
+      id: 't29-q14',
+      difficulty: 'Mitjà',
+      question: 'Una víctima d’una explosió industrial no camina, respira a 20 rpm i té pols radial palpable, però NO obeeix ordres simples quan li demanes que t’estrengui la mà. Quina targeta START li correspon?',
+      options: [
+        'GROGA, perquè totes les constants cardiorespiratòries són normals.',
+        'VERDA, perquè està respirant per si sola.',
+        'VERMELLA (Prioritat 1), perquè presenta alteració neurològica en no obeir ordres simples al pas 4.',
+        'NEGRA, perquè té alteració del nivell de consciència.'
+      ],
+      correctIndex: 2,
+      explanation: 'Al pas 4 del mètode START (estat mental), si la víctima no obeeix ordres simples tot i respirar a ≤ 30 rpm i tenir pols radial, es classifica com a VERMELLA (Prioritat 1).'
+    },
+    {
+      id: 't29-q15',
+      difficulty: 'Difícil',
+      question: 'Respecte a les regles operatives del triatge bàsic START en un IMV (MAN.SANI.001), assenyala quina afirmació és INCORRECTA:',
+      options: [
+        'Les dues úniques maniobres salvadores permeses durant el triatge START són obrir la via aèria (amb Guedel o PLS) i controlar hemorràgies externes greus (compressió / torniquet).',
+        'El temps màxim per classificar cada víctima no ha de superar 1 minut.',
+        'Si una víctima no respira ni tan sols després d’obrir-li manualment la via aèria, cal iniciar compressions toràciques de RCP durant 5 cicles abans de passar a la següent.',
+        'En cas de dubte entre dues categories de color, cal assignar sempre la de prioritat superior (més greu).'
+      ],
+      correctIndex: 2,
+      explanation: 'És incorrecte: en un IMV NO s’inicia RCP durant el triatge bàsic START. Si després d’obrir la via aèria la víctima segueix sense respirar, se li assigna targeta NEGRA i es passa immediatament a la víctima següent.'
+    },
+    {
+      id: 't29-q16',
+      difficulty: 'Difícil',
+      question: 'Sobre l’organització intercosos i la filiació de víctimes segons el Protocol APCAT (MAN.SANI.001), assenyala quina afirmació és INCORRECTA:',
+      options: [
+        'La Cèl·lula d’Avaluació inicial està integrada per 3 representants: 1 de Bombers, 1 del SEM i 1 dels Mossos d’Esquadra (o Policia).',
+        'El Grup Sanitari (SEM) s’encarrega de la filiació de tots els ferits classificats com a Verds, Grocs i Vermells.',
+        'El Grup d’Ordre (Mossos/Policia) és responsable de la filiació tant de les persones il·leses no ateses pel SEM com de les víctimes mortals (Negres).',
+        'En un accident ferroviari accidental sense indicis d’il·lícit penal, el Comandament Operatiu global de l’incident correspon als Mossos d’Esquadra i els Bombers filien les víctimes mortals.'
+      ],
+      correctIndex: 3,
+      explanation: 'És incorrecte: sense sospita d’il·lícit penal, atemptat o ordre públic, el Comandament Operatiu correspon als BOMBERS (no a Mossos), i la filiació dels morts (Negres) correspon al Grup d’Ordre (Mossos / Policia Judicial), mai a Bombers.'
+    },
+    {
+      id: 't29-q17',
+      difficulty: 'Mitjà',
+      question: 'En un xoc múltiple a l’autopista es comptabilitzen 2 ferits greus, cap víctima mortal i 8 ferits lleus/moderats que també requereixen trasllat hospitalari (10 trasllats en total). S’ha de declarar oficialment un IMV segons el Protocol APCAT?',
+      options: [
+        'No, perquè no arriba al llindar de 6 víctimes greus o mortals.',
+        'Sí, perquè encara que no hi hagi 6 víctimes greus o mortals, es compleix el segon criteri APCAT (≥ 10 víctimes que requereixen trasllat hospitalari).',
+        'No, perquè el Protocol APCAT exigeix complir simultàniament els dos llindars (≥ 6 greus I ≥ 10 trasllats).',
+        'Només si hi ha com a mínim 1 víctima classificada de color negre.'
+      ],
+      correctIndex: 1,
+      explanation: 'N’hi ha prou que es compleixi UN dels dos llindars del Protocol APCAT: ≥ 6 víctimes greus o mortals, O BÉ ≥ 10 víctimes que requereixin trasllat hospitalari.'
+    },
+    {
+      id: 't29-q18',
+      difficulty: 'Fàcil',
+      question: 'Dins l’organització espacial d’un IMV (MAN.SANI.001), on s’executa la 1a noria de rescat i on s’ubiquen el Centre de Comandament Avançat (CCA) i l’Àrea Sanitària (CMA) del SEM?',
+      options: [
+        'La 1a noria de rescat treballa entre la Zona Calenta i Tèbia (1r Cercle de Mossos), mentre que el CCA i l’Àrea Sanitària / CMA s’ubiquen en Zona Freda (2n Cercle de Mossos).',
+        'El CCA i l’Àrea Sanitària s’instal·len sempre dins la Zona Calenta per estar al costat de l’impacte.',
+        'La 1a noria de rescat la fan exclusivament les ambulàncies convencionals dins la Zona Calenta.',
+        'El 1r Cercle de Mossos equival únicament a la Zona Freda de Bombers.'
+      ],
+      correctIndex: 0,
+      explanation: 'El 1r Cercle de Seguretat de Mossos engloba la Zona Calenta + Zona Tèbia (rescat, triatge START i 1a noria de rescat), mentre que el 2n Cercle equival a la Zona Freda (CMA del SEM, triatge META, CCA i nories d’ambulàncies).'
     }
   ]
 };

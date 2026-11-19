@@ -32,10 +32,18 @@ export const tema5PoliticaLinguistica = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Objecte, llengua pròpia (art. 2) i oficial (art. 3)',
+          heading: '1.1 Objecte (art. 1) i derogació de l\'article 7',
           paragraphs: [
-            'La Llei 1/1998 (de 7 de gener) substitueix la Llei 7/1983 i desplega l\'article 3 de l\'Estatut. L\'article 7 sobre l\'aranès està derogat per la Llei 35/2010.',
-            'La distinció fonamental és entre llengua pròpia (art. 2) i llengua oficial (art. 3): el català com a llengua pròpia OBLIGA les institucions de Catalunya (és la llengua DE les institucions i la llengua PREFERENTMENT EMPRADA per l\'Administració de l\'Estat a Catalunya, art. 2.2). Com a llengua oficial (art. 3, juntament amb el castellà), DÓNA DRETS als ciutadans i plena validesa i eficàcia jurídica als actes.',
+            'La Llei 1/1998 (de 7 de gener) substitueix la Llei 7/1983 i desplega l\'article 3 de l\'Estatut d\'Autonomia.',
+            'Alerta amb l\'article 7 (sobre l\'aranès): està DEROGAT per la Llei 35/2010, de l\'occità, aranès a l\'Aran.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '1.2 Llengua pròpia (art. 2) vs Llengua oficial (art. 3) — No confondre!',
+          paragraphs: [
+            'El català com a LLENGUA PRÒPIA (art. 2) OBLIGA les institucions de Catalunya: és la llengua de les institucions catalanes i la llengua PREFERENTMENT EMPRADA per l\'Administració de l\'Estat a Catalunya (art. 2.2).',
+            'Com a LLENGUA OFICIAL (art. 3, juntament amb el castellà), DÓNA DRETS als ciutadans i plena validesa i eficàcia jurídica als actes fets en qualsevol de les dues llengües oficials.',
             'L\'article 4.1 reconeix 5 drets lingüístics, però el dret a ésser atès en la llengua oficial escollida és l\'únic condicionat ("en els termes que la llei estableix"). L\'article 6 designa l\'Institut d\'Estudis Catalans (IEC) com a autoritat lingüística.'
           ]
         },
@@ -58,11 +66,19 @@ export const tema5PoliticaLinguistica = {
       blocks: [
         {
           type: 'text',
-          heading: '2.1 Normes, actuacions administratives i selecció',
+          heading: '2.1 Publicació de normes (art. 8) i actuacions administratives (arts. 9–10)',
           paragraphs: [
-            'Publicació de normes (art. 8): les lleis del Parlament es publiquen al DOGC en edicions simultànies en català i castellà (la versió castellana la fa el Parlament). Les disposicions generals i resolucions es publiquen en català i, si escau, en castellà.',
-            'Actuacions administratives (art. 9.1): cap endins i entre administracions catalanes HAN d\'emprar el català; en canvi, en la relació amb els ciutadans l\'empren NORMALMENT (i en castellà si la persona interessada ho demana). Dins els procediments (art. 10), qualsevol ciutadà pot presentar escrits o manifestar-se en castellà SENSE necessitat de sol·licitar-ho prèviament; ara bé, per rebre les notificacions en castellà SÍ que ho ha de demanar. Els testimonis tenen dret a expressar-se en la seva llengua i la traducció es fa sense perjudici, despesa, retard ni suspensió.',
-            'Capacitació del personal (art. 11): l\'Administració ha de garantir que el personal conegui les 2 llengües oficials, però en els processos de selecció (inclòs el personal laboral, art. 11.2) s\'ha d\'acreditar el coneixement del català.'
+            'Publicació de normes (art. 8): les lleis del Parlament es publiquen al DOGC en edicions simultànies en català i castellà (la versió castellana la fa el mateix Parlament). Les disposicions generals i resolucions es publiquen en català i, si escau, en castellà.',
+            'Actuacions administratives (art. 9.1): cap endins i entre administracions catalanes HAN d\'emprar el català; en canvi, en la relació amb els ciutadans l\'empren NORMALMENT (i en castellà si la persona interessada ho demana).',
+            'Dins els procediments (art. 10): qualsevol ciutadà pot presentar escrits o manifestar-se en castellà SENSE sol·licitud prèvia; ara bé, per rebre les notificacions en castellà SÍ que ho ha de demanar. Els testimonis tenen dret a expressar-se en la seva llengua i la traducció es fa sense perjudici, despesa, retard ni suspensió.'
+          ]
+        },
+        {
+          type: 'text',
+          heading: '2.2 Capacitació i selecció de personal (art. 11)',
+          paragraphs: [
+            'L\'Administració ha de garantir que el personal al seu servei conegui les 2 llengües oficials (exigència general).',
+            'No confondre! En els processos de selecció (inclòs el personal laboral, art. 11.2), el que s\'ha d\'acreditar específicament és el coneixement del CATALÀ.'
           ]
         },
         {
@@ -265,6 +281,97 @@ export const tema5PoliticaLinguistica = {
       ],
       correctIndex: 0,
       explanation: 'Art. 15: privats en qualsevol idioma, però xecs/pagarés almenys català. Art. 17: assentament en la llengua del document.'
+    },
+    {
+      id: 't5-q11',
+      difficulty: 'Mitjà',
+      question: 'Segons l\'article 2.2 de la Llei 1/1998, com utilitza el català l\'Administració de l\'Estat situada a Catalunya?',
+      options: [
+        'Com a llengua preferentment emprada (mentre que per a les institucions de Catalunya és la llengua pròpia que les obliga)',
+        'Exclusivament en les comunicacions internes, mai amb els ciutadans',
+        'Com a llengua cooficial únicament si el ciutadà ho demana per escrit',
+        'De manera obligatòria i excloent del castellà en tots els seus actes'
+      ],
+      correctIndex: 0,
+      explanation: 'L\'art. 2.2 defineix el català com la llengua DE les institucions de Catalunya i, particularment, la llengua preferentment emprada per l\'Administració de l\'Estat a Catalunya.'
+    },
+    {
+      id: 't5-q12',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA respecte a les actuacions administratives (arts. 9 i 10 de la Llei 1/1998)?',
+      options: [
+        'Un ciutadà que vulgui presentar un escrit en castellà davant la Generalitat ho ha de sol·licitar prèviament amb 5 dies d\'antelació',
+        'Cap endins i en les relacions entre administracions catalanes s\'ha d\'emprar el català',
+        'En les actuacions amb els ciutadans l\'Administració empra normalment el català, i el castellà si l\'interessat ho demana',
+        'La traducció d\'un testimoni que s\'expressi en la seva llengua s\'ha de fer sense perjudici, despesa, retard ni suspensió'
+      ],
+      correctIndex: 0,
+      explanation: 'Segons l\'art. 10, qualsevol ciutadà pot presentar escrits o manifestar-se en castellà SENSE necessitat de sol·licitud prèvia (només cal demanar-ho per rebre les notificacions en castellà).'
+    },
+    {
+      id: 't5-q13',
+      difficulty: 'Difícil',
+      question: 'Quina regla s\'aplica als notaris i fedataris públics segons l\'article 14 de la Llei 1/1998 quan tradueixen documents públics?',
+      options: [
+        'Efectuen la traducció sota la seva responsabilitat SENSE necessitat de protocol·litzar la traducció',
+        'Han de protocol·litzar obligatòriament la traducció davant el Degà del Col·legi Notarial',
+        'No poden traduir mai documents; cal un traductor jurat extern',
+        'Només poden traduir del castellà al català, mai a la inversa'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 14 Llei 1/1998: els notaris i fedataris públics lliuren o tradueixen sota la seva responsabilitat sense necessitat de protocol·litzar la traducció.'
+    },
+    {
+      id: 't5-q14',
+      difficulty: 'Fàcil',
+      question: 'Quina llei va substituir la Llei 1/1998 de política lingüística i quin article estatutari desplega?',
+      options: [
+        'Substitueix la Llei 7/1983 i desplega l\'article 3 de l\'Estatut d\'Autonomia',
+        'Substitueix la Llei 13/1989 i desplega l\'article 132 de l\'EAC',
+        'Substitueix la Llei 35/2010 i desplega l\'article 9.3 CE',
+        'Substitueix el Decret 243/1995 i desplega l\'article 11 EAC'
+      ],
+      correctIndex: 0,
+      explanation: 'La Llei 1/1998, de 7 de gener, substitueix la Llei 7/1983 i desplega l\'article 3 de l\'Estatut.'
+    },
+    {
+      id: 't5-q15',
+      difficulty: 'Mitjà',
+      question: 'Quina excepció preveu l\'article 17 de la Llei 1/1998 respecte a la llengua dels assentaments en els registres públics?',
+      options: [
+        'Els registres de caràcter únicament administratiu (la resta segueixen la llengua del document)',
+        'Els registres de la propietat i mercantils, que són sempre en castellà',
+        'Els registres civils, que es fan sempre en totes dues llengües',
+        'No preveu cap excepció en cap tipus de registre'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 17: l\'assentament segueix la llengua del document presentat, llevat dels registres de caràcter només administratiu.'
+    },
+    {
+      id: 't5-q16',
+      difficulty: 'Difícil',
+      question: 'Quina afirmació és INCORRECTA sobre els documents mercantils privats de l\'article 15 de la Llei 1/1998?',
+      options: [
+        'Els xecs, pagarés i altres efectes de comerç han d\'estar redactats exclusivament en castellà per tenir força executiva',
+        'Els documents privats són vàlids en qualsevol idioma',
+        'Els xecs, pagarés i efectes de comerç s\'han de redactar almenys en català',
+        'La validesa jurídica d\'un contracte privat no depèn de si està escrit en català o castellà'
+      ],
+      correctIndex: 0,
+      explanation: 'Art. 15: els documents privats són vàlids en qualsevol idioma, però els xecs, pagarés i efectes de comerç s\'han de redactar almenys en català.'
+    },
+    {
+      id: 't5-q17',
+      difficulty: 'Mitjà',
+      question: 'Quantes disposicions addicionals té la Llei 1/1998 i què cal recordar sobre els processos de selecció de personal laboral (art. 11.2)?',
+      options: [
+        'Té 9 disposicions addicionals (la 9a afegida el 2017) i en els processos de selecció de personal laboral també s\'ha d\'acreditar el coneixement del català',
+        'Té 4 disposicions addicionals i el personal laboral està exempt d\'acreditar el català',
+        'Té 9 disposicions addicionals i només els funcionaris de carrera acrediten el català',
+        'Té 15 disposicions addicionals i en selecció cal acreditar tant el català com l\'aranès a tot Catalunya'
+      ],
+      correctIndex: 0,
+      explanation: 'La Llei 1/1998 té 9 disposicions addicionals (la 9a afegida el 2017) i l\'art. 11.2 exigeix acreditar el coneixement del català també en els processos de selecció de personal laboral.'
     }
   ]
 };

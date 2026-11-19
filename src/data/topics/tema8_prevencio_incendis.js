@@ -32,10 +32,10 @@ export const tema8PrevencioIncendis = {
       blocks: [
         {
           type: 'text',
-          heading: '1.1–1.2. Les 6 Exigències Bàsiques de Seguretat en cas d’Incendi i Protecció Passiva vs. Activa',
+          heading: '1.1–1.2. Les 6 Exigències Bàsiques (SI 1–SI 6) i Protecció Passiva vs. Activa',
           paragraphs: [
-            "El Codi Tècnic de l'Edificació (CTE DB-SI) i el Nou Reglament de Seguretat Contra Incendis en Establiments Industrials (RSCIEI, aprovat pel Reial Decret 164/2025) articulen la prevenció al voltant de 6 exigències bàsiques: SI 1 (Propagació interior), SI 2 (Propagació exterior), SI 3 (Evacuació d'ocupants), SI 4 (Instal·lacions de protecció contra incendis), SI 5 (Intervenció dels bombers) i SI 6 (Resistència al foc de l'estructura).",
-            "Es distingeix entre Protecció Passiva (elements constructius i estructurals que no necessiten activació per contenir l'incendi i facilitar l'evacuació: sectorització EI, portes tallafoc, ignifugació d'estructures, escales protegides) i Protecció Activa (sistemes i instal·lacions que detecten, alerten, controlen o extingeixen el foc: detectors, extintors, BIE, hidrants, columna seca, ruixadors automàtics i SCTiEF)."
+            "El Codi Tècnic de l'Edificació (CTE DB-SI) i el Nou Reglament de Seguretat Contra Incendis en Establiments Industrials (RSCIEI, RD 164/2025) articulen la prevenció entorn de 6 exigències bàsiques: SI 1 (Propagació interior), SI 2 (Propagació exterior), SI 3 (Evacuació d'ocupants), SI 4 (Instal·lacions PCI), SI 5 (Intervenció dels bombers) i SI 6 (Resistència al foc de l'estructura).",
+            "No confondre! Protecció Passiva vs. Protecció Activa: La Protecció Passiva agrupa els elements constructius que contenen el foc sense necessitar activació (sectorització EI, portes tallafoc, ignifugació estructural, escales protegides). La Protecció Activa inclou les instal·lacions que detecten, alerten o extingeixen l'incendi (detectors, extintors, BIE, hidrants, columna seca, ruixadors i SCTiEF)."
           ]
         },
         {
@@ -63,6 +63,14 @@ export const tema8PrevencioIncendis = {
       title: '2. Accessibilitat per a Bombers (SI 5): Vial d’Aproximació, Espai de Maniobra i Escales',
       subtitle: 'Dimensions exactes de vials i espais de maniobra (>9 m / >1.000 m²), façana accessible (15%) i SP-133.',
       blocks: [
+        {
+          type: 'text',
+          heading: 'No confondre! Vial d’Aproximació (≥ 3,5 m) vs. Espai de Maniobra (≥ 5 m)',
+          paragraphs: [
+            "• Vial d'Aproximació: camí o carrer d'accés fins a l'edifici (amplada ≥ 3,5 m, gàlib ≥ 4,5 m, 20 kN/m²).",
+            "• Espai de Maniobra: plataforma adjacent a la façana per estacionar i estabilitzar l'autoescala AEA (obligatori si alçada d'evacuació > 9 m en CTE o > 1.000 m² en RSCIEI): amplada ≥ 5 m, gàlib ≥ 4,5 m, pendent ≤ 10% i punxonament 125 kN en Ø 20 cm."
+          ]
+        },
         {
           type: 'table',
           title: '2.1. Condicions d’Aproximació, Espai de Maniobra i Façana Accessible (CTE SI 5 / RSCIEI)',
@@ -99,6 +107,14 @@ export const tema8PrevencioIncendis = {
       subtitle: 'Euroclasses A1-F (s1-s3, d0-d2), Reglament (UE) 2024/3110, mitgera EI 120 i franges d’1 m (EI t/2).',
       blocks: [
         {
+          type: 'text',
+          heading: 'No confondre! Reacció al Foc (Euroclasses) vs. Resistència al Foc (R-E-I)',
+          paragraphs: [
+            "• Reacció al Foc (Euroclasses A1–F + fum s1–s3 + gotes d0–d2): mesura com un material de revestiment (terra, paret, sostre, cable) s'encén i contribueix a propagar l'incendi. NO s'expressa en minuts! (Equivalència clau: C-s2,d0 = antiga classe M1).",
+            "• Resistència al Foc (R-E-I + minuts: 30, 60, 90, 120...): mesura quants MINUTS aguanta un element constructiu o sectoritzador sense col·lapsar (R), sense deixar passar flames/gasos (E) ni deixar passar calor excessiva (I: ≤ 140 °C mitjana / 180 °C màx.)."
+          ]
+        },
+        {
           type: 'table',
           title: '3.1.1. Euroclasses de Reacció al Foc vs. 3.1.2. Resistència al Foc (R-E-I)',
           subtitle: 'Reglament Europeu de Productes de Construcció (UE) 2024/3110 i RD 842/2013',
@@ -134,6 +150,15 @@ export const tema8PrevencioIncendis = {
       subtitle: 'Cabal i pressió d’hidrants públics (1.000 L/min a 1 bar) vs. industrials (5 bar), DN 80 i UNE 23500.',
       blocks: [
         {
+          type: 'text',
+          heading: 'No confondre! BIE vs. Hidrant vs. Columna Seca',
+          paragraphs: [
+            "• BIE (Boca d'Incendi Equipada, UNE-EN 671): instal·lació interior permanentment plena d'aigua a pressió (mànega semirígida Ø25 mm o plana Ø45 mm) per a primera intervenció d'ocupants i bombers.",
+            "• Hidrant (SP-120 públic / RSCIEI industrial): presa exterior d'abastament d'aigua per alimentar autobombes (o atacar directament en industrial a 5 bar). Públic SP-120: 1.000 L/min × 2 h a ≥ 1 bar (240 m³); Industrial: 1.500–3.000 L/min a ≥ 5 bar, a ≤ 40 m de l'accés i 5–15 m de façana.",
+            "• Columna Seca (SP-112 / RIPCI): canonada vertical DN 80 mm normalment BUIDA d'aigua (sense pressió) d'ús exclusiu per a Bombers. S'alimenta des de la façana (2×Ø70 a 0,90 m) i té sortides dobles Ø45 a les plantes parells fins a la 8a i a totes a partir de la 8a."
+          ]
+        },
+        {
           type: 'table',
           title: '4.1–4.2. Especificacions Tècniques Oficials de les Instal·lacions PCI per a Bombers',
           subtitle: 'Totes les xifres del Capítol 4 de MAN.SP.000 V.2 — El bloc més preguntat de tot el tema!',
@@ -141,8 +166,8 @@ export const tema8PrevencioIncendis = {
           rows: [
             ['4.1. SCTiEF (Control de Temperatura i Evacuació de Fums)', 'Norma UNE 23585. Exutoris aerodinàmics de coberta + cortines de fum + entrades d’aire inferior.', 'Manté una capa lliure de fum sobre el terra, redueix la Tª dels gasos sota el sostre (evita el col·lapse de l’acer i el Flashover) i facilita la visibilitat.'],
             ['4.2.2. Hidrant Públic Municipal (ITC SP-120)', '• Cabal mínim: 1.000 L/min (16,6 L/s).\n• Autonomia mínima: 2 hores.\n• Pressió dinàmica mínima: 1 bar (100 kPa).\n• Reserva total d’aigua: 240 m³ (240.000 L).', 'Hidrants de columna (DN 80 o DN 100 mm amb sortides racor Barcelona Ø70/Ø45 o presa de 100 mm) o hidrants d’arqueta soterrats (UNE-EN 14384 / 14339).'],
-            ['4.2.3. Hidrant d’Establiment Industrial (RSCIEI)', '• Distància a qualsevol accés de l’edifici: ≤ 40 m.\n• Separació respecte de la façana: entre 5 m i 15 m.\n• Cabal: 1.500 a 3.000 L/min (segons risc i superfície).\n• Pressió mínima en hidrant industrial: 5 bar (500 kPa) durant 60–90 min.', 'La pressió de 5 bar en hidrant industrial permet atacar l’incendi connectant mànegues directament a l’hidrant sense passar per la bomba del camió si cal!'],
-            ['4.2.4. Columna Seca (SP-112 / RIPCI)', '• Canonada d’acer galvanitzat buida de DN 80 mm (3").\n• Presa d’alimentació en façana (a 0,90 m del terra) amb 2 entrades Ø70 mm.\n• Sortides dobles Ø45 mm a les plantes PARELLS fins a la 8a i a TOTES a partir de la 8a.\n• Clau de seccionament cada 4 plantes.\n• Prova d’estanquitat: 1.470 kPa (15 bar) i amb vàlvules a 2.450 kPa (25 bar).', 'Obligatòria en edificis si l’alçada d’evacuació és > 24 m (en general), > 15 m en hospitals, o en aparcaments de > 3 plantes sota rasant (o > 4 sobre rasant).'],
+            ['4.2.3. Hidrant d’Establiment Industrial (RSCIEI)', '• Distància a accés: ≤ 40 m | Separació a façana: 5 a 15 m.\n• Cabal: 1.500–3.000 L/min a pressió mínima de 5 bar (60–90 min).', 'Els 5 bar permeten connectar mànegues directament a l’hidrant sense bomba si cal.'],
+            ['4.2.4. Columna Seca (SP-112 / RIPCI)', '• DN 80 mm (buida) · Presa façana a 0,90 m (2×Ø70).\n• Sortides 2×Ø45: parells fins a 8a i totes des de la 8a (clau cada 4).\n• Prova: 1.470 kPa (15 bar) i 2.450 kPa (25 bar) amb vàlvules.', 'Obligatòria si h > 24 m (> 15 m en hospitals) o aparcaments > 3 plantes sota rasant.'],
             ['4.2.5. Grup d’Abastament d’Aigua PCI (UNE 23500)', 'Bomba Jockey (manté pressió de xarxa) + Bomba Principal (elèctrica o dièsel) + Dipòsit de reserva.', 'DADA CRÍTICA UNE 23500: La bomba Jockey té arrencada i aturada automàtiques, però la BOMBA PRINCIPAL té arrencada automàtica per caiguda de pressió i ATURADA EXCLUSIVAMENT MANUAL al quadre de la sala de bombes!'],
             ['4.2.6. Ruixadors (Sprinklers) i Cuines (SP-136)', 'Ampolla termosensible (68 °C vermella en ús ordinari; 57 °C taronja; 79 °C groga; 93 °C verda).', 'Només s’obre el ruixador que arriba a la temperatura de trencament del bulb (no tots alhora, excepte en sistemes de diluvi!).']
           ],
@@ -171,12 +196,21 @@ export const tema8PrevencioIncendis = {
           footnote: 'Memoritza els 4 llindars CER: EGA ≥ 50 m | Túnels ≥ 400 m | Soterranis P1 ≥ 3.000 m² | Aparcaments ≥ 2.500 m².'
         },
         {
+          type: 'text',
+          heading: '5.2–7. Fitxes FOER (6 Fases) i Glossari V.2 (Classe L: Bateries Li-ion)',
+          paragraphs: [
+            "Les Fitxes Operatives d'Elements de Risc (FOER) s'identifiquen amb el codi [MUNICIPI 3 lletres]-[TIPUS 3 lletres]-[5 DÍGITS] (ex. BAD-HOS-00001 = Badalona, Hospital, fitxa 00001).",
+            "El seu cicle d'elaboració té 6 fases: 1) Detecció i selecció del CER → 2) Recopilació documental (PAU, plànols PCI) → 3) Visita d'inspecció in situ → 4) Redacció i disseny gràfic → 5) Validació tècnica i publicació al SIG/tauletes → 6) Pràctica/simulacre i actualització.",
+            "Novetat Glossari V.2 (Cap. 7): Incorpora la CLASSE L per designar els focs en bateries d'ió liti (Li-ion) amb risc d'embalaçament tèrmic (Thermal Runaway)."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '5.2. Fitxes Operatives d’Elements de Risc (FOER): Codi i les 6 Fases d’Elaboració',
+          title: 'Regla Mnemotècnica · Codi FOER i Les 6 Fases d’Elaboració',
           acronym: 'CODI FOER: [MUNICIPI 3 lletres] - [TIPUS 3 lletres] - [5 DÍGITS]   (Ex: BAD-HOS-00001)',
           trick:
-            "• ESTRUCTURA DEL CODI FOER: 3 lletres del municipi (ex: BAD = Badalona) + guió + 3 lletres de la tipologia d'edifici/risc (ex: HOS = Hospital, IND = Indústria, TUN = Túnel, EGA = Gran Alçada) + guió + 5 dígits correlatius (00001).\n• LES 6 FASES DEL CICLE FOER (5.2):\n  1) Detecció i selecció de l'element de risc (CER).\n  2) Recopilació documental (PAU, plànols PCI).\n  3) Visita d'inspecció in situ per la dotació del parc.\n  4) Redacció i disseny gràfic de la fitxa FOER (plànol d'accessos, talls de subministrament, columna seca, hidrants).\n  5) Validació tècnica i publicació al SIG / tauletes dels vehicles.\n  6) Pràctica / Simulacre operatiu i actualització periòdica.\n• GLOSSARI V.2 (Cap. 7): Incorpora la CLASSE L per designar els focs en bateries d'ió liti (Li-ion) amb risc d'embalaçament tèrmic (Thermal Runaway).",
+            "• 6 Fases FOER: 1) Selecció → 2) Documentació → 3) Visita in situ → 4) Redacció/Plànol → 5) Validació/SIG → 6) Simulacre/Actualització.\n• Classe L (V.2): Focs en bateries d'ió liti (Li-ion).",
           example: 'El codi del manual BAD-HOS-00001 identifica la primera fitxa FOER (00001) d’un Hospital (HOS) al municipi de Badalona (BAD).'
         }
       ]
@@ -227,7 +261,7 @@ export const tema8PrevencioIncendis = {
           title: 'Els 5 Paranys del Tribunal al Tema 23 (Prevenció d’Incendis)',
           acronym: 'REACCIÓ vs RESISTÈNCIA | SP-120 vs INDUSTRIAL | COLUMNA SECA (8a) | UNE 23500 (Manual) | CLASSE L',
           trick:
-            "1) REACCIÓ vs. RESISTÈNCIA AL FOC:\n• Reacció (A1 a F + s1..s3 + d0..d2): indica com crema un material de revestiment (terra, paret, sostre, cable). No porta minuts!\n• Resistència (R, E, I + minuts): indica quants minuts aguanta una estructura o paret tallafoc.\n\n2) HIDRANT PÚBLIC (SP-120) vs. HIDRANT INDUSTRIAL:\n• Públic (SP-120): 1.000 L/min × 2 hores = 240 m³ a 1 bar.\n• Industrial (RSCIEI): 1.500–3.000 L/min a 5 bar, a ≤ 40 m de la porta i entre 5 i 15 m de la façana.\n\n3) DISTRIBUCIÓ DE PRESES DE LA COLUMNA SECA (DN 80 mm):\n• Plantes 1 a 8: preses dobles de Ø45 NOMÉS a les plantes PARELLS (2a, 4a, 6a, 8a).\n• A partir de la planta 8: preses a TOTES les plantes (9a, 10a, 11a...).\n• Clau de seccionament: cada 4 plantes.\n\n4) BOMBA PRINCIPAL D'INCENDIS (UNE 23500):\n• Arrenca sola quan baixa la pressió de la xarxa, però MAI s'atura sola (només es pot aturar prement manualment el botó a la sala de bombes!).\n\n5) NOVETATS DE LA VERSIÓ 2 DEL MANUAL:\n• Nou RSCIEI = RD 164/2025.\n• Nou Reglament UE Productes Construcció = Reglament (UE) 2024/3110.\n• Nova Classe L al glossari = incendis en bateries d'ió liti.",
+            "• REACCIÓ vs. RESISTÈNCIA: Reacció (A1–F, s, d) = com crema un revestiment (sense minuts) | Resistència (R-E-I + minuts) = temps que aguanta una estructura o sectorització.\n• HIDRANT PÚBLIC vs. INDUSTRIAL: Públic SP-120 (1.000 L/min × 2h a 1 bar = 240 m³) | Industrial RSCIEI (1.500–3.000 L/min a 5 bar, ≤ 40 m de porta, 5–15 m de façana).\n• COLUMNA SECA (DN 80): Ø45 parells fins 8a planta i totes des de la 8a; clau seccionament cada 4 plantes.\n• UNE 23500: Bomba principal té arrencada automàtica i ATURADA EXCLUSIVAMENT MANUAL.\n• NOVETATS V.2: RSCIEI = RD 164/2025 | Reglament UE 2024/3110 | Classe L = bateries ió liti.",
           example: 'Si et pregunten a quines plantes té sortida una columna seca en un edifici de 12 plantes: 2a, 4a, 6a, 8a, 9a, 10a, 11a i 12a (amb vàlvula de seccionament a la 4a i 8a).'
         }
       ]

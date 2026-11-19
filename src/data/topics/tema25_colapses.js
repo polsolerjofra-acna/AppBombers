@@ -9,7 +9,7 @@ export const tema25Colapses = {
     title: "Radar d'Examen — Tema 30 (MAN.SVES.000 V.1): Col·lapses, GREC, Apuntalaments i Senyals",
     frequency: 'Molt Alta (3-4 preguntes fixes sobre GREC 2021, puntals ≤1 m / 1.000 kg, marcatge INSARAG, emplaçament 2×h i senyals acústics)',
     summary:
-      "Aquest manual conté algunes de les xifres i codis més preguntats a les oposicions: història d'INSARAG (Mèxic 1985 i Armènia 1988), creació del GREC (2021 i certificació STRAC 2025), les 3 fases de recerca (Física / Crida i escolta, Instrumentalitzada amb geòfons/càmeres, i Canina per venteig), xifres oficials d'apuntalaments (distància entre puntals ≤ 1 m, resistència 1.000 kg/puntal, les 3 parts Sotapont/Puntals/Jaç i tornapuntes a 45°–60°), marcatge INSARAG de víctimes (V de 50 cm, L-n, D-n i rombe C), distància d'emplaçament de vehicles (2 × h) i els 4 senyals acústics d'emergència (3 curts = Evacuar; 1 llarg = Aturar; 1 llarg + 1 curt = Continuar). Inclou 4 pàgines d'estudi i 2 pàgines finals de Resum.",
+      "Manual de rescat en col·lapses: història d'INSARAG (Mèxic 1985, Armènia 1988) i creació del GREC (2021 / STRAC 2025), 3 fases de recerca (Física, Instrumentalitzada amb geòfons, Canina per venteig), apuntalaments (≤ 1 m, 1.000 kg/puntal, Sotapont-Puntals-Jaç, tornapuntes 45°–60°), marcatge INSARAG (V 50 cm, L-n, D-n, C), vehicles a ≥ 2 × h i senyals acústics.",
     hotTopics: [
       'Cap. 1: Terratrèmols de Mèxic (1985) i Armènia (1988) → creació d’INSARAG (ONU, anys 90), OSOCC i equips USAR (lleugers, mitjans, pesats). GREC (Grup de Recolzament en Estructures Col·lapsades) constituït l’any 2021 (certificació europea STRAC iniciada el 2025).',
       'Cap. 2-3: Col·lapse Total, Parcial i Secundari (el més perillós per als bombers durant el rescat) i les 3 fases de recerca: 1) Física (vista/oïda + Crida i escolta), 2) Instrumentalitzada (geòfons sísmics/acústics i càmeres) i 3) Canina (maniobra de Venteig en silenci i sense gent).',
@@ -33,8 +33,9 @@ export const tema25Colapses = {
           type: 'text',
           heading: '1. Origen d’INSARAG (ONU), Equips USAR i Creació del GREC (2021 / STRAC 2025)',
           paragraphs: [
-            "Després dels grans terratrèmols de Mèxic (1985) i Armènia (1988), on es va evidenciar la falta d'estandardització internacional dels equips de rescat, les Nacions Unides van crear als anys 1990 el grup INSARAG (International Search and Rescue Advisory Group). INSARAG coordina els centres OSOCC (On-Site Operations Coordination Centre) i classifica els equips internacionals USAR (Urban Search And Rescue) en 3 categories segons la seva capacitat i autonomia: Lleugers, Mitjans i Pesats.",
-            "Als Bombers de la Generalitat de Catalunya, l'any 2021 es va constituir oficialment el GREC (Grup de Recolzament en Estructures Col·lapsades), format per especialistes en apuntalaments, patologia estructural i rescat USAR (amb intervencions destacades als esfondraments de Badalona 2020 i 2024, incendi del Pont de Vilomara 2022, missió a Armènia 2024 i inici del procés de certificació europea STRAC l'any 2025)."
+            "Arran dels terratrèmols de Mèxic (1985) i Armènia (1988), les Nacions Unides van crear als anys 1990 el grup INSARAG (International Search and Rescue Advisory Group) per estandarditzar el rescat urbà.",
+            "INSARAG coordina els centres OSOCC (On-Site Operations Coordination Centre) i classifica els equips internacionals USAR (Urban Search And Rescue) en 3 categories: Lleugers, Mitjans i Pesats.",
+            "Als Bombers de la Generalitat, l'any 2021 es va constituir oficialment el GREC (Grup de Recolzament en Estructures Col·lapsades), especialista en apuntalaments i rescat USAR (Badalona 2020 i 2024, Pont de Vilomara 2022, Armènia 2024 i certificació europea STRAC el 2025)."
           ]
         },
         {
@@ -62,9 +63,20 @@ export const tema25Colapses = {
           type: 'text',
           heading: '4.1–4.3. Principis de l’Apuntalament d’Emergència i les Seves 3 Parts',
           paragraphs: [
-            "Un apuntalament d'emergència no pretén reconstruir ni retornar l'estructura deformada a la seva posició original (no s'ha de forçar cap amunt fins a trencar-la!), sinó CONSOLIDAR i sostenir els elements danyats per evitar un col·lapse secundari i obrir un corredor segur per al rescat.",
-            "Criteris numèrics oficials del manual MAN.SVES.000 (Cap. 4): 1) La distància màxima entre puntals consecutius NO POT SUPERAR 1 METRE (≤ 1 m); 2) Com a regla de càlcul ràpid de seguretat, es considera que cada puntal metàl·lic o de fusta ben aplomat suporta una càrrega màxima de 1.000 kg (1 TONA per puntal).",
-            "Un apuntalament vertical consta sempre de 3 PARTS fonamentals (de dalt a baix): 1) SOTAPONT (tauló superior en contacte amb el sostre o biga danyada: la seva funció és RECOLLIR la càrrega), 2) PUNTALS (elements verticals de fusta o telescòpics metàl·lics amb falques contraposades: la seva funció és TRASLLADAR la càrrega de dalt a baix; han d'estar perfectament aplomats a 90° per evitar el vinclament!) i 3) JAÇ DE TAULONS o Solera (tauló inferior recolzat sobre el terra ferm o distribuïdor de planta: la seva funció és REPARTIR la càrrega sobre una superfície més gran per no punxar el forjat inferior!)."
+            "Un apuntalament d'emergència no pretén aixecar ni retornar l'estructura deformada a la seva posició original (forçar-la podria trencar-la!), sinó CONSOLIDAR i sostenir els elements danyats per evitar un col·lapse secundari i obrir un corredor segur.",
+            "Criteris numèrics oficials (Cap. 4): separació màxima entre puntals consecutius ≤ 1 METRE, i càrrega màxima segura considerada de 1.000 kg (1 tona) per puntal ben aplomat a 90°.",
+            "Un apuntalament vertical consta de 3 PARTS (de dalt a baix):",
+            "• 1) SOTAPONT (a dalt, contra el sostre o biga): La seva funció és RECOLLIR la càrrega de l'element danyat.",
+            "• 2) PUNTALS (al mig, verticals a 90° amb falques contraposades): La seva funció és TRASLLADAR la càrrega sense vinclar.",
+            "• 3) JAÇ DE TAULONS o Solera (a baix, sobre el terra): La seva funció és REPARTIR la càrrega en més superfície per no punxar el forjat inferior."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Sotapont vs. Puntal vs. Jaç i Estampidor vs. Tornapunta',
+          paragraphs: [
+            "• VERTICAL (Sotapont → Puntals → Jaç): El sotapont va a DALT (recull), els puntals al MIG (traslladen, ≤ 1 m) i el jaç de taulons a BAIX (reparteix).",
+            "• HORITZONTAL (Estampidor): Apuntala dues parets paral·leles o les parets d'una rasa. • INCLINAT (Tornapuntes): Conté façanes o murs amb risc de bolcada formant un angle òptim de 45° a 60° amb el terra."
           ]
         },
         {
@@ -97,9 +109,10 @@ export const tema25Colapses = {
           type: 'text',
           heading: '5. Senyalització INSARAG i 6. Seguretat Operativa (2 × h i Senyals Acústics)',
           paragraphs: [
-            "En una zona de col·lapse s'utilitza cintes i bastons lluminosos (sticks químics): el color VERMELL indica zona de perill o accés prohibit (i una creu 'X' significa no passar), mentre que el color VERD indica ruta segura o accés habilitat.",
-            "Per marcar la presència de VÍCTIMES sota la runa s'utilitza el sistema internacional INSARAG pintat amb esprai d'alta visibilitat (taronja/vermell): 1) Es pinta una gran lletra 'V' (de 50 cm d'alçada!) amb una fletxa que apunta cap al lloc exacte on es detecta una víctima potencial encara sense confirmar; 2) Un cop confirmades, s'escriu a sota de la V: 'L - n' (Live = nombre de víctimes VIVES confirmades, ex. L-2) i 'D - n' (Dead = nombre de víctimes MORTES confirmades, ex. D-1); 3) Quan les víctimes vives han estat rescatades es ratlla amb una línia horitzontal la fila L-n; i quan s'han extret TOTES les víctimes (vives i mortes), s'encercla o es dibuixa un rombe amb una 'C' (Clear = zona neta!). També s'utilitza el quadrat INSARAG d'avaluació d'estructura (dins del quadrat s'indica si és habitable/perillós, a dalt el perill [gas, aigua], a l'esquerra l'equip USAR, a la dreta la data/hora i a baix les víctimes).",
-            "A l'arribada (Cap. 6.1), els vehicles d'emergència s'han d'emplaçar sempre a la PART ALTA del pendent i a una distància mínima de seguretat igual a DUES VEGADES L'ALÇADA DE L'EDIFICI (≥ 2 × h) o a una distància mínima de DUES EDIFICACIONS NO AFECTADES!"
+            "En una zona de col·lapse s'utilitzen cintes i bastons lluminosos: VERMELL indica zona de perill o accés prohibit (i una creu 'X' significa no passar), mentre que VERD indica ruta segura.",
+            "Per marcar VÍCTIMES amb esprai s'utilitza el sistema INSARAG: es pinta una 'V' de 50 cm amb fletxa cap al punt potencial; un cop confirmades s'anota 'L - n' (vives) i 'D - n' (mortes). En rescatar les vives es ratlla la fila L-n, i quan totes les víctimes s'han extret es dibuixa un rombe amb 'C' (Clear).",
+            "També s'usa el quadrat INSARAG d'avaluació estructural (dins: estat habitable/perillós; dalt: riscos gas/aigua; esquerra: equip USAR; dreta: data/hora; baix: víctimes).",
+            "A l'arribada (Cap. 6.1), els vehicles s'emplacen sempre a la PART ALTA del pendent i a una distància mínima ≥ 2 × h (dues vegades l'alçada de l'edifici) o dues edificacions no afectades."
           ]
         },
         {
@@ -128,17 +141,17 @@ export const tema25Colapses = {
           metaphor:
             'Pensa en un apuntalament vertical com un entrepà que aguanta el sostre:',
           explanation:
-            "• 1. El pa de DALT que toca el sostre es diu SOTAPONT (perquè va 'sota el pont/biga'): ell RECULL tot el pes.\n• 2. El farcit vertical del mig són els PUNTALS (posats com a molt a 1 metre l'un de l'altre, aguantant 1.000 kg cadascun): ells TRASLLADEN el pes cap a baix.\n• 3. El pa de BAIX que dorm sobre el terra es diu JAÇ DE TAULONS (un 'jaç' en català és un llit a terra!): ell REPARTEIX el pes perquè els puntals no foradin el terra!\n• I amb la botzina: si sents 'PI-PI-PI' (3 curts nerviosos d'1 segon) = CORRE i EVACUA! Si sents un sol 'PIIIIII' llarg (3 segons, com quan algú fa 'Xssssst, silenci!') = ATURA'T i fes SILENCI! Si sents 'PIIIIII - PI' (llarg + curt) = CONTINUA treballant!",
+            "• DALT (Sotapont): Toca el sostre i RECULL tot el pes.\n• MIG (Puntals): Aplomats a 90°, separats ≤ 1 m (1.000 kg/u), TRASLLADEN el pes cap avall.\n• BAIX (Jaç de taulons): Fa de llit a terra i REPARTEIX el pes.\n• Botzina: 3 curts (1 s) = EVACUAR! | 1 llarg (3 s) = SILENCI / ATURAR | 1 llarg + 1 curt = CONTINUAR | Curts continus = SOS!",
           takeaway: 'Sotapont (dalt, recull) → Puntals (mig, ≤ 1 m, 1.000 kg) → Jaç (baix, reparteix) | 3 curts = Evacuar | 1 llarg = Silenci/Aturar.'
         },
         {
           type: 'mnemonic',
-          title: 'Regla Mnemotècnica · Avisos sonors en col·lapses estructurals (ampliable)',
-          acronym: '1 i 3 → Tot Mort (parat)  |  1 i 1 → Tothom Torna (a treballar)',
+          title: 'Regla Mnemotècnica · Codi Complet d’Avisos Sonors en Col·lapses (INSARAG)',
+          acronym: '3 CURTS (1s) = EVACUAR  |  1 LLARG (3s) = ATURAR  |  1 LLARG + 1 CURT = CONTINUAR  |  CONTINUS = SOS',
           trick:
-            '• "1 i 3" → Tot Mort (parat: aturada total de treballs i silenci).\n• "1 i 1" → Tothom Torna (a treballar: reprendre les tasques).\n• [Espai previst per afegir la resta d’avisos sonors a l’apartat de Regles Mnemotècniques].',
+            '• 3 tocs curts (1 s) → EVACUAR immediatament cap al punt de reunió.\n• 1 toc llarg (3 s) → ATURAR operacions i silenci absolut (codi "1 i 3": Tot Mort/parat).\n• 1 toc llarg + 1 toc curt → REPRENDRE / continuar treballs (codi "1 i 1": Tothom Torna).\n• Tocs curts repetitius continus → SOS (bomber atrapat / socors).',
           example:
-            'Quan escoltis la seqüència 1 i 3, atura’t en sec ("Tot Mort"). Quan soni 1 i 1, reprens la feina ("Tothom Torna").'
+            'Si sents 3 tocs curts seguits, deixa les eines i evacua al moment. Si sents 1 toc llarg de 3 s, atura generadors i fes silenci.'
         }
       ]
     },
@@ -384,6 +397,32 @@ export const tema25Colapses = {
       ],
       correctIndex: 1,
       explanation: 'La seqüència operativa estableix: zonatge i emplaçament segur (≥ 2 × h), tall de subministraments i estabilització inicial, recerca en silenci (física, instrumentalitzada i canina per venteig), senyalització INSARAG i accés segur mitjançant apuntalaments consolidats.'
+    },
+    {
+      id: 't30-q16',
+      difficulty: 'Mitjà',
+      question: 'Quin tipus d’apuntalament s’utilitza per contenir les dues parets paral·leles d’una rasa o excavació, i quin per estabilitzar una façana exterior amb risc de bolcada cap al carrer?',
+      options: [
+        'Rasa = Apuntalament inclinat a 15° | Façana = Jaç de taulons sense puntals.',
+        'Rasa = Apuntalament horitzontal (estampidor) que transmet l’empenta d’un mur a l’altre | Façana = Apuntalament inclinat o oblic amb tornapuntes formant un angle òptim de 45° a 60° amb el terra.',
+        'Tots dos casos es resolen amb puntals verticals separats 3 metres.',
+        'Rasa = Sotapont vertical | Façana = Apuntalament horitzontal (estampidor) a 90°.'
+      ],
+      correctIndex: 1,
+      explanation: 'L’apuntalament horitzontal (estampidor) conté dues parets paral·leles o d’una rasa; l’apuntalament inclinat/oblic amb tornapuntes a 45°–60° estabilitza façanes o murs amb risc de bolcada.'
+    },
+    {
+      id: 't30-q17',
+      difficulty: 'Fàcil',
+      question: 'En una operació de rescat en edifici col·lapsat, quina afirmació sobre la senyalització INSARAG i els senyals acústics d’emergència és INCORRECTA?',
+      options: [
+        'Un senyal acústic de 3 tocs curts d’1 segon ordena l’evacuació immediata de la zona calenta.',
+        'Quan s’han extret totes les víctimes (vives i mortes) d’un punt marcat, es tanca la senyalització INSARAG amb un rombe i la lletra "C" (Clear).',
+        'La lletra "V" del marcatge INSARAG de víctimes fa 50 cm d’alçada amb una fletxa que assenyala la possible ubicació.',
+        'Un senyal acústic d’1 toc llarg de 3 segons ordena l’evacuació immediata de tots els bombers, mentre que 3 tocs curts ordenen silenci absolut per escoltar amb geòfons.'
+      ],
+      correctIndex: 3,
+      explanation: 'És incorrecte (estan invertits!): 3 tocs curts (1 s) = EVACUAR immediatament; 1 toc llarg (3 s) = ATURAR operacions i SILENCI absolut (per escolta/geòfons).'
     }
   ]
 };

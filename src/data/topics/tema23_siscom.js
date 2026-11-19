@@ -60,11 +60,12 @@ export const tema23Siscom = {
       blocks: [
         {
           type: 'text',
-          heading: '4.1–4.6. Comandament Únic, Integrat, Unificat, Cadena (+1/-1) i Tram de Control (3 a 5)',
+          heading: '4.1–4.6. Comandament Únic, Integrat vs. Unificat, Cadena (+1/-1) i Tram de Control',
           paragraphs: [
-            "1) COMANDAMENT ÚNIC (Unitat de Comandament): En tota intervenció de Bombers hi ha sempre UN SOL Cap d'Intervenció (CI) identificat, regulat pel Decret 276/2016, de 19 de juliol (i pels documents operatius de relleu INT.COMD.000 i GUI.ORGO.001). Tota persona que intervé sap exactament qui és el seu únic superior directe.",
-            "2) COMANDAMENT INTEGRAT vs. COMANDAMENT UNIFICAT: El Comandament INTEGRAT es produeix quan en una emergència intervenen diferents cossos o agències (Bombers, SEM, Mossos d'Esquadra, Policia Local, ADF) que es coordinen al Centre de Comandament Avançat (CCA) sota la direcció operativa de l'agència responsable segons la naturalesa del sinistre. En canvi, el Comandament UNIFICAT s'aplica en grans emergències que afecten simultàniament territoris o jurisdiccions limítrofes (ex. un incendi forestal a la frontera entre Catalunya i Aragó o França, o entre Generalitat i Ajuntament de Barcelona), on els comandaments de cada cos comparteixen autoritat i consensuen un únic PAI al Centre de Comandament Unificat.",
-            "3) CADENA DE COMANDAMENT (Regla +1 / -1) i TRAM DE CONTROL (3 a 5): Les ordres i la informació segueixen la línia jeràrquica immediata superior (+1) i inferior (-1), evitant saltar-se esglaons ('micromanagement'). El TRAM DE CONTROL (Span of Control) és el nombre de subordinats o línies directes que un sol comandament pot supervisar amb eficàcia i seguretat: al SISCOM s'estableix entre 3 i 5 línies directes! Si un comandament supera les 5 línies, s'ha de subdividir l'estructura creant grups, sectors o zones."
+            "1) Comandament Únic (Unitat de Comandament): En tota intervenció de Bombers hi ha un únic Cap d'Intervenció (CI) identificat, regulat pel Decret 276/2016, de 19 de juliol (i el relleu per INT.COMD.000 i GUI.ORGO.001).",
+            "2) No confondre! Comandament Integrat vs. Comandament Unificat: En el Comandament INTEGRAT, diferents agències (Bombers, SEM, Mossos, ADF) es coordinen al CCA sota la direcció operativa de l'agència responsable del sinistre. En el Comandament UNIFICAT (emergències entre territoris o jurisdiccions limítrofes, ex. Catalunya–Aragó o Generalitat–BCN), els cossos homòlegs comparteixen l'autoritat i consensuen un únic PAI.",
+            "3) Cadena de Comandament (+1 / -1): Les ordres i informes segueixen estrictament el nivell immediat superior (+1) i inferior (-1), evitant saltar-se esglaons intermedis.",
+            "4) Tram de Control (Span of Control): Nombre de subordinats o línies directes que un comandament pot supervisar amb seguretat. Al SISCOM és d'entre 3 i 5 línies directes; si se superen les 5, cal crear un esglaó intermedi."
           ]
         },
         {
@@ -91,10 +92,22 @@ export const tema23Siscom = {
       blocks: [
         {
           type: 'text',
-          heading: '5. Àrees Funcionals del SISCOM i 6. Jerarquia de Recursos (De Menor a Major)',
+          heading: '5. Àrees Funcionals: SISCOM Català vs. ICS Americà',
           paragraphs: [
-            "En l'ICS nord-americà original existeixen 5 grans àrees funcionals: Comandament, Operacions, Planificació, Logística i Administració/Finances. En el SISCOM dels Bombers de la Generalitat, l'àrea d'Administració/Finances no es desplega a l'operatiu de camp, i sota la direcció del CAP D'INTERVENCIÓ (CI) l'estructura es divideix en dues grans branques: 1) ÀREA D'OPERACIONS (executa directament la tàctica i les maniobres del PAI sobre l'incident) i 2) ÀREA DE SUPORT, que engloba tant la funció de PLANIFICACIÓ (recull informació, analitza l'evolució, fa cartografia i redacta el PAI) com la funció de LOGÍSTICA (proporciona comunicacions, avituallament, aigua, relleus, manteniment i instal·lacions com el CRM). En emergències petites o inicials (nivell SISCOM 1), el mateix Cap d'Intervenció (CI) assumeix personalment totes les funcions sense delegar àrees.",
-            "El Capítol 6 estableix l'escalafó jeràrquic exacte de 7 NIVELLS d'agrupació de recursos (de menor a major complexitat): 1) EQUIP (la unitat bàsica indivisible: un binomi de bombers o un sol vehicle amb la seva dotació; executa TASQUES concretes) → 2) MANIOBRA (conjunt coordinat de tasques amb un objectiu tàctic concret, ex. maniobra d'extinció o d'excarceració) → 3) GRUP (agrupació funcional de diversos equips que executen una mateixa maniobra sota un Cap de Grup) → 4) SECTOR (divisió geogràfica [Sector Nord, Sector Planta 3] o funcional de l'incident que agrupa diversos grups/equips sota un Cap de Sector) → 5) ZONA (agrupació de diversos sectors quan l'incident és molt extens i se supera el tram de control de 5 sectors) → 6) ÀREES FUNCIONALS (Operacions i Suport: Planificació/Logística) → 7) COMANDAMENT DE LA INTERVENCIÓ (CI)."
+            "No confondre! ICS Americà (5 àrees) vs. SISCOM Català: L'ICS nord-americà té 5 àrees funcionals (Comandament, Operacions, Planificació, Logística i Administració/Finances). Al SISCOM de Bombers de la Generalitat NO es desplega Administració/Finances sobre el terreny.",
+            "Sota el Cap d'Intervenció (CI), el SISCOM s'estructura en dues grans branques: 1) Àrea d'OPERACIONS (executa les maniobres tàctiques del PAI) i 2) Àrea de SUPORT, que integra PLANIFICACIÓ (anàlisi, cartografia i redacció del PAI) i LOGÍSTICA (comunicacions, aigua, avituallament, relleus i CRM). En serveis simples (SISCOM 1), el CI assumeix totes les funcions."
+          ]
+        },
+        {
+          type: 'text',
+          heading: '6. Escalafó dels 7 Nivells Jeràrquics de Recursos (De Menor a Major)',
+          paragraphs: [
+            "• 1. EQUIP: unitat bàsica indivisible (un binomi o un vehicle amb la seva dotació); executa tasques concretes.",
+            "• 2. MANIOBRA: conjunt coordinat de tasques amb un objectiu tàctic definit (ex. extinció o excarceració).",
+            "• 3. GRUP: agrupació funcional de diversos equips que executen una mateixa maniobra sota un Cap de Grup.",
+            "• 4. SECTOR: divisió geogràfica (ex. Sector Nord, Planta 3) o funcional superior al Grup, amb un Cap de Sector.",
+            "• 5. ZONA: agrupació de diversos sectors quan se supera el tram de control de 5 sectors.",
+            "• 6. ÀREES FUNCIONALS (Operacions i Suport) → 7. COMANDAMENT DE LA INTERVENCIÓ (CI)."
           ]
         },
         {
@@ -126,7 +139,7 @@ export const tema23Siscom = {
           metaphor:
             'Imagina que cada cap només té UNA MÀ amb 5 dits (Tram de control màxim = 3 a 5 línies):',
           explanation:
-            "• Al principi arriba 1 sol camió (SISCOM 1): el caporal és el Cap d'Intervenció (CI) i amb els dits de la seva mà controla directament els seus equips.\n• Si arriben 4 camions més, ja té els 5 dits ocupats. Si n'arriben més, ja no pot parlar amb tots alhora! Aleshores crea 3 SECTORS (Sector Flanc Dret, Sector Flanc Esquerre, Sector Cap) i posa un Cap de Sector a cadascun: ara el CI només parla amb 3 Caps de Sector (3 dits ocupats!).\n• Si el foc es fa gegant i ja hi ha 8 Sectors, el Cap d'Operacions tornaria a tenir més de 5 dits ocupats: aleshores agrupa els 8 Sectors en 2 ZONES (Zona Nord i Zona Sud)!",
+            "• SISCOM 1 (1 camió): el caporal és el CI i controla directament els seus equips (menys de 5 dits ocupats).\n• Si arriben més camions i superen les 5 línies, es creen SECTORS (Nord, Sud, Flanc) amb un Cap de Sector cadascun.\n• Si el sinistre creix fins a superar 5 Sectors (ex. 8 Sectors), el Cap d'Operacions els agrupa en ZONES (Zona Nord i Zona Sud).",
           takeaway: 'Sempre que superis les 5 línies directes (tram de control 3–5), agrupa en el nivell superior (Equips → Grups → Sectors → Zones).'
         }
       ]
@@ -306,6 +319,110 @@ export const tema23Siscom = {
       ],
       correctIndex: 1,
       explanation: 'La Zona (nivell 5) és l’agrupació superior que reuneix diversos Sectors (nivell 4) quan la dimensió de l’incident supera el tram de control de 3–5 sectors.'
+    },
+    {
+      id: 't22-q11',
+      difficulty: 'Mitjà',
+      question: 'Quina àrea funcional de l’ICS nord-americà original NO s’aplica a l’operatiu de camp del SISCOM de Bombers de la Generalitat, i com s’integren Planificació i Logística?',
+      options: [
+        'No s’aplica l’àrea d’Operacions; Planificació i Logística depenen de Finances.',
+        'No s’aplica l’àrea d’Administració/Finances; Planificació i Logística s’integren dins de l’Àrea de Suport.',
+        'No s’aplica Logística; Finances s’integra dins d’Operacions.',
+        'S’apliquen exactament les 5 àrees de l’ICS amb els mateixos noms separats en tot servei.'
+      ],
+      correctIndex: 1,
+      explanation: 'A diferència de les 5 àrees de l’ICS americà, el SISCOM català exclou Administració/Finances i s’estructura sota el CI en Àrea d’Operacions i Àrea de Suport (que engloba Planificació i Logística).'
+    },
+    {
+      id: 't22-q12',
+      difficulty: 'Mitjà',
+      question: 'Es produeix un incendi forestal a la franja limítrofa entre Catalunya i Aragó en què actuen conjuntament Bombers de la Generalitat i mitjans d’Aragó amb competències territorials compartides i un PAI consensuat. Quin model de comandament s’estableix?',
+      options: [
+        'Comandament Unificat.',
+        'Comandament Integrat.',
+        'SISCOM 1.',
+        'Comandament delegat exclusivament al SEM.'
+      ],
+      correctIndex: 0,
+      explanation: 'El Comandament Unificat s’aplica quan l’emergència afecta territoris o jurisdiccions limítrofes (ex. Catalunya–Aragó o Generalitat–Barcelona), compartint autoritat i redactant un PAI comú.'
+    },
+    {
+      id: 't22-q13',
+      difficulty: 'Fàcil',
+      question: 'Dins de l’Àrea de Suport del SISCOM, quina funció s’encarrega de proporcionar comunicacions, aigua, avituallament, manteniment, relleus i instal·lacions com el Centre de Recepció de Mitjans (CRM)?',
+      options: [
+        'La funció de Planificació.',
+        'La funció de Logística.',
+        'L’Àrea d’Operacions.',
+        'El Grup d’Ordre.'
+      ],
+      correctIndex: 1,
+      explanation: 'Logística subministra els mitjans materials, aigua, avituallament, comunicacions, relleus i instal·lacions de suport (CRM), mentre que Planificació recull informació, fa cartografia i elabora el PAI.'
+    },
+    {
+      id: 't22-q14',
+      difficulty: 'Difícil',
+      question: 'En relació amb l’escalafó de recursos i el principi de modularitat del SISCOM (MAN.COMD.001), quina de les afirmacions següents és INCORRECTA?',
+      options: [
+        'Un Equip és la unitat bàsica indivisible (un binomi o un vehicle amb la seva dotació) i executa tasques concretes.',
+        'Un Grup té un rang jeràrquic superior al Sector, ja que un Grup agrupa diversos Sectors geogràfics.',
+        'El sistema creix de baix a dalt (bottom-up) i es contrau modularment segons l’evolució de l’emergència.',
+        'L’ús de terminologia comuna evita malentesos entre parcs, regions i grups especials.'
+      ],
+      correctIndex: 1,
+      explanation: 'Afirmació incorrecta: és al revés! El Sector (nivell 4) és superior al Grup (nivell 3). Un Grup reuneix diversos equips en una maniobra, mentre que un Sector divideix geogràficament o funcionalment l’incident i agrupa diversos grups o equips.'
+    },
+    {
+      id: 't22-q15',
+      difficulty: 'Mitjà',
+      question: 'Durant un incendi industrial, un Cap de Sector rep l’assignació de 7 equips diferents simultàniament sota la seva supervisió directa. Per què aquesta situació vulnera els principis del SISCOM i com s’ha de resoldre?',
+      options: [
+        'Vulnera el tram de control òptim (3 a 5 línies directes); s’ha de resoldre subdividint i creant Grups o un nou Sector per mantenir entre 3 i 5 línies.',
+        'Vulnera la regla de les 24 hores; s’ha de resoldre enviant 2 equips al parc en Z-6.',
+        'Vulnera el Decret 30/2015; s’ha de resoldre suprimint el PAI.',
+        'No vulnera cap principi, ja que el tram de control màxim al SISCOM és de 15 línies.'
+      ],
+      correctIndex: 0,
+      explanation: 'Amb 7 línies directes se supera el tram de control màxim recomanat al SISCOM (3 a 5 línies). Cal reorganitzar els equips en Grups (amb Caps de Grup) o dividir el Sector.'
+    },
+    {
+      id: 't22-q16',
+      difficulty: 'Fàcil',
+      question: 'Quin document operatiu defineix els objectius estratègics, la tàctica i les maniobres per a un període operatiu dins del SISCOM i quin codi de document el regula?',
+      options: [
+        'El Pla d’Acció de l’Incident (PAI), regulat per MAN.COMD.003.',
+        'El DUPROCIM, regulat pel Decret 276/2016.',
+        'El PLEGEM, regulat per MAN.ATXX.000.',
+        'El Codi SOC, regulat per MAN.GRAL.002.'
+      ],
+      correctIndex: 0,
+      explanation: 'El Pla d’Acció de l’Incident (PAI) —regulat pel manual MAN.COMD.003— fixa els objectius, l’estratègia i les maniobres per a cada període operatiu.'
+    },
+    {
+      id: 't22-q17',
+      difficulty: 'Mitjà',
+      question: 'En una emergència urbana complexa on intervenen conjuntament Bombers, SEM i Mossos d’Esquadra coordinats al Centre de Comandament Avançat (CCA) sota la direcció operativa de l’agència competent, quin tipus de comandament s’aplica?',
+      options: [
+        'Comandament Unificat.',
+        'Comandament Integrat.',
+        'Comandament Paral·lel sense CCA.',
+        'Comandament Aïllat.'
+      ],
+      correctIndex: 1,
+      explanation: 'Quan diferents agències o cossos (Bombers, SEM, Mossos, etc.) treballen coordinats al CCA sota la direcció operativa de l’agència responsable segons la naturalesa del sinistre, parlem de Comandament Integrat.'
+    },
+    {
+      id: 't22-q18',
+      difficulty: 'Fàcil',
+      question: 'Quin principi del SISCOM explica que només s’activin els càrrecs, sectors o àrees funcionals estrictament necessàries en cada moment de l’emergència (des d’un sol camió fins a una gran catàstrofe)?',
+      options: [
+        'El principi de modularitat i escalabilitat.',
+        'El principi de rigidesa absoluta.',
+        'El principi de duplicitat funcional.',
+        'El principi d’autoprotecció passiva.'
+      ],
+      correctIndex: 0,
+      explanation: 'La modularitat i escalabilitat permet que l’organització creixi de baix a dalt (bottom-up) i es redueixi quan disminueix la complexitat, activant només els nivells necessaris.'
     }
   ]
 };

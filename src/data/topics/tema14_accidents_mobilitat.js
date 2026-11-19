@@ -9,7 +9,7 @@ export const tema14AccidentsMobilitat = {
     title: "Radar d'Examen — Tema 32 (MAN.SVVH.000 v.1): Accidents de Mobilitat Viària",
     frequency: 'Molt Alta (5-7 preguntes fixes sobre muntants A-B-C, atrapament Físic 1 vs 2, Biomecànica i 5a falca)',
     summary:
-      "Manual de 5 capítols que regula tota l'operativa en sinistres de trànsit i ferroviaris: 1. Introducció (22.000 accidents/any; 23.591 el 2023), 2. Coneixements generals (anatomia del vehicle, 4 moviments, autobusos ECE R66, camions 18-40 t i 24 V, ferrocarril TAV >300 km/h), 3. Valoració (Vehicle A vs. B, atrapament Mecànic vs. Físic I vs. Físic II, alliberament Controlat/Immediat/Emergència, Biomecànica Ec=½mv² i els 5 mecanismes de fractura, PAI Pla A/Pla B), 4. Maniobres (estabilització 3/4/5 punts [cinquena falca], llauna de sardines, la catalana, la tenda) i 5. Seguretat (AGO: Àrea d'eines, Àrea de ferralla, Àrea de relleu i SOS). Inclou 5 pàgines de desenvolupament + 2 pàgines finals de Resum Executiu.",
+      "Manual de rescat en sinistres viaris i ferroviaris: anatomia del vehicle (muntants A-B-C-D, vidre laminat vs. temperat), 4 moviments, autobusos (ECE R66), camions (18-40 t, 24 V), ferrocarril (TAV >300 km/h), Vehicle A vs. B, atrapament Mecànic vs. Físic I i II, Biomecànica (Ec = ½·m·v², fractures), estabilització en 3/4/5 punts (5a falca), La Catalana / La Tenda i AGO.",
     hotTopics: [
       'Cap. 1-2: Anatomia del turisme (Muntants A, B, C, D; vidre laminat al parabrisa vs. temperat a laterals/luneta), els 4 moviments d’inestabilitat (longitudinal, balanceig, capcineig, guinyada), seguretat primària/secundària/terciària (eCall), autobusos (4 m alt / 2,55 m ample / 13,5-18,75 m llarg / 18 t i ECE R66), camions (18 t, 25-26 t, 31-32 t, 40 t i bateries 24 V) i ferrocarril (TAV >300 km/h, bogis i confirmació del Centre de Control Ferroviari).',
       'Cap. 3.2.3-3.2.5: Vehicle A (on anem a rescatar la víctima) vs. Vehicle B (el que està a sobre i cal estabilitzar primer), Atrapament Mecànic vs. Físic Tipus I (per lesions mèdiques, sense bloqueig estructural) vs. Físic Tipus II (atrapat físicament per l’estructura/ferralla!) i Alliberament Controlat vs. Immediat vs. d’Emergència (Rautek) + Hora d’Or (60 min: 10+10+20+20).',
@@ -29,6 +29,15 @@ export const tema14AccidentsMobilitat = {
       title: '1–2. Anatomia del Vehicle (Muntants i Vidres), 4 Moviments, Autobusos, Camions i Ferrocarril',
       subtitle: 'Estadística (23.591 el 2023), vidre laminat vs. temperat, eCall, pesos de camions (18-40 t) i TAV.',
       blocks: [
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Muntants A/B/C/D, Vidre Laminat vs. Temperat i els 4 Moviments',
+          paragraphs: [
+            "• MUNTANTS (de davant a darrere): A = marc del parabrisa; B = pilar central (pretensor del cinturó); C/D = pilars posteriors. Regla d'or: 'pelar' sempre el plàstic interior abans de tallar!",
+            "• VIDRES: Parabrisa davanter = LAMINAT (2 vidres + PVB; no s'engruna, es talla amb serra); Finestres laterals i luneta = TEMPERAT (es trenca en milers de daus amb punxó a una cantonada).",
+            "• MOVIMENTS: Balanceig (Roll = lateral esquerra-dreta), Capcineig (Pitch = morro amunt i avall) i Guinyada (Yaw = gir horitzontal sobre eix vertical)."
+          ]
+        },
         {
           type: 'table',
           title: '2.1. Estructura del Turisme, Vidres, Els 4 Moviments d’Inestabilitat i Seguretat Viària',
@@ -63,6 +72,15 @@ export const tema14AccidentsMobilitat = {
       subtitle: 'Diferència exacta entre Atrapament Físic I i Físic II, Hora d’Or (60 min) i Rautek.',
       blocks: [
         {
+          type: 'text',
+          heading: '⚠️ No confondre! Vehicle A vs. Vehicle B i Atrapament Físic Tipus I vs. Tipus II',
+          paragraphs: [
+            "• VEHICLE A vs. B: El Vehicle A conté la víctima a rescatar; el Vehicle B és el que està a sobre o recolzat. Sempre s'estabilitza PRIMER el Vehicle B!",
+            "• MECÀNIC: Portes encallades, ocupant il·lès i lliure a dins. • FÍSIC TIPUS I: Ocupant lliure de ferralla però retingut per LESIONS MÈDIQUES (cal crear espai exterior per treure'l a 0°).",
+            "• FÍSIC TIPUS II: Ocupant PRESONER físicament de pedals, tablier o muntants deformats (cal descarceració interior amb RAM i separador)."
+          ]
+        },
+        {
           type: 'table',
           title: '3.2.3–3.2.5. Classificació Oficial de Vehicles (A/B), Atrapaments i Alliberaments (MAN.SVVH.000 Cap. 3)',
           subtitle: 'Definicions literals que el tribunal utilitza per a les preguntes de test',
@@ -95,7 +113,7 @@ export const tema14AccidentsMobilitat = {
             { symbol: 'v', meaning: 'Velocitat en el moment de l’impacte en metres/segon (m/s; recorda: km/h ÷ 3,6 = m/s)' }
           ],
           trick:
-            "Com que la velocitat va al QUADRAT (v²), si un vehicle duplica la seva velocitat (passa de 50 km/h a 100 km/h), l'energia destructiva de l'impacte NO és el doble, sinó QUATRE VEGADES MÉS GRAN (2² = 4)! Si triplica la velocitat (de 40 a 120 km/h), l'energia es multiplica per NOU (3² = 9)!\n• En tot accident es produeixen 3 IMPACTES successius: 1r Impacte del vehicle contra l'obstacle → 2n Impacte del cos de l'ocupant contra l'interior del vehicle (volant, parabrisa, cinturó) → 3r Impacte dels òrgans interns (cervell, aorta, melsa, fetge) contra la pròpia caixa òssia per desacceleració!",
+            "• Velocitat al quadrat (v²): si dupliques velocitat (50 → 100 km/h), l'energia del xoc es multiplica per 4 (2²); si la tripliques, per 9 (3²).\n• 3 impactes successius: 1r vehicle contra obstacle → 2n cos contra l'interior → 3r òrgans interns contra caixa òssia.",
           example:
             'Indicadors biomecànics d’alta energia i gravetat al manual (3.2.6):\n• Deformació o intrusió a l’habitacle > 30 cm en impacte lateral (o > 45 cm global del vehicle) i velocitat > 30–45 km/h.\n• Projecció de vianant/motorista o ejecció fora del vehicle > 7 metres.\n• Caiguda des d’una alçada > 3 metres.\n• Mort d’un altre ocupant del mateix habitacle o temps d’excarceració > 20 minuts.'
         },
@@ -123,6 +141,14 @@ export const tema14AccidentsMobilitat = {
       subtitle: 'Estabilització manual (4 bombers), 3/4/5 punts, La Catalana, La Tenda i les 3 àrees de l’AGO.',
       blocks: [
         {
+          type: 'text',
+          heading: '4.1–5. Estabilització (5a Falca), Maniobres i Àrea de Gestió Operativa (AGO)',
+          paragraphs: [
+            "L'estabilització comença amb 4 bombers (un a cada cantonada) per permetre l'accés ràpid del sanitari, seguida de l'estabilització primària amb blocs i falques (i la 5a falca al muntant C o darrere quan s'ha de tallar sostre).",
+            "Al voltant del vehicle s'organitzen dos cercles: Cercle Interior (3–5 m, equip actiu) i Cercle Exterior (5–10 m) amb les 3 àrees AGO: Àrea d'Eines, Àrea de Ferralla i Àrea de Relleu."
+          ]
+        },
+        {
           type: 'table',
           title: '4.1–4.4. Tècniques Oficials d’Estabilització i Maniobres d’Excarceració (MAN.SVVH.000 Cap. 4)',
           subtitle: 'Procediments pas a pas per a vehicle sobre 4 rodes, bolcada lateral i bolcada sobre el sostre',
@@ -142,7 +168,7 @@ export const tema14AccidentsMobilitat = {
           title: '5. Seguretat i Organització de l’Àrea de Gestió Operativa (AGO) en Rescat Viari',
           acronym: 'CERCLE INTERIOR (3-5 m)  |  CERCLE EXTERIOR (5-10 m): 1. Àrea d’Eines · 2. Àrea de Ferralla · 3. Àrea de Relleu',
           trick:
-            "Al voltant del vehicle sinistrat (Zona Calenta), l'espai de treball s'organitza en dos cercles concèntrics i tres àrees fixes sobre lones:\n• CERCLE D'ACCIÓ INTERIOR (radi de 3 a 5 m): Només hi treballa l'equip actiu (Comandament a l'exterior amb visió 360°, Bomber Sanitari a dins amb la víctima i el Binomi Tècnic d'eines).\n• CERCLE EXTERIOR (de 5 a 10 m): S'hi ubiquen les 3 ÀREES DE L'AGO:\n  1) ÀREA D'EINES (Parc de material sobre lona): On es dipositen ordenades la bomba hidràulica, cisalla, separador, RAM, falques, serra de vidres i protector d'airbag.\n  2) ÀREA DE FERRALLA (Punt brut, allunyat de la via d'evacuació sanitària!): On es deixen les portes, el sostre i els muntants tallats (sempre amb les parts punxants cap a terra!).\n  3) ÀREA DE RELLEU / ESPERA (i punt sanitari): On espera el personal de reserva i el material d'immobilització del SEM.",
+            "• CERCLE INTERIOR (3–5 m): Comandament 360°, Bomber Sanitari i Binomi Tècnic.\n• CERCLE EXTERIOR (5–10 m) — 3 ÀREES AGO:\n  1) Àrea d'Eines (sobre lona: bomba, cisalla, separador, RAM, falques).\n  2) Àrea de Ferralla (lluny de la via sanitària; parts punxants cap a terra).\n  3) Àrea de Relleu / Espera (personal de reserva i material SEM).",
           example: 'Tots els protectors de talls vius (fundes de lona/plàstic) s’han de col·locar immediatament sobre cada muntant tallat per no esquinçar els guants ni ferir la víctima!'
         }
       ]
@@ -193,7 +219,7 @@ export const tema14AccidentsMobilitat = {
           title: 'Els 5 Paranys del Tribunal al Tema 32 (Accidents de Mobilitat Viària)',
           acronym: 'FÍSIC I (Lesions) vs FÍSIC II (Ferralla) | VEHICLE B PRIMER | COMMINUTA vs ESPIROIDE | PLA A / PLA B | LA CATALANA vs LA TENDA',
           trick:
-            "1) ATRAPAMENT MECÀNIC vs. FÍSIC TIPUS I vs. FÍSIC TIPUS II:\n• Mecànic = Portes encallades, persona il·lesa i lliure a dins.\n• Físic Tipus I = Persona LLIURE de la ferralla, però retinguda a dins per les seves LESIONS MÈDIQUES (cal crear espai exterior per treure-la a 0°).\n• Físic Tipus II = Persona FÍSICAMENT ATRAPADA per l'estructura deformada (pedals, tablier, volant → cal descarcerar amb RAM/separador).\n\n2) VEHICLE A vs. VEHICLE B:\n• Vehicle A = El que té la víctima a dins.\n• Vehicle B = El que està a sobre. SEMPRE S'ESTABILITZA PRIMER EL VEHICLE B!\n\n3) FRACTURES BIOMECÀNIQUES:\n• Força de COMPRESSIÓ → Fractura COMMINUTA.\n• Força de TORSIÓ → Fractura ESPIROIDE.\n\n4) PLA A (Alliberament Controlat ~20 min) vs. PLA B (Alliberament Immediat ~5 min):\n• Si la víctima és estable s'executa el Pla A (obertura completa i immobilització total). Si es descompensa (XABCDE crític), es passa a l'instant al Pla B.\n\n5) NOMS DE MANIOBRES:\n• Llauna de sardines = obrir el sostre/terra d'un autobús bolcat.\n• La Catalana = elevació/abatiment del sostre tallant muntants.\n• La Tenda = aixecar la part posterior d'un vehicle bolcat panxa enlaire sobre el sostre amb RAM o coixins.",
+            "1) ATRAPAMENT: Mecànic (portes encallades, il·lès) | Físic I (sense bloqueig de ferralla, retingut per LESIONS) | Físic II (presoner de FERRALLA/tablier).\n2) VEHICLE A vs. B: Vehicle A té la víctima; Vehicle B és a sobre → s'estabilitza PRIMER el B.\n3) FRACTURES: Compressió → Comminuta | Torsió → Espiroide.\n4) PLA A vs. PLA B: Pla A = controlat (~20 min, obertura òptima) | Pla B = immediat (~5 min, si empitjora XABCDE).\n5) MANIOBRES: Llauna de sardines (autobús) | La Catalana (sostre bolcada lateral) | La Tenda (vehicle sobre sostre).",
           example: 'Si et pregunten quin tipus d’atrapament pateix un conductor amb trauma vertebral greu que té espai lliure a les cames i al tòrax: Atrapament Físic Tipus I!'
         }
       ]
@@ -420,6 +446,32 @@ export const tema14AccidentsMobilitat = {
       ],
       correctIndex: 1,
       explanation: "La seqüència segura en vehicle electrificat exigeix protegir l'escena, immobilitzar i desconnectar l'alta tensió seguint el full de rescat (12 V + bucle HVIL / service plug), estabilitzar abans de tallar, respectar el temps de descàrrega dels condensadors i no tallar ni manipular mai el cablejat taronja d'HV."
+    },
+    {
+      id: 'q32-18',
+      difficulty: 'Mitjà',
+      question: "En la descripció dels 4 moviments d'inestabilitat d'un vehicle sinistrat (apartat 2.1.3 de MAN.SVVH.000), a quin moviment correspon l'oscil·lació lateral esquerra-dreta sobre l'eix longitudinal i a quin el balanceig del morro i la part posterior amunt i avall?",
+      options: [
+        "Lateral esquerra-dreta = Guinyada (Yaw) | Morro amunt i avall = Balanceig (Roll).",
+        "Lateral esquerra-dreta = Balanceig (Roll) | Morro amunt i avall = Capcineig (Pitch) | Gir horitzontal sobre eix vertical = Guinyada (Yaw).",
+        "Lateral esquerra-dreta = Capcineig (Pitch) | Morro amunt i avall = Moviment longitudinal.",
+        "Tots dos moviments s'anomenen guinyada i no es bloquegen amb falques."
+      ],
+      correctIndex: 1,
+      explanation: "Balanceig (Roll) = oscil·lació lateral esquerra-dreta sobre l'eix longitudinal; Capcineig (Pitch) = moviment del morro i maleter amunt i avall sobre l'eix transversal; Guinyada (Yaw) = rotació sobre l'eix vertical."
+    },
+    {
+      id: 'q32-19',
+      difficulty: 'Fàcil',
+      question: "Respecte als 3 tipus d'alliberament en rescat viari (apartat 3.2.5) i al Pla d'Acció de la Intervenció (PAI: Pla A vs. Pla B), quina afirmació és INCORRECTA?",
+      options: [
+        "L'alliberament controlat (Pla A) s'aplica a víctimes hemodinàmicament estables buscant la màxima obertura i una extracció alineada a 0°.",
+        "L'alliberament immediat (Pla B) s'executa en pocs minuts quan la víctima està inestable o es deteriora el seu XABCDE, prioritzant el temps amb collet i tauler.",
+        "L'alliberament d'emergència (maniobra de Rautek) només s'aplica davant un perill vital extern imminent (incendi, explosió, submersió o ACR) sense esperar material.",
+        "El Pla B només es decideix al cap de 20 minuts si ha fallat el Pla A, i mai s'ha de preveure a l'inici de l'excarceració."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: en tota intervenció d'excarceració (apartat 3.3), el comandament i el sanitari han de definir i acordar SEMPRE un Pla A (òptim) i un Pla B (via ràpida) des del minut 1, abans de començar a tallar."
     }
   ]
 };

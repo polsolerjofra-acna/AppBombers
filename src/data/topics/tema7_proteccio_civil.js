@@ -33,8 +33,12 @@ export const tema7ProteccioCivil = {
           type: 'text',
           heading: '1.1–1.2. Les 4 Fases del Cicle de l’Emergència i el Concepte de Resiliència',
           paragraphs: [
-            "La gestió moderna de les emergències no es limita a apagar focs quan es produeixen, sinó que s'estructura com un cicle continu de 4 fases: 1) REDUCCIÓ (Prevenció i Mitigació abans del sinistre per disminuir la probabilitat o gravetat del dany), 2) PREPARACIÓ (Planificació d'emergència, formació, simulacres i sistemes d'alerta primerenca), 3) RESPOSTA (Intervenció operativa immediata per salvar vides, béns i medi ambient quan l'emergència esclata) i 4) RECUPERACIÓ (Rehabilitació de serveis bàsics i reconstrucció per tornar a la normalitat).",
-            "La RESILIÈNCIA (secció 1.2) és la capacitat d'un sistema, comunitat o societat exposada a un perill per resistir, absorbir, adaptar-se i recuperar-se dels seus efectes de manera oportuna i eficaç."
+            "La gestió moderna de les emergències s'estructura com un cicle continu de 4 fases:",
+            "• 1) Reducció (Prevenció i Mitigació): mesures prèvies al sinistre per evitar-lo o disminuir-ne la gravetat.",
+            "• 2) Preparació: elaboració de plans d'emergència, formació, simulacres i sistemes d'alerta primerenca.",
+            "• 3) Resposta: intervenció operativa immediata quan esclata la crisi per salvar vides, béns i medi ambient.",
+            "• 4) Recuperació: rehabilitació de serveis essencials i reconstrucció per tornar a la normalitat.",
+            "La RESILIÈNCIA (secció 1.2) és la capacitat d'un sistema o comunitat exposada a un perill per resistir, absorbir, adaptar-se i recuperar-se dels seus efectes de manera oportuna i eficaç."
           ]
         },
         {
@@ -76,6 +80,15 @@ export const tema7ProteccioCivil = {
             ['3.5. Mecanisme Europeu (UCPM)', 'ERCC (Brussel·les) + ECPP (Pool Europeu)', 'Actua en 3 passos quan una catàstrofe supera la capacitat d’un Estat: 1) L’Estat afectat sol·licita ajuda a l’ERCC → 2) L’ERCC activa el pool ECPP i coordina les ofertes dels estats → 3) L’Estat afectat accepta i dirigeix els equips sobre el seu territori.']
           ],
           footnote: 'Memoritza: Llei 5/1994 = Bombers | Llei 4/1997 = Protecció Civil Catalunya | Llei 17/2015 = Sistema Nacional PC | >20.000 hab. = obligació municipal.'
+        },
+        {
+          type: 'text',
+          heading: 'No confondre! Nivell 1 vs. Nivell 2 vs. Nivell 3 en Protecció Civil',
+          paragraphs: [
+            "• Nivell 1 (Local / Municipal): emergència assumible amb els mitjans propis del municipi (activació del PAM/PBEM municipal i CECOPAL, sota direcció de l'Alcalde/essa).",
+            "• Nivell 2 (Supramunicipal / Autonòmic): supera la capacitat municipal o afecta més d'un municipi; s'activen els plans de la Generalitat (PROCICAT o Plans Especials com INFOCAT/PLASEQCAT) des del CECAT, sota direcció del Conseller/a d'Interior.",
+            "• Nivell 3 (Interès Nacional — Llei 17/2015): emergència que supera la capacitat autonòmica o afecta diverses comunitats autònomes (o requereix coordinació estatal d'emergència); la declara i dirigeix el Ministre de l'Interior (amb suport de la UME i el CENEM)."
+          ]
         }
       ]
     },
@@ -98,12 +111,21 @@ export const tema7ProteccioCivil = {
           footnote: 'Pregunta freqüent: Què és el DUPROCIM? El Document Únic de Protecció Civil Municipal que integra en un sol text el pla territorial municipal i tots els plans d’actuació municipal (PAM) per riscos especials.'
         },
         {
+          type: 'text',
+          heading: '4.2–4.4. Estructura, Cicle de Vida (4 anys), Fases d’Activació i PLEGEM',
+          paragraphs: [
+            "Tot pla s'estructura en 4 blocs (1. Objecte i marc, 2. Anàlisi de risc, 3. Organització operativa, 4. Operativitat + cartografia) i passa per 5 fases en el seu cicle de vida: Elaboració → Aprovació → Homologació (Comissió de PC de Catalunya) → Implantació → Manteniment (revisió com a màxim cada 4 anys).",
+            "Fases d'activació a Catalunya: Prealerta (seguiment preventiu des del CECAT sense activar tota l'estructura), Alerta (risc imminent o emergència localitzada), Emergència Situació 1 (danys importants assumibles amb mitjans ordinaris del pla) i Emergència Situació 2 (catàstrofe greu que exigeix mitjans extraordinaris o estatals).",
+            "No confondre! El PLEGEM és el Pla intern del Cos de Bombers de la Generalitat per a Grans Emergències (nivells G0 ordinari fins a G4 amb mobilització forçosa), mentre que el PAU (Decret 30/2015, registre Hermes) és el Pla d'Autoprotecció d'una empresa o activitat privada/pública."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '4.2–4.4. Estructura (4 Blocs), Cicle de Vida (5 Fases / 4 Anys), Activació i PLEGEM',
-          acronym: '5 FASES CICLE: Elaboració → Aprovació → Homologació → Implantació → Manteniment (4 anys)',
+          title: 'Regla Mnemotècnica · Cicle de Vida (5 Fases) i Activació d’un Pla',
+          acronym: 'E-A-H-I-M (4 anys)   |   Prealerta → Alerta → Emergència Sit. 1 → Sit. 2',
           trick:
-            "• ELS 4 BLOCS D'UN PLA (4.2): 1) Objecte i marc general, 2) Anàlisi del risc i vulnerabilitat, 3) Estructura i organització operativa, 4) Operativitat (fases d'activació i mesures) + Cartografia i catàleg de mitjans.\n• CICLE DE VIDA (4.3): 1) Elaboració → 2) Aprovació (pel ple municipal o govern) → 3) Homologació (per la Comissió de PC de Catalunya) → 4) Implantació (formació i simulacres) → 5) Manteniment i Revisió (com a màxim cada 4 ANYS!).\n• FASES D'ACTIVACIÓ D'UN PLA: 1) Prealerta (seguiment d'un avís meteorològic/risc sense afectació encara), 2) Alerta (situació de risc imminent o emergència localitzada), 3) Emergència Situació 1 (danys importants però assumibles amb els mitjans ordinaris del pla) i 4) Emergència Situació 2 (catàstrofe greu que exigeix mitjans extraordinaris o estatals).\n• PLEGEM (4.4): Pla d'Emergències del Cos de Bombers de la Generalitat davant Grans Emergències (regula com es mobilitza internament el cos de Bombers, creixent des de Nivell G0 ordinari fins a G1, G2, G3 i G4 amb mobilització forçosa de personal lliure de servei).",
+            "• Cicle de vida (E-A-H-I-M): Elaboració → Aprovació → Homologació (Comissió PC) → Implantació → Manteniment (màx. 4 anys).\n• PLEGEM: Pla intern de Bombers (G0 → G1 → G2 → G3 → G4).\n• Prealerta = només seguiment preventiu (no desplega tot el pla).",
           example: 'La Prealerta no activa formalment tota l’estructura del pla (és una fase de seguiment i avís preventiu des del CECAT).'
         }
       ]
@@ -137,7 +159,7 @@ export const tema7ProteccioCivil = {
           subtitle: 'Criteris de decisió operativa i xarxa de sales de control a Catalunya',
           headers: ['Concepte / Centre', 'Definició i Dades Oficials (MAN.GRAL.001)', 'Detall Clau d’Examen'],
           rows: [
-            ['5.8. Confinament vs. Evacuació', 'Confinament = Tancar-se a l’interior d’un edifici segur (tancant portes, finestres i climatització).\nEvacuació = Desplaçar la població fora de la zona de perill.', 'El CONFINAMENT és la mesura prioritària i més segura davant núvols tòxics químics (PLASEQCAT) o fum dens de curta durada. L’EVACUACIÓ és prioritària quan l’edifici mateix corre risc d’esfondrament, incendi interior o explosió imminent.'],
+            ['5.8. Confinament vs. Evacuació', 'Confinament = Tancar-se dins un edifici segur (portes, finestres, clima).\nEvacuació = Desplaçar la població fora de la zona.', 'Confinament = prioritari en núvols tòxics químics (PLASEQCAT) o fum dens breu. Evacuació = prioritària si hi ha risc d’esfondrament, foc interior o explosió.'],
             ['Sirenes Químiques i ES-Alert', 'Xarxa de sirenes d’avís químic + Sistema ES-Alert (Cell Broadcast al mòbil).', 'Permet enviar una alerta sonora i visual immediata a tots els telèfons mòbils conectats a les antenes de la zona d’emergència.'],
             ['5.9. CECAT i CECOPAL', 'CECAT = Centre de Coordinació Operativa de Catalunya.\nCECOPAL = Centre de Coordinació Operativa Local (Municipal).', 'El CECAT és l’òrgan superior permanent de coordinació d’emergències de la Generalitat (gestiona els plans PROCICAT i Especials).'],
             ['5.9. Sales de Bombers (6 SCT + 1 SCB)', '1 SCB (Sala Central de Bombers, a Cerdanyola/Bellaterra) + 6 SCT (Sales de Control Territorial).', '7 Regidories/Regions d’Emergències gestionades a través d’1 Sala Central (SCB, que integra la Regió Metropolitana) i 6 Sales de Control Territorial (SCT).'],
@@ -192,7 +214,7 @@ export const tema7ProteccioCivil = {
           title: 'Diccionari Ràpid de Sigles de Plans de Catalunya (No en fallis cap!)',
           acronym: 'PROCICAT | DUPROCIM | PLEGEM | PAU | INFOCAT | PLASEQCAT | TRANSCAT | RADCAT',
           trick:
-            "• PROCICAT: Pla Territorial de Protecció Civil de Catalunya (pla marc general).\n• PBEM / PAM / DUPROCIM: Plans municipals (el DUPROCIM unifica en un sol document el PBEM i tots els PAM del municipi).\n• PAU: Pla d'Autoprotecció d'una empresa, indústria o edifici (Decret 30/2015, revisió cada 4 anys).\n• PLEGEM: Pla intern de Bombers de la Generalitat per a Grans Emergències (nivells G0 a G4).\n• PLANS ESPECIALS:\n  - INFOCAT = Incendis Forestals\n  - INUNCAT = Inundacions\n  - NEUCAT = Nevades | ALLAUCAT = Allaus | VENCAT = Ventades\n  - SISMICAT = Sismes | VOLCAT = Risc Volcànic (Garrotxa)\n  - PLASEQCAT / PLASEQTA = Risc Químic en indústries Seveso\n  - TRANSCAT = Transport de Mercaderies Perilloses per carretera i ferrocarril\n  - RADCAT = Risc Radiològic | AEROCAT = Accidents Aeronàutics | CAMCAT = Contaminació Marina.\n\n• CONFINAMENT vs. EVACUACIÓ:\n  - Núvol tòxic químic exterior (PLASEQCAT/TRANSCAT) → CONFINAMENT general.\n  - Risc estructural o d'explosió dins del propi edifici → EVACUACIÓ.",
+            "• PROCICAT: Pla Territorial de Catalunya | DUPROCIM: Unifica el PBEM i els PAM municipals.\n• PAU: Pla d'Autoprotecció d'empresa/activitat (Decret 30/2015, revisió 4 anys) | PLEGEM: Pla intern de Bombers (G0–G4).\n• PLANS ESPECIALS: INFOCAT (forestal), INUNCAT (inundacions), NEUCAT/ALLAUCAT/VENCAT (meteo), SISMICAT/VOLCAT (geofísics), PLASEQCAT (indústries Seveso), TRANSCAT (transport MMPP), RADCAT, AEROCAT, CAMCAT (mar).\n• CONFINAMENT vs. EVACUACIÓ: Núvol tòxic químic → Confinament | Risc estructural o explosió interior → Evacuació.",
           example: 'Si bolca una cisterna d’amoníac a l’autopista AP-7: s’activa el TRANSCAT (transport MMPP), no el PLASEQCAT (que és per a indústries fixes).'
         }
       ]
@@ -349,6 +371,84 @@ export const tema7ProteccioCivil = {
       ],
       correctIndex: 2,
       explanation: "Els 5 grups actuants al CCA són: Intervenció, Ordre, Sanitari, Logístic i Assistència Social/Psicològica. El PLEGEM és el Pla d'Emergències del Cos de Bombers de la Generalitat davant Grans Emergències (des de G0 fins a G4)."
+    },
+    {
+      id: 'q21-13',
+      difficulty: 'Mitjà',
+      question: "Quina diferència hi ha entre una emergència de Nivell 1, Nivell 2 i Nivell 3 (Interès Nacional, Llei 17/2015) dins del sistema de Protecció Civil?",
+      options: [
+        "Nivell 1 és autonòmic, Nivell 2 és europeu (UCPM) i Nivell 3 és municipal.",
+        "Nivell 1 és d'àmbit local assumible amb mitjans municipals (Alcalde); Nivell 2 supera el municipi i activa plans autonòmics (PROCICAT/Especials al CECAT); Nivell 3 és d'Interès Nacional i la dirigeix el Ministre de l'Interior.",
+        "Tots tres nivells són dirigits sempre pel Cap de Bombers al CCA sense intervenció institucional.",
+        "Nivell 3 correspon únicament a la fase de Prealerta d'un pla especial."
+      ],
+      correctIndex: 1,
+      explanation: "Nivell 1 correspon a l'àmbit municipal/local (PAM/CECOPAL), Nivell 2 a l'àmbit autonòmic (Generalitat/CECAT), i Nivell 3 a les emergències d'Interès Nacional (Llei 17/2015) dirigides pel Ministre de l'Interior."
+    },
+    {
+      id: 'q21-14',
+      difficulty: 'Mitjà',
+      question: "Dins les fases d'activació d'un pla de protecció civil a Catalunya, què distingeix la fase de Prealerta de la fase d'Emergència Situació 1?",
+      options: [
+        "La Prealerta implica mobilització forçosa de personal lliure (PLEGEM G4) i la Situació 1 només seguiment meteorològic.",
+        "La Prealerta és una fase de seguiment i avís preventiu sense activar formalment tota l'estructura del pla, mentre que l'Emergència Situació 1 comporta danys importants assumibles amb els mitjans ordinaris del pla.",
+        "La Prealerta activa l'ERCC europeu i la Situació 1 activa només el 112.",
+        "No hi ha cap diferència operativa entre Prealerta i Emergència Situació 2."
+      ],
+      correctIndex: 1,
+      explanation: "En Prealerta es fa seguiment preventiu des del CECAT abans que hi hagi afectació; l'Emergència Situació 1 s'activa quan ja hi ha danys importants però es poden gestionar amb els mitjans ordinaris del pla (la Situació 2 exigeix mitjans extraordinaris/estatals)."
+    },
+    {
+      id: 'q21-15',
+      difficulty: 'Fàcil',
+      question: "Quin decret regula els Plans d'Autoprotecció (PAU) a Catalunya i mitjançant quina plataforma telemàtica s'inscriuen al registre oficial?",
+      options: [
+        "Decret 30/2015 i plataforma Hermes.",
+        "Llei 5/1994 i plataforma RESCAT.",
+        "RD 836/2012 i plataforma ES-Alert.",
+        "Decret 150/2000 i plataforma ECPP."
+      ],
+      correctIndex: 0,
+      explanation: "El Decret 30/2015 aprova el catàleg d'activitats amb obligació de PAU a Catalunya, que es tramiten i registren a través de la plataforma Hermes i es revisen com a màxim cada 4 anys."
+    },
+    {
+      id: 'q21-16',
+      difficulty: 'Difícil',
+      question: "En relació amb les mesures de protecció a la població i els centres de coordinació (Capítol 5 de MAN.GRAL.001), quina afirmació és INCORRECTA?",
+      options: [
+        "El sistema ES-Alert (Cell Broadcast) permet enviar una alerta sonora i visual immediata als telèfons mòbils connectats a les antenes de la zona d'emergència.",
+        "El telèfon únic europeu d'emergències 112 (CAT112) disposa de dues seus operatives redundants a Reus i a la Zona Franca de Barcelona.",
+        "Davant d'un edifici amb risc imminent d'esfondrament o explosió interior, la mesura prioritària és el confinament de tots els veïns dins els pisos.",
+        "El PAG (Punt d'Acollida General) / Punt de Trànsit és una zona segura fora del radi d'afectació per concentrar recursos pesants o reagrupar població evacuada."
+      ],
+      correctIndex: 2,
+      explanation: "Afirmació incorrecta: quan l'edifici mateix presenta risc d'esfondrament, incendi interior o explosió imminent, la mesura prioritària és l'EVACUACIÓ (el confinament és prioritari davant núvols tòxics químics exteriors o fum breu)."
+    },
+    {
+      id: 'q21-17',
+      difficulty: 'Fàcil',
+      question: "Quins plans especials de protecció civil de Catalunya s'activen respectivament davant d'una contaminació marina al litoral i davant d'un accident d'aviació civil?",
+      options: [
+        "INUNCAT (mar) i VENCAT (aviació).",
+        "CAMCAT (contaminació marina) i AEROCAT (accidents aeronàutics).",
+        "TRANSCAT (mar) i RADCAT (aviació).",
+        "VOLCAT (mar) i ALLAUCAT (aviació)."
+      ],
+      correctIndex: 1,
+      explanation: "Segons el catàleg de Plans Especials de Catalunya: CAMCAT correspon a contaminació accidental de les aigües marines i AEROCAT a emergències aeronàutiques."
+    },
+    {
+      id: 'q21-18',
+      difficulty: 'Mitjà',
+      question: "Dins dels 5 Grups d'Actuació operativa coordinats al CCA (secció 5.5 del manual), quin grup s'encarrega de l'alberg i avituallament de la població evacuada i del subministrament als equips intervinents, i quin fa el triatge al PMA?",
+      options: [
+        "Grup d'Ordre (alberg) i Grup d'Intervenció (triatge).",
+        "Grup Logístic (alberg, avituallament i abastament) i Grup Sanitari (triatge al PMA i evacuació medicalitzada).",
+        "Grup d'Assistència Social (avituallament pesant) i Grup Logístic (triatge).",
+        "Grup Sanitari (control d'accessos) i Grup d'Ordre (alberg)."
+      ],
+      correctIndex: 1,
+      explanation: "El Grup Logístic gestiona l'abastament dels equips, alberg i avituallament d'evacuats, mentre que el Grup Sanitari (SEM/Creu Roja) s'encarrega del triatge al PMA i el trasllat sanitari."
     }
   ]
 };

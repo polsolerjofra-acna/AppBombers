@@ -31,12 +31,12 @@ const getInitialHistorySeed = () => {
 
 const defaultState = {
   pageStatus: {
-    'tema-1-foc': { 1: 'completed' }
+    'tema-8': { 1: 'completed' }
   },
   difficultPages: {},
   readingSpeedFactor: 1.0,
   topicStatus: {
-    'tema-1-foc': 'in_progress'
+    'tema-8': 'in_progress'
   },
   quizResults: {},
   spacedRepetition: {},
@@ -129,6 +129,7 @@ export function useStudyProgress() {
 
   // Marca el tema sencer com a 'completed' o 'review'
   const setTopicMark = (topicId, status, totalPages = 3) => {
+    const today = getTodayISO();
     setProgress((prev) => {
       const current = prev.topicStatus[topicId];
       const nextStatus = current === status ? 'in_progress' : status;
@@ -140,6 +141,17 @@ export function useStudyProgress() {
         }
       }
 
+      const prevSpaced = (prev.spacedRepetition || {})[topicId];
+      const nextSpaced =
+        nextStatus === 'completed'
+          ? prevSpaced || {
+              lastStudiedAt: today,
+              reviewStage: 0,
+              nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[0]),
+              reviewsCount: 1
+            }
+          : prevSpaced;
+
       return {
         ...prev,
         topicStatus: {
@@ -149,7 +161,11 @@ export function useStudyProgress() {
         pageStatus: {
           ...prev.pageStatus,
           [topicId]: updatedTopicPages
-        }
+        },
+        spacedRepetition: nextSpaced
+          ? { ...(prev.spacedRepetition || {}), [topicId]: nextSpaced }
+          : prev.spacedRepetition || {},
+        lastActiveDate: today
       };
     });
   };

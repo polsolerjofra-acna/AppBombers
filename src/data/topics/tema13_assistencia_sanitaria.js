@@ -33,8 +33,9 @@ export const tema13AssistenciaSanitaria = {
           type: 'text',
           heading: '1.1–1.4. Competència Sanitària, GEM, GROS i Cadena de Supervivència ERC (4 Baules)',
           paragraphs: [
-            "D'acord amb la Llei 5/1994, el salvament i l'assistència sanitària inicial de socors a les víctimes és una funció pròpia dels bombers fins a la transferència al SEM. El Cos de Bombers disposa del GEM (Grup d'Emergències Mèdiques) i del GROS (Grup Operatiu de Suport sanitari, l'origen del qual es remunta a la missió humanitària del terratrèmol de l'Índia, integrat per personal sanitari que dona suport mèdic als grups especials GRAE/GRIT i a les grans intervencions).",
-            "A la Versió 3 del manual MAN.SANI.000 (secció 1.3), la Cadena de Supervivència de l'European Resuscitation Council (ERC) s'estructura en 4 BAULES: 1) Reconeixement precoç i alerta immediata al 112 (per prevenir l'aturada), 2) RCP precoç realitzada pels testimonis (compressions toràciques), 3) Desfibril·lació precoç (DEA) i 4) Suport Vital Avançat (SVA) i cures post-ressuscitació."
+            "D'acord amb la Llei 5/1994, el salvament i l'assistència sanitària inicial de socors a les víctimes és una funció pròpia dels bombers fins a la transferència al SEM.",
+            "El Cos disposa del GEM (Grup d'Emergències Mèdiques) i del GROS (Grup Operatiu de Suport sanitari, nascut arran del terratrèmol de l'Índia), que donen suport mèdic al GRAE/GRIT i a grans intervencions.",
+            "A la Versió 3 del manual MAN.SANI.000 (secció 1.3), la Cadena de Supervivència de l'European Resuscitation Council (ERC) s'estructura en 4 BAULES: 1) Reconeixement precoç i alerta al 112, 2) RCP precoç per testimonis, 3) Desfibril·lació precoç (DEA) i 4) Suport Vital Avançat (SVA) i cures post-ressuscitació."
           ]
         },
         {
@@ -50,6 +51,14 @@ export const tema13AssistenciaSanitaria = {
             ['Postures d’Espera i Transport (2.5)', '• Decúbit Supí: Estirat panxa enlaire (postura de RCP i d’immobilització traumàtica en tauler).\n• PLS (Posició Lateral de Seguretat): Inconscient que respira amb normalitat (sense trauma). En EMBARASSADES (>20 setmanes): sempre sobre el COSTAT ESQUERRE (evita comprimir la vena cava inferior!).\n• Fowler / Semifowler: Incorporat amb l’esquena a 30°–90° (45° semifowler) → per a dispnea/dificultat respiratòria o dolor toràcic.\n• Trendelemburg (potes aixecades) i Antitrendelemburg (cap més alt que els peus, en TCE).', 'En ferides penetrants a l’abdomen: decúbit supí amb les CAMES FLEXIONADES (relaxa la musculatura abdominal). En ferida al tòrax: semiassegut inclinat sobre el costat lesionat.']
           ],
           footnote: 'Memoritza: Embarassada en PLS = sempre sobre el costat ESQUERRE | Dificultat respiratòria conscient = Fowler (30°-90°) | Abdomen agut = Supí amb cames flexionades.'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Emergència vs. Urgència i Signe vs. Símptoma',
+          paragraphs: [
+            "• EMERGÈNCIA vs. URGÈNCIA: L'emergència comporta risc vital imminent en minuts (ACR, hemorràgia massiva); la urgència requereix atenció a curt termini sense perill vital immediat.",
+            "• SIGNE vs. SÍMPTOMA: El signe és objectiu i mesurable pel bomber (FC, cianosi, Tª 39 °C, fractura); el símptoma és subjectiu i només l'explica el pacient (mareig, dolor, nàusees)."
+          ]
         }
       ]
     },
@@ -60,12 +69,21 @@ export const tema13AssistenciaSanitaria = {
       subtitle: 'Seqüència X-A-B-C-D-E i tots els rangs numèrics de FR, SpO₂, FC, PA, Capil·lar, AVDN, Pupil·les i Tª.',
       blocks: [
         {
+          type: 'text',
+          heading: '3.1. Seqüència de Valoració Primària XABCDE',
+          paragraphs: [
+            "La valoració primària segueix un ordre estricte de letalitat: qualsevol problema detectat en una lletra s'ha de resoldre abans de passar a la següent.",
+            "• X (Exsanguinant): Control immediat d'hemorràgies massives (maten en < 3 min). • A (Airway): Via aèria (front-mentó sense trauma; tracció mandibular amb trauma) + control cervical.",
+            "• B (Breathing): VOS màx. 10 s, FR i SpO₂. • C (Circulation): Pols, PA, ompliment capil·lar (< 2 s). • D (Disability): AVDN, Glasgow i pupil·les. • E (Exposure): Exposar lesions evitant la hipotèrmia."
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '3.1. El Protocol de Valoració Primària XABCDE (Prioritat Vital)',
+          title: 'Regla Mnemotècnica · Protocol XABCDE (Prioritat Vital)',
           acronym: 'X (Exsanguinant) → A (Airway + Cervical) → B (Breathing) → C (Circulation) → D (Disability) → E (Exposure)',
           trick:
-            "• X (eXsanguinant hemorrhage): Control immediat d'hemorràgies externes massives que maten en <3 minuts (abans fins i tot d'obrir la via aèria!).\n• A (Airway): Obertura de via aèria (maniobra front-mentó si NO hi ha trauma; tracció mandibular si hi ha sospita de trauma) + Control cervical manual/collet.\n• B (Breathing): Valorar ventilació amb VOS (Veure, Oir, Sentir durant MÀXIM 10 SEGONS), freqüència respiratòria (FR) i saturació (SpO₂).\n• C (Circulation): Control d'altres hemorràgies, pols (carotidi/radial/braquial), pressió arterial (PA), ompliment capil·lar (<2 s) i color/temperatura de la pell.\n• D (Disability): Estat neurològic amb escala ràpida AVDN (Alerta, Veu, Dolor, No respon), Escala de Glasgow (GCS) i reactivitat/simetria pupil·lar.\n• E (Exposure): Exposició per buscar altres lesions ocultes protegint sempre de la HIPOTÈRMia (manta tèrmica).",
+            "• X va ABANS de l'A perquè una hemorràgia arterial massiva mata abans que una obstrucció de via aèria.\n• A = front-mentó (no trauma) o tracció mandibular (trauma) | B = VOS ≤ 10 s | D = AVDN + Glasgow + pupil·les.",
           example: 'Un problema detectat al pas X o A s’ha de resoldre a l’instant abans de passar a la lletra següent!'
         },
         {
@@ -83,6 +101,14 @@ export const tema13AssistenciaSanitaria = {
             ['E — Temperatura Corporal (Tª)', '• Normal: 36,0 °C a 37,5 °C.', '• HIPOTÈRMIA: ≤ 35,0 °C (Lleu 35-32 °C | Moderada 32-28 °C | Greu < 28 °C).\n• Febrícula: 37,5-38 °C | Febre: > 38 °C | Hiperpirèxia / Cop de calor: > 40 °C.']
           ],
           footnote: 'Memoritza l’estimació de PA pel pols: Radial ≥ 80-90 mmHg | Carotidi ≥ 60 mmHg. I les 3 pupil·les: Isocòriques (iguals), Miosi (petites), Midriasi (grans), Anisocòria (desiguals = TCE!).'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Estimació de PA pel Pols i Alteracions Pupil·lars',
+          paragraphs: [
+            "• POLS I PRESSIÓ SISTÒLICA: Pols radial palpable = PA ≥ 80–90 mmHg; pols femoral = PA ≥ 70 mmHg; si només hi ha pols carotidi = PA ≥ 60 mmHg.",
+            "• PUPIL·LES: Miosi = contretes (opiacis/organofosforats); Midriasi = dilatades (hipòxia greu/ACR); Anisocòria = asimètriques (signe d'alarma de TCE greu / compressió cerebral)."
+          ]
         },
         {
           type: 'mnemonic',
@@ -113,12 +139,21 @@ export const tema13AssistenciaSanitaria = {
           footnote: 'Memoritza: Glasgow va de 3 a 15 (Ocular 4 + Verbal 5 + Motora 6). TCE Lleu = 13-15 | Moderat = 9-12 | Greu ≤ 8.'
         },
         {
+          type: 'text',
+          heading: '3.2–3.3. Anamnesi SPUMA i Signes de Fractura de Base de Crani',
+          paragraphs: [
+            "L'interrogatori SPUMA recull: Símptomes, Patologies prèvies, Última ingesta (hora d'aliments/líquids per a possible anestèsia), Medicació habitual (especialment anticoagulants) i Al·lèrgies.",
+            "Sospita fractura de base de crani davant: 1) Ulls d'ós rentador (hematoma periorbitari bilateral), 2) Signe de Battle (hematoma retroauricular sobre la mastoide), 3) Otorràgia/otorrea de LCR i 4) Epistaxi/rinorrea de LCR.",
+            "⚠️ PROHIBIT taponar l'oïda o el nas si hi ha otorràgia o rinorrea post-TCE: augmentaria la pressió intracranial (PIC). Només es cobreix suaument amb gasa estèril sense pressionar!"
+          ]
+        },
+        {
           type: 'mnemonic',
           variant: 'mnemonic',
-          title: '3.2. Anamnesi SPUMA (o OPQRST) i 3.3. Els 4 Signes de Fractura de Base de Crani',
+          title: '3.2. Regla Mnemotècnica SPUMA i Fractura de Base de Crani',
           acronym: 'SPUMA: Símptomes · Patologies · Última ingesta · Medicació · Al·lèrgies',
           trick:
-            "• INTERROGATORI SPUMA (3.2): S = Signes i Símptomes | P = Patologies prèvies (malalties) | U = Última ingesta (sòlids o líquids i a quina hora, per si cal anestèsia al quiròfan!) | M = Medicació habitual (especialment anticoagulants com Sintrom!) | A = Al·lèrgies.\n• SIGNES D'ALERTA DE FRACTURA DE BASE DE CRANI (3.3):\n  1) Ulls d'ós rentador (Hematoma periorbitari bilateral / Equimosi periorbitària).\n  2) Signe de Battle (Hematoma retroauricular darrere l'orella, sobre l'apòfisi mastoide).\n  3) Otorràgia / Otorrea (Sortida de sang o líquid cefaloraquidi LCR transparent per l'oïda).\n  4) Epistaxi / Rinorrea de LCR (Sortida de sang o LCR pel nas).\n• ACTUACIÓ CRÍTICA EN OTORRÀGIA / RINORREA PER TCE: PROHIBIT taponar l'oïda o el nas! Si ho tapones, augmenta la pressió intracranial (PIC); només es cobreix suaument amb una gasa estèril sense fer pressió!",
+            "• Base de crani = Ulls d'ós rentador + Signe de Battle + Otorràgia/Rinorrea de LCR.\n• Regla d'or: MAI taponar el conducte auditiu ni el nas en sospita de TCE.",
           example: 'Si una víctima d’accident presenta "ulls d’ós rentador", hematoma darrere l’orella (Battle) i li surt sang aigualida per l’oïda: sospita fractura de base de crani i NO taponis el conducte auditiu!'
         }
       ]
@@ -143,6 +178,15 @@ export const tema13AssistenciaSanitaria = {
             ['4.8. Intoxicació per Fum (CO + HCN) i Pulsicooxímetre', 'Retirar de l’ambient, administrar Oxigen al 100% d’alt flux (màscara amb reservori 15 L/min) i valoració pel SEM (antídot de l’HCN = Hidroxocobalamina / Cyanokit).', 'DADA CLAU DEL MANUAL (4.8): Per mesurar la carboxihemoglobina (COHb) cal un PULSICOOXÍMETRE (CO-oxímetre), perquè el pulsioxímetre normal confon el CO amb l’O₂ i marca falsament 100%!']
           ],
           footnote: 'Memoritza: Torniquet = 5 a 7 cm sobre la ferida | RCP Adult = 30:2 (100-120/min, 5-6 cm) | Pediatria/Ofegats/Allaus = 5 ventilacions de rescat inicials!'
+        },
+        {
+          type: 'text',
+          heading: '⚠️ No confondre! Hemorràgies V.3, Pulsicooxímetre i RCP Adult vs. Asfíctica',
+          paragraphs: [
+            "• HEMORRÀGIES V.3: Mai retirar la 1a gasa amarada (se n'hi posen a sobre). L'elevació del membre i la compressió arterial indirecta ja NO són prioritàries: es passa de compressió directa/empaquetament a torniquet (5–7 cm sobre la ferida).",
+            "• PULSIOXÍMETRE vs. PULSICOOXÍMETRE: El pulsioxímetre normal confon la carboxihemoglobina (COHb) amb oxigen i marca 99–100% en intoxicats per fum; cal un pulsicooxímetre.",
+            "• RCP ADULT vs. PED./OFEGATS/ALLAUS: En adult d'origen cardíac es comença amb 30 compressions (30:2); en pediatria, ofegats i allaus (origen asfíctic) s'inicia amb 5 ventilacions de rescat."
+          ]
         }
       ]
     },
@@ -215,7 +259,7 @@ export const tema13AssistenciaSanitaria = {
           title: 'Els 6 Paranys Clínics del Manual MAN.SANI.000 V.3',
           acronym: '1a GASA ES QUEDA | ELEVACIÓ NO PRIORITÀRIA | PULSICOOXÍMETRE | NO TAPONAR OTORRÀGIA | PAPARRA EN SEC | PLS ESQUERRA',
           trick:
-            "1) HEMORRÀGIES (NOVETAT V.3):\n• Si la primera gasa queda xopa de sang, MAI es retira (s'hi afegeixen noves gases a sobre mantenint la pressió).\n• L'elevació del membre sagnant i la compressió arterial indirecta s'han descartat com a mesures prioritàries a la V.3 (es passa de compressió directa a benatge compressiu / torniquet a 5-7 cm).\n\n2) INTOXICACIÓ PER CO (PULSICOOXÍMETRE vs. PULSIOXÍMETRE):\n• El pulsioxímetre normal dóna lectures falsament normals (99-100%) en intoxicats per monòxid de carboni perquè no diferencia el CO de l'O₂. Només el PULSICOOXÍMETRE detecta la carboxihemoglobina.\n\n3) FRACTURA DE BASE DE CRANI (Ulls d'ós rentador + Signe de Battle + Otorràgia):\n• Si surt sang o líquid clar (LCR) per l'oïda (otorràgia) o pel nas després d'un TCE, està PROHIBIT taponar-ho!\n\n4) EXTRACCIÓ DE PAPARRA:\n• Sempre en sec amb pinces fines arran de pell i tracció perpendicular contínua; prohibit posar-hi oli, alcohol, vaselina o cremar-la.\n\n5) CREMADES DE 3r GRAU:\n• Són INDOLORES al centre de la lesió perquè s'han destruït les terminacions nervioses de la dermis (les de 2n grau tenen flictenes/butllofes i fan molt de mal).\n\n6) EMBARASSADA EN PLS:\n• Sempre sobre el costat ESQUERRE per no aixafar la vena cava inferior.",
+            "1) HEMORRÀGIES V.3: Mai retirar la 1a gasa xopa; elevació i compressió arterial ja no són prioritàries (torniquet a 5–7 cm).\n2) CO: El pulsioxímetre normal marca un fals 100%; cal un PULSICOOXÍMETRE.\n3) BASE DE CRANI: Prohibida la pressió o taponament en otorràgia/rinorrea post-TCE.\n4) PAPARRA: Extracció en sec amb pinces fines arran de pell (mai oli, alcohol ni calor).\n5) CREMADES 3r GRAU: Indolores per destrucció nerviosa (2n grau tenen flictenes).\n6) EMBARASSADA EN PLS: Sempre sobre el costat ESQUERRE.",
           example: 'Si el tribunal pregunta: "Què fem quan la primera gasa sobre una hemorràgia queda totalment amarada de sang?", la resposta és sempre: Col·locar una segona gasa a sobre sense retirar mai la primera.'
         }
       ]
@@ -442,6 +486,32 @@ export const tema13AssistenciaSanitaria = {
       ],
       correctIndex: 1,
       explanation: "La supinació orienta el palmell de la mà cap amunt (o cap endavant en posició anatòmica), en contraposició a la pronació, que l'orienta cap avall o cap enrere."
+    },
+    {
+      id: 'q28-18',
+      difficulty: 'Fàcil',
+      question: "En la terminologia clínica del capítol 2 de MAN.SANI.000, quina diferència hi ha entre un SIGNE i un SÍMPTOMA, i quin dels següents exemples és un signe?",
+      options: [
+        "El signe és una sensació subjectiva que relata la víctima i el símptoma és mesurable; el mareig és un signe.",
+        "El signe és una dada objectiva i mesurable pel socorrista (p. ex., cianosi, FC de 125 bpm o anisocòria), mentre que el símptoma és una sensació subjectiva que només pot explicar el pacient (p. ex., dolor, mareig o nàusees).",
+        "Tots dos termes són sinònims i només s'apliquen en cremades de tercer grau.",
+        "El dolor toràcic i les nàusees són signes objectius, mentre que la temperatura de 39 °C és un símptoma."
+      ],
+      correctIndex: 1,
+      explanation: "Els signes són dades objectives observables o mesurables (pols, Tª, cianosi, pupil·les), mentre que els símptomes són percepcions subjectives descrites pel pacient (dolor, mareig, nàusees)."
+    },
+    {
+      id: 'q28-19',
+      difficulty: 'Mitjà',
+      question: "En valorar les pupil·les d'un traumatitzat cranioencefàlic (pas D del XABCDE) i calcular l'Escala de Glasgow, quina afirmació és INCORRECTA?",
+      options: [
+        "L'anisocòria (una pupil·la més dilatada que l'altra) és un signe d'alerta de TCE greu o compressió cerebral.",
+        "La miosi (pupil·les puntuals contretes) es pot observar en intoxicacions per opiacis o organofosforats.",
+        "En l'Escala de Glasgow, la puntuació mínima possible d'una víctima és 0 punts (0+0+0) i la rigidesa de decorticació val 2 punts.",
+        "Una puntuació de Glasgow ≤ 8 punts defineix un TCE greu amb pèrdua de reflexos protectors de la via aèria."
+      ],
+      correctIndex: 2,
+      explanation: "És incorrecte: la puntuació mínima de Glasgow és sempre 3 punts (1 ocular + 1 verbal + 1 motora, mai 0), i la flexió anormal (decorticació) puntua 3 a la resposta motora (la descerebració/extensió anormal puntua 2)."
     }
   ]
 };

@@ -61,10 +61,11 @@ export const tema22ConduccioMecanica = {
       blocks: [
         {
           type: 'text',
-          heading: '5.1–5.4. La Cadena Cinemàtica, Sistemes de Frenada/Suspensió i Caixa de Transferència',
+          heading: '5.1–5.3. La Cadena Cinemàtica, Suspensió i Sistemes de Frenada',
           paragraphs: [
-            "La CADENA CINEMÀTICA és el conjunt d'elements que transmeten el gir des del motor fins a les rodes en aquest ordre exacte: 1) Motor → 2) Embragatge (acobla/desacobla el motor) → 3) Caixa de canvis → 4) Caixa de transferència (reparteix el parell a l'eix davanter i posterior i allotja la reductora en vehicles 4×4) → 5) Arbres de transmissió (cardans longitudinals) → 6) Pont diferencial (corona + pinyó d'atac + satèl·lits + planetaris) → 7) Paliers (semieixos transversals) → 8) Rodes.",
-            "El sistema de SUSPENSIÓ manté el contacte del pneumàtic amb el terra i consta de 3 elements: 1) Molls (absorbeixen les irregularitats: poden ser de FULLA o BALLESTES [els més robustos i utilitzats en camions pesants de bombers], HELICOÏDALS [molla espiral, més confort en vehicles lleugers] o PNEUMÀTICS [coixins d'aire que permeten regular l'altura i la duresa]), 2) Amortidors (frenen les oscil·lacions del moll) i 3) Barres estabilitzadores (redueixen la inclinació o balanceig lateral de la carrosseria en les corbes). En el sistema de FRENADA, els camions combinen el fre de servei (disc o tambor amb ABS), el fre d'estacionament i els frens auxiliars d'enduriment (fre motor a l'escapament i retardador hidràulic o elèctric 'intarder' a la transmissió per baixar ports de muntanya sense cremar els frens de roda!)."
+            "La CADENA CINEMÀTICA transmet la força des del motor fins a les rodes en aquest ordre exacte: 1) Motor → 2) Embragatge → 3) Caixa de canvis → 4) Caixa de transferència (reparteix el parell entre eixos i allotja la reductora 4×4) → 5) Arbres de transmissió (cardans) → 6) Pont diferencial (corona, pinyó d'atac, satèl·lits i planetaris) → 7) Paliers → 8) Rodes.",
+            "El sistema de SUSPENSIÓ manté la roda enganxada al ferm amb 3 components: 1) Molls (de fulla o BALLESTES en camions pesants; HELICOÏDALS en vehicles lleugers; PNEUMÀTICS per regular alçada/duresa), 2) Amortidors (esmorteixen el rebot del moll) i 3) Barres estabilitzadores (redueixen el balanceig lateral en corbes).",
+            "El sistema de FRENADA dels camions combina el fre de servei (disc/tambor amb ABS), el fre d'estacionament i els frens auxiliars d'enduriment (fre motor a l'escapament i retardador hidràulic o elèctric 'intarder' a la transmissió), indispensables per baixar ports de muntanya sense sobreescalfar ni perdre els frens de roda (efecte fading)."
           ]
         },
         {
@@ -89,10 +90,11 @@ export const tema22ConduccioMecanica = {
       blocks: [
         {
           type: 'text',
-          heading: '5.5–5.8. Com funciona un Diferencial i Seqüència Obligatòria de Bloqueig en un Camió 4×4',
+          heading: '5.5–5.8. Funcionament del Diferencial i Ordre de Bloqueig 4×4',
           paragraphs: [
-            "Un diferencial obert permet que les dues rodes d'un mateix eix (o l'eix davanter i el posterior en el diferencial central) girin a diferent velocitat quan el vehicle traça una corba (la roda exterior recorre més camí que la interior). El problema en tot terreny és que el diferencial envia sempre tot el gir cap a la roda que té MENYS adherència: si una sola roda queda a l'aire o sobre fang/gel, aquesta roda patina boja i el camió es queda immòbil!",
-            "Per evitar-ho s'utilitza el BLOQUEIG DE DIFERENCIALS, que solidaritza els dos semieixos obligant-los a girar exactament a les mateixes rpm. En un camió 4×4 permanent amb 3 diferencials, el bloqueig s'ha d'activar SEMPRE en aquest ordre jeràrquic estricte: 1r) DIFERENCIAL CENTRAL o Longitudinal (interaxial: reparteix 50% al pont davanter i 50% al posterior; es pot connectar en marxa en línia recta fins a ≤ 40 km/h) → 2n) DIFERENCIAL POSTERIOR (transversal de l'eix del darrere; només fins a ≤ 5 km/h o aturat) → 3r) DIFERENCIAL ANTERIOR (transversal de l'eix davanter; només fins a ≤ 5 km/h o aturat, i ATENCIÓ: amb el diferencial anterior bloquejat el camió NO POT GIRAR la direcció i tendeix a seguir recte!). Per desbloquejar-los quan tornem a terreny ferm, es fa en l'ordre exactament INVERS (1r Anterior → 2n Posterior → 3r Central)!"
+            "Un diferencial obert permet que les dues rodes d'un mateix eix girin a velocitat diferent quan el camió fa una corba (la roda exterior recorre més distància). El seu inconvenient en terreny relliscós és que sempre envia la força cap a la roda amb MENYS adherència: si una roda patina sobre fang o gel, s'emporta tot el gir i el camió no avança.",
+            "El BLOQUEIG DE DIFERENCIALS solidaritza els eixos obligant-los a girar a les mateixes revolucions. En un camió 4×4 amb 3 diferencials s'ha d'activar en aquest ordre estricte: 1r) CENTRAL o longitudinal (≤ 40 km/h en línia recta) → 2n) POSTERIOR (≤ 5 km/h o aturat) → 3r) ANTERIOR (≤ 5 km/h o aturat; recorda que impedeix girar la direcció!). Per desbloquejar, es segueix l'ordre INVERS: 1r Anterior → 2n Posterior → 3r Central.",
+            "No confondre! Reductora (4L) vs. Bloqueig de Diferencials: La reductora desmultiplica les marxes per multiplicar el parell de força i la retenció (s'ha de posar SEMPRE amb el camió ATURAT a 0 km/h). El bloqueig de diferencials iguala el gir entre eixos/rodes quan patinen, i MAI s'ha de deixar posat sobre asfalt sec perquè trenca paliers i transmissió!"
           ]
         },
         {
@@ -131,7 +133,7 @@ export const tema22ConduccioMecanica = {
           metaphor:
             'Pensa en l’energia del motor com si fos aigua que busca sempre el camí més fàcil (el forat més fluix):',
           explanation:
-            "• Amb els diferencials OBERTS (normals per anar per carretera i poder girar en corbes), si 3 rodes estan sobre terra ferm però 1 sola roda queda penjada a l'aire o sobre gel, aquesta roda no ofereix cap resistència: tota la força del motor ' s'escapa' fent girar boja aquella única roda i les altres 3 no es mouen!\n• Quan prems el botó de BLOQUEIG, poses una barra d'acer rígida que lliga els eixos: primer lligues l'eix del davant amb el del darrere (1r CENTRAL, fins a 40 km/h); si encara patines, lligues les dues rodes del darrere entre si (2n POSTERIOR, a ≤ 5 km/h); i només en cas extrem lligues les dues rodes del davant (3r ANTERIOR, a ≤ 5 km/h), sabent que amb les rodes del davant lligades el camió anirà tot recte i no podrà girar!",
+            "• Amb diferencials oberts (normals per a carretera), si una sola roda queda sobre gel o en l'aire sense resistència, tota la força del motor se n'hi va i les altres rodes no es mouen.\n• Amb el bloqueig lliguem mecànicament els eixos: 1r CENTRAL (≤ 40 km/h) → 2n POSTERIOR (≤ 5 km/h) → 3r ANTERIOR (≤ 5 km/h, sabent que el camió anirà recte i no girarà).",
           takeaway: 'Ordre sagrat de bloqueig: 1r Central (≤ 40 km/h) → 2n Posterior (≤ 5 km/h) → 3r Anterior (≤ 5 km/h, no gira).'
         },
         {
@@ -319,6 +321,110 @@ export const tema22ConduccioMecanica = {
       ],
       correctIndex: 1,
       explanation: 'La Presa de Força (PTO, apartat 5.7) deriva la potència mecànica de la caixa de canvis o del motor cap a la bomba d’incendis o el grup hidràulic.'
+    },
+    {
+      id: 't19-q11',
+      difficulty: 'Mitjà',
+      question: 'Un camió BRP ha superat un tram de fang amb els tres diferencials bloquejats i torna a una pista forestal seca i adherent. Quin és l’ordre correcte per desbloquejar els diferencials?',
+      options: [
+        '1r Central → 2n Posterior → 3r Anterior.',
+        '1r Anterior → 2n Posterior → 3r Central (ordre exactament invers al de connexió).',
+        '1r Posterior → 2n Central → 3r Anterior.',
+        'Només es desbloqueja el Central i els altres dos salten sols a 80 km/h.'
+      ],
+      correctIndex: 1,
+      explanation: 'El bloqueig s’activa en ordre Central → Posterior → Anterior, i per desbloquejar-los cal seguir l’ordre invers: 1r Anterior (per recuperar direcció) → 2n Posterior → 3r Central.'
+    },
+    {
+      id: 't19-q12',
+      difficulty: 'Fàcil',
+      question: 'Quin element de la cadena cinemàtica es troba just després de la caixa de canvis i s’encarrega de repartir el parell entre l’eix davanter i el posterior, allotjant a més la reductora en un camió 4×4?',
+      options: [
+        'El palier.',
+        'La caixa de transferència.',
+        'La barra estabilitzadora.',
+        'El retardador hidràulic.'
+      ],
+      correctIndex: 1,
+      explanation: 'L’ordre de la cadena cinemàtica és: Motor → Embragatge → Caixa de canvis → Caixa de transferència → Arbres de transmissió → Pont diferencial → Paliers → Rodes.'
+    },
+    {
+      id: 't19-q13',
+      difficulty: 'Mitjà',
+      question: 'Durant el descens d’un port de muntanya llarg amb una BUP carregada amb 3.500 L d’aigua, quin sistema auxiliar convé utilitzar prioritàriament per retenir el vehicle sense sobreescalfar els frens de roda?',
+      options: [
+        'El fre d’estacionament aplicat intermitentment.',
+        'El fre motor a l’escapament i el retardador (intarder) a la transmissió, combinats amb una marxa curta.',
+        'Posar punt mort per aprofitar la inèrcia i trepitjar contínuament el fre de servei.',
+        'Connectar el bloqueig del diferencial anterior en baixada sobre asfalt.'
+      ],
+      correctIndex: 1,
+      explanation: 'Els frens auxiliars d’enduriment (fre motor i retardador/intarder) retenen la transmissió sense desgastar ni sobreescalfar els discos/tambors de roda (evitant l’efecte fading).'
+    },
+    {
+      id: 't19-q14',
+      difficulty: 'Mitjà',
+      question: 'En relació amb els sistemes de seguretat obligatoria a la UE (Capítol 6 de MAN.EQIP.002), quina parella sistema–categoria de seguretat és INCORRECTA?',
+      options: [
+        'ABS (2004): Seguretat activa.',
+        'Airbags (2006): Seguretat passiva.',
+        'ESP (2014): Seguretat passiva.',
+        'eCall 112 (2018): Seguretat terciària.'
+      ],
+      correctIndex: 2,
+      explanation: 'Afirmació incorrecta: l’ESP (Control d’Estabilitat, obligatori des del 2014) pertany a la Seguretat ACTIVA perquè actua abans que es produeixi l’accident frenant selectivament les rodes per corregir subviratge o sobreviratge.'
+    },
+    {
+      id: 't19-q15',
+      difficulty: 'Difícil',
+      question: 'En conducció d’urgència i situacions adverses (Capítols 1 a 4 de MAN.EQIP.002), quina de les afirmacions següents és INCORRECTA?',
+      options: [
+        'La prioritat de pas exigeix l’ús simultani de senyals lluminosos (blaus V-1) i acústics especials (sirena), llevat dels casos excepcionals previstos.',
+        'En travessar un bassal profund amb pluja intensa, convé provar suament els frens en sortir per assecar els discos o tambors.',
+        'En passar de tracció 2H a 4H (marxes llargues) cal aturar totalment el camió a 0 km/h, mentre que la reductora 4L es pot connectar en marxa fins a 40 km/h.',
+        'El bloqueig del diferencial anterior només es connecta a ≤ 5 km/h o aturat i impedeix girar la direcció.'
+      ],
+      correctIndex: 2,
+      explanation: 'Afirmació incorrecta: és justament al revés! El pas de 2H a 4H es pot fer en marxa (< 40 km/h en línia recta), mentre que la reductora (4H ↔ 4L) s’ha de connectar SEMPRE amb el vehicle totalment ATURAT (0 km/h) i en punt mort.'
+    },
+    {
+      id: 't19-q16',
+      difficulty: 'Fàcil',
+      question: 'Com s’ha d’actuar si s’encén un testimoni lluminós de color TARONJA o de color VERMELL al quadre d’instruments d’un camió de bombers?',
+      options: [
+        'Taronja = aturar el motor immediatament | Vermell = seguir fins al final de guàrdia.',
+        'Taronja = avís/precaució (revisar aviat, es pot acabar la maniobra amb cautela) | Vermell = avaria greu (aturar el camió immediatament).',
+        'Tots dos indiquen únicament que la presa de força (PTO) està connectada.',
+        'Taronja indica falta de combustible d’escumogen i vermell indica porta d’armari oberta.'
+      ],
+      correctIndex: 1,
+      explanation: 'Al quadre d’instruments, el testimoni taronja/àmbar indica precaució o revisió, mentre que el testimoni vermell indica perill o avaria greu que obliga a aturar immediatament el vehicle o la bomba.'
+    },
+    {
+      id: 't19-q17',
+      difficulty: 'Mitjà',
+      question: 'Quin element del sistema de suspensió té com a funció principal reduir la inclinació lateral (balanceig) de la carrosseria d’una autobomba quan traça una corba?',
+      options: [
+        'El moll de fulla (ballesta).',
+        'La barra estabilitzadora.',
+        'El pont diferencial posterior.',
+        'L’arbre de transmissió cardan.'
+      ],
+      correctIndex: 1,
+      explanation: 'Dels tres elements de la suspensió, els molls absorbeixen irregularitats, els amortidors frenen les oscil·lacions i les barres estabilitzadores limiten el balanceig lateral en corbes.'
+    },
+    {
+      id: 't19-q18',
+      difficulty: 'Fàcil',
+      question: 'En conducció amb neu o gel per sota de 7 °C, en quin eix s’han de muntar les cadenes de neu i quines marxes convé utilitzar per evitar que les rodes patinin?',
+      options: [
+        'Sempre a l’eix davanter encara que la tracció sigui posterior, i amb 1a marxa curta a altes revolucions.',
+        'A l’eix motriu (i si és 4×4 on indiqui el fabricant/manual), utilitzant marxes llargues (2a o 3a) per reduir el parell a roda i circulació màxima a 40–50 km/h.',
+        'A les quatre rodes per poder circular a 90 km/h amb seguretat.',
+        'Només a la roda de recanvi.'
+      ],
+      correctIndex: 1,
+      explanation: 'Les cadenes es munten a l’eix motriu (velocitat màxima 40–50 km/h) i s’utilitzen marxes llargues (2a o 3a) per dosificar el parell motor i evitar pèrdues d’adherència.'
     }
   ]
 };
