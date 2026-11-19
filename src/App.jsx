@@ -9,6 +9,7 @@ import CalculationsView from './components/CalculationsView';
 import CalendarView from './components/CalendarView';
 import KeyPointsView from './components/KeyPointsView';
 import MnemonicsView from './components/MnemonicsView';
+import QuickStudyView from './components/QuickStudyView';
 import GroupStudyView from './components/GroupStudyView';
 import PomodoroWidget from './components/PomodoroWidget';
 import {
@@ -32,6 +33,8 @@ export default function App() {
     unscheduleTopicForDate,
     saveFridayCalcSession,
     setDailyEmailEnabled,
+    toggleDifficultPage,
+    trainReadingPace,
     replaceProgressFromCloud,
     resetAllProgress
   } = useStudyProgress();
@@ -215,6 +218,10 @@ export default function App() {
           setActiveView('calendar');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectQuickStudy={() => {
+          setActiveView('quickstudy');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectCalculations={() => {
           setCalcInitialMode('all');
           setActiveView('calculations');
@@ -342,6 +349,14 @@ export default function App() {
               onToggleDailyEmail={setDailyEmailEnabled}
               cloudUser={cloudUser}
             />
+          ) : activeView === 'quickstudy' ? (
+            <QuickStudyView
+              topics={TOPICS}
+              progress={progress}
+              onToggleDifficultPage={toggleDifficultPage}
+              onTrainReadingPace={trainReadingPace}
+              onOpenTopic={(id) => handleSelectTopic(id, null)}
+            />
           ) : activeView === 'calculations' ? (
             <CalculationsView
               initialMode={calcInitialMode}
@@ -372,6 +387,7 @@ export default function App() {
               extraQuestions={dailyQuestionsByTopic[currentTopic.id] || []}
               onSetPageMark={setPageMark}
               onSetTopicMark={setTopicMark}
+              onToggleDifficultPage={toggleDifficultPage}
               onCompleteTopicRound={completeTopicRound}
               onSaveQuizScore={saveQuizScore}
             />

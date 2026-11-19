@@ -52,6 +52,8 @@ service cloud.firestore {
     //   - studyPlan: map (optional, <= 400 keys)
     //   - topicRounds: map (optional, <= 200 keys)
     //   - fridayCalcHistory: list (optional, <= 200 items)
+    //   - difficultPages: map (optional, <= 200 keys)
+    //   - readingSpeedFactor: number (optional, 0.3..3.0)
     //   - email: string (optional, 0..120 chars)
     //   - dailyEmailEnabled: bool (optional)
     //   - updatedAt: timestamp (optional)
@@ -220,6 +222,8 @@ service cloud.firestore {
           'studyPlan',
           'topicRounds',
           'fridayCalcHistory',
+          'difficultPages',
+          'readingSpeedFactor',
           'email',
           'dailyEmailEnabled',
           'updatedAt'
@@ -237,6 +241,8 @@ service cloud.firestore {
         isValidOptionalMap('studyPlan', 400) &&
         isValidOptionalMap('topicRounds', 200) &&
         isValidOptionalList('fridayCalcHistory', 200) &&
+        isValidOptionalMap('difficultPages', 200) &&
+        isValidOptionalNumber('readingSpeedFactor', 0.3, 3.0) &&
         isValidOptionalString('email', 0, 120) &&
         isValidOptionalBool('dailyEmailEnabled') &&
         (!('updatedAt' in data) || data.updatedAt is timestamp);

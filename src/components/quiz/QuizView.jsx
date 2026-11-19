@@ -20,10 +20,18 @@ const DIFFICULTY_STYLES = {
 export default function QuizView({
   topic,
   extraQuestions = [],
+  difficultCount = 0,
   onSaveScore,
   savedQuizResult
 }) {
-  const questions = [...(topic.quiz || []), ...(extraQuestions || [])];
+  const baseQuestions = [...(topic.quiz || []), ...(extraQuestions || [])];
+  // Si el tema té apartats marcats com a complicats o nota < 70%, prioritzem preguntes Difícil/Mitjà primer
+  const shouldPrioritizeHard =
+    difficultCount > 0 || (savedQuizResult && savedQuizResult.percentage < 70);
+  const diffRank = { 'Difícil': 0, 'Mitjà': 1, 'Fàcil': 2 };
+  const questions = shouldPrioritizeHard
+    ? [...baseQuestions].sort((a, b) => (diffRank[a.difficulty] ?? 1) - (diffRank[b.difficulty] ?? 1))
+    : baseQuestions;
   const [difficultyFilter, setDifficultyFilter] = useState('Totes');
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [submittedScore, setSubmittedScore] = useState(null);

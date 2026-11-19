@@ -89,6 +89,8 @@ export async function saveCloudProgress(user, summaryPayload, fullProgressState)
     email: (user.email || '').slice(0, 120),
     dailyEmailEnabled: fullProgressState.dailyEmailEnabled !== false,
     pageStatus: fullProgressState.pageStatus || {},
+    difficultPages: fullProgressState.difficultPages || {},
+    readingSpeedFactor: fullProgressState.readingSpeedFactor || 1.0,
     topicStatus: fullProgressState.topicStatus || {},
     quizResults: fullProgressState.quizResults || {},
     spacedRepetition: fullProgressState.spacedRepetition || {},

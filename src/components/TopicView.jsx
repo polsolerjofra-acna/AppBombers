@@ -8,7 +8,8 @@ import {
   ClipboardCheck,
   Clock,
   Sparkles,
-  Calculator
+  Calculator,
+  AlertTriangle
 } from 'lucide-react';
 import ImportanceCard from './content/ImportanceCard';
 import EasyExplanationCard from './content/EasyExplanationCard';
@@ -26,6 +27,7 @@ export default function TopicView({
   extraQuestions = [],
   onSetPageMark,
   onSetTopicMark,
+  onToggleDifficultPage,
   onCompleteTopicRound,
   onSaveQuizScore
 }) {
@@ -293,6 +295,7 @@ export default function TopicView({
         <QuizView
           topic={topic}
           extraQuestions={extraQuestions}
+          difficultCount={Object.keys(progress.difficultPages?.[topic.id] || {}).length}
           onSaveScore={onSaveQuizScore}
           savedQuizResult={progress.quizResults?.[topic.id]}
         />
@@ -335,7 +338,7 @@ export default function TopicView({
               </div>
 
               {/* Controls d'estat de la pàgina individual */}
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => onSetPageMark(topic.id, currentPageNumber, 'completed')}
                   className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold border transition-all ${
@@ -359,6 +362,23 @@ export default function TopicView({
                   <Bookmark className="w-4 h-4" />
                   {currentPageStatus === 'review' ? 'Per Repassar' : 'Repassar'}
                 </button>
+
+                {onToggleDifficultPage && (
+                  <button
+                    onClick={() => onToggleDifficultPage(topic.id, currentPageNumber)}
+                    className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold border transition-all ${
+                      (progress.difficultPages?.[topic.id] || {})[currentPageNumber]
+                        ? 'bg-red-600 text-white border-red-600 shadow-sm'
+                        : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-red-400'
+                    }`}
+                    title="Marca aquest apartat com a contingut complicat per estudiar-lo i preguntar-lo més"
+                  >
+                    <AlertTriangle className="w-4 h-4" />
+                    {(progress.difficultPages?.[topic.id] || {})[currentPageNumber]
+                      ? 'Contingut Complicat ✓'
+                      : 'Complicat'}
+                  </button>
+                )}
               </div>
             </div>
 

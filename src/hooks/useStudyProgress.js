@@ -33,6 +33,8 @@ const defaultState = {
   pageStatus: {
     'tema-1-foc': { 1: 'completed' }
   },
+  difficultPages: {},
+  readingSpeedFactor: 1.0,
   topicStatus: {
     'tema-1-foc': 'in_progress'
   },
@@ -376,6 +378,39 @@ export function useStudyProgress() {
     setProgress((prev) => ({ ...prev, dailyEmailEnabled: Boolean(enabled) }));
   };
 
+  // Marca o desmarca un apartat/pàgina com a "Complicat" per prioritzar-lo en repassos i tests
+  const toggleDifficultPage = (topicId, pageNumber) => {
+    setProgress((prev) => {
+      const currentTopicDiff = (prev.difficultPages && prev.difficultPages[topicId]) || {};
+      const nextVal = !currentTopicDiff[pageNumber];
+      const updatedTopicDiff = { ...currentTopicDiff };
+      if (nextVal) updatedTopicDiff[pageNumber] = true;
+      else delete updatedTopicDiff[pageNumber];
+
+      return {
+        ...prev,
+        difficultPages: {
+          ...(prev.difficultPages || {}),
+          [topicId]: updatedTopicDiff
+        }
+      };
+    });
+  };
+
+  // Entrena el factor de velocitat de lectura per a les sessions de 5-45 min
+  const trainReadingPace = (feedback) => {
+    setProgress((prev) => {
+      const current = prev.readingSpeedFactor || 1.0;
+      let next = current;
+      if (feedback === 'too_much') next = Math.max(0.45, Number((current * 0.85).toFixed(2)));
+      else if (feedback === 'too_little') next = Math.min(2.2, Number((current * 1.15).toFixed(2)));
+      return {
+        ...prev,
+        readingSpeedFactor: next
+      };
+    });
+  };
+
   return {
     progress,
     setPageMark,
@@ -388,6 +423,8 @@ export function useStudyProgress() {
     unscheduleTopicForDate,
     saveFridayCalcSession,
     setDailyEmailEnabled,
+    toggleDifficultPage,
+    trainReadingPace,
     replaceProgressFromCloud,
     resetAllProgress
   };
