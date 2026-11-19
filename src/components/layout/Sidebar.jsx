@@ -3,6 +3,7 @@ import {
   Flame,
   BarChart3,
   Calculator,
+  Users,
   BookOpen,
   CheckCircle2,
   Bookmark,
@@ -18,6 +19,8 @@ export default function Sidebar({
   onSelectTopic,
   onSelectDashboard,
   onSelectCalculations,
+  onSelectGroup,
+  groupCount = 0,
   progress,
   darkMode,
   onToggleDarkMode,
@@ -128,6 +131,32 @@ export default function Sidebar({
               }`}
             >
               5 temes
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              onSelectGroup();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'group'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-emerald-50/90 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 border border-emerald-200/70 dark:border-emerald-900/50 hover:bg-emerald-100/80 dark:hover:bg-emerald-950/50'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              <span>Grup d&apos;Estudi i Rànquing</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'group'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-emerald-600/15 text-emerald-700 dark:text-emerald-300'
+              }`}
+            >
+              {groupCount > 0 ? `${groupCount} en línia` : 'Núvol'}
             </span>
           </button>
 

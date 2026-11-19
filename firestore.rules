@@ -1,0 +1,252 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // This security rules file assumes the following data structures:
+    //
+    // Collection: studyProfiles
+    // Document ID: {userId} (must match request.auth.uid)
+    // Purpose: Publicly readable (to authenticated users) study group
+    //          ranking and progress summary. Must NOT contain PII (no email,
+    //          phone, etc.).
+    // Fields:
+    //   - uid: string (required, immutable, must equal request.auth.uid)
+    //   - displayName: string (required, 1..60 chars)
+    //   - avatarColor: string (optional, 1..30 chars)
+    //   - avatar: string (optional, 1..30 chars)
+    //   - photoURL: string (optional, valid http/https URL, <= 500 chars)
+    //   - completedTopics: number (optional, 0..200)
+    //   - totalTopics: number (optional, 0..200)
+    //   - completedPages: number (optional, 0..5000)
+    //   - totalPages: number (optional, 0..5000)
+    //   - quizAverage: number (optional, 0..100)
+    //   - quizzesCompleted: number (optional, 0..50000)
+    //   - streakDays: number (optional, 0..3650)
+    //   - pomodoroTodayMinutes: number (optional, 0..1440)
+    //   - pomodoroTotalMinutes: number (optional, 0..1000000)
+    //   - pomodoroTodayDate: string (optional, <= 16 chars)
+    //   - lastActiveDate: string (optional, <= 32 chars)
+    //   - createdAt: timestamp (optional, immutable if set)
+    //   - updatedAt: timestamp (optional)
+    //
+    // Subcollection: studyProfiles/{userId}/private
+    // Document ID: {docId} (e.g., "progress")
+    // Purpose: Private per-user synced study state (only accessible by owner).
+    // Fields:
+    //   - uid: string (optional, immutable if set, must equal request.auth.uid)
+    //   - pageStatus: map (optional, <= 200 keys)
+    //   - topicStatus: map (optional, <= 200 keys)
+    //   - quizResults: map (optional, <= 200 keys)
+    //   - spacedRepetition: map (optional, <= 200 keys)
+    //   - studySessions: list (optional, <= 1000 items)
+    //   - pomodoroStats: map (optional, <= 20 keys)
+    //   - dailyActivity: list (optional, <= 366 items)
+    //   - streakDays: number (optional, 0..3650)
+    //   - lastActiveDate: string (optional, <= 32 chars)
+    //   - updatedAt: timestamp (optional)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    // Check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Check if user owns the resource (for user-owned documents)
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Verify UID hasn't been tampered with on create
+    function uidUnchanged() {
+      return !('uid' in request.resource.data) ||
+        request.resource.data.uid == request.auth.uid;
+    }
+
+    // Ensure uid field is not modified on update
+    function uidNotModified() {
+      return !('uid' in request.resource.data) ||
+        request.resource.data.uid == resource.data.uid;
+    }
+
+    // Validate required fields exist
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    // Validate that the document contains only the allowed fields
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    // Validate that immutable fields have not changed on update
+    function areImmutableFieldsUnchanged(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // Validate required string length
+    function validStringLength(field, minLen, maxLen) {
+      return request.resource.data[field] is string &&
+        request.resource.data[field].size() >= minLen &&
+        request.resource.data[field].size() <= maxLen;
+    }
+
+    // Validate optional string (if present, must be string and within length)
+    function isValidOptionalString(field, minLen, maxLen) {
+      return !(field in request.resource.data) ||
+        (request.resource.data[field] is string &&
+         request.resource.data[field].size() >= minLen &&
+         request.resource.data[field].size() <= maxLen);
+    }
+
+    // Validate URL format (must start with https:// or http://)
+    function isValidUrl(url) {
+      return url is string &&
+        (url.matches("^https://.*") || url.matches("^http://.*"));
+    }
+
+    // Validate optional number within [minVal, maxVal]
+    function isValidOptionalNumber(field, minVal, maxVal) {
+      return !(field in request.resource.data) ||
+        (request.resource.data[field] is number &&
+         request.resource.data[field] >= minVal &&
+         request.resource.data[field] <= maxVal);
+    }
+
+    // Validate optional map with max key count
+    function isValidOptionalMap(field, maxKeys) {
+      return !(field in request.resource.data) ||
+        (request.resource.data[field] is map &&
+         request.resource.data[field].size() <= maxKeys);
+    }
+
+    // Validate optional list with max item count
+    function isValidOptionalList(field, maxItems) {
+      return !(field in request.resource.data) ||
+        (request.resource.data[field] is list &&
+         request.resource.data[field].size() <= maxItems);
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+
+    function isValidStudyProfile(data) {
+      return hasRequiredFields(['uid', 'displayName']) &&
+        hasOnlyAllowedFields([
+          'uid',
+          'displayName',
+          'avatarColor',
+          'avatar',
+          'photoURL',
+          'completedTopics',
+          'totalTopics',
+          'completedPages',
+          'totalPages',
+          'quizAverage',
+          'quizzesCompleted',
+          'streakDays',
+          'pomodoroTodayMinutes',
+          'pomodoroTotalMinutes',
+          'pomodoroTodayDate',
+          'lastActiveDate',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        data.uid is string &&
+        data.uid == request.auth.uid &&
+        validStringLength('displayName', 1, 60) &&
+        isValidOptionalString('avatarColor', 1, 30) &&
+        isValidOptionalString('avatar', 1, 30) &&
+        (!('photoURL' in data) || (isValidUrl(data.photoURL) && data.photoURL.size() <= 500)) &&
+        isValidOptionalNumber('completedTopics', 0, 200) &&
+        isValidOptionalNumber('totalTopics', 0, 200) &&
+        isValidOptionalNumber('completedPages', 0, 5000) &&
+        isValidOptionalNumber('totalPages', 0, 5000) &&
+        isValidOptionalNumber('quizAverage', 0, 100) &&
+        isValidOptionalNumber('quizzesCompleted', 0, 50000) &&
+        isValidOptionalNumber('streakDays', 0, 3650) &&
+        isValidOptionalNumber('pomodoroTodayMinutes', 0, 1440) &&
+        isValidOptionalNumber('pomodoroTotalMinutes', 0, 1000000) &&
+        isValidOptionalString('pomodoroTodayDate', 0, 16) &&
+        isValidOptionalString('lastActiveDate', 0, 32) &&
+        (!('createdAt' in data) || data.createdAt is timestamp) &&
+        (!('updatedAt' in data) || data.updatedAt is timestamp);
+    }
+
+    function isValidPrivateProgress(data) {
+      return hasOnlyAllowedFields([
+          'uid',
+          'pageStatus',
+          'topicStatus',
+          'quizResults',
+          'spacedRepetition',
+          'studySessions',
+          'pomodoroStats',
+          'dailyActivity',
+          'streakDays',
+          'lastActiveDate',
+          'updatedAt'
+        ]) &&
+        uidUnchanged() &&
+        isValidOptionalMap('pageStatus', 200) &&
+        isValidOptionalMap('topicStatus', 200) &&
+        isValidOptionalMap('quizResults', 200) &&
+        isValidOptionalMap('spacedRepetition', 200) &&
+        isValidOptionalList('studySessions', 1000) &&
+        isValidOptionalMap('pomodoroStats', 20) &&
+        isValidOptionalList('dailyActivity', 366) &&
+        isValidOptionalNumber('streakDays', 0, 3650) &&
+        isValidOptionalString('lastActiveDate', 0, 32) &&
+        (!('updatedAt' in data) || data.updatedAt is timestamp);
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    // Public study group profiles (no PII; readable by any authenticated user)
+    match /studyProfiles/{userId} {
+      allow read: if isAuthenticated();
+
+      allow create: if isOwner(userId) &&
+        isValidStudyProfile(request.resource.data);
+
+      allow update: if isOwner(userId) &&
+        isValidStudyProfile(request.resource.data) &&
+        uidNotModified() &&
+        (!('createdAt' in resource.data) || areImmutableFieldsUnchanged(['createdAt']));
+
+      allow delete: if isOwner(userId);
+
+      // Private per-user synced progress (owner-only read & write)
+      match /private/{docId} {
+        allow read: if isOwner(userId);
+
+        allow create: if isOwner(userId) &&
+          isValidPrivateProgress(request.resource.data);
+
+        allow update: if isOwner(userId) &&
+          isValidPrivateProgress(request.resource.data) &&
+          (!('uid' in resource.data) || uidNotModified());
+
+        allow delete: if isOwner(userId);
+      }
+    }
+
+    // ===============================================================
+    // Default Deny
+    // ===============================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

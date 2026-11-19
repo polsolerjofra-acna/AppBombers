@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Flame, BarChart3, Calculator, Sun, Moon } from 'lucide-react';
+import { Menu, Flame, BarChart3, Calculator, Users, Sun, Moon } from 'lucide-react';
 import { TOPICS } from './data';
 import { useStudyProgress } from './hooks/useStudyProgress';
 import Sidebar from './components/layout/Sidebar';
 import TopicView from './components/TopicView';
 import DashboardView from './components/dashboard/DashboardView';
 import CalculationsView from './components/CalculationsView';
+import GroupStudyView from './components/GroupStudyView';
 import PomodoroWidget from './components/PomodoroWidget';
+import {
+  subscribeAuth,
+  loadPrivateProgress,
+  saveCloudProgress,
+  subscribeGroupProfiles
+} from './services/firebaseSync';
 
 export default function App() {
   const {
@@ -16,12 +23,17 @@ export default function App() {
     saveQuizScore,
     markTopicReviewed,
     logPomodoroSession,
+    replaceProgressFromCloud,
     resetAllProgress
   } = useStudyProgress();
 
-  const [activeView, setActiveView] = useState('topic'); // 'topic' | 'dashboard'
+  const [activeView, setActiveView] = useState('topic'); // 'topic' | 'dashboard' | 'calculations' | 'group'
   const [selectedTopicId, setSelectedTopicId] = useState(TOPICS[0].id);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cloudUser, setCloudUser] = useState(null);
+  const [groupProfiles, setGroupProfiles] = useState([]);
+  const [syncStatus, setSyncStatus] = useState('idle');
+  const [authError, setAuthError] = useState('');
 
   const [darkMode, setDarkMode] = useState(() => {
     try {
@@ -47,6 +59,82 @@ export default function App() {
 
   const currentTopic = TOPICS.find((t) => t.id === selectedTopicId) || TOPICS[0];
 
+  // Subscripció d'autenticació Firebase i càrrega del progrés al núvol
+  useEffect(() => {
+    const unsubAuth = subscribeAuth(async (user) => {
+      setCloudUser(user || null);
+      if (user) {
+        try {
+          const cloudState = await loadPrivateProgress(user.uid);
+          if (cloudState) {
+            replaceProgressFromCloud(cloudState);
+          }
+        } catch (err) {
+          setAuthError('No s\'ha pogut carregar el progrés del núvol: ' + (err?.message || ''));
+        }
+      }
+    });
+    return () => unsubAuth && unsubAuth();
+  }, []);
+
+  // Subscripció en temps real al rànquing del grup quan hi ha sessió iniciada
+  useEffect(() => {
+    if (!cloudUser) {
+      setGroupProfiles([]);
+      return () => {};
+    }
+    const unsubGroup = subscribeGroupProfiles((list) => setGroupProfiles(list));
+    return () => unsubGroup && unsubGroup();
+  }, [cloudUser]);
+
+  // Desa automàticament els avenços al núvol quan l'usuari està autenticat
+  useEffect(() => {
+    if (!cloudUser) return;
+    const todayISO = new Date().toISOString().split('T')[0];
+    const completedTopics = TOPICS.filter(
+      (t) => progress.topicStatus?.[t.id] === 'completed'
+    ).length;
+    const completedPages = TOPICS.reduce((sum, t) => {
+      const pMap = progress.pageStatus?.[t.id] || {};
+      return sum + Object.values(pMap).filter((s) => s === 'completed').length;
+    }, 0);
+    const quizEntries = Object.values(progress.quizResults || {});
+    const averageQuiz =
+      quizEntries.length > 0
+        ? Math.round(
+            quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length
+          )
+        : 0;
+    const pom = progress.pomodoroStats || {};
+    const todayMinutes = (pom.minutesByDay && pom.minutesByDay[todayISO]) || 0;
+    const lastSession = (progress.studySessions || [])[0];
+
+    setSyncStatus('syncing');
+    const timer = setTimeout(() => {
+      const totalPages = TOPICS.reduce((sum, t) => sum + t.pages.length, 0);
+      saveCloudProgress(
+        cloudUser,
+        {
+          completedTopics,
+          totalTopics: TOPICS.length,
+          completedPages,
+          totalPages,
+          quizAverage: averageQuiz,
+          quizzesCompleted: quizEntries.length,
+          streakDays: progress.streakDays || 1,
+          pomodoroTodayMinutes: Math.min(1440, todayMinutes),
+          pomodoroTotalMinutes: Math.min(1000000, pom.totalMinutes || 0),
+          pomodoroTodayDate: todayISO,
+          lastActiveDate: todayISO
+        },
+        progress
+      )
+        .then(() => setSyncStatus('synced'))
+        .catch(() => setSyncStatus('idle'));
+    }, 900);
+    return () => clearTimeout(timer);
+  }, [cloudUser, progress, currentTopic]);
+
   const handleSelectTopic = (topicId) => {
     setSelectedTopicId(topicId);
     setActiveView('topic');
@@ -66,6 +154,11 @@ export default function App() {
           setActiveView('calculations');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectGroup={() => {
+          setActiveView('group');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        groupCount={groupProfiles.length}
         progress={progress}
         darkMode={darkMode}
         onToggleDarkMode={() => setDarkMode((d) => !d)}
@@ -91,6 +184,15 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-1.5">
+            <button
+              onClick={() =>
+                setActiveView(activeView === 'group' ? 'topic' : 'group')
+              }
+              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
+              title="Grup d'Estudi i Rànquing"
+            >
+              <Users className="w-4 h-4" />
+            </button>
             <button
               onClick={() =>
                 setActiveView(activeView === 'calculations' ? 'topic' : 'calculations')
@@ -132,6 +234,15 @@ export default function App() {
             />
           ) : activeView === 'calculations' ? (
             <CalculationsView />
+          ) : activeView === 'group' ? (
+            <GroupStudyView
+              user={cloudUser}
+              groupProfiles={groupProfiles}
+              topicsCount={TOPICS.length}
+              syncStatus={syncStatus}
+              authError={authError}
+              onClearError={() => setAuthError('')}
+            />
           ) : (
             <TopicView
               topic={currentTopic}

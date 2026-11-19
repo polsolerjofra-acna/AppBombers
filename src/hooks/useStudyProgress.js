@@ -293,6 +293,14 @@ export function useStudyProgress() {
     });
   };
 
+  const replaceProgressFromCloud = (cloudState) => {
+    if (!cloudState || typeof cloudState !== 'object') return;
+    setProgress((prev) => ({
+      ...prev,
+      ...cloudState
+    }));
+  };
+
   return {
     progress,
     setPageMark,
@@ -300,6 +308,7 @@ export function useStudyProgress() {
     saveQuizScore,
     markTopicReviewed,
     logPomodoroSession,
+    replaceProgressFromCloud,
     resetAllProgress
   };
 }
