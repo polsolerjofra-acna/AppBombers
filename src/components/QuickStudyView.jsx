@@ -6,6 +6,7 @@ import {
   ChevronRight,
   AlertTriangle,
   CheckCircle2,
+  XCircle,
   RotateCcw,
   BookOpen
 } from 'lucide-react';
@@ -47,6 +48,8 @@ export default function QuickStudyView({
   const [selectionMode, setSelectionMode] = useState('difficult'); // 'difficult' | 'topics'
   const [selectedTopicIds, setSelectedTopicIds] = useState([]);
   const [sessionSlides, setSessionSlides] = useState(null); // null | array of { topic, page, estMin, isDifficult }
+  const [sessionQuestions, setSessionQuestions] = useState([]);
+  const [quizAnswers, setQuizAnswers] = useState({});
   const [slideIndex, setSlideIndex] = useState(0);
   const [feedbackGiven, setFeedbackGiven] = useState(null);
 
@@ -120,7 +123,33 @@ export default function QuickStudyView({
       if (accumulated >= minutes) break;
     }
 
+    // Seleccionem 1 pregunta relacionada per cada pàgina/diapositiva llegida (evitant duplicats)
+    const usedIds = new Set();
+    const pickedQuestions = [];
+    for (const slide of chosen) {
+      const poolQ = [...(slide.topic.quiz || [])];
+      if (slide.isDifficult) {
+        const rank = { 'Difícil': 0, 'Mitjà': 1, 'Fàcil': 2 };
+        poolQ.sort((a, b) => (rank[a.difficulty] ?? 1) - (rank[b.difficulty] ?? 1));
+      } else {
+        poolQ.sort(() => Math.random() - 0.5);
+      }
+      const match = poolQ.find((q) => !usedIds.has(`${slide.topic.id}:${q.id}`)) || poolQ[0];
+      if (match) {
+        usedIds.add(`${slide.topic.id}:${match.id}`);
+        pickedQuestions.push({
+          ...match,
+          uid: `${slide.topic.id}-p${slide.pageNumber}-${match.id}-${pickedQuestions.length}`,
+          topicNumber: slide.topic.number,
+          topicTitle: slide.topic.title,
+          pageNumber: slide.pageNumber
+        });
+      }
+    }
+
     setSessionSlides(chosen);
+    setSessionQuestions(pickedQuestions);
+    setQuizAnswers({});
     setSlideIndex(0);
     setFeedbackGiven(null);
   };
@@ -160,6 +189,7 @@ export default function QuickStudyView({
         </div>
 
         {isFinished ? (
+          <div className="space-y-6">
           <div className="rounded-3xl border border-emerald-200 dark:border-emerald-900/60 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm text-center space-y-5">
             <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
             <div className="space-y-1.5 max-w-lg mx-auto">
@@ -198,6 +228,93 @@ export default function QuickStudyView({
                 </button>
               </div>
             )}
+          </div>
+
+          {sessionQuestions.length > 0 && (
+            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-5">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <div>
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-red-600 dark:text-red-400">
+                    Comprovació Final (1 pregunta per pàgina llegida)
+                  </span>
+                  <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                    Mini-Test de Repàs ({sessionQuestions.length} preguntes)
+                  </h3>
+                </div>
+                <div className="rounded-xl bg-slate-100 dark:bg-slate-800 px-3.5 py-2 text-xs font-extrabold text-slate-800 dark:text-slate-200">
+                  Encerts:{' '}
+                  {sessionQuestions.filter((q) => quizAnswers[q.uid] === q.correctIndex).length} /{' '}
+                  {Object.keys(quizAnswers).length}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {sessionQuestions.map((q, qIdx) => {
+                  const chosen = quizAnswers[q.uid];
+                  const answered = chosen !== undefined;
+                  return (
+                    <div
+                      key={q.uid}
+                      className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 p-4 sm:p-5 space-y-3"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="text-[11px] font-extrabold text-blue-700 dark:text-blue-400">
+                          Pregunta {qIdx + 1} · Tema {q.topicNumber} (Pàg. {q.pageNumber})
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                          {q.difficulty}
+                        </span>
+                      </div>
+                      <p className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                        {q.question}
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {q.options.map((opt, oIdx) => {
+                          let cls =
+                            'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-red-400';
+                          if (answered) {
+                            if (oIdx === q.correctIndex) {
+                              cls =
+                                'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold';
+                            } else if (oIdx === chosen) {
+                              cls =
+                                'border-red-500 bg-red-50 dark:bg-red-950/40 text-red-900 dark:text-red-200';
+                            } else {
+                              cls =
+                                'border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-400';
+                            }
+                          }
+                          return (
+                            <button
+                              key={oIdx}
+                              disabled={answered}
+                              onClick={() =>
+                                setQuizAnswers((prev) => ({ ...prev, [q.uid]: oIdx }))
+                              }
+                              className={`flex items-center justify-between gap-2 rounded-xl border px-3.5 py-2.5 text-left text-xs sm:text-sm transition-all ${cls}`}
+                            >
+                              <span>{opt}</span>
+                              {answered && oIdx === q.correctIndex && (
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                              )}
+                              {answered && oIdx === chosen && oIdx !== q.correctIndex && (
+                                <XCircle className="w-4 h-4 text-red-600 shrink-0" />
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      {answered && q.explanation && (
+                        <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-3.5 py-2.5 text-xs text-slate-600 dark:text-slate-300">
+                          <span className="font-extrabold">Explicació:</span> {q.explanation}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
           </div>
         ) : (
           <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-6">
