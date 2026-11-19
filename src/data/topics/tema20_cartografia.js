@@ -150,6 +150,15 @@ export const tema20Cartografia = {
           explanation:
             "• 1. 'La Lluna és una MENTIDERA': Quan té forma de lletra C (que sembla l'inicial de Creixent), en realitat és DECRESCENT / MINVANT i la panxa de la C mira cap a l'EST (surt de matinada). Quan té forma de lletra D, és CREIXENT i la panxa de la D mira cap a l'OEST!\n• 2. El Codi SOC és com un tauler d'escacs amb zoom: Primer dius la casella gran vermella de 5×5 km (2 números + 2 lletres: '22AP') i després quina de les 25 fitxes petites d'1×1 km és, comptant com quan llegeixes un llibre d'esquerra a dreta i de dalt a baix (01 a 05 a la primera línia, 06 a 10 a la segona... fins al 25)!",
           takeaway: 'Lluna amb panxa a l’Oest = Creixent (D) | Panxa a l’Est = Minvant (C) | Codi SOC = 5×5 km (22AP) + 1×1 km (01 a 25).'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla Mnemotècnica · Orientació amb la Lluna (Maresme ↔ Pallars)',
+          acronym: 'Petit al Maresme (Est) = Decreix  |  Gran al Pallars (Oest) = Creix',
+          trick:
+            '• De petit vivia al Maresme (que és a l’EST) i era petit (Lluna minvant / decreixent, forma de C) → la panxa apunta cap a l’EST.\n• Ara que em faig gran (Lluna creixent, forma de D) visc al Pallars (que és a l’OEST) i creixo → la panxa apunta cap a l’OEST.',
+          example:
+            'Recorda el viatge vital: Maresme (Est, petit/decreix) → Pallars (Oest, gran/creix)!'
         }
       ]
     },

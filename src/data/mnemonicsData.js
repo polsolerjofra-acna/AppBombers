@@ -107,5 +107,25 @@ export const INITIAL_MNEMONICS = [
     ],
     explanation:
       'A partir de la pressió normal 120/80: si puges (↑), sumes +2 desenes a la sistòlica i +1 desena a la diastòlica (140/90). Si baixes (↓), restes -3 desenes a la sistòlica i -2 desenes a la diastòlica (90/60).'
+  },
+  {
+    id: 'mnem-lluna-maresme-pallars',
+    topicNumber: 14,
+    topicId: 'tema-14',
+    category: 'Cartografia i Orientació',
+    title: 'Orientació amb la Lluna: Del Maresme al Pallars',
+    acronym: 'Petit al Maresme (Est) = Decreix (C)  |  Gran al Pallars (Oest) = Creix (D)',
+    rules: [
+      {
+        code: 'Maresme (EST) · Decreix (Minvant)',
+        meaning: 'De petit vivia al Maresme (a l\'EST) i era petit (decreix / minvant, forma de C) → la panxa apunta a l\'EST'
+      },
+      {
+        code: 'Pallars (OEST) · Creix (Creixent)',
+        meaning: 'Ara que em faig gran (creixo, forma de D) visc al Pallars (a l\'OEST) → la panxa apunta a l\'OEST'
+      }
+    ],
+    explanation:
+      'Una història per no fallar-la mai: de petit vivia al Maresme (costa Est de Catalunya) i decreixia perquè era petit (Lluna minvant/decreixent = mira a l\'Est). Ara em faig gran i visc al Pallars (ponent/Oest) i creixo (Lluna creixent = mira a l\'Oest)!'
   }
 ];

@@ -172,6 +172,7 @@ export default function MnemonicsView({ topics, onSelectTopic }) {
             <option value="all">Tots els temes</option>
             <option value="8">Tema 8 · Teoria del foc</option>
             <option value="10">Tema 10 · Química</option>
+            <option value="14">Tema 14 · Cartografia</option>
             <option value="24">Tema 24 · Incendis estructurals</option>
             <option value="25">Tema 25 · Incendis forestals</option>
             <option value="28">Tema 28 · Assistència sanitària</option>
