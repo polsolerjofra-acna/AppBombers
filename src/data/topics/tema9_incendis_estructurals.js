@@ -50,6 +50,15 @@ export const tema9IncendisEstructurals = {
             ['Plantes i Interiors', 'PB (Planta Baixa), PL+1, PL+2... i Soterranis S-1, S-2... Quadrants interiors A, B, C, D.', 'Permet ubicar qualsevol binomi per ràdio amb precisió quirúrgica (ex: "Binomi 1 a PL+3, façana B").']
           ],
           footnote: 'Memoritza: Mirant l’edifici des del carrer principal (Façana A), a la teva esquerra tens la Façana B, al darrere la C i a la teva dreta la D (sentit horari en planta).'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla de Relació · Fases vs. Etapes d’un incendi',
+          acronym: 'Fases → Foc (F)  |  Etapes → Equips d’extinció (E)',
+          trick:
+            'Fases comença per F com Foc (evolució del foc). Etapes comença per E com Equips d’extinció (fases operatives de la intervenció dels bombers).',
+          example:
+            'No les barregis mai: les Fases les marca el Foc; les Etapes les marquen els Equips d’extinció.'
         }
       ]
     },

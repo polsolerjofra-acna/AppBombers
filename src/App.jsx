@@ -8,6 +8,7 @@ import DashboardView from './components/dashboard/DashboardView';
 import CalculationsView from './components/CalculationsView';
 import CalendarView from './components/CalendarView';
 import KeyPointsView from './components/KeyPointsView';
+import MnemonicsView from './components/MnemonicsView';
 import GroupStudyView from './components/GroupStudyView';
 import PomodoroWidget from './components/PomodoroWidget';
 import {
@@ -64,6 +65,8 @@ export default function App() {
         setActiveView('calculations');
       } else if (vParam === 'punts-clau') {
         setActiveView('keypoints');
+      } else if (vParam === 'mnemotecnica') {
+        setActiveView('mnemonics');
       }
     } catch {
       // ignore
@@ -221,6 +224,10 @@ export default function App() {
           setActiveView('keypoints');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectMnemonics={() => {
+          setActiveView('mnemonics');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectGroup={() => {
           setActiveView('group');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -343,6 +350,11 @@ export default function App() {
             />
           ) : activeView === 'keypoints' ? (
             <KeyPointsView onSelectTopic={(id) => handleSelectTopic(id, null)} />
+          ) : activeView === 'mnemonics' ? (
+            <MnemonicsView
+              topics={TOPICS}
+              onSelectTopic={(id) => handleSelectTopic(id, null)}
+            />
           ) : activeView === 'group' ? (
             <GroupStudyView
               user={cloudUser}

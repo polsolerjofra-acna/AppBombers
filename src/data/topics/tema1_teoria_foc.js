@@ -59,6 +59,15 @@ export const tema1TeoriaFoc = {
           explanation:
             "• TRIANGLE DEL FOC (Combustió sense flama / incandescència o brasa): 1) Combustible + 2) Comburent + 3) Energia d'activació (Calor).\n• TETRAEDRE DEL FOC (Combustió amb flama, que sempre es produeix en fase gasosa): afegeix el 4t element: la REACCIÓ EN CADENA (transmissió de radicals lliures OH*, H*, O* entre molècules que autoalimenta la flama).",
           takeaway: 'Sense Reacció en Cadena no hi ha flama (només brasa). La pols química ABC i els gasos halogenats ataquen directament aquesta 4a cara!'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regles Mnemotècniques · Redox (PORC/GROC) i Fases vs. Etapes',
+          acronym: 'PORC (Combustible) · GROC (Comburent) | Fases → Foc · Etapes → Equips',
+          trick:
+            '• REDOX: PORC = el combustible Perd electrons, s’Oxida i actua com a agent Reductor. GROC = el comburent Guanya electrons, es Redueix i actua com a agent Oxidant.\n• FASES vs. ETAPES: Fases → Foc (ambdues comencen per F) | Etapes → Equips d’extinció (ambdues comencen per E).',
+          example:
+            'Si a l’examen pregunten per l’evolució natural del foc parlen de FASES (F); si pregunten per l’actuació dels bombers parlen d’ETAPES (E).'
         }
       ]
     },

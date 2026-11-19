@@ -300,11 +300,11 @@ export const tema2Quimica = {
         {
           type: 'mnemonic',
           title: 'Regla Mnemotècnica · Com no confondre mai Boyle, Charles i Gay-Lussac',
-          acronym: 'BoT (Boyle → T=cte)  |  ChaP (Charles → P=cte)  |  GayV (Gay-Lussac → V=cte)',
+          acronym: '"PaVo" beuen "Te" · Gran Via (Gay-Lussac) · BTT (Boyle) · CP (Charles) · PORC/GROC',
           trick:
-            "1) BoT (BoTella isotèrmica): BOyle manté la Temperatura constant (P₁·V₁ = P₂·V₂, inversament proporcionals). 2) ChaP (CHArles a Pressió constant): CHArles manté P constant (V₁/T₁ = V₂/T₂, un globus o fum calent s'infla i puja!). 3) GayV (GAY-Lussac a Volum constant): una ampolla rígida de ferro posada al foc manté V constant (P₁/T₁ = P₂/T₂, si dupliques els Kelvin dupliques la pressió fins a rebentar!).",
+            "1) Gasos ideals: \"PaVo\" (Pressió × Volum) beuen \"Te\" (Temperatura divideix) → (P·V)/T = cte.\n2) Gay-Lussac → Volum → Gran Via (V constant: P₁/T₁ = P₂/T₂).\n3) Boyle → Temperatura → BTT (T constant: P₁·V₁ = P₂·V₂).\n4) Charles → Pressió → CP (Cicle Professional, P constant: V₁/T₁ = V₂/T₂).\n5) Redox: PORC (combustible: Perd e⁻, s'Oxida, Reductor) | GROC (comburent: Guanya e⁻, es Redueix, Oxidant).",
           example:
-            'Equació P·V = n·R·T ("PaVos = Niños Riendo Tanto"). Recorda: 27 °C = 300 K i 327 °C = 600 K (el doble de T absoluta!).'
+            'Equació P·V = n·R·T ("PaVo / Te"). Recorda: 27 °C = 300 K i 327 °C = 600 K (el doble de T absoluta!).'
         }
       ]
     },

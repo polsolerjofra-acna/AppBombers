@@ -5,6 +5,7 @@ import {
   Calculator,
   Calendar,
   AlertTriangle,
+  Lightbulb,
   Users,
   BookOpen,
   CheckCircle2,
@@ -23,6 +24,7 @@ export default function Sidebar({
   onSelectCalendar,
   onSelectCalculations,
   onSelectKeyPoints,
+  onSelectMnemonics,
   onSelectGroup,
   groupCount = 0,
   dueReviewsCount = 0,
@@ -190,6 +192,32 @@ export default function Sidebar({
               }`}
             >
               Trampes
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              onSelectMnemonics();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'mnemonics'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-purple-50/90 dark:bg-purple-950/30 text-purple-900 dark:text-purple-200 border border-purple-200/70 dark:border-purple-900/50 hover:bg-purple-100/80 dark:hover:bg-purple-950/50'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Lightbulb className="w-4 h-4" />
+              <span>Regles Mnemotècniques</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'mnemonics'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-purple-600/15 text-purple-700 dark:text-purple-300'
+              }`}
+            >
+              Trucs
             </span>
           </button>
 

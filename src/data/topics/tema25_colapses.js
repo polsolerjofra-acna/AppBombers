@@ -130,6 +130,15 @@ export const tema25Colapses = {
           explanation:
             "• 1. El pa de DALT que toca el sostre es diu SOTAPONT (perquè va 'sota el pont/biga'): ell RECULL tot el pes.\n• 2. El farcit vertical del mig són els PUNTALS (posats com a molt a 1 metre l'un de l'altre, aguantant 1.000 kg cadascun): ells TRASLLADEN el pes cap a baix.\n• 3. El pa de BAIX que dorm sobre el terra es diu JAÇ DE TAULONS (un 'jaç' en català és un llit a terra!): ell REPARTEIX el pes perquè els puntals no foradin el terra!\n• I amb la botzina: si sents 'PI-PI-PI' (3 curts nerviosos d'1 segon) = CORRE i EVACUA! Si sents un sol 'PIIIIII' llarg (3 segons, com quan algú fa 'Xssssst, silenci!') = ATURA'T i fes SILENCI! Si sents 'PIIIIII - PI' (llarg + curt) = CONTINUA treballant!",
           takeaway: 'Sotapont (dalt, recull) → Puntals (mig, ≤ 1 m, 1.000 kg) → Jaç (baix, reparteix) | 3 curts = Evacuar | 1 llarg = Silenci/Aturar.'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla Mnemotècnica · Avisos sonors en col·lapses estructurals (ampliable)',
+          acronym: '1 i 3 → Tot Mort (parat)  |  1 i 1 → Tothom Torna (a treballar)',
+          trick:
+            '• "1 i 3" → Tot Mort (parat: aturada total de treballs i silenci).\n• "1 i 1" → Tothom Torna (a treballar: reprendre les tasques).\n• [Espai previst per afegir la resta d’avisos sonors a l’apartat de Regles Mnemotècniques].',
+          example:
+            'Quan escoltis la seqüència 1 i 3, atura’t en sec ("Tot Mort"). Quan soni 1 i 1, reprens la feina ("Tothom Torna").'
         }
       ]
     },
