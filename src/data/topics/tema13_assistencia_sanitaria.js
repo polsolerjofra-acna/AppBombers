@@ -377,6 +377,71 @@ export const tema13AssistenciaSanitaria = {
       ],
       correctIndex: 1,
       explanation: "La hipotèrmia s'inicia a ≤ 35 °C (<32-28 °C moderada/greu) i els moviments bruscos precipiten fibril·lació ventricular per retorn de sang freda perifèrica. Pont Simple = 3+1 (4); Pont Millorat = 4+1 (5), manant sempre qui controla el cap."
+    },
+    {
+      id: 'q28-13',
+      difficulty: 'Mitjà',
+      question: "Segons la classificació del xoc hipovolèmic per hemorràgia (Classes I–IV de l'ATLS), quin volum aproximat de pèrdua sanguínia en un adult de 70 kg correspon al Grau III (on apareix clarament hipotensió arterial)?",
+      options: [
+        "Fins a 750 ml (< 15% de la volèmia).",
+        "Entre 750 i 1.500 ml (15–30% de la volèmia).",
+        "Entre 1.500 i 2.000 ml (30–40% de la volèmia).",
+        "Superior a 2.500 ml (> 50% de la volèmia)."
+      ],
+      correctIndex: 2,
+      explanation: "El xoc hipovolèmic Grau III implica una pèrdua del 30–40% de la volèmia (1.500–2.000 ml en un adult de 70 kg), moment en què fallen els mecanismes compensatoris i cau la pressió arterial sistòlica, amb FC > 120 bpm, FR 30–40 rpm i ansietat/confusió."
+    },
+    {
+      id: 'q28-14',
+      difficulty: 'Fàcil',
+      question: "Davant d'una obstrucció completa (greu) de la via aèria per cos estrany (OVACE) en un adult conscient que no pot tossir ni parlar, quina és la pauta correcta d'actuació?",
+      options: [
+        "Animar-lo únicament a tossir i donar-li aigua.",
+        "Alternar sèries de 5 cops interescapulars a l'esquena amb 5 compressions abdominals (maniobra de Heimlich) fins a resoldre l'obstrucció o que perdi la consciència.",
+        "Realitzar directament 30 compressions toràciques dret.",
+        "Fer una escombrada digital a cegues dins la boca abans de fer cap maniobra."
+      ],
+      correctIndex: 1,
+      explanation: "En l'OVACE greu en adult conscient (tos ineficaç), el protocol ERC indica alternar 5 cops secs interescapulars a l'esquena amb 5 compressions abdominals (Heimlich). Si queda inconscient, s'inicia RCP immediatament."
+    },
+    {
+      id: 'q28-15',
+      difficulty: 'Fàcil',
+      question: "Durant una aturada cardiorespiratòria amb dos reanimadors, què ha de fer el primer reanimador mentre el segon arriba amb el DEA i n'enganxa els elèctrodes al tòrax del pacient?",
+      options: [
+        "Aturar les compressions toràciques des que s'obre el maletí del DEA fins després de la descàrrega.",
+        "Continuar realitzant les compressions toràciques (RCP) sense interrupció mentre l'altre company col·loca els pegats, aturant-se només quan el DEA indiqui que està analitzant el ritme.",
+        "Realitzar només ventilacions boca a boca mentre es col·loquen els pegats.",
+        "Comprovar el pols carotidi durant 30 segons abans d'encendre el DEA."
+      ],
+      correctIndex: 1,
+      explanation: "Per minimitzar les pauses sense flux sanguini, un reanimador manté les compressions toràciques mentre l'altre encén el DEA i col·loca els elèctrodes; només s'atura el massatge quan el DEA ordena no tocar el pacient per analitzar o descarregar."
+    },
+    {
+      id: 'q28-16',
+      difficulty: 'Fàcil',
+      question: "En un lactant (< 1 any), quina és la localització anatòmica recomanada per comprovar el pols arterial central?",
+      options: [
+        "A l'artèria radial, al canell.",
+        "A l'artèria braquial (humeral), a la cara interna del braç entre el colze i l'aixella.",
+        "A l'artèria pèdia, al dors del peu.",
+        "A l'artèria temporal, al lateral del front."
+      ],
+      correctIndex: 1,
+      explanation: "En lactants, el coll curt i adipós dificulta palpar el pols carotidi, per la qual cosa es recomana palpar el pols braquial a la cara interna del braç (o alternativament el femoral)."
+    },
+    {
+      id: 'q28-17',
+      difficulty: 'Fàcil',
+      question: "En terminologia anatòmica i d'assistència sanitària, què indica el moviment o posició de supinació de l'avantbraç i la mà?",
+      options: [
+        "Girar l'avantbraç de manera que el palmell de la mà quedi orientat cap avall o cap enrere.",
+        "Girar l'avantbraç de manera que el palmell de la mà quedi orientat cap amunt o cap endavant.",
+        "Doblegar el canell lateralment cap al dit petit.",
+        "Estirar completament el membre inferior cap enrere."
+      ],
+      correctIndex: 1,
+      explanation: "La supinació orienta el palmell de la mà cap amunt (o cap endavant en posició anatòmica), en contraposició a la pronació, que l'orienta cap avall o cap enrere."
     }
   ]
 };

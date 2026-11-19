@@ -319,6 +319,71 @@ export const tema25Colapses = {
       ],
       correctIndex: 1,
       explanation: 'Apartat 3.2 del manual: la recerca instrumentalitzada empra geòfons (detecció acústica/sísmica de vibracions) i càmeres de cerca visual en cavitats.'
+    },
+    {
+      id: 't30-q11',
+      difficulty: 'Difícil',
+      question: 'En una intervenció en un edifici d’habitatges de 4 plantes (PB + 3), la jàssera principal de la planta 2 presenta una fissura greu amb fletxa evident i risc de col·lapse secundari. Quina actuació operativa és IMPRESCINDIBLE en muntar l’apuntalament vertical?',
+      options: [
+        'Apuntalar únicament la planta 2 recolzant els puntals directament sobre el forjat d’aquesta planta sense element repartidor.',
+        'Apuntalar la jàssera afectada a la planta 2 i replicar l’apuntalament a totes les plantes inferiors (planta 1 i planta baixa) fins a transmetre la càrrega als fonaments o terreny ferm.',
+        'Col·locar puntals només a la planta 3 (per sobre de la jàssera) per penjar-la del forjat de coberta.',
+        'Aplicar força amb els puntals telescòpics fins a retornar la jàssera a la seva cota original abans que arribin els tècnics municipals.'
+      ],
+      correctIndex: 1,
+      explanation: 'Quan s’apuntala una jàssera o forjat en una planta elevada, el forjat inferior no sol estar dimensionat per suportar una càrrega puntual transmesa des de dalt; per això cal continuar apuntalant totes les plantes inferiors fins arribar a planta baixa / fonaments.'
+    },
+    {
+      id: 't30-q12',
+      difficulty: 'Mitjà',
+      question: 'Respecte als elements i principis d’un apuntalament vertical d’emergència (MAN.SVES.000), assenyala quina afirmació és INCORRECTA:',
+      options: [
+        'La peça horitzontal superior en contacte directe amb el sostre o la jàssera danyada s’anomena sotapont i té la funció de recollir la càrrega.',
+        'El jaç de taulons o solera es col·loca a la base inferior sobre el terra per repartir la càrrega i evitar el punxonament del forjat.',
+        'Els puntals han de quedar aplomats verticalment (90°) mitjançant falques contraposades i amb una separació màxima entre puntals d’1 metre.',
+        'La peça sotapont es col·loca sota les falques del terra per facilitar el desplaçament lateral del puntal quan augmenta la càrrega.'
+      ],
+      correctIndex: 3,
+      explanation: 'És incorrecte: el sotapont sempre va a la part SUPERIOR (al sostre o jàssera danyada) per recollir la càrrega i repartir-la cap als puntals; a la base inferior hi va el jaç de taulons (solera).'
+    },
+    {
+      id: 't30-q13',
+      difficulty: 'Mitjà',
+      question: 'Com afecta l’increment d’alçada d’un puntal vertical a la seva capacitat de càrrega admissible i quin fenomen mecànic en limita la resistència?',
+      options: [
+        'Augmenta la seva resistència proporcionalment a l’alçada perquè treballa millor a tracció que a compressió.',
+        'No varia amb l’alçada: un puntal telescòpic de 4,5 metres suporta exactament la mateixa càrrega que un d’1,8 metres.',
+        'Disminueix progressivament en augmentar l’alçada a causa del risc de vinclament (pandeig lateral per compressió), fent necessari l’arriostrament en grans alçades.',
+        'Només disminueix en puntals de fusta, mentre que en els metàl·lics la resistència es duplica a partir dels 3 metres.'
+      ],
+      correctIndex: 2,
+      explanation: 'A mesura que augmenta l’alçada (esveltesa) d’un puntal sotmès a compressió, la seva càrrega crítica disminueix dràsticament per vinclament; per això cal aplomar-los a 90° i arriostrar-los quan superen certes alçades.'
+    },
+    {
+      id: 't30-q14',
+      difficulty: 'Fàcil',
+      question: 'Durant una fase de recerca instrumentalitzada amb geòfons en una estructura col·lapsada, el comandament ordena aturada total i silenci absolut, i al cap de 4 minuts autoritza reprendre els treballs. Quins avisos sonors (codi INSARAG) corresponen a cadascuna de les dues ordres?',
+      options: [
+        'Aturada total / silenci: seqüència "1 i 3" (1 toc llarg de 3 segons) | Reprendre treballs: seqüència "1 i 1" (1 toc llarg de 3 segons + 1 toc curt d’1 segon).',
+        'Aturada total / silenci: 3 tocs curts ("3 i 1") | Reprendre treballs: 2 tocs llargs ("2 i 3").',
+        'Aturada total / silenci: seqüència "1 i 1" | Reprendre treballs: seqüència "1 i 3".',
+        'Aturada total / silenci: tocs curts continus sense pausa | Reprendre treballs: 3 tocs curts d’1 segon.'
+      ],
+      correctIndex: 0,
+      explanation: 'Al codi acústic INSARAG: "1 i 3" (1 toc llarg de 3 s) ordena aturada total de treballs i silenci; "1 i 1" (1 toc llarg de 3 s + 1 toc curt d’1 s) ordena reprendre les operacions; 3 tocs curts d’1 s ordenen evacuació immediata.'
+    },
+    {
+      id: 't30-q15',
+      difficulty: 'Difícil',
+      question: 'En una intervenció per esfondrament parcial d’un edifici amb possibles víctimes atrapades sota runa, quin és l’ordre seqüencial d’actuació operativa correcte abans d’iniciar el desenrunament pesat?',
+      options: [
+        'Entrar directament amb retroexcavadores pesants per retirar la runa, fer sondeig caní al final i marcar amb una "C" totes les parets exteriors.',
+        'Emplaçar vehicles fora de la zona de risc (≥ 2 × h), assegurar subministraments i estabilitzar riscos imminents, fer la recerca en silenci (crida i escolta / geòfons / gossos per venteig), marcar segons INSARAG i obrir corredors apuntalats fins a les víctimes.',
+        'Pintar immediatament "L-1" i "C" a la façana abans de confirmar víctimes, fer soroll amb generadors per despertar els atrapats i situar els camions davant la porta.',
+        'Apuntalar primer els murs sans exteriors amb tornapuntes a 15° i fer la recerca canina amb tot el personal dins la zona calenta.'
+      ],
+      correctIndex: 1,
+      explanation: 'La seqüència operativa estableix: zonatge i emplaçament segur (≥ 2 × h), tall de subministraments i estabilització inicial, recerca en silenci (física, instrumentalitzada i canina per venteig), senyalització INSARAG i accés segur mitjançant apuntalaments consolidats.'
     }
   ]
 };

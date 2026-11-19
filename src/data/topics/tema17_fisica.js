@@ -516,6 +516,71 @@ export const tema17Fisica = {
       ],
       correctIndex: 2,
       explanation: 'F_pendent = P · sin 45° = 20.000 × 0,7 = 14.000 N. F_fregament = μ · P · cos 45° = 0,8 × 14.000 = 11.200 N. Suma total = 25.200 N.'
+    },
+    {
+      id: 't9-q11',
+      difficulty: 'Fàcil',
+      question: 'En mecànica, com es classifiquen els vectors polars segons el seu grau de llibertat respecte al punt d’aplicació i la recta d’acció?',
+      options: [
+        'Vectors escalars, vectors mòduls i vectors unitaris.',
+        'Vectors lliures, vectors lliscants i vectors fixos (o lligats).',
+        'Vectors axials, vectors perpendiculars i vectors nuls.',
+        'Vectors tangencials, vectors centrífugs i vectors potencials.'
+      ],
+      correctIndex: 1,
+      explanation: 'Els vectors polars es divideixen en lliures (mateix mòdul, direcció i sentit independentment del punt), lliscants (actuen al llarg d’una recta d’acció, com les forces en un sòlid rígid) i fixos (lligats a un punt d’aplicació concret).'
+    },
+    {
+      id: 't9-q12',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA sobre els principis de l’estàtica i les lleis de Newton aplicades a l’equilibri d’un cos?',
+      options: [
+        'Un cos rígid es troba en equilibri estàtic quan la resultant de totes les forces externes i la suma de tots els moments de força són nul·les (ΣF = 0 i ΣM = 0).',
+        'Segons el principi d’acció i reacció (3a llei de Newton), les forces d’acció i reacció tenen el mateix mòdul, la mateixa direcció i el mateix sentit.',
+        'Les forces d’acció i reacció actuen sobre cossos diferents i per això no s’anul·len entre elles sobre un únic cos.',
+        'El moment d’una força respecte a un punt depèn del producte vectorial entre el vector posició i la força (M = F · d_perpendicular).'
+      ],
+      correctIndex: 1,
+      explanation: 'És incorrecte afirmar que tenen el mateix sentit: pel principi d’acció i reacció, ambdues forces tenen igual mòdul i igual direcció (mateixa recta d’acció), però SENTIT OPOSTAT (F₁₂ = -F₂₁).'
+    },
+    {
+      id: 't9-q13',
+      difficulty: 'Difícil',
+      question: 'Un bomber arrossega una mànega carregada una distància de 10 metres sobre un terra horitzontal aplicant una força constant de 200 N mitjançant una corda que forma un angle de 30° RESPECTE A LA VERTICAL. Quin treball mecànic fa aquesta força (cos 60° = 0,5; cos 30° ≈ 0,866)?',
+      options: [
+        '2.000 J.',
+        '1.732 J.',
+        '1.000 J.',
+        '500 J.'
+      ],
+      correctIndex: 2,
+      explanation: 'El treball és W = F · d · cos(α), on α és l’angle entre la força i el desplaçament (horitzontal). Si la força forma 30° amb la vertical, forma α = 90° - 30° = 60° amb el desplaçament horitzontal. Així, W = 200 × 10 × cos 60° = 2.000 × 0,5 = 1.000 J.'
+    },
+    {
+      id: 't9-q14',
+      difficulty: 'Mitjà',
+      question: 'En un apuntalament d’urgència utilitzem un parell de falques de fusta idèntiques de 30 cm de longitud i 10 cm d’alçada màxima (30 × 10 cm) col·locades de manera oposada per cobrir una separació de 5 cm. Quin solapament longitudinal hi haurà entre les dues falques?',
+      options: [
+        '5 cm.',
+        '10 cm.',
+        '15 cm.',
+        '25 cm.'
+      ],
+      correctIndex: 2,
+      explanation: 'En dues falques idèntiques oposades, l’alçada total obtinguda en la zona de solapament és proporcional al solapament: h = H · (solapament / longitud). Per cobrir h = 5 cm amb falques de H = 10 cm i L = 30 cm: 5 = 10 · (S / 30) → S = 15 cm.'
+    },
+    {
+      id: 't9-q15',
+      difficulty: 'Fàcil',
+      question: 'Quin valor té l’Avantatge Mecànic (AM) d’una palanca de 3r gènere (on la potència s’aplica entre el punt de suport i la resistència)?',
+      options: [
+        'Sempre superior a 1 (AM > 1), ja que multiplica la força aplicada.',
+        'Sempre menor o igual que 1 (AM ≤ 1), ja que el braç de potència és inferior al braç de resistència.',
+        'Exactament igual a 2 en tots els casos.',
+        'Infinit quan la càrrega es troba a l’extrem.'
+      ],
+      correctIndex: 1,
+      explanation: 'En una palanca de 3r gènere (com unes pinces o l’avantbraç humà), la potència queda entre el fulcre i la resistència (bp ≤ br), de manera que AM = bp / br ≤ 1. No multiplica la força, sinó que permet guanyar velocitat i recorregut.'
     }
   ]
 };

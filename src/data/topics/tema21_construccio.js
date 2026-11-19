@@ -378,6 +378,71 @@ export const tema21Construccio = {
       ],
       correctIndex: 0,
       explanation: 'Apartat 5.4 del manual: el sistema de murs de càrrega és unitari (paret portant = tancament), mentre que el de pilars i forjats és separat.'
+    },
+    {
+      id: 't15-q11',
+      difficulty: 'Mitjà',
+      question: 'Com treballen estructuralment els murs de contenció o parets per gravetat (de pedra, maó o formigó en massa sense armar)?',
+      options: [
+        'Resisteixen les empentes gràcies a la seva gran capacitat d’absorbir esforços de flexió i tracció pura.',
+        'Contraresten les empentes mitjançant el seu propi pes i treballen bàsicament a compressió, ja que no resisteixen bé les traccions ni la flexió.',
+        'Transmeten tota la càrrega per cisallament cap a la coberta.',
+        'Funcionen exclusivament mitjançant cables posttesats a tracció.'
+      ],
+      correctIndex: 1,
+      explanation: 'Les estructures per gravetat s’estabilitzen pel seu pes propi i treballen a compressió; com que els materials petris o el formigó en massa no resisteixen traccions ni flexió rellevants, la resultant de forces ha de caure dins el nucli central de la base.'
+    },
+    {
+      id: 't15-q12',
+      difficulty: 'Mitjà',
+      question: 'En una encavallada triangular clàssica de fusta per a cobertes inclinades, a quin esforç treballen els pendelons (elements verticals que enllacen els parells amb el tirant)?',
+      options: [
+        'A compressió pura.',
+        'A flexió composta.',
+        'A tracció.',
+        'A torsió.'
+      ],
+      correctIndex: 2,
+      explanation: 'En una encavallada, els parells (inclinats) treballen a compressió, el tirant (horitzontal inferior) treballa a tracció, i tant el monjo central com els pendelons verticals treballen a tracció sostenint el tirant per evitar que s’enfonsi.'
+    },
+    {
+      id: 't15-q13',
+      difficulty: 'Fàcil',
+      question: 'En el càlcul d’estructures, quin principi físic fonamental permet resoldre directament les estructures isostàtiques?',
+      options: [
+        'La primera llei de Newton (equilibri estàtic: sumatori de forces i moments igual a zero).',
+        'La llei de Hooke de deformació plàstica exclusiva.',
+        'El principi d’Arquimedes.',
+        'La tercera llei de la termodinàmica.'
+      ],
+      correctIndex: 0,
+      explanation: 'Una estructura isostàtica té el nombre just d’enllaços i incògnites perquè es pugui calcular únicament aplicant les equacions d’equilibri estàtic derivades de la primera llei de Newton (ΣF = 0 i ΣM = 0).'
+    },
+    {
+      id: 't15-q14',
+      difficulty: 'Fàcil',
+      question: 'Com s’anomena la peça vertical central d’una encavallada de coberta que penja del vèrtex superior (cimal) i sosté el centre del tirant?',
+      options: [
+        'Jàssera.',
+        'Monjo.',
+        'Llinda.',
+        'Cartela.'
+      ],
+      correctIndex: 1,
+      explanation: 'El monjo (o pendeló principal) és la peça vertical central de l’encavallada que treballa a tracció per subjectar el tirant al seu punt mitjà i rebre les tornapuntes.'
+    },
+    {
+      id: 't15-q15',
+      difficulty: 'Difícil',
+      question: 'Respecte a les parets de càrrega i als sistemes constructius tradicionals, quina de les afirmacions següents és INCORRECTA?',
+      options: [
+        'Les fàbriques de maó o pedra tenen poca cohesió i molt baixa resistència a tracció davant d’empentes horitzontals fora del seu pla.',
+        'Els àbacs són elements de reforç característics dels murs de càrrega per repartir les càrregues dels sostres de biguetes de fusta.',
+        'L’obertura de grans buits en una paret de càrrega sense apunterament previ compromet l’estabilitat del mur i dels forjats que hi recolzen.',
+        'La substitució o enderroc d’un envà de distribució no afecta l’estructura portant, a diferència d’una paret de càrrega.'
+      ],
+      correctIndex: 1,
+      explanation: 'Afirmació incorrecta: els àbacs NO pertanyen a les parets de càrrega, sinó als forjats reticulars de formigó armat (són les zones massissades al voltant dels pilars per absorbir el punxonament i els moments negatius).'
     }
   ]
 };

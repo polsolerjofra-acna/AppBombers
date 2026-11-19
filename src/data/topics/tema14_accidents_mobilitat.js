@@ -355,6 +355,71 @@ export const tema14AccidentsMobilitat = {
       ],
       correctIndex: 1,
       explanation: "Per desplaçar el tablier amb el RAM (recolzat a la base del muntant B amb tall d'alleujament a la base del muntant A) cal posar un bloc de fusta a terra sota el llindar perquè l'empenta hidràulica no aixafi el xassís cap avall."
+    },
+    {
+      id: 'q32-13',
+      difficulty: 'Mitjà',
+      question: "En una intervenció d'excarceració en un vehicle híbrid o elèctric (HEV/BEV), quin color identifica obligatòriament el cablejat d'alta tensió (HV) i quina funció té el sistema HVIL (High Voltage Interlock Loop)?",
+      options: [
+        "Color groc | És un sistema pirotècnic que trenca les finestres laterals en detectar un xoc.",
+        "Color taronja | És un circuit de control en llaç de baixa tensió que recorre connectors i tapes d'alta tensió; si s'obre o es talla, ordena obrir els contactors principals per tallar l'alta tensió de la bateria.",
+        "Color blau | És una vàlvula pneumàtica que bloqueja la suspensió de la cabina.",
+        "Color vermell | Descarrega instantàniament tota l'energia de la bateria de tracció a través de la carrosseria."
+      ],
+      correctIndex: 1,
+      explanation: "Els cables d'alta tensió en vehicles híbrids i elèctrics són sempre de color TARONJA. El sistema HVIL (High Voltage Interlock Loop) supervisa la continuïtat dels connectors i tapes d'HV: si es desconnecta o es talla el llaç (segons el full de rescat), obre els contactors principals per aïllar la bateria."
+    },
+    {
+      id: 'q32-14',
+      difficulty: 'Fàcil',
+      question: "Pel que fa a l'anatomia estructural del turisme i les precaucions abans de tallar el pilar B (muntant B) en una excarceració (MAN.SVVH.000), assenyala quina afirmació és INCORRECTA:",
+      options: [
+        "El pilar B és el muntant central situat darrere de les portes davanteres, entre aquestes i les portes posteriors (o zona lateral posterior en 3 portes).",
+        "El pilar B allotja habitualment la guia i el mecanisme pretensor pirotècnic del cinturó de seguretat, a més de possibles reforços d'acer d'alta resistència.",
+        "Abans de tallar qualsevol muntant amb la cisalla hidràulica, és obligatori 'pelar' (retirar) el guarnit interior de plàstic per no tallar bombones d'airbag o pretensors.",
+        "El pilar B és el marc davanter que subjecta el parabrisa laminat, motiu pel qual no incorpora mai elements pirotècnics ni cablejat."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: el marc del parabrisa davanter és el pilar A (muntant A). El pilar B se situa darrere de les portes davanteres i conté els pretensors del cinturó i sovint elements d'airbag o cablejat, per la qual cosa s'ha de 'pelar' sempre abans de tallar."
+    },
+    {
+      id: 'q32-15',
+      difficulty: 'Fàcil',
+      question: "Dins la classificació oficial dels sistemes de seguretat del vehicle (MAN.SVVH.000), quina opció agrupa correctament exemples de seguretat ACTIVA (primària) i exemples de seguretat PASSIVA (secundària)?",
+      options: [
+        "Seguretat activa: airbag frontal i cinturó | Seguretat passiva: ABS i control d'estabilitat (ESP).",
+        "Seguretat activa: ABS, control d'estabilitat (ESP), frens i direcció | Seguretat passiva: cinturó de seguretat, airbags, pretensors i reposacaps.",
+        "Seguretat activa: sistema eCall 112 i tall automàtic de bateria | Seguretat passiva: pneumàtics i il·luminació.",
+        "Seguretat activa: xassís deformable i muntant B | Seguretat passiva: control de tracció i llums de creuament."
+      ],
+      correctIndex: 1,
+      explanation: "La seguretat activa o primària actua abans del sinistre per evitar-lo (ABS, ESP, frens, direcció, llums); la seguretat passiva o secundària redueix les lesions durant l'impacte (cinturó, airbags, pretensors, reposacaps); i l'eCall o tall de bateria són seguretat terciària (post-accident)."
+    },
+    {
+      id: 'q32-16',
+      difficulty: 'Mitjà',
+      question: "En un turisme sinistrat on cap airbag s'ha disparat i hi ha una víctima amb atrapament físic tipus I dins l'habitacle, quines distàncies mínimes fixa la regla 30-60-90 i quina mesura cal respectar en desconnectar la bateria de 12 V?",
+      options: [
+        "30 cm del volant, 60 cm del tablier de l'acompanyant i 90 cm dels airbags de cortina/sostre (col·locant protector al volant i esperant 1–2 minuts després de desconnectar la bateria pel condensador de reserva).",
+        "30 cm del tablier, 60 cm del sostre i 90 cm del volant, podent tallar els pilars a l'instant sense esperar després de desconnectar la bateria.",
+        "10 cm de qualsevol airbag, ja que en parar el motor de combustió els airbags queden desactivats immediatament.",
+        "60 cm del volant, 30 cm del tablier i 90 cm dels pedals, sense necessitat de protegir el volant ni desvestir els pilars."
+      ],
+      correctIndex: 0,
+      explanation: "La regla 30-60-90 estableix mantenir 30 cm respecte al volant, 60 cm al tablier de l'acompanyant i 90 cm als airbags de cortina/sostre (evitant situar-hi el cos o eines), posar protector de volant i esperar 1–2 minuts després de desconnectar la bateria perquè es descarregui el condensador del mòdul SRS."
+    },
+    {
+      id: 'q32-17',
+      difficulty: 'Difícil',
+      question: "En arribar a un accident de trànsit amb un vehicle elèctric/híbrid en bolcada lateral i un ocupant conscient atrapat a l'interior, quina és la seqüència operativa correcta?",
+      options: [
+        "Tallar directament els cables taronja amb la cisalla hidràulica de 700 bar i extreure la víctima pel parabrisa sense estabilitzar el vehicle.",
+        "Assegurar l'escena, immobilitzar i desactivar el vehicle (posició P, allunyar clau, desconnectar 12 V / tallar bucle HVIL o service plug segons full de rescat), estabilitzar el vehicle, esperar la descàrrega de condensadors i executar l'obertura (p. ex. 'la catalana') evitant tallar o tocar cables taronja.",
+        "Ruixar amb escuma tot el vehicle abans de comprovar si està en marxa, retirar les falques i trencar primer el parabrisa laminat amb punxó.",
+        "Desplaçar el tablier amb el RAM abans d'estabilitzar el vehicle ni comprovar si els cables taronja passen pels estreps o pel pilar B."
+      ],
+      correctIndex: 1,
+      explanation: "La seqüència segura en vehicle electrificat exigeix protegir l'escena, immobilitzar i desconnectar l'alta tensió seguint el full de rescat (12 V + bucle HVIL / service plug), estabilitzar abans de tallar, respectar el temps de descàrrega dels condensadors i no tallar ni manipular mai el cablejat taronja d'HV."
     }
   ]
 };

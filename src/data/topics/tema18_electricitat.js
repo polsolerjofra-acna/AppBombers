@@ -495,6 +495,71 @@ export const tema18Electricitat = {
       ],
       correctIndex: 1,
       explanation: 'En monofàsic (Fase + Neutre) la tensió eficaç és de 230 V (pic = 230·√2 ≈ 325 V). En trifàsic (entre dues fases) és de 400 V eficaços (pic = 400·√2 ≈ 566 V).'
+    },
+    {
+      id: 't11-q11',
+      difficulty: 'Mitjà',
+      question: 'Segons la instrucció tècnica ITC-BT-24 del REBT, quin paper té l’interruptor diferencial d’alta sensibilitat (IΔn ≤ 30 mA) davant els contactes elèctrics DIRECTES?',
+      options: [
+        'Substitueix completament l’aïllament dels conductors i les envolupants protectores.',
+        'És una mesura de protecció complementària contra els contactes directes (no eximeix de la protecció principal per aïllament o barreres).',
+        'Només protegeix contra curtcircuits entre fases, mai contra derivacions a terra.',
+        'Està prohibit en habitatges segons el REBT.'
+      ],
+      correctIndex: 1,
+      explanation: 'La ITC-BT-24 estableix que l’ús de dispositius de corrent diferencial residual amb IΔn ≤ 30 mA es reconeix com a protecció complementària contra contactes directes en cas de fallada de les mesures principals o per imprudència.'
+    },
+    {
+      id: 't11-q12',
+      difficulty: 'Fàcil',
+      question: 'Quina afirmació és INCORRECTA respecte a les 5 regles d’or per treballar sense tensió segons el Reial decret 614/2001?',
+      options: [
+        'Per deixar la instal·lació sense tensió cal seguir estrictament l’ordre: 1. Desconnectar, 2. Prevenir realimentació, 3. Verificar absència de tensió, 4. Posar a terra i en curtcircuit, 5. Protegir i senyalitzar.',
+        'Abans de col·locar la posada a terra i en curtcircuit és obligatori verificar l’absència de tensió.',
+        'Un cop finalitzat el treball, per reposar la tensió s’han de desfer les 5 regles en el MATEIX ordre (de la 1 a la 5).',
+        'Per reposar la tensió amb seguretat, les 5 regles s’han de desfer en ordre INVERS (de la 5 a la 1).'
+      ],
+      correctIndex: 2,
+      explanation: 'És incorrecte desfer-les en el mateix ordre: per reposar el servei s’han de revertir en ordre INVERS (5 → 4 → 3 → 2 → 1), retirant primer proteccions/senyalització i la posada a terra abans de treure els bloquejos i reconnectar.'
+    },
+    {
+      id: 't11-q13',
+      difficulty: 'Fàcil',
+      question: 'Quin és el llindar aproximat de percepció del corrent elèctric altern (50 Hz) en una persona sana?',
+      options: [
+        '0,5 mA.',
+        '10 mA.',
+        '30 mA.',
+        '500 mA.'
+      ],
+      correctIndex: 0,
+      explanation: 'En corrent altern a 50 Hz, el llindar de percepció (quan es comença a notar un lleuger formigueig) se situa entorn de 0,5 mA. El llindar de no-deixar-anar (tetanització) és d’uns 10 mA i la fibril·lació ventricular a partir de ~30 mA.'
+    },
+    {
+      id: 't11-q14',
+      difficulty: 'Difícil',
+      question: 'Arribem a una instal·lació industrial i necessitem connectar un focus de 230 V, però només trobem una base d’endoll trifàsica CETAC vermella de 400 V amb 4 pols (3F + T). Podem treure 230 V d’aquest endoll amb un adaptador reglamentari?',
+      options: [
+        'Sí, connectant una fase qualsevol i el conductor de terra (PE) com a neutre.',
+        'No, perquè un endoll CETAC de 4 pols (3F + T) NO disposa de conductor neutre (N), indispensable per obtenir 230 V respecte a fase.',
+        'Sí, perquè entre dues fases d’un endoll de 4 pols hi ha exactament 230 V.',
+        'Sí, només cal girar l’endoll 180°.'
+      ],
+      correctIndex: 1,
+      explanation: 'Un endoll trifàsic CETAC 400 V de 4 pols només porta les 3 fases (L1, L2, L3) i la terra (PE); NO té neutre (N), a diferència del de 5 pols (3F + N + T). Entre fases hi ha 400 V, i utilitzar la terra com a neutre és perillós i fa disparar el diferencial.'
+    },
+    {
+      id: 't11-q15',
+      difficulty: 'Mitjà',
+      question: 'Què passa si connectem el debanat primari d’un transformador elèctric convencional directament a una bateria de corrent continu (DC) de 12 V?',
+      options: [
+        'Funciona normalment i eleva o redueix la tensió continua segons la relació d’espires.',
+        'No funciona (no indueix tensió sostinguda al secundari), ja que un transformador requereix corrent altern (flux magnètic variable) i la baixa resistència òhmica del primari pot sobreescalfar la bobina.',
+        'Converteix automàticament els 12 V DC en 230 V AC a 50 Hz.',
+        'Duplica la capacitat de càrrega de la bateria.'
+      ],
+      correctIndex: 1,
+      explanation: 'Per la llei de Faraday-Lenz, un transformador necessita un flux magnètic variable (AC) per induir força electromotriu al secundari. En DC constant (dΦ/dt = 0) no transfereix energia al secundari i el corrent elevat per la baixa resistència del coure pot cremar el bobinat.'
     }
   ]
 };

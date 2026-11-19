@@ -181,6 +181,12 @@ export const KEY_POINT_GROUPS = [
         topicNumber: 27
       },
       {
+        concept: 'Trampes clàssiques Generalitat (81/21–81/24)',
+        value: 'Pèrdues càrrega NO depenen de la pressió · Euroclasses NO avaluen toxicitat · Endoll CETAC 400V 4 pols NO té neutre · Parets de càrrega NO tenen àbacs · Diferencial 30 mA és complementari als contactes directes',
+        confusionWarning: 'Llegeix molt bé les preguntes "Quina és INCORRECTA?": el tribunal sovint canvia una sola propietat tècnica!',
+        topicNumber: 13
+      },
+      {
         concept: 'Vexatori vs Molest (Igualtat · Tema 4)',
         value: '"Vexatori" = Llei 19/2020 (art. 4.e) · "Molest" = Llei 17/2015 (raó de sexe) i Protocol 2023 (sexual)',
         confusionWarning: 'Inversió càrrega prova: "indicis RACIONALS i fonamentats" (19/2020) vs "indicis fonamentats" (17/2015).',

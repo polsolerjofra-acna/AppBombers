@@ -473,6 +473,71 @@ export const tema16Hidraulica = {
       ],
       correctIndex: 1,
       explanation: 'El punt de funcionament (Q, P) és el punt d’equilibri on es tallen la corba descendent de la bomba i la corba parabòlica ascendent de pèrdues de la instal·lació.'
+    },
+    {
+      id: 't13-q11',
+      difficulty: 'Mitjà',
+      question: 'Quin dels factors següents NO influeix en el càlcul de les pèrdues de càrrega per fregament en una canonada o mànega en règim turbulent?',
+      options: [
+        'La longitud de la conducció.',
+        'La rugositat interior de les parets i el diàmetre interior.',
+        'La pressió estàtica del fluid a l’interior de la conducció.',
+        'El cabal o la velocitat de circulació del fluid.'
+      ],
+      correctIndex: 2,
+      explanation: 'Les pèrdues de càrrega per fregament depenen de la longitud, el diàmetre, la rugositat de la paret i la velocitat/cabal (i la viscositat), però són independents de la pressió estàtica a què treballa el fluid.'
+    },
+    {
+      id: 't13-q12',
+      difficulty: 'Fàcil',
+      question: 'Un dipòsit cilíndric vertical de 10 metres d’alçada total es troba ple d’aigua al 60% de la seva capacitat. Quina pressió hidroestàtica suporta el fons del dipòsit? (Considereu g = 10 m/s² i ρ = 1.000 kg/m³)',
+      options: [
+        '60 kPa (0,06 MPa).',
+        '100 kPa (0,10 MPa).',
+        '6 kPa (0,006 MPa).',
+        '600 kPa (0,60 MPa).'
+      ],
+      correctIndex: 0,
+      explanation: 'El 60% de 10 m equival a una columna d’aigua de h = 6 m. Aplicant P = ρ · g · h = 1.000 × 10 × 6 = 60.000 Pa = 60 kPa = 0,06 MPa (0,6 bar).'
+    },
+    {
+      id: 't13-q13',
+      difficulty: 'Difícil',
+      question: 'En relació amb el fenomen del cop d’ariet i les fórmules que el modelitzen (com la fórmula de Michaud per a tancament lent), quina afirmació és INCORRECTA?',
+      options: [
+        'Es produeix per una variació brusca del cabal, habitualment pel tancament ràpid d’una vàlvula o l’aturada sobtada d’una bomba.',
+        'La sobrepressió és directament proporcional a l’elasticitat de la conducció: com més elàstica és la mànega o canonada, més gran és el cop d’ariet.',
+        'Segons la fórmula de Michaud (ΔH = 2·L·v / (g·t)), en augmentar el temps de tancament de la vàlvula disminueix la sobrepressió generada.',
+        'La instal·lació de vàlvules de retenció esmorteïdes, xemeneies d’equilibri o calderins hidropneumàtics ajuda a limitar-ne els efectes.'
+      ],
+      correctIndex: 1,
+      explanation: 'Afirmació incorrecta: l’elasticitat de la conducció NO és directament proporcional al cop d’ariet, sinó que l’esmorteix (redueix la celeritat de l’ona de pressió i absorbeix part de l’energia cinètica).'
+    },
+    {
+      id: 't13-q14',
+      difficulty: 'Mitjà',
+      question: 'Quan un cabal d’aigua constant circula per una canonada horitzontal i travessa un estrenyiment progressiu de la secció (efecte Venturi), què succeeix en el tram més estret?',
+      options: [
+        'La velocitat disminueix i la pressió estàtica augmenta.',
+        'Tant la velocitat com la pressió estàtica augmenten proporcionalment.',
+        'La velocitat augmenta i la pressió estàtica disminueix.',
+        'La velocitat es manté constant i només augmenta la pressió estàtica.'
+      ],
+      correctIndex: 2,
+      explanation: 'Per l’equació de continuïtat (Q = S · v), en reduir-se la secció augmenta la velocitat. Segons el principi de Bernoulli, aquest augment d’energia cinètica comporta una disminució de la pressió estàtica al tram estret.'
+    },
+    {
+      id: 't13-q15',
+      difficulty: 'Fàcil',
+      question: 'Quin tipus de pressió mesura habitualment un manòmetre instal·lat en una bomba contra incendis?',
+      options: [
+        'La pressió absoluta (referida al buit perfecte).',
+        'La pressió relativa o manomètrica (diferència respecte a la pressió atmosfèrica local).',
+        'La pressió atmosfèrica baromètrica.',
+        'Exclusivament la pressió de vapor del fluid.'
+      ],
+      correctIndex: 1,
+      explanation: 'Els manòmetres convencionals mesuren la pressió relativa (manomètrica), és a dir, la diferència entre la pressió interna del circuit i la pressió atmosfèrica exterior (P_abs = P_atm + P_rel).'
     }
   ]
 };

@@ -565,6 +565,71 @@ export const tema2Quimica = {
       ],
       correctIndex: 3,
       explanation: 'Tal com recull la secció 9.4 del manual, en augmentar la temperatura la viscositat dels líquids disminueix (es tornen més fluids), mentre que en els gasos augmenta.'
+    },
+    {
+      id: 'q10-13',
+      difficulty: 'Mitjà',
+      question: "Segons la convenció vigent de la IUPAC (des de 1982), quins són els valors de temperatura i pressió de les condicions estàndard (STP)?",
+      options: [
+        '298,15 K (25 °C) i 101.325 Pa (1 atm).',
+        '273,15 K (0 °C) i 10⁵ Pa (100 kPa = 1 bar).',
+        '273,15 K (0 °C) i 101.325 Pa (1 atm).',
+        '293,15 K (20 °C) i 10⁵ Pa (1 bar).'
+      ],
+      correctIndex: 1,
+      explanation: "Les condicions estàndard STP definides per la IUPAC són 273,15 K (0 °C) de temperatura i 10⁵ Pa (100 kPa o 1 bar) de pressió, on 1 mol de gas ideal ocupa 22,71 litres."
+    },
+    {
+      id: 'q10-14',
+      difficulty: 'Difícil',
+      question: "Quina afirmació és INCORRECTA respecte a com varia la viscositat dels fluids (líquids i gasos) amb la temperatura (T) i la pressió (P)?",
+      options: [
+        "En els líquids, un augment de temperatura disminueix la viscositat perquè es vencen les forces de cohesió intermoleculars.",
+        "En els gasos, un augment de temperatura incrementa la viscositat a causa del major intercanvi de quantitat de moviment entre molècules.",
+        "En els gasos a pressions moderades, la viscositat augmenta molt ràpidament de forma proporcional a la pressió i disminueix en pujar la temperatura.",
+        "En els líquids, la viscositat és poc sensible a variacions moderades de pressió, però augmenta a pressions molt elevades."
+      ],
+      correctIndex: 2,
+      explanation: "És incorrecte: en els gasos la viscositat AUGMENTA amb la temperatura i és pràcticament independent de la pressió a pressions moderades."
+    },
+    {
+      id: 'q10-15',
+      difficulty: 'Mitjà',
+      question: "En una emergència amb dipòsits de gasos a pressió, quina afirmació és INCORRECTA respecte a la Temperatura Crítica (Tc) i la diferència entre gas i vapor?",
+      options: [
+        "Un vapor és una substància en fase gasosa que es troba a una temperatura inferior a la seva Temperatura Crítica (T < Tc).",
+        "Qualsevol vapor (T < Tc) pot ser liquat únicament augmentant la pressió a temperatura constant.",
+        "Un gas per sobre de la seva Temperatura Crítica (T > Tc) es pot liquar fàcilment si només s'augmenta prou la pressió sense refredar-lo.",
+        "El metà (Tc = -82,6 °C) a temperatura ambient és un gas permanent, mentre que el propà (Tc = 96,7 °C) es comporta com un vapor i s'emmagatzema liquat."
+      ],
+      correctIndex: 2,
+      explanation: "Per sobre de la Temperatura Crítica (T > Tc) és físicament impossible liquar un gas per simple compressió isotèrmica, per elevada que sigui la pressió; cal refredar-lo per sota de Tc."
+    },
+    {
+      id: 'q10-16',
+      difficulty: 'Mitjà',
+      question: "Quina és l'equació química estequiomètricament ajustada amb coeficients enters mínims per a la combustió completa del butà (C₄H₁₀)?",
+      options: [
+        'C₄H₁₀ + 6 O₂ → 4 CO₂ + 5 H₂O',
+        '2 C₄H₁₀ + 13 O₂ → 8 CO₂ + 10 H₂O',
+        '2 C₄H₁₀ + 10 O₂ → 8 CO₂ + 10 H₂O',
+        'C₄H₁₀ + 13 O₂ → 4 CO₂ + 5 H₂O'
+      ],
+      correctIndex: 1,
+      explanation: "Comptant àtoms a banda i banda: 2 C₄H₁₀ + 13 O₂ → 8 CO₂ + 10 H₂O dona 8 àtoms de C, 20 d'H i 26 d'O (8×2 + 10×1 = 26)."
+    },
+    {
+      id: 'q10-17',
+      difficulty: 'Fàcil',
+      question: "Quina de les següents afirmacions sobre el mol, el nombre d'Avogadro i les masses molars (H = 1 g/mol; C = 12 g/mol; O = 16 g/mol) és INCORRECTA?",
+      options: [
+        "Un mol de qualsevol substància conté aproximadament 6,022 × 10²³ entitats elementals.",
+        "La massa d'1 mol de carboni-12 és exactament 12 grams.",
+        "La massa d'1 mol d'aigua (H₂O) és de 12 grams.",
+        "En 1 mol de molècules d'oxigen (O₂) hi ha 32 grams de massa."
+      ],
+      correctIndex: 2,
+      explanation: "La massa molar de l'aigua (H₂O) és 2 × 1 + 16 = 18 g/mol; per tant, 1 mol d'aigua té una massa de 18 grams, no de 12 grams."
     }
   ]
 };

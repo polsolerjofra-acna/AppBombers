@@ -403,6 +403,71 @@ export const tema10IncendisForestals = {
       ],
       correctIndex: 3,
       explanation: "En la Situació 2 d'atrapament, amb clariana i aigua suficient, s'estaciona sense vegetació sota el xassís amb el motor en marxa i es projecten cortines d'aigua amb 2 línies de Ø25 des del costat protegit de la carrosseria amb un angle de 45° a 60°."
+    },
+    {
+      id: 'q25-13',
+      difficulty: 'Mitjà',
+      question: "En relació amb la distinció entre maniobres d'atac directe i maniobres d'atac indirecte en incendis forestals (MAN.INVE.000), quina afirmació és INCORRECTA?",
+      options: [
+        "En l'atac directe s'actua directament sobre les flames o la vora del combustible en ignició (amb aigua, retardant, eines manuals o terra mineral).",
+        "L'atac indirecte treballa a certa distància del front de flames aprofitant o creant una línia de control per eliminar la continuïtat del combustible abans que hi arribi l'incendi.",
+        "L'ús del foc tècnic (cremes d'eixamplament o contrafocs) es classifica dins les maniobres d'atac directe perquè aplica foc sobre el front principal.",
+        "Quan la llargada de flama supera els 5 metres (Lf > 5 m), el front queda fora de capacitat d'extinció en atac directe i requereix maniobres indirectes o d'oportunitat."
+      ],
+      correctIndex: 2,
+      explanation: "És incorrecte: el foc tècnic (crema d'eixamplament des de línia d'ancoratge o contrafoc) és una maniobra d'ATAC INDIRECTE, ja que treballa per davant o a distància del front eliminant el combustible disponible abans de l'arribada de les flames."
+    },
+    {
+      id: 'q25-14',
+      difficulty: 'Difícil',
+      question: "En un incendi forestal de 12 km de perímetre, el comandament comunica al CECAT que l'incendi ja no avança lliurement i evoluciona dins les línies previstes, tot i que encara falta tancar un tram de perímetre al flanc dret on treballen dotacions en atac i remat. En quina Fase INFOCAT es troba l'incendi i quines són les 3 Etapes operatives dels equips?",
+      options: [
+        "Fase d'Incendi Estabilitzat (de les 4 fases del foc: Actiu, Estabilitzat, Controlat, Extingit) | Les 3 Etapes dels equips d'extinció són Atac, Remat i Rereguarda.",
+        "Fase d'Incendi Controlat (perquè ja no avança lliurement) | Les 3 Etapes dels equips són Actiu, Estabilitzat i Controlat.",
+        "Fase d'Incendi Actiu | Les 3 Etapes dels equips són Flanc esquerre, Flanc dret i Cua.",
+        "Fase d'Incendi Extingit | Les 3 Etapes dels equips són Atac directe, Atac indirecte i Foc tècnic."
+      ],
+      correctIndex: 0,
+      explanation: "Quan el foc ja no avança lliurement però el perímetre encara no està envoltat del tot per una línia de control contínua, es troba en Fase d'Incendi Estabilitzat (INFOCAT). Les 3 Etapes que executen els equips d'extinció són Atac (Actiu), Remat i Rereguarda."
+    },
+    {
+      id: 'q25-15',
+      difficulty: 'Mitjà',
+      question: "Una dotació forestal treballa en un flanc on la llargada de flama prevista davant un canvi de vent és Lf = 3,5 metres. Segons el protocol LACES, quin radi mínim (R) ha de tenir la Zona Segura fins al combustible sense cremar més proper per poder-hi sobreviure sense mitjans d'autoprotecció ni cabina?",
+      options: [
+        "R ≥ 7 metres (2 × Lf), sempre que les línies d'aigua estiguin pressuritzades.",
+        "R ≥ 14 metres (4 × Lf, equivalent a un espai lliure de combustible d'almenys 28 metres de diàmetre).",
+        "R ≥ 3,5 metres (1 × Lf), situant-se preferentment costa amunt del front.",
+        "R ≥ 10 metres fixos, independentment de l'alçada de la vegetació i la flama."
+      ],
+      correctIndex: 1,
+      explanation: "El protocol LACES estableix que el radi d'una Zona Segura (S) ha de ser com a mínim 4 vegades la llargada de flama prevista (R ≥ 4 × Lf). Amb Lf = 3,5 m, R ≥ 4 × 3,5 = 14 m."
+    },
+    {
+      id: 'q25-16',
+      difficulty: 'Mitjà',
+      question: "Respecte als principis del protocol de seguretat LACES en incendis forestals (MAN.INVE.000), assenyala quina afirmació és INCORRECTA:",
+      options: [
+        "La lletra A (Anchor / Punt d'ancoratge) exigeix començar l'atac des d'una zona segura (cua, carretera o cremat) per evitar que el foc ens envolti per darrere.",
+        "La lletra L (Lookouts / Guaites) implica disposar d'observadors amb visió directa del comportament del foc i del personal a la línia.",
+        "Una Zona Segura (Safety zone, S) vàlida es defineix com un espai on és obligatori confinar tota la dotació dins la cabina del camió amb els ruixadors en marxa.",
+        "Les rutes d'escapament (Escape routes, E) han d'estar clarament definides, netes i comunicades a tota la dotació abans d'iniciar el treball."
+      ],
+      correctIndex: 2,
+      explanation: "És incorrecte: per definició, una Zona Segura (S, amb R ≥ 4 × Lf) permet la supervivència del personal SENSE haver d'utilitzar cap mitjà d'autoprotecció ni refugiar-se dins la cabina d'un vehicle."
+    },
+    {
+      id: 'q25-17',
+      difficulty: 'Fàcil',
+      question: "En un sector de cua amb matollar baix (Lf = 0,7 m i velocitat d'avanç < 1 km/h), s'ordena fer atac directe amb eines manuals per consolidar la línia fins a terra mineral. Quina és la seqüència correcta d'operadors i quina etapa segueix un cop apagada la flama viva?",
+      options: [
+        "1r Pala → 2n Pulaski → 3r Batefocs → 4t Motxilla, passant tot seguit a la fase d'Incendi Extingit.",
+        "1r Motxilla d'aigua → 2n Batefocs → 3r Pulaski → 4t Pala (amb separació de seguretat entre operadors), passant posteriorment a l'etapa de Remat (liquidació de brases) i finalment a Rereguarda.",
+        "1r Motoserra → 2n Foc tècnic → 3r Batefocs → 4t Motxilla, passant directament de l'etapa d'Atac a l'etapa d'Estabilitzat.",
+        "1r Batefocs → 2n Motxilla d'aigua → 3r Pala → 4t Pulaski, sense necessitat d'ancoratge ni guaites."
+      ],
+      correctIndex: 1,
+      explanation: "La cadena d'eines manuals segueix l'ordre inalterable Motxilla (refreda) → Batefocs (sufoca) → Pulaski (talla/cava) → Pala (raspa i enterra), donant pas després a les etapes de Remat (liquidació) i Rereguarda (vigilància)."
     }
   ]
 };

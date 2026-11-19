@@ -309,6 +309,71 @@ export const tema11IncendisVaris = {
       ],
       correctIndex: 3,
       explanation: "El GNL es troba a -162 °C (8-16 bar); l'aigua està uns 175 °C més calenta, de manera que aplicar-n'hi aporta calor, accelera brutalment la vaporització i pot desencadenar un RPT (Rapid Phase Transition)."
+    },
+    {
+      id: 'q26-13',
+      difficulty: 'Difícil',
+      question: "En relació amb la comparativa tècnica i operativa entre vehicles propulsats per GNC, GNL i hidrogen (H₂) segons el manual MAN.INXX.000, quina afirmació és INCORRECTA?",
+      options: [
+        "El GNC s'emmagatzema en estat gasós a uns 200 bar i disposa de fusibles tèrmics TPRD (~110 °C) que no s'han de refredar amb aigua per evitar que quedin bloquejats i el cilindre rebenti.",
+        "El GNL s'emmagatzema en estat líquid criogènic a -162 °C i projectar aigua sobre el dipòsit o una bassa vessada aporta calor i pot provocar una transició ràpida de fase (RPT).",
+        "L'hidrogen (H₂) s'emmagatzema comprimit a 350 o 700 bar i genera una flama gairebé invisible de dia que obliga a utilitzar càmera tèrmica abans d'apropar-s'hi.",
+        "En un incendi d'un vehicle de GNC o d'H₂ amb el dardo de foc actiu pel TPRD, la primera prioritat és apagar la flama del dardo directament amb aigua i refredar intensament la vàlvula fusible."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: ni en GNC (200 bar) ni en H₂ (350/700 bar) s'ha de refredar el TPRD (~110 °C) ni apagar el dardo de flama mentre hi hagi fuita activa, ja que s'acumularia gas inflamable sense cremar i es podria bloquejar l'alleujament de pressió."
+    },
+    {
+      id: 'q26-14',
+      difficulty: 'Difícil',
+      question: "Una dotació intervé en dos sinistres consecutius: al primer crema un autobús urbà de GNC (200 bar) i al segon s'ha produït un vessament de GNL (-162 °C) d'un camió cisterna formant una bassa amb núvol fred visible. Quina pauta d'actuació amb aigua correspon a cadascun?",
+      options: [
+        "En tots dos casos cal aplicar raig ple d'aigua directament sobre els dipòsits i sobre la bassa per diluir el metà immediatament.",
+        "En el GNC (200 bar) NO s'ha de tirar aigua sobre els cilindres per no impedir l'obertura del TPRD (~110 °C); en el GNL (-162 °C) NO s'ha d'aplicar aigua sobre la bassa ni sobre el tanc criogènic pel risc d'ebullició violenta i RPT.",
+        "En el GNC s'aplica escuma d'alta expansió dins dels cilindres i en el GNL s'escalfa la bassa amb aigua calenta per evaporar-la més ràpidament.",
+        "El GNC s'acumula sempre arran de terra com la gasolina, mentre que el GNL a -162 °C incorpora fusible TPRD a 700 bar."
+      ],
+      correctIndex: 1,
+      explanation: "Tant en GNC com en GNL l'aplicació directa d'aigua sobre el dipòsit/bassa està desaconsellada per motius físics oposats: al GNC (200 bar) refreda i bloqueja el TPRD (~110 °C); al GNL (-162 °C) l'aigua aporta calor i dispara la vaporització amb risc de RPT."
+    },
+    {
+      id: 'q26-15',
+      difficulty: 'Mitjà',
+      question: "A ple migdia crema un turisme d'hidrogen (H₂, pila de combustible) al voral d'una autovia. Des de 25 metres no es veu cap flama sortint de la part posterior, però se sent un fort xiulet de fuita a alta pressió. Quina actuació és la correcta?",
+      options: [
+        "Apropar-se immediatament pel lateral sense càmera tèrmica perquè, si no es veu flama, vol dir que el gas s'escapa sense cremar.",
+        "Utilitzar la càmera tèrmica abans d'acostar-s'hi per detectar un possible dardo de flama invisible (H₂ a 350/700 bar), mantenir el zonatge ≥ 25 m, no refredar el TPRD ni apagar el dardo i protegir l'entorn.",
+        "Ruixar aigua directament sobre la sortida de la fuita a 1 metre per comprovar si hi ha temperatura.",
+        "Tallar els pilars amb la cisalla pel costat on se sent el xiulet per descompressar el dipòsit de 700 bar."
+      ],
+      correctIndex: 1,
+      explanation: "La flama de l'hidrogen (350/700 bar) és pràcticament invisible a la llum del dia i amb d = 0,07 puja verticalment a gran velocitat; cal inspeccionar sempre amb càmera tèrmica des de distància segura (≥ 25 m) abans d'apropar-s'hi."
+    },
+    {
+      id: 'q26-16',
+      difficulty: 'Fàcil',
+      question: "Respecte a la intervenció en un incendi d'un contenidor soterrat segons el manual MAN.INXX.000, assenyala quina afirmació és INCORRECTA:",
+      options: [
+        "Està prohibit baixar a l'interior del fossat soterrat pel risc d'enfonsament, atrapament i atmosfera tòxica o anòxica.",
+        "L'extinció es realitza des de l'exterior per inundació amb aigua o omplint el fossat amb escuma de mitjana o alta expansió.",
+        "Cal equipar-se amb EPI pesant complet i ERA des de l'inici i valorar possibles canalitzacions o acumulació de gasos al subsol.",
+        "La maniobra recomanada és baixar una escala dins del fossat amb un binomi per remoure les brases amb el bichero mentre s'aplica CO₂."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: en contenidors soterrats està totalment prohibit baixar dins del fossat; s'extingeix sempre des de fora inundant amb aigua o omplint el fossat d'escuma de mitjana/alta expansió."
+    },
+    {
+      id: 'q26-17',
+      difficulty: 'Mitjà',
+      question: "En arribar a un incendi de vehicle en via pública amb pendent, quina és la seqüència d'emplaçament i aproximació correcta segons el manual MAN.INXX.000?",
+      options: [
+        "Emplaçar l'autobomba a la part baixa del pendent a 5 m, acostar-se frontalment a 0° amb EPI lleuger i obrir el capó d'una tirada.",
+        "Emplaçar l'autobomba a la part alta del pendent i a sobrevent, establir zonatge ≥ 25 m, identificar el combustible/propulsió (etiquetatge UNE-EN 16942 o distintius) amb EPI complet i ERA, i aproximar-se a 45° amb línia de Ø25.",
+        "Estacionar a sotavent per tenir millor visibilitat sota el fum, apropar-se a 90° pel mig de la porta i aplicar aigua directa a les bateries durant 30 segons.",
+        "Desconnectar primer la bateria d'alta tensió amb eines manuals abans de posar-se l'ERA ni desplegar la línia de seguretat."
+      ],
+      correctIndex: 1,
+      explanation: "El procediment estableix emplaçar el camió a la part alta del pendent i a sobrevent, mantenir 25 m de zonatge, identificar el combustible amb EPI complet + ERA i aproximar-se en angle de 45° (mai frontal ni posterior per evitar projeccions de pistons/para-xocs) amb mànega de Ø25."
     }
   ]
 };

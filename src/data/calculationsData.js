@@ -420,6 +420,12 @@ export const CALCULATION_SECTIONS = [
         formula: 'H_teòrica = 10,33 mca  |  H_pràctica ≤ 7,5 m (cavitació)',
         units: 'A més altitud (muntanya) o aigua més calenta, aspira menys metres!',
         when: 'Bombejar d\'un riu, bassa o pou.'
+      },
+      {
+        name: 'Dosificació d\'Escumogen i Litres d\'Escuma (Molt preguntat!)',
+        formula: 'V_escumogen = V_solució × (% / 100)  |  V_escuma = V_solució × Coef_expansió',
+        units: 'Baixa exp. (1–20) · Mitjana (20–200) · Alta (>200)',
+        when: 'Preguntes clàssiques 81/23 i 81/24: quanta aigua/temps/escuma surt d\'un dipòsit o bidó.'
       }
     ],
     mentalTips: [
@@ -500,6 +506,30 @@ export const CALCULATION_SECTIONS = [
         solutionSteps: [
           '1. Cabal total = 250 + 250 = 500 L/min.',
           '2. Temps = 3.000 L ÷ 500 L/min = 6 minuts.'
+        ]
+      },
+      {
+        id: 'p-t13-6',
+        title: 'Temps per esgotar l\'escumogen del camió (Examen 81/24)',
+        statement: 'Al camió portem 200 litres d\'escumogen i dosifiquem al 2%. Si la bomba impulsa 1.000 litres/minut d\'aigua cap al dosificador, quant temps trigarem a esgotar tot l\'escumogen?',
+        hint: 'Calcula el 2% de 1.000 L/min (quant escumogen gasta cada minut) i divideix 200 L per aquest valor.',
+        options: ['10 minuts', '4 minuts', '5 minuts', '40 minuts'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Consum d\'escumogen per minut = 1.000 L/min × 2% = 20 L/min.',
+          '2. Temps total = 200 L ÷ 20 L/min = 10 minuts.'
+        ]
+      },
+      {
+        id: 'p-t13-7',
+        title: 'Litres d\'escuma amb coeficient d\'expansió (Examen 81/23)',
+        statement: 'Volem obtenir escuma al 3% amb un coeficient d\'expansió de 10. Si gastem tota una garrafa de 6 litres d\'escumogen, quants litres d\'escuma obtindrem?',
+        hint: '6 litres són el 3% de la solució espumant: divideix 6 ÷ 0,03 per tenir els litres de solució i multiplica per 10!',
+        options: ['2.000 litres', '6.000 litres', '4.000 litres', '5.000 litres'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Volum de solució (aigua + escumogen) = 6 L ÷ 0,03 = 200 litres.',
+          '2. Volum d\'escuma = 200 L × 10 (expansió) = 2.000 litres d\'escuma.'
         ]
       }
     ]

@@ -389,6 +389,71 @@ export const tema8PrevencioIncendis = {
       ],
       correctIndex: 3,
       explanation: "La paret mitgera requereix un mínim d'EI 120 (fins a EI 180/240 en risc alt industrial) i a la seva trobada amb coberta o façana cal una franja ≥ 1 m d'amplada de resistència EI t/2 (mínim EI 60), o sobresortir 0,60 m per sobre de la coberta."
+    },
+    {
+      id: 'q23-13',
+      difficulty: 'Mitjà',
+      question: "En les Boques d'Incendi Equipades (BIE) regulades per la norma UNE-EN 671, què expressa el factor K (o coeficient de descàrrega) del broquet?",
+      options: [
+        "La relació entre el cabal subministrat i l'arrel quadrada de la pressió dinàmica disponible (Q = K · √P).",
+        "La longitud màxima de la mànega en metres segons el tipus semirígid o pla.",
+        "La pressió màxima de trencament del manòmetre abans de la prova hidrostàtica.",
+        "El temps mínim d'autonomia del dipòsit de reserva d'aigua PCI."
+      ],
+      correctIndex: 0,
+      explanation: "El factor K caracteritza la geometria de sortida de la llança/broquet de la BIE i relaciona cabal i pressió mitjançant la fórmula Q = K · √P (per exemple, K ≥ 42 en BIE de 25 mm)."
+    },
+    {
+      id: 'q23-14',
+      difficulty: 'Fàcil',
+      question: "Segons el CTE DB-SI i el RIPCI, quina és l'eficàcia mínima exigida per a un extintor portàtil estàndard de 6 kg de pols ABC en edificis d'ús general?",
+      options: [
+        "13A - 55B.",
+        "21A - 113B - C.",
+        "34A - 233B - F.",
+        "8A - 34B."
+      ],
+      correctIndex: 1,
+      explanation: "El CTE DB-SI fixa com a estàndard general en edificació extintors portàtils d'eficàcia mínima 21A - 113B (i classe C si és pols polivalent ABC), corresponents habitualment als de 6 kg."
+    },
+    {
+      id: 'q23-15',
+      difficulty: 'Difícil',
+      question: "En una instal·lació de columna seca amb tram descendent (per exemple, cap a plantes sota rasant), com es disposen les vàlvules i les claus de seccionament segons el RIPCI?",
+      options: [
+        "Només té presa d'alimentació a l'interior del soterrani i cap sortida a les plantes.",
+        "Disposa de boca de sortida amb vàlvula a cada planta i una clau de seccionament situada a la part inferior (a peu de baixant / connexió de façana).",
+        "No admet claus de seccionament perquè funciona sempre amb pressió permanent d'aigua.",
+        "Les boques de sortida són exclusivament de 70 mm amb acoblament Storz."
+      ],
+      correctIndex: 1,
+      explanation: "En una columna seca descendent (a diferència de l'ascendent estàndard amb preses a plantes parells fins a la 8a), es disposa de vàlvula de sortida siamesa a cada planta i clau de seccionament a baix per aïllar i purgar el tram."
+    },
+    {
+      id: 'q23-16',
+      difficulty: 'Mitjà',
+      question: "Quina és la funció i el règim de funcionament de la bomba auxiliar o bomba Jockey en un grup de pressió contra incendis?",
+      options: [
+        "Subministrar tot el cabal nominal als ruixadors durant un incendi real; té arrencada manual i aturada automàtica.",
+        "Mantenir la pressió de repòs de la xarxa compensant petites pèrdues o fuites, amb arrencada i aturada automàtiques per pressòstat.",
+        "Buidar el dipòsit d'aigua després d'un servei d'extinció; només funciona amb motor dièsel.",
+        "Substituir la bomba principal quan falla el subministrament elèctric durant 60 minuts."
+      ],
+      correctIndex: 1,
+      explanation: "La bomba Jockey és una bomba auxiliar de petit cabal que evita arrencades innecessàries de la bomba principal davant microfuites; arrenca i s'atura de forma totalment automàtica."
+    },
+    {
+      id: 'q23-17',
+      difficulty: 'Difícil',
+      question: "Respecte a la classificació europea de reacció al foc dels materials de construcció (Euroclasses, EN 13501-1 i EN 13501-5), quina afirmació és INCORRECTA?",
+      options: [
+        "La classificació principal (A1, A2, B, C, D, E, F) avalua la contribució del material al desenvolupament del foc.",
+        "Els subíndexs addicionals avaluen l'opacitat/producció de fums (s1, s2, s3) i la caiguda de gotes o partícules inflamades (d0, d1, d2).",
+        "Les Euroclasses inclouen un paràmetre obligatori específic per quantificar la toxicitat química dels fums emesos (t1, t2, t3).",
+        "La classificació Broof(t1) s'utilitza per avaluar el comportament de les cobertes davant d'un foc exterior."
+      ],
+      correctIndex: 2,
+      explanation: "Afirmació incorrecta: les Euroclasses de reacció al foc NO avaluen ni classifiquen la toxicitat dels fums (el subíndex 't1' de Broof(t1) fa referència al mètode d'assaig per a cobertes davant foc exterior, no pas a la toxicitat)."
     }
   ]
 };

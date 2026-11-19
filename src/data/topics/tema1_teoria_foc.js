@@ -476,6 +476,71 @@ export const tema1TeoriaFoc = {
       ],
       correctIndex: 3,
       explanation: "L'escuma física es classifica en baixa (<20), mitjana (20-200) i alta (>200) expansió; la pols ABC es basa en fosfat monoamònic, que crea una crosta vítria d'àcid metafosfòric sobre les brases."
+    },
+    {
+      id: 'q8-13',
+      difficulty: 'Mitjà',
+      question: "Disposem d'un dipòsit amb 200 litres d'escumogen i treballem amb una dosificació al 2% i un cabal d'escumant de 1.000 L/min. Si el coeficient d'expansió és 8, quina autonomia d'aplicació tindrem i quin volum total d'escuma física generarem?",
+      options: [
+        "5 minuts d'autonomia i 40.000 litres d'escuma.",
+        "10 minuts d'autonomia i 80.000 litres d'escuma.",
+        "20 minuts d'autonomia i 160.000 litres d'escuma.",
+        "10 minuts d'autonomia i 10.000 litres d'escuma."
+      ],
+      correctIndex: 1,
+      explanation: "Al 2% de 1.000 L/min consumim 20 L/min d'escumogen (i 980 L/min d'aigua). Amb 200 L d'escumogen tenim 200 / 20 = 10 minuts d'autonomia. El volum total d'escumant serà 1.000 L/min × 10 min = 10.000 L, que multiplicats per l'expansió 8 donen 80.000 L d'escuma."
+    },
+    {
+      id: 'q8-14',
+      difficulty: 'Mitjà',
+      question: "Ordena els següents hidrocarburs gasosos de MENOR a MAJOR Límit Inferior d'Inflamabilitat (LII) en aire a pressió i temperatura ambient:",
+      options: [
+        'Metà, Età, Propà, Butà.',
+        'Propà, Butà, Metà, Età.',
+        'Butà, Propà, Età, Metà.',
+        'Età, Metà, Butà, Propà.'
+      ],
+      correctIndex: 2,
+      explanation: "En els alcans, a mesura que augmenta la massa molecular disminueix el LII: Butà (~1,4–1,8%) < Propà (~2,1%) < Età (~3,0%) < Metà (~4,4–5,0%)."
+    },
+    {
+      id: 'q8-15',
+      difficulty: 'Mitjà',
+      question: "Quin és el mecanisme físic principal que desencadena el fenomen de la BLEVE (Boiling Liquid Expanding Vapor Explosion) en un dipòsit que conté un líquid liquat a pressió?",
+      options: [
+        "L'entrada sobtada d'aire fresc en un recinte confinat amb acumulació de fums i gasos de piròlisi.",
+        "La fallada mecànica del recipient i la baixada sobtada de pressió fins a la pressió atmosfèrica, que provoca l'ebullició instantània i massiva del líquid sobreescalfat.",
+        "La reacció exotèrmica entre l'aigua d'extinció i un metall alcalí fos a més de 800 °C.",
+        "La combustió lenta sense flama a l'interior d'una pila de sòlids porosos."
+      ],
+      correctIndex: 1,
+      explanation: "La BLEVE es produeix quan el recipient falla i pateix una baixada sobtada de pressió; com que el líquid interior està a una temperatura molt superior al seu punt d'ebullició a pressió atmosfèrica, vaporitza de manera instantània i explosiva."
+    },
+    {
+      id: 'q8-16',
+      difficulty: 'Fàcil',
+      question: "Ordena els següents materials de construcció de MAJOR a MENOR conductivitat tèrmica (capacitat de transmetre calor per conducció):",
+      options: [
+        'Acer > Coure/Alumini > Fusta > Formigó.',
+        'Formigó > Acer > Coure/Alumini > Fusta.',
+        'Coure/Alumini > Acer > Formigó > Fusta.',
+        'Coure/Alumini > Formigó > Acer > Fusta.'
+      ],
+      correctIndex: 2,
+      explanation: "Els metalls bons conductors (coure ~380 W/m·K, alumini ~200 W/m·K) superen àmpliament l'acer (~50 W/m·K), seguit de materials de construcció com el formigó (~1,4 W/m·K) i aïllants com la fusta (~0,15 W/m·K)."
+    },
+    {
+      id: 'q8-17',
+      difficulty: 'Mitjà',
+      question: "Quina afirmació és INCORRECTA respecte a les característiques i limitacions del diòxid de carboni (CO₂) com a agent extintor?",
+      options: [
+        "Pot provocar cremades criogèniques per contacte amb la neu carbònica (a uns -78,5 °C) i risc d'asfíxia en espais tancats.",
+        "Té un abast reduït i baixa efectivitat en exteriors en presència de vent.",
+        "Produeix una forta corrosió química i deixa residus conductors sobre els equips electrònics sota tensió.",
+        "És inadequat en focs de classe D (metalls combustibles) i té poca capacitat de refredament en brases profundes de classe A."
+      ],
+      correctIndex: 2,
+      explanation: "El CO₂ és un agent net i dielèctric: no condueix l'electricitat, s'evapora sense deixar residus i NO produeix corrosió electrònica, motiu pel qual és apte per a quadres elèctrics i equips electrònics."
     }
   ]
 };

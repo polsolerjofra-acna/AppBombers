@@ -345,6 +345,71 @@ export const tema12RiscosNrbq = {
       ],
       correctIndex: 1,
       explanation: "Els vestits Tipus 1 hermètics a gasos es regeixen per EN 943-1 / EN 943-2 ET (1a = ERA dins del vestit). Tot i l'autonomia nominal de l'ampolla, el treball efectiu és d'uns 15-20 minuts perquè cal aire suficient per completar la descontaminació."
+    },
+    {
+      id: 'q27-13',
+      difficulty: 'Fàcil',
+      question: "A l'ADR, com s'identifica visualment l'etiqueta de perill de la Classe 9 (matèries i objectes perillosos diversos)?",
+      options: [
+        "Fons taronja amb una bomba explotant a la meitat superior i el número 9.",
+        "Fons blanc amb 7 franges verticals negres a la meitat superior i el número 9 subratllat a l'angle inferior.",
+        "Meitat superior blanca amb una calavera i meitat inferior negra amb el número 9.",
+        "Fons blau amb una flama blanca i el número 9."
+      ],
+      correctIndex: 1,
+      explanation: "L'etiqueta de la Classe 9 (matèries i objectes perillosos diversos) presenta fons blanc amb 7 barres verticals negres a la meitat superior i el número 9 subratllat a la part inferior."
+    },
+    {
+      id: 'q27-14',
+      difficulty: 'Mitjà',
+      question: "En una intervenció amb mercaderies perilloses on el panell del Regne Unit (codi Hazchem / EAC) indica '2XE', quines actuacions principals prescriu als bombers?",
+      options: [
+        "Aplicar aigua a broll ple, diluir el vessament al clavegueram i sense necessitat de considerar evacuació.",
+        "Utilitzar aigua polvoritzada/boira (prohibit aigua a broll), contenir el vessament (no diluir), protecció completa per a líquids amb ERA i valorar l'evacuació (E).",
+        "Emprar exclusivament escuma química, permetre abocament lliure i utilitzar només guants de pell.",
+        "No aplicar cap agent extintor en absolut i evacuar obligatòriament a 5 km."
+      ],
+      correctIndex: 1,
+      explanation: "En el codi Hazchem 2XE: '2' = aigua en boira/polvoritzada (mai a broll); 'X' = protecció química completa per a líquids + ERA, sense reacció violenta però amb obligació de CONTENIR el vessament; 'E' = considerar l'evacuació."
+    },
+    {
+      id: 'q27-15',
+      difficulty: 'Fàcil',
+      question: "Quin reglament internacional regula específicament el transport de mercaderies perilloses per ferrocarril?",
+      options: [
+        "ADR.",
+        "IMDG.",
+        "RID.",
+        "ADN."
+      ],
+      correctIndex: 2,
+      explanation: "El RID regula el transport internacional de mercaderies perilloses per ferrocarril (ADR = carretera; ADN = vies navegables interiors; IMDG = marítim; OACI/IATA = aeri)."
+    },
+    {
+      id: 'q27-16',
+      difficulty: 'Fàcil',
+      question: "A quina classe de perill de l'ADR corresponen els peròxids orgànics?",
+      options: [
+        "Classe 4.2.",
+        "Classe 5.1.",
+        "Classe 5.2.",
+        "Classe 6.2."
+      ],
+      correctIndex: 2,
+      explanation: "Dins la Classe 5, la 5.1 correspon a les matèries comburents i la Classe 5.2 correspon als peròxids orgànics (molt sensibles a la calor, la fricció o les impureses, amb risc de descomposició exotèrmica accelerada)."
+    },
+    {
+      id: 'q27-17',
+      difficulty: 'Mitjà',
+      question: "Segons el Reglament CLP (CE núm. 1272/2008) sobre classificació, etiquetatge i envasament de substàncies i mescles, quina de les dades següents NO és obligatòria a l'etiqueta del producte?",
+      options: [
+        "La data de fabricació del producte.",
+        "Els pictogrames de perill i la paraula d'advertència ('Perill' o 'Atenció').",
+        "Les indicacions de perill (frases H) i els consells de prudència (frases P).",
+        "La identificació del producte i les dades de contacte del proveïdor."
+      ],
+      correctIndex: 0,
+      explanation: "El Reglament CLP exigeix nom i dades del proveïdor, quantitat nominal (en públic general), identificadors del producte, pictogrames, paraula d'advertència, frases H i frases P; la data de fabricació NO és un element obligatori de l'etiqueta de perill CLP."
     }
   ]
 };

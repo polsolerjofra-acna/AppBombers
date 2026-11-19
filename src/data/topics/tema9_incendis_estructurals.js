@@ -396,6 +396,71 @@ export const tema9IncendisEstructurals = {
       ],
       correctIndex: 3,
       explanation: "Les 4 fases d'entrada segura són: valorar porta/Tª, posicionament protegit i obertura de control, refredament de gasos i progressió sota el pla neutre deixant falca. La taula CACE registra identitat del binomi, pressió inicial, hora d'entrada, ubicació i hora límit."
+    },
+    {
+      id: 'q24-13',
+      difficulty: 'Mitjà',
+      question: "En arribar a un incendi en un edifici entre mitgeres, el comandament observa des del carrer (mirant la façana principal d'accés) que per la façana posterior surt fum groguenc-marronós molt dens a polsacions ('respira'), i ordena emplaçar l'autoescala a la façana lateral dreta. Com s'identifiquen aquestes façanes segons la senyalització horària A-B-C-D i quin risc anuncia el fum?",
+      options: [
+        "Façana principal = A; lateral dreta = B; posterior = C | El fum indica un incendi totalment ventilat sense risc de Backdraft.",
+        "Façana principal = A; posterior = C; lateral dreta = D (numerant en sentit horari, quedant la B a l'esquerra) | El fum dens groguenc-marronós a polsacions anuncia un incendi limitat per ventilació (ILV) amb risc extrem de Backdraft.",
+        "Façana principal = A; posterior = B; lateral dreta = C | El fum indica únicament vapor d'aigua net per una avaria de calefacció.",
+        "Façana principal = 0; posterior = 2; lateral dreta = 1 (nomenclatura forestal aplicada a edificis)."
+      ],
+      correctIndex: 1,
+      explanation: "La senyalització de façanes A-B-C-D es fa en sentit horari mirant la façana principal A (B = esquerra, C = posterior, D = dreta). Un fum dens groguenc-marronós a polsacions indica acumulació de gasos de piròlisi en un ILV amb risc imminent de Backdraft."
+    },
+    {
+      id: 'q24-14',
+      difficulty: 'Mitjà',
+      question: "Respecte a la diferència operativa entre l'atac transicional i el refredament de gasos (atac 3D) al manual MAN.INES.000, assenyala quina afirmació és INCORRECTA:",
+      options: [
+        "L'atac transicional s'aplica des de l'exterior (habitualment per una finestra) projectant un raig sòlid amb angle fix contra el sostre (10–20 s) per abatre la temperatura abans o durant la progressió interior.",
+        "En l'atac transicional s'ha d'evitar remoure el raig en cercles o ruixar directament el pla de la finestra per no empènyer gasos calents i vapor cap a l'escala ni cap als equips interiors.",
+        "El refredament de gasos (atac 3D) s'executa a l'interior sobre el coixí de fums mitjançant polsacions curtes (< 1 s) i llargues (1–5 s) dibuixant 'O', 'Z' o '8' amb aigua polvoritzada.",
+        "L'atac transicional consisteix a entrar dins del recinte i aplicar un raig sòlid continu sobre el mobiliari per generar el màxim volum de vapor encara que hi hagi víctimes."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: aquesta descripció barreja atac interior directe/indirecte. L'atac transicional es fa des de l'EXTERIOR amb raig sòlid fix al sostre per reduir la potència del foc abans de l'atac interior, mentre que el refredament de gasos es fa a l'interior amb polsacions polvoritzades (O/Z/8)."
+    },
+    {
+      id: 'q24-15',
+      difficulty: 'Difícil',
+      question: "Sobre el comportament al foc de les estructures d'acer i dels forjats de formigó armat amb bovedilles de porexpan (poliestirè expandit), quina afirmació és INCORRECTA?",
+      options: [
+        "L'acer estructural sense protecció comença a perdre resistència mecànica al voltant dels 300 °C.",
+        "Cap als 550 °C, l'acer ha perdut aproximadament el 50% de la seva resistència i la seva dilatació tèrmica pot empènyer i fer col·lapsar els murs de càrrega.",
+        "En forjats amb bovedilles de porexpan, la calor les fon i genera degoteig en flames i fums densos, deixant exposades les biguetes de formigó a l'esclat del recobriment (spalling).",
+        "Les bovedilles de porexpan són incombustibles i actuen com a escut tèrmic que protegeix indefinidament les biguetes i l'armadura del forjat."
+      ],
+      correctIndex: 3,
+      explanation: "És incorrecte: el porexpan (poliestirè expandit) és combustible, fon a baixa temperatura i goteja en flames desprenent fum negre tòxic, deixant les biguetes i armadures desprotegides davant la calor directa."
+    },
+    {
+      id: 'q24-16',
+      difficulty: 'Difícil',
+      question: "En un incendi desenvolupat a la planta 3 amb flames sortint per una finestra de la façana A mentre un binomi puja per l'escala interior per accedir-hi, quina seqüència operativa és la correcta?",
+      options: [
+        "Muntar la bifurcació a la planta 3 davant la porta del pis afectat, engegar VPP sense obrir sortida de fums i aplicar aigua en cercles des del carrer.",
+        "Muntar la bifurcació i el bucle de reserva a la Ruta Freda (planta 2, una planta per sota), fer atac transicional des de l'exterior amb raig sòlid fix contra el sostre (sense empènyer gasos cap a l'escala) i executar les 4 fases d'entrada segura.",
+        "Obrir la porta interior de bat a bat sense falca i realitzar un atac indirecte massiu encara que hi pugui haver ocupants inconscients a l'interior.",
+        "Refredar únicament les façanes B i D amb Ø25 a 100 L/min i esperar que l'estructura arribi a 550 °C abans d'entrar."
+      ],
+      correctIndex: 1,
+      explanation: "La bifurcació i la reserva es munten sempre a la Ruta Freda (1 planta per sota); l'atac transicional des de fora amb angle fix al sostre redueix ràpidament la càrrega tèrmica sense desplaçar gasos cap a l'escala, i el binomi interior aplica les 4 fases d'entrada segura."
+    },
+    {
+      id: 'q24-17',
+      difficulty: 'Mitjà',
+      question: "En la valoració exterior d'un incendi en una nau industrial tancada, s'observa un volum moderat de fum gris-negre molt dens sortint a gran velocitat i pressió per les escletxes superiors d'una persiana metàl·lica, sense flama visible. Quina interpretació operativa correspon a aquesta lectura del fum?",
+      options: [
+        "Indica que l'incendi ja es troba en fase de decaïment i sense energia tèrmica per falta de combustible.",
+        "L'alta velocitat i pressió de sortida d'un fum dens i fosc per la part alta indica elevada acumulació d'energia i gasos sense cremar en un incendi limitat per ventilació (ILV) amb risc d'inflamació sobtada si entra aire.",
+        "La sortida ràpida de fum significa que totes les portes interiors estan obertes i l'incendi és ric en oxigen sense perill de Backdraft.",
+        "La lectura del fum només té en compte el color i l'olor, ja que la velocitat i la densitat depenen únicament del vent exterior."
+      ],
+      correctIndex: 1,
+      explanation: "Els 4 atributs de lectura del fum són Volum, Velocitat, Densitat i Color. Un fum fosc/dens que surt a alta pressió i velocitat per escletxes altes sense flama visible delata una forta pressió interior i gasos combustibles calents en un ILV."
     }
   ]
 };

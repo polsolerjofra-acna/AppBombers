@@ -372,6 +372,71 @@ export const tema19Instalacions = {
       ],
       correctIndex: 1,
       explanation: 'Segons el Capítol 2.2 del manual MAN.GRAL.007, cada disc d’una cadena d’aïlladors aïlla aproximadament 11 kV (20 discos ≈ 220 kV; 36 discos ≈ 400 kV).'
+    },
+    {
+      id: 't12-q11',
+      difficulty: 'Mitjà',
+      question: 'En una intervenció d’incendi en un edifici d’habitatges on cal tallar el subministrament elèctric des de la Caixa General de Protecció (CGP), quina és la maniobra correcta?',
+      options: [
+        'Tallar directament els cables d’entrada amb una cisalla manual aïllada.',
+        'Extreure únicament els fusibles (amb maneta aïllant i EPI dielèctrics i de protecció contra arc elèctric), sense tallar conductors ni manipular borns nus.',
+        'Desconnectar primer el conductor neutre i deixar les fases connectades.',
+        'Llançar aigua polvoritzada a l’interior de la CGP per fer saltar les proteccions.'
+      ],
+      correctIndex: 1,
+      explanation: 'A la CGP, l’actuació correcta és obrir-la amb les degudes mesures de protecció (guants dielèctrics, pantalla facial) i extreure només els fusibles amb la maneta aïllada, sense tallar cables ni deixar el neutre obert abans que les fases.'
+    },
+    {
+      id: 't12-q12',
+      difficulty: 'Fàcil',
+      question: 'Segons la instrucció ITC-BT-25 del REBT per a instal·lacions interiors d’habitatges, quin calibre de PIA (Petit Interruptor Automàtic) i quina secció mínima de cable corresponen respectivament al circuit de cuina/forn (vitroceràmica) i al d’il·luminació?',
+      options: [
+        'Vitroceràmica: 16 A (2,5 mm²) | Il·luminació: 10 A (1,5 mm²).',
+        'Vitroceràmica: 25 A (6 mm²) | Il·luminació: 10 A (1,5 mm²).',
+        'Vitroceràmica: 20 A (4 mm²) | Il·luminació: 16 A (2,5 mm²).',
+        'Vitroceràmica: 40 A (10 mm²) | Il·luminació: 6 A (1 mm²).'
+      ],
+      correctIndex: 1,
+      explanation: 'Al quadre general de comandament i protecció (CGMP), el circuit C3 (cuina i forn / vitroceràmica) porta un PIA de 25 A amb cable de 6 mm², mentre que el circuit C1 (il·luminació) porta un PIA de 10 A amb cable d’1,5 mm².'
+    },
+    {
+      id: 't12-q13',
+      difficulty: 'Fàcil',
+      question: 'Segons el codi de colors normalitzat pel REBT per identificar els conductors en una instal·lació de baixa tensió, quina afirmació és INCORRECTA?',
+      options: [
+        'El conductor de protecció (presa de terra) s’identifica amb el color verd-groc.',
+        'El conductor neutre s’identifica amb el color blau clar.',
+        'Els conductors de fase s’identifiquen amb els colors marró, negre o gris.',
+        'El conductor de protecció (terra) s’ha d’identificar obligatòriament amb el color vermell.'
+      ],
+      correctIndex: 3,
+      explanation: 'El conductor de protecció (PE) s’identifica exclusivament amb el bicolor verd-groc, mai amb el color vermell. El blau clar és per al neutre i el marró, negre i gris per a les fases.'
+    },
+    {
+      id: 't12-q14',
+      difficulty: 'Fàcil',
+      question: 'Com s’evacua la descàrrega atmosfèrica captada per un parallamps instal·lat al terrat d’un edifici?',
+      options: [
+        'Es connecta directament al conductor neutre de la xarxa elèctrica de l’edifici.',
+        'Es deriva directament a terra mitjançant un conductor baixant dedicat i una presa de terra pròpia (mai al neutre).',
+        'S’acumula en una bateria de condensadors dins la sala de comptadors.',
+        'Es deriva a les canonades de gas natural de la façana.'
+      ],
+      correctIndex: 1,
+      explanation: 'El parallamps deriva el corrent del llamp directament a terra a través d’un cable baixant amb el recorregut més recte possible fins a la seva presa de terra, mai al conductor neutre ni a canonades de gas.'
+    },
+    {
+      id: 't12-q15',
+      difficulty: 'Mitjà',
+      question: 'Quina afirmació és INCORRECTA sobre els elements d’una instal·lació receptora de gas natural i els requisits del local de comptadors centralitzats?',
+      options: [
+        'L’ordre habitual des de la xarxa exterior cap a l’habitatge és: clau d’escomesa → clau d’edifici → regulador (si escau) → muntant → comptador → clau d’abonat/aparell.',
+        'El local o recinte de comptadors centralitzats pot ubicar-se en un segon soterrani (-2) sempre que tingui un extractor mecànic i la porta obri cap endins.',
+        'La porta del recinte de comptadors centralitzats ha d’obrir cap enfora (cap a l’exterior) i disposar de ventilació adequada.',
+        'Està prohibit ubicar un recinte de comptadors centralitzats de gas natural per sota del primer soterrani (i els de GLP estan prohibits en qualsevol soterrani).'
+      ],
+      correctIndex: 1,
+      explanation: 'És totalment incorrecte: està prohibit situar comptadors centralitzats de gas natural per sota del 1r soterrani (no es permet al 2n soterrani o inferiors), i la porta del recinte ha d’obrir sempre cap enfora (cap a l’exterior), mai cap endins.'
     }
   ]
 };
