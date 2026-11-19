@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Clock,
   Sparkles,
@@ -37,6 +37,10 @@ function estimatePageMinutes(page, speedFactor = 1.0) {
   return baseMinutes / Math.max(0.4, speedFactor);
 }
 
+const SEEN_STORAGE_KEY = 'bombers_quickstudy_seen_v1';
+const NORMAL_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 dies sense repetir pàgines normals
+const DIFFICULT_COOLDOWN_MS = 12 * 60 * 60 * 1000; // 12 hores si és marcada com a Complicat
+
 export default function QuickStudyView({
   topics,
   progress,
@@ -52,6 +56,34 @@ export default function QuickStudyView({
   const [quizAnswers, setQuizAnswers] = useState({});
   const [slideIndex, setSlideIndex] = useState(0);
   const [feedbackGiven, setFeedbackGiven] = useState(null);
+  const [seenMap, setSeenMap] = useState(() => {
+    try {
+      const raw = localStorage.getItem(SEEN_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  const markSlideAsSeen = (topicId, pageNumber) => {
+    const key = `${topicId}::${pageNumber}`;
+    setSeenMap((prev) => {
+      const next = { ...prev, [key]: Date.now() };
+      try {
+        localStorage.setItem(SEEN_STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  };
+
+  useEffect(() => {
+    if (sessionSlides && sessionSlides[slideIndex]) {
+      const cur = sessionSlides[slideIndex];
+      markSlideAsSeen(cur.topic.id, cur.pageNumber);
+    }
+  }, [sessionSlides, slideIndex]);
 
   const speedFactor = progress.readingSpeedFactor || 1.0;
   const difficultPages = progress.difficultPages || {};
@@ -106,8 +138,27 @@ export default function QuickStudyView({
       }
     }
 
-    // Barreja aleatòria ponderada (prioritzant el que costa més, però sempre aleatori)
-    const shuffled = [...pool].sort((a, b) => {
+    const now = Date.now();
+    // Excloem les pàgines vistes recentment (7 dies les normals; 12 h les marcades com a Complicat)
+    const freshPool = pool.filter((item) => {
+      const key = `${item.topic.id}::${item.pageNumber}`;
+      const lastSeen = seenMap[key];
+      if (!lastSeen) return true;
+      const cooldown = item.isDifficult ? DIFFICULT_COOLDOWN_MS : NORMAL_COOLDOWN_MS;
+      return now - lastSeen >= cooldown;
+    });
+
+    const activePool =
+      freshPool.length > 0
+        ? freshPool
+        : [...pool].sort((a, b) => {
+            const seenA = seenMap[`${a.topic.id}::${a.pageNumber}`] || 0;
+            const seenB = seenMap[`${b.topic.id}::${b.pageNumber}`] || 0;
+            return seenA - seenB;
+          });
+
+    // Barreja aleatòria ponderada (prioritzant el que costa més, però sense repetir les vistes)
+    const shuffled = [...activePool].sort((a, b) => {
       const scoreA = Math.random() * a.weight;
       const scoreB = Math.random() * b.weight;
       return scoreB - scoreA;
@@ -592,13 +643,31 @@ export default function QuickStudyView({
           </div>
         )}
 
-        <button
-          onClick={buildSession}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 text-sm font-extrabold shadow-md shadow-red-600/20 transition-all"
-        >
-          <Sparkles className="w-4 h-4" />
-          <span>Generar Sessió de {minutes} Minuts</span>
-        </button>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <button
+            onClick={buildSession}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 text-sm font-extrabold shadow-md shadow-red-600/20 transition-all"
+          >
+            <Sparkles className="w-4 h-4" />
+            <span>Generar Sessió de {minutes} Minuts</span>
+          </button>
+
+          {Object.keys(seenMap).length > 0 && (
+            <button
+              onClick={() => {
+                setSeenMap({});
+                try {
+                  localStorage.removeItem(SEEN_STORAGE_KEY);
+                } catch {
+                  // ignore
+                }
+              }}
+              className="text-xs font-bold text-slate-500 hover:text-red-600 transition-colors"
+            >
+              Reiniciar historial de vistes ({Object.keys(seenMap).length} vistes)
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
