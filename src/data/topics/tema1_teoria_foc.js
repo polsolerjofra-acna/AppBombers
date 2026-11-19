@@ -65,9 +65,9 @@ export const tema1TeoriaFoc = {
           title: 'Regles Mnemotècniques · Redox (PORC/GROC) i Fases vs. Etapes',
           acronym: 'PORC (Combustible) · GROC (Comburent) | Fases → Foc · Etapes → Equips',
           trick:
-            '• REDOX: PORC = el combustible Perd electrons, s’Oxida i actua com a agent Reductor. GROC = el comburent Guanya electrons, es Redueix i actua com a agent Oxidant.\n• FASES vs. ETAPES: Fases → Foc (ambdues comencen per F) | Etapes → Equips d’extinció (ambdues comencen per E).',
+            '• REDOX: PORC = el combustible Perd electrons, s’Oxida i actua com a agent Reductor. GROC = el comburent Guanya electrons, es Redueix i actua com a agent Oxidant.\n• FASES vs. ETAPES: Fases → Foc (F: Actiu, Estabilitzat, Controlat i Extingit) | Etapes → Equips d’extinció (E: Actiu/Atac, Remat i Rereguarda).',
           example:
-            'Si a l’examen pregunten per l’evolució natural del foc parlen de FASES (F); si pregunten per l’actuació dels bombers parlen d’ETAPES (E).'
+            'Si a l’examen pregunten per l’evolució del foc parlen de FASES (F: Actiu, Estabilitzat, Controlat, Extingit); si pregunten per la feina dels bombers parlen d’ETAPES (E: Actiu/Atac, Remat, Rereguarda).'
         }
       ]
     },

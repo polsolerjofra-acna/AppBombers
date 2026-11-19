@@ -232,6 +232,15 @@ const tema10IncendisForestals = {
             ['4.5. Les 4 FASES d’Evolució de l’Incendi (Estat global INFOCAT)', '1) Incendi ACTIU\n2) Incendi ESTABILITZAT\n3) Incendi CONTROLAT\n4) Incendi EXTINGIT', '• 1. Actiu: Les flames es propaguen lliurement i existeixen fronts que creixen fora de la capacitat immediata de contenció.\n• 2. Estabilitzat: L’incendi encara no està envoltat per una línia completa, però ja NO avança lliurement i evoluciona dins de les línies i previsions d’extinció.\n• 3. Controlat: Tot el perímetre està envoltat per una línia de control contínua fins a sòl mineral (o humida) i ja no pot créixer, tot i que a l’interior poden quedar punts calents o fumaroles.\n• 4. Extingit: Ja no queda calor ni cap brasa amb possibilitat de revifar l’incendi.']
           ],
           footnote: 'No les barregis mai! 3 ETAPES de treball = Atac → Remat → Rereguarda | 4 FASES de l’incendi = Actiu → Estabilitzat → Controlat → Extingit.'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla Mnemotècnica · Fases del Foc vs. Etapes dels Equips d’Extinció',
+          acronym: 'Fases → Foc (F)  |  Etapes → Equips d’extinció (E)',
+          trick:
+            '• FASES (comença per F, com FOC): Actiu, Estabilitzat, Controlat i Extingit.\n• ETAPES (comença per E, com EQUIPS d’extinció): Actiu (Atac), Remat i Rereguarda.',
+          example:
+            'Si dubtes a l’examen quina llista és "Fases" i quina és "Etapes": F amb F (Fases = Foc: Actiu, Estabilitzat, Controlat, Extingit) i E amb E (Etapes = Equips: Actiu/Atac, Remat, Rereguarda).'
         }
       ]
     },
@@ -4950,9 +4959,9 @@ const tema1TeoriaFoc = {
           title: 'Regles Mnemotècniques · Redox (PORC/GROC) i Fases vs. Etapes',
           acronym: 'PORC (Combustible) · GROC (Comburent) | Fases → Foc · Etapes → Equips',
           trick:
-            '• REDOX: PORC = el combustible Perd electrons, s’Oxida i actua com a agent Reductor. GROC = el comburent Guanya electrons, es Redueix i actua com a agent Oxidant.\n• FASES vs. ETAPES: Fases → Foc (ambdues comencen per F) | Etapes → Equips d’extinció (ambdues comencen per E).',
+            '• REDOX: PORC = el combustible Perd electrons, s’Oxida i actua com a agent Reductor. GROC = el comburent Guanya electrons, es Redueix i actua com a agent Oxidant.\n• FASES vs. ETAPES: Fases → Foc (F: Actiu, Estabilitzat, Controlat i Extingit) | Etapes → Equips d’extinció (E: Actiu/Atac, Remat i Rereguarda).',
           example:
-            'Si a l’examen pregunten per l’evolució natural del foc parlen de FASES (F); si pregunten per l’actuació dels bombers parlen d’ETAPES (E).'
+            'Si a l’examen pregunten per l’evolució del foc parlen de FASES (F: Actiu, Estabilitzat, Controlat, Extingit); si pregunten per la feina dels bombers parlen d’ETAPES (E: Actiu/Atac, Remat, Rereguarda).'
         }
       ]
     },
@@ -12975,9 +12984,9 @@ const tema9IncendisEstructurals = {
           title: 'Regla de Relació · Fases vs. Etapes d’un incendi',
           acronym: 'Fases → Foc (F)  |  Etapes → Equips d’extinció (E)',
           trick:
-            'Fases comença per F com Foc (evolució del foc). Etapes comença per E com Equips d’extinció (fases operatives de la intervenció dels bombers).',
+            'Fases comença per F com Foc (Actiu, Estabilitzat, Controlat i Extingit). Etapes comença per E com Equips d’extinció (Actiu/Atac, Remat i Rereguarda).',
           example:
-            'No les barregis mai: les Fases les marca el Foc; les Etapes les marquen els Equips d’extinció.'
+            'No les barregis mai: les Fases les marca el Foc (4); les Etapes les marquen els Equips d’extinció (3).'
         }
       ]
     },
@@ -14264,18 +14273,24 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-fases-vs-etapes',
-    topicNumber: 8,
-    topicId: 'tema-8',
-    relatedTopics: [8, 24],
-    category: 'Foc i Incendis Estructurals',
-    title: 'Fases vs. Etapes d\'un incendi',
+    topicNumber: 25,
+    topicId: 'tema-25',
+    relatedTopics: [8, 24, 25],
+    category: 'Incendis Forestals i Foc',
+    title: 'Fases del Foc vs. Etapes dels Equips d\'Extinció',
     acronym: 'Fases → Foc (F)  |  Etapes → Equips d\'extinció (E)',
     rules: [
-      { code: 'Fases (F)', meaning: 'Fan referència a l\'evolució del FOC (ambdues comencen per F)' },
-      { code: 'Etapes (E)', meaning: 'Fan referència a l\'actuació dels EQUIPS d\'extinció (ambdues comencen per E)' }
+      {
+        code: 'Fases → Foc (ambdues per F)',
+        meaning: 'Actiu, Estabilitzat, Controlat i Extingit (evolució de l\'incendi)'
+      },
+      {
+        code: 'Etapes → Equips d\'extinció (ambdues per E)',
+        meaning: 'Actiu (Atac), Remat i Rereguarda (tasques dels equips)'
+      }
     ],
     explanation:
-      'Truc infal·lible per inicials: Fases = Foc (ignició, creixement, ple desenvolupament, decaïment). Etapes = Equips d\'extinció (aproximació, valoració, atac, ventilació, liquidació).'
+      'Truc infal·lible per inicials: Fases = Foc (Actiu, Estabilitzat, Controlat i Extingit). Etapes = Equips d\'extinció (Actiu/Atac, Remat i Rereguarda).'
   },
   {
     id: 'mnem-redox-porc-groc',
@@ -18913,6 +18928,7 @@ function MnemonicsView({ topics, onSelectTopic }) {
             <option value="8">Tema 8 · Teoria del foc</option>
             <option value="10">Tema 10 · Química</option>
             <option value="24">Tema 24 · Incendis estructurals</option>
+            <option value="25">Tema 25 · Incendis forestals</option>
             <option value="28">Tema 28 · Assistència sanitària</option>
             <option value="30">Tema 30 · Col·lapses estructurals</option>
           </select>

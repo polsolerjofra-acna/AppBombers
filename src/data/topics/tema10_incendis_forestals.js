@@ -146,6 +146,15 @@ export const tema10IncendisForestals = {
             ['4.5. Les 4 FASES d’Evolució de l’Incendi (Estat global INFOCAT)', '1) Incendi ACTIU\n2) Incendi ESTABILITZAT\n3) Incendi CONTROLAT\n4) Incendi EXTINGIT', '• 1. Actiu: Les flames es propaguen lliurement i existeixen fronts que creixen fora de la capacitat immediata de contenció.\n• 2. Estabilitzat: L’incendi encara no està envoltat per una línia completa, però ja NO avança lliurement i evoluciona dins de les línies i previsions d’extinció.\n• 3. Controlat: Tot el perímetre està envoltat per una línia de control contínua fins a sòl mineral (o humida) i ja no pot créixer, tot i que a l’interior poden quedar punts calents o fumaroles.\n• 4. Extingit: Ja no queda calor ni cap brasa amb possibilitat de revifar l’incendi.']
           ],
           footnote: 'No les barregis mai! 3 ETAPES de treball = Atac → Remat → Rereguarda | 4 FASES de l’incendi = Actiu → Estabilitzat → Controlat → Extingit.'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla Mnemotècnica · Fases del Foc vs. Etapes dels Equips d’Extinció',
+          acronym: 'Fases → Foc (F)  |  Etapes → Equips d’extinció (E)',
+          trick:
+            '• FASES (comença per F, com FOC): Actiu, Estabilitzat, Controlat i Extingit.\n• ETAPES (comença per E, com EQUIPS d’extinció): Actiu (Atac), Remat i Rereguarda.',
+          example:
+            'Si dubtes a l’examen quina llista és "Fases" i quina és "Etapes": F amb F (Fases = Foc: Actiu, Estabilitzat, Controlat, Extingit) i E amb E (Etapes = Equips: Actiu/Atac, Remat, Rereguarda).'
         }
       ]
     },

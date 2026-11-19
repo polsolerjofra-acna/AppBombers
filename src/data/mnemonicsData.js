@@ -16,18 +16,24 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-fases-vs-etapes',
-    topicNumber: 8,
-    topicId: 'tema-8',
-    relatedTopics: [8, 24],
-    category: 'Foc i Incendis Estructurals',
-    title: 'Fases vs. Etapes d\'un incendi',
+    topicNumber: 25,
+    topicId: 'tema-25',
+    relatedTopics: [8, 24, 25],
+    category: 'Incendis Forestals i Foc',
+    title: 'Fases del Foc vs. Etapes dels Equips d\'Extinció',
     acronym: 'Fases → Foc (F)  |  Etapes → Equips d\'extinció (E)',
     rules: [
-      { code: 'Fases (F)', meaning: 'Fan referència a l\'evolució del FOC (ambdues comencen per F)' },
-      { code: 'Etapes (E)', meaning: 'Fan referència a l\'actuació dels EQUIPS d\'extinció (ambdues comencen per E)' }
+      {
+        code: 'Fases → Foc (ambdues per F)',
+        meaning: 'Actiu, Estabilitzat, Controlat i Extingit (evolució de l\'incendi)'
+      },
+      {
+        code: 'Etapes → Equips d\'extinció (ambdues per E)',
+        meaning: 'Actiu (Atac), Remat i Rereguarda (tasques dels equips)'
+      }
     ],
     explanation:
-      'Truc infal·lible per inicials: Fases = Foc (ignició, creixement, ple desenvolupament, decaïment). Etapes = Equips d\'extinció (aproximació, valoració, atac, ventilació, liquidació).'
+      'Truc infal·lible per inicials: Fases = Foc (Actiu, Estabilitzat, Controlat i Extingit). Etapes = Equips d\'extinció (Actiu/Atac, Remat i Rereguarda).'
   },
   {
     id: 'mnem-redox-porc-groc',

@@ -56,9 +56,9 @@ export const tema9IncendisEstructurals = {
           title: 'Regla de Relació · Fases vs. Etapes d’un incendi',
           acronym: 'Fases → Foc (F)  |  Etapes → Equips d’extinció (E)',
           trick:
-            'Fases comença per F com Foc (evolució del foc). Etapes comença per E com Equips d’extinció (fases operatives de la intervenció dels bombers).',
+            'Fases comença per F com Foc (Actiu, Estabilitzat, Controlat i Extingit). Etapes comença per E com Equips d’extinció (Actiu/Atac, Remat i Rereguarda).',
           example:
-            'No les barregis mai: les Fases les marca el Foc; les Etapes les marquen els Equips d’extinció.'
+            'No les barregis mai: les Fases les marca el Foc (4); les Etapes les marquen els Equips d’extinció (3).'
         }
       ]
     },
