@@ -11,6 +11,7 @@ import {
   doc,
   setDoc,
   getDoc,
+  getDocs,
   collection,
   onSnapshot,
   serverTimestamp
@@ -85,10 +86,15 @@ export async function saveCloudProgress(user, summaryPayload, fullProgressState)
 
   const privateData = {
     uid: user.uid,
+    email: (user.email || '').slice(0, 120),
+    dailyEmailEnabled: fullProgressState.dailyEmailEnabled !== false,
     pageStatus: fullProgressState.pageStatus || {},
     topicStatus: fullProgressState.topicStatus || {},
     quizResults: fullProgressState.quizResults || {},
     spacedRepetition: fullProgressState.spacedRepetition || {},
+    topicRounds: fullProgressState.topicRounds || {},
+    studyPlan: fullProgressState.studyPlan || {},
+    fridayCalcHistory: (fullProgressState.fridayCalcHistory || []).slice(0, 200),
     studySessions: (fullProgressState.studySessions || []).slice(0, 1000),
     pomodoroStats: fullProgressState.pomodoroStats || {},
     dailyActivity: (fullProgressState.dailyActivity || []).slice(-366),
@@ -120,4 +126,23 @@ export function subscribeGroupProfiles(callback) {
     );
     callback(list);
   });
+}
+
+export async function fetchDailyQuestions(topicId) {
+  const fb = ensureFirebase();
+  if (!fb || !topicId) return [];
+  try {
+    const colRef = collection(fb.db, 'dailyQuestions', topicId, 'questions');
+    const snap = await getDocs(colRef);
+    const list = [];
+    snap.forEach((d) => {
+      const data = d.data();
+      if (data && data.question && Array.isArray(data.options)) {
+        list.push({ id: d.id, ...data, isDailyGenerated: true });
+      }
+    });
+    return list;
+  } catch {
+    return [];
+  }
 }

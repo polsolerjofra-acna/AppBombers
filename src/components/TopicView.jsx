@@ -22,8 +22,11 @@ const MAX_PAGES_PER_TOPIC = 10;
 export default function TopicView({
   topic,
   progress,
+  initialTarget = null,
+  extraQuestions = [],
   onSetPageMark,
   onSetTopicMark,
+  onCompleteTopicRound,
   onSaveQuizScore
 }) {
   // Màxim estricte de 10 pàgines per tema
@@ -32,12 +35,25 @@ export default function TopicView({
 
   const [activeTab, setActiveTab] = useState('study'); // 'study' | 'quiz'
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [roundJustCompleted, setRoundJustCompleted] = useState(null);
 
-  // Reiniciar a la pàgina 1 quan es canvia de tema
+  const roundsCompleted = (progress.topicRounds && progress.topicRounds[topic.id]) || 0;
+
+  // Salt directe quan s'obre des del calendari o des d'un enllaç de correu
   useEffect(() => {
-    setCurrentPageIndex(0);
-    setActiveTab('study');
-  }, [topic.id]);
+    setRoundJustCompleted(null);
+    if (initialTarget === 'quiz') {
+      setActiveTab('quiz');
+      setCurrentPageIndex(0);
+    } else if (initialTarget === 'summary') {
+      setActiveTab('study');
+      const sumIdx = pages.findIndex((p) => Boolean(p.isSummary) || Boolean(p.isFormulaSheet));
+      setCurrentPageIndex(sumIdx >= 0 ? sumIdx : Math.max(0, totalPages - 2));
+    } else {
+      setActiveTab('study');
+      setCurrentPageIndex(0);
+    }
+  }, [topic.id, initialTarget]);
 
   const currentPage = pages[currentPageIndex] || pages[0];
   const currentPageNumber = currentPage?.pageNumber || currentPageIndex + 1;
@@ -134,8 +150,35 @@ export default function TopicView({
               <Bookmark className="w-3.5 h-3.5" />
               {topicGlobalStatus === 'review' ? 'Tema per Repassar' : 'Marcar per Repassar'}
             </button>
+
+            {onCompleteTopicRound && (
+              <button
+                onClick={() => {
+                  onCompleteTopicRound(topic.id);
+                  setRoundJustCompleted(roundsCompleted + 1);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold border border-blue-300 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-all"
+                title="Registra una volta completa d'aquest tema"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>
+                  {roundsCompleted > 0
+                    ? `Volta ${roundsCompleted} ✓ · +1 Volta`
+                    : 'Completar 1a Volta'}
+                </span>
+              </button>
+            )}
           </div>
         </div>
+
+        {roundJustCompleted && (
+          <div className="mt-4 rounded-2xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 px-4 py-3 text-xs font-bold text-emerald-800 dark:text-emerald-200">
+            Enhorabona! Has completat la Volta {roundJustCompleted} d&apos;aquest tema.
+            {roundJustCompleted === 1
+              ? ' A partir d\'ara el calendari et recomanarà prioritàriament els resums i les preguntes noves!'
+              : ''}
+          </div>
+        )}
 
         {/* Pestanyes Temari vs Test + Barra de Progrés de Lectura */}
         <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
@@ -249,6 +292,7 @@ export default function TopicView({
       {activeTab === 'quiz' ? (
         <QuizView
           topic={topic}
+          extraQuestions={extraQuestions}
           onSaveScore={onSaveQuizScore}
           savedQuizResult={progress.quizResults?.[topic.id]}
         />

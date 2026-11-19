@@ -3,6 +3,8 @@ import {
   Flame,
   BarChart3,
   Calculator,
+  Calendar,
+  AlertTriangle,
   Users,
   BookOpen,
   CheckCircle2,
@@ -18,9 +20,12 @@ export default function Sidebar({
   selectedTopicId,
   onSelectTopic,
   onSelectDashboard,
+  onSelectCalendar,
   onSelectCalculations,
+  onSelectKeyPoints,
   onSelectGroup,
   groupCount = 0,
+  dueReviewsCount = 0,
   progress,
   darkMode,
   onToggleDarkMode,
@@ -110,6 +115,34 @@ export default function Sidebar({
 
           <button
             onClick={() => {
+              onSelectCalendar();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'calendar'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-slate-100/80 dark:bg-slate-800/70 text-slate-800 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <span>Calendari i Voltes</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'calendar'
+                  ? 'bg-white/20 text-white'
+                  : dueReviewsCount > 0
+                  ? 'bg-red-600 text-white'
+                  : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+              }`}
+            >
+              {dueReviewsCount > 0 ? `${dueReviewsCount} avui` : 'Al dia'}
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
               onSelectCalculations();
               onCloseMobile();
             }}
@@ -131,6 +164,32 @@ export default function Sidebar({
               }`}
             >
               5 temes
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              onSelectKeyPoints();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'keypoints'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-amber-50/90 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 border border-amber-200/70 dark:border-amber-900/50 hover:bg-amber-100/80 dark:hover:bg-amber-950/50'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4" />
+              <span>Punts Clau i Confusions</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'keypoints'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-amber-500/20 text-amber-800 dark:text-amber-300'
+              }`}
+            >
+              Trampes
             </span>
           </button>
 

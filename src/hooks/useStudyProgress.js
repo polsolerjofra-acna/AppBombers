@@ -38,6 +38,10 @@ const defaultState = {
   },
   quizResults: {},
   spacedRepetition: {},
+  topicRounds: {},
+  studyPlan: {},
+  fridayCalcHistory: [],
+  dailyEmailEnabled: true,
   studySessions: [],
   pomodoroStats: {
     totalMinutes: 0,
@@ -301,6 +305,77 @@ export function useStudyProgress() {
     }));
   };
 
+  // Completa una volta d'estudi d'un tema (1a volta -> 2a volta -> 3a...)
+  const completeTopicRound = (topicId) => {
+    const today = getTodayISO();
+    setProgress((prev) => {
+      const currentRounds = (prev.topicRounds && prev.topicRounds[topicId]) || 0;
+      const nextRounds = currentRounds + 1;
+      const prevSpaced = (prev.spacedRepetition || {})[topicId];
+      const nextStage = prevSpaced
+        ? Math.min(EBBINGHAUS_INTERVALS.length - 1, (prevSpaced.reviewStage || 0) + 1)
+        : 0;
+      return {
+        ...prev,
+        topicRounds: {
+          ...(prev.topicRounds || {}),
+          [topicId]: nextRounds
+        },
+        topicStatus: {
+          ...(prev.topicStatus || {}),
+          [topicId]: 'completed'
+        },
+        spacedRepetition: {
+          ...(prev.spacedRepetition || {}),
+          [topicId]: {
+            lastStudiedAt: today,
+            reviewStage: nextStage,
+            nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[nextStage]),
+            reviewsCount: ((prevSpaced && prevSpaced.reviewsCount) || 0) + 1
+          }
+        },
+        lastActiveDate: today
+      };
+    });
+  };
+
+  const scheduleTopicForDate = (isoDate, topicId) => {
+    if (!isoDate || !topicId) return;
+    setProgress((prev) => {
+      const plan = { ...(prev.studyPlan || {}) };
+      const existing = plan[isoDate] || [];
+      if (existing.includes(topicId)) return prev;
+      plan[isoDate] = [...existing, topicId];
+      return { ...prev, studyPlan: plan };
+    });
+  };
+
+  const unscheduleTopicForDate = (isoDate, topicId) => {
+    setProgress((prev) => {
+      const plan = { ...(prev.studyPlan || {}) };
+      const existing = (plan[isoDate] || []).filter((id) => id !== topicId);
+      if (existing.length === 0) delete plan[isoDate];
+      else plan[isoDate] = existing;
+      return { ...prev, studyPlan: plan };
+    });
+  };
+
+  const saveFridayCalcSession = (score, total) => {
+    const today = getTodayISO();
+    setProgress((prev) => ({
+      ...prev,
+      fridayCalcHistory: [
+        { date: today, score, total, percentage: Math.round((score / Math.max(1, total)) * 100) },
+        ...(prev.fridayCalcHistory || [])
+      ].slice(0, 50),
+      lastActiveDate: today
+    }));
+  };
+
+  const setDailyEmailEnabled = (enabled) => {
+    setProgress((prev) => ({ ...prev, dailyEmailEnabled: Boolean(enabled) }));
+  };
+
   return {
     progress,
     setPageMark,
@@ -308,6 +383,11 @@ export function useStudyProgress() {
     saveQuizScore,
     markTopicReviewed,
     logPomodoroSession,
+    completeTopicRound,
+    scheduleTopicForDate,
+    unscheduleTopicForDate,
+    saveFridayCalcSession,
+    setDailyEmailEnabled,
     replaceProgressFromCloud,
     resetAllProgress
   };

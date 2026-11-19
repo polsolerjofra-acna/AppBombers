@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Calculator,
   Lightbulb,
@@ -7,14 +7,39 @@ import {
   HelpCircle,
   Zap,
   RotateCcw,
-  BookOpen
+  BookOpen,
+  Sparkles,
+  Trophy
 } from 'lucide-react';
 import { CALCULATION_SECTIONS } from '../data/calculationsData';
+import WhiteboardCanvas from './WhiteboardCanvas';
 
-export default function CalculationsView() {
+function pickRandomProblems(count = 10) {
+  const pool = CALCULATION_SECTIONS.flatMap((sec) =>
+    sec.problems.map((p) => ({ ...p, sectionTitle: sec.shortTitle }))
+  );
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+export default function CalculationsView({
+  initialMode = 'all',
+  fridayHistory = [],
+  onSaveFridaySession
+}) {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [visibleHints, setVisibleHints] = useState({});
   const [activeSectionId, setActiveSectionId] = useState(CALCULATION_SECTIONS[0].id);
+  const [viewMode, setViewMode] = useState(initialMode === 'friday' ? 'friday' : 'all'); // 'all' | 'friday'
+  const [fridayProblems, setFridayProblems] = useState(() => pickRandomProblems(10));
+  const [fridaySaved, setFridaySaved] = useState(false);
+  const [showWhiteboard, setShowWhiteboard] = useState(false);
+
+  useEffect(() => {
+    if (initialMode === 'friday') {
+      setViewMode('friday');
+    }
+  }, [initialMode]);
 
   const scrollToElement = (elementId, sectionId) => {
     if (sectionId) setActiveSectionId(sectionId);
@@ -26,7 +51,24 @@ export default function CalculationsView() {
 
   const handleSelectOption = (problemId, optionIdx) => {
     if (selectedAnswers[problemId] !== undefined) return;
-    setSelectedAnswers((prev) => ({ ...prev, [problemId]: optionIdx }));
+    const next = { ...selectedAnswers, [problemId]: optionIdx };
+    setSelectedAnswers(next);
+
+    if (viewMode === 'friday' && !fridaySaved) {
+      const answeredFriday = fridayProblems.filter((p) => next[p.id] !== undefined).length;
+      if (answeredFriday === fridayProblems.length && fridayProblems.length > 0) {
+        const score = fridayProblems.filter((p) => next[p.id] === p.correctIndex).length;
+        onSaveFridaySession && onSaveFridaySession(score, fridayProblems.length);
+        setFridaySaved(true);
+      }
+    }
+  };
+
+  const regenerateFridayTest = () => {
+    setSelectedAnswers({});
+    setVisibleHints({});
+    setFridayProblems(pickRandomProblems(10));
+    setFridaySaved(false);
   };
 
   const toggleHint = (problemId) => {
@@ -68,6 +110,40 @@ export default function CalculationsView() {
               trucs per fer els comptes mentalment o en paper sense calculadora, i tot seguit
               una bateria de problemes pràctics.
             </p>
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <button
+                onClick={() => setViewMode('all')}
+                className={`px-3.5 py-2 rounded-xl text-xs font-extrabold border transition-all ${
+                  viewMode === 'all'
+                    ? 'bg-red-600 text-white border-red-600'
+                    : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700'
+                }`}
+              >
+                Tots els Temes i Fórmules
+              </button>
+              <button
+                onClick={() => setViewMode('friday')}
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold border transition-all ${
+                  viewMode === 'friday'
+                    ? 'bg-amber-500 text-slate-950 border-amber-500'
+                    : 'bg-amber-50 dark:bg-amber-950/30 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800'
+                }`}
+              >
+                <Trophy className="w-3.5 h-3.5" />
+                <span>Repàs Setmanal Divendres (10 aleatoris)</span>
+              </button>
+              <button
+                onClick={() => setShowWhiteboard((v) => !v)}
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold border transition-all ${
+                  showWhiteboard
+                    ? 'bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-slate-900'
+                    : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{showWhiteboard ? 'Amagar Pissarra' : 'Obrir Pissarra'}</span>
+              </button>
+            </div>
           </div>
 
           <div className="flex flex-col items-end gap-2">
@@ -95,6 +171,145 @@ export default function CalculationsView() {
         </div>
       </div>
 
+      {/* Pissarra interactiva per fer operacions */}
+      {showWhiteboard && (
+        <WhiteboardCanvas
+          title="Pissarra de Càlculs i Esquemes"
+          onClose={() => setShowWhiteboard(false)}
+        />
+      )}
+
+      {viewMode === 'friday' ? (
+        <div className="rounded-3xl border border-amber-200 dark:border-amber-900/60 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                Sessió Setmanal de Divendres
+              </span>
+              <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                10 Problemes Aleatoris de Càlcul
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Mescla de Física, Química/Gasos, Electricitat, Hidràulica i Conducció. Fes servir la pissarra de dalt per als comptes!
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              {fridayHistory.length > 0 && (
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                  Últim divendres: {fridayHistory[0].score}/{fridayHistory[0].total} ({fridayHistory[0].percentage}%)
+                </span>
+              )}
+              <button
+                onClick={regenerateFridayTest}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 py-2 text-xs font-extrabold"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Nous 10 Aleatoris</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {fridayProblems.map((prob, pIdx) => {
+              const chosen = selectedAnswers[prob.id];
+              const isAnswered = chosen !== undefined;
+              const isCorrect = chosen === prob.correctIndex;
+              const showHint = !!visibleHints[prob.id];
+
+              return (
+                <div
+                  key={prob.id}
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/50 p-5 space-y-4"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                        Problema {pIdx + 1}/10 · {prob.sectionTitle}
+                      </span>
+                      <h4 className="text-base font-extrabold text-slate-900 dark:text-white">
+                        {prob.title}
+                      </h4>
+                    </div>
+                    <button
+                      onClick={() => toggleHint(prob.id)}
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-3 py-1.5 text-xs font-bold text-amber-800 dark:text-amber-300"
+                    >
+                      <HelpCircle className="w-3.5 h-3.5" />
+                      <span>{showHint ? 'Amagar pista' : 'Pista mental'}</span>
+                    </button>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-slate-800 dark:text-slate-200 leading-relaxed">
+                    {prob.statement}
+                  </p>
+
+                  {showHint && (
+                    <div className="rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/90 dark:bg-amber-950/30 px-4 py-2.5 text-xs sm:text-sm text-amber-900 dark:text-amber-200">
+                      <span className="font-extrabold">Pista:</span> {prob.hint}
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {prob.options.map((opt, optIdx) => {
+                      let style =
+                        'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-red-400';
+                      if (isAnswered) {
+                        if (optIdx === prob.correctIndex) {
+                          style =
+                            'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold';
+                        } else if (optIdx === chosen) {
+                          style =
+                            'border-red-500 bg-red-50 dark:bg-red-950/40 text-red-900 dark:text-red-200';
+                        } else {
+                          style =
+                            'border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-slate-400';
+                        }
+                      }
+
+                      return (
+                        <button
+                          key={optIdx}
+                          onClick={() => handleSelectOption(prob.id, optIdx)}
+                          disabled={isAnswered}
+                          className={`flex items-center justify-between gap-2 rounded-xl border px-4 py-3 text-left text-sm transition-all ${style}`}
+                        >
+                          <span>{opt}</span>
+                          {isAnswered && optIdx === prob.correctIndex && (
+                            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                          )}
+                          {isAnswered && optIdx === chosen && optIdx !== prob.correctIndex && (
+                            <XCircle className="w-4 h-4 text-red-600 shrink-0" />
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {isAnswered && (
+                    <div
+                      className={`rounded-xl border p-4 space-y-1.5 ${
+                        isCorrect
+                          ? 'border-emerald-200 dark:border-emerald-900 bg-emerald-50/70 dark:bg-emerald-950/30'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900'
+                      }`}
+                    >
+                      <div className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                        Resolució pas a pas
+                      </div>
+                      <ul className="space-y-1 text-sm text-slate-700 dark:text-slate-300">
+                        {prob.solutionSteps.map((step, sIdx) => (
+                          <li key={sIdx}>{step}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        <>
       {/* Barra enganxosa de navegació per subapartats */}
       <div className="sticky top-2 z-20 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-3 shadow-sm">
         <div className="flex flex-wrap items-center gap-2">
@@ -337,6 +552,8 @@ export default function CalculationsView() {
           </section>
         ))}
       </div>
+        </>
+      )}
     </div>
   );
 }

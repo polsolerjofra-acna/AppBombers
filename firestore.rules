@@ -30,6 +30,8 @@ service cloud.firestore {
     //   - pomodoroTotalMinutes: number (optional, 0..1000000)
     //   - pomodoroTodayDate: string (optional, <= 16 chars)
     //   - lastActiveDate: string (optional, <= 32 chars)
+    //   - roundsCompleted: number (optional, 0..100)
+    //   - dailyEmailEnabled: bool (optional)
     //   - createdAt: timestamp (optional, immutable if set)
     //   - updatedAt: timestamp (optional)
     //
@@ -47,7 +49,18 @@ service cloud.firestore {
     //   - dailyActivity: list (optional, <= 366 items)
     //   - streakDays: number (optional, 0..3650)
     //   - lastActiveDate: string (optional, <= 32 chars)
+    //   - studyPlan: map (optional, <= 400 keys)
+    //   - topicRounds: map (optional, <= 200 keys)
+    //   - fridayCalcHistory: list (optional, <= 200 items)
+    //   - email: string (optional, 0..120 chars)
+    //   - dailyEmailEnabled: bool (optional)
     //   - updatedAt: timestamp (optional)
+    //
+    // Collection: dailyQuestions/{topicId}/questions
+    // Document ID: {questionId}
+    // Purpose: Daily auto-generated practice questions written by backend
+    //          Cloud Function (Admin SDK). Readable by authenticated users,
+    //          read-only from client SDKs.
     //
     // ===============================================================
 
@@ -135,6 +148,12 @@ service cloud.firestore {
          request.resource.data[field].size() <= maxItems);
     }
 
+    // Validate optional boolean
+    function isValidOptionalBool(field) {
+      return !(field in request.resource.data) ||
+        request.resource.data[field] is bool;
+    }
+
     // ===============================================================
     // Domain Validators
     // ===============================================================
@@ -158,6 +177,8 @@ service cloud.firestore {
           'pomodoroTotalMinutes',
           'pomodoroTodayDate',
           'lastActiveDate',
+          'roundsCompleted',
+          'dailyEmailEnabled',
           'createdAt',
           'updatedAt'
         ]) &&
@@ -178,6 +199,8 @@ service cloud.firestore {
         isValidOptionalNumber('pomodoroTotalMinutes', 0, 1000000) &&
         isValidOptionalString('pomodoroTodayDate', 0, 16) &&
         isValidOptionalString('lastActiveDate', 0, 32) &&
+        isValidOptionalNumber('roundsCompleted', 0, 100) &&
+        isValidOptionalBool('dailyEmailEnabled') &&
         (!('createdAt' in data) || data.createdAt is timestamp) &&
         (!('updatedAt' in data) || data.updatedAt is timestamp);
     }
@@ -194,6 +217,11 @@ service cloud.firestore {
           'dailyActivity',
           'streakDays',
           'lastActiveDate',
+          'studyPlan',
+          'topicRounds',
+          'fridayCalcHistory',
+          'email',
+          'dailyEmailEnabled',
           'updatedAt'
         ]) &&
         uidUnchanged() &&
@@ -206,6 +234,11 @@ service cloud.firestore {
         isValidOptionalList('dailyActivity', 366) &&
         isValidOptionalNumber('streakDays', 0, 3650) &&
         isValidOptionalString('lastActiveDate', 0, 32) &&
+        isValidOptionalMap('studyPlan', 400) &&
+        isValidOptionalMap('topicRounds', 200) &&
+        isValidOptionalList('fridayCalcHistory', 200) &&
+        isValidOptionalString('email', 0, 120) &&
+        isValidOptionalBool('dailyEmailEnabled') &&
         (!('updatedAt' in data) || data.updatedAt is timestamp);
     }
 
@@ -240,6 +273,12 @@ service cloud.firestore {
 
         allow delete: if isOwner(userId);
       }
+    }
+
+    // Daily auto-generated questions (backend-only writes via Admin SDK)
+    match /dailyQuestions/{topicId}/questions/{questionId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
     }
 
     // ===============================================================
