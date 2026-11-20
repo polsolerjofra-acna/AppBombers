@@ -560,7 +560,7 @@ export default function TopicView({
               {(currentPage?.blocks || []).map((block, bIdx) => {
                 switch (block.type) {
                   case 'importance':
-                    return (
+                    return topic.importance ? null : (
                       <ImportanceCard
                         key={bIdx}
                         data={normalizeImportance(block)}

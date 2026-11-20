@@ -1,22 +1,22 @@
 {
-  "version": "2026.11.20.1",
+  "version": "2026.11.20.2",
   "isImportant": true,
   "title": "Actualització important · Estudi Bombers SGO 2026",
   "cards": [
     {
-      "tag": "Nou apartat",
-      "title": "Simulacre Oficial (70+7 · 85 min) i Mode Pràctica",
-      "description": "Pots triar qualsevol tema i nombre exacte de preguntes en Pràctica, o fer un Simulacre Oficial cronometrat amb distribució estadística i opció d'impugnar o reportar preguntes."
+      "tag": "Temari i Lectura",
+      "title": "Radar d'Examen en pàgina pròpia i Scroll automàtic",
+      "description": "El Radar d'Examen, Punts Clau i Paranys Típics ara tenen la seva pròpia primera pestanya abans dels esquemes, i en passar de pàgina vas directe al principi del text."
     },
     {
-      "tag": "Contingut i PDFs",
-      "title": "Manuals Oficials (T1–T7 renovats en A4) i Làmines Suro",
-      "description": "Tots els manuals de lleis ara tenen format propi A4 vertical amb enllaços al BOE/DOGC, subratllat en línia recta sincronitzat al núvol i visor online de làmines per al suro."
+      "tag": "Organització i Repàs",
+      "title": "Calendari integrat a l'inici i 1a Volta de cop",
+      "description": "El calendari apareix en gran a la pàgina principal, pots donar per feta la 1a volta dels 34 temes de cop i els repassos de 5–45 min prioritzen la corba de l'oblit i els teus errors."
     },
     {
-      "tag": "Seguiment personal",
-      "title": "Els meus errors i Importància per Apartat",
-      "description": "Les preguntes que falles es guarden al teu usuari privat dins Punts Clau → Els meus errors, i cada apartat del temari enllaça amb les preguntes d'examen oficial."
+      "tag": "Estabilitat i Sessió",
+      "title": "Sessió persistent i protecció contra pantalla blanca",
+      "description": "La sessió de Google es guarda directament a localStorage perquè no es tanqui en actualitzar i s'ha resolt la pantalla blanca en navegar."
     }
   ]
 }

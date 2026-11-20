@@ -25,7 +25,7 @@ import {
   fetchDailyQuestions
 } from './services/firebaseSync';
 
-const APP_CLIENT_VERSION = '2026.11.20.1';
+const APP_CLIENT_VERSION = '2026.11.20.2';
 const SEEN_RELEASE_KEY = 'bombers_seen_release_v1';
 const LAST_ACTIVE_AT_KEY = 'bombers_last_active_at_v1';
 const INACTIVITY_RESET_MS = 10 * 60 * 1000; // 10 minuts sense entrar a l'app
