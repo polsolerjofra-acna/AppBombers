@@ -43,6 +43,7 @@ export default function Sidebar({
   onCloseMobile
 }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [topicsDropdownOpen, setTopicsDropdownOpen] = useState(false);
 
   const filteredTopics = topics.filter((t) => {
     if (!searchQuery.trim()) return true;
@@ -58,17 +59,17 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Fons fosc en mòbil */}
+      {/* Fons fosc quan el menú és obert */}
       {isOpenMobile && (
         <div
           onClick={onCloseMobile}
-          className="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-xs lg:hidden"
+          className="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-xs"
         />
       )}
 
       <aside
-        className={`print:hidden fixed lg:sticky lg:top-0 inset-y-0 left-0 z-40 w-80 h-screen shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between transition-transform duration-200 ${
-          isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        className={`print:hidden fixed inset-y-0 left-0 z-40 w-80 h-screen shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between transition-transform duration-200 ${
+          isOpenMobile ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
         }`}
       >
         {/* Capçalera amb Logotip i Tancament Mòbil */}
@@ -91,7 +92,8 @@ export default function Sidebar({
 
           <button
             onClick={onCloseMobile}
-            className="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+            title="Tancar menú"
           >
             <X className="w-5 h-5" />
           </button>
@@ -370,16 +372,24 @@ export default function Sidebar({
           />
         </div>
 
-        {/* Llista de Temes Navegables amb Scroll Independent */}
+        {/* Llista d'apartats i desplegable de Temes */}
         <div className="flex-1 overflow-y-auto p-3.5 space-y-2">
-          <div className="flex items-center justify-between px-1 mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Temari Oficial ({filteredTopics.length}/{topics.length} temes)
+          <button
+            type="button"
+            onClick={() => setTopicsDropdownOpen((v) => !v)}
+            className="w-full flex items-center justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/70 px-3.5 py-2.5 text-xs font-extrabold text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          >
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-red-600" />
+              <span>Temari Oficial ({filteredTopics.length}/{topics.length})</span>
+            </div>
+            <span className="text-xs font-bold text-slate-500">
+              {topicsDropdownOpen || searchQuery.trim() ? '▲' : '▼'}
             </span>
-            <span className="text-[11px] font-semibold text-slate-400">≤10 pàg. + Resum</span>
-          </div>
+          </button>
 
-          <nav className="space-y-2">
+          {(topicsDropdownOpen || searchQuery.trim()) && (
+          <nav className="space-y-2 pt-1">
             {filteredTopics.map((topic) => {
               const isSelected = activeView === 'topic' && selectedTopicId === topic.id;
               const pagesMap = progress.pageStatus?.[topic.id] || {};
@@ -477,6 +487,7 @@ export default function Sidebar({
               );
             })}
           </nav>
+          )}
         </div>
 
         {/* Peu del Sidebar: Commutador Mode Clar / Mode Fosc */}

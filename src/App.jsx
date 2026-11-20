@@ -400,14 +400,14 @@ export default function App() {
 
       {/* Contenidor Principal */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Barra Superior Mòbil / Tauleta */}
-        <header className="print:hidden sticky top-0 z-20 lg:hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
+        {/* Barra Superior (Menú 3 línies + accessos ràpids) */}
+        <header className="print:hidden sticky top-0 z-20 flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
           >
             <Menu className="w-4 h-4" />
-            <span>Temari</span>
+            <span>Menú</span>
           </button>
 
           <div className="flex items-center gap-2 font-extrabold text-sm">
