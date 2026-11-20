@@ -464,6 +464,12 @@ export default function App() {
               topics={TOPICS}
               onRecordQuestionOutcome={recordQuestionOutcome}
               onSaveQuizScore={saveQuizScore}
+              onOpenTopicSummary={(id) => handleSelectTopic(id, null)}
+              onOpenOfficialManual={(topicNum) => {
+                setManualTopicTarget(topicNum);
+                setActiveView('manuals');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
           ) : activeView === 'calculations' ? (
             <CalculationsView

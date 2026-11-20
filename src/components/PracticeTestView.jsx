@@ -8,9 +8,25 @@ import {
   Trophy,
   BarChart3,
   Sparkles,
-  Filter
+  Filter,
+  AlertTriangle,
+  BookOpen,
+  ExternalLink
 } from 'lucide-react';
 import { OFFICIAL_EXAM_STATS_BY_TOPIC } from '../data/officialExamStats';
+import { OFFICIAL_MANUALS } from '../data/manualsData';
+
+const BANK_ANSWERED_KEY = 'bombers_answered_bank_ids_v1';
+const REPORTS_KEY = 'bombers_question_reports_v1';
+
+function loadJsonSet(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
 
 // Pesos estadístics estimats per a un Simulacre Oficial SGO 2026 (sobre 100 preguntes)
 // Combina la freqüència històrica real (81/16–81/24: ~10-12% Lleis, ~32% Ciències/Tècnica, ~56% Operativa SGO)
@@ -103,13 +119,21 @@ function buildWeightedExamQuestions(topics, selectedIds, count, useOfficialWeigh
 export default function PracticeTestView({
   topics,
   onRecordQuestionOutcome = null,
-  onSaveQuizScore = null
+  onSaveQuizScore = null,
+  onOpenTopicSummary = null,
+  onOpenOfficialManual = null
 }) {
   const [mode, setMode] = useState('practice'); // 'practice' | 'simulacre'
   const [selectedTopicIds, setSelectedTopicIds] = useState(() => topics.map((t) => t.id));
   const [questionCount, setQuestionCount] = useState(25);
   const [useWeightedPractice, setUseWeightedPractice] = useState(true);
   const [showStatsTable, setShowStatsTable] = useState(false);
+
+  // Estat global del banc respost + informes/impugnacions
+  const [answeredBankMap, setAnsweredBankMap] = useState(() => loadJsonSet(BANK_ANSWERED_KEY));
+  const [reportsMap, setReportsMap] = useState(() => loadJsonSet(REPORTS_KEY));
+  const [openReportId, setOpenReportId] = useState(null);
+  const [reportDraft, setReportDraft] = useState('');
 
   // Estat de sessió activa
   const [activeQuestions, setActiveQuestions] = useState(null);
@@ -173,6 +197,51 @@ export default function PracticeTestView({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const totalBankQuestions = useMemo(
+    () => topics.reduce((acc, t) => acc + (t.quiz?.length || 0), 0),
+    [topics]
+  );
+  const answeredBankCount = Object.keys(answeredBankMap).length;
+  const bankCoveragePct =
+    totalBankQuestions > 0 ? Math.min(100, Math.round((answeredBankCount / totalBankQuestions) * 100)) : 0;
+
+  const markQuestionAnsweredInBank = (questionId) => {
+    if (!questionId) return;
+    setAnsweredBankMap((prev) => {
+      if (prev[questionId]) return prev;
+      const next = { ...prev, [questionId]: true };
+      try {
+        localStorage.setItem(BANK_ANSWERED_KEY, JSON.stringify(next));
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  };
+
+  const handleSubmitReport = (q) => {
+    if (!reportDraft.trim()) return;
+    const entry = {
+      questionId: q.id,
+      topicNumber: q._topicNumber,
+      mode,
+      type: mode === 'simulacre' ? 'impugnacio' : 'error',
+      reason: reportDraft.trim(),
+      createdAt: new Date().toISOString()
+    };
+    setReportsMap((prev) => {
+      const next = { ...prev, [q.id]: entry };
+      try {
+        localStorage.setItem(REPORTS_KEY, JSON.stringify(next));
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+    setOpenReportId(null);
+    setReportDraft('');
+  };
+
   const handleSelectOption = (q, optIdx) => {
     if (isFinished) return;
     if (mode === 'practice' && answers[q.id] !== undefined) return;
@@ -185,6 +254,8 @@ export default function PracticeTestView({
       }
       return { ...prev, [q.id]: optIdx };
     });
+
+    markQuestionAnsweredInBank(q.id);
 
     if (mode === 'practice' && onRecordQuestionOutcome) {
       onRecordQuestionOutcome(q._topicId, q._topicNumber, q, optIdx === q.correctIndex);
@@ -246,7 +317,17 @@ export default function PracticeTestView({
               {mode === 'simulacre' ? 'Simulacre Oficial (70 + 7 reserva)' : 'Pràctica Lliure'}
             </span>
             <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">
-              Respostes: {answeredCount} / {totalQ}
+              Respostes: {answeredCount}/{totalQ} ({Math.round((answeredCount / Math.max(1, totalQ)) * 100)}%)
+            </span>
+            {mode === 'practice' && (
+              <span className="text-xs font-extrabold text-slate-700 dark:text-slate-200">
+                · Nota: <strong className="text-blue-600 dark:text-blue-400">{score10}/10</strong> (
+                <span className="text-emerald-600">{correctCount}✓</span> /{' '}
+                <span className="text-red-600">{wrongCount}✗</span>)
+              </span>
+            )}
+            <span className="hidden md:inline text-xs font-semibold text-slate-500 dark:text-slate-400">
+              · Banc global: {answeredBankCount}/{totalBankQuestions} ({bankCoveragePct}%)
             </span>
           </div>
 
@@ -327,12 +408,67 @@ export default function PracticeTestView({
                       </span>
                     )}
                   </div>
-                  {q.difficulty && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                      {q.difficulty}
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {q.difficulty && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        {q.difficulty}
+                      </span>
+                    )}
+                    <button
+                      onClick={() => {
+                        setOpenReportId(openReportId === q.id ? null : q.id);
+                        setReportDraft(reportsMap[q.id]?.reason || '');
+                      }}
+                      className={`inline-flex items-center gap-1 rounded-lg px-2 py-0.5 text-[10px] font-bold border transition ${
+                        reportsMap[q.id]
+                          ? 'bg-amber-100 dark:bg-amber-950/60 border-amber-300 text-amber-800 dark:text-amber-300'
+                          : 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-amber-400 hover:text-amber-700'
+                      }`}
+                    >
+                      <AlertTriangle className="w-3 h-3" />
+                      <span>
+                        {reportsMap[q.id]
+                          ? mode === 'simulacre'
+                            ? 'Impugnada'
+                            : 'Reportat'
+                          : mode === 'simulacre'
+                          ? 'Impugnar pregunta'
+                          : 'Reportar error'}
+                      </span>
+                    </button>
+                  </div>
                 </div>
+
+                {openReportId === q.id && (
+                  <div className="rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/70 dark:bg-amber-950/30 p-3 space-y-2">
+                    <label className="block text-[11px] font-extrabold text-amber-900 dark:text-amber-200">
+                      {mode === 'simulacre'
+                        ? 'Descripció del motiu d’impugnació:'
+                        : 'Descripció de l’error detectat a la pregunta:'}
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={reportDraft}
+                      onChange={(e) => setReportDraft(e.target.value)}
+                      placeholder="Ex: la resposta correcta no coincideix amb el manual oficial / enunciat ambigu / dada desactualitzada..."
+                      className="w-full rounded-lg border border-amber-200 dark:border-amber-800 bg-white dark:bg-slate-900 px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100"
+                    />
+                    <div className="flex justify-end gap-2">
+                      <button
+                        onClick={() => setOpenReportId(null)}
+                        className="rounded-lg px-2.5 py-1 text-[11px] font-bold text-slate-600 dark:text-slate-300"
+                      >
+                        Cancel·lar
+                      </button>
+                      <button
+                        onClick={() => handleSubmitReport(q)}
+                        className="rounded-lg bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 text-[11px] font-extrabold"
+                      >
+                        {mode === 'simulacre' ? 'Registrar impugnació' : 'Enviar avís'}
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
                   {q.question}
@@ -372,17 +508,70 @@ export default function PracticeTestView({
                   })}
                 </div>
 
-                {showFeedback && q.explanation && (
-                  <div
-                    className={`rounded-xl p-3 text-xs leading-relaxed ${
-                      isCorrect
-                        ? 'bg-emerald-50/70 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200'
-                        : 'bg-amber-50/80 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200'
-                    }`}
-                  >
-                    <strong>Explicació:</strong> {q.explanation}
-                  </div>
-                )}
+                {showFeedback && (() => {
+                  const manualRef = OFFICIAL_MANUALS.find((m) => m.topicNumber === q._topicNumber);
+                  return (
+                    <div
+                      className={`rounded-xl p-3.5 text-xs leading-relaxed space-y-2 ${
+                        isCorrect
+                          ? 'bg-emerald-50/70 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 border border-emerald-200/70 dark:border-emerald-900/50'
+                          : 'bg-amber-50/80 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 border border-amber-200/70 dark:border-amber-900/50'
+                      }`}
+                    >
+                      <div>
+                        <strong>Justificació i explicació:</strong>{' '}
+                        {q.explanation || 'Consulta el resum del tema i el manual oficial per revisar aquest apartat.'}
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <span className="font-bold opacity-80">Més info:</span>
+                        {onOpenTopicSummary && (
+                          <button
+                            onClick={() => onOpenTopicSummary(q._topicId)}
+                            className="inline-flex items-center gap-1 rounded-lg bg-white/80 dark:bg-slate-900/80 border border-slate-300/70 dark:border-slate-700 px-2.5 py-1 text-[11px] font-bold text-slate-800 dark:text-slate-200 hover:border-red-400"
+                          >
+                            <BookOpen className="w-3 h-3" />
+                            <span>Resum Tema {q._topicNumber}</span>
+                          </button>
+                        )}
+                        {manualRef && (
+                          onOpenOfficialManual ? (
+                            <button
+                              onClick={() => onOpenOfficialManual(q._topicNumber)}
+                              className="inline-flex items-center gap-1 rounded-lg bg-white/80 dark:bg-slate-900/80 border border-slate-300/70 dark:border-slate-700 px-2.5 py-1 text-[11px] font-bold text-indigo-700 dark:text-indigo-300 hover:border-indigo-400"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              <span>Manual Oficial ({manualRef.code})</span>
+                            </button>
+                          ) : (
+                            <a
+                              href={manualRef.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded-lg bg-white/80 dark:bg-slate-900/80 border border-slate-300/70 dark:border-slate-700 px-2.5 py-1 text-[11px] font-bold text-indigo-700 dark:text-indigo-300"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              <span>Manual Oficial ({manualRef.code})</span>
+                            </a>
+                          )
+                        )}
+                        {manualRef?.boeLinks &&
+                          manualRef.boeLinks.slice(0, 1).map((lnk) => (
+                            <a
+                              key={lnk.url}
+                              href={lnk.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded-lg bg-white/80 dark:bg-slate-900/80 border border-slate-300/70 dark:border-slate-700 px-2.5 py-1 text-[11px] font-bold text-blue-700 dark:text-blue-300"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              <span>{lnk.label}</span>
+                            </a>
+                          ))}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             );
           })}
