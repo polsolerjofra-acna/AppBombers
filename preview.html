@@ -5003,10 +5003,24 @@ const tema19Instalacions = {
         },
         {
           type: 'diagram',
-          title: 'Esquema de la Instal·lació d’Enllaç Elèctrica, 5 Regles d’Or i Escala de Pressions de Gas',
+          title: 'Les 5 Regles d’Or per Treballar Sense Tensió',
           diagramType: 'installations_gas_elec',
           caption:
-            'A dalt: els 5 escalons de pressió de gas natural (APB → APA → MPB → MPA → BP 20 mbar). A baix: seqüència completa de la instal·lació d’enllaç elèctrica i les 5 Regles d’Or per treballar sense tensió.'
+            'Ordre estricte de les 5 Regles d’Or abans d’intervenir en una instal·lació elèctrica sense tensió.'
+        },
+        {
+          type: 'table',
+          title: 'Escala de Pressions de Distribució de Gas Natural (MAN.GRAL.007) i Claus de Pas',
+          subtitle: 'Classificació reglamentària de pressions i accessibilitat de les vàlvules de tall',
+          headers: ['Escaló / Grau', 'Rang de Pressió / Accessibilitat', 'Funció i Observacions'],
+          rows: [
+            ['APB (Alta Pressió B)', '> 16 bar fins a 45 bar', 'Xarxa primària de transport i grans gasoductes'],
+            ['APA (Alta Pressió A)', '> 4 bar fins a 16 bar', 'Xarxa de distribució d’alta pressió fins a estacions reguladores'],
+            ['MPB (Mitjana Pressió B)', '> 0,4 bar fins a 4 bar', 'Xarxa de distribució urbana cap a armaris reguladors'],
+            ['MPA (Mitjana Pressió A)', '> 0,05 bar fins a 0,4 bar', 'Distribució cap a edificis abans del regulador de finca'],
+            ['BP (Baixa Pressió)', '≤ 0,05 bar (20 mbar en ús domèstic)', 'Xarxa interior d’habitatges i aparells de consum'],
+            ['Claus de Pas: Grau 1 · 2 · 3', 'Grau 1: directa sense clau · Grau 2: amb clau normalitzada · Grau 3: cal escala o accés a zona privada', 'Determina el temps i els mitjans necessaris per tallar el subministrament']
+          ]
         },
         {
           type: 'table',
@@ -26543,28 +26557,35 @@ function DiagramContainer({ title, caption, diagramType, customSvg }) {
 
       case 'installations_gas_elec':
         return (
-          <svg viewBox="0 0 680 215" className="w-full max-w-2xl mx-auto h-auto font-sans">
-            <rect x="15" y="15" width="650" height="85" rx="10" fill="#fffbeb" className="dark:fill-slate-900" stroke="#fde047" strokeWidth="2" />
-            <text x="340" y="36" textAnchor="middle" className="fill-amber-800 dark:fill-amber-300 text-[12px] font-bold">
-              ESCALA DE PRESSIONS DE DISTRIBUCIÓ DE GAS NATURAL (MAN.GRAL.007)
+          <svg viewBox="0 0 680 120" className="w-full max-w-2xl mx-auto h-auto font-sans">
+            <rect x="10" y="10" width="660" height="100" rx="12" fill="#fef2f2" className="dark:fill-slate-900" stroke="#fca5a5" strokeWidth="2" />
+            <text x="340" y="32" textAnchor="middle" className="fill-red-700 dark:fill-red-400 text-[12px] font-extrabold">
+              LES 5 REGLES D&apos;OR PER TREBALLAR SENSE TENSIÓ (ORDRE ESTRICTE)
             </text>
-            <text x="340" y="64" textAnchor="middle" className="fill-slate-800 dark:fill-slate-200 text-[12px] font-bold">
-              APB (&gt;16–45 bar) → APA (&gt;4–16 bar) → MPB (&gt;0,4–4 bar) → MPA (&gt;0,05–0,4 bar) → BP (≤0,05 bar / 20 mbar ús)
-            </text>
-            <text x="340" y="84" textAnchor="middle" className="fill-amber-700 dark:fill-amber-400 text-[11px] font-semibold">
-              Claus de pas: Grau 1 (directa sense clau) · Grau 2 (amb clau normalitzada) · Grau 3 (cal escala o zona privada)
-            </text>
-
-            <rect x="15" y="112" width="650" height="88" rx="10" fill="#f0f9ff" className="dark:fill-slate-900" stroke="#7dd3fc" strokeWidth="2" />
-            <text x="340" y="133" textAnchor="middle" className="fill-sky-800 dark:fill-sky-300 text-[12px] font-bold">
-              INSTAL·LACIÓ D'ENLLAÇ ELÈCTRICA I LES 5 REGLES D'OR
-            </text>
-            <text x="340" y="158" textAnchor="middle" className="fill-slate-800 dark:fill-slate-200 text-[12px] font-bold">
-              Escomesa → CGP (Fusibles) → LGA → IGM (&gt;2 usuaris) → Comptadors → Derivació Individual → Quadre (IGA + ID 30mA + PIAs)
-            </text>
-            <text x="340" y="182" textAnchor="middle" className="fill-red-600 dark:fill-red-400 text-[11px] font-bold">
-              5 Regles d'Or: 1. Desconnectar → 2. Bloquejar → 3. Verificar absència tensió → 4. Posar a terra i curtcircuit → 5. Senyalitzar
-            </text>
+            {[
+              { n: '1', t: 'Desconnectar', s: 'Tall efectiu' },
+              { n: '2', t: 'Bloquejar', s: 'Prevenir reenganxament' },
+              { n: '3', t: 'Verificar', s: 'Absència de tensió' },
+              { n: '4', t: 'Terra i CC', s: 'Posar a terra i curtcircuit' },
+              { n: '5', t: 'Senyalitzar', s: 'Delimitar zona treball' },
+            ].map((step, idx) => {
+              const bx = 24 + idx * 128;
+              return (
+                <g key={step.n}>
+                  <rect x={bx} y="44" width="118" height="54" rx="8" fill="#ffffff" className="dark:fill-slate-800" stroke="#ef4444" strokeWidth="1.5" />
+                  <circle cx={bx + 18} cy="62" r="10" fill="#dc2626" />
+                  <text x={bx + 18} y="66" textAnchor="middle" fill="#ffffff" className="text-[11px] font-extrabold">
+                    {step.n}
+                  </text>
+                  <text x={bx + 34} y="65" className="fill-slate-900 dark:fill-white text-[11px] font-extrabold">
+                    {step.t}
+                  </text>
+                  <text x={bx + 59} y="86" textAnchor="middle" className="fill-slate-600 dark:fill-slate-300 text-[9.5px] font-semibold">
+                    {step.s}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
         );
 

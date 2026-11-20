@@ -102,10 +102,24 @@ export const tema19Instalacions = {
         },
         {
           type: 'diagram',
-          title: 'Esquema de la Instal·lació d’Enllaç Elèctrica, 5 Regles d’Or i Escala de Pressions de Gas',
+          title: 'Les 5 Regles d’Or per Treballar Sense Tensió',
           diagramType: 'installations_gas_elec',
           caption:
-            'A dalt: els 5 escalons de pressió de gas natural (APB → APA → MPB → MPA → BP 20 mbar). A baix: seqüència completa de la instal·lació d’enllaç elèctrica i les 5 Regles d’Or per treballar sense tensió.'
+            'Ordre estricte de les 5 Regles d’Or abans d’intervenir en una instal·lació elèctrica sense tensió.'
+        },
+        {
+          type: 'table',
+          title: 'Escala de Pressions de Distribució de Gas Natural (MAN.GRAL.007) i Claus de Pas',
+          subtitle: 'Classificació reglamentària de pressions i accessibilitat de les vàlvules de tall',
+          headers: ['Escaló / Grau', 'Rang de Pressió / Accessibilitat', 'Funció i Observacions'],
+          rows: [
+            ['APB (Alta Pressió B)', '> 16 bar fins a 45 bar', 'Xarxa primària de transport i grans gasoductes'],
+            ['APA (Alta Pressió A)', '> 4 bar fins a 16 bar', 'Xarxa de distribució d’alta pressió fins a estacions reguladores'],
+            ['MPB (Mitjana Pressió B)', '> 0,4 bar fins a 4 bar', 'Xarxa de distribució urbana cap a armaris reguladors'],
+            ['MPA (Mitjana Pressió A)', '> 0,05 bar fins a 0,4 bar', 'Distribució cap a edificis abans del regulador de finca'],
+            ['BP (Baixa Pressió)', '≤ 0,05 bar (20 mbar en ús domèstic)', 'Xarxa interior d’habitatges i aparells de consum'],
+            ['Claus de Pas: Grau 1 · 2 · 3', 'Grau 1: directa sense clau · Grau 2: amb clau normalitzada · Grau 3: cal escala o accés a zona privada', 'Determina el temps i els mitjans necessaris per tallar el subministrament']
+          ]
         },
         {
           type: 'table',
