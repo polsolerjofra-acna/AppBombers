@@ -185,14 +185,7 @@ function drawMixedParagraph(doc, rawBold, rawRest, startX, startY, maxW, fontSiz
   return y;
 }
 
-export function downloadKeyPointsPdf(docData, topic) {
-  const jsPDF = window.jspdf && window.jspdf.jsPDF;
-  if (!jsPDF) {
-    window.print();
-    return;
-  }
-
-  const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+function renderTopicKeyPointsIntoDoc(doc, docData) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
   const marginX = 25.4;
@@ -384,7 +377,35 @@ export function downloadKeyPointsPdf(docData, topic) {
     doc.rect(marginX, boxStartY, maxW, y - boxStartY + 3);
     y += 8;
   });
+}
 
+export function downloadKeyPointsPdf(docData, topic) {
+  const jsPDF = window.jspdf && window.jspdf.jsPDF;
+  if (!jsPDF) {
+    window.print();
+    return;
+  }
+
+  const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+  renderTopicKeyPointsIntoDoc(doc, docData);
   const safeCode = (topic.code || `Tema_${topic.number}`).replace(/[^a-zA-Z0-9._-]/g, '_');
   doc.save(`Punts_Clau_T${topic.number}_${safeCode}.pdf`);
+}
+
+export function downloadAllKeyPointsPdf(allTopicDocs) {
+  const jsPDF = window.jspdf && window.jspdf.jsPDF;
+  if (!jsPDF) {
+    window.print();
+    return;
+  }
+
+  const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+  const ordered = [...(allTopicDocs || [])].sort(
+    (a, b) => (a.topic?.number || 0) - (b.topic?.number || 0)
+  );
+  ordered.forEach((entry, idx) => {
+    if (idx > 0) doc.addPage();
+    renderTopicKeyPointsIntoDoc(doc, entry.docData);
+  });
+  doc.save('Punts_Clau_Tots_els_Temes_SGO_2026.pdf');
 }

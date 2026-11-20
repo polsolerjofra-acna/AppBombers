@@ -12,6 +12,7 @@ import { TOPIC_OUTLINES } from '../data/topicOutlines';
 import {
   buildTopicKeyPointsDoc,
   downloadKeyPointsPdf,
+  downloadAllKeyPointsPdf,
   splitBoldPrefix
 } from '../utils/keyPointsPdf';
 
@@ -137,6 +138,32 @@ export default function KeyPointsView({ onSelectTopic }) {
                 <span>Descarregar PDF (Tema {selectedTopic.number})</span>
               </button>
             )}
+
+            <button
+              onClick={() => {
+                const orderedTopics = [...TOPICS].sort((a, b) => a.number - b.number);
+                const allDocs = orderedTopics.map((t) => {
+                  const raw = TOPIC_OUTLINES[t.id];
+                  const schemas = !raw ? [] : Array.isArray(raw) ? raw : raw.schemas ? raw.schemas : [raw];
+                  const confusions = [];
+                  KEY_POINT_GROUPS.forEach((g) => {
+                    g.items.forEach((it) => {
+                      if (it.topicNumber === t.number) confusions.push(it);
+                    });
+                  });
+                  return {
+                    topic: t,
+                    docData: buildTopicKeyPointsDoc(t, schemas, confusions)
+                  };
+                });
+                downloadAllKeyPointsPdf(allDocs);
+              }}
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100 px-4 py-2.5 text-xs sm:text-sm font-extrabold shadow-sm transition-colors"
+              title="Genera un únic PDF amb tots els temes ordenats, començant cada tema en una pàgina nova"
+            >
+              <Download className="w-4 h-4" />
+              <span>Tots els Temes (PDF)</span>
+            </button>
 
             {selectedTopic && onSelectTopic && (
               <button
