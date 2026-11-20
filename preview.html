@@ -29871,8 +29871,10 @@ function QuizView({
     0
   );
 
+  const quizTopRef = useRef(null);
+
   return (
-    <div className="space-y-6">
+    <div ref={quizTopRef} className="scroll-mt-20 space-y-6">
       {/* Capçalera del Test */}
       <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -30107,6 +30109,36 @@ function QuizView({
           >
             <span>Finalitzar i Registrar Puntuació ({liveCorrectCount}/{questions.length})</span>
             <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      {/* Targeta final en acabar el test amb opció d'anar a dalt a veure el resultat */}
+      {submittedScore !== null && (
+        <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 p-5 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <Trophy className="w-6 h-6 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <div>
+              <div className="text-sm font-extrabold text-emerald-950 dark:text-emerald-200">
+                Test completat: {submittedScore}/{questions.length} ({Math.round((submittedScore / Math.max(1, questions.length)) * 100)}%)
+              </div>
+              <div className="text-xs text-emerald-800 dark:text-emerald-300">
+                La puntuació i els errors s&apos;han registrat al teu seguiment.
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              if (quizTopRef.current) {
+                quizTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-xs font-extrabold shadow-sm transition"
+          >
+            <span>Anar a dalt i veure el resultat ↑</span>
           </button>
         </div>
       )}
