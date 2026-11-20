@@ -9,6 +9,7 @@ import CalculationsView from './components/CalculationsView';
 import CalendarView from './components/CalendarView';
 import KeyPointsView from './components/KeyPointsView';
 import MnemonicsView from './components/MnemonicsView';
+import ManualsView from './components/ManualsView';
 import QuickStudyView from './components/QuickStudyView';
 import GroupStudyView from './components/GroupStudyView';
 import PomodoroWidget from './components/PomodoroWidget';
@@ -235,6 +236,10 @@ export default function App() {
           setActiveView('mnemonics');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectManuals={() => {
+          setActiveView('manuals');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectGroup={() => {
           setActiveView('group');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -370,6 +375,8 @@ export default function App() {
               topics={TOPICS}
               onSelectTopic={(id, target = null) => handleSelectTopic(id, target)}
             />
+          ) : activeView === 'manuals' ? (
+            <ManualsView />
           ) : activeView === 'group' ? (
             <GroupStudyView
               user={cloudUser}

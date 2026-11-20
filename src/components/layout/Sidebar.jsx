@@ -9,6 +9,7 @@ import {
   Clock,
   Users,
   BookOpen,
+  FolderOpen,
   CheckCircle2,
   Bookmark,
   Sun,
@@ -27,6 +28,7 @@ export default function Sidebar({
   onSelectCalculations,
   onSelectKeyPoints,
   onSelectMnemonics,
+  onSelectManuals,
   onSelectGroup,
   groupCount = 0,
   dueReviewsCount = 0,
@@ -246,6 +248,32 @@ export default function Sidebar({
               }`}
             >
               Trucs
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              onSelectManuals();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'manuals'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-rose-50/90 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border border-rose-200/70 dark:border-rose-900/50 hover:bg-rose-100/80 dark:hover:bg-rose-950/50'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <FolderOpen className="w-4 h-4" />
+              <span>Manuals Oficials (PDF)</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'manuals'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
+              }`}
+            >
+              35 PDF
             </span>
           </button>
 

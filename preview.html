@@ -26,6 +26,7 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-red-600 selection:text-white">
   <div id="root"></div>
@@ -47,6 +48,7 @@
     };
 
     const AlertTriangle = createLucideIcon("alert-triangle");
+    const ArrowLeft = createLucideIcon("arrow-left");
     const ArrowRight = createLucideIcon("arrow-right");
     const ArrowUpRight = createLucideIcon("arrow-up-right");
     const BarChart3 = createLucideIcon("bar-chart-3");
@@ -64,18 +66,24 @@
     const Compass = createLucideIcon("compass");
     const Cpu = createLucideIcon("cpu");
     const Download = createLucideIcon("download");
+    const Eraser = createLucideIcon("eraser");
+    const ExternalLink = createLucideIcon("external-link");
     const Eye = createLucideIcon("eye");
     const EyeOff = createLucideIcon("eye-off");
     const FileText = createLucideIcon("file-text");
     const Filter = createLucideIcon("filter");
     const Flame = createLucideIcon("flame");
+    const FolderOpen = createLucideIcon("folder-open");
     const Hash = createLucideIcon("hash");
     const HelpCircle = createLucideIcon("help-circle");
+    const Highlighter = createLucideIcon("highlighter");
     const Lightbulb = createLucideIcon("lightbulb");
     const Menu = createLucideIcon("menu");
     const Moon = createLucideIcon("moon");
+    const Pencil = createLucideIcon("pencil");
     const Plus = createLucideIcon("plus");
     const RotateCcw = createLucideIcon("rotate-ccw");
+    const Search = createLucideIcon("search");
     const Smile = createLucideIcon("smile");
     const Sparkles = createLucideIcon("sparkles");
     const Sun = createLucideIcon("sun");
@@ -83,10 +91,13 @@
     const Trash2 = createLucideIcon("trash-2");
     const TrendingUp = createLucideIcon("trending-up");
     const Trophy = createLucideIcon("trophy");
+    const Undo2 = createLucideIcon("undo-2");
     const Users = createLucideIcon("users");
     const X = createLucideIcon("x");
     const XCircle = createLucideIcon("xcircle");
     const Zap = createLucideIcon("zap");
+    const ZoomIn = createLucideIcon("zoom-in");
+    const ZoomOut = createLucideIcon("zoom-out");
 
 const tema10IncendisForestals = {
   id: 'tema-25',
@@ -24473,6 +24484,324 @@ const TOPIC_OUTLINES = {
   ...OUTLINES_PART3
 };
 
+const OFFICIAL_MANUALS = [
+  {
+    id: 'manual-t1',
+    topicNumber: 1,
+    code: 'TEMA 01',
+    category: 'general',
+    title: 'Constitució Espanyola, Estatut d\'Autonomia i Llei 13/1989',
+    fileName: 'Tema_01_Constitucio_Estatut_Llei13_1989.pdf',
+    url: './manuals/Tema_01_Constitucio_Estatut_Llei13_1989.pdf',
+  },
+  {
+    id: 'manual-t2',
+    topicNumber: 2,
+    code: 'TEMA 02',
+    category: 'general',
+    title: 'Funció Pública de l\'Administració de la Generalitat',
+    fileName: 'Tema_02_Funcio_Publica.pdf',
+    url: './manuals/Tema_02_Funcio_Publica.pdf',
+  },
+  {
+    id: 'manual-t3',
+    topicNumber: 3,
+    code: 'TEMA 03',
+    category: 'general',
+    title: 'Prevenció de Riscos Laborals (LPRL) i Equips de Protecció Individual',
+    fileName: 'Tema_03_PRL_i_EPI.pdf',
+    url: './manuals/Tema_03_PRL_i_EPI.pdf',
+  },
+  {
+    id: 'manual-t4',
+    topicNumber: 4,
+    code: 'TEMA 04',
+    category: 'general',
+    title: 'Igualtat efectiva, violència masclista i prevenció de l\'assetjament',
+    fileName: 'Tema_04_Igualtat_i_Assetjament.pdf',
+    url: './manuals/Tema_04_Igualtat_i_Assetjament.pdf',
+  },
+  {
+    id: 'manual-t5',
+    topicNumber: 5,
+    code: 'TEMA 05',
+    category: 'general',
+    title: 'Política Lingüística a Catalunya',
+    fileName: 'Tema_05_Politica_Linguistica.pdf',
+    url: './manuals/Tema_05_Politica_Linguistica.pdf',
+  },
+  {
+    id: 'manual-t6',
+    topicNumber: 6,
+    code: 'TEMA 06',
+    category: 'general',
+    title: 'Llei 5/1994 de Bombers i Llei 4/1997 de Protecció Civil',
+    fileName: 'Tema_06_Llei_Bombers_i_Proteccio_Civil.pdf',
+    url: './manuals/Tema_06_Llei_Bombers_i_Proteccio_Civil.pdf',
+  },
+  {
+    id: 'manual-t7',
+    topicNumber: 7,
+    code: 'TEMA 07',
+    category: 'general',
+    title: 'Reglament de Guàrdia, Decret 276/2016 i Organigrama DGPEIS',
+    fileName: 'Tema_07_Guardia_i_Organigrama.pdf',
+    url: './manuals/Tema_07_Guardia_i_Organigrama.pdf',
+  },
+  {
+    id: 'manual-t8',
+    topicNumber: 8,
+    code: 'MAN-GRAL-008',
+    category: 'tecnic',
+    title: 'Teoria del Foc',
+    fileName: 'Tema_08_MAN_GRAL_008_Teoria_Foc.pdf',
+    url: './manuals/Tema_08_MAN_GRAL_008_Teoria_Foc.pdf',
+  },
+  {
+    id: 'manual-t9',
+    topicNumber: 9,
+    code: 'MAN-GRAL-003',
+    category: 'tecnic',
+    title: 'Física aplicada',
+    fileName: 'Tema_09_MAN_GRAL_003_Fisica.pdf',
+    url: './manuals/Tema_09_MAN_GRAL_003_Fisica.pdf',
+  },
+  {
+    id: 'manual-t10',
+    topicNumber: 10,
+    code: 'MAN-GRAL-004',
+    category: 'tecnic',
+    title: 'Química aplicada i matèries perilloses',
+    fileName: 'Tema_10_MAN_GRAL_004_Quimica.pdf',
+    url: './manuals/Tema_10_MAN_GRAL_004_Quimica.pdf',
+  },
+  {
+    id: 'manual-t11',
+    topicNumber: 11,
+    code: 'MAN-GRAL-005',
+    category: 'tecnic',
+    title: 'Electricitat i risc elèctric',
+    fileName: 'Tema_11_MAN_GRAL_005_Electricitat.pdf',
+    url: './manuals/Tema_11_MAN_GRAL_005_Electricitat.pdf',
+  },
+  {
+    id: 'manual-t12',
+    topicNumber: 12,
+    code: 'MAN-GRAL-007',
+    category: 'tecnic',
+    title: 'Instal·lacions de risc en edificis',
+    fileName: 'Tema_12_MAN_GRAL_007_Instalacions.pdf',
+    url: './manuals/Tema_12_MAN_GRAL_007_Instalacions.pdf',
+  },
+  {
+    id: 'manual-t13',
+    topicNumber: 13,
+    code: 'MAN-GRAL-009',
+    category: 'tecnic',
+    title: 'Hidràulica i bombes centrífugues',
+    fileName: 'Tema_13_MAN_GRAL_009_Hidraulica.pdf',
+    url: './manuals/Tema_13_MAN_GRAL_009_Hidraulica.pdf',
+  },
+  {
+    id: 'manual-t14',
+    topicNumber: 14,
+    code: 'MAN-GRAL-002',
+    category: 'tecnic',
+    title: 'Cartografia, orientació i GPS',
+    fileName: 'Tema_14_MAN_GRAL_002_Cartografia.pdf',
+    url: './manuals/Tema_14_MAN_GRAL_002_Cartografia.pdf',
+  },
+  {
+    id: 'manual-t15',
+    topicNumber: 15,
+    code: 'MAN-GRAL-006',
+    category: 'tecnic',
+    title: 'Construcció i patologies estructurals',
+    fileName: 'Tema_15_MAN_GRAL_006_Construccio.pdf',
+    url: './manuals/Tema_15_MAN_GRAL_006_Construccio.pdf',
+  },
+  {
+    id: 'manual-t16',
+    topicNumber: 16,
+    code: 'MAN-ATXX-000',
+    category: 'intervencio',
+    title: 'Assistències Tècniques',
+    fileName: 'Tema_16_MAN_ATXX_000_Assistencies_Tecniques.pdf',
+    url: './manuals/Tema_16_MAN_ATXX_000_Assistencies_Tecniques.pdf',
+  },
+  {
+    id: 'manual-t17',
+    topicNumber: 17,
+    code: 'MAN-COMU-000',
+    category: 'intervencio',
+    title: 'Comunicacions i xarxa RESCAT',
+    fileName: 'Tema_17_MAN_COMU_000_Comunicacions.pdf',
+    url: './manuals/Tema_17_MAN_COMU_000_Comunicacions.pdf',
+  },
+  {
+    id: 'manual-t18',
+    topicNumber: 18,
+    code: 'MAN-EQIP-000',
+    category: 'intervencio',
+    title: 'Vehicles i equipament dels Bombers',
+    fileName: 'Tema_18_MAN_EQIP_000_Vehicles.pdf',
+    url: './manuals/Tema_18_MAN_EQIP_000_Vehicles.pdf',
+  },
+  {
+    id: 'manual-t19',
+    topicNumber: 19,
+    code: 'MAN-EQIP-002',
+    category: 'intervencio',
+    title: 'Conducció d\'emergència i mecànica bàsica',
+    fileName: 'Tema_19_MAN_EQIP_002_Conduccio_Mecanica.pdf',
+    url: './manuals/Tema_19_MAN_EQIP_002_Conduccio_Mecanica.pdf',
+  },
+  {
+    id: 'manual-t20',
+    topicNumber: 20,
+    code: 'MAN-SEGU-000',
+    category: 'intervencio',
+    title: 'Seguretat en la intervenció, EPI i ERA',
+    fileName: 'Tema_20_MAN_SEGU_000_EPI_ERA.pdf',
+    url: './manuals/Tema_20_MAN_SEGU_000_EPI_ERA.pdf',
+  },
+  {
+    id: 'manual-t21',
+    topicNumber: 21,
+    code: 'MAN-GRAL-001',
+    category: 'intervencio',
+    title: 'Protecció Civil i plans d\'emergència',
+    fileName: 'Tema_21_MAN_GRAL_001_Proteccio_Civil.pdf',
+    url: './manuals/Tema_21_MAN_GRAL_001_Proteccio_Civil.pdf',
+  },
+  {
+    id: 'manual-t22',
+    topicNumber: 22,
+    code: 'MAN-COMD-001',
+    category: 'intervencio',
+    title: 'Sistema de Comandament d\'Incidents (SISCOM)',
+    fileName: 'Tema_22_MAN_COMD_001_SISCOM.pdf',
+    url: './manuals/Tema_22_MAN_COMD_001_SISCOM.pdf',
+  },
+  {
+    id: 'manual-t23',
+    topicNumber: 23,
+    code: 'MAN-SP-000',
+    category: 'intervencio',
+    title: 'Prevenció i protecció contra incendis',
+    fileName: 'Tema_23_MAN_SP_000_Prevencio_Incendis.pdf',
+    url: './manuals/Tema_23_MAN_SP_000_Prevencio_Incendis.pdf',
+  },
+  {
+    id: 'manual-t24',
+    topicNumber: 24,
+    code: 'MAN-INES-000',
+    category: 'intervencio',
+    title: 'Incendis Estructurals',
+    fileName: 'Tema_24_MAN_INES_000_Incendis_Estructurals.pdf',
+    url: './manuals/Tema_24_MAN_INES_000_Incendis_Estructurals.pdf',
+  },
+  {
+    id: 'manual-t25',
+    topicNumber: 25,
+    code: 'MAN-INVE-000',
+    category: 'intervencio',
+    title: 'Incendis Forestals i de Vegetació',
+    fileName: 'Tema_25_MAN_INVE_000_Incendis_Forestals.pdf',
+    url: './manuals/Tema_25_MAN_INVE_000_Incendis_Forestals.pdf',
+  },
+  {
+    id: 'manual-t26',
+    topicNumber: 26,
+    code: 'MAN-INXX-000',
+    category: 'intervencio',
+    title: 'Incendis Varis (vehicles, túnels i altres)',
+    fileName: 'Tema_26_MAN_INXX_000_Incendis_Varis.pdf',
+    url: './manuals/Tema_26_MAN_INXX_000_Incendis_Varis.pdf',
+  },
+  {
+    id: 'manual-t27',
+    topicNumber: 27,
+    code: 'MAN-RRTT-000',
+    category: 'intervencio',
+    title: 'Riscos Tecnològics i NRBQ',
+    fileName: 'Tema_27_MAN_RRTT_000_Riscos_NRBQ.pdf',
+    url: './manuals/Tema_27_MAN_RRTT_000_Riscos_NRBQ.pdf',
+  },
+  {
+    id: 'manual-t28',
+    topicNumber: 28,
+    code: 'MAN-SANI-000',
+    category: 'intervencio',
+    title: 'Assistència Sanitària d\'Urgència',
+    fileName: 'Tema_28_MAN_SANI_000_Assistencia_Sanitaria.pdf',
+    url: './manuals/Tema_28_MAN_SANI_000_Assistencia_Sanitaria.pdf',
+  },
+  {
+    id: 'manual-t29',
+    topicNumber: 29,
+    code: 'MAN-SANI-001',
+    category: 'intervencio',
+    title: 'Incidents amb Múltiples Víctimes (IMV) i Triatge START',
+    fileName: 'Tema_29_MAN_SANI_001_IMV_START.pdf',
+    url: './manuals/Tema_29_MAN_SANI_001_IMV_START.pdf',
+  },
+  {
+    id: 'manual-t30',
+    topicNumber: 30,
+    code: 'MAN-SVES-000',
+    category: 'intervencio',
+    title: 'Salvaments en Estructures Col·lapsades',
+    fileName: 'Tema_30_MAN_SVES_000_Colapses.pdf',
+    url: './manuals/Tema_30_MAN_SVES_000_Colapses.pdf',
+  },
+  {
+    id: 'manual-t31',
+    topicNumber: 31,
+    code: 'MAN-SVMN-000',
+    category: 'intervencio',
+    title: 'Salvaments al Medi Natural',
+    fileName: 'Tema_31_MAN_SVMN_000_Medi_Natural.pdf',
+    url: './manuals/Tema_31_MAN_SVMN_000_Medi_Natural.pdf',
+  },
+  {
+    id: 'manual-t32',
+    topicNumber: 32,
+    code: 'MAN-SVVH-000',
+    category: 'intervencio',
+    title: 'Accidents de Mobilitat i Excarceració',
+    fileName: 'Tema_32_MAN_SVVH_000_Accidents_Mobilitat.pdf',
+    url: './manuals/Tema_32_MAN_SVVH_000_Accidents_Mobilitat.pdf',
+  },
+  {
+    id: 'manual-t33',
+    topicNumber: 33,
+    code: 'MAN-SVXX-000',
+    category: 'intervencio',
+    title: 'Rescat Urbà i en Alçada',
+    fileName: 'Tema_33_MAN_SVXX_000_Rescat_Urba.pdf',
+    url: './manuals/Tema_33_MAN_SVXX_000_Rescat_Urba.pdf',
+  },
+  {
+    id: 'manual-t34',
+    topicNumber: 34,
+    code: 'MAN-SVMN-001',
+    category: 'intervencio',
+    title: 'Inundacions i Salvament Aquàtic',
+    fileName: 'Tema_34_MAN_SVMN_001_Inundacions.pdf',
+    url: './manuals/Tema_34_MAN_SVMN_001_Inundacions.pdf',
+  },
+  {
+    id: 'manual-codi-fonetic',
+    topicNumber: null,
+    code: 'MNEMOTÈCNIA',
+    category: 'mnemotecnia',
+    title: 'Codi Fonètic Major (0-100) — Guia oficial de memòria',
+    fileName: 'Codi_Fonetic_Major_0_100.pdf',
+    url: './manuals/Codi_Fonetic_Major_0_100.pdf',
+  },
+];
+
 /**
  * Registre complet dels 34 temes oficials (Temes 1 al 34 sense cap buit!):
  * - Tema 1  (Bloc General): Constitució Espanyola (1978), Estatut d'Autonomia (LO 6/2006) i Llei 13/1989
@@ -30570,6 +30899,849 @@ function MnemonicsView({ topics, onSelectTopic }) {
   );
 }
 
+const STORAGE_KEY = 'bombers_manual_annotations_v1';
+
+const CATEGORIES = [
+  { id: 'all', label: 'Tots (35)' },
+  { id: 'general', label: 'Bloc General (T1–T7)' },
+  { id: 'tecnic', label: 'Ciències i Tècnica (T8–T15)' },
+  { id: 'intervencio', label: 'Intervenció i Operativa (T16–T34)' },
+  { id: 'mnemotecnia', label: 'Mnemotècnia' },
+];
+
+const HIGHLIGHT_COLORS = [
+  { id: 'yellow', label: 'Groc', hex: '#facc15' },
+  { id: 'green', label: 'Verd', hex: '#4ade80' },
+  { id: 'pink', label: 'Rosa', hex: '#f472b6' },
+  { id: 'blue', label: 'Blau', hex: '#60a5fa' },
+];
+
+const PEN_COLORS = [
+  { id: 'red', label: 'Vermell', hex: '#dc2626' },
+  { id: 'navy', label: 'Blau fosc', hex: '#2563eb' },
+  { id: 'ink', label: 'Negre', hex: '#0f172a' },
+];
+
+function loadSavedAnnotations() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveAnnotations(data) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch (err) {
+    console.warn('No s\'han pogut desar les anotacions al localStorage:', err);
+  }
+}
+
+function drawStrokesOnCanvas(canvas, strokes) {
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (!strokes || strokes.length === 0) return;
+
+  const w = canvas.width;
+  const h = canvas.height;
+
+  for (const stroke of strokes) {
+    if (!stroke.points || stroke.points.length === 0) continue;
+    ctx.save();
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    if (stroke.tool === 'eraser') {
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = 'rgba(0,0,0,1)';
+      ctx.lineWidth = (stroke.size || 0.022) * w;
+    } else if (stroke.tool === 'highlighter') {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 0.36;
+      ctx.strokeStyle = stroke.color || '#facc15';
+      ctx.lineWidth = (stroke.size || 0.022) * w;
+    } else {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 0.95;
+      ctx.strokeStyle = stroke.color || '#dc2626';
+      ctx.lineWidth = (stroke.size || 0.0035) * w;
+    }
+
+    ctx.beginPath();
+    const first = stroke.points[0];
+    ctx.moveTo(first.x * w, first.y * h);
+    if (stroke.points.length === 1) {
+      ctx.lineTo(first.x * w + 0.5, first.y * h + 0.5);
+    } else {
+      for (let i = 1; i < stroke.points.length; i++) {
+        ctx.lineTo(stroke.points[i].x * w, stroke.points[i].y * h);
+      }
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+}
+
+function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
+  const [pdfDoc, setPdfDoc] = useState(null);
+  const [numPages, setNumPages] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
+  const [pageInput, setPageInput] = useState('1');
+  const [scale, setScale] = useState(1.25);
+  const [loadingPdf, setLoadingPdf] = useState(true);
+  const [pdfError, setPdfError] = useState('');
+  const [exportProgress, setExportProgress] = useState('');
+
+  const [tool, setTool] = useState('highlighter'); // 'highlighter' | 'pen' | 'eraser'
+  const [highlightColor, setHighlightColor] = useState('#facc15');
+  const [penColor, setPenColor] = useState('#dc2626');
+  const [showNotesPanel, setShowNotesPanel] = useState(true);
+
+  const pdfCanvasRef = useRef(null);
+  const annotCanvasRef = useRef(null);
+  const renderTaskRef = useRef(null);
+  const isDrawingRef = useRef(false);
+  const activeStrokeRef = useRef(null);
+
+  const manualData = savedStore[manual.id] || { pages: {}, notes: {} };
+  const currentStrokes = (manualData.pages && manualData.pages[pageNum]) || [];
+  const currentNote = (manualData.notes && manualData.notes[pageNum]) || '';
+
+  // Carrega del document PDF amb pdf.js
+  useEffect(() => {
+    let cancelled = false;
+    setLoadingPdf(true);
+    setPdfError('');
+    setPdfDoc(null);
+    setPageNum(1);
+    setPageInput('1');
+
+    const pdfjsLib = window.pdfjsLib;
+    if (!pdfjsLib) {
+      setPdfError('No s\'ha pogut carregar el motor PDF.js. Pots utilitzar el visor alternatiu o descarregar el manual.');
+      setLoadingPdf(false);
+      return;
+    }
+
+    if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+
+    const loadingTask = pdfjsLib.getDocument(manual.url);
+    loadingTask.promise
+      .then((doc) => {
+        if (cancelled) return;
+        setPdfDoc(doc);
+        setNumPages(doc.numPages);
+        setLoadingPdf(false);
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.error('Error obrint PDF:', err);
+        setPdfError('Error carregant el PDF amb PDF.js. Pots obrir-lo en una pestanya nova o descarregar-lo.');
+        setLoadingPdf(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [manual.url]);
+
+  // Renderitzat de la pàgina actual
+  const renderCurrentPage = useCallback(async () => {
+    if (!pdfDoc || !pdfCanvasRef.current || !annotCanvasRef.current) return;
+
+    try {
+      if (renderTaskRef.current) {
+        try {
+          renderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
+
+      const page = await pdfDoc.getPage(pageNum);
+      const viewport = page.getViewport({ scale });
+      const pdfCanvas = pdfCanvasRef.current;
+      const annotCanvas = annotCanvasRef.current;
+
+      pdfCanvas.width = Math.floor(viewport.width);
+      pdfCanvas.height = Math.floor(viewport.height);
+      annotCanvas.width = pdfCanvas.width;
+      annotCanvas.height = pdfCanvas.height;
+
+      const ctx = pdfCanvas.getContext('2d');
+      const task = page.render({ canvasContext: ctx, viewport });
+      renderTaskRef.current = task;
+      await task.promise;
+
+      drawStrokesOnCanvas(annotCanvas, currentStrokes);
+    } catch (err) {
+      if (err && err.name === 'RenderingCancelledException') return;
+      console.error('Error renderitzant pàgina PDF:', err);
+    }
+  }, [pdfDoc, pageNum, scale, currentStrokes]);
+
+  useEffect(() => {
+    renderCurrentPage();
+  }, [renderCurrentPage]);
+
+  useEffect(() => {
+    setPageInput(String(pageNum));
+  }, [pageNum]);
+
+  const commitPageStrokes = (nextStrokes) => {
+    const nextManualData = {
+      pages: { ...(manualData.pages || {}), [pageNum]: nextStrokes },
+      notes: { ...(manualData.notes || {}) },
+    };
+    onUpdateManualStore(manual.id, nextManualData);
+  };
+
+  const handleNoteChange = (text) => {
+    const nextNotes = { ...(manualData.notes || {}) };
+    if (text.trim() === '') {
+      delete nextNotes[pageNum];
+    } else {
+      nextNotes[pageNum] = text;
+    }
+    onUpdateManualStore(manual.id, {
+      pages: { ...(manualData.pages || {}) },
+      notes: nextNotes,
+    });
+  };
+
+  const getNormalizedPoint = (e) => {
+    const canvas = annotCanvasRef.current;
+    const rect = canvas.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+    return { x, y };
+  };
+
+  const handlePointerDown = (e) => {
+    if (!annotCanvasRef.current) return;
+    e.preventDefault();
+    annotCanvasRef.current.setPointerCapture(e.pointerId);
+    isDrawingRef.current = true;
+    const pt = getNormalizedPoint(e);
+    activeStrokeRef.current = {
+      tool,
+      color: tool === 'highlighter' ? highlightColor : penColor,
+      size: tool === 'highlighter' ? 0.022 : tool === 'eraser' ? 0.028 : 0.0035,
+      points: [pt],
+    };
+    drawStrokesOnCanvas(annotCanvasRef.current, [...currentStrokes, activeStrokeRef.current]);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!isDrawingRef.current || !activeStrokeRef.current || !annotCanvasRef.current) return;
+    e.preventDefault();
+    const pt = getNormalizedPoint(e);
+    activeStrokeRef.current.points.push(pt);
+    drawStrokesOnCanvas(annotCanvasRef.current, [...currentStrokes, activeStrokeRef.current]);
+  };
+
+  const handlePointerUp = () => {
+    if (!isDrawingRef.current || !activeStrokeRef.current) return;
+    isDrawingRef.current = false;
+    const finished = activeStrokeRef.current;
+    activeStrokeRef.current = null;
+    commitPageStrokes([...currentStrokes, finished]);
+  };
+
+  const handleUndo = () => {
+    if (currentStrokes.length === 0) return;
+    commitPageStrokes(currentStrokes.slice(0, -1));
+  };
+
+  const handleClearPage = () => {
+    if (currentStrokes.length === 0) return;
+    commitPageStrokes([]);
+  };
+
+  const handleJumpPage = (e) => {
+    e.preventDefault();
+    const parsed = parseInt(pageInput, 10);
+    if (!Number.isNaN(parsed) && parsed >= 1 && parsed <= numPages) {
+      setPageNum(parsed);
+    } else {
+      setPageInput(String(pageNum));
+    }
+  };
+
+  const handleExportCurrentPagePdf = () => {
+    if (!window.jspdf || !pdfCanvasRef.current || !annotCanvasRef.current) return;
+    const { jsPDF } = window.jspdf;
+    const merged = document.createElement('canvas');
+    merged.width = pdfCanvasRef.current.width;
+    merged.height = pdfCanvasRef.current.height;
+    const ctx = merged.getContext('2d');
+    ctx.drawImage(pdfCanvasRef.current, 0, 0);
+    ctx.drawImage(annotCanvasRef.current, 0, 0);
+
+    const orientation = merged.width > merged.height ? 'l' : 'p';
+    const doc = new jsPDF({
+      orientation,
+      unit: 'px',
+      format: [merged.width, merged.height],
+    });
+    doc.addImage(merged.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, merged.width, merged.height);
+    doc.save(`${manual.fileName.replace('.pdf', '')}_Pag_${pageNum}_Anotada.pdf`);
+  };
+
+  const handleExportAnnotatedPagesPdf = async () => {
+    if (!window.jspdf || !pdfDoc) return;
+    const { jsPDF } = window.jspdf;
+    const annotatedPageNums = Object.keys(manualData.pages || {})
+      .filter((p) => (manualData.pages[p] || []).length > 0)
+      .map((p) => Number(p))
+      .sort((a, b) => a - b);
+
+    const targetPages =
+      annotatedPageNums.length > 0
+        ? annotatedPageNums
+        : Array.from({ length: Math.min(numPages, 25) }, (_, i) => i + 1);
+
+    setExportProgress(`Generant PDF anotat (0/${targetPages.length})...`);
+    try {
+      let doc = null;
+      const tempPdfCanvas = document.createElement('canvas');
+      const tempAnnotCanvas = document.createElement('canvas');
+      const mergedCanvas = document.createElement('canvas');
+
+      for (let i = 0; i < targetPages.length; i++) {
+        const p = targetPages[i];
+        setExportProgress(`Generant PDF anotat (${i + 1}/${targetPages.length})...`);
+        const page = await pdfDoc.getPage(p);
+        const viewport = page.getViewport({ scale: 1.5 });
+        tempPdfCanvas.width = Math.floor(viewport.width);
+        tempPdfCanvas.height = Math.floor(viewport.height);
+        tempAnnotCanvas.width = tempPdfCanvas.width;
+        tempAnnotCanvas.height = tempPdfCanvas.height;
+        mergedCanvas.width = tempPdfCanvas.width;
+        mergedCanvas.height = tempPdfCanvas.height;
+
+        await page.render({ canvasContext: tempPdfCanvas.getContext('2d'), viewport }).promise;
+        drawStrokesOnCanvas(tempAnnotCanvas, (manualData.pages && manualData.pages[p]) || []);
+
+        const mCtx = mergedCanvas.getContext('2d');
+        mCtx.drawImage(tempPdfCanvas, 0, 0);
+        mCtx.drawImage(tempAnnotCanvas, 0, 0);
+
+        const orientation = mergedCanvas.width > mergedCanvas.height ? 'l' : 'p';
+        if (!doc) {
+          doc = new jsPDF({
+            orientation,
+            unit: 'px',
+            format: [mergedCanvas.width, mergedCanvas.height],
+          });
+        } else {
+          doc.addPage([mergedCanvas.width, mergedCanvas.height], orientation);
+        }
+        doc.addImage(
+          mergedCanvas.toDataURL('image/jpeg', 0.9),
+          'JPEG',
+          0,
+          0,
+          mergedCanvas.width,
+          mergedCanvas.height
+        );
+      }
+
+      if (doc) {
+        doc.save(`${manual.fileName.replace('.pdf', '')}_Anotat.pdf`);
+      }
+    } catch (err) {
+      console.error('Error exportant PDF anotat:', err);
+    } finally {
+      setExportProgress('');
+    }
+  };
+
+  const annotatedPagesCount = Object.keys(manualData.pages || {}).filter(
+    (p) => (manualData.pages[p] || []).length > 0
+  ).length;
+  const notesCount = Object.keys(manualData.notes || {}).length;
+
+  return (
+    <div className="space-y-4">
+      {/* Capçalera de retorn i accions */}
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm">
+        <div className="flex items-center gap-3 min-w-0">
+          <button
+            onClick={onBack}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Biblioteca</span>
+          </button>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300">
+                {manual.code}
+              </span>
+              {(annotatedPagesCount > 0 || notesCount > 0) && (
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300">
+                  <CheckCircle2 className="w-3 h-3" />
+                  Desat automàticament ({annotatedPagesCount} pàg. subratllades, {notesCount} notes)
+                </span>
+              )}
+            </div>
+            <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white truncate mt-0.5">
+              {manual.title}
+            </h2>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <a
+            href={manual.url}
+            download={manual.fileName}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+          >
+            <Download className="w-4 h-4" />
+            <span>Original</span>
+          </a>
+          <a
+            href={manual.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+          >
+            <ExternalLink className="w-4 h-4" />
+            <span>Pestanya nova</span>
+          </a>
+          {pdfDoc && (
+            <>
+              <button
+                onClick={handleExportCurrentPagePdf}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white px-3 py-2 text-xs font-bold shadow-sm"
+              >
+                <Download className="w-4 h-4" />
+                <span>Pàgina anotada</span>
+              </button>
+              <button
+                onClick={handleExportAnnotatedPagesPdf}
+                disabled={Boolean(exportProgress)}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white px-3 py-2 text-xs font-bold shadow-sm"
+              >
+                <Download className="w-4 h-4" />
+                <span>
+                  {exportProgress ||
+                    (annotatedPagesCount > 0
+                      ? `Exportar ${annotatedPagesCount} pàg. anotades`
+                      : 'Exportar PDF anotat')}
+                </span>
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Barra d'eines d'edició i navegació */}
+      {pdfDoc && (
+        <div className="sticky top-2 z-20 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-3 shadow-md">
+          {/* Eines de dibuix i subratllat */}
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => setTool('highlighter')}
+              className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold transition ${
+                tool === 'highlighter'
+                  ? 'bg-amber-400 text-slate-950 shadow-sm'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'
+              }`}
+            >
+              <Highlighter className="w-4 h-4" />
+              <span>Subratllador</span>
+            </button>
+
+            {tool === 'highlighter' && (
+              <div className="flex items-center gap-1 px-1">
+                {HIGHLIGHT_COLORS.map((c) => (
+                  <button
+                    key={c.id}
+                    onClick={() => setHighlightColor(c.hex)}
+                    title={`Subratllador ${c.label}`}
+                    className={`w-5 h-5 rounded-full border-2 transition ${
+                      highlightColor === c.hex
+                        ? 'border-slate-900 dark:border-white scale-110'
+                        : 'border-transparent opacity-80'
+                    }`}
+                    style={{ backgroundColor: c.hex }}
+                  />
+                ))}
+              </div>
+            )}
+
+            <button
+              onClick={() => setTool('pen')}
+              className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold transition ${
+                tool === 'pen'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'
+              }`}
+            >
+              <Pencil className="w-4 h-4" />
+              <span>Llapis</span>
+            </button>
+
+            {tool === 'pen' && (
+              <div className="flex items-center gap-1 px-1">
+                {PEN_COLORS.map((c) => (
+                  <button
+                    key={c.id}
+                    onClick={() => setPenColor(c.hex)}
+                    title={`Llapis ${c.label}`}
+                    className={`w-5 h-5 rounded-full border-2 transition ${
+                      penColor === c.hex
+                        ? 'border-slate-900 dark:border-white scale-110'
+                        : 'border-transparent opacity-80'
+                    }`}
+                    style={{ backgroundColor: c.hex }}
+                  />
+                ))}
+              </div>
+            )}
+
+            <button
+              onClick={() => setTool('eraser')}
+              className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold transition ${
+                tool === 'eraser'
+                  ? 'bg-rose-600 text-white shadow-sm'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'
+              }`}
+            >
+              <Eraser className="w-4 h-4" />
+              <span>Goma</span>
+            </button>
+
+            <div className="h-5 w-px bg-slate-200 dark:bg-slate-700 mx-1" />
+
+            <button
+              onClick={handleUndo}
+              disabled={currentStrokes.length === 0}
+              className="inline-flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 disabled:opacity-40"
+              title="Desfer últim traç"
+            >
+              <Undo2 className="w-4 h-4" />
+              <span>Desfer</span>
+            </button>
+
+            <button
+              onClick={handleClearPage}
+              disabled={currentStrokes.length === 0}
+              className="inline-flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-bold bg-slate-100 dark:bg-slate-800 text-rose-600 dark:text-rose-400 disabled:opacity-40"
+              title="Esborrar tots els traços d'aquesta pàgina"
+            >
+              <Trash2 className="w-4 h-4" />
+              <span>Netejar</span>
+            </button>
+          </div>
+
+          {/* Navegació de pàgines i zoom */}
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
+              <button
+                onClick={() => setScale((s) => Math.max(0.7, Number((s - 0.15).toFixed(2))))}
+                className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
+                title="Reduir zoom"
+              >
+                <ZoomOut className="w-4 h-4" />
+              </button>
+              <span className="text-xs font-bold px-1.5 text-slate-700 dark:text-slate-200">
+                {Math.round(scale * 100)}%
+              </span>
+              <button
+                onClick={() => setScale((s) => Math.min(2.4, Number((s + 0.15).toFixed(2))))}
+                className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
+                title="Ampliar zoom"
+              >
+                <ZoomIn className="w-4 h-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handleJumpPage} className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => setPageNum((p) => Math.max(1, p - 1))}
+                disabled={pageNum <= 1}
+                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 disabled:opacity-40"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <input
+                type="text"
+                value={pageInput}
+                onChange={(e) => setPageInput(e.target.value)}
+                className="w-12 text-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-1 text-xs font-bold text-slate-900 dark:text-white"
+              />
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                / {numPages}
+              </span>
+              <button
+                type="button"
+                onClick={() => setPageNum((p) => Math.min(numPages, p + 1))}
+                disabled={pageNum >= numPages}
+                className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 disabled:opacity-40"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </form>
+
+            <button
+              onClick={() => setShowNotesPanel((v) => !v)}
+              className={`rounded-xl px-3 py-1.5 text-xs font-bold border ${
+                showNotesPanel
+                  ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300'
+                  : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+              }`}
+            >
+              Notes pàg. {pageNum}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Notes personals de la pàgina */}
+      {pdfDoc && showNotesPanel && (
+        <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/60 dark:bg-indigo-950/20 p-3.5">
+          <div className="flex items-center justify-between mb-1.5">
+            <label className="text-xs font-extrabold uppercase tracking-wider text-indigo-800 dark:text-indigo-300">
+              Notes personals · Pàgina {pageNum} (desat automàtic al navegador)
+            </label>
+            <span className="text-[11px] text-indigo-600 dark:text-indigo-400 font-semibold">
+              {currentNote.length} caràcters
+            </span>
+          </div>
+          <textarea
+            rows={2}
+            value={currentNote}
+            onChange={(e) => handleNoteChange(e.target.value)}
+            placeholder="Escriu aquí apunts, regles mnemotècniques o dubtes d'aquesta pàgina..."
+            className="w-full rounded-xl border border-indigo-200 dark:border-indigo-800 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+        </div>
+      )}
+
+      {/* Àrea del Canvas PDF + Overlay de Subratllat */}
+      {loadingPdf ? (
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-12 text-center">
+          <p className="text-sm font-bold text-slate-600 dark:text-slate-300">
+            Carregant manual oficial...
+          </p>
+        </div>
+      ) : pdfError ? (
+        <div className="space-y-4">
+          <div className="rounded-2xl border border-amber-200 dark:border-amber-900/60 bg-amber-50 dark:bg-amber-950/30 p-4 text-sm text-amber-900 dark:text-amber-200">
+            {pdfError}
+          </div>
+          <iframe
+            src={manual.url}
+            title={manual.title}
+            className="w-full h-[75vh] rounded-2xl border border-slate-200 dark:border-slate-800 bg-white"
+          />
+        </div>
+      ) : (
+        <div className="overflow-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-200/70 dark:bg-slate-950 p-4 flex justify-center">
+          <div className="relative inline-block shadow-xl bg-white">
+            <canvas ref={pdfCanvasRef} className="block" />
+            <canvas
+              ref={annotCanvasRef}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              style={{ touchAction: 'none' }}
+              className="absolute inset-0 cursor-crosshair"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ManualsView({ initialManualTopicNumber = null }) {
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('all');
+  const [savedStore, setSavedStore] = useState(() => loadSavedAnnotations());
+  const [selectedManual, setSelectedManual] = useState(() => {
+    if (initialManualTopicNumber) {
+      return OFFICIAL_MANUALS.find((m) => m.topicNumber === initialManualTopicNumber) || null;
+    }
+    return null;
+  });
+
+  useEffect(() => {
+    if (initialManualTopicNumber) {
+      const match = OFFICIAL_MANUALS.find((m) => m.topicNumber === initialManualTopicNumber);
+      if (match) setSelectedManual(match);
+    }
+  }, [initialManualTopicNumber]);
+
+  const handleUpdateManualStore = (manualId, nextData) => {
+    setSavedStore((prev) => {
+      const updated = { ...prev, [manualId]: nextData };
+      saveAnnotations(updated);
+      return updated;
+    });
+  };
+
+  if (selectedManual) {
+    return (
+      <ManualPdfEditor
+        manual={selectedManual}
+        savedStore={savedStore}
+        onUpdateManualStore={handleUpdateManualStore}
+        onBack={() => setSelectedManual(null)}
+      />
+    );
+  }
+
+  const filteredManuals = OFFICIAL_MANUALS.filter((m) => {
+    if (category !== 'all' && m.category !== category) return false;
+    if (!search.trim()) return true;
+    const q = search.toLowerCase();
+    return (
+      m.title.toLowerCase().includes(q) ||
+      m.code.toLowerCase().includes(q) ||
+      m.fileName.toLowerCase().includes(q) ||
+      (m.topicNumber && `tema ${m.topicNumber}`.includes(q)) ||
+      (m.topicNumber && `t${m.topicNumber}`.includes(q))
+    );
+  });
+
+  return (
+    <div className="space-y-6">
+      {/* Capçalera */}
+      <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50 to-red-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-red-950/20 p-6 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-2 rounded-full bg-red-100 dark:bg-red-950/60 px-3 py-1 text-xs font-extrabold text-red-700 dark:text-red-300">
+              <FolderOpen className="w-3.5 h-3.5" />
+              <span>Biblioteca Oficial · 35 PDFs</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              Manuals Oficials (PDF) i Subratllat Online
+            </h1>
+            <p className="text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+              Visualitza, subratlla amb colors, escriu notes per pàgina i descarrega qualsevol dels 34 temes oficials i el Codi Fonètic Major. Tot el que subratllis queda desat automàticament i ho pots exportar en PDF.
+            </p>
+          </div>
+        </div>
+
+        {/* Cercador i filtres */}
+        <div className="mt-5 flex flex-col gap-3">
+          <div className="relative">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Cerca per tema (ex: Tema 25), codi (MAN-INVE-000) o paraula clau..."
+              className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 pl-10 pr-4 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setCategory(cat.id)}
+                className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition ${
+                  category === cat.id
+                    ? 'bg-red-600 text-white shadow-sm'
+                    : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Graella de manuals */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {filteredManuals.map((manual) => {
+          const entry = savedStore[manual.id];
+          const annotatedCount = entry?.pages
+            ? Object.keys(entry.pages).filter((p) => (entry.pages[p] || []).length > 0).length
+            : 0;
+          const notesCount = entry?.notes ? Object.keys(entry.notes).length : 0;
+
+          return (
+            <div
+              key={manual.id}
+              className="flex flex-col justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm hover:border-red-300 dark:hover:border-red-800 transition"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                      {manual.topicNumber ? `Tema ${manual.topicNumber}` : 'Guia'}
+                    </span>
+                    <span className="text-[11px] font-bold text-red-600 dark:text-red-400">
+                      {manual.code}
+                    </span>
+                  </div>
+                  {(annotatedCount > 0 || notesCount > 0) && (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">
+                      <CheckCircle2 className="w-3 h-3" />
+                      {annotatedCount > 0 ? `${annotatedCount} pàg.` : ''}
+                      {notesCount > 0 ? ` ${notesCount} notes` : ''}
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-snug">
+                  {manual.title}
+                </h3>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 truncate">
+                  {manual.fileName}
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => setSelectedManual(manual)}
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-3 py-2 text-xs font-bold shadow-sm transition"
+                >
+                  <Highlighter className="w-3.5 h-3.5" />
+                  <span>Obrir i Subratllar Online</span>
+                </button>
+                <a
+                  href={manual.url}
+                  download={manual.fileName}
+                  className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 px-3 py-2 text-xs font-bold transition"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>PDF</span>
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {filteredManuals.length === 0 && (
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-10 text-center">
+          <BookOpen className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+          <p className="text-sm font-bold text-slate-700 dark:text-slate-200">
+            No s&apos;ha trobat cap manual amb aquest criteri.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function GroupStudyView({
   user,
   groupProfiles,
@@ -31628,6 +32800,7 @@ function Sidebar({
   onSelectCalculations,
   onSelectKeyPoints,
   onSelectMnemonics,
+  onSelectManuals,
   onSelectGroup,
   groupCount = 0,
   dueReviewsCount = 0,
@@ -31847,6 +33020,32 @@ function Sidebar({
               }`}
             >
               Trucs
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              onSelectManuals();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'manuals'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-rose-50/90 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border border-rose-200/70 dark:border-rose-900/50 hover:bg-rose-100/80 dark:hover:bg-rose-950/50'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <FolderOpen className="w-4 h-4" />
+              <span>Manuals Oficials (PDF)</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'manuals'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
+              }`}
+            >
+              35 PDF
             </span>
           </button>
 
@@ -32231,6 +33430,10 @@ function App() {
           setActiveView('mnemonics');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectManuals={() => {
+          setActiveView('manuals');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectGroup={() => {
           setActiveView('group');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -32366,6 +33569,8 @@ function App() {
               topics={TOPICS}
               onSelectTopic={(id, target = null) => handleSelectTopic(id, target)}
             />
+          ) : activeView === 'manuals' ? (
+            <ManualsView />
           ) : activeView === 'group' ? (
             <GroupStudyView
               user={cloudUser}
