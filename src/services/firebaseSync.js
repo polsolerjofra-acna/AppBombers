@@ -8,7 +8,8 @@ import {
   onAuthStateChanged,
   setPersistence,
   browserLocalPersistence,
-  indexedDBLocalPersistence
+  indexedDBLocalPersistence,
+  browserPopupRedirectResolver
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -35,7 +36,8 @@ function ensureFirebase() {
     try {
       if (typeof initializeAuth === 'function' && browserLocalPersistence) {
         cachedAuth = initializeAuth(cachedApp, {
-          persistence: [browserLocalPersistence, indexedDBLocalPersistence].filter(Boolean)
+          persistence: [browserLocalPersistence, indexedDBLocalPersistence].filter(Boolean),
+          popupRedirectResolver: browserPopupRedirectResolver
         });
       } else {
         cachedAuth = getAuth(cachedApp);
