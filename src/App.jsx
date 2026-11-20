@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Flame, BarChart3, Calculator, Calendar, AlertTriangle, Users, Sun, Moon } from 'lucide-react';
+import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut } from 'lucide-react';
 import { TOPICS } from './data';
 import { useStudyProgress } from './hooks/useStudyProgress';
 import Sidebar from './components/layout/Sidebar';
@@ -18,6 +18,7 @@ import PomodoroWidget from './components/PomodoroWidget';
 import {
   subscribeAuth,
   loginWithGoogle,
+  logoutFirebase,
   loadPrivateProgress,
   saveCloudProgress,
   subscribeGroupProfiles,
@@ -425,52 +426,29 @@ export default function App() {
           <div className="flex items-center gap-1.5">
             <button
               onClick={() =>
-                setActiveView(activeView === 'calendar' ? 'topic' : 'calendar')
+                setActiveView(activeView === 'group' ? 'home' : 'group')
               }
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
-              title="Calendari i Voltes"
+              className="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+              title="Parc de Bombers · Perfil i Grup"
             >
-              <Calendar className="w-4 h-4" />
+              <Users className="w-4 h-4 text-red-600" />
+              <span className="hidden sm:inline">Parc de Bombers</span>
             </button>
             <button
-              onClick={() =>
-                setActiveView(activeView === 'keypoints' ? 'topic' : 'keypoints')
-              }
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
-              title="Punts Clau i Confusions"
+              onClick={() => (cloudUser ? logoutFirebase() : handleQuickGoogleLogin())}
+              className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl border text-xs font-bold transition ${
+                cloudUser
+                  ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100'
+                  : 'border-red-200 dark:border-red-800 bg-red-50/70 dark:bg-red-950/40 text-red-700 dark:text-red-300 hover:bg-red-100'
+              }`}
+              title={cloudUser ? 'Sortir de la sessió' : 'Iniciar sessió'}
             >
-              <AlertTriangle className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() =>
-                setActiveView(activeView === 'group' ? 'topic' : 'group')
-              }
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
-              title="Grup d'Estudi i Rànquing"
-            >
-              <Users className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() =>
-                setActiveView(activeView === 'calculations' ? 'topic' : 'calculations')
-              }
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
-              title="Càlculs, Fórmules i Problemes"
-            >
-              <Calculator className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() =>
-                setActiveView(activeView === 'dashboard' ? 'topic' : 'dashboard')
-              }
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
-              title="Seguiment i Estadístiques"
-            >
-              <BarChart3 className="w-4 h-4" />
+              {cloudUser ? <LogOut className="w-4 h-4" /> : <LogIn className="w-4 h-4" />}
+              <span className="hidden sm:inline">{cloudUser ? 'Sortir' : 'Iniciar sessió'}</span>
             </button>
             <button
               onClick={() => setDarkMode((d) => !d)}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200"
+              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
               title="Canviar tema clar/fosc"
             >
               {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}

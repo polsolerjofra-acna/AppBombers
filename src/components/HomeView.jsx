@@ -139,8 +139,8 @@ export default function HomeView({
 
   return (
     <div className="space-y-6">
-      {/* Capçalera principal */}
-      <section className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white via-red-50/40 to-amber-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-red-950/20 p-6 sm:p-8 shadow-sm">
+      {/* Capçalera principal amb l'inici de sessió integrat */}
+      <section className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white via-red-50/40 to-amber-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-red-950/20 p-6 sm:p-8 shadow-sm space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center gap-5">
           <img
             src="./icons/icon-192.png"
@@ -160,52 +160,52 @@ export default function HomeView({
             </p>
           </div>
         </div>
+
+        {/* Bloc d'Iniciar Sessió integrat dins la benvinguda */}
+        {cloudUser ? (
+          <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 p-4 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <div>
+                <p className="text-sm font-extrabold text-emerald-950 dark:text-emerald-200">
+                  Sessió iniciada com a {cloudUser.displayName || cloudUser.email}
+                </p>
+                <p className="text-xs text-emerald-800 dark:text-emerald-300">
+                  El teu avanç es guarda automàticament al núvol i tens actives les notificacions de la corba de l&apos;oblit.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => onNavigate('group')}
+              className="rounded-xl border border-emerald-300 dark:border-emerald-800 bg-white dark:bg-slate-900 px-3.5 py-2 text-xs font-bold text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100/60"
+            >
+              Parc de Bombers (Perfil)
+            </button>
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-red-200 dark:border-red-900/60 bg-white/90 dark:bg-slate-900/90 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                <LogIn className="w-4 h-4 text-red-600" />
+                <span>Inicia sessió per desar el teu avanç</span>
+              </h2>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Si inicies sessió amb Google, tot el teu progrés, voltes, tests i anotacions es guardaran al núvol entre dispositius.
+              </p>
+            </div>
+            <button
+              onClick={onSignIn}
+              className="shrink-0 inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 text-xs sm:text-sm font-extrabold shadow-sm transition"
+            >
+              <LogIn className="w-4 h-4" />
+              <span>Iniciar Sessió amb Google</span>
+            </button>
+          </div>
+        )}
       </section>
 
       {/* Calendari complet integrat directament sota el títol */}
       {calendarElement}
-
-      {/* Bloc d'Iniciar Sessió per guardar avanç i rebre notificacions */}
-      {cloudUser ? (
-        <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 p-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-            <div>
-              <p className="text-sm font-extrabold text-emerald-950 dark:text-emerald-200">
-                Sessió iniciada com a {cloudUser.displayName || cloudUser.email}
-              </p>
-              <p className="text-xs text-emerald-800 dark:text-emerald-300">
-                El teu avanç es guarda automàticament al núvol i tens actives les notificacions de la corba de l&apos;oblit.
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={() => onNavigate('group')}
-            className="rounded-xl border border-emerald-300 dark:border-emerald-800 bg-white dark:bg-slate-900 px-3.5 py-2 text-xs font-bold text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100/60"
-          >
-            Gestionar compte i grup
-          </button>
-        </div>
-      ) : (
-        <div className="rounded-2xl border-2 border-red-200 dark:border-red-900/60 bg-white dark:bg-slate-900 p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <h2 className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-              <LogIn className="w-4 h-4 text-red-600" />
-              <span>Inicia sessió per desar el teu avanç</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Si inicies sessió amb Google, tot el teu progrés, voltes, tests i subratllats es guardaran al núvol entre dispositius i podràs rebre les notificacions diàries de què et toca estudiar segons la corba de l&apos;oblit.
-            </p>
-          </div>
-          <button
-            onClick={onSignIn}
-            className="shrink-0 inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 text-white px-5 py-3 text-xs sm:text-sm font-extrabold shadow-sm transition"
-          >
-            <LogIn className="w-4 h-4" />
-            <span>Iniciar Sessió amb Google</span>
-          </button>
-        </div>
-      )}
 
       {/* Resum de funcions principals de l'app */}
       <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3">
