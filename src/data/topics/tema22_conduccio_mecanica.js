@@ -105,6 +105,13 @@ export const tema22ConduccioMecanica = {
             'Esquerra: 1r Central (≤ 40 km/h), 2n Posterior (≤ 5 km/h) i 3r Anterior (≤ 5 km/h, impedeix girar). Dreta: angles d’atac (≈ 13°), de sortida (≈ 12°) i ventral en un BUP.'
         },
         {
+          type: 'diagram',
+          title: 'Motor de 4 Temps (Admissió, Compressió, Explosió, Expulsió) i Ordre 1-3-4-2',
+          diagramType: 'four_stroke_engine',
+          caption:
+            'Cicle complet de 4 temps (720° de cigonyal) i taula sincronitzada del que fa cada cilindre en cada fase amb ordre d’encesa 1-3-4-2.'
+        },
+        {
           type: 'table',
           title: 'Angles Tot Terreny, PTO i Dates d’Obligatorietat de Seguretat a la UE (MAN.EQIP.002 Cap. 5.6–6)',
           subtitle: 'Valors exactes del manual per a BUP i cronologia europea de seguretat activa/passiva',
