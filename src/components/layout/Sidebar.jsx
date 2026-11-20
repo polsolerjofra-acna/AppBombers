@@ -43,7 +43,8 @@ export default function Sidebar({
   onCloseMobile
 }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [sectionsDropdownOpen, setSectionsDropdownOpen] = useState(true);
+  const [parcDropdownOpen, setParcDropdownOpen] = useState(false);
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
   const [topicsDropdownOpen, setTopicsDropdownOpen] = useState(false);
 
   const filteredTopics = topics.filter((t) => {
@@ -101,24 +102,8 @@ export default function Sidebar({
           </button>
         </div>
 
-        {/* Cos principal amb scroll: Apartats desplegables + Cercador + Temari */}
+        {/* Cos principal amb scroll: Accessos principals + Desplegables + Cercador + Temari */}
         <div className="flex-1 overflow-y-auto p-3.5 space-y-2.5">
-          <button
-            type="button"
-            onClick={() => setSectionsDropdownOpen((v) => !v)}
-            className="w-full flex items-center justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/70 px-3.5 py-2.5 text-xs font-extrabold text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-          >
-            <div className="flex items-center gap-2">
-              <Home className="w-4 h-4 text-red-600" />
-              <span>Apartats i Eines (10)</span>
-            </div>
-            <span className="text-xs font-bold text-slate-500">
-              {sectionsDropdownOpen ? '▲' : '▼'}
-            </span>
-          </button>
-
-          {sectionsDropdownOpen && (
-          <div className="space-y-2">
           <button
             onClick={() => {
               onSelectHome();
@@ -142,32 +127,6 @@ export default function Sidebar({
               }`}
             >
               Inici
-            </span>
-          </button>
-
-          <button
-            onClick={() => {
-              onSelectDashboard();
-              onCloseMobile();
-            }}
-            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
-              activeView === 'dashboard'
-                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
-                : 'bg-slate-100/80 dark:bg-slate-800/70 text-slate-800 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800'
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <BarChart3 className="w-4 h-4" />
-              <span>Seguiment i Estadístiques</span>
-            </div>
-            <span
-              className={`text-[11px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeView === 'dashboard'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-orange-500/15 text-orange-600 dark:text-orange-400'
-              }`}
-            >
-              {progress.streakDays || 1}d 🔥
             </span>
           </button>
 
@@ -201,32 +160,6 @@ export default function Sidebar({
 
           <button
             onClick={() => {
-              onSelectQuickStudy();
-              onCloseMobile();
-            }}
-            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
-              activeView === 'quickstudy'
-                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
-                : 'bg-rose-50/90 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border border-rose-200/70 dark:border-rose-900/50 hover:bg-rose-100/80 dark:hover:bg-rose-950/50'
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span>Sessió Ràpida (5–45 min)</span>
-            </div>
-            <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeView === 'quickstudy'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
-              }`}
-            >
-              Adaptatiu
-            </span>
-          </button>
-
-          <button
-            onClick={() => {
               onSelectPractice();
               onCloseMobile();
             }}
@@ -251,137 +184,224 @@ export default function Sidebar({
             </span>
           </button>
 
+          {/* Desplegable: Parc de Bombers · Equip */}
           <button
-            onClick={() => {
-              onSelectCalculations();
-              onCloseMobile();
-            }}
-            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
-              activeView === 'calculations'
-                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
-                : 'bg-blue-50/90 dark:bg-blue-950/30 text-blue-900 dark:text-blue-200 border border-blue-200/70 dark:border-blue-900/50 hover:bg-blue-100/80 dark:hover:bg-blue-950/50'
-            }`}
+            type="button"
+            onClick={() => setParcDropdownOpen((v) => !v)}
+            className="w-full flex items-center justify-between rounded-xl border border-emerald-200/80 dark:border-emerald-900/50 bg-emerald-50/70 dark:bg-emerald-950/25 px-3.5 py-2.5 text-xs font-extrabold text-emerald-950 dark:text-emerald-200 hover:bg-emerald-100/80 dark:hover:bg-emerald-950/40 transition"
           >
             <div className="flex items-center gap-2">
-              <Calculator className="w-4 h-4" />
-              <span>Càlculs, Fórmules i Problemes</span>
+              <Flame className="w-4 h-4 text-red-600" />
+              <span>Parc de Bombers · Equip (2)</span>
             </div>
-            <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeView === 'calculations'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-blue-600/15 text-blue-700 dark:text-blue-300'
-              }`}
-            >
-              5 temes
+            <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300">
+              {parcDropdownOpen ? '▲' : '▼'}
             </span>
           </button>
 
+          {parcDropdownOpen && (
+            <div className="space-y-2 pl-2 border-l-2 border-emerald-200 dark:border-emerald-900/60">
+              <button
+                onClick={() => {
+                  onSelectDashboard();
+                  onCloseMobile();
+                }}
+                className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                  activeView === 'dashboard'
+                    ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                    : 'bg-slate-100/80 dark:bg-slate-800/70 text-slate-800 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4" />
+                  <span>Seguiment i Estadístiques</span>
+                </div>
+                <span
+                  className={`text-[11px] px-2 py-0.5 rounded-full font-extrabold ${
+                    activeView === 'dashboard'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-orange-500/15 text-orange-600 dark:text-orange-400'
+                  }`}
+                >
+                  {progress.streakDays || 1}d 🔥
+                </span>
+              </button>
+
+              <button
+                onClick={() => {
+                  onSelectGroup();
+                  onCloseMobile();
+                }}
+                className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                  activeView === 'group'
+                    ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                    : 'bg-emerald-50/90 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 border border-emerald-200/70 dark:border-emerald-900/50 hover:bg-emerald-100/80 dark:hover:bg-emerald-950/50'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  <span>Grup d&apos;Estudi i Rànquing</span>
+                </div>
+                <span
+                  className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                    activeView === 'group'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-emerald-600/15 text-emerald-700 dark:text-emerald-300'
+                  }`}
+                >
+                  {groupCount > 0 ? `${groupCount} en línia` : 'Núvol'}
+                </span>
+              </button>
+            </div>
+          )}
+
+          {/* Desplegable: Recursos */}
           <button
-            onClick={() => {
-              onSelectKeyPoints();
-              onCloseMobile();
-            }}
-            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
-              activeView === 'keypoints'
-                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
-                : 'bg-amber-50/90 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 border border-amber-200/70 dark:border-amber-900/50 hover:bg-amber-100/80 dark:hover:bg-amber-950/50'
-            }`}
+            type="button"
+            onClick={() => setResourcesDropdownOpen((v) => !v)}
+            className="w-full flex items-center justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/70 px-3.5 py-2.5 text-xs font-extrabold text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           >
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4" />
-              <span>Punts Clau i Confusions</span>
+              <FolderOpen className="w-4 h-4 text-red-600" />
+              <span>Recursos (5)</span>
             </div>
-            <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeView === 'keypoints'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-amber-500/20 text-amber-800 dark:text-amber-300'
-              }`}
-            >
-              Trampes
+            <span className="text-xs font-bold text-slate-500">
+              {resourcesDropdownOpen ? '▲' : '▼'}
             </span>
           </button>
 
-          <button
-            onClick={() => {
-              onSelectMnemonics();
-              onCloseMobile();
-            }}
-            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
-              activeView === 'mnemonics'
-                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
-                : 'bg-purple-50/90 dark:bg-purple-950/30 text-purple-900 dark:text-purple-200 border border-purple-200/70 dark:border-purple-900/50 hover:bg-purple-100/80 dark:hover:bg-purple-950/50'
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <Lightbulb className="w-4 h-4" />
-              <span>Regles Mnemotècniques</span>
-            </div>
-            <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeView === 'mnemonics'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-purple-600/15 text-purple-700 dark:text-purple-300'
-              }`}
-            >
-              Trucs
-            </span>
-          </button>
+          {resourcesDropdownOpen && (
+            <div className="space-y-2 pl-2 border-l-2 border-slate-200 dark:border-slate-800">
+              <button
+                onClick={() => {
+                  onSelectQuickStudy();
+                  onCloseMobile();
+                }}
+                className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                  activeView === 'quickstudy'
+                    ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                    : 'bg-rose-50/90 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border border-rose-200/70 dark:border-rose-900/50 hover:bg-rose-100/80 dark:hover:bg-rose-950/50'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>Sessió Ràpida (5–45 min)</span>
+                </div>
+                <span
+                  className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                    activeView === 'quickstudy'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
+                  }`}
+                >
+                  Adaptatiu
+                </span>
+              </button>
 
-          <button
-            onClick={() => {
-              onSelectManuals();
-              onCloseMobile();
-            }}
-            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
-              activeView === 'manuals'
-                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
-                : 'bg-rose-50/90 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border border-rose-200/70 dark:border-rose-900/50 hover:bg-rose-100/80 dark:hover:bg-rose-950/50'
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <FolderOpen className="w-4 h-4" />
-              <span>Manuals Oficials (PDF)</span>
-            </div>
-            <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeView === 'manuals'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
-              }`}
-            >
-              34 PDF
-            </span>
-          </button>
+              <button
+                onClick={() => {
+                  onSelectCalculations();
+                  onCloseMobile();
+                }}
+                className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                  activeView === 'calculations'
+                    ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                    : 'bg-blue-50/90 dark:bg-blue-950/30 text-blue-900 dark:text-blue-200 border border-blue-200/70 dark:border-blue-900/50 hover:bg-blue-100/80 dark:hover:bg-blue-950/50'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Calculator className="w-4 h-4" />
+                  <span>Càlculs, Fórmules i Problemes</span>
+                </div>
+                <span
+                  className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                    activeView === 'calculations'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-blue-600/15 text-blue-700 dark:text-blue-300'
+                  }`}
+                >
+                  5 temes
+                </span>
+              </button>
 
-          <button
-            onClick={() => {
-              onSelectGroup();
-              onCloseMobile();
-            }}
-            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
-              activeView === 'group'
-                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
-                : 'bg-emerald-50/90 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 border border-emerald-200/70 dark:border-emerald-900/50 hover:bg-emerald-100/80 dark:hover:bg-emerald-950/50'
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              <span>Grup d&apos;Estudi i Rànquing</span>
-            </div>
-            <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeView === 'group'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-emerald-600/15 text-emerald-700 dark:text-emerald-300'
-              }`}
-            >
-              {groupCount > 0 ? `${groupCount} en línia` : 'Núvol'}
-            </span>
-          </button>
+              <button
+                onClick={() => {
+                  onSelectKeyPoints();
+                  onCloseMobile();
+                }}
+                className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                  activeView === 'keypoints'
+                    ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                    : 'bg-amber-50/90 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 border border-amber-200/70 dark:border-amber-900/50 hover:bg-amber-100/80 dark:hover:bg-amber-950/50'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>Punts Clau i Confusions</span>
+                </div>
+                <span
+                  className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                    activeView === 'keypoints'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-amber-500/20 text-amber-800 dark:text-amber-300'
+                  }`}
+                >
+                  Trampes
+                </span>
+              </button>
 
-          </div>
+              <button
+                onClick={() => {
+                  onSelectMnemonics();
+                  onCloseMobile();
+                }}
+                className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                  activeView === 'mnemonics'
+                    ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                    : 'bg-purple-50/90 dark:bg-purple-950/30 text-purple-900 dark:text-purple-200 border border-purple-200/70 dark:border-purple-900/50 hover:bg-purple-100/80 dark:hover:bg-purple-950/50'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Lightbulb className="w-4 h-4" />
+                  <span>Regles Mnemotècniques</span>
+                </div>
+                <span
+                  className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                    activeView === 'mnemonics'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-purple-600/15 text-purple-700 dark:text-purple-300'
+                  }`}
+                >
+                  Trucs
+                </span>
+              </button>
+
+              <button
+                onClick={() => {
+                  onSelectManuals();
+                  onCloseMobile();
+                }}
+                className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                  activeView === 'manuals'
+                    ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                    : 'bg-rose-50/90 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border border-rose-200/70 dark:border-rose-900/50 hover:bg-rose-100/80 dark:hover:bg-rose-950/50'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <FolderOpen className="w-4 h-4" />
+                  <span>Manuals Oficials (PDF)</span>
+                </div>
+                <span
+                  className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                    activeView === 'manuals'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
+                  }`}
+                >
+                  34 PDF
+                </span>
+              </button>
+            </div>
           )}
 
           <input
