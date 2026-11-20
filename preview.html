@@ -26579,67 +26579,122 @@ async function downloadAllPostersPdf(topics, onProgress = null) {
   }
 }
 
-// Utilitats per convertir els resums de cada tema en pistes d'àudio narrades (màx. 10 minuts per pista)
-
-const WORDS_PER_MINUTE = 145;
+// Utilitats per convertir esquemes, resums i paranys en una lliçó d'àudio en mode ensenyament (màx. 10 minuts per pista)
+const WORDS_PER_MINUTE = 140;
 const MAX_MINUTES_PER_TRACK = 10;
-const MAX_WORDS_PER_TRACK = WORDS_PER_MINUTE * MAX_MINUTES_PER_TRACK; // ~1.450 paraules
+const MAX_WORDS_PER_TRACK = WORDS_PER_MINUTE * MAX_MINUTES_PER_TRACK; // ~1.400 paraules
+
+const ORDINALS = [
+  'En primer lloc',
+  'En segon lloc',
+  'En tercer lloc',
+  'En quart lloc',
+  'En cinquè lloc',
+  'En sisè lloc'
+];
 
 function cleanForSpeech(raw = '') {
   return String(raw)
-    .replace(/→/g, ', passa a ')
+    .replace(/→/g, ', que passa a ')
     .replace(/≥/g, ' major o igual a ')
     .replace(/≤/g, ' menor o igual a ')
     .replace(/°C/g, ' graus centígrads')
     .replace(/µm/g, ' micròmetres')
-    .replace(/O₂/g, 'oxigen')
-    .replace(/CO₂/g, 'diòxid de carboni')
-    .replace(/H₂O/g, 'aigua')
-    .replace(/H₂/g, 'hidrogen')
-    .replace(/N₂/g, 'nitrogen')
+    .replace(/\barts\./gi, 'articles')
+    .replace(/\bart\./gi, 'article')
+    .replace(/\bcap\./gi, 'capítol')
+    .replace(/\bpàg\./gi, 'pàgina')
+    .replace(/\bmàx\./gi, 'màxim')
+    .replace(/\bmín\./gi, 'mínim')
+    .replace(/\bex\./gi, 'exemple')
+    .replace(/\bO₂\b/g, 'oxigen')
+    .replace(/\bCO₂\b/g, 'diòxid de carboni')
+    .replace(/\bH₂O\b/g, 'aigua')
+    .replace(/\bH₂\b/g, 'hidrogen')
+    .replace(/\bN₂\b/g, 'nitrogen')
     .replace(/[•▪◦📌🗂️🎯⚠️✓✗]/g, ' ')
+    .replace(/\s*·\s*/g, ', ')
     .replace(/\s*\|\s*/g, '. ')
     .replace(/\n+/g, '. ')
     .replace(/\s{2,}/g, ' ')
     .trim();
 }
 
-function extractPageSegments(page) {
+function buildSchemaLessonSegments(topicId) {
+  const rawOutline = TOPIC_OUTLINES[topicId];
+  if (!rawOutline) return [];
+  const schemas = Array.isArray(rawOutline)
+    ? rawOutline
+    : rawOutline.schemas
+    ? rawOutline.schemas
+    : [rawOutline];
+
+  const segments = [];
+  schemas.forEach((sch, sIdx) => {
+    const schTitle = cleanForSpeech(sch.title || sch.shortLabel || `Esquema ${sIdx + 1}`);
+    segments.push(
+      `Estructura lògica ${schemas.length > 1 ? `del bloc ${sIdx + 1}` : 'del tema'}: ${schTitle}.`
+    );
+    if (sch.overview) {
+      segments.push(`Visió general per situar-nos: ${cleanForSpeech(sch.overview)}`);
+    }
+
+    const branches = sch.branches || [];
+    branches.forEach((br, bIdx) => {
+      const ord = ORDINALS[bIdx] || `Al punt ${bIdx + 1}`;
+      segments.push(`${ord}, veiem ${cleanForSpeech(br.title)}.`);
+
+      (br.items || []).forEach((item) => {
+        const label = cleanForSpeech(item.label || '');
+        const children = (item.children || []).map((c) => cleanForSpeech(c)).filter(Boolean);
+        if (label && children.length > 0) {
+          segments.push(
+            `Dins de ${label}, fixa't en el següent: ${children.join('. A més, ')}.`
+          );
+        } else if (label) {
+          segments.push(`Punt important: ${label}.`);
+        } else if (children.length > 0) {
+          segments.push(children.join('. ') + '.');
+        }
+      });
+    });
+  });
+
+  return segments;
+}
+
+function extractSummaryLessonSegments(page) {
   const segments = [];
   if (page.title) {
-    segments.push(cleanForSpeech(page.title) + '.');
+    segments.push(`Ara repassem ${cleanForSpeech(page.title)}.`);
   }
 
   for (const b of page.blocks || []) {
     if (b.type === 'text') {
-      if (b.heading) segments.push(cleanForSpeech(b.heading) + '.');
+      if (b.heading) segments.push(`Anem a veure: ${cleanForSpeech(b.heading)}.`);
       for (const p of b.paragraphs || []) {
         const txt = cleanForSpeech(p);
         if (txt) segments.push(txt);
       }
     } else if (b.type === 'easy') {
-      if (b.title) segments.push(cleanForSpeech(b.title) + '.');
+      if (b.title) segments.push(`Per entendre-ho fàcilment, ${cleanForSpeech(b.title)}.`);
       if (b.explanation) segments.push(cleanForSpeech(b.explanation));
-      if (b.takeaway) segments.push('Idea clau: ' + cleanForSpeech(b.takeaway));
+      if (b.takeaway) segments.push(`Recorda la idea clau: ${cleanForSpeech(b.takeaway)}`);
     } else if (b.type === 'table') {
-      if (b.title) segments.push(cleanForSpeech(b.title) + '.');
-      const headers = b.headers || [];
+      if (b.title) segments.push(`Resum comparatiu de ${cleanForSpeech(b.title)}.`);
       for (const row of b.rows || []) {
-        const rowParts = row
-          .map((cell, idx) => {
-            const h = headers[idx] ? `${cleanForSpeech(headers[idx])}: ` : '';
-            return `${h}${cleanForSpeech(cell)}`;
-          })
-          .filter(Boolean);
-        if (rowParts.length > 0) {
-          segments.push(rowParts.join('. ') + '.');
+        const cleanCells = row.map((c) => cleanForSpeech(c)).filter(Boolean);
+        if (cleanCells.length >= 2) {
+          segments.push(`${cleanCells[0]}: ${cleanCells.slice(1).join('. ')}.`);
+        } else if (cleanCells.length === 1) {
+          segments.push(`${cleanCells[0]}.`);
         }
       }
-      if (b.footnote) segments.push(cleanForSpeech(b.footnote));
+      if (b.footnote) segments.push(`Nota important: ${cleanForSpeech(b.footnote)}`);
     } else if (b.type === 'mnemonic') {
-      if (b.title) segments.push(cleanForSpeech(b.title) + '.');
+      if (b.title) segments.push(`Truc de memòria: ${cleanForSpeech(b.title)}.`);
       if (b.trick) segments.push(cleanForSpeech(b.trick));
-      if (b.example) segments.push('Exemple: ' + cleanForSpeech(b.example));
+      if (b.example) segments.push(`Per exemple: ${cleanForSpeech(b.example)}`);
     }
   }
 
@@ -26653,23 +26708,45 @@ function buildAudioTracksForTopic(topic) {
   const sourcePages = summaryPages.length > 0 ? summaryPages : pages.slice(-2);
 
   const allSegments = [
-    `Tema ${topic.number}: ${cleanForSpeech(topic.title)}. Resum d'àudio per estudiar.`
+    `Hola! Comencem la classe d'àudio del Tema ${topic.number}: ${cleanForSpeech(topic.title)}. Et guiaré amb ordre i lògica perquè ho entenguis tot sense mirar la pantalla.`
   ];
 
-  // Si hi ha punts clau al Radar d'Examen, els afegim al principi del resum
-  if (Array.isArray(topic.importance?.keyPoints) && topic.importance.keyPoints.length > 0) {
-    allSegments.push('Punts clau principals.');
-    topic.importance.keyPoints.forEach((kp) => {
+  // 1. Esquemes interpretats amb ordre i jerarquia
+  const schemaSegments = buildSchemaLessonSegments(topic.id);
+  if (schemaSegments.length > 0) {
+    allSegments.push(...schemaSegments);
+  }
+
+  // 2. Punts clau d'examen
+  const keyPoints = topic.importance?.keyPoints || [];
+  if (keyPoints.length > 0) {
+    allSegments.push(`Ara resumim els ${keyPoints.length} punts clau que més pregunten a l'examen.`);
+    keyPoints.forEach((kp, idx) => {
       const cleaned = cleanForSpeech(kp);
-      if (cleaned) allSegments.push(cleaned + '.');
+      if (cleaned) allSegments.push(`Punt clau ${idx + 1}: ${cleaned}.`);
     });
   }
 
+  // 3. Paranys típics del tribunal amb èmfasi
+  const traps = topic.importance?.traps || topic.importance?.commonTraps || [];
+  if (traps.length > 0) {
+    allSegments.push('Atenció màxima! Ara veiem els paranys típics del tribunal perquè no hi caiguis mai.');
+    traps.forEach((tr) => {
+      const cleaned = cleanForSpeech(tr);
+      if (cleaned) allSegments.push(`Vigila amb aquest parany: ${cleaned}.`);
+    });
+  }
+
+  // 4. Resums finals i fórmules explicats
   sourcePages.forEach((page) => {
-    allSegments.push(...extractPageSegments(page));
+    allSegments.push(...extractSummaryLessonSegments(page));
   });
 
-  // Trosseja en pistes de màxim 10 minuts (~1.450 paraules)
+  allSegments.push(
+    `I fins aquí el repàs del Tema ${topic.number}. Quan puguis, fes unes preguntes de test per fixar-ho del tot!`
+  );
+
+  // Trosseja en pistes de màxim 10 minuts (~1.400 paraules)
   const tracks = [];
   let currentSegments = [];
   let currentWords = 0;
@@ -26705,7 +26782,7 @@ function buildAudioTracksForTopic(topic) {
     title:
       tracks.length > 1
         ? `Tema ${topic.number} · Pista ${idx + 1}/${tracks.length}`
-        : `Tema ${topic.number} · Resum complet`
+        : `Tema ${topic.number} · Classe d'àudio`
   }));
 }
 
@@ -26714,12 +26791,18 @@ function pickBestCatalanVoice(voices = []) {
   const caVoices = voices.filter((v) => v.lang && v.lang.toLowerCase().startsWith('ca'));
   if (caVoices.length > 0) {
     return (
-      caVoices.find((v) => /siri|enhanced|premium|montserrat|jordi/i.test(v.name)) ||
+      caVoices.find((v) => /siri|enhanced|millorada|premium|neural|natural/i.test(v.name)) ||
+      caVoices.find((v) => /montserrat|jordi/i.test(v.name) && !/compact/i.test(v.name)) ||
+      caVoices.find((v) => !/compact/i.test(v.name)) ||
       caVoices[0]
     );
   }
   const esVoices = voices.filter((v) => v.lang && v.lang.toLowerCase().startsWith('es'));
-  return esVoices[0] || voices[0];
+  return (
+    esVoices.find((v) => /siri|enhanced|neural|natural|monica|jorge/i.test(v.name)) ||
+    esVoices[0] ||
+    voices[0]
+  );
 }
 
 const STORAGE_KEY = 'bombers_edtech_progress_v2';
@@ -30014,7 +30097,12 @@ function AudioSummaryPlayer({ topic, onClose = null, autoPlay = false }) {
       if (!isPlayingRef.current) return;
       const nextS = sIdx + 1;
       setSegmentIndex(nextS);
-      speakSegment(tIdx, nextS, playbackRate);
+      // Pausa breu natural entre frases perquè soni com una classe i no atropellat
+      setTimeout(() => {
+        if (isPlayingRef.current) {
+          speakSegment(tIdx, nextS, playbackRate);
+        }
+      }, 280);
     };
     utter.onerror = () => {
       isPlayingRef.current = false;
@@ -30242,6 +30330,12 @@ function AudioSummaryPlayer({ topic, onClose = null, autoPlay = false }) {
             </span>{' '}
             {activeTrack.segments[segmentIndex] || activeTrack.segments[0]}
           </div>
+
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+            <strong>Consell per a iPhone / iPad (veu natural):</strong> si la veu del dispositiu sona robòtica, ves a{' '}
+            <em>Ajustos → Accessibilitat → Contingut parlat → Veus → Català</em> i descarrega la veu{' '}
+            <strong>Montserrat (Millorada)</strong> o <strong>Jordi</strong>. El reproductor l&apos;agafarà automàticament!
+          </p>
         </>
       )}
     </div>

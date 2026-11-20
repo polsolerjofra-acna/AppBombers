@@ -87,7 +87,12 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
       if (!isPlayingRef.current) return;
       const nextS = sIdx + 1;
       setSegmentIndex(nextS);
-      speakSegment(tIdx, nextS, playbackRate);
+      // Pausa breu natural entre frases perquè soni com una classe i no atropellat
+      setTimeout(() => {
+        if (isPlayingRef.current) {
+          speakSegment(tIdx, nextS, playbackRate);
+        }
+      }, 280);
     };
     utter.onerror = () => {
       isPlayingRef.current = false;
@@ -315,6 +320,12 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
             </span>{' '}
             {activeTrack.segments[segmentIndex] || activeTrack.segments[0]}
           </div>
+
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+            <strong>Consell per a iPhone / iPad (veu natural):</strong> si la veu del dispositiu sona robòtica, ves a{' '}
+            <em>Ajustos → Accessibilitat → Contingut parlat → Veus → Català</em> i descarrega la veu{' '}
+            <strong>Montserrat (Millorada)</strong> o <strong>Jordi</strong>. El reproductor l&apos;agafarà automàticament!
+          </p>
         </>
       )}
     </div>
