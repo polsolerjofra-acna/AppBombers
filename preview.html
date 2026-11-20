@@ -32538,7 +32538,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOp
     };
   }, [manual.url]);
 
-  // Renderitzat de la pàgina actual
+  // Renderitzat de la pàgina PDF (independent dels traços perquè no es cancel·li)
   const renderCurrentPage = useCallback(async () => {
     if (!pdfDoc || !pdfCanvasRef.current || !annotCanvasRef.current) return;
 
@@ -32573,23 +32573,29 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOp
       pdfCanvas.height = Math.floor(viewport.height);
       annotCanvas.width = pdfCanvas.width;
       annotCanvas.height = pdfCanvas.height;
-      setRenderDims({ width: cssW, height: cssH });
+      setRenderDims((prev) =>
+        prev.width === cssW && prev.height === cssH ? prev : { width: cssW, height: cssH }
+      );
 
       const ctx = pdfCanvas.getContext('2d');
       const task = page.render({ canvasContext: ctx, viewport });
       renderTaskRef.current = task;
       await task.promise;
-
-      drawStrokesOnCanvas(annotCanvas, currentStrokes);
     } catch (err) {
       if (err && err.name === 'RenderingCancelledException') return;
       console.error('Error renderitzant pàgina PDF:', err);
     }
-  }, [pdfDoc, pageNum, scale, fitWidth, rotation, currentStrokes]);
+  }, [pdfDoc, pageNum, scale, fitWidth, rotation]);
 
   useEffect(() => {
     renderCurrentPage();
   }, [renderCurrentPage]);
+
+  useEffect(() => {
+    if (annotCanvasRef.current) {
+      drawStrokesOnCanvas(annotCanvasRef.current, currentStrokes);
+    }
+  }, [currentStrokes, renderDims]);
 
   useEffect(() => {
     if (!fitWidth) return;
