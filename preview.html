@@ -36357,6 +36357,7 @@ function Sidebar({
   onCloseMobile
 }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [sectionsDropdownOpen, setSectionsDropdownOpen] = useState(true);
   const [topicsDropdownOpen, setTopicsDropdownOpen] = useState(false);
 
   const filteredTopics = topics.filter((t) => {
@@ -36414,8 +36415,24 @@ function Sidebar({
           </button>
         </div>
 
-        {/* Accés directe a "Inici" + "Seguiment i Estadístiques" + Cercador ràpid */}
-        <div className="p-3.5 border-b border-slate-100 dark:border-slate-800 space-y-2.5 shrink-0">
+        {/* Cos principal amb scroll: Apartats desplegables + Cercador + Temari */}
+        <div className="flex-1 overflow-y-auto p-3.5 space-y-2.5">
+          <button
+            type="button"
+            onClick={() => setSectionsDropdownOpen((v) => !v)}
+            className="w-full flex items-center justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/70 px-3.5 py-2.5 text-xs font-extrabold text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          >
+            <div className="flex items-center gap-2">
+              <Home className="w-4 h-4 text-red-600" />
+              <span>Apartats i Eines (10)</span>
+            </div>
+            <span className="text-xs font-bold text-slate-500">
+              {sectionsDropdownOpen ? '▲' : '▼'}
+            </span>
+          </button>
+
+          {sectionsDropdownOpen && (
+          <div className="space-y-2">
           <button
             onClick={() => {
               onSelectHome();
@@ -36678,6 +36695,9 @@ function Sidebar({
             </span>
           </button>
 
+          </div>
+          )}
+
           <input
             type="text"
             value={searchQuery}
@@ -36685,10 +36705,7 @@ function Sidebar({
             placeholder="Cerca Tema (ex: Tema 24) o MAN..."
             className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 px-3 py-2 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-red-500"
           />
-        </div>
 
-        {/* Llista d'apartats i desplegable de Temes */}
-        <div className="flex-1 overflow-y-auto p-3.5 space-y-2">
           <button
             type="button"
             onClick={() => setTopicsDropdownOpen((v) => !v)}
