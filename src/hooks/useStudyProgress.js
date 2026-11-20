@@ -429,29 +429,56 @@ export function useStudyProgress() {
   };
 
   // Registra si l'usuari falla o encerta una pregunta concreta (desat al seu compte privat)
+  // i connecta els errors amb la corba de l'oblit perquè el tema torni a repàs aviat.
   const recordQuestionOutcome = (topicId, topicNumber, questionObj, isCorrect) => {
     if (!questionObj || !questionObj.id) return;
     setProgress((prev) => {
       const prevQuiz = prev.quizResults || {};
       const prevMistakes = prevQuiz.__mistakes || {};
       const nextMistakes = { ...prevMistakes };
+      let nextSpaced = prev.spacedRepetition || {};
 
       if (!isCorrect) {
         const existing = nextMistakes[questionObj.id];
+        const newCount = (existing?.count || 0) + 1;
         nextMistakes[questionObj.id] = {
           id: questionObj.id,
           topicId,
           topicNumber,
+          pageNumber: questionObj.pageNumber || existing?.pageNumber || null,
+          sectionTitle: questionObj.sectionTitle || existing?.sectionTitle || '',
           question: questionObj.question,
           correctAnswer:
             (questionObj.options && questionObj.options[questionObj.correctIndex]) || '',
           explanation: questionObj.explanation || '',
-          count: (existing?.count || 0) + 1,
+          count: newCount,
           lastFailedAt: getTodayISO()
         };
+
+        // Entrelliga l'error amb la regla de l'oblit: si el tema no té repàs imminent, el programa per avui/demà
+        if (topicId) {
+          const today = getTodayISO();
+          const targetDate = newCount >= 2 ? today : addDaysISO(today, 1);
+          const prevSp = nextSpaced[topicId];
+          if (!prevSp?.nextReviewAt || prevSp.nextReviewAt > targetDate) {
+            nextSpaced = {
+              ...nextSpaced,
+              [topicId]: {
+                ...(prevSp || { reviewStage: 0 }),
+                lastReviewedAt: prevSp?.lastReviewedAt || today,
+                nextReviewAt: targetDate
+              }
+            };
+          }
+        }
+      } else if (nextMistakes[questionObj.id]) {
+        // Si s'encerta després d'haver-la fallat, la netegem dels errors pendents
+        delete nextMistakes[questionObj.id];
       }
+
       return {
         ...prev,
+        spacedRepetition: nextSpaced,
         quizResults: {
           ...prevQuiz,
           __mistakes: nextMistakes

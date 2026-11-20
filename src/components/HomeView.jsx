@@ -21,7 +21,8 @@ export default function HomeView({
   dueReviewsCount = 0,
   cloudUser = null,
   onSignIn,
-  onNavigate
+  onNavigate,
+  calendarElement = null
 }) {
   const sections = [
     {
@@ -161,44 +162,8 @@ export default function HomeView({
         </div>
       </section>
 
-      {/* Peça clau: Calendari i Voltes just sota el títol */}
-      <section className="rounded-3xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 via-white to-sky-50 dark:from-indigo-950/40 dark:via-slate-900 dark:to-sky-950/30 p-5 sm:p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-indigo-600/20">
-            <Calendar className="w-6 h-6" />
-          </div>
-          <div className="space-y-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-                Peça Clau · Organització Diària
-              </span>
-              <span
-                className={`text-[11px] px-2.5 py-0.5 rounded-full font-extrabold ${
-                  dueReviewsCount > 0
-                    ? 'bg-red-600 text-white'
-                    : 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300'
-                }`}
-              >
-                {dueReviewsCount > 0 ? `${dueReviewsCount} repassos pendents avui` : 'Al dia'}
-              </span>
-            </div>
-            <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">
-              Calendari i Corba de l&apos;Oblit
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-              Consulta què et toca estudiar o repassar avui (voltes d&apos;1, 3, 7, 15 i 30 dies) i accedeix als càlculs dels divendres.
-            </p>
-          </div>
-        </div>
-        <button
-          onClick={() => onNavigate('calendar')}
-          className="shrink-0 inline-flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 text-xs sm:text-sm font-extrabold shadow-sm transition"
-        >
-          <Calendar className="w-4 h-4" />
-          <span>Obrir Calendari</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
-      </section>
+      {/* Calendari complet integrat directament sota el títol */}
+      {calendarElement}
 
       {/* Bloc d'Iniciar Sessió per guardar avanç i rebre notificacions */}
       {cloudUser ? (

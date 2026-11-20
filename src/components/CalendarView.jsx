@@ -29,6 +29,37 @@ const MONTHS_CA = [
   'Desembre'
 ];
 
+function findBestPageForMistake(topic, mistake) {
+  const pages = topic?.pages || [];
+  if (pages.length === 0) return null;
+  if (mistake?.pageNumber) {
+    const exact = pages.find((p) => p.pageNumber === mistake.pageNumber);
+    if (exact) return exact;
+  }
+  const text = `${mistake?.question || ''} ${mistake?.explanation || ''}`.toLowerCase();
+  const words = text
+    .replace(/[^a-zà-ü0-9\s]/gi, ' ')
+    .split(/\s+/)
+    .filter((w) => w.length >= 4);
+  if (words.length === 0) {
+    return pages.find((p) => p.isSummary || p.isFormulaSheet) || pages[0];
+  }
+  let best = null;
+  let bestScore = -1;
+  pages.forEach((p) => {
+    const hay = `${p.title || ''} ${p.subtitle || ''} ${(p.keyPoints || []).join(' ')}`.toLowerCase();
+    let score = 0;
+    words.forEach((w) => {
+      if (hay.includes(w)) score += 1;
+    });
+    if (score > bestScore) {
+      bestScore = score;
+      best = p;
+    }
+  });
+  return bestScore > 0 ? best : pages.find((p) => p.isSummary || p.isFormulaSheet) || pages[0];
+}
+
 export default function CalendarView({
   topics,
   progress,
@@ -117,6 +148,40 @@ export default function CalendarView({
     .sort((a, b) =>
       (spacedMap[a.id]?.nextReviewAt || '').localeCompare(spacedMap[b.id]?.nextReviewAt || '')
     );
+
+  // Agrupa els errors pendents per apartat concret (no tot el tema) per fer repàs focalitzat
+  const focusedMistakeSections = (() => {
+    const rawMistakes = Object.values(progress.quizResults?.__mistakes || {});
+    if (rawMistakes.length === 0) return [];
+    const grouped = new Map();
+    rawMistakes.forEach((m) => {
+      const topic =
+        topics.find((t) => t.id === m.topicId) ||
+        topics.find((t) => t.number === m.topicNumber);
+      if (!topic) return;
+      const page = findBestPageForMistake(topic, m);
+      const pageNum = page?.pageNumber || 1;
+      const key = `${topic.id}::${pageNum}`;
+      const existing = grouped.get(key);
+      if (existing) {
+        existing.errorCount += m.count || 1;
+        existing.questionsCount += 1;
+      } else {
+        grouped.set(key, {
+          key,
+          topic,
+          pageNumber: pageNum,
+          sectionTitle: page?.title || m.sectionTitle || `Pàgina ${pageNum}`,
+          errorCount: m.count || 1,
+          questionsCount: 1,
+          lastFailedAt: m.lastFailedAt || ''
+        });
+      }
+    });
+    return Array.from(grouped.values())
+      .sort((a, b) => b.errorCount - a.errorCount)
+      .slice(0, 6);
+  })();
 
   const handleCompleteRoundClick = (topic) => {
     const prevRounds = topicRounds[topic.id] || 0;
@@ -476,6 +541,55 @@ export default function CalendarView({
 
           {/* Llista de Repassos (Corba de l'Oblit) + Estudis planificats */}
           <div className="space-y-3 max-h-[420px] overflow-y-auto pr-1">
+            {focusedMistakeSections.length > 0 && (
+              <div className="rounded-2xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/70 dark:bg-rose-950/25 p-3.5 space-y-2.5">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                    Apartats amb més errors (Repàs focalitzat)
+                  </span>
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-rose-600 text-white">
+                    {focusedMistakeSections.length} apartats
+                  </span>
+                </div>
+                <p className="text-[11px] text-rose-900/80 dark:text-rose-200/80">
+                  No cal repassar tot el tema: ves directe a l&apos;apartat concret que et genera dubtes.
+                </p>
+                <div className="space-y-2">
+                  {focusedMistakeSections.map((item) => (
+                    <div
+                      key={item.key}
+                      className="rounded-xl border border-rose-200/80 dark:border-rose-900/50 bg-white dark:bg-slate-900 p-2.5 flex flex-col gap-2"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <div className="text-[10px] font-extrabold text-rose-600 dark:text-rose-400">
+                            Tema {item.topic.number} · Pàg. {item.pageNumber} ({item.errorCount} {item.errorCount === 1 ? 'error' : 'errors'})
+                          </div>
+                          <div className="text-xs font-extrabold text-slate-900 dark:text-white leading-snug">
+                            {item.sectionTitle}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        <button
+                          onClick={() => onOpenTopic(item.topic.id, `page:${item.pageNumber}`)}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-extrabold"
+                        >
+                          <span>Repassar apartat →</span>
+                        </button>
+                        <button
+                          onClick={() => onOpenTopic(item.topic.id, 'summary')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 text-[11px] font-extrabold"
+                        >
+                          <Sparkles className="w-3 h-3" />
+                          <span>Resum</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             {selectedReviews.length === 0 && selectedPlanned.length === 0 && (
               <div className="rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 p-4 text-center text-xs text-slate-500">
                 Cap repàs ni estudi planificat per aquest dia. Afegeix un tema a dalt!
@@ -570,13 +684,22 @@ export default function CalendarView({
                         </button>
                       </>
                     ) : (
-                      <button
-                        onClick={() => onOpenTopic(topic.id, 'manual')}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-extrabold"
-                      >
-                        <BookOpen className="w-3 h-3" />
-                        <span>Obrir Manual Complet</span>
-                      </button>
+                      <>
+                        <button
+                          onClick={() => onOpenTopic(topic.id, 'summary')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 text-[11px] font-extrabold hover:bg-amber-600"
+                        >
+                          <Sparkles className="w-3 h-3" />
+                          <span>Resum del Tema</span>
+                        </button>
+                        <button
+                          onClick={() => onOpenTopic(topic.id, 'manual')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-extrabold"
+                        >
+                          <BookOpen className="w-3 h-3" />
+                          <span>Manual Complet</span>
+                        </button>
+                      </>
                     )}
 
                     {kind === 'review' && (

@@ -86,6 +86,7 @@
     const EyeOff = createLucideIcon("eye-off");
     const FileText = createLucideIcon("file-text");
     const Filter = createLucideIcon("filter");
+    const Flag = createLucideIcon("flag");
     const Flame = createLucideIcon("flame");
     const FolderOpen = createLucideIcon("folder-open");
     const Hash = createLucideIcon("hash");
@@ -17456,6 +17457,9 @@ function ensureFirebase() {
   if (!cachedApp) {
     cachedApp = getApps().length > 0 ? getApps()[0] : initializeApp(FIREBASE_CONFIG);
     cachedAuth = getAuth(cachedApp);
+    if (typeof setPersistence === 'function' && browserLocalPersistence) {
+      setPersistence(cachedAuth, browserLocalPersistence).catch(() => {});
+    }
     cachedDb = getFirestore(cachedApp);
   }
   return { app: cachedApp, auth: cachedAuth, db: cachedDb };
@@ -17473,7 +17477,16 @@ function subscribeAuth(callback) {
 async function loginWithGoogle() {
   const fb = ensureFirebase();
   if (!fb) throw new Error('Firebase no està configurat encara.');
+  if (typeof setPersistence === 'function' && browserLocalPersistence) {
+    await setPersistence(fb.auth, browserLocalPersistence).catch(() => {});
+  }
   const provider = new GoogleAuthProvider();
+  try {
+    const lastEmail = localStorage.getItem('bombers_last_google_email');
+    if (lastEmail) {
+      provider.setCustomParameters({ login_hint: lastEmail });
+    }
+  } catch {}
   return signInWithPopup(fb.auth, provider);
 }
 
@@ -26974,29 +26987,56 @@ function useStudyProgress() {
   };
 
   // Registra si l'usuari falla o encerta una pregunta concreta (desat al seu compte privat)
+  // i connecta els errors amb la corba de l'oblit perquè el tema torni a repàs aviat.
   const recordQuestionOutcome = (topicId, topicNumber, questionObj, isCorrect) => {
     if (!questionObj || !questionObj.id) return;
     setProgress((prev) => {
       const prevQuiz = prev.quizResults || {};
       const prevMistakes = prevQuiz.__mistakes || {};
       const nextMistakes = { ...prevMistakes };
+      let nextSpaced = prev.spacedRepetition || {};
 
       if (!isCorrect) {
         const existing = nextMistakes[questionObj.id];
+        const newCount = (existing?.count || 0) + 1;
         nextMistakes[questionObj.id] = {
           id: questionObj.id,
           topicId,
           topicNumber,
+          pageNumber: questionObj.pageNumber || existing?.pageNumber || null,
+          sectionTitle: questionObj.sectionTitle || existing?.sectionTitle || '',
           question: questionObj.question,
           correctAnswer:
             (questionObj.options && questionObj.options[questionObj.correctIndex]) || '',
           explanation: questionObj.explanation || '',
-          count: (existing?.count || 0) + 1,
+          count: newCount,
           lastFailedAt: getTodayISO()
         };
+
+        // Entrelliga l'error amb la regla de l'oblit: si el tema no té repàs imminent, el programa per avui/demà
+        if (topicId) {
+          const today = getTodayISO();
+          const targetDate = newCount >= 2 ? today : addDaysISO(today, 1);
+          const prevSp = nextSpaced[topicId];
+          if (!prevSp?.nextReviewAt || prevSp.nextReviewAt > targetDate) {
+            nextSpaced = {
+              ...nextSpaced,
+              [topicId]: {
+                ...(prevSp || { reviewStage: 0 }),
+                lastReviewedAt: prevSp?.lastReviewedAt || today,
+                nextReviewAt: targetDate
+              }
+            };
+          }
+        }
+      } else if (nextMistakes[questionObj.id]) {
+        // Si s'encerta després d'haver-la fallat, la netegem dels errors pendents
+        delete nextMistakes[questionObj.id];
       }
+
       return {
         ...prev,
+        spacedRepetition: nextSpaced,
         quizResults: {
           ...prevQuiz,
           __mistakes: nextMistakes
@@ -31320,6 +31360,37 @@ const MONTHS_CA = [
   'Desembre'
 ];
 
+function findBestPageForMistake(topic, mistake) {
+  const pages = topic?.pages || [];
+  if (pages.length === 0) return null;
+  if (mistake?.pageNumber) {
+    const exact = pages.find((p) => p.pageNumber === mistake.pageNumber);
+    if (exact) return exact;
+  }
+  const text = `${mistake?.question || ''} ${mistake?.explanation || ''}`.toLowerCase();
+  const words = text
+    .replace(/[^a-zà-ü0-9\s]/gi, ' ')
+    .split(/\s+/)
+    .filter((w) => w.length >= 4);
+  if (words.length === 0) {
+    return pages.find((p) => p.isSummary || p.isFormulaSheet) || pages[0];
+  }
+  let best = null;
+  let bestScore = -1;
+  pages.forEach((p) => {
+    const hay = `${p.title || ''} ${p.subtitle || ''} ${(p.keyPoints || []).join(' ')}`.toLowerCase();
+    let score = 0;
+    words.forEach((w) => {
+      if (hay.includes(w)) score += 1;
+    });
+    if (score > bestScore) {
+      bestScore = score;
+      best = p;
+    }
+  });
+  return bestScore > 0 ? best : pages.find((p) => p.isSummary || p.isFormulaSheet) || pages[0];
+}
+
 function CalendarView({
   topics,
   progress,
@@ -31408,6 +31479,40 @@ function CalendarView({
     .sort((a, b) =>
       (spacedMap[a.id]?.nextReviewAt || '').localeCompare(spacedMap[b.id]?.nextReviewAt || '')
     );
+
+  // Agrupa els errors pendents per apartat concret (no tot el tema) per fer repàs focalitzat
+  const focusedMistakeSections = (() => {
+    const rawMistakes = Object.values(progress.quizResults?.__mistakes || {});
+    if (rawMistakes.length === 0) return [];
+    const grouped = new Map();
+    rawMistakes.forEach((m) => {
+      const topic =
+        topics.find((t) => t.id === m.topicId) ||
+        topics.find((t) => t.number === m.topicNumber);
+      if (!topic) return;
+      const page = findBestPageForMistake(topic, m);
+      const pageNum = page?.pageNumber || 1;
+      const key = `${topic.id}::${pageNum}`;
+      const existing = grouped.get(key);
+      if (existing) {
+        existing.errorCount += m.count || 1;
+        existing.questionsCount += 1;
+      } else {
+        grouped.set(key, {
+          key,
+          topic,
+          pageNumber: pageNum,
+          sectionTitle: page?.title || m.sectionTitle || `Pàgina ${pageNum}`,
+          errorCount: m.count || 1,
+          questionsCount: 1,
+          lastFailedAt: m.lastFailedAt || ''
+        });
+      }
+    });
+    return Array.from(grouped.values())
+      .sort((a, b) => b.errorCount - a.errorCount)
+      .slice(0, 6);
+  })();
 
   const handleCompleteRoundClick = (topic) => {
     const prevRounds = topicRounds[topic.id] || 0;
@@ -31767,6 +31872,55 @@ function CalendarView({
 
           {/* Llista de Repassos (Corba de l'Oblit) + Estudis planificats */}
           <div className="space-y-3 max-h-[420px] overflow-y-auto pr-1">
+            {focusedMistakeSections.length > 0 && (
+              <div className="rounded-2xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/70 dark:bg-rose-950/25 p-3.5 space-y-2.5">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                    Apartats amb més errors (Repàs focalitzat)
+                  </span>
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-rose-600 text-white">
+                    {focusedMistakeSections.length} apartats
+                  </span>
+                </div>
+                <p className="text-[11px] text-rose-900/80 dark:text-rose-200/80">
+                  No cal repassar tot el tema: ves directe a l&apos;apartat concret que et genera dubtes.
+                </p>
+                <div className="space-y-2">
+                  {focusedMistakeSections.map((item) => (
+                    <div
+                      key={item.key}
+                      className="rounded-xl border border-rose-200/80 dark:border-rose-900/50 bg-white dark:bg-slate-900 p-2.5 flex flex-col gap-2"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <div className="text-[10px] font-extrabold text-rose-600 dark:text-rose-400">
+                            Tema {item.topic.number} · Pàg. {item.pageNumber} ({item.errorCount} {item.errorCount === 1 ? 'error' : 'errors'})
+                          </div>
+                          <div className="text-xs font-extrabold text-slate-900 dark:text-white leading-snug">
+                            {item.sectionTitle}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        <button
+                          onClick={() => onOpenTopic(item.topic.id, `page:${item.pageNumber}`)}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-extrabold"
+                        >
+                          <span>Repassar apartat →</span>
+                        </button>
+                        <button
+                          onClick={() => onOpenTopic(item.topic.id, 'summary')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 text-[11px] font-extrabold"
+                        >
+                          <Sparkles className="w-3 h-3" />
+                          <span>Resum</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             {selectedReviews.length === 0 && selectedPlanned.length === 0 && (
               <div className="rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 p-4 text-center text-xs text-slate-500">
                 Cap repàs ni estudi planificat per aquest dia. Afegeix un tema a dalt!
@@ -31861,13 +32015,22 @@ function CalendarView({
                         </button>
                       </>
                     ) : (
-                      <button
-                        onClick={() => onOpenTopic(topic.id, 'manual')}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-extrabold"
-                      >
-                        <BookOpen className="w-3 h-3" />
-                        <span>Obrir Manual Complet</span>
-                      </button>
+                      <>
+                        <button
+                          onClick={() => onOpenTopic(topic.id, 'summary')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 text-[11px] font-extrabold hover:bg-amber-600"
+                        >
+                          <Sparkles className="w-3 h-3" />
+                          <span>Resum del Tema</span>
+                        </button>
+                        <button
+                          onClick={() => onOpenTopic(topic.id, 'manual')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-extrabold"
+                        >
+                          <BookOpen className="w-3 h-3" />
+                          <span>Manual Complet</span>
+                        </button>
+                      </>
                     )}
 
                     {kind === 'review' && (
@@ -36972,7 +37135,8 @@ function HomeView({
   dueReviewsCount = 0,
   cloudUser = null,
   onSignIn,
-  onNavigate
+  onNavigate,
+  calendarElement = null
 }) {
   const sections = [
     {
@@ -37112,44 +37276,8 @@ function HomeView({
         </div>
       </section>
 
-      {/* Peça clau: Calendari i Voltes just sota el títol */}
-      <section className="rounded-3xl border-2 border-indigo-300 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 via-white to-sky-50 dark:from-indigo-950/40 dark:via-slate-900 dark:to-sky-950/30 p-5 sm:p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-indigo-600/20">
-            <Calendar className="w-6 h-6" />
-          </div>
-          <div className="space-y-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-                Peça Clau · Organització Diària
-              </span>
-              <span
-                className={`text-[11px] px-2.5 py-0.5 rounded-full font-extrabold ${
-                  dueReviewsCount > 0
-                    ? 'bg-red-600 text-white'
-                    : 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300'
-                }`}
-              >
-                {dueReviewsCount > 0 ? `${dueReviewsCount} repassos pendents avui` : 'Al dia'}
-              </span>
-            </div>
-            <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">
-              Calendari i Corba de l&apos;Oblit
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-              Consulta què et toca estudiar o repassar avui (voltes d&apos;1, 3, 7, 15 i 30 dies) i accedeix als càlculs dels divendres.
-            </p>
-          </div>
-        </div>
-        <button
-          onClick={() => onNavigate('calendar')}
-          className="shrink-0 inline-flex items-center justify-center gap-2 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 text-xs sm:text-sm font-extrabold shadow-sm transition"
-        >
-          <Calendar className="w-4 h-4" />
-          <span>Obrir Calendari</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
-      </section>
+      {/* Calendari complet integrat directament sota el títol */}
+      {calendarElement}
 
       {/* Bloc d'Iniciar Sessió per guardar avanç i rebre notificacions */}
       {cloudUser ? (
@@ -37333,6 +37461,7 @@ function App() {
   const [groupProfiles, setGroupProfiles] = useState([]);
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
+  const [authChecked, setAuthChecked] = useState(false);
   const [showAuthReminder, setShowAuthReminder] = useState(false);
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [importantRelease, setImportantRelease] = useState(null);
@@ -37410,7 +37539,7 @@ function App() {
 
   // Recordatori emergent després d'una estona navegant sense iniciar sessió
   useEffect(() => {
-    if (cloudUser || authReminderDismissed) {
+    if (!authChecked || cloudUser || authReminderDismissed) {
       setShowAuthReminder(false);
       return;
     }
@@ -37418,7 +37547,7 @@ function App() {
       setShowAuthReminder(true);
     }, 90000); // 90 segons navegant sense sessió iniciada
     return () => clearTimeout(timer);
-  }, [cloudUser, authReminderDismissed]);
+  }, [authChecked, cloudUser, authReminderDismissed]);
 
   const handleQuickGoogleLogin = async () => {
     try {
@@ -37505,7 +37634,13 @@ function App() {
   useEffect(() => {
     const unsubAuth = subscribeAuth(async (user) => {
       setCloudUser(user || null);
+      setAuthChecked(true);
       if (user) {
+        if (user.email) {
+          try {
+            localStorage.setItem('bombers_last_google_email', user.email);
+          } catch {}
+        }
         try {
           const cloudState = await loadPrivateProgress(user.uid);
           if (cloudState) {
@@ -37723,6 +37858,24 @@ function App() {
               dueReviewsCount={dueReviewsCount}
               cloudUser={cloudUser}
               onSignIn={handleQuickGoogleLogin}
+              calendarElement={
+                <CalendarView
+                  topics={TOPICS}
+                  progress={progress}
+                  onOpenTopic={(id, target) => handleSelectTopic(id, target)}
+                  onOpenCalculations={(mode) => {
+                    setCalcInitialMode(mode || 'all');
+                    setActiveView('calculations');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  onMarkTopicReviewed={markTopicReviewed}
+                  onCompleteTopicRound={completeTopicRound}
+                  onScheduleTopic={scheduleTopicForDate}
+                  onUnscheduleTopic={unscheduleTopicForDate}
+                  onToggleDailyEmail={setDailyEmailEnabled}
+                  cloudUser={cloudUser}
+                />
+              }
               onNavigate={(view) => {
                 setActiveView(view);
                 window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -4,7 +4,9 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  setPersistence,
+  browserLocalPersistence
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -29,6 +31,9 @@ function ensureFirebase() {
   if (!cachedApp) {
     cachedApp = getApps().length > 0 ? getApps()[0] : initializeApp(FIREBASE_CONFIG);
     cachedAuth = getAuth(cachedApp);
+    if (typeof setPersistence === 'function' && browserLocalPersistence) {
+      setPersistence(cachedAuth, browserLocalPersistence).catch(() => {});
+    }
     cachedDb = getFirestore(cachedApp);
   }
   return { app: cachedApp, auth: cachedAuth, db: cachedDb };
@@ -46,7 +51,16 @@ export function subscribeAuth(callback) {
 export async function loginWithGoogle() {
   const fb = ensureFirebase();
   if (!fb) throw new Error('Firebase no està configurat encara.');
+  if (typeof setPersistence === 'function' && browserLocalPersistence) {
+    await setPersistence(fb.auth, browserLocalPersistence).catch(() => {});
+  }
   const provider = new GoogleAuthProvider();
+  try {
+    const lastEmail = localStorage.getItem('bombers_last_google_email');
+    if (lastEmail) {
+      provider.setCustomParameters({ login_hint: lastEmail });
+    }
+  } catch {}
   return signInWithPopup(fb.auth, provider);
 }
 

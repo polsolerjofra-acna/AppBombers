@@ -89,6 +89,7 @@ export default function App() {
   const [groupProfiles, setGroupProfiles] = useState([]);
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
+  const [authChecked, setAuthChecked] = useState(false);
   const [showAuthReminder, setShowAuthReminder] = useState(false);
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [importantRelease, setImportantRelease] = useState(null);
@@ -166,7 +167,7 @@ export default function App() {
 
   // Recordatori emergent després d'una estona navegant sense iniciar sessió
   useEffect(() => {
-    if (cloudUser || authReminderDismissed) {
+    if (!authChecked || cloudUser || authReminderDismissed) {
       setShowAuthReminder(false);
       return;
     }
@@ -174,7 +175,7 @@ export default function App() {
       setShowAuthReminder(true);
     }, 90000); // 90 segons navegant sense sessió iniciada
     return () => clearTimeout(timer);
-  }, [cloudUser, authReminderDismissed]);
+  }, [authChecked, cloudUser, authReminderDismissed]);
 
   const handleQuickGoogleLogin = async () => {
     try {
@@ -261,7 +262,13 @@ export default function App() {
   useEffect(() => {
     const unsubAuth = subscribeAuth(async (user) => {
       setCloudUser(user || null);
+      setAuthChecked(true);
       if (user) {
+        if (user.email) {
+          try {
+            localStorage.setItem('bombers_last_google_email', user.email);
+          } catch {}
+        }
         try {
           const cloudState = await loadPrivateProgress(user.uid);
           if (cloudState) {
@@ -479,6 +486,24 @@ export default function App() {
               dueReviewsCount={dueReviewsCount}
               cloudUser={cloudUser}
               onSignIn={handleQuickGoogleLogin}
+              calendarElement={
+                <CalendarView
+                  topics={TOPICS}
+                  progress={progress}
+                  onOpenTopic={(id, target) => handleSelectTopic(id, target)}
+                  onOpenCalculations={(mode) => {
+                    setCalcInitialMode(mode || 'all');
+                    setActiveView('calculations');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  onMarkTopicReviewed={markTopicReviewed}
+                  onCompleteTopicRound={completeTopicRound}
+                  onScheduleTopic={scheduleTopicForDate}
+                  onUnscheduleTopic={unscheduleTopicForDate}
+                  onToggleDailyEmail={setDailyEmailEnabled}
+                  cloudUser={cloudUser}
+                />
+              }
               onNavigate={(view) => {
                 setActiveView(view);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
