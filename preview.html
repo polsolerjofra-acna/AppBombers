@@ -34588,7 +34588,7 @@ function PracticeTestView({
   const [activeQuestions, setActiveQuestions] = useState(null);
   const [answers, setAnswers] = useState({});
   const [isFinished, setIsFinished] = useState(false);
-  const [secondsLeft, setSecondsLeft] = useState(90 * 60); // 90 minuts oficials
+  const [secondsLeft, setSecondsLeft] = useState(85 * 60); // 85 minuts oficials (70 + 7 reserva)
 
   // Temporitzador en Mode Simulacre
   useEffect(() => {
@@ -34635,14 +34635,14 @@ function PracticeTestView({
     const targetMode = chosenMode || mode;
     setMode(targetMode);
     const targetIds = targetMode === 'simulacre' ? topics.map((t) => t.id) : selectedTopicIds;
-    const count = targetMode === 'simulacre' ? 100 : questionCount;
+    const count = targetMode === 'simulacre' ? 77 : questionCount; // 70 + 7 de reserva
     const weighted = targetMode === 'simulacre' ? true : useWeightedPractice;
 
     const qs = buildWeightedExamQuestions(topics, targetIds, count, weighted);
     setActiveQuestions(qs);
     setAnswers({});
     setIsFinished(false);
-    setSecondsLeft(90 * 60);
+    setSecondsLeft(85 * 60);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -34694,12 +34694,15 @@ function PracticeTestView({
   if (activeQuestions) {
     const totalQ = activeQuestions.length;
     const answeredCount = Object.keys(answers).length;
-    const correctCount = activeQuestions.filter((q) => answers[q.id] === q.correctIndex).length;
-    const wrongCount = answeredCount - correctCount;
-    const blankCount = totalQ - answeredCount;
+    const mainQuestions = mode === 'simulacre' ? activeQuestions.slice(0, 70) : activeQuestions;
+    const mainTotal = mainQuestions.length;
+    const mainAnswered = mainQuestions.filter((q) => answers[q.id] !== undefined).length;
+    const correctCount = mainQuestions.filter((q) => answers[q.id] === q.correctIndex).length;
+    const wrongCount = mainAnswered - correctCount;
+    const blankCount = mainTotal - mainAnswered;
     // Penalització oficial 4 opcions: 3 errades resten 1 encert (-1/3)
     const netPoints = Math.max(0, correctCount - wrongCount / 3);
-    const score10 = totalQ > 0 ? ((netPoints / totalQ) * 10).toFixed(2) : '0.00';
+    const score10 = mainTotal > 0 ? ((netPoints / mainTotal) * 10).toFixed(2) : '0.00';
 
     return (
       <div className="space-y-5">
@@ -34713,7 +34716,7 @@ function PracticeTestView({
                   : 'bg-blue-600 text-white'
               }`}
             >
-              {mode === 'simulacre' ? 'Simulacre Oficial (100 preg.)' : 'Pràctica Lliure'}
+              {mode === 'simulacre' ? 'Simulacre Oficial (70 + 7 reserva)' : 'Pràctica Lliure'}
             </span>
             <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">
               Respostes: {answeredCount} / {totalQ}
@@ -34787,9 +34790,16 @@ function PracticeTestView({
                 className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-extrabold text-slate-500 dark:text-slate-400">
-                    Pregunta #{idx + 1} · Tema {q._topicNumber}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-extrabold text-slate-500 dark:text-slate-400">
+                      Pregunta #{idx + 1} · Tema {q._topicNumber}
+                    </span>
+                    {mode === 'simulacre' && idx >= 70 && (
+                      <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">
+                        RESERVA {idx - 69}/7
+                      </span>
+                    )}
+                  </div>
                   {q.difficulty && (
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                       {q.difficulty}
@@ -34871,7 +34881,7 @@ function PracticeTestView({
           Pràctica de Tests i Simulacre Oficial
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-          Escull entre <strong>Mode Pràctica</strong> (sense límit de temps, triant els temes i el nombre de preguntes) o <strong>Simulacre Oficial</strong> (100 preguntes en 90 minuts amb penalització -0,33 i distribució estadística IA + històric 81/16–81/24).
+          Escull entre <strong>Mode Pràctica</strong> (sense límit de temps, triant els temes i el nombre de preguntes) o <strong>Simulacre Oficial</strong> (70 preguntes + 7 de reserva en 85 minuts amb penalització -0,33 i distribució estadística IA + històric 81/16–81/24).
         </p>
 
         {/* Targetes de Mode */}
@@ -34910,11 +34920,11 @@ function PracticeTestView({
                 2. SIMULACRE OFICIAL GENERALITAT
               </span>
               <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-red-100 dark:bg-red-900/60 text-red-800 dark:text-red-200">
-                90 min · 100 preg.
+                85 min · 70 + 7 reserva
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-              Temps oficial de 90 minuts, possibilitat de deixar en blanc, penalització -0,33 per error i proporció ponderada per probabilitat real d&apos;examen.
+              Temps oficial de 85 minuts, 70 preguntes puntuables + 7 de reserva, possibilitat de deixar en blanc, penalització -0,33 per error i proporció ponderada.
             </p>
           </div>
         </div>
@@ -35066,7 +35076,7 @@ function PracticeTestView({
         <div className="rounded-2xl border border-red-200 dark:border-red-900/60 bg-white dark:bg-slate-900 p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <h2 className="text-base font-extrabold text-slate-900 dark:text-white">
-              Simulacre Oficial · 100 Preguntes · 90 Minuts
+              Simulacre Oficial · 70 Preguntes + 7 de Reserva · 85 Minuts
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
               Inclou tots els 34 temes ponderats estadísticament (~11% Lleis, ~32% Ciències/Tècnica, ~57% Operativa SGO). Pots deixar preguntes en blanc i corregir al final.
@@ -36339,7 +36349,7 @@ function Sidebar({
                   : 'bg-sky-600/15 text-sky-700 dark:text-sky-300'
               }`}
             >
-              100 preg.
+              70+7
             </span>
           </button>
 
@@ -36679,9 +36689,9 @@ function HomeView({
     {
       id: 'practice',
       title: 'Tests Lliures i Simulacre Oficial',
-      badge: '100 preg. · 90 min',
+      badge: '70+7 · 85 min',
       description:
-        'Mode Pràctica (sense temps, escollint temes i preguntes) o Simulacre Oficial de 100 preguntes en 90 minuts ponderat estadísticament per importància de tema.',
+        'Mode Pràctica (sense temps, escollint temes i preguntes) o Simulacre Oficial de 70 preguntes + 7 de reserva en 85 minuts ponderat estadísticament per importància de tema.',
       cta: 'Fer Test o Simulacre',
       icon: ClipboardCheck,
       accent: 'bg-sky-50 dark:bg-sky-950/30 border-sky-200 dark:border-sky-900/50 text-sky-700 dark:text-sky-300',

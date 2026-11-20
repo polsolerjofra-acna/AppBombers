@@ -227,7 +227,7 @@ export default function Sidebar({
                   : 'bg-sky-600/15 text-sky-700 dark:text-sky-300'
               }`}
             >
-              100 preg.
+              70+7
             </span>
           </button>
 

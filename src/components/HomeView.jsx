@@ -82,9 +82,9 @@ export default function HomeView({
     {
       id: 'practice',
       title: 'Tests Lliures i Simulacre Oficial',
-      badge: '100 preg. · 90 min',
+      badge: '70+7 · 85 min',
       description:
-        'Mode Pràctica (sense temps, escollint temes i preguntes) o Simulacre Oficial de 100 preguntes en 90 minuts ponderat estadísticament per importància de tema.',
+        'Mode Pràctica (sense temps, escollint temes i preguntes) o Simulacre Oficial de 70 preguntes + 7 de reserva en 85 minuts ponderat estadísticament per importància de tema.',
       cta: 'Fer Test o Simulacre',
       icon: ClipboardCheck,
       accent: 'bg-sky-50 dark:bg-sky-950/30 border-sky-200 dark:border-sky-900/50 text-sky-700 dark:text-sky-300',
