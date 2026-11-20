@@ -57,7 +57,9 @@ export default function TopicView({
   const hasSchemas = schemas.length > 0;
   const [activeTab, setActiveTab] = useState('study'); // 'study' | 'quiz'
   const [focusedQuestionId, setFocusedQuestionId] = useState(null);
-  const [currentPageIndex, setCurrentPageIndex] = useState(hasSchemas ? -1 : 0);
+  const [currentPageIndex, setCurrentPageIndex] = useState(
+    topic.importance ? 'radar' : hasSchemas ? -1 : 0
+  );
   const [roundJustCompleted, setRoundJustCompleted] = useState(null);
 
   const roundsCompleted = (progress.topicRounds && progress.topicRounds[topic.id]) || 0;
@@ -79,12 +81,13 @@ export default function TopicView({
       setCurrentPageIndex(pIdx >= 0 ? pIdx : Math.max(0, Math.min(totalPages - 1, targetPageNum - 1)));
     } else {
       setActiveTab('study');
-      setCurrentPageIndex(hasSchemas ? -1 : 0);
+      setCurrentPageIndex(topic.importance ? 'radar' : hasSchemas ? -1 : 0);
     }
   }, [topic.id, initialTarget]);
 
-  const currentPage = pages[currentPageIndex] || pages[0];
-  const currentPageNumber = currentPage?.pageNumber || currentPageIndex + 1;
+  const numericPageIndex = typeof currentPageIndex === 'number' ? currentPageIndex : 0;
+  const currentPage = pages[numericPageIndex] || pages[0];
+  const currentPageNumber = currentPage?.pageNumber || numericPageIndex + 1;
 
   const topicPagesStatus = progress.pageStatus?.[topic.id] || {};
   const currentPageStatus = topicPagesStatus[currentPageNumber] || 'pending';
@@ -279,9 +282,11 @@ export default function TopicView({
             <div className="flex-1 min-w-[220px] max-w-md ml-auto">
               <div className="flex items-center justify-between text-xs font-semibold mb-1.5">
                 <span className="text-slate-600 dark:text-slate-300">
-                  {currentPageIndex === -1
+                  {currentPageIndex === 'radar'
+                    ? "Radar d'Examen i Punts Clau"
+                    : typeof currentPageIndex === 'number' && currentPageIndex < 0
                     ? `Índex Esquema · ${totalPages} pàgines de temari`
-                    : `Pàgina ${currentPageIndex + 1} de ${totalPages} (màx. 10 pàg.)`}
+                    : `Pàgina ${numericPageIndex + 1} de ${totalPages} (màx. 10 pàg.)`}
                 </span>
                 <span className="text-red-600 dark:text-red-400">
                   {completedPagesCount}/{totalPages} estudiades ({readingProgressPercentage}% lectura)
@@ -297,9 +302,21 @@ export default function TopicView({
           )}
         </div>
 
-        {/* Selector ràpid de pàgines (destacant Índex, Resum i Formulari Final) */}
+        {/* Selector ràpid de pàgines (Radar, Esquemes, Pàgines, Resum i Formulari) */}
         {activeTab === 'study' && (
           <div className="mt-4 flex items-center gap-2 flex-wrap">
+            {topic.importance && (
+              <button
+                onClick={() => setCurrentPageIndex('radar')}
+                className={`h-8 px-3 rounded-lg text-xs font-bold border transition-all flex items-center gap-1.5 ${
+                  currentPageIndex === 'radar'
+                    ? 'bg-red-600 text-white border-red-600 shadow-sm'
+                    : 'bg-red-50/80 dark:bg-red-950/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800 hover:border-red-400'
+                }`}
+              >
+                <span>🎯 Radar i Punts Clau</span>
+              </button>
+            )}
             {schemas.map((sch, sIdx) => {
               const targetIdx = -(sIdx + 1);
               const isCurrent = currentPageIndex === targetIdx;
@@ -386,20 +403,31 @@ export default function TopicView({
         />
       ) : (
         <>
-          {/* Targeta Destacada "Anàlisi d'Importància" a l'inici del tema */}
-          {currentPageIndex <= 0 && topic.importance && (
-            <ImportanceCard
-              data={normalizeImportance(topic.importance)}
-              topicNumber={topic.number}
-              quizQuestions={topic.quiz || []}
-              onJumpToQuestion={(qId) => {
-                setFocusedQuestionId(qId);
-                setActiveTab('quiz');
-              }}
-            />
-          )}
-
-          {currentPageIndex < 0 && schemas[Math.abs(currentPageIndex) - 1] ? (
+          {/* Targeta Destacada "Anàlisi d'Importància" NOMÉS a la primera pàgina dedicada ('radar') */}
+          {currentPageIndex === 'radar' && topic.importance ? (
+            <div className="space-y-4">
+              <ImportanceCard
+                data={normalizeImportance(topic.importance)}
+                topicNumber={topic.number}
+                quizQuestions={topic.quiz || []}
+                onJumpToQuestion={(qId) => {
+                  setFocusedQuestionId(qId);
+                  setActiveTab('quiz');
+                }}
+              />
+              <div className="flex justify-end">
+                <button
+                  onClick={() => {
+                    setCurrentPageIndex(hasSchemas ? -1 : 0);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 text-xs font-extrabold shadow-sm hover:opacity-90 transition"
+                >
+                  <span>{hasSchemas ? 'Anar als Esquemes →' : 'Començar Pàgina 1 →'}</span>
+                </button>
+              </div>
+            </div>
+          ) : typeof currentPageIndex === 'number' && currentPageIndex < 0 && schemas[Math.abs(currentPageIndex) - 1] ? (
             (() => {
               const sIdx = Math.abs(currentPageIndex) - 1;
               const activeSchema = schemas[sIdx];

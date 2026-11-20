@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut } from 'lucide-react';
+import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut, AlertTriangle } from 'lucide-react';
 import { TOPICS } from './data';
 import { useStudyProgress } from './hooks/useStudyProgress';
 import Sidebar from './components/layout/Sidebar';
@@ -27,6 +27,40 @@ import {
 
 const APP_CLIENT_VERSION = '2026.11.20.1';
 const SEEN_RELEASE_KEY = 'bombers_seen_release_v1';
+
+class AppErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, errorMsg: '' };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, errorMsg: error?.message || 'Error inesperat' };
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="rounded-3xl border border-red-200 dark:border-red-900 bg-white dark:bg-slate-900 p-6 sm:p-8 text-center space-y-4 shadow-sm">
+          <h2 className="text-lg font-extrabold text-slate-900 dark:text-white">
+            S&apos;ha produït un error puntual en aquesta vista
+          </h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            {this.state.errorMsg}
+          </p>
+          <button
+            onClick={() => {
+              this.setState({ hasError: false, errorMsg: '' });
+              this.props.onResetHome && this.props.onResetHome();
+            }}
+            className="rounded-xl bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 text-xs font-extrabold"
+          >
+            Tornar a la Pàgina Principal
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export default function App() {
   const {
@@ -458,6 +492,10 @@ export default function App() {
 
         {/* Àrea de Lectura i Estudi (amplada màxima òptima per evitar fatiga visual) */}
         <main className={`flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 w-full mx-auto print:p-0 print:max-w-none ${activeView === 'manuals' ? 'max-w-7xl' : 'max-w-5xl'}`}>
+          <AppErrorBoundary
+            key={`${activeView}-${selectedTopicId}`}
+            onResetHome={() => setActiveView('home')}
+          >
           {activeView === 'home' ? (
             <HomeView
               topicsCount={TOPICS.length}
@@ -593,6 +631,7 @@ export default function App() {
               }}
             />
           )}
+          </AppErrorBoundary>
         </main>
       </div>
 

@@ -35,7 +35,8 @@ export const tema1TeoriaFoc = {
           heading: '1–3. Reaccions d’Oxidació-Reducció i Tipus de Combustió',
           paragraphs: [
             "El foc és la manifestació visual i tèrmica d'una reacció química d'oxidació-reducció (REDOX) fortament exotèrmica entre una substància reductora (el combustible, que s'oxida perdent electrons) i una substància oxidant (el comburent, generalment l'O₂, que es redueix guanyant electrons). L'incendi és un foc no controlat en l'espai ni en el temps.",
-            "Segons la quantitat de comburent disponible (secció 3.1.2), la combustió és COMPLETA quan hi ha suficient O₂ i els productes s'oxiden al seu grau màxim (CO₂, H₂O, SO₂; flama blavosa i poc fum), o INCOMPLETA quan hi ha dèficit d'O₂, generant productes parcialment oxidats, tòxics i inflamables (monòxid de carboni CO, sutge C, cianur d'hidrogen HCN; flama groga/ataronjada)."
+            "Segons la quantitat de comburent disponible (secció 3.1.2), la combustió és COMPLETA quan hi ha suficient O₂ i els productes s'oxiden al seu grau màxim (CO₂, H₂O, SO₂; flama blavosa i poc fum), o INCOMPLETA quan hi ha dèficit d'O₂, generant productes parcialment oxidats, tòxics i inflamables (monòxid de carboni CO, sutge C, cianur d'hidrogen HCN; flama groga/ataronjada).",
+            "Oxidació termita (reacció aluminotèrmica): és una reacció REDOX fortament exotèrmica entre un metall molt reductor (alumini en pols, Al) i un òxid metàl·lic oxidant (habitualment òxid de ferro(III), Fe₂O₃): 2 Al + Fe₂O₃ → Al₂O₃ + 2 Fe + calor (~2.200–2.500 °C). Com que l'oxigen ja forma part de l'òxid metàl·lic, NO necessita oxigen atmosfèric per cremar: no es pot extingir per sufocació (CO₂ o escuma) i l'aigua pot descompondre's tèrmicament generant hidrogen explosiu."
           ]
         },
         {
