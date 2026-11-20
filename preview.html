@@ -25517,8 +25517,9 @@ async function downloadAllPostersPdf(topics, onProgress = null) {
         })
       );
 
-      await new Promise((r) => setTimeout(r, 35));
-      const svgEl = host.querySelector('svg');
+      await new Promise((r) => setTimeout(r, 60));
+      const wrapper = host.querySelector('[data-diagram-canvas="true"]');
+      const svgEl = wrapper ? wrapper.querySelector('svg') : null;
       if (!svgEl) continue;
 
       const { dataUrl, aspect } = await renderSvgToPngDataUrl(svgEl, 2200);
@@ -27955,7 +27956,7 @@ function DiagramContainer({ title, caption, diagramType, customSvg }) {
         <span>Esquema Tècnic Visual — {title}</span>
       </div>
 
-      <div className="rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-100 dark:border-slate-800/80 p-4 flex items-center justify-center">
+      <div data-diagram-canvas="true" className="rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-100 dark:border-slate-800/80 p-4 flex items-center justify-center">
         {customSvg ? <div dangerouslySetInnerHTML={{ __html: customSvg }} /> : renderBuiltInDiagram()}
       </div>
 

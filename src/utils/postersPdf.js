@@ -134,8 +134,9 @@ export async function downloadAllPostersPdf(topics, onProgress = null) {
         })
       );
 
-      await new Promise((r) => setTimeout(r, 35));
-      const svgEl = host.querySelector('svg');
+      await new Promise((r) => setTimeout(r, 60));
+      const wrapper = host.querySelector('[data-diagram-canvas="true"]');
+      const svgEl = wrapper ? wrapper.querySelector('svg') : null;
       if (!svgEl) continue;
 
       const { dataUrl, aspect } = await renderSvgToPngDataUrl(svgEl, 2200);

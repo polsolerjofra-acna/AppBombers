@@ -1580,7 +1580,7 @@ export default function DiagramContainer({ title, caption, diagramType, customSv
         <span>Esquema Tècnic Visual — {title}</span>
       </div>
 
-      <div className="rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-100 dark:border-slate-800/80 p-4 flex items-center justify-center">
+      <div data-diagram-canvas="true" className="rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-100 dark:border-slate-800/80 p-4 flex items-center justify-center">
         {customSvg ? <div dangerouslySetInnerHTML={{ __html: customSvg }} /> : renderBuiltInDiagram()}
       </div>
 
