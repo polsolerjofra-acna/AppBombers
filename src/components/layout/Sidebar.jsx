@@ -70,9 +70,11 @@ export default function Sidebar({
         {/* Capçalera amb Logotip i Tancament Mòbil */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-red-600 to-orange-600 text-white shadow-md shadow-red-600/25">
-              <Flame className="w-6 h-6" />
-            </div>
+            <img
+              src="./icons/icon-192.png"
+              alt="Logo Estudi Bombers"
+              className="h-10 w-10 rounded-xl shadow-md shadow-red-600/25 object-cover shrink-0"
+            />
             <div>
               <span className="text-[11px] font-extrabold uppercase tracking-widest text-red-600 dark:text-red-400">
                 Bombers Generalitat
