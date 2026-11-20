@@ -85,17 +85,18 @@ export default function Sidebar({
                 Bombers Generalitat
               </span>
               <h2 className="text-base font-extrabold text-slate-900 dark:text-white leading-tight">
-                Temari Oficial SGO 2026
+                Temari resumit · SGO 2026
               </h2>
             </div>
           </div>
 
           <button
             onClick={onCloseMobile}
-            className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
-            title="Tancar menú"
+            className="inline-flex items-center gap-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-2.5 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+            title="Amagar menú"
           >
-            <X className="w-5 h-5" />
+            <span>Amagar</span>
+            <span>▲</span>
           </button>
         </div>
 
@@ -333,7 +334,7 @@ export default function Sidebar({
                   : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
               }`}
             >
-              35 PDF
+              34 PDF
             </span>
           </button>
 
@@ -381,7 +382,7 @@ export default function Sidebar({
           >
             <div className="flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-red-600" />
-              <span>Temari Oficial ({filteredTopics.length}/{topics.length})</span>
+              <span>Temari resumit per estudiar ({filteredTopics.length}/{topics.length})</span>
             </div>
             <span className="text-xs font-bold text-slate-500">
               {topicsDropdownOpen || searchQuery.trim() ? '▲' : '▼'}

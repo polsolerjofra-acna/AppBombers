@@ -26,7 +26,7 @@ export default function HomeView({
   const sections = [
     {
       id: 'topic',
-      title: 'Temari Oficial (34 Temes)',
+      title: 'Temari resumit per estudiar (34 Temes)',
       badge: `${topicsCount} temes`,
       description:
         'Cada tema inclou esquema complet en primera pàgina, resums d’estudi estructurats, explicacions senzilles, diagrames visuals, mnemotècnies i qüestionaris tipus Generalitat.',
@@ -37,10 +37,10 @@ export default function HomeView({
     },
     {
       id: 'manuals',
-      title: 'Manuals Oficials (PDF) i Subratllat',
-      badge: '35 PDFs',
+      title: 'Manuals Oficials (PDF)',
+      badge: '34 PDFs',
       description:
-        'Visualitza online o descarrega els 34 manuals oficials i el Codi Fonètic. Subratlla en línia recta, afegeix notes per pàgina, gira documents i exporta el PDF anotat.',
+        'Visualitza online o descarrega els 34 manuals oficials. Afegeix notes per pàgina, gira documents i exporta el PDF anotat.',
       cta: 'Obrir Manuals PDF',
       icon: FolderOpen,
       accent: 'bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900/50 text-rose-700 dark:text-rose-300',

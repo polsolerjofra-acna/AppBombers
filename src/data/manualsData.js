@@ -332,13 +332,4 @@ export const OFFICIAL_MANUALS = [
     fileName: 'Tema_34_MAN_SVMN_001_Inundacions.pdf',
     url: './manuals/Tema_34_MAN_SVMN_001_Inundacions.pdf',
   },
-  {
-    id: 'manual-codi-fonetic',
-    topicNumber: null,
-    code: 'MNEMOTÈCNIA',
-    category: 'mnemotecnia',
-    title: 'Codi Fonètic Major (0-100) — Guia oficial de memòria',
-    fileName: 'Codi_Fonetic_Major_0_100.pdf',
-    url: './manuals/Codi_Fonetic_Major_0_100.pdf',
-  },
 ];

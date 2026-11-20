@@ -25015,15 +25015,6 @@ const OFFICIAL_MANUALS = [
     fileName: 'Tema_34_MAN_SVMN_001_Inundacions.pdf',
     url: './manuals/Tema_34_MAN_SVMN_001_Inundacions.pdf',
   },
-  {
-    id: 'manual-codi-fonetic',
-    topicNumber: null,
-    code: 'MNEMOTÈCNIA',
-    category: 'mnemotecnia',
-    title: 'Codi Fonètic Major (0-100) — Guia oficial de memòria',
-    fileName: 'Codi_Fonetic_Major_0_100.pdf',
-    url: './manuals/Codi_Fonetic_Major_0_100.pdf',
-  },
 ];
 
 const OFFICIAL_EXAM_STATS_BY_TOPIC = {
@@ -30182,7 +30173,7 @@ function TopicView({
               <button
                 onClick={() => onOpenOfficialManual(topic.number)}
                 className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-all"
-                title="Obre el manual oficial en PDF d'aquest tema per llegir o subratllar online"
+                title="Obre el manual oficial en PDF d'aquest tema per llegir online"
               >
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>Manual Oficial (PDF)</span>
@@ -33459,11 +33450,10 @@ function MnemonicsView({ topics, onSelectTopic }) {
 const MANUALS_ANNOTATIONS_STORAGE_KEY = 'bombers_manual_annotations_v1';
 
 const CATEGORIES = [
-  { id: 'all', label: 'Tots (35)' },
+  { id: 'all', label: 'Tots (34)' },
   { id: 'general', label: 'Bloc General (T1–T7)' },
   { id: 'tecnic', label: 'Ciències i Tècnica (T8–T15)' },
   { id: 'intervencio', label: 'Intervenció i Operativa (T16–T34)' },
-  { id: 'mnemotecnia', label: 'Mnemotècnia' },
 ];
 
 const HIGHLIGHT_COLORS = [
@@ -34342,13 +34332,13 @@ function ManualsView({
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 rounded-full bg-red-100 dark:bg-red-950/60 px-3 py-1 text-xs font-extrabold text-red-700 dark:text-red-300">
               <FolderOpen className="w-3.5 h-3.5" />
-              <span>Biblioteca Oficial · 35 PDFs</span>
+              <span>Biblioteca Oficial · 34 PDFs</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Manuals Oficials (PDF) i Subratllat Online
+              Manuals Oficials (PDF)
             </h1>
             <p className="text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
-              Visualitza, subratlla amb colors, escriu notes per pàgina i descarrega qualsevol dels 34 temes oficials i el Codi Fonètic Major. Tot el que subratllis queda desat automàticament i ho pots exportar en PDF.
+              Visualitza, escriu notes per pàgina i descarrega qualsevol dels 34 manuals oficials. Tot el que anotis queda desat automàticament i ho pots exportar en PDF.
             </p>
           </div>
         </div>
@@ -34446,8 +34436,8 @@ function ManualsView({
                   onClick={() => setSelectedManual(manual)}
                   className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-3 py-2 text-xs font-bold shadow-sm transition"
                 >
-                  <Highlighter className="w-3.5 h-3.5" />
-                  <span>Obrir i Subratllar Online</span>
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Obrir Online</span>
                 </button>
                 {manual.topicNumber && onOpenTopicSummary && (
                   <button
@@ -36409,17 +36399,18 @@ function Sidebar({
                 Bombers Generalitat
               </span>
               <h2 className="text-base font-extrabold text-slate-900 dark:text-white leading-tight">
-                Temari Oficial SGO 2026
+                Temari resumit · SGO 2026
               </h2>
             </div>
           </div>
 
           <button
             onClick={onCloseMobile}
-            className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
-            title="Tancar menú"
+            className="inline-flex items-center gap-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-2.5 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+            title="Amagar menú"
           >
-            <X className="w-5 h-5" />
+            <span>Amagar</span>
+            <span>▲</span>
           </button>
         </div>
 
@@ -36657,7 +36648,7 @@ function Sidebar({
                   : 'bg-rose-600/15 text-rose-700 dark:text-rose-300'
               }`}
             >
-              35 PDF
+              34 PDF
             </span>
           </button>
 
@@ -36705,7 +36696,7 @@ function Sidebar({
           >
             <div className="flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-red-600" />
-              <span>Temari Oficial ({filteredTopics.length}/{topics.length})</span>
+              <span>Temari resumit per estudiar ({filteredTopics.length}/{topics.length})</span>
             </div>
             <span className="text-xs font-bold text-slate-500">
               {topicsDropdownOpen || searchQuery.trim() ? '▲' : '▼'}
@@ -36846,7 +36837,7 @@ function HomeView({
   const sections = [
     {
       id: 'topic',
-      title: 'Temari Oficial (34 Temes)',
+      title: 'Temari resumit per estudiar (34 Temes)',
       badge: `${topicsCount} temes`,
       description:
         'Cada tema inclou esquema complet en primera pàgina, resums d’estudi estructurats, explicacions senzilles, diagrames visuals, mnemotècnies i qüestionaris tipus Generalitat.',
@@ -36857,10 +36848,10 @@ function HomeView({
     },
     {
       id: 'manuals',
-      title: 'Manuals Oficials (PDF) i Subratllat',
-      badge: '35 PDFs',
+      title: 'Manuals Oficials (PDF)',
+      badge: '34 PDFs',
       description:
-        'Visualitza online o descarrega els 34 manuals oficials i el Codi Fonètic. Subratlla en línia recta, afegeix notes per pàgina, gira documents i exporta el PDF anotat.',
+        'Visualitza online o descarrega els 34 manuals oficials. Afegeix notes per pàgina, gira documents i exporta el PDF anotat.',
       cta: 'Obrir Manuals PDF',
       icon: FolderOpen,
       accent: 'bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900/50 text-rose-700 dark:text-rose-300',
@@ -37477,7 +37468,7 @@ function App() {
         {/* Barra Superior (Menú 3 línies + accessos ràpids) */}
         <header className="print:hidden sticky top-0 z-20 flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
           <button
-            onClick={() => setIsMobileMenuOpen(true)}
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
             className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
           >
             <Menu className="w-4 h-4" />

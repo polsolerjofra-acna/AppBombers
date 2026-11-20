@@ -163,7 +163,7 @@ export default function TopicView({
               <button
                 onClick={() => onOpenOfficialManual(topic.number)}
                 className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-all"
-                title="Obre el manual oficial en PDF d'aquest tema per llegir o subratllar online"
+                title="Obre el manual oficial en PDF d'aquest tema per llegir online"
               >
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>Manual Oficial (PDF)</span>

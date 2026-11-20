@@ -24,11 +24,10 @@ import { OFFICIAL_MANUALS } from '../data/manualsData';
 const MANUALS_ANNOTATIONS_STORAGE_KEY = 'bombers_manual_annotations_v1';
 
 const CATEGORIES = [
-  { id: 'all', label: 'Tots (35)' },
+  { id: 'all', label: 'Tots (34)' },
   { id: 'general', label: 'Bloc General (T1–T7)' },
   { id: 'tecnic', label: 'Ciències i Tècnica (T8–T15)' },
   { id: 'intervencio', label: 'Intervenció i Operativa (T16–T34)' },
-  { id: 'mnemotecnia', label: 'Mnemotècnia' },
 ];
 
 const HIGHLIGHT_COLORS = [
@@ -907,13 +906,13 @@ export default function ManualsView({
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 rounded-full bg-red-100 dark:bg-red-950/60 px-3 py-1 text-xs font-extrabold text-red-700 dark:text-red-300">
               <FolderOpen className="w-3.5 h-3.5" />
-              <span>Biblioteca Oficial · 35 PDFs</span>
+              <span>Biblioteca Oficial · 34 PDFs</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Manuals Oficials (PDF) i Subratllat Online
+              Manuals Oficials (PDF)
             </h1>
             <p className="text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
-              Visualitza, subratlla amb colors, escriu notes per pàgina i descarrega qualsevol dels 34 temes oficials i el Codi Fonètic Major. Tot el que subratllis queda desat automàticament i ho pots exportar en PDF.
+              Visualitza, escriu notes per pàgina i descarrega qualsevol dels 34 manuals oficials. Tot el que anotis queda desat automàticament i ho pots exportar en PDF.
             </p>
           </div>
         </div>
@@ -1011,8 +1010,8 @@ export default function ManualsView({
                   onClick={() => setSelectedManual(manual)}
                   className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-3 py-2 text-xs font-bold shadow-sm transition"
                 >
-                  <Highlighter className="w-3.5 h-3.5" />
-                  <span>Obrir i Subratllar Online</span>
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Obrir Online</span>
                 </button>
                 {manual.topicNumber && onOpenTopicSummary && (
                   <button
