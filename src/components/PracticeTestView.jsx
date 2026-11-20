@@ -141,6 +141,16 @@ export default function PracticeTestView({
   const [isFinished, setIsFinished] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(85 * 60); // 85 minuts oficials (70 + 7 reserva)
 
+  useEffect(() => {
+    try {
+      if (activeQuestions && !isFinished) {
+        localStorage.setItem('bombers_active_test_pending', '1');
+      } else {
+        localStorage.removeItem('bombers_active_test_pending');
+      }
+    } catch {}
+  }, [activeQuestions, isFinished]);
+
   // Temporitzador en Mode Simulacre
   useEffect(() => {
     if (!activeQuestions || mode !== 'simulacre' || isFinished) return;

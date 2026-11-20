@@ -27,6 +27,8 @@ import {
 
 const APP_CLIENT_VERSION = '2026.11.20.1';
 const SEEN_RELEASE_KEY = 'bombers_seen_release_v1';
+const LAST_ACTIVE_AT_KEY = 'bombers_last_active_at_v1';
+const INACTIVITY_RESET_MS = 10 * 60 * 1000; // 10 minuts sense entrar a l'app
 
 class AppErrorBoundary extends React.Component {
   constructor(props) {
@@ -128,6 +130,7 @@ export default function App() {
   const [showAuthReminder, setShowAuthReminder] = useState(false);
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [importantRelease, setImportantRelease] = useState(null);
+  const [resumePrompt, setResumePrompt] = useState(null); // { view, topicId?, label }
   const [authReminderDismissed, setAuthReminderDismissed] = useState(() => {
     try {
       return sessionStorage.getItem('bombers_auth_reminder_dismissed') === '1';
@@ -145,6 +148,78 @@ export default function App() {
       // ignore
     }
   };
+
+  // Si fa > 10 minuts sense entrar a l'app, torna a l'inici i pregunta si vol reprendre l'apartat inacabat
+  useEffect(() => {
+    const buildResumeIfUnfinished = (view, topicId) => {
+      if (view === 'topic') {
+        if (progress.topicStatus?.[topicId] === 'completed') return null;
+        const found = TOPICS.find((t) => t.id === topicId);
+        return found
+          ? { view: 'topic', topicId, label: `Tema ${found.number} · ${found.title}` }
+          : null;
+      }
+      if (view === 'practice') {
+        try {
+          if (localStorage.getItem('bombers_active_test_pending') !== '1') return null;
+        } catch {
+          return null;
+        }
+        return { view: 'practice', label: 'Tests i Simulacres (test en curs)' };
+      }
+      if (view === 'calculations') return { view: 'calculations', label: 'Càlculs, Fórmules i Problemes' };
+      if (view === 'quickstudy') return { view: 'quickstudy', label: 'Sessió Ràpida' };
+      if (view === 'manuals') return { view: 'manuals', label: 'Manuals Oficials (PDF)' };
+      return null;
+    };
+
+    const checkAwayTimeout = () => {
+      try {
+        const raw = localStorage.getItem(LAST_ACTIVE_AT_KEY);
+        const lastAt = raw ? Number(raw) : 0;
+        const now = Date.now();
+        if (lastAt > 0 && now - lastAt > INACTIVITY_RESET_MS && activeView !== 'home') {
+          const pending = buildResumeIfUnfinished(activeView, selectedTopicId);
+          setActiveView('home');
+          if (pending) setResumePrompt(pending);
+        }
+        localStorage.setItem(LAST_ACTIVE_AT_KEY, String(now));
+      } catch {
+        // ignore
+      }
+    };
+
+    checkAwayTimeout();
+
+    let lastPing = Date.now();
+    const touchActivity = () => {
+      const now = Date.now();
+      if (now - lastPing < 15000) return;
+      lastPing = now;
+      try {
+        localStorage.setItem(LAST_ACTIVE_AT_KEY, String(now));
+      } catch {}
+    };
+
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') {
+        try {
+          localStorage.setItem(LAST_ACTIVE_AT_KEY, String(Date.now()));
+        } catch {}
+      } else if (document.visibilityState === 'visible') {
+        checkAwayTimeout();
+      }
+    };
+
+    window.addEventListener('pointerdown', touchActivity, { passive: true });
+    window.addEventListener('keydown', touchActivity, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      window.removeEventListener('pointerdown', touchActivity);
+      window.removeEventListener('keydown', touchActivity);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [activeView, selectedTopicId, progress.topicStatus]);
 
   // Comprovació d'actualitzacions de l'app (version.json)
   useEffect(() => {
@@ -634,6 +709,61 @@ export default function App() {
           </AppErrorBoundary>
         </main>
       </div>
+
+      {/* Missatge emergent per reprendre un tema o test inacabat després de > 10 min sense entrar */}
+      {resumePrompt && (
+        <div
+          onClick={() => setResumePrompt(null)}
+          className="print:hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-md w-full rounded-3xl border border-indigo-200 dark:border-indigo-900 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center shrink-0">
+                <Flame className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                  Benvingut de nou
+                </span>
+                <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                  Vols continuar on ho havies deixat?
+                </h3>
+              </div>
+            </div>
+
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Tens pendent d&apos;acabar: <strong>{resumePrompt.label}</strong>.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-2 pt-1">
+              <button
+                onClick={() => {
+                  const target = resumePrompt;
+                  setResumePrompt(null);
+                  if (target.view === 'topic' && target.topicId) {
+                    handleSelectTopic(target.topicId, null);
+                  } else {
+                    setActiveView(target.view);
+                  }
+                }}
+                className="flex-1 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
+              >
+                Continuar on estava →
+              </button>
+              <button
+                type="button"
+                onClick={() => setResumePrompt(null)}
+                className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                Quedar-me a l&apos;inici
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Missatge emergent si porta una estona navegant sense haver iniciat sessió */}
       {showAuthReminder && !cloudUser && (
