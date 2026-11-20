@@ -32301,11 +32301,23 @@ function QuickStudyView({
   const difficultPages = progress.difficultPages || {};
   const pageStatus = progress.pageStatus || {};
   const quizResults = progress.quizResults || {};
+  const spacedMap = progress.spacedRepetition || {};
+  const mistakesList = Object.values(quizResults.__mistakes || {});
+
+  const todayISO = new Date().toISOString().split('T')[0];
+  const plus3Date = new Date();
+  plus3Date.setDate(plus3Date.getDate() + 3);
+  const plus3ISO = plus3Date.toISOString().split('T')[0];
 
   const totalDifficultCount = Object.values(difficultPages).reduce(
     (sum, map) => sum + Object.keys(map || {}).length,
     0
   );
+  const dueForgetCount = topics.filter((t) => {
+    const sp = spacedMap[t.id];
+    return sp?.nextReviewAt && sp.nextReviewAt <= todayISO;
+  }).length;
+  const totalMistakesCount = mistakesList.length;
 
   const toggleTopicChoice = (id) => {
     setSelectedTopicIds((prev) =>
@@ -32316,6 +32328,14 @@ function QuickStudyView({
   const buildSession = () => {
     let pool = [];
 
+    // Agrupa errors pendents per tema i per pàgina
+    const mistakesByTopic = {};
+    mistakesList.forEach((m) => {
+      if (!m.topicId) return;
+      if (!mistakesByTopic[m.topicId]) mistakesByTopic[m.topicId] = [];
+      mistakesByTopic[m.topicId].push(m);
+    });
+
     for (const t of topics) {
       if (selectionMode === 'topics' && selectedTopicIds.length > 0) {
         if (!selectedTopicIds.includes(t.id)) continue;
@@ -32325,12 +32345,46 @@ function QuickStudyView({
       const tStatus = pageStatus[t.id] || {};
       const qRes = quizResults[t.id];
       const lowQuiz = qRes && qRes.percentage < 70;
+      const sp = spacedMap[t.id];
+      const isDueToday = Boolean(sp?.nextReviewAt && sp.nextReviewAt <= todayISO);
+      const isDueSoon = Boolean(!isDueToday && sp?.nextReviewAt && sp.nextReviewAt <= plus3ISO);
+      const topicMistakes = mistakesByTopic[t.id] || [];
+      const mistakeBoost = Math.min(8, topicMistakes.reduce((sum, m) => sum + (m.count || 1), 0) * 2);
 
       for (const p of t.pages || []) {
         const pNum = p.pageNumber || 1;
         const isDiff = Boolean(tDiff[pNum]);
         const isReview = tStatus[pNum] === 'review';
-        const weight = isDiff ? 5 : isReview ? 3 : lowQuiz ? 2 : 1;
+        const isKeySummary = Boolean(p.isSummary || p.isFormulaSheet);
+        const pageHasMistake = topicMistakes.some((m) => m.pageNumber === pNum);
+
+        let weight = 1;
+        const reasons = [];
+        if (isDiff) {
+          weight += 4;
+          reasons.push('Complicat');
+        }
+        if (isReview) {
+          weight += 2;
+          reasons.push('Per repassar');
+        }
+        if (isDueToday) {
+          weight += isKeySummary ? 8 : 5;
+          reasons.push("Corba de l'Oblit (Avui)");
+        } else if (isDueSoon) {
+          weight += isKeySummary ? 4 : 2;
+          reasons.push("Corba de l'Oblit (Pròxim)");
+        }
+        if (topicMistakes.length > 0) {
+          weight += mistakeBoost + (pageHasMistake || isKeySummary ? 3 : 0);
+          reasons.push(`${topicMistakes.length} error(s) a preguntes`);
+        } else if (lowQuiz) {
+          weight += 2;
+          reasons.push('Nota millorable');
+        }
+        if (isKeySummary && (isDueToday || topicMistakes.length > 0)) {
+          reasons.push('Punts clau / Resum');
+        }
 
         pool.push({
           topic: t,
@@ -32338,6 +32392,9 @@ function QuickStudyView({
           pageNumber: pNum,
           estMin: estimatePageMinutes(p, speedFactor),
           isDifficult: isDiff,
+          hasMistakes: topicMistakes.length > 0,
+          isDueToday,
+          reasons,
           weight
         });
       }
@@ -32386,12 +32443,17 @@ function QuickStudyView({
       if (accumulated >= minutes) break;
     }
 
-    // Seleccionem 1 pregunta relacionada per cada pàgina/diapositiva llegida (evitant duplicats)
+    // Seleccionem 1 pregunta relacionada per cada pàgina/diapositiva llegida (prioritzant preguntes fallades i evitant duplicats)
     const usedIds = new Set();
     const pickedQuestions = [];
     for (const slide of chosen) {
       const poolQ = [...(slide.topic.quiz || [])];
-      if (slide.isDifficult) {
+      const topicMistakeIds = new Set(
+        (mistakesByTopic[slide.topic.id] || []).map((m) => m.id)
+      );
+      if (topicMistakeIds.size > 0) {
+        poolQ.sort((a, b) => (topicMistakeIds.has(b.id) ? 1 : 0) - (topicMistakeIds.has(a.id) ? 1 : 0));
+      } else if (slide.isDifficult) {
         const rank = { 'Difícil': 0, 'Mitjà': 1, 'Fàcil': 2 };
         poolQ.sort((a, b) => (rank[a.difficulty] ?? 1) - (rank[b.difficulty] ?? 1));
       } else {
@@ -32795,11 +32857,10 @@ function QuickStudyView({
           >
             <div className="flex items-center gap-2 text-sm font-extrabold text-slate-900 dark:text-white">
               <AlertTriangle className="w-4 h-4 text-red-600" />
-              <span>Prioritzar el que em costa</span>
+              <span>Prioritzar Oblit, Errors i Punts Clau</span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Barreja apartats marcats com a Complicats ({totalDifficultCount}), Per Repassar i
-              temes amb nota millorable.
+              Combina Corba de l&apos;Oblit ({dueForgetCount} pendents), preguntes fallades ({totalMistakesCount}), apartats Complicats ({totalDifficultCount}) i resums clau.
             </p>
           </button>
 
