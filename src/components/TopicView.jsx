@@ -56,6 +56,7 @@ export default function TopicView({
     : [];
   const hasSchemas = schemas.length > 0;
   const [activeTab, setActiveTab] = useState('study'); // 'study' | 'quiz'
+  const [focusedQuestionId, setFocusedQuestionId] = useState(null);
   const [currentPageIndex, setCurrentPageIndex] = useState(hasSchemas ? -1 : 0);
   const [roundJustCompleted, setRoundJustCompleted] = useState(null);
 
@@ -380,13 +381,22 @@ export default function TopicView({
           difficultCount={Object.keys(progress.difficultPages?.[topic.id] || {}).length}
           onSaveScore={onSaveQuizScore}
           onRecordOutcome={onRecordQuestionOutcome}
+          focusedQuestionId={focusedQuestionId}
           savedQuizResult={progress.quizResults?.[topic.id]}
         />
       ) : (
         <>
           {/* Targeta Destacada "Anàlisi d'Importància" a l'inici del tema */}
           {currentPageIndex <= 0 && topic.importance && (
-            <ImportanceCard data={normalizeImportance(topic.importance)} />
+            <ImportanceCard
+              data={normalizeImportance(topic.importance)}
+              topicNumber={topic.number}
+              quizQuestions={topic.quiz || []}
+              onJumpToQuestion={(qId) => {
+                setFocusedQuestionId(qId);
+                setActiveTab('quiz');
+              }}
+            />
           )}
 
           {currentPageIndex < 0 && schemas[Math.abs(currentPageIndex) - 1] ? (

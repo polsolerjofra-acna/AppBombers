@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   CheckCircle2,
   XCircle,
@@ -23,6 +23,7 @@ export default function QuizView({
   difficultCount = 0,
   onSaveScore,
   onRecordOutcome = null,
+  focusedQuestionId = null,
   savedQuizResult
 }) {
   const baseQuestions = [...(topic.quiz || []), ...(extraQuestions || [])];
@@ -37,6 +38,16 @@ export default function QuizView({
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [submittedScore, setSubmittedScore] = useState(null);
   const [showWhiteboard, setShowWhiteboard] = useState(false);
+
+  useEffect(() => {
+    if (!focusedQuestionId) return;
+    setDifficultyFilter('Totes');
+    const t = setTimeout(() => {
+      const el = document.getElementById(`quiz-q-${focusedQuestionId}`);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 80);
+    return () => clearTimeout(t);
+  }, [focusedQuestionId]);
 
   const filteredQuestions =
     difficultyFilter === 'Totes'
@@ -216,8 +227,13 @@ export default function QuizView({
 
           return (
             <div
+              id={`quiz-q-${q.id}`}
               key={q.id}
-              className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm transition-all"
+              className={`rounded-2xl border bg-white dark:bg-slate-900 p-6 shadow-sm transition-all ${
+                focusedQuestionId === q.id
+                  ? 'border-red-500 ring-2 ring-red-500/40'
+                  : 'border-slate-200 dark:border-slate-800'
+              }`}
             >
               <div className="flex items-center justify-between gap-3 mb-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
