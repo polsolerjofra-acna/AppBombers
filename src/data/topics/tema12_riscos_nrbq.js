@@ -70,6 +70,13 @@ export const tema12RiscosNrbq = {
           ]
         },
         {
+          type: 'diagram',
+          title: 'Zonatge Operatiu NRBQ (Zona Calenta, Tèbia i Freda) i Direcció del Vent',
+          diagramType: 'nrbq_zoning',
+          caption:
+            'Organització del sinistre NRBQ amb el PMA i la Zona Freda a sobrevent, el corredor de descontaminació obligatori a la Zona Tèbia i la intervenció amb Nivell III/II a la Zona Calenta.'
+        },
+        {
           type: 'table',
           title: '2.2.2. Les 9 Classes ADR i lectura del Panell Taronja (40 × 30 cm: Codi Kemler / Codi ONU)',
           subtitle: 'Significat del primer i segon dígit del número d’identificació de perill (Codi Kemler)',

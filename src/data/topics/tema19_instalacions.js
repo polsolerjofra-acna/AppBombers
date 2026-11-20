@@ -95,6 +95,13 @@ export const tema19Instalacions = {
         },
         {
           type: 'diagram',
+          title: 'Escomesa i Instal·lació d’Enllaç Elèctrica (1 usuari, 2 usuaris, 1 CC i més d’1 CC)',
+          diagramType: 'electrical_enllac',
+          caption:
+            'Esquema visual amb codi de colors dels 12 elements de la instal·lació d’enllaç des de la xarxa de distribució fins a la instal·lació interior (CGP, LGA, CD, IGM, CC, CPM, DI, ICP i DGCP).'
+        },
+        {
+          type: 'diagram',
           title: 'Esquema de la Instal·lació d’Enllaç Elèctrica, 5 Regles d’Or i Escala de Pressions de Gas',
           diagramType: 'installations_gas_elec',
           caption:

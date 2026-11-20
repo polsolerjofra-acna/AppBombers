@@ -93,6 +93,13 @@ export const tema10IncendisForestals = {
           example: 'Si el Cap d’Intervenció t’assigna el "Sector 3", saps immediatament que vas a la part mitjana-alta del Flanc Esquerre!'
         },
         {
+          type: 'diagram',
+          title: 'Parts d’un Incendi Forestal i Direcció d’Atac',
+          diagramType: 'forest_fire_parts',
+          caption:
+            'Geometria completa d’un incendi forestal (Cap, Flanc Esquerre, Flanc Dret, Cua/Ancoratge, Zona Negra i Focus Secundaris per paveses) amb referència des de la cua cap al cap.'
+        },
+        {
           type: 'table',
           title: '2.3–2.5. La Gran Triad (Regla 30-30-30), Tipus de Foc, Llargada de Flama (Lf) i Mida (GIF)',
           subtitle: 'Totes les escales numèriques del Capítol 2 de MAN.INVE.000',

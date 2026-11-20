@@ -61,6 +61,13 @@ export const tema1TeoriaFoc = {
           takeaway: 'Sense Reacció en Cadena no hi ha flama (només brasa). La pols química ABC i els gasos halogenats ataquen directament aquesta 4a cara!'
         },
         {
+          type: 'diagram',
+          title: 'Corba d’Evolució d’un Incendi Interior (Ignició → Flashover → ILV → Backdraft)',
+          diagramType: 'fire_tetrahedron_curve',
+          caption:
+            'Fases tèrmiques d’un incendi confinat: transició d’incendi limitat pel combustible (ILC) a incendi limitat per la ventilació (ILV) després del flashover (~500-600 °C) i risc de backdraft en fase de decaïment.'
+        },
+        {
           type: 'mnemonic',
           title: 'Regles Mnemotècniques · Redox (PORC/GROC) i Fases vs. Etapes',
           acronym: 'PORC (Combustible) · GROC (Comburent) | Fases → Foc · Etapes → Equips',

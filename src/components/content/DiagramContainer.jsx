@@ -1073,6 +1073,252 @@ export default function DiagramContainer({ title, caption, diagramType, customSv
             <text x="340" y="244" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#0f172a">Sempre Temperatura en Kelvin: T(K) = °C + 273 | Equació general: (P·V)/T = cte</text>
           </svg>
         );
+
+      case 'electrical_enllac':
+        return (
+          <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
+            {/* Llegenda superior */}
+            <text x="20" y="22" fontSize="10" fontWeight="700" fill="#dc2626">1. Caixa general de protecció (CGP)</text>
+            <text x="20" y="36" fontSize="10" fontWeight="700" fill="#7e22ce">2. Línia general d'alimentació (LGA)</text>
+            <text x="20" y="50" fontSize="10" fontWeight="700" fill="#0f172a">3. Interruptor general de maniobra (IGM)</text>
+            <text x="20" y="64" fontSize="10" fontWeight="700" fill="#334155">4. Caixa de derivació (CD)</text>
+
+            <text x="275" y="22" fontSize="10" fontWeight="700" fill="#0284c7">5. Centralització de comptadors (CC)</text>
+            <text x="275" y="36" fontSize="10" fontWeight="700" fill="#d97706">6. Caixa de protecció i mesura (CPM)</text>
+            <text x="275" y="50" fontSize="10" fontWeight="700" fill="#ea580c">7. Derivació individual (DI)</text>
+            <text x="275" y="64" fontSize="10" fontWeight="700" fill="#b45309">8. Fusible de seguretat</text>
+
+            <text x="515" y="22" fontSize="10" fontWeight="700" fill="#1e293b">9. Comptador (Wh)</text>
+            <text x="515" y="36" fontSize="10" fontWeight="700" fill="#db2777">10. Caixa ICP (integrat al comptador*)</text>
+            <text x="515" y="50" fontSize="10" fontWeight="700" fill="#15803d">11. Dispositius generals (DGCP)</text>
+            <text x="515" y="64" fontSize="10" fontWeight="700" fill="#ca8a04">12. Instal·lació interior</text>
+
+            {/* Xarxa de distribució inferior */}
+            <line x1="25" y1="365" x2="710" y2="365" stroke="#0ea5e9" strokeWidth="3.5" />
+            <text x="720" y="368" fontSize="9.5" fontWeight="700" fill="#0369a1" textAnchor="end">Xarxa de distribució</text>
+
+            {/* COLUMNA 1: 1 usuari (CPM) */}
+            <line x1="75" y1="365" x2="75" y2="295" stroke="#10b981" strokeWidth="3" />
+            <text x="95" y="340" fontSize="9" fontWeight="700" fill="#059669">Escomesa</text>
+            <rect x="45" y="205" width="60" height="90" rx="4" fill="#fffbeb" stroke="#d97706" strokeWidth="2.5" />
+            <rect x="61" y="213" width="28" height="24" rx="2" fill="#93c5fd" stroke="#1d4ed8" strokeWidth="1.5" />
+            <text x="75" y="229" textAnchor="middle" fontSize="9" fontWeight="800" fill="#1e3a8a">Wh</text>
+            <rect x="68" y="246" width="14" height="28" rx="2" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
+            <line x1="75" y1="274" x2="75" y2="295" stroke="#0f172a" strokeWidth="2" />
+            <line x1="75" y1="205" x2="75" y2="175" stroke="#fb923c" strokeWidth="2.5" />
+            <rect x="52" y="150" width="46" height="22" rx="3" fill="#fbcfe8" stroke="#db2777" strokeWidth="1.5" />
+            <text x="75" y="164" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#831843">ICP</text>
+            <line x1="75" y1="150" x2="75" y2="136" stroke="#fb923c" strokeWidth="2.5" />
+            <rect x="52" y="114" width="46" height="22" rx="3" fill="#bbf7d0" stroke="#16a34a" strokeWidth="1.5" />
+            <text x="75" y="128" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#14532d">DGCP</text>
+            <line x1="75" y1="114" x2="75" y2="82" stroke="#facc15" strokeWidth="2.5" />
+            <line x1="65" y1="95" x2="85" y2="95" stroke="#facc15" strokeWidth="2" />
+            <line x1="65" y1="104" x2="85" y2="104" stroke="#facc15" strokeWidth="2" />
+            <text x="75" y="382" textAnchor="middle" fontSize="10" fontWeight="700" fill="#0f172a">1 usuari (CPM)</text>
+
+            {/* COLUMNA 2: 2 usuaris (CPM) */}
+            <line x1="175" y1="365" x2="175" y2="295" stroke="#10b981" strokeWidth="3" />
+            <rect x="130" y="205" width="90" height="90" rx="4" fill="#fffbeb" stroke="#d97706" strokeWidth="2.5" />
+            {[150, 200].map((cx) => (
+              <g key={cx}>
+                <rect x={cx - 14} y="213" width="28" height="24" rx="2" fill="#93c5fd" stroke="#1d4ed8" strokeWidth="1.5" />
+                <text x={cx} y="229" textAnchor="middle" fontSize="9" fontWeight="800" fill="#1e3a8a">Wh</text>
+                <rect x={cx - 7} y="246" width="14" height="24" rx="2" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
+                <line x1={cx} y1="205" x2={cx} y2="175" stroke="#fb923c" strokeWidth="2.5" />
+                <rect x={cx - 20} y="150" width="40" height="22" rx="3" fill="#fbcfe8" stroke="#db2777" strokeWidth="1.5" />
+                <text x={cx} y="164" textAnchor="middle" fontSize="8" fontWeight="700" fill="#831843">ICP</text>
+                <line x1={cx} y1="150" x2={cx} y2="136" stroke="#fb923c" strokeWidth="2.5" />
+                <rect x={cx - 20} y="114" width="40" height="22" rx="3" fill="#bbf7d0" stroke="#16a34a" strokeWidth="1.5" />
+                <text x={cx} y="128" textAnchor="middle" fontSize="8" fontWeight="700" fill="#14532d">DGCP</text>
+                <line x1={cx} y1="114" x2={cx} y2="82" stroke="#facc15" strokeWidth="2.5" />
+                <line x1={cx - 8} y1="95" x2={cx + 8} y2="95" stroke="#facc15" strokeWidth="2" />
+              </g>
+            ))}
+            <path d="M 150 270 L 150 284 L 200 284 L 200 270" fill="none" stroke="#0f172a" strokeWidth="2" />
+            <text x="175" y="382" textAnchor="middle" fontSize="10" fontWeight="700" fill="#0f172a">2 usuaris (CPM)</text>
+
+            {/* COLUMNA 3: 1 Centralització de comptadors (CGP -> LGA -> IGM -> CC) */}
+            <line x1="340" y1="365" x2="340" y2="344" stroke="#10b981" strokeWidth="3" />
+            <rect x="326" y="314" width="28" height="30" rx="3" fill="#fef2f2" stroke="#dc2626" strokeWidth="2.5" />
+            <text x="320" y="330" textAnchor="end" fontSize="8.5" fontWeight="800" fill="#dc2626">CGP</text>
+            <line x1="340" y1="314" x2="340" y2="288" stroke="#a855f7" strokeWidth="3" />
+            <text x="348" y="303" fontSize="8.5" fontWeight="700" fill="#7e22ce">LGA</text>
+
+            <rect x="260" y="195" width="160" height="96" rx="6" fill="#f0f9ff" stroke="#0284c7" strokeWidth="2.5" />
+            <text x="266" y="286" fontSize="8.5" fontWeight="800" fill="#0284c7">CC</text>
+            <line x1="340" y1="288" x2="340" y2="274" stroke="#0f172a" strokeWidth="2.5" />
+            <circle cx="340" cy="272" r="2.5" fill="#0f172a" />
+            <text x="350" y="274" fontSize="8" fontWeight="700" fill="#0f172a">IGM</text>
+            <path d="M 290 256 L 290 264 L 390 264 L 390 256" fill="none" stroke="#0f172a" strokeWidth="2" />
+
+            {[290, 340, 390].map((cx) => (
+              <g key={cx}>
+                <rect x={cx - 13} y="203" width="26" height="22" rx="2" fill="#93c5fd" stroke="#1d4ed8" strokeWidth="1.5" />
+                <text x={cx} y="217" textAnchor="middle" fontSize="8.5" fontWeight="800" fill="#1e3a8a">Wh</text>
+                <rect x={cx - 6} y="232" width="12" height="22" rx="2" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
+                <line x1={cx} y1="195" x2={cx} y2="175" stroke="#fb923c" strokeWidth="2.5" />
+                <rect x={cx - 19} y="150" width="38" height="22" rx="3" fill="#fbcfe8" stroke="#db2777" strokeWidth="1.5" />
+                <text x={cx} y="164" textAnchor="middle" fontSize="8" fontWeight="700" fill="#831843">ICP</text>
+                <line x1={cx} y1="150" x2={cx} y2="136" stroke="#fb923c" strokeWidth="2.5" />
+                <rect x={cx - 19} y="114" width="38" height="22" rx="3" fill="#bbf7d0" stroke="#16a34a" strokeWidth="1.5" />
+                <text x={cx} y="128" textAnchor="middle" fontSize="8" fontWeight="700" fill="#14532d">DGCP</text>
+                <line x1={cx} y1="114" x2={cx} y2="82" stroke="#facc15" strokeWidth="2.5" />
+                <line x1={cx - 7} y1="95" x2={cx + 7} y2="95" stroke="#facc15" strokeWidth="2" />
+              </g>
+            ))}
+            <text x="340" y="382" textAnchor="middle" fontSize="10" fontWeight="700" fill="#0f172a">1 centralització (CC)</text>
+
+            {/* COLUMNA 4: Comptadors centralitzats en més d'1 lloc (CGP -> CD -> CC1 + CC2) */}
+            <line x1="485" y1="365" x2="485" y2="344" stroke="#10b981" strokeWidth="3" />
+            <rect x="471" y="314" width="28" height="30" rx="3" fill="#fef2f2" stroke="#dc2626" strokeWidth="2.5" />
+            <text x="466" y="330" textAnchor="end" fontSize="8.5" fontWeight="800" fill="#dc2626">CGP</text>
+            <path d="M 485 314 L 485 305 L 650 305 L 650 288" fill="none" stroke="#a855f7" strokeWidth="2.5" />
+            <rect x="520" y="294" width="26" height="20" rx="3" fill="#475569" />
+            <text x="533" y="307" textAnchor="middle" fontSize="8.5" fontWeight="800" fill="#ffffff">CD</text>
+            <rect x="637" y="294" width="26" height="20" rx="3" fill="#475569" />
+            <text x="650" y="307" textAnchor="middle" fontSize="8.5" fontWeight="800" fill="#ffffff">CD</text>
+            <line x1="533" y1="294" x2="533" y2="288" stroke="#a855f7" strokeWidth="2.5" />
+
+            <rect x="455" y="195" width="145" height="96" rx="6" fill="#f0f9ff" stroke="#0284c7" strokeWidth="2.5" />
+            <rect x="610" y="195" width="110" height="96" rx="6" fill="#f0f9ff" stroke="#0284c7" strokeWidth="2.5" />
+            {[485, 533, 578, 640, 690].map((cx) => (
+              <g key={cx}>
+                <rect x={cx - 12} y="203" width="24" height="22" rx="2" fill="#93c5fd" stroke="#1d4ed8" strokeWidth="1.5" />
+                <text x={cx} y="217" textAnchor="middle" fontSize="8" fontWeight="800" fill="#1e3a8a">Wh</text>
+                <rect x={cx - 6} y="232" width="12" height="20" rx="2" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
+                <line x1={cx} y1="195" x2={cx} y2="175" stroke="#fb923c" strokeWidth="2.5" />
+                <rect x={cx - 18} y="150" width="36" height="22" rx="3" fill="#fbcfe8" stroke="#db2777" strokeWidth="1.5" />
+                <text x={cx} y="164" textAnchor="middle" fontSize="7.5" fontWeight="700" fill="#831843">ICP</text>
+                <line x1={cx} y1="150" x2={cx} y2="136" stroke="#fb923c" strokeWidth="2.5" />
+                <rect x={cx - 18} y="114" width="36" height="22" rx="3" fill="#bbf7d0" stroke="#16a34a" strokeWidth="1.5" />
+                <text x={cx} y="128" textAnchor="middle" fontSize="7.5" fontWeight="700" fill="#14532d">DGCP</text>
+                <line x1={cx} y1="114" x2={cx} y2="82" stroke="#facc15" strokeWidth="2.5" />
+                <line x1={cx - 7} y1="95" x2={cx + 7} y2="95" stroke="#facc15" strokeWidth="2" />
+              </g>
+            ))}
+            <text x="585" y="382" textAnchor="middle" fontSize="10" fontWeight="700" fill="#0f172a">Comptadors centralitzats en més d'1 lloc (CD)</text>
+            <text x="740" y="395" textAnchor="end" fontSize="8" fill="#64748b">* Actualment l'ICP ja no s'instal·la a part, va integrat al comptador de telegestió</text>
+          </svg>
+        );
+
+      case 'fire_tetrahedron_curve':
+        return (
+          <svg viewBox="0 0 680 245" className="w-full max-w-3xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="680" height="245" rx="10" fill="#ffffff" />
+            <text x="340" y="22" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0f172a">
+              Corba d&apos;Evolució d&apos;un Incendi Interior (ILC vs ILV)
+            </text>
+            {/* Eixos */}
+            <line x1="55" y1="205" x2="645" y2="205" stroke="#334155" strokeWidth="2" />
+            <line x1="55" y1="205" x2="55" y2="40" stroke="#334155" strokeWidth="2" />
+            <text x="22" y="125" textAnchor="middle" transform="rotate(-90 22 125)" fontSize="11" fontWeight="700" fill="#334155">Temperatura / HRR</text>
+            <text x="350" y="232" textAnchor="middle" fontSize="11" fontWeight="700" fill="#334155">Temps</text>
+            {/* Zones de fons */}
+            <rect x="57" y="45" width="120" height="159" fill="#fef9c3" fillOpacity="0.6" />
+            <rect x="177" y="45" width="130" height="159" fill="#ffedd5" fillOpacity="0.65" />
+            <rect x="307" y="45" width="175" height="159" fill="#fee2e2" fillOpacity="0.7" />
+            <rect x="482" y="45" width="155" height="159" fill="#e2e8f0" fillOpacity="0.5" />
+            {/* Corba */}
+            <path d="M 60 202 C 130 195, 200 165, 265 110 L 305 62 L 480 62 C 530 75, 585 135, 635 180" fill="none" stroke="#dc2626" strokeWidth="3.5" />
+            {/* Línia Flashover */}
+            <line x1="275" y1="45" x2="275" y2="205" stroke="#b91c1c" strokeWidth="1.5" strokeDasharray="5 3" />
+            <circle cx="275" cy="96" r="5" fill="#dc2626" />
+            <text x="275" y="38" textAnchor="middle" fontSize="10" fontWeight="800" fill="#b91c1c">FLASHOVER (~500-600 °C)</text>
+            {/* Etiquetes fases */}
+            <text x="115" y="65" textAnchor="middle" fontSize="10" fontWeight="700" fill="#854d0e">1. Ignició</text>
+            <text x="115" y="80" textAnchor="middle" fontSize="9" fill="#a16207">ILC (sobra O₂)</text>
+            <text x="230" y="80" textAnchor="middle" fontSize="10" fontWeight="700" fill="#c2410c">2. Creixement</text>
+            <text x="395" y="82" textAnchor="middle" fontSize="10" fontWeight="800" fill="#991b1b">3. Ple Desenvolupament</text>
+            <text x="395" y="96" textAnchor="middle" fontSize="9" fill="#b91c1c">ILV (limitat per ventilació)</text>
+            <text x="560" y="65" textAnchor="middle" fontSize="10" fontWeight="700" fill="#475569">4. Decaïment</text>
+            <text x="560" y="80" textAnchor="middle" fontSize="9" fill="#dc2626">Risc BACKDRAFT si entra O₂</text>
+          </svg>
+        );
+
+      case 'forest_fire_parts':
+        return (
+          <svg viewBox="0 0 680 250" className="w-full max-w-3xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="680" height="250" rx="10" fill="#ffffff" />
+            {/* Vent */}
+            <line x1="40" y1="125" x2="135" y2="125" stroke="#0284c7" strokeWidth="3.5" />
+            <polygon points="135,118 152,125 135,132" fill="#0284c7" />
+            <text x="85" y="110" textAnchor="middle" fontSize="11" fontWeight="800" fill="#0369a1">VENT / PENDENT</text>
+            {/* Perímetre del foc */}
+            <path d="M 190 125 C 190 70, 290 42, 415 58 C 460 64, 515 80, 560 125 C 515 170, 455 182, 395 190 C 285 204, 190 180, 190 125 Z" fill="#fed7aa" stroke="#ea580c" strokeWidth="3" />
+            {/* Cap */}
+            <path d="M 495 75 C 525 90, 550 108, 565 125 C 550 142, 525 160, 495 175" fill="none" stroke="#dc2626" strokeWidth="6" />
+            <text x="580" y="128" fontSize="12" fontWeight="800" fill="#dc2626">CAP (màxima velocitat)</text>
+            {/* Cua */}
+            <text x="190" y="218" textAnchor="middle" fontSize="11" fontWeight="800" fill="#15803d">CUA (zona d'ancoratge)</text>
+            {/* Flancs */}
+            <text x="360" y="36" textAnchor="middle" fontSize="11" fontWeight="800" fill="#ea580c">FLANC ESQUERRE</text>
+            <text x="360" y="216" textAnchor="middle" fontSize="11" fontWeight="800" fill="#ea580c">FLANC DRET</text>
+            {/* Bosses i llengües */}
+            <circle cx="605" cy="70" r="9" fill="#ef4444" fillOpacity="0.8" />
+            <text x="605" y="54" textAnchor="middle" fontSize="10" fontWeight="700" fill="#b91c1c">Focus secundari</text>
+            <rect x="285" y="102" width="150" height="44" rx="8" fill="#ffffff" fillOpacity="0.9" stroke="#9a3412" strokeWidth="1.5" />
+            <text x="360" y="120" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#7c2d12">Zona Cremada (Negra)</text>
+            <text x="360" y="136" textAnchor="middle" fontSize="9.5" fill="#9a3412">Atac directe: flancs des de cua</text>
+          </svg>
+        );
+
+      case 'nrbq_zoning':
+        return (
+          <svg viewBox="0 0 680 230" className="w-full max-w-3xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="680" height="230" rx="10" fill="#ffffff" />
+            {/* Direcció del vent */}
+            <line x1="20" y1="32" x2="135" y2="32" stroke="#0284c7" strokeWidth="3" />
+            <polygon points="135,26 148,32 135,38" fill="#0284c7" />
+            <text x="80" y="20" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#0369a1">VENT (PMA a sobrevent)</text>
+            {/* Zona Freda */}
+            <rect x="25" y="55" width="630" height="155" rx="14" fill="#eff6ff" stroke="#2563eb" strokeWidth="2.5" />
+            <text x="45" y="76" fontSize="11" fontWeight="800" fill="#1d4ed8">ZONA FREDA (Suport, PMA, Sanitaris)</text>
+            {/* Zona Tèbia */}
+            <rect x="195" y="70" width="440" height="125" rx="12" fill="#fefce8" stroke="#eab308" strokeWidth="2.5" />
+            <text x="210" y="90" fontSize="11" fontWeight="800" fill="#a16207">ZONA TÈBIA (Corredor de Descontaminació)</text>
+            {/* Zona Calenta */}
+            <rect x="370" y="96" width="245" height="84" rx="10" fill="#fef2f2" stroke="#dc2626" strokeWidth="3" />
+            <text x="492" y="118" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#b91c1c">ZONA CALENTA (Intervenció)</text>
+            <text x="492" y="138" textAnchor="middle" fontSize="10" fontWeight="600" fill="#7f1d1d">Només equips amb Nivell III / II</text>
+            <text x="492" y="156" textAnchor="middle" fontSize="10" fontWeight="700" fill="#991b1b">Focus NRBQ / Rescat</text>
+            {/* Corredor de descontaminació */}
+            <rect x="215" y="118" width="135" height="40" rx="6" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+            <text x="282" y="135" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="#854d0e">DESCONTAMINACIÓ</text>
+            <text x="282" y="149" textAnchor="middle" fontSize="8.5" fill="#713f12">Sortida obligatòria</text>
+          </svg>
+        );
+
+      case 'vehicle_extrication_zones':
+        return (
+          <svg viewBox="0 0 680 225" className="w-full max-w-3xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="680" height="225" rx="10" fill="#ffffff" />
+            <text x="340" y="22" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0f172a">
+              Anatomia d&apos;Excarceració i Riscos en Vehicle Elèctric / Híbrid
+            </text>
+            {/* Silueta cotxe */}
+            <path d="M 90 155 L 115 112 L 200 105 L 255 62 L 455 62 L 525 105 L 580 118 L 585 155 Z" fill="#f1f5f9" stroke="#334155" strokeWidth="3" />
+            {/* Rodes */}
+            <circle cx="175" cy="160" r="24" fill="#1e293b" />
+            <circle cx="175" cy="160" r="10" fill="#94a3b8" />
+            <circle cx="505" cy="160" r="24" fill="#1e293b" />
+            <circle cx="505" cy="160" r="10" fill="#94a3b8" />
+            {/* Pilars A B C */}
+            <line x1="205" y1="105" x2="255" y2="62" stroke="#dc2626" strokeWidth="6" />
+            <text x="215" y="75" fontSize="11" fontWeight="800" fill="#dc2626">Pilar A</text>
+            <line x1="355" y1="62" x2="355" y2="150" stroke="#dc2626" strokeWidth="6" />
+            <text x="355" y="52" textAnchor="middle" fontSize="11" fontWeight="800" fill="#dc2626">Pilar B (Reforçat!)</text>
+            <line x1="455" y1="62" x2="520" y2="105" stroke="#dc2626" strokeWidth="6" />
+            <text x="505" y="75" fontSize="11" fontWeight="800" fill="#dc2626">Pilar C</text>
+            {/* Bateria HV + Cablejat taronja */}
+            <rect x="240" y="138" width="210" height="16" rx="3" fill="#fb923c" stroke="#c2410c" strokeWidth="2" />
+            <text x="345" y="149" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="#ffffff">BATERIA HV (400-800V) + Cablejat TARONJA</text>
+            <text x="340" y="205" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#334155">
+              Pelar plàstics abans de tallar (airbags/pretensors) · No tallar mai cables taronges · Estabilitzar 3/4 punts
+            </text>
+          </svg>
+        );
+
       default:
         return null;
     }

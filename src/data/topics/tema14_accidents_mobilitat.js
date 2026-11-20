@@ -52,6 +52,13 @@ export const tema14AccidentsMobilitat = {
           footnote: 'Memoritza els 3 nivells de seguretat: Primària = Activa (ABS/ESP) | Secundària = Passiva (Airbag/Cinturó) | Terciària = Post-impacte (eCall / tall combustible).'
         },
         {
+          type: 'diagram',
+          title: 'Anatomia d’Excarceració: Pilars A/B/C i Riscos en Vehicle Elèctric (HV)',
+          diagramType: 'vehicle_extrication_zones',
+          caption:
+            'Punts crítics structurals (Pilars A, B reforçat i C), ubicació habitual de la bateria d’alta tensió (400-800 V) i cablejat taronja que no s’ha de tallar mai.'
+        },
+        {
           type: 'table',
           title: '2.2–2.4. Dades Tècniques Oficials d’Autobusos, Camions i Ferrocarril (MAN.SVVH.000 Cap. 2)',
           subtitle: 'Dimensions, tonatges, voltatges i regles de seguretat ferroviària',
