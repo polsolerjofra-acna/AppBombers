@@ -29,7 +29,7 @@ jobs:
       - name: Build Vite
         run: npm run build
       - name: Copy manuals PDFs to dist
-        run: cp -r manuals dist/manuals
+        run: cp -r manuals dist/manuals && cp preview.html dist/preview.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
