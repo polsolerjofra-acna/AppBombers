@@ -20,6 +20,9 @@ import {
   RotateCw
 } from 'lucide-react';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
+import { TOPICS } from '../data/index';
+import { TOPIC_OUTLINES } from '../data/topicOutlines';
+import { generateFullTopicDocumentBuffer } from '../utils/keyPointsPdf';
 
 const MANUALS_ANNOTATIONS_STORAGE_KEY = 'bombers_manual_annotations_v1';
 
@@ -139,8 +142,10 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
   const [straightLine, setStraightLine] = useState(true);
   const [showReadingGuide, setShowReadingGuide] = useState(true);
   const [guideY, setGuideY] = useState(null);
+  const isLawManual = manual.category === 'general' && manual.topicNumber >= 1 && manual.topicNumber <= 7;
+  const [sourceMode, setSourceMode] = useState(() => (isLawManual ? 'a4' : 'original'));
 
-  // Carrega del document PDF amb pdf.js
+  // Carrega del document PDF amb pdf.js (Document A4 vertical per a lleis o PDF original)
   useEffect(() => {
     let cancelled = false;
     setLoadingPdf(true);
@@ -161,7 +166,27 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     }
 
-    const loadingTask = pdfjsLib.getDocument(manual.url);
+    let loadingTask;
+    if (isLawManual && sourceMode === 'a4') {
+      const topicObj = TOPICS.find((t) => t.number === manual.topicNumber);
+      const rawOutlines = topicObj ? TOPIC_OUTLINES[topicObj.id] : null;
+      const schemas = !rawOutlines
+        ? []
+        : Array.isArray(rawOutlines)
+        ? rawOutlines
+        : rawOutlines.schemas
+        ? rawOutlines.schemas
+        : [rawOutlines];
+      const buffer = generateFullTopicDocumentBuffer(topicObj, schemas);
+      if (buffer) {
+        loadingTask = pdfjsLib.getDocument({ data: buffer });
+      } else {
+        loadingTask = pdfjsLib.getDocument(manual.url);
+      }
+    } else {
+      loadingTask = pdfjsLib.getDocument(manual.url);
+    }
+
     loadingTask.promise
       .then((doc) => {
         if (cancelled) return;
@@ -179,7 +204,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
     return () => {
       cancelled = true;
     };
-  }, [manual.url]);
+  }, [manual.url, manual.topicNumber, isLawManual, sourceMode]);
 
   // Renderitzat de la pàgina actual
   const renderCurrentPage = useCallback(async () => {
@@ -476,6 +501,15 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          {isLawManual && (
+            <button
+              onClick={() => setSourceMode((m) => (m === 'a4' ? 'original' : 'a4'))}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/40 px-3 py-2 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100"
+            >
+              <FileText className="w-4 h-4" />
+              <span>{sourceMode === 'a4' ? 'Diapositives Originals' : 'Document A4 Vertical'}</span>
+            </button>
+          )}
           <a
             href={manual.url}
             download={manual.fileName}
@@ -812,16 +846,33 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
   );
 }
 
-export default function ManualsView({ initialManualTopicNumber = null }) {
+export default function ManualsView({
+  initialManualTopicNumber = null,
+  cloudAnnotations = {},
+  onUpdateCloudAnnotation = null
+}) {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('all');
-  const [savedStore, setSavedStore] = useState(() => loadSavedAnnotations());
+  const [savedStore, setSavedStore] = useState(() => ({
+    ...loadSavedAnnotations(),
+    ...(cloudAnnotations || {})
+  }));
   const [selectedManual, setSelectedManual] = useState(() => {
     if (initialManualTopicNumber) {
       return OFFICIAL_MANUALS.find((m) => m.topicNumber === initialManualTopicNumber) || null;
     }
     return null;
   });
+
+  useEffect(() => {
+    if (cloudAnnotations && Object.keys(cloudAnnotations).length > 0) {
+      setSavedStore((prev) => {
+        const merged = { ...prev, ...cloudAnnotations };
+        saveAnnotations(merged);
+        return merged;
+      });
+    }
+  }, [cloudAnnotations]);
 
   useEffect(() => {
     if (initialManualTopicNumber) {
@@ -836,6 +887,9 @@ export default function ManualsView({ initialManualTopicNumber = null }) {
       saveAnnotations(updated);
       return updated;
     });
+    if (onUpdateCloudAnnotation) {
+      onUpdateCloudAnnotation(manualId, nextData);
+    }
   };
 
   if (selectedManual) {
@@ -951,6 +1005,22 @@ export default function ManualsView({ initialManualTopicNumber = null }) {
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 truncate">
                   {manual.fileName}
                 </p>
+                {manual.boeLinks && manual.boeLinks.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {manual.boeLinks.map((lnk) => (
+                      <a
+                        key={lnk.url}
+                        href={lnk.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-2 py-0.5 text-[10px] font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100"
+                      >
+                        <ExternalLink className="w-2.5 h-2.5" />
+                        <span>{lnk.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-2">

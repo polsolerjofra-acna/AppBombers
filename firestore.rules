@@ -53,6 +53,7 @@ service cloud.firestore {
     //   - topicRounds: map (optional, <= 200 keys)
     //   - fridayCalcHistory: list (optional, <= 200 items)
     //   - difficultPages: map (optional, <= 200 keys)
+    //   - manualAnnotations: map (optional, <= 50 keys)
     //   - readingSpeedFactor: number (optional, 0.3..3.0)
     //   - email: string (optional, 0..120 chars)
     //   - dailyEmailEnabled: bool (optional)
@@ -223,6 +224,7 @@ service cloud.firestore {
           'topicRounds',
           'fridayCalcHistory',
           'difficultPages',
+          'manualAnnotations',
           'readingSpeedFactor',
           'email',
           'dailyEmailEnabled',
@@ -242,6 +244,7 @@ service cloud.firestore {
         isValidOptionalMap('topicRounds', 200) &&
         isValidOptionalList('fridayCalcHistory', 200) &&
         isValidOptionalMap('difficultPages', 200) &&
+        isValidOptionalMap('manualAnnotations', 50) &&
         isValidOptionalNumber('readingSpeedFactor', 0.3, 3.0) &&
         isValidOptionalString('email', 0, 120) &&
         isValidOptionalBool('dailyEmailEnabled') &&

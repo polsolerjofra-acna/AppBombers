@@ -409,3 +409,166 @@ export function downloadAllKeyPointsPdf(allTopicDocs) {
   });
   doc.save('Punts_Clau_Tots_els_Temes_SGO_2026.pdf');
 }
+
+/**
+ * Genera un document PDF complet A4 vertical (estil resum oficial) amb tot el
+ * contingut de les diapositives d'un tema de lleis (esquemes, text, taules i trampes)
+ * i retorna un ArrayBuffer per poder-lo obrir al visor/subratllador online o descarregar.
+ */
+export function generateFullTopicDocumentBuffer(topic, schemas = []) {
+  const jsPDF = window.jspdf && window.jspdf.jsPDF;
+  if (!jsPDF || !topic) return null;
+
+  const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const marginX = 25.4;
+  const marginTop = 25.4;
+  const marginBottom = 22;
+  const maxW = pageWidth - marginX * 2;
+  let y = marginTop;
+
+  const ensureSpace = (needed, curY) => {
+    if (curY + needed > pageHeight - marginBottom) {
+      doc.addPage();
+      return marginTop;
+    }
+    return curY;
+  };
+
+  // Caixa de títol superior
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(13.5);
+  doc.setTextColor(0, 0, 0);
+  const titleLines = doc.splitTextToSize(
+    toPdfText(`Document d'Estudi Tema ${topic.number} (${topic.code || 'LLEIS'}) - ${topic.title}`),
+    maxW - 8
+  );
+  const boxH = titleLines.length * 6.2 + 7;
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(0.35);
+  doc.rect(marginX, y, maxW, boxH);
+  doc.text(titleLines, marginX + 4, y + 7.5);
+  y += boxH + 8;
+
+  // Esquema general
+  if (schemas && schemas.length > 0) {
+    const kpDoc = buildTopicKeyPointsDoc(topic, schemas, []);
+    kpDoc.sections.forEach((sec) => {
+      y = ensureSpace(12, y);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11.5);
+      const secLines = doc.splitTextToSize(toPdfText(`${sec.number}. ${sec.title}`), maxW);
+      secLines.forEach((ln) => {
+        y = ensureSpace(5.5, y);
+        doc.text(ln, marginX, y);
+        y += 5.5;
+      });
+      y += 1;
+      (sec.subblocks || []).forEach((sub) => {
+        y = ensureSpace(6, y);
+        doc.setFillColor(0, 0, 0);
+        doc.circle(marginX + 6, y - 1.2, 0.8, 'F');
+        const { bold, rest } = splitBoldPrefix(sub.label);
+        y = drawMixedParagraph(doc, bold || sub.label, bold ? rest : '', marginX + 10, y, maxW - 10, 10, 4.5, ensureSpace);
+        (sub.bullets || []).forEach((b) => {
+          y = ensureSpace(5.5, y);
+          doc.setDrawColor(0, 0, 0);
+          doc.circle(marginX + 14, y - 1.2, 0.75, 'S');
+          const cp = splitBoldPrefix(b);
+          y = drawMixedParagraph(doc, cp.bold, cp.rest, marginX + 18, y, maxW - 18, 9.8, 4.4, ensureSpace);
+        });
+      });
+      y += 3;
+    });
+  }
+
+  // Contingut detallat de totes les pàgines / diapositives del tema
+  (topic.pages || []).forEach((page, pIdx) => {
+    y = ensureSpace(16, y);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    const pTitle = doc.splitTextToSize(toPdfText(`${pIdx + 1}. ${page.title || page.shortLabel || ''}`), maxW);
+    pTitle.forEach((ln) => {
+      y = ensureSpace(6, y);
+      doc.text(ln, marginX, y);
+      y += 5.8;
+    });
+    y += 1.5;
+
+    (page.blocks || []).forEach((b) => {
+      if (b.type === 'text') {
+        if (b.heading) {
+          y = ensureSpace(8, y);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(10.5);
+          doc.splitTextToSize(toPdfText(b.heading), maxW).forEach((ln) => {
+            y = ensureSpace(5, y);
+            doc.text(ln, marginX, y);
+            y += 4.8;
+          });
+          y += 1;
+        }
+        (b.paragraphs || []).forEach((para) => {
+          String(para || '').split('\n').forEach((line) => {
+            if (!line.trim()) return;
+            const { bold, rest } = splitBoldPrefix(line.replace(/^[•\-]\s*/, ''));
+            y = drawMixedParagraph(doc, bold, rest, marginX + 3, y, maxW - 3, 10, 4.5, ensureSpace);
+            y += 0.8;
+          });
+        });
+        y += 2;
+      } else if ((b.type === 'table' || b.type === 'numericTable') && b.headers && b.rows) {
+        y = ensureSpace(18, y);
+        if (b.title) {
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(10.2);
+          doc.splitTextToSize(toPdfText(b.title), maxW).forEach((ln) => {
+            y = ensureSpace(5, y);
+            doc.text(ln, marginX, y);
+            y += 4.8;
+          });
+          y += 1;
+        }
+        const cols = b.headers.length;
+        const colW = maxW / cols;
+        doc.setDrawColor(0, 0, 0);
+        doc.setLineWidth(0.3);
+        doc.rect(marginX, y, maxW, 8);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        b.headers.forEach((h, i) => {
+          if (i > 0) doc.line(marginX + i * colW, y, marginX + i * colW, y + 8);
+          doc.text(doc.splitTextToSize(toPdfText(h), colW - 3)[0] || '', marginX + i * colW + 1.5, y + 5.2);
+        });
+        y += 8;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.8);
+        b.rows.forEach((row) => {
+          const wrapped = row.map((c) => doc.splitTextToSize(toPdfText(c), colW - 3));
+          const maxL = Math.max(...wrapped.map((w) => w.length), 1);
+          const rowH = maxL * 4 + 3.5;
+          y = ensureSpace(rowH + 2, y);
+          doc.rect(marginX, y, maxW, rowH);
+          wrapped.forEach((lines, i) => {
+            if (i > 0) doc.line(marginX + i * colW, y, marginX + i * colW, y + rowH);
+            doc.setFont('helvetica', i === 0 ? 'bold' : 'normal');
+            doc.text(lines, marginX + i * colW + 1.5, y + 4.5);
+          });
+          y += rowH;
+        });
+        y += 5;
+      } else if (b.type === 'easy' && b.explanation) {
+        y = drawMixedParagraph(doc, b.title ? `${b.title}:` : '', b.explanation, marginX + 2, y, maxW - 2, 9.8, 4.4, ensureSpace);
+        y += 2;
+      } else if (b.type === 'mnemonic' && b.trick) {
+        y = drawMixedParagraph(doc, b.title ? `${b.title}:` : 'Regla:', b.trick, marginX + 2, y, maxW - 2, 9.8, 4.4, ensureSpace);
+        y += 2;
+      }
+    });
+    y += 4;
+  });
+
+  return doc.output('arraybuffer');
+}

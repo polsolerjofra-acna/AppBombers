@@ -44,6 +44,7 @@ const defaultState = {
   studyPlan: {},
   fridayCalcHistory: [],
   dailyEmailEnabled: true,
+  manualAnnotations: {},
   studySessions: [],
   pomodoroStats: {
     totalMinutes: 0,
@@ -427,6 +428,17 @@ export function useStudyProgress() {
     });
   };
 
+  // Desa anotacions i subratllats dels Manuals PDF (sincronitzat amb Firebase)
+  const setManualAnnotation = (manualId, nextData) => {
+    setProgress((prev) => ({
+      ...prev,
+      manualAnnotations: {
+        ...(prev.manualAnnotations || {}),
+        [manualId]: nextData
+      }
+    }));
+  };
+
   return {
     progress,
     setPageMark,
@@ -441,6 +453,7 @@ export function useStudyProgress() {
     setDailyEmailEnabled,
     toggleDifficultPage,
     trainReadingPace,
+    setManualAnnotation,
     replaceProgressFromCloud,
     resetAllProgress
   };

@@ -38,6 +38,7 @@ export default function App() {
     setDailyEmailEnabled,
     toggleDifficultPage,
     trainReadingPace,
+    setManualAnnotation,
     replaceProgressFromCloud,
     resetAllProgress
   } = useStudyProgress();
@@ -447,7 +448,10 @@ export default function App() {
               onSelectTopic={(id, target = null) => handleSelectTopic(id, target)}
             />
           ) : activeView === 'manuals' ? (
-            <ManualsView />
+            <ManualsView
+              cloudAnnotations={progress.manualAnnotations || {}}
+              onUpdateCloudAnnotation={setManualAnnotation}
+            />
           ) : activeView === 'group' ? (
             <GroupStudyView
               user={cloudUser}

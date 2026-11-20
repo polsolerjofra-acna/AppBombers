@@ -7,6 +7,11 @@ export const OFFICIAL_MANUALS = [
     title: 'Constitució Espanyola, Estatut d\'Autonomia i Llei 13/1989',
     fileName: 'Tema_01_Constitucio_Estatut_Llei13_1989.pdf',
     url: './manuals/Tema_01_Constitucio_Estatut_Llei13_1989.pdf',
+    boeLinks: [
+      { label: 'CE 1978 (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229' },
+      { label: 'EAC 2006 (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-2006-13087' },
+      { label: 'Llei 13/1989 (DOGC)', url: 'https://portaljuridic.gencat.cat/ca/document-del-pjur/?documentId=42080' }
+    ]
   },
   {
     id: 'manual-t2',
@@ -16,6 +21,10 @@ export const OFFICIAL_MANUALS = [
     title: 'Funció Pública de l\'Administració de la Generalitat',
     fileName: 'Tema_02_Funcio_Publica.pdf',
     url: './manuals/Tema_02_Funcio_Publica.pdf',
+    boeLinks: [
+      { label: 'TREBEP (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-2015-11719' },
+      { label: 'DL 1/1997 Funció Pública (DOGC)', url: 'https://portaljuridic.gencat.cat/ca/document-del-pjur/?documentId=155830' }
+    ]
   },
   {
     id: 'manual-t3',
@@ -25,6 +34,10 @@ export const OFFICIAL_MANUALS = [
     title: 'Prevenció de Riscos Laborals (LPRL) i Equips de Protecció Individual',
     fileName: 'Tema_03_PRL_i_EPI.pdf',
     url: './manuals/Tema_03_PRL_i_EPI.pdf',
+    boeLinks: [
+      { label: 'LPRL 31/1995 (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-1995-24292' },
+      { label: 'RD 773/1997 EPI (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-1997-12735' }
+    ]
   },
   {
     id: 'manual-t4',
@@ -34,6 +47,10 @@ export const OFFICIAL_MANUALS = [
     title: 'Igualtat efectiva, violència masclista i prevenció de l\'assetjament',
     fileName: 'Tema_04_Igualtat_i_Assetjament.pdf',
     url: './manuals/Tema_04_Igualtat_i_Assetjament.pdf',
+    boeLinks: [
+      { label: 'Llei 17/2015 Igualtat (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-2015-8670' },
+      { label: 'LO 3/2007 (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-2007-6115' }
+    ]
   },
   {
     id: 'manual-t5',
@@ -43,6 +60,9 @@ export const OFFICIAL_MANUALS = [
     title: 'Política Lingüística a Catalunya',
     fileName: 'Tema_05_Politica_Linguistica.pdf',
     url: './manuals/Tema_05_Politica_Linguistica.pdf',
+    boeLinks: [
+      { label: 'Llei 1/1998 Política Lingüística (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-1998-2989' }
+    ]
   },
   {
     id: 'manual-t6',
@@ -52,6 +72,10 @@ export const OFFICIAL_MANUALS = [
     title: 'Llei 5/1994 de Bombers i Llei 4/1997 de Protecció Civil',
     fileName: 'Tema_06_Llei_Bombers_i_Proteccio_Civil.pdf',
     url: './manuals/Tema_06_Llei_Bombers_i_Proteccio_Civil.pdf',
+    boeLinks: [
+      { label: 'Llei 5/1994 Bombers (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-1994-12553' },
+      { label: 'Llei 4/1997 Protecció Civil (BOE)', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-1997-13702' }
+    ]
   },
   {
     id: 'manual-t7',
@@ -61,6 +85,9 @@ export const OFFICIAL_MANUALS = [
     title: 'Reglament de Guàrdia, Decret 276/2016 i Organigrama DGPEIS',
     fileName: 'Tema_07_Guardia_i_Organigrama.pdf',
     url: './manuals/Tema_07_Guardia_i_Organigrama.pdf',
+    boeLinks: [
+      { label: 'Decret 276/2016 Bombers (DOGC)', url: 'https://portaljuridic.gencat.cat/ca/document-del-pjur/?documentId=757766' }
+    ]
   },
   {
     id: 'manual-t8',
