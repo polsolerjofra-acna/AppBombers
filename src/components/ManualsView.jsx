@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
 
-const STORAGE_KEY = 'bombers_manual_annotations_v1';
+const MANUALS_ANNOTATIONS_STORAGE_KEY = 'bombers_manual_annotations_v1';
 
 const CATEGORIES = [
   { id: 'all', label: 'Tots (35)' },
@@ -45,7 +45,7 @@ const PEN_COLORS = [
 
 function loadSavedAnnotations() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(MANUALS_ANNOTATIONS_STORAGE_KEY);
     return raw ? JSON.parse(raw) : {};
   } catch {
     return {};
@@ -54,7 +54,7 @@ function loadSavedAnnotations() {
 
 function saveAnnotations(data) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(MANUALS_ANNOTATIONS_STORAGE_KEY, JSON.stringify(data));
   } catch (err) {
     console.warn('No s\'han pogut desar les anotacions al localStorage:', err);
   }
