@@ -37087,6 +37087,9 @@ function HomeView({
   );
 }
 
+const APP_CLIENT_VERSION = '2026.11.20.1';
+const SEEN_RELEASE_KEY = 'bombers_seen_release_v1';
+
 function App() {
   const {
     progress,
@@ -37150,6 +37153,8 @@ function App() {
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
   const [showAuthReminder, setShowAuthReminder] = useState(false);
+  const [updateAvailable, setUpdateAvailable] = useState(false);
+  const [importantRelease, setImportantRelease] = useState(null);
   const [authReminderDismissed, setAuthReminderDismissed] = useState(() => {
     try {
       return sessionStorage.getItem('bombers_auth_reminder_dismissed') === '1';
@@ -37166,6 +37171,60 @@ function App() {
     } catch {
       // ignore
     }
+  };
+
+  // Comprovació d'actualitzacions de l'app (version.json)
+  useEffect(() => {
+    let active = true;
+    const checkVersion = async () => {
+      try {
+        const res = await fetch(`./version.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!active || !data || !data.version) return;
+
+        if (data.version !== APP_CLIENT_VERSION) {
+          setUpdateAvailable(true);
+        }
+
+        if (data.isImportant && Array.isArray(data.cards) && data.cards.length > 0) {
+          let seenVersion = '';
+          try {
+            seenVersion = localStorage.getItem(SEEN_RELEASE_KEY) || '';
+          } catch {
+            // ignore
+          }
+          if (seenVersion !== data.version) {
+            setImportantRelease(data);
+          }
+        }
+      } catch {
+        // ignore offline errors
+      }
+    };
+
+    checkVersion();
+    const timer = setInterval(checkVersion, 5 * 60 * 1000);
+    const onVis = () => {
+      if (document.visibilityState === 'visible') checkVersion();
+    };
+    document.addEventListener('visibilitychange', onVis);
+    return () => {
+      active = false;
+      clearInterval(timer);
+      document.removeEventListener('visibilitychange', onVis);
+    };
+  }, []);
+
+  const dismissImportantRelease = () => {
+    if (importantRelease?.version) {
+      try {
+        localStorage.setItem(SEEN_RELEASE_KEY, importantRelease.version);
+      } catch {
+        // ignore
+      }
+    }
+    setImportantRelease(null);
   };
 
   // Recordatori emergent després d'una estona navegant sense iniciar sessió
@@ -37628,6 +37687,86 @@ function App() {
                 className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
               >
                 Continuar sense sessió
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Botó flotant de recàrrega quan hi ha una nova versió de l'app */}
+      {updateAvailable && (
+        <div className="print:hidden fixed bottom-5 left-5 z-50 flex items-center gap-3 rounded-2xl border border-red-300 dark:border-red-800 bg-white dark:bg-slate-900 px-4 py-3 shadow-2xl">
+          <span className="text-xs font-extrabold text-slate-900 dark:text-white">
+            Nova actualització disponible
+          </span>
+          <button
+            onClick={() => window.location.reload()}
+            className="rounded-xl bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 text-xs font-extrabold shadow-sm"
+          >
+            Recarregar
+          </button>
+        </div>
+      )}
+
+      {/* Targetes informatives quan hi ha canvis importants d'estructura o contingut */}
+      {importantRelease && (
+        <div
+          onClick={dismissImportantRelease}
+          className="print:hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/65 backdrop-blur-xs p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-xl w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4 max-h-[88vh] overflow-y-auto"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-red-600 dark:text-red-400">
+                  Versió {importantRelease.version}
+                </span>
+                <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                  {importantRelease.title || 'Novetats importants a l’aplicació'}
+                </h3>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {importantRelease.cards.map((card, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-4 space-y-1"
+                >
+                  {card.tag && (
+                    <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300">
+                      {card.tag}
+                    </span>
+                  )}
+                  <h4 className="text-sm font-extrabold text-slate-900 dark:text-white">
+                    {card.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap justify-end gap-2 pt-1">
+              {updateAvailable && (
+                <button
+                  onClick={() => {
+                    dismissImportantRelease();
+                    window.location.reload();
+                  }}
+                  className="rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
+                >
+                  Recarregar i actualitzar ara
+                </button>
+              )}
+              <button
+                onClick={dismissImportantRelease}
+                className="rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 text-xs font-extrabold"
+              >
+                Entès, continuar
               </button>
             </div>
           </div>
