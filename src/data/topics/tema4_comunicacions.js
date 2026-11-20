@@ -39,6 +39,13 @@ export const tema4Comunicacions = {
           ]
         },
         {
+          type: 'diagram',
+          title: 'Codi Fonètic Internacional (ICAO / OTAN) i Regles de Transmissió Ràdio',
+          diagramType: 'radio_phonetic_icao',
+          caption:
+            'Alfabet fonètic A–Z utilitzat a la xarxa RESCAT i normes bàsiques de transmissió PTT.'
+        },
+        {
           type: 'table',
           title: '2. Fonaments de Ràdio, Ús del PTT i Disciplina Jeràrquica (+1 / -1)',
           subtitle: 'Paràmetres tècnics i operatius del Capítol 2 de MAN.COMU.000',

@@ -15,12 +15,14 @@ import {
   downloadAllKeyPointsPdf,
   splitBoldPrefix
 } from '../utils/keyPointsPdf';
+import { downloadAllPostersPdf } from '../utils/postersPdf';
 
 export default function KeyPointsView({ onSelectTopic }) {
   const [viewMode, setViewMode] = useState('pdf-sheets'); // 'pdf-sheets' | 'confusions'
   const [selectedTopicId, setSelectedTopicId] = useState(TOPICS[0]?.id || 'tema-1');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [search, setSearch] = useState('');
+  const [posterProgress, setPosterProgress] = useState('');
 
   const selectedTopic = useMemo(
     () => TOPICS.find((t) => t.id === selectedTopicId) || TOPICS[0],
@@ -163,6 +165,16 @@ export default function KeyPointsView({ onSelectTopic }) {
             >
               <Download className="w-4 h-4" />
               <span>Tots els Temes (PDF)</span>
+            </button>
+
+            <button
+              onClick={() => downloadAllPostersPdf(TOPICS, setPosterProgress)}
+              disabled={Boolean(posterProgress)}
+              className="inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-slate-950 px-4 py-2.5 text-xs sm:text-sm font-extrabold shadow-sm transition-colors"
+              title="Descarrega un PDF amb tots els dibuixos esquemàtics en gran (cada un en una pàgina) per penjar al suro"
+            >
+              <Download className="w-4 h-4" />
+              <span>{posterProgress || 'Làmines Suro (PDF)'}</span>
             </button>
 
             {selectedTopic && onSelectTopic && (

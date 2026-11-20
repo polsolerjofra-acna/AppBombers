@@ -1626,6 +1626,13 @@ const tema13AssistenciaSanitaria = {
           ]
         },
         {
+          type: 'diagram',
+          title: 'Escala de Coma de Glasgow (GCS: Ocular 4 · Verbal 5 · Motora 6)',
+          diagramType: 'glasgow_scale',
+          caption:
+            'Puntuació completa de l’Escala de Coma de Glasgow (3 a 15 punts) i classificació del TCE (Lleu, Moderat i Greu ≤ 8).'
+        },
+        {
           type: 'table',
           title: '2.1–2.5. Conceptes Clínics, Franges d’Edat ERC, Anatomia Topogràfica i Postures d’Espera',
           subtitle: 'Definicions literals del Capítol 2 de MAN.SANI.000 V.3',
@@ -8758,6 +8765,13 @@ const tema24Imv = {
           ]
         },
         {
+          type: 'diagram',
+          title: 'Algoritme de Triatge START (RPM: Respiració, Perfusió, Mental)',
+          diagramType: 'start_triage_algorithm',
+          caption:
+            'Flux de decisió ràpida (< 60 segons per víctima) per assignar targeta Verda, Negra, Vermella o Groga en un IMV.'
+        },
+        {
           type: 'table',
           title: 'Criteris Oficials d’Activació del Protocol APCAT per a IMV (MAN.SANI.001 Cap. 1)',
           subtitle: 'Els dos llindars numèrics que has de memoritzar',
@@ -10086,6 +10100,13 @@ const tema27Inundacions = {
             "La protecció combina MESURES ESTRUCTURALS (dics, canalitzacions, basses de laminació, clavegueram) i MESURES NO ESTRUCTURALS (urbanisme, mapes de risc, alertes SMC i el pla INUNCAT).",
             "El GRAE Subaquàtic (amb seu a Cerdanyola) disposa d'embarcacions pneumàtiques tipus RAFT, propulsors aquàtics, robots submarins ROV i equips de busseig."
           ]
+        },
+        {
+          type: 'diagram',
+          title: 'Escala de Douglas (Estat de la Mar) i Llindar Operatiu Bombers (> 2,5 m)',
+          diagramType: 'douglas_beaufort_scales',
+          caption:
+            'Graus 0 a 9 de l’Escala de Douglas, alçada d’onades i llindar crític d’entrada a l’aigua per a no especialistes (> 2,5 m).'
         },
         {
           type: 'text',
@@ -12815,6 +12836,13 @@ const tema4Comunicacions = {
             "Històricament, Bombers de la Generalitat utilitzava una xarxa analògica pròpia en banda VHF (simplex i semidúplex), que patia interferències i manca de privacitat. Amb el desplegament de la xarxa digital troncal RESCAT (estàndard europeu TETRA), totes les comunicacions operatives i el posicionament GPS dels vehicles s'integren en temps real amb el Sistema d'Informació Geogràfica corporatiu (SIG, basat en tecnologia ArcGIS).",
             "DADA CLAU DEL MANUAL (Capítol 1): L'apagada definitiva de l'antiga xarxa analògica VHF de Bombers de la Generalitat es fixa a l'ABRIL DE 2025."
           ]
+        },
+        {
+          type: 'diagram',
+          title: 'Codi Fonètic Internacional (ICAO / OTAN) i Regles de Transmissió Ràdio',
+          diagramType: 'radio_phonetic_icao',
+          caption:
+            'Alfabet fonètic A–Z utilitzat a la xarxa RESCAT i normes bàsiques de transmissió PTT.'
         },
         {
           type: 'table',
@@ -25357,6 +25385,201 @@ function downloadAllKeyPointsPdf(allTopicDocs) {
   doc.save('Punts_Clau_Tots_els_Temes_SGO_2026.pdf');
 }
 
+function collectAllDiagrams(topics) {
+  const ordered = [...(topics || [])].sort((a, b) => a.number - b.number);
+  const items = [];
+  const seenTypes = new Set();
+
+  ordered.forEach((topic) => {
+    (topic.pages || []).forEach((page) => {
+      (page.blocks || []).forEach((block) => {
+        if (block.type === 'diagram' && block.diagramType) {
+          // Evitem duplicats exactes si un diagramType es repeteix en 2 temes
+          if (seenTypes.has(block.diagramType)) return;
+          seenTypes.add(block.diagramType);
+          items.push({
+            topicNumber: topic.number,
+            topicCode: topic.code || `Tema ${topic.number}`,
+            title: block.title || topic.title,
+            caption: block.caption || '',
+            diagramType: block.diagramType,
+            customSvg: block.customSvg || null,
+          });
+        }
+      });
+    });
+  });
+
+  return items;
+}
+
+function inlineSvgComputedColors(sourceSvg, targetSvg) {
+  const srcEls = sourceSvg.querySelectorAll('*');
+  const dstEls = targetSvg.querySelectorAll('*');
+  for (let i = 0; i < srcEls.length && i < dstEls.length; i++) {
+    const cs = window.getComputedStyle(srcEls[i]);
+    const dst = dstEls[i];
+    if (cs.fill && cs.fill !== 'none' && !dst.getAttribute('fill')) {
+      dst.setAttribute('fill', cs.fill);
+    }
+    if (cs.stroke && cs.stroke !== 'none' && !dst.getAttribute('stroke')) {
+      dst.setAttribute('stroke', cs.stroke);
+    }
+    if (srcEls[i].tagName.toLowerCase() === 'text') {
+      dst.setAttribute('font-family', 'Arial, Helvetica, sans-serif');
+      if (cs.fontSize) dst.setAttribute('font-size', cs.fontSize);
+      if (cs.fontWeight) dst.setAttribute('font-weight', cs.fontWeight);
+    }
+  }
+}
+
+function renderSvgToPngDataUrl(svgEl, targetWidth = 2200) {
+  return new Promise((resolve, reject) => {
+    try {
+      const vb = (svgEl.getAttribute('viewBox') || '0 0 680 240')
+        .trim()
+        .split(/[\s,]+/)
+        .map(Number);
+      const vbW = vb[2] || 680;
+      const vbH = vb[3] || 240;
+      const targetHeight = Math.round((targetWidth * vbH) / vbW);
+
+      const clone = svgEl.cloneNode(true);
+      clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      clone.setAttribute('width', String(targetWidth));
+      clone.setAttribute('height', String(targetHeight));
+      inlineSvgComputedColors(svgEl, clone);
+
+      const xml = new XMLSerializer().serializeToString(clone);
+      const svgBlob = new Blob([xml], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+        ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+        URL.revokeObjectURL(url);
+        resolve({
+          dataUrl: canvas.toDataURL('image/png'),
+          aspect: vbW / vbH,
+        });
+      };
+      img.onerror = (err) => {
+        URL.revokeObjectURL(url);
+        reject(err);
+      };
+      img.src = url;
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
+async function downloadAllPostersPdf(topics, onProgress = null) {
+  const jsPDF = window.jspdf && window.jspdf.jsPDF;
+  if (!jsPDF) {
+    window.print();
+    return;
+  }
+
+  const diagrams = collectAllDiagrams(topics);
+  if (diagrams.length === 0) return;
+
+  // Contenidor ocult fora de pantalla en mode clar per renderitzar cada SVG
+  const host = document.createElement('div');
+  host.style.position = 'fixed';
+  host.style.left = '-99999px';
+  host.style.top = '0';
+  host.style.width = '900px';
+  host.style.background = '#ffffff';
+  host.className = 'light';
+  document.body.appendChild(host);
+
+  const root = ReactDOM.createRoot(host);
+  let doc = null;
+
+  try {
+    for (let i = 0; i < diagrams.length; i++) {
+      const item = diagrams[i];
+      if (onProgress) onProgress(`Generant làmina ${i + 1} de ${diagrams.length}...`);
+
+      root.render(
+        React.createElement(DiagramContainer, {
+          title: item.title,
+          caption: item.caption,
+          diagramType: item.diagramType,
+          customSvg: item.customSvg,
+        })
+      );
+
+      await new Promise((r) => setTimeout(r, 35));
+      const svgEl = host.querySelector('svg');
+      if (!svgEl) continue;
+
+      const { dataUrl, aspect } = await renderSvgToPngDataUrl(svgEl, 2200);
+      const orientation = aspect >= 1.15 ? 'landscape' : 'portrait';
+
+      if (!doc) {
+        doc = new jsPDF({ unit: 'mm', format: 'a4', orientation });
+      } else {
+        doc.addPage('a4', orientation);
+      }
+
+      const pageW = doc.internal.pageSize.getWidth();
+      const pageH = doc.internal.pageSize.getHeight();
+      const margin = 10;
+
+      // Capçalera del pòster
+      doc.setFillColor(15, 23, 42);
+      doc.rect(margin, margin, pageW - margin * 2, 12, 'F');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.setTextColor(255, 255, 255);
+      const headerTxt = `TEMA ${item.topicNumber} (${item.topicCode}) — ${item.title}`.slice(0, 95);
+      doc.text(headerTxt, margin + 4, margin + 8);
+
+      // Àrea màxima per al diagrama gran (per penjar al suro)
+      const availW = pageW - margin * 2;
+      const availH = pageH - margin * 2 - 24;
+      let drawW = availW;
+      let drawH = drawW / aspect;
+      if (drawH > availH) {
+        drawH = availH;
+        drawW = drawH * aspect;
+      }
+      const x = margin + (availW - drawW) / 2;
+      const y = margin + 15 + (availH - drawH) / 2;
+
+      doc.setDrawColor(203, 213, 225);
+      doc.setLineWidth(0.3);
+      doc.rect(x - 1, y - 1, drawW + 2, drawH + 2);
+      doc.addImage(dataUrl, 'PNG', x, y, drawW, drawH);
+
+      // Peu amb descripció breu
+      if (item.caption) {
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.setTextColor(51, 65, 85);
+        const capLines = doc.splitTextToSize(item.caption, pageW - margin * 2).slice(0, 2);
+        doc.text(capLines, margin, pageH - margin - 2);
+      }
+    }
+
+    if (doc) {
+      doc.save('Lamines_Visuals_Suro_Bombers_SGO_2026.pdf');
+    }
+  } finally {
+    root.unmount();
+    if (host.parentNode) host.parentNode.removeChild(host);
+    if (onProgress) onProgress('');
+  }
+}
+
 const STORAGE_KEY = 'bombers_edtech_progress_v2';
 
 // Intervals de la Corba de l'Oblit (Ebbinghaus) en dies
@@ -27474,6 +27697,248 @@ function DiagramContainer({ title, caption, diagramType, customSvg }) {
             <text x="345" y="149" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="#ffffff">BATERIA HV (400-800V) + Cablejat TARONJA</text>
             <text x="340" y="205" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#334155">
               Pelar plàstics abans de tallar (airbags/pretensors) · No tallar mai cables taronges · Estabilitzar 3/4 punts
+            </text>
+          </svg>
+        );
+
+      case 'radio_phonetic_icao': {
+        const letters = [
+          ['A', 'ALFA'], ['B', 'BRAVO'], ['C', 'CHARLIE'], ['D', 'DELTA'],
+          ['E', 'ECHO'], ['F', 'FOXTROT'], ['G', 'GOLF'], ['H', 'HOTEL'],
+          ['I', 'INDIA'], ['J', 'JULIETT'], ['K', 'KILO'], ['L', 'LIMA'],
+          ['M', 'MIKE'], ['N', 'NOVEMBER'], ['O', 'OSCAR'], ['P', 'PAPA'],
+          ['Q', 'QUEBEC'], ['R', 'ROMEO'], ['S', 'SIERRA'], ['T', 'TANGO'],
+          ['U', 'UNIFORM'], ['V', 'VICTOR'], ['W', 'WHISKEY'], ['X', 'X-RAY'],
+          ['Y', 'YANKEE'], ['Z', 'ZULU']
+        ];
+        return (
+          <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#0f172a" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              CODI FONÈTIC INTERNACIONAL (ICAO / OTAN) · COMUNICACIONS RÀDIO RESCAT
+            </text>
+            {letters.map(([ch, word], idx) => {
+              const col = idx % 4;
+              const row = Math.floor(idx / 4);
+              const x = 18 + col * 184;
+              const y = 60 + row * 40;
+              return (
+                <g key={ch}>
+                  <rect x={x} y={y} width="174" height="33" rx="6" fill={col % 2 === 0 ? '#f8fafc' : '#eff6ff'} stroke="#cbd5e1" strokeWidth="1.2" />
+                  <rect x={x + 4} y={y + 4} width="26" height="25" rx="5" fill="#dc2626" />
+                  <text x={x + 17} y={y + 21} textAnchor="middle" fontSize="13" fontWeight="900" fill="#ffffff">{ch}</text>
+                  <text x={x + 40} y={y + 21} fontSize="12" fontWeight="800" fill="#0f172a">{word}</text>
+                </g>
+              );
+            })}
+            <rect x="386" y="300" width="358" height="86" rx="8" fill="#fffbeb" stroke="#f59e0b" strokeWidth="1.5" />
+            <text x="565" y="320" textAnchor="middle" fontSize="11" fontWeight="800" fill="#92400e">
+              REGLES D&apos;OR EN TRANSMISSIÓ RÀDIO (RESCAT TETRA)
+            </text>
+            <text x="398" y="338" fontSize="10" fontWeight="700" fill="#334155">• Prémer PTT → esperar 1 segon → parlar clar i breu</text>
+            <text x="398" y="354" fontSize="10" fontWeight="700" fill="#334155">• Ordre crida: &quot;[DESTINATARI] aquí [ORIGEN], canvi&quot;</text>
+            <text x="398" y="370" fontSize="10" fontWeight="700" fill="#b91c1c">• &quot;INTERROGAT&quot; (rebut?) · &quot;CORRECTE&quot; · &quot;CORRECCIÓ&quot; · &quot;FI&quot;</text>
+          </svg>
+        );
+      }
+
+      case 'glasgow_scale':
+        return (
+          <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#1e293b" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              ESCALA DE COMA DE GLASGOW (GCS) · MÍN. 3 — MÀX. 15 PUNTS (Ocular 4 · Verbal 5 · Motora 6)
+            </text>
+
+            {/* OCULAR (1-4) */}
+            <rect x="16" y="60" width="232" height="255" rx="10" fill="#f0f9ff" stroke="#0284c7" strokeWidth="2" />
+            <rect x="16" y="60" width="232" height="32" rx="8" fill="#0284c7" />
+            <text x="132" y="81" textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">1. OBERTURA OCULAR (1–4)</text>
+            {[
+              ['4', 'Espontània'],
+              ['3', 'A l\'ordre verbal'],
+              ['2', 'Al dolor / pressió'],
+              ['1', 'Cap resposta']
+            ].map(([pts, desc], i) => (
+              <g key={pts}>
+                <rect x="28" y={105 + i * 48} width="208" height="38" rx="6" fill="#ffffff" stroke="#bae6fd" />
+                <circle cx="48" cy={124 + i * 48} r="12" fill="#0284c7" />
+                <text x="48" y={128 + i * 48} textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">{pts}</text>
+                <text x="68" y={128 + i * 48} fontSize="11.5" fontWeight="700" fill="#0f172a">{desc}</text>
+              </g>
+            ))}
+
+            {/* VERBAL (1-5) */}
+            <rect x="264" y="60" width="232" height="255" rx="10" fill="#f0fdf4" stroke="#16a34a" strokeWidth="2" />
+            <rect x="264" y="60" width="232" height="32" rx="8" fill="#16a34a" />
+            <text x="380" y="81" textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">2. RESPOSTA VERBAL (1–5)</text>
+            {[
+              ['5', 'Orientada i coherent'],
+              ['4', 'Confusa / desorientada'],
+              ['3', 'Paraules inapropiades'],
+              ['2', 'Sons incomprensibles'],
+              ['1', 'Cap resposta']
+            ].map(([pts, desc], i) => (
+              <g key={pts}>
+                <rect x="276" y={102 + i * 41} width="208" height="33" rx="6" fill="#ffffff" stroke="#bbf7d0" />
+                <circle cx="295" cy={118.5 + i * 41} r="11" fill="#16a34a" />
+                <text x="295" y={122.5 + i * 41} textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#ffffff">{pts}</text>
+                <text x="314" y={122.5 + i * 41} fontSize="11" fontWeight="700" fill="#0f172a">{desc}</text>
+              </g>
+            ))}
+
+            {/* MOTORA (1-6) */}
+            <rect x="512" y="60" width="232" height="255" rx="10" fill="#fff7ed" stroke="#ea580c" strokeWidth="2" />
+            <rect x="512" y="60" width="232" height="32" rx="8" fill="#ea580c" />
+            <text x="628" y="81" textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">3. RESPOSTA MOTORA (1–6)</text>
+            {[
+              ['6', 'Obeeix ordres'],
+              ['5', 'Localitza el dolor'],
+              ['4', 'Retira al dolor (normal)'],
+              ['3', 'Flexió anormal (Decortic.)'],
+              ['2', 'Extensió (Descerebració)'],
+              ['1', 'Cap resposta']
+            ].map(([pts, desc], i) => (
+              <g key={pts}>
+                <rect x="524" y={98 + i * 35} width="208" height="29" rx="6" fill="#ffffff" stroke="#fed7aa" />
+                <circle cx="542" cy={112.5 + i * 35} r="10" fill="#ea580c" />
+                <text x="542" y={116.5 + i * 35} textAnchor="middle" fontSize="11" fontWeight="800" fill="#ffffff">{pts}</text>
+                <text x="559" y={116.5 + i * 35} fontSize="10.5" fontWeight="700" fill="#0f172a">{desc}</text>
+              </g>
+            ))}
+
+            {/* Gravetat TCE */}
+            <rect x="16" y="328" width="232" height="58" rx="8" fill="#dcfce7" stroke="#16a34a" strokeWidth="1.5" />
+            <text x="132" y="352" textAnchor="middle" fontSize="12" fontWeight="800" fill="#166534">TCE LLEU: 13 – 15 punts</text>
+            <text x="132" y="370" textAnchor="middle" fontSize="10" fontWeight="600" fill="#15803d">Vigilància i reavaluació periòdica</text>
+
+            <rect x="264" y="328" width="232" height="58" rx="8" fill="#fef9c3" stroke="#ca8a04" strokeWidth="1.5" />
+            <text x="380" y="352" textAnchor="middle" fontSize="12" fontWeight="800" fill="#854d0e">TCE MODERAT: 9 – 12 punts</text>
+            <text x="380" y="370" textAnchor="middle" fontSize="10" fontWeight="600" fill="#a16207">Trasllat urgent · Suport oxigen</text>
+
+            <rect x="512" y="328" width="232" height="58" rx="8" fill="#fee2e2" stroke="#dc2626" strokeWidth="2" />
+            <text x="628" y="352" textAnchor="middle" fontSize="12" fontWeight="800" fill="#991b1b">TCE GREU / COMA: ≤ 8 punts</text>
+            <text x="628" y="370" textAnchor="middle" fontSize="10" fontWeight="800" fill="#dc2626">ALERTA: Aïllar via aèria (Intubar!)</text>
+          </svg>
+        );
+
+      case 'douglas_beaufort_scales': {
+        const douglas = [
+          ['0', 'Calma (mar plana)', '0 m', '#eff6ff'],
+          ['1', 'Arrissada', '0 – 0,1 m', '#eff6ff'],
+          ['2', 'Marejol', '0,1 – 0,5 m', '#dbeafe'],
+          ['3', 'Maror', '0,5 – 1,25 m', '#dbeafe'],
+          ['4', 'Forta maror', '1,25 – 2,5 m', '#fef9c3'],
+          ['5', 'Mar gruixuda (LÍMIT!)', '2,5 – 4 m', '#fee2e2'],
+          ['6', 'Molt gruixuda', '4 – 6 m', '#fecaca'],
+          ['7', 'Arborada', '6 – 9 m', '#fca5a5'],
+          ['8', 'Muntanyosa', '9 – 14 m', '#f87171'],
+          ['9', 'Enorme', '> 14 m', '#ef4444']
+        ];
+        return (
+          <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#0369a1" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              ESCALA DE DOUGLAS (ESTAT DE LA MAR) · LLINDAR OPERATIU BOMBERS (&gt; 2,5 m)
+            </text>
+            {douglas.map(([g, nom, alt, bg], idx) => {
+              const col = idx < 5 ? 0 : 1;
+              const row = idx % 5;
+              const x = 18 + col * 370;
+              const y = 62 + row * 48;
+              const isDanger = Number(g) >= 5;
+              return (
+                <g key={g}>
+                  <rect x={x} y={y} width="354" height="40" rx="7" fill={bg} stroke={isDanger ? '#dc2626' : '#93c5fd'} strokeWidth={isDanger ? '1.8' : '1.2'} />
+                  <circle cx={x + 22} cy={y + 20} r="13" fill={isDanger ? '#dc2626' : '#0284c7'} />
+                  <text x={x + 22} y={y + 25} textAnchor="middle" fontSize="13" fontWeight="900" fill="#ffffff">{g}</text>
+                  <text x={x + 46} y={y + 25} fontSize="12" fontWeight="800" fill={Number(g) >= 8 ? '#ffffff' : '#0f172a'}>{nom}</text>
+                  <text x={x + 340} y={y + 25} textAnchor="end" fontSize="12" fontWeight="800" fill={Number(g) >= 8 ? '#ffffff' : '#1e3a8a'}>{alt}</text>
+                </g>
+              );
+            })}
+            <rect x="18" y="312" width="724" height="74" rx="8" fill="#fef2f2" stroke="#dc2626" strokeWidth="2" />
+            <text x="380" y="334" textAnchor="middle" fontSize="12" fontWeight="800" fill="#991b1b">
+              CRITERI D&apos;INTERVENCIÓ MAN.SVMN.001: NO ESPECIALISTES NO ENTREN A L&apos;AIGUA SI:
+            </text>
+            <text x="380" y="354" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#7f1d1d">
+              1) Mar amb onatge &gt; 2,5 m (Douglas ≥ 5)   ·   2) Rius/aigües braves Grau &gt; 3   ·   3) Durant desembossaments
+            </text>
+            <text x="380" y="373" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#0369a1">
+              Recorda: Escala de Douglas mesura l&apos;estat de la MAR (0–9) | Escala de Beaufort mesura la força del VENT (0–12)
+            </text>
+          </svg>
+        );
+      }
+
+      case 'start_triage_algorithm':
+        return (
+          <svg viewBox="0 0 760 360" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="360" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#991b1b" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              ALGORITME DE TRIATGE START (RPM: Respiració · Perfusió · Mental) — &lt; 60 s PER VÍCTIMA
+            </text>
+            {/* Pas 1 */}
+            <rect x="25" y="70" width="150" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="100" y="98" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">1. Pot caminar?</text>
+            <text x="100" y="116" textAnchor="middle" fontSize="10" fill="#475569">(Crida inicial)</text>
+            <line x1="100" y1="135" x2="100" y2="185" stroke="#16a34a" strokeWidth="2.5" />
+            <rect x="35" y="185" width="130" height="44" rx="8" fill="#16a34a" />
+            <text x="100" y="212" textAnchor="middle" fontSize="12" fontWeight="900" fill="#ffffff">SÍ → VERD (III)</text>
+
+            {/* Fletxa 1 -> 2 */}
+            <line x1="175" y1="102" x2="215" y2="102" stroke="#334155" strokeWidth="2.5" />
+            <text x="195" y="95" textAnchor="middle" fontSize="10" fontWeight="800" fill="#dc2626">NO</text>
+
+            {/* Pas 2 */}
+            <rect x="215" y="70" width="160" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="295" y="95" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">2. Respira?</text>
+            <text x="295" y="113" textAnchor="middle" fontSize="9.5" fill="#475569">Si NO → obrir via aèria</text>
+            <line x1="295" y1="135" x2="295" y2="185" stroke="#0f172a" strokeWidth="2.5" />
+            <rect x="220" y="185" width="150" height="44" rx="8" fill="#0f172a" />
+            <text x="295" y="212" textAnchor="middle" fontSize="11.5" fontWeight="900" fill="#ffffff">NO respira → NEGRE</text>
+
+            {/* Fletxa 2 -> 3 */}
+            <line x1="375" y1="102" x2="415" y2="102" stroke="#334155" strokeWidth="2.5" />
+            <text x="395" y="95" textAnchor="middle" fontSize="10" fontWeight="800" fill="#16a34a">SÍ</text>
+
+            {/* Pas 3 */}
+            <rect x="415" y="70" width="150" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="490" y="95" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">3. FR &gt; 30 rpm?</text>
+            <text x="490" y="113" textAnchor="middle" fontSize="9.5" fill="#475569">(o &lt; 10 rpm)</text>
+            <line x1="490" y1="135" x2="490" y2="185" stroke="#dc2626" strokeWidth="2.5" />
+            <rect x="422" y="185" width="136" height="44" rx="8" fill="#dc2626" />
+            <text x="490" y="212" textAnchor="middle" fontSize="12" fontWeight="900" fill="#ffffff">SÍ → VERMELL (I)</text>
+
+            {/* Fletxa 3 -> 4 */}
+            <line x1="565" y1="102" x2="595" y2="102" stroke="#334155" strokeWidth="2.5" />
+            <text x="580" y="95" textAnchor="middle" fontSize="10" fontWeight="800" fill="#16a34a">≤30</text>
+
+            {/* Pas 4 & 5 */}
+            <rect x="595" y="70" width="145" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="667" y="93" textAnchor="middle" fontSize="11" fontWeight="800" fill="#0f172a">4. Ompliment &gt; 2 s</text>
+            <text x="667" y="109" textAnchor="middle" fontSize="10" fontWeight="700" fill="#475569">o NO pols radial?</text>
+            <text x="667" y="124" textAnchor="middle" fontSize="9.5" fill="#dc2626">SÍ → VERMELL (I)</text>
+
+            <line x1="667" y1="135" x2="667" y2="170" stroke="#334155" strokeWidth="2.5" />
+            <rect x="595" y="170" width="145" height="62" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="667" y="192" textAnchor="middle" fontSize="11" fontWeight="800" fill="#0f172a">5. Ordres senzilles?</text>
+            <text x="667" y="209" textAnchor="middle" fontSize="10" fontWeight="800" fill="#dc2626">NO → VERMELL (I)</text>
+            <text x="667" y="224" textAnchor="middle" fontSize="10" fontWeight="800" fill="#ca8a04">SÍ → GROC (II)</text>
+
+            <rect x="25" y="258" width="715" height="80" rx="8" fill="#fefce8" stroke="#eab308" strokeWidth="1.5" />
+            <text x="382" y="280" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#854d0e">
+              RECORDATORI D&apos;EXAMEN START:
+            </text>
+            <text x="382" y="300" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#334155">
+              • Només es fan 2 maniobres salvadores durant el triatge: 1) Obrir via aèria (PLS/Guedel) i 2) Comprimir hemorràgia exsanguinant.
+            </text>
+            <text x="382" y="319" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#b91c1c">
+              • MAI es fa RCP durant un triatge START d&apos;IMV! (Si no respira després d&apos;obrir via aèria → NEGRE).
             </text>
           </svg>
         );
@@ -30695,6 +31160,7 @@ function KeyPointsView({ onSelectTopic }) {
   const [selectedTopicId, setSelectedTopicId] = useState(TOPICS[0]?.id || 'tema-1');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [search, setSearch] = useState('');
+  const [posterProgress, setPosterProgress] = useState('');
 
   const selectedTopic = useMemo(
     () => TOPICS.find((t) => t.id === selectedTopicId) || TOPICS[0],
@@ -30837,6 +31303,16 @@ function KeyPointsView({ onSelectTopic }) {
             >
               <Download className="w-4 h-4" />
               <span>Tots els Temes (PDF)</span>
+            </button>
+
+            <button
+              onClick={() => downloadAllPostersPdf(TOPICS, setPosterProgress)}
+              disabled={Boolean(posterProgress)}
+              className="inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-slate-950 px-4 py-2.5 text-xs sm:text-sm font-extrabold shadow-sm transition-colors"
+              title="Descarrega un PDF amb tots els dibuixos esquemàtics en gran (cada un en una pàgina) per penjar al suro"
+            >
+              <Download className="w-4 h-4" />
+              <span>{posterProgress || 'Làmines Suro (PDF)'}</span>
             </button>
 
             {selectedTopic && onSelectTopic && (

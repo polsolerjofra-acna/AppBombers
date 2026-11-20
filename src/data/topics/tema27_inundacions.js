@@ -39,6 +39,13 @@ export const tema27Inundacions = {
           ]
         },
         {
+          type: 'diagram',
+          title: 'Escala de Douglas (Estat de la Mar) i Llindar Operatiu Bombers (> 2,5 m)',
+          diagramType: 'douglas_beaufort_scales',
+          caption:
+            'Graus 0 a 9 de l’Escala de Douglas, alçada d’onades i llindar crític d’entrada a l’aigua per a no especialistes (> 2,5 m).'
+        },
+        {
           type: 'text',
           heading: '2.1–2.4. Dinàmica Fluvial (Meandres i Aiguabarreig) i Període de Retorn (T)',
           paragraphs: [

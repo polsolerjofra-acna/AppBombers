@@ -39,6 +39,13 @@ export const tema13AssistenciaSanitaria = {
           ]
         },
         {
+          type: 'diagram',
+          title: 'Escala de Coma de Glasgow (GCS: Ocular 4 · Verbal 5 · Motora 6)',
+          diagramType: 'glasgow_scale',
+          caption:
+            'Puntuació completa de l’Escala de Coma de Glasgow (3 a 15 punts) i classificació del TCE (Lleu, Moderat i Greu ≤ 8).'
+        },
+        {
           type: 'table',
           title: '2.1–2.5. Conceptes Clínics, Franges d’Edat ERC, Anatomia Topogràfica i Postures d’Espera',
           subtitle: 'Definicions literals del Capítol 2 de MAN.SANI.000 V.3',

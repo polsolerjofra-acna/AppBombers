@@ -39,6 +39,13 @@ export const tema24Imv = {
           ]
         },
         {
+          type: 'diagram',
+          title: 'Algoritme de Triatge START (RPM: Respiració, Perfusió, Mental)',
+          diagramType: 'start_triage_algorithm',
+          caption:
+            'Flux de decisió ràpida (< 60 segons per víctima) per assignar targeta Verda, Negra, Vermella o Groga en un IMV.'
+        },
+        {
           type: 'table',
           title: 'Criteris Oficials d’Activació del Protocol APCAT per a IMV (MAN.SANI.001 Cap. 1)',
           subtitle: 'Els dos llindars numèrics que has de memoritzar',

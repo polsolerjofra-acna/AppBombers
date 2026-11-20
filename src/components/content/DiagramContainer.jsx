@@ -1326,6 +1326,248 @@ export default function DiagramContainer({ title, caption, diagramType, customSv
           </svg>
         );
 
+      case 'radio_phonetic_icao': {
+        const letters = [
+          ['A', 'ALFA'], ['B', 'BRAVO'], ['C', 'CHARLIE'], ['D', 'DELTA'],
+          ['E', 'ECHO'], ['F', 'FOXTROT'], ['G', 'GOLF'], ['H', 'HOTEL'],
+          ['I', 'INDIA'], ['J', 'JULIETT'], ['K', 'KILO'], ['L', 'LIMA'],
+          ['M', 'MIKE'], ['N', 'NOVEMBER'], ['O', 'OSCAR'], ['P', 'PAPA'],
+          ['Q', 'QUEBEC'], ['R', 'ROMEO'], ['S', 'SIERRA'], ['T', 'TANGO'],
+          ['U', 'UNIFORM'], ['V', 'VICTOR'], ['W', 'WHISKEY'], ['X', 'X-RAY'],
+          ['Y', 'YANKEE'], ['Z', 'ZULU']
+        ];
+        return (
+          <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#0f172a" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              CODI FONÈTIC INTERNACIONAL (ICAO / OTAN) · COMUNICACIONS RÀDIO RESCAT
+            </text>
+            {letters.map(([ch, word], idx) => {
+              const col = idx % 4;
+              const row = Math.floor(idx / 4);
+              const x = 18 + col * 184;
+              const y = 60 + row * 40;
+              return (
+                <g key={ch}>
+                  <rect x={x} y={y} width="174" height="33" rx="6" fill={col % 2 === 0 ? '#f8fafc' : '#eff6ff'} stroke="#cbd5e1" strokeWidth="1.2" />
+                  <rect x={x + 4} y={y + 4} width="26" height="25" rx="5" fill="#dc2626" />
+                  <text x={x + 17} y={y + 21} textAnchor="middle" fontSize="13" fontWeight="900" fill="#ffffff">{ch}</text>
+                  <text x={x + 40} y={y + 21} fontSize="12" fontWeight="800" fill="#0f172a">{word}</text>
+                </g>
+              );
+            })}
+            <rect x="386" y="300" width="358" height="86" rx="8" fill="#fffbeb" stroke="#f59e0b" strokeWidth="1.5" />
+            <text x="565" y="320" textAnchor="middle" fontSize="11" fontWeight="800" fill="#92400e">
+              REGLES D&apos;OR EN TRANSMISSIÓ RÀDIO (RESCAT TETRA)
+            </text>
+            <text x="398" y="338" fontSize="10" fontWeight="700" fill="#334155">• Prémer PTT → esperar 1 segon → parlar clar i breu</text>
+            <text x="398" y="354" fontSize="10" fontWeight="700" fill="#334155">• Ordre crida: &quot;[DESTINATARI] aquí [ORIGEN], canvi&quot;</text>
+            <text x="398" y="370" fontSize="10" fontWeight="700" fill="#b91c1c">• &quot;INTERROGAT&quot; (rebut?) · &quot;CORRECTE&quot; · &quot;CORRECCIÓ&quot; · &quot;FI&quot;</text>
+          </svg>
+        );
+      }
+
+      case 'glasgow_scale':
+        return (
+          <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#1e293b" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              ESCALA DE COMA DE GLASGOW (GCS) · MÍN. 3 — MÀX. 15 PUNTS (Ocular 4 · Verbal 5 · Motora 6)
+            </text>
+
+            {/* OCULAR (1-4) */}
+            <rect x="16" y="60" width="232" height="255" rx="10" fill="#f0f9ff" stroke="#0284c7" strokeWidth="2" />
+            <rect x="16" y="60" width="232" height="32" rx="8" fill="#0284c7" />
+            <text x="132" y="81" textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">1. OBERTURA OCULAR (1–4)</text>
+            {[
+              ['4', 'Espontània'],
+              ['3', 'A l\'ordre verbal'],
+              ['2', 'Al dolor / pressió'],
+              ['1', 'Cap resposta']
+            ].map(([pts, desc], i) => (
+              <g key={pts}>
+                <rect x="28" y={105 + i * 48} width="208" height="38" rx="6" fill="#ffffff" stroke="#bae6fd" />
+                <circle cx="48" cy={124 + i * 48} r="12" fill="#0284c7" />
+                <text x="48" y={128 + i * 48} textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">{pts}</text>
+                <text x="68" y={128 + i * 48} fontSize="11.5" fontWeight="700" fill="#0f172a">{desc}</text>
+              </g>
+            ))}
+
+            {/* VERBAL (1-5) */}
+            <rect x="264" y="60" width="232" height="255" rx="10" fill="#f0fdf4" stroke="#16a34a" strokeWidth="2" />
+            <rect x="264" y="60" width="232" height="32" rx="8" fill="#16a34a" />
+            <text x="380" y="81" textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">2. RESPOSTA VERBAL (1–5)</text>
+            {[
+              ['5', 'Orientada i coherent'],
+              ['4', 'Confusa / desorientada'],
+              ['3', 'Paraules inapropiades'],
+              ['2', 'Sons incomprensibles'],
+              ['1', 'Cap resposta']
+            ].map(([pts, desc], i) => (
+              <g key={pts}>
+                <rect x="276" y={102 + i * 41} width="208" height="33" rx="6" fill="#ffffff" stroke="#bbf7d0" />
+                <circle cx="295" cy={118.5 + i * 41} r="11" fill="#16a34a" />
+                <text x="295" y={122.5 + i * 41} textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#ffffff">{pts}</text>
+                <text x="314" y={122.5 + i * 41} fontSize="11" fontWeight="700" fill="#0f172a">{desc}</text>
+              </g>
+            ))}
+
+            {/* MOTORA (1-6) */}
+            <rect x="512" y="60" width="232" height="255" rx="10" fill="#fff7ed" stroke="#ea580c" strokeWidth="2" />
+            <rect x="512" y="60" width="232" height="32" rx="8" fill="#ea580c" />
+            <text x="628" y="81" textAnchor="middle" fontSize="12" fontWeight="800" fill="#ffffff">3. RESPOSTA MOTORA (1–6)</text>
+            {[
+              ['6', 'Obeeix ordres'],
+              ['5', 'Localitza el dolor'],
+              ['4', 'Retira al dolor (normal)'],
+              ['3', 'Flexió anormal (Decortic.)'],
+              ['2', 'Extensió (Descerebració)'],
+              ['1', 'Cap resposta']
+            ].map(([pts, desc], i) => (
+              <g key={pts}>
+                <rect x="524" y={98 + i * 35} width="208" height="29" rx="6" fill="#ffffff" stroke="#fed7aa" />
+                <circle cx="542" cy={112.5 + i * 35} r="10" fill="#ea580c" />
+                <text x="542" y={116.5 + i * 35} textAnchor="middle" fontSize="11" fontWeight="800" fill="#ffffff">{pts}</text>
+                <text x="559" y={116.5 + i * 35} fontSize="10.5" fontWeight="700" fill="#0f172a">{desc}</text>
+              </g>
+            ))}
+
+            {/* Gravetat TCE */}
+            <rect x="16" y="328" width="232" height="58" rx="8" fill="#dcfce7" stroke="#16a34a" strokeWidth="1.5" />
+            <text x="132" y="352" textAnchor="middle" fontSize="12" fontWeight="800" fill="#166534">TCE LLEU: 13 – 15 punts</text>
+            <text x="132" y="370" textAnchor="middle" fontSize="10" fontWeight="600" fill="#15803d">Vigilància i reavaluació periòdica</text>
+
+            <rect x="264" y="328" width="232" height="58" rx="8" fill="#fef9c3" stroke="#ca8a04" strokeWidth="1.5" />
+            <text x="380" y="352" textAnchor="middle" fontSize="12" fontWeight="800" fill="#854d0e">TCE MODERAT: 9 – 12 punts</text>
+            <text x="380" y="370" textAnchor="middle" fontSize="10" fontWeight="600" fill="#a16207">Trasllat urgent · Suport oxigen</text>
+
+            <rect x="512" y="328" width="232" height="58" rx="8" fill="#fee2e2" stroke="#dc2626" strokeWidth="2" />
+            <text x="628" y="352" textAnchor="middle" fontSize="12" fontWeight="800" fill="#991b1b">TCE GREU / COMA: ≤ 8 punts</text>
+            <text x="628" y="370" textAnchor="middle" fontSize="10" fontWeight="800" fill="#dc2626">ALERTA: Aïllar via aèria (Intubar!)</text>
+          </svg>
+        );
+
+      case 'douglas_beaufort_scales': {
+        const douglas = [
+          ['0', 'Calma (mar plana)', '0 m', '#eff6ff'],
+          ['1', 'Arrissada', '0 – 0,1 m', '#eff6ff'],
+          ['2', 'Marejol', '0,1 – 0,5 m', '#dbeafe'],
+          ['3', 'Maror', '0,5 – 1,25 m', '#dbeafe'],
+          ['4', 'Forta maror', '1,25 – 2,5 m', '#fef9c3'],
+          ['5', 'Mar gruixuda (LÍMIT!)', '2,5 – 4 m', '#fee2e2'],
+          ['6', 'Molt gruixuda', '4 – 6 m', '#fecaca'],
+          ['7', 'Arborada', '6 – 9 m', '#fca5a5'],
+          ['8', 'Muntanyosa', '9 – 14 m', '#f87171'],
+          ['9', 'Enorme', '> 14 m', '#ef4444']
+        ];
+        return (
+          <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#0369a1" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              ESCALA DE DOUGLAS (ESTAT DE LA MAR) · LLINDAR OPERATIU BOMBERS (&gt; 2,5 m)
+            </text>
+            {douglas.map(([g, nom, alt, bg], idx) => {
+              const col = idx < 5 ? 0 : 1;
+              const row = idx % 5;
+              const x = 18 + col * 370;
+              const y = 62 + row * 48;
+              const isDanger = Number(g) >= 5;
+              return (
+                <g key={g}>
+                  <rect x={x} y={y} width="354" height="40" rx="7" fill={bg} stroke={isDanger ? '#dc2626' : '#93c5fd'} strokeWidth={isDanger ? '1.8' : '1.2'} />
+                  <circle cx={x + 22} cy={y + 20} r="13" fill={isDanger ? '#dc2626' : '#0284c7'} />
+                  <text x={x + 22} y={y + 25} textAnchor="middle" fontSize="13" fontWeight="900" fill="#ffffff">{g}</text>
+                  <text x={x + 46} y={y + 25} fontSize="12" fontWeight="800" fill={Number(g) >= 8 ? '#ffffff' : '#0f172a'}>{nom}</text>
+                  <text x={x + 340} y={y + 25} textAnchor="end" fontSize="12" fontWeight="800" fill={Number(g) >= 8 ? '#ffffff' : '#1e3a8a'}>{alt}</text>
+                </g>
+              );
+            })}
+            <rect x="18" y="312" width="724" height="74" rx="8" fill="#fef2f2" stroke="#dc2626" strokeWidth="2" />
+            <text x="380" y="334" textAnchor="middle" fontSize="12" fontWeight="800" fill="#991b1b">
+              CRITERI D&apos;INTERVENCIÓ MAN.SVMN.001: NO ESPECIALISTES NO ENTREN A L&apos;AIGUA SI:
+            </text>
+            <text x="380" y="354" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#7f1d1d">
+              1) Mar amb onatge &gt; 2,5 m (Douglas ≥ 5)   ·   2) Rius/aigües braves Grau &gt; 3   ·   3) Durant desembossaments
+            </text>
+            <text x="380" y="373" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#0369a1">
+              Recorda: Escala de Douglas mesura l&apos;estat de la MAR (0–9) | Escala de Beaufort mesura la força del VENT (0–12)
+            </text>
+          </svg>
+        );
+      }
+
+      case 'start_triage_algorithm':
+        return (
+          <svg viewBox="0 0 760 360" className="w-full max-w-4xl mx-auto h-auto font-sans">
+            <rect x="0" y="0" width="760" height="360" rx="12" fill="#ffffff" />
+            <rect x="16" y="12" width="728" height="36" rx="8" fill="#991b1b" />
+            <text x="380" y="35" textAnchor="middle" fontSize="14" fontWeight="800" fill="#ffffff">
+              ALGORITME DE TRIATGE START (RPM: Respiració · Perfusió · Mental) — &lt; 60 s PER VÍCTIMA
+            </text>
+            {/* Pas 1 */}
+            <rect x="25" y="70" width="150" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="100" y="98" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">1. Pot caminar?</text>
+            <text x="100" y="116" textAnchor="middle" fontSize="10" fill="#475569">(Crida inicial)</text>
+            <line x1="100" y1="135" x2="100" y2="185" stroke="#16a34a" strokeWidth="2.5" />
+            <rect x="35" y="185" width="130" height="44" rx="8" fill="#16a34a" />
+            <text x="100" y="212" textAnchor="middle" fontSize="12" fontWeight="900" fill="#ffffff">SÍ → VERD (III)</text>
+
+            {/* Fletxa 1 -> 2 */}
+            <line x1="175" y1="102" x2="215" y2="102" stroke="#334155" strokeWidth="2.5" />
+            <text x="195" y="95" textAnchor="middle" fontSize="10" fontWeight="800" fill="#dc2626">NO</text>
+
+            {/* Pas 2 */}
+            <rect x="215" y="70" width="160" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="295" y="95" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">2. Respira?</text>
+            <text x="295" y="113" textAnchor="middle" fontSize="9.5" fill="#475569">Si NO → obrir via aèria</text>
+            <line x1="295" y1="135" x2="295" y2="185" stroke="#0f172a" strokeWidth="2.5" />
+            <rect x="220" y="185" width="150" height="44" rx="8" fill="#0f172a" />
+            <text x="295" y="212" textAnchor="middle" fontSize="11.5" fontWeight="900" fill="#ffffff">NO respira → NEGRE</text>
+
+            {/* Fletxa 2 -> 3 */}
+            <line x1="375" y1="102" x2="415" y2="102" stroke="#334155" strokeWidth="2.5" />
+            <text x="395" y="95" textAnchor="middle" fontSize="10" fontWeight="800" fill="#16a34a">SÍ</text>
+
+            {/* Pas 3 */}
+            <rect x="415" y="70" width="150" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="490" y="95" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">3. FR &gt; 30 rpm?</text>
+            <text x="490" y="113" textAnchor="middle" fontSize="9.5" fill="#475569">(o &lt; 10 rpm)</text>
+            <line x1="490" y1="135" x2="490" y2="185" stroke="#dc2626" strokeWidth="2.5" />
+            <rect x="422" y="185" width="136" height="44" rx="8" fill="#dc2626" />
+            <text x="490" y="212" textAnchor="middle" fontSize="12" fontWeight="900" fill="#ffffff">SÍ → VERMELL (I)</text>
+
+            {/* Fletxa 3 -> 4 */}
+            <line x1="565" y1="102" x2="595" y2="102" stroke="#334155" strokeWidth="2.5" />
+            <text x="580" y="95" textAnchor="middle" fontSize="10" fontWeight="800" fill="#16a34a">≤30</text>
+
+            {/* Pas 4 & 5 */}
+            <rect x="595" y="70" width="145" height="65" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="667" y="93" textAnchor="middle" fontSize="11" fontWeight="800" fill="#0f172a">4. Ompliment &gt; 2 s</text>
+            <text x="667" y="109" textAnchor="middle" fontSize="10" fontWeight="700" fill="#475569">o NO pols radial?</text>
+            <text x="667" y="124" textAnchor="middle" fontSize="9.5" fill="#dc2626">SÍ → VERMELL (I)</text>
+
+            <line x1="667" y1="135" x2="667" y2="170" stroke="#334155" strokeWidth="2.5" />
+            <rect x="595" y="170" width="145" height="62" rx="8" fill="#f8fafc" stroke="#334155" strokeWidth="2" />
+            <text x="667" y="192" textAnchor="middle" fontSize="11" fontWeight="800" fill="#0f172a">5. Ordres senzilles?</text>
+            <text x="667" y="209" textAnchor="middle" fontSize="10" fontWeight="800" fill="#dc2626">NO → VERMELL (I)</text>
+            <text x="667" y="224" textAnchor="middle" fontSize="10" fontWeight="800" fill="#ca8a04">SÍ → GROC (II)</text>
+
+            <rect x="25" y="258" width="715" height="80" rx="8" fill="#fefce8" stroke="#eab308" strokeWidth="1.5" />
+            <text x="382" y="280" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#854d0e">
+              RECORDATORI D&apos;EXAMEN START:
+            </text>
+            <text x="382" y="300" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#334155">
+              • Només es fan 2 maniobres salvadores durant el triatge: 1) Obrir via aèria (PLS/Guedel) i 2) Comprimir hemorràgia exsanguinant.
+            </text>
+            <text x="382" y="319" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#b91c1c">
+              • MAI es fa RCP durant un triatge START d&apos;IMV! (Si no respira després d&apos;obrir via aèria → NEGRE).
+            </text>
+          </svg>
+        );
+
       default:
         return null;
     }
