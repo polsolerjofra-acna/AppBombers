@@ -1,9 +1,32 @@
 /**
  * Construeix l'estructura de document "Punts Clau" (estil fitxa A4 oficial,
  * idèntic als PDFs de referència: Arial/Helvetica negre pur, marges 25.4 mm,
- * caixa de títol amb vora negra, apartats numerats, vinyetes ●/○/▪ amb prefix
+ * caixa de títol amb vora negra, apartats numerats, vinyetes ●/○ amb prefix
  * en negreta seguit de text normal, taules blanques amb vora negra i quadres).
  */
+
+/**
+ * Converteix caràcters Unicode fora de WinAnsi (subíndexs, fletxes, símbols
+ * matemàtics) a equivalents WinAnsi/ASCII nets perquè jsPDF no deformi
+ * l'espaiat ni tregui caràcters estranys.
+ */
+function toPdfText(input) {
+  const map = {
+    '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4',
+    '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9',
+    '⁰': '0', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9',
+    '⁺': '+', '⁻': '-', 'ᵃ': 'a',
+    '→': '->', '←': '<-', '↔': '<->', '↑': '(puja)', '↓': '(baixa)',
+    '≥': '>=', '≤': '<=', '≠': '!=', '≈': '~', '∝': 'proporcional a',
+    'Δ': 'Delta ', 'Ω': 'ohm', 'α': 'alfa', 'β': 'beta', 'γ': 'gamma', 'μ': 'u',
+    '–': '-', '—': '-', '’': "'", '‘': "'", '“': '"', '”': '"', '…': '...',
+    '•': '-', '◦': '-', '▪': '-', '■': '-', '●': '-', '○': '-',
+    '\u00a0': ' '
+  };
+  return String(input || '')
+    .replace(/[\u00a0₀-₉⁰⁴-⁹⁺⁻ᵃ→←↔↑↓≥≤≠≈∝ΔΩαβγμ–—’‘“”…•◦▪■●○]/g, (ch) => map[ch] ?? '')
+    .replace(/[^\x09\x0A\x0D\x20-\xFF]/g, '');
+}
 
 export function splitBoldPrefix(text) {
   const str = String(text || '').trim();
@@ -74,10 +97,13 @@ export function buildTopicKeyPointsDoc(topic, schemas = [], confusionItems = [])
 
 /**
  * Dibuixa una línia de text amb un prefix en negreta seguit de text normal
- * mantenint el salt de línia natural i l'alineació sagnada.
+ * mantenint el salt de línia natural i sense cap solapament.
  */
-function drawMixedParagraph(doc, boldPrefix, regularText, startX, startY, maxW, fontSize, lineH, ensureSpace) {
+function drawMixedParagraph(doc, rawBold, rawRest, startX, startY, maxW, fontSize, lineH, ensureSpace) {
   let y = startY;
+  const boldPrefix = toPdfText(rawBold);
+  const regularText = toPdfText(rawRest);
+
   doc.setFontSize(fontSize);
   doc.setTextColor(0, 0, 0);
 
@@ -103,17 +129,16 @@ function drawMixedParagraph(doc, boldPrefix, regularText, startX, startY, maxW, 
     return y;
   }
 
-  // Combinació en línia: "Prefix:" en negreta + " descripció" en normal
   doc.setFont('helvetica', 'bold');
   const boldW = doc.getTextWidth(`${boldPrefix} `);
 
-  if (boldW < maxW * 0.72) {
+  if (boldW < maxW * 0.65) {
     y = ensureSpace(lineH, y);
     doc.setFont('helvetica', 'bold');
     doc.text(boldPrefix, startX, y);
 
     doc.setFont('helvetica', 'normal');
-    const firstLineAvail = maxW - boldW;
+    const firstLineAvail = maxW - boldW - 0.5;
     const words = regularText.split(/\s+/);
     let firstLine = '';
     let idx = 0;
@@ -127,7 +152,7 @@ function drawMixedParagraph(doc, boldPrefix, regularText, startX, startY, maxW, 
       }
     }
     if (firstLine) {
-      doc.text(firstLine, startX + boldW, y);
+      doc.text(firstLine, startX + boldW + 0.5, y);
     }
     y += lineH;
 
@@ -143,7 +168,6 @@ function drawMixedParagraph(doc, boldPrefix, regularText, startX, startY, maxW, 
     return y;
   }
 
-  // Si el prefix és molt llarg, el dibuixem i continuem a sota
   doc.setFont('helvetica', 'bold');
   const bLines = doc.splitTextToSize(boldPrefix, maxW);
   bLines.forEach((ln) => {
@@ -171,7 +195,7 @@ export function downloadKeyPointsPdf(docData, topic) {
   const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  const marginX = 25.4; // Marges oficials Google Docs (1 polzada)
+  const marginX = 25.4;
   const marginTop = 25.4;
   const marginBottom = 22;
   const maxW = pageWidth - marginX * 2;
@@ -185,11 +209,11 @@ export function downloadKeyPointsPdf(docData, topic) {
     return currentY;
   };
 
-  // Caixa de títol superior: vora fina negra #000000, fons blanc, Arial/Helvetica Negreta 13.5pt
+  // Caixa de títol superior
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(13.5);
   doc.setTextColor(0, 0, 0);
-  const titleLines = doc.splitTextToSize(docData.headerBox, maxW - 8);
+  const titleLines = doc.splitTextToSize(toPdfText(docData.headerBox), maxW - 8);
   const boxH = titleLines.length * 6.2 + 7;
   doc.setDrawColor(0, 0, 0);
   doc.setLineWidth(0.35);
@@ -197,13 +221,13 @@ export function downloadKeyPointsPdf(docData, topic) {
   doc.text(titleLines, marginX + 4, y + 7.5);
   y += boxH + 9;
 
-  // Seccions numerades (1., 2., 3...)
+  // Seccions numerades
   docData.sections.forEach((sec) => {
     y = ensureSpace(13, y);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11.5);
     doc.setTextColor(0, 0, 0);
-    const secTitleLines = doc.splitTextToSize(`${sec.number}. ${sec.title}`, maxW);
+    const secTitleLines = doc.splitTextToSize(toPdfText(`${sec.number}. ${sec.title}`), maxW);
     secTitleLines.forEach((ln) => {
       y = ensureSpace(5.5, y);
       doc.text(ln, marginX, y);
@@ -213,7 +237,6 @@ export function downloadKeyPointsPdf(docData, topic) {
 
     (sec.subblocks || []).forEach((sub) => {
       y = ensureSpace(7, y);
-      // Vinyeta nivell 1: cercle ple negre
       doc.setFillColor(0, 0, 0);
       doc.circle(marginX + 7.5, y - 1.2, 0.85, 'F');
 
@@ -234,7 +257,6 @@ export function downloadKeyPointsPdf(docData, topic) {
       );
       y += 0.8;
 
-      // Subpunts nivell 2: cercle buit ○
       (sub.bullets || []).forEach((b) => {
         y = ensureSpace(6, y);
         doc.setDrawColor(0, 0, 0);
@@ -260,13 +282,13 @@ export function downloadKeyPointsPdf(docData, topic) {
     y += 3.5;
   });
 
-  // Taules comparatives (estil Google Docs: fons blanc, vora negra fina #000000)
+  // Taules comparatives
   (docData.tables || []).forEach((tbl) => {
     y = ensureSpace(22, y);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10.5);
     doc.setTextColor(0, 0, 0);
-    const tLines = doc.splitTextToSize(tbl.title, maxW);
+    const tLines = doc.splitTextToSize(toPdfText(tbl.title), maxW);
     tLines.forEach((ln) => {
       y = ensureSpace(5, y);
       doc.text(ln, marginX, y);
@@ -284,7 +306,7 @@ export function downloadKeyPointsPdf(docData, topic) {
     doc.setFontSize(9.5);
     tbl.headers.forEach((h, i) => {
       if (i > 0) doc.line(marginX + i * colW, y, marginX + i * colW, y + 8);
-      const cellTxt = doc.splitTextToSize(String(h), colW - 4)[0] || '';
+      const cellTxt = doc.splitTextToSize(toPdfText(h), colW - 4)[0] || '';
       doc.text(cellTxt, marginX + i * colW + 2, y + 5.3);
     });
     y += 8;
@@ -292,7 +314,7 @@ export function downloadKeyPointsPdf(docData, topic) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9.5);
     tbl.rows.forEach((row) => {
-      const wrappedCols = row.map((cell) => doc.splitTextToSize(String(cell || ''), colW - 4));
+      const wrappedCols = row.map((cell) => doc.splitTextToSize(toPdfText(cell), colW - 4));
       const maxLines = Math.max(...wrappedCols.map((w) => w.length), 1);
       const rowH = maxLines * 4.3 + 4;
       y = ensureSpace(rowH + 2, y);
@@ -309,14 +331,14 @@ export function downloadKeyPointsPdf(docData, topic) {
     y += 6;
   });
 
-  // Quadres destacats (vora negra fina #000000, fons blanc, títol en negreta + vinyetes)
+  // Quadres destacats
   (docData.callouts || []).forEach((box) => {
     const wrappedItems = box.lines.map((ln) => {
       const parts = splitBoldPrefix(ln);
       return {
         bold: parts.bold,
         rest: parts.rest,
-        linesCount: doc.splitTextToSize(ln, maxW - 16).length
+        linesCount: doc.splitTextToSize(toPdfText(ln), maxW - 16).length
       };
     });
     const estH = 12 + wrappedItems.reduce((acc, it) => acc + it.linesCount * 4.6 + 1.5, 0);
@@ -327,7 +349,7 @@ export function downloadKeyPointsPdf(docData, topic) {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
     doc.setTextColor(0, 0, 0);
-    doc.text(box.title, marginX + 4, y);
+    doc.text(toPdfText(box.title), marginX + 4, y);
     y += 6;
 
     wrappedItems.forEach((it) => {
@@ -345,7 +367,6 @@ export function downloadKeyPointsPdf(docData, topic) {
         4.6,
         (needed, curY) => {
           if (curY + needed > pageHeight - marginBottom) {
-            // Tanca el quadre a la pàgina actual i continua a la següent
             doc.setDrawColor(0, 0, 0);
             doc.setLineWidth(0.35);
             doc.rect(marginX, boxStartY, maxW, curY - boxStartY + 2);
