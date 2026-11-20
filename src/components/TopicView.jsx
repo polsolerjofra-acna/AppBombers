@@ -9,7 +9,8 @@ import {
   Clock,
   Sparkles,
   Calculator,
-  AlertTriangle
+  AlertTriangle,
+  Download
 } from 'lucide-react';
 import ImportanceCard from './content/ImportanceCard';
 import EasyExplanationCard from './content/EasyExplanationCard';
@@ -20,6 +21,11 @@ import TopicOutlineCard from './content/TopicOutlineCard';
 import QuizView from './quiz/QuizView';
 import PageMnemonicsBox from './PageMnemonicsBox';
 import { TOPIC_OUTLINES } from '../data/topicOutlines';
+import { KEY_POINT_GROUPS } from '../data/keyPointsData';
+import {
+  buildTopicKeyPointsDoc,
+  downloadKeyPointsPdf
+} from '../utils/keyPointsPdf';
 
 const MAX_PAGES_PER_TOPIC = 10;
 
@@ -150,6 +156,23 @@ export default function TopicView({
 
           {/* Botons d'estat global del Tema */}
           <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => {
+                const confusions = [];
+                KEY_POINT_GROUPS.forEach((g) =>
+                  g.items.forEach((it) => {
+                    if (it.topicNumber === topic.number) confusions.push(it);
+                  })
+                );
+                const docData = buildTopicKeyPointsDoc(topic, schemas, confusions);
+                downloadKeyPointsPdf(docData, topic);
+              }}
+              className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/50 transition-all"
+              title="Descarrega la fitxa de Punts Clau d'aquest tema en PDF"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Punts Clau PDF</span>
+            </button>
             <button
               onClick={() => onSetTopicMark(topic.id, 'completed', totalPages)}
               className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border transition-all ${
