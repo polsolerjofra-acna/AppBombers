@@ -35,19 +35,23 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
       window.speechSynthesis.cancel();
     }
 
-    // Comprova si existeix una pista MP3 real tipus podcast a ./audio/<topic.id>.mp3
+    // Comprova si existeix una pista MP3 real tipus podcast a ./audio/<topic.id>.mp3 (o ./public/audio/ en preview local)
     if (!topic?.id) return;
     let active = true;
-    const candidate = `./audio/${topic.id}.mp3`;
-    fetch(candidate, { method: 'HEAD' })
-      .then((res) => {
+    const candidates = [`./audio/${topic.id}.mp3`, `./public/audio/${topic.id}.mp3`];
+    (async () => {
+      for (const candidate of candidates) {
         if (!active) return;
-        const ct = res.headers.get('content-type') || '';
-        if (res.ok && (ct.includes('audio') || ct.includes('octet-stream') || ct === '')) {
-          setMp3Url(candidate);
-        }
-      })
-      .catch(() => {});
+        try {
+          const res = await fetch(candidate, { method: 'HEAD' });
+          const ct = res.headers.get('content-type') || '';
+          if (res.ok && (ct.includes('audio') || ct.includes('octet-stream') || ct === '')) {
+            if (active) setMp3Url(candidate);
+            return;
+          }
+        } catch {}
+      }
+    })();
     return () => {
       active = false;
     };
