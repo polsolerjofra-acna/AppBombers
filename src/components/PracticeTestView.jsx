@@ -186,7 +186,7 @@ export default function PracticeTestView({
     const targetMode = chosenMode || mode;
     setMode(targetMode);
     const targetIds = targetMode === 'simulacre' ? topics.map((t) => t.id) : selectedTopicIds;
-    const count = targetMode === 'simulacre' ? 77 : questionCount; // 70 + 7 de reserva
+    const count = targetMode === 'simulacre' ? 77 : Math.max(1, Number(questionCount) || 20); // 70 + 7 de reserva
     const weighted = targetMode === 'simulacre' ? true : useWeightedPractice;
 
     const qs = buildWeightedExamQuestions(topics, targetIds, count, weighted);
@@ -753,22 +753,39 @@ export default function PracticeTestView({
 
           <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-slate-100 dark:border-slate-800">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="text-xs font-extrabold text-slate-700 dark:text-slate-200">
+              <label
+                htmlFor="practice-question-count"
+                className="text-xs font-extrabold text-slate-700 dark:text-slate-200"
+              >
                 Nombre de preguntes:
+              </label>
+              <input
+                id="practice-question-count"
+                type="number"
+                min={1}
+                max={Math.max(1, totalSelectedAvail)}
+                value={questionCount || ''}
+                onChange={(e) => {
+                  const raw = e.target.value;
+                  if (raw === '') {
+                    setQuestionCount('');
+                    return;
+                  }
+                  const n = parseInt(raw, 10);
+                  if (!Number.isNaN(n)) {
+                    setQuestionCount(Math.max(1, Math.min(Math.max(1, totalSelectedAvail), n)));
+                  }
+                }}
+                onBlur={() => {
+                  if (!questionCount || Number(questionCount) < 1) {
+                    setQuestionCount(Math.min(20, Math.max(1, totalSelectedAvail)));
+                  }
+                }}
+                className="w-24 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm font-extrabold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                (màx. {totalSelectedAvail})
               </span>
-              {[10, 25, 40, 60, 100].map((n) => (
-                <button
-                  key={n}
-                  onClick={() => setQuestionCount(n)}
-                  className={`rounded-xl px-3 py-1.5 text-xs font-extrabold ${
-                    questionCount === n
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  }`}
-                >
-                  {n}
-                </button>
-              ))}
               <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 ml-2">
                 <input
                   type="checkbox"
