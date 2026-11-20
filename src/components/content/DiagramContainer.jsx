@@ -1632,11 +1632,17 @@ export default function DiagramContainer({ title, caption, diagramType, customSv
           { n: '4', name: 'EXPULSIÓ DE FUMS', dir: 'Pistó ↑ (Escapament)', adm: 'Tancada', esc: 'OBERTA', bg: '#f1f5f9', border: '#475569', badge: '#475569', deg: '540° – 720°', desc: 'Surten els gasos cremats pel tub' },
         ];
         const matrix = [
-          ['Fase 1 (0°–180°)', 'ADMISSIÓ', 'Compressió', 'Expulsió fums', 'Explosió'],
-          ['Fase 2 (180°–360°)', 'Compressió', 'EXPLOSIÓ', 'Admissió', 'Expulsió fums'],
-          ['Fase 3 (360°–540°)', 'EXPLOSIÓ', 'Expulsió fums', 'Compressió', 'Admissió'],
-          ['Fase 4 (540°–720°)', 'Expulsió fums', 'Admissió', 'EXPLOSIÓ', 'Compressió'],
+          ['CILINDRE 1', 'Admissió', 'Compressió', 'EXPLOSIÓ', 'Expulsió fums'],
+          ['CILINDRE 3', 'Expulsió fums', 'Admissió', 'Compressió', 'EXPLOSIÓ'],
+          ['CILINDRE 4', 'EXPLOSIÓ', 'Expulsió fums', 'Admissió', 'Compressió'],
+          ['CILINDRE 2', 'Compressió', 'EXPLOSIÓ', 'Expulsió fums', 'Admissió'],
         ];
+        const phaseColors = {
+          'Admissió': { bg: '#dbeafe', fg: '#1d4ed8' },
+          'Compressió': { bg: '#fef9c3', fg: '#a16207' },
+          'EXPLOSIÓ': { bg: '#fee2e2', fg: '#b91c1c' },
+          'Expulsió fums': { bg: '#e2e8f0', fg: '#334155' },
+        };
         return (
           <svg viewBox="0 0 760 400" className="w-full max-w-4xl mx-auto h-auto font-sans">
             <rect x="0" y="0" width="760" height="400" rx="12" fill="#ffffff" />
@@ -1669,29 +1675,28 @@ export default function DiagramContainer({ title, caption, diagramType, customSv
             <text x="380" y="212" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">
               TAULA DE FASES EN MOTOR DE 4 CILINDRES (ORDRE D&apos;ENCESA 1 – 3 – 4 – 2)
             </text>
-            {['FASE / GIR CIGONYAL', 'CILINDRE 1', 'CILINDRE 2', 'CILINDRE 3', 'CILINDRE 4'].map((h, cIdx) => {
-              const cw = cIdx === 0 ? 168 : 140;
-              const cx = cIdx === 0 ? 16 : 184 + (cIdx - 1) * 140;
+            {['CILINDRE (1-3-4-2)', 'FASE 1 (0°–180°)', 'FASE 2 (180°–360°)', 'FASE 3 (360°–540°)', 'FASE 4 (540°–720°)'].map((h, cIdx) => {
+              const cw = cIdx === 0 ? 156 : 143;
+              const cx = cIdx === 0 ? 16 : 172 + (cIdx - 1) * 143;
               return (
                 <g key={h}>
                   <rect x={cx} y="222" width={cw} height="28" fill="#1e293b" stroke="#ffffff" strokeWidth="1" />
-                  <text x={cx + cw / 2} y="240" textAnchor="middle" fontSize="10" fontWeight="800" fill="#ffffff">{h}</text>
+                  <text x={cx + cw / 2} y="240" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="#ffffff">{h}</text>
                 </g>
               );
             })}
             {matrix.map((row, rIdx) =>
               row.map((cell, cIdx) => {
-                const cw = cIdx === 0 ? 168 : 140;
-                const cx = cIdx === 0 ? 16 : 184 + (cIdx - 1) * 140;
+                const cw = cIdx === 0 ? 156 : 143;
+                const cx = cIdx === 0 ? 16 : 172 + (cIdx - 1) * 143;
                 const ry = 250 + rIdx * 32;
-                const isExplo = cell === 'EXPLOSIÓ';
-                const isAdm = cell.toUpperCase() === 'ADMISSIÓ';
-                const bg = cIdx === 0 ? '#f8fafc' : isExplo ? '#fee2e2' : isAdm ? '#eff6ff' : '#ffffff';
-                const fg = isExplo ? '#b91c1c' : isAdm ? '#1d4ed8' : '#0f172a';
+                const style = phaseColors[cell];
+                const bg = cIdx === 0 ? '#f8fafc' : style ? style.bg : '#ffffff';
+                const fg = cIdx === 0 ? '#0f172a' : style ? style.fg : '#0f172a';
                 return (
                   <g key={`${rIdx}-${cIdx}`}>
                     <rect x={cx} y={ry} width={cw} height="32" fill={bg} stroke="#cbd5e1" strokeWidth="1" />
-                    <text x={cx + cw / 2} y={ry + 20} textAnchor="middle" fontSize="10.5" fontWeight={isExplo || cIdx === 0 ? '800' : '600'} fill={fg}>
+                    <text x={cx + cw / 2} y={ry + 20} textAnchor="middle" fontSize="10.5" fontWeight="800" fill={fg}>
                       {cell}
                     </text>
                   </g>
