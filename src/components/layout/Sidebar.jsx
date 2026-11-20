@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   Flame,
+  Home,
   BarChart3,
   Calculator,
   Calendar,
@@ -22,6 +23,7 @@ export default function Sidebar({
   activeView,
   selectedTopicId,
   onSelectTopic,
+  onSelectHome,
   onSelectDashboard,
   onSelectCalendar,
   onSelectQuickStudy,
@@ -93,8 +95,34 @@ export default function Sidebar({
           </button>
         </div>
 
-        {/* Accés directe a "Seguiment i Estadístiques" + Cercador ràpid */}
+        {/* Accés directe a "Inici" + "Seguiment i Estadístiques" + Cercador ràpid */}
         <div className="p-3.5 border-b border-slate-100 dark:border-slate-800 space-y-2.5 shrink-0">
+          <button
+            onClick={() => {
+              onSelectHome();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'home'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Home className="w-4 h-4" />
+              <span>Pàgina Principal</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'home'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+              }`}
+            >
+              Inici
+            </span>
+          </button>
+
           <button
             onClick={() => {
               onSelectDashboard();

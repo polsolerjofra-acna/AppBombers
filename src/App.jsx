@@ -3,6 +3,7 @@ import { Menu, Flame, BarChart3, Calculator, Calendar, AlertTriangle, Users, Sun
 import { TOPICS } from './data';
 import { useStudyProgress } from './hooks/useStudyProgress';
 import Sidebar from './components/layout/Sidebar';
+import HomeView from './components/HomeView';
 import TopicView from './components/TopicView';
 import DashboardView from './components/dashboard/DashboardView';
 import CalculationsView from './components/CalculationsView';
@@ -40,8 +41,37 @@ export default function App() {
     resetAllProgress
   } = useStudyProgress();
 
-  const [activeView, setActiveView] = useState('topic'); // 'topic' | 'dashboard' | 'calendar' | 'calculations' | 'keypoints' | 'group'
-  const [selectedTopicId, setSelectedTopicId] = useState(TOPICS[0].id);
+  const [activeView, setActiveView] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('bombers_last_nav_v1') || '{}');
+      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'group'];
+      return allowed.includes(saved.activeView) ? saved.activeView : 'home';
+    } catch {
+      return 'home';
+    }
+  });
+  const [selectedTopicId, setSelectedTopicId] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('bombers_last_nav_v1') || '{}');
+      if (saved.selectedTopicId && TOPICS.some((t) => t.id === saved.selectedTopicId)) {
+        return saved.selectedTopicId;
+      }
+    } catch {
+      // ignore
+    }
+    return TOPICS[0].id;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        'bombers_last_nav_v1',
+        JSON.stringify({ activeView, selectedTopicId })
+      );
+    } catch {
+      // ignore
+    }
+  }, [activeView, selectedTopicId]);
   const [topicTarget, setTopicTarget] = useState(null); // null | 'manual' | 'summary' | 'quiz'
   const [calcInitialMode, setCalcInitialMode] = useState('all'); // 'all' | 'friday'
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
@@ -214,6 +244,10 @@ export default function App() {
         activeView={activeView}
         selectedTopicId={selectedTopicId}
         onSelectTopic={(id) => handleSelectTopic(id, null)}
+        onSelectHome={() => {
+          setActiveView('home');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectDashboard={() => setActiveView('dashboard')}
         onSelectCalendar={() => {
           setActiveView('calendar');
@@ -328,7 +362,16 @@ export default function App() {
 
         {/* Àrea de Lectura i Estudi (amplada màxima òptima per evitar fatiga visual) */}
         <main className={`flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 w-full mx-auto print:p-0 print:max-w-none ${activeView === 'manuals' ? 'max-w-7xl' : 'max-w-5xl'}`}>
-          {activeView === 'dashboard' ? (
+          {activeView === 'home' ? (
+            <HomeView
+              topicsCount={TOPICS.length}
+              dueReviewsCount={dueReviewsCount}
+              onNavigate={(view) => {
+                setActiveView(view);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          ) : activeView === 'dashboard' ? (
             <DashboardView
               topics={TOPICS}
               progress={progress}
