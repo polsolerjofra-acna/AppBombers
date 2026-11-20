@@ -10,7 +10,8 @@ import {
   Sparkles,
   Calculator,
   AlertTriangle,
-  Download
+  Download,
+  Headphones
 } from 'lucide-react';
 import ImportanceCard from './content/ImportanceCard';
 import EasyExplanationCard from './content/EasyExplanationCard';
@@ -20,6 +21,7 @@ import DiagramContainer from './content/DiagramContainer';
 import TopicOutlineCard from './content/TopicOutlineCard';
 import QuizView from './quiz/QuizView';
 import PageMnemonicsBox from './PageMnemonicsBox';
+import AudioSummaryPlayer from './AudioSummaryPlayer';
 import { TOPIC_OUTLINES } from '../data/topicOutlines';
 import { KEY_POINT_GROUPS } from '../data/keyPointsData';
 import {
@@ -61,6 +63,7 @@ export default function TopicView({
     topic.importance ? 'radar' : hasSchemas ? -1 : 0
   );
   const [roundJustCompleted, setRoundJustCompleted] = useState(null);
+  const [showAudioPlayer, setShowAudioPlayer] = useState(false);
 
   const roundsCompleted = (progress.topicRounds && progress.topicRounds[topic.id]) || 0;
 
@@ -190,6 +193,18 @@ export default function TopicView({
 
           {/* Botons d'estat global del Tema */}
           <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => setShowAudioPlayer((v) => !v)}
+              className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border transition-all ${
+                showAudioPlayer
+                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                  : 'border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50'
+              }`}
+              title="Escolta el resum d'aquest tema en pistes d'àudio de màxim 10 minuts"
+            >
+              <Headphones className="w-3.5 h-3.5" />
+              <span>Escoltar Resum</span>
+            </button>
             {onOpenOfficialManual && (
               <button
                 onClick={() => onOpenOfficialManual(topic.number)}
@@ -267,6 +282,15 @@ export default function TopicView({
             {roundJustCompleted === 1
               ? ' A partir d\'ara el calendari et recomanarà prioritàriament els resums i les preguntes noves!'
               : ''}
+          </div>
+        )}
+
+        {showAudioPlayer && (
+          <div className="mt-4">
+            <AudioSummaryPlayer
+              topic={topic}
+              onClose={() => setShowAudioPlayer(false)}
+            />
           </div>
         )}
 

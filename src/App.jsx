@@ -14,6 +14,7 @@ import ManualsView from './components/ManualsView';
 import PracticeTestView from './components/PracticeTestView';
 import QuickStudyView from './components/QuickStudyView';
 import GroupStudyView from './components/GroupStudyView';
+import AudioSummariesView from './components/AudioSummariesView';
 import PomodoroWidget from './components/PomodoroWidget';
 import {
   subscribeAuth,
@@ -90,7 +91,7 @@ export default function App() {
   const [activeView, setActiveView] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('bombers_last_nav_v1') || '{}');
-      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'group'];
+      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'audio', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'group'];
       return allowed.includes(saved.activeView) ? saved.activeView : 'home';
     } catch {
       return 'home';
@@ -481,6 +482,10 @@ export default function App() {
           setActiveView('quickstudy');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectAudio={() => {
+          setActiveView('audio');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectPractice={() => {
           setActiveView('practice');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -679,6 +684,11 @@ export default function App() {
                 const found = TOPICS.find((t) => t.number === topicNum);
                 if (found) handleSelectTopic(found.id, null);
               }}
+            />
+          ) : activeView === 'audio' ? (
+            <AudioSummariesView
+              topics={TOPICS}
+              onOpenTopic={(id, target) => handleSelectTopic(id, target)}
             />
           ) : activeView === 'group' ? (
             <GroupStudyView

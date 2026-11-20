@@ -16,7 +16,8 @@ import {
   Bookmark,
   Sun,
   Moon,
-  X
+  X,
+  Headphones
 } from 'lucide-react';
 
 export default function Sidebar({
@@ -33,6 +34,7 @@ export default function Sidebar({
   onSelectKeyPoints,
   onSelectMnemonics,
   onSelectManuals,
+  onSelectAudio,
   onSelectGroup,
   groupCount = 0,
   dueReviewsCount = 0,
@@ -254,7 +256,7 @@ export default function Sidebar({
           >
             <div className="flex items-center gap-2">
               <FolderOpen className="w-4 h-4 text-red-600" />
-              <span>Recursos (5)</span>
+              <span>Recursos (6)</span>
             </div>
             <span className="text-xs font-bold text-slate-500">
               {resourcesDropdownOpen ? '▲' : '▼'}
@@ -288,6 +290,34 @@ export default function Sidebar({
                   Adaptatiu
                 </span>
               </button>
+
+              {onSelectAudio && (
+                <button
+                  onClick={() => {
+                    onSelectAudio();
+                    onCloseMobile();
+                  }}
+                  className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                    activeView === 'audio'
+                      ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                      : 'bg-indigo-50/90 dark:bg-indigo-950/30 text-indigo-900 dark:text-indigo-200 border border-indigo-200/70 dark:border-indigo-900/50 hover:bg-indigo-100/80 dark:hover:bg-indigo-950/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Headphones className="w-4 h-4" />
+                    <span>Àudio-Resums (Podcast)</span>
+                  </div>
+                  <span
+                    className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                      activeView === 'audio'
+                        ? 'bg-white/20 text-white'
+                        : 'bg-indigo-600/15 text-indigo-700 dark:text-indigo-300'
+                    }`}
+                  >
+                    ≤10m
+                  </span>
+                </button>
+              )}
 
               <button
                 onClick={() => {
