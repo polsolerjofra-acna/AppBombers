@@ -120,7 +120,7 @@ export default function PomodoroWidget({
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-2xl px-4 py-3 shadow-xl border transition-all ${
+        className={`print:hidden fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-2xl px-4 py-3 shadow-xl border transition-all ${
           isRunning
             ? mode === 'study'
               ? 'bg-red-600 text-white border-red-500 animate-pulse'
@@ -143,7 +143,7 @@ export default function PomodoroWidget({
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 w-80 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-5 space-y-4">
+    <div className="print:hidden fixed bottom-5 right-5 z-40 w-80 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-5 space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div

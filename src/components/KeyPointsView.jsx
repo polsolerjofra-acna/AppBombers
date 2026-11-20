@@ -70,8 +70,8 @@ export default function KeyPointsView({ onSelectTopic }) {
     .filter((g) => g.items.length > 0);
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-4">
+    <div className="space-y-6 print:space-y-0">
+      <div className="print:hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/15 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-300">
@@ -192,7 +192,7 @@ export default function KeyPointsView({ onSelectTopic }) {
         /* Previsualització estil document A4 oficial (idèntic als 3 PDFs de referència) */
         <article
           style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-          className="max-w-4xl mx-auto border border-black bg-white text-black p-8 sm:p-14 shadow-md space-y-6"
+          className="max-w-4xl mx-auto border border-black bg-white text-black p-8 sm:p-14 shadow-md space-y-6 print:border-0 print:shadow-none print:p-0 print:max-w-none print:m-0"
         >
           {/* Caixa de títol superior */}
           <div className="border border-black px-4 py-3">

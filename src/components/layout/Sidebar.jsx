@@ -63,7 +63,7 @@ export default function Sidebar({
       )}
 
       <aside
-        className={`fixed lg:sticky lg:top-0 inset-y-0 left-0 z-40 w-80 h-screen shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between transition-transform duration-200 ${
+        className={`print:hidden fixed lg:sticky lg:top-0 inset-y-0 left-0 z-40 w-80 h-screen shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between transition-transform duration-200 ${
           isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >

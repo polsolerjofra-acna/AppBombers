@@ -27,6 +27,12 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    @media print {
+      @page { size: A4; margin: 20mm 25.4mm; }
+      body { background: #ffffff !important; color: #000000 !important; }
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-red-600 selection:text-white">
   <div id="root"></div>
@@ -30386,8 +30392,8 @@ function KeyPointsView({ onSelectTopic }) {
     .filter((g) => g.items.length > 0);
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-4">
+    <div className="space-y-6 print:space-y-0">
+      <div className="print:hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/15 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-300">
@@ -30508,7 +30514,7 @@ function KeyPointsView({ onSelectTopic }) {
         /* Previsualització estil document A4 oficial (idèntic als 3 PDFs de referència) */
         <article
           style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-          className="max-w-4xl mx-auto border border-black bg-white text-black p-8 sm:p-14 shadow-md space-y-6"
+          className="max-w-4xl mx-auto border border-black bg-white text-black p-8 sm:p-14 shadow-md space-y-6 print:border-0 print:shadow-none print:p-0 print:max-w-none print:m-0"
         >
           {/* Caixa de títol superior */}
           <div className="border border-black px-4 py-3">
@@ -32284,7 +32290,7 @@ function PomodoroWidget({
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-2xl px-4 py-3 shadow-xl border transition-all ${
+        className={`print:hidden fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-2xl px-4 py-3 shadow-xl border transition-all ${
           isRunning
             ? mode === 'study'
               ? 'bg-red-600 text-white border-red-500 animate-pulse'
@@ -32307,7 +32313,7 @@ function PomodoroWidget({
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 w-80 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-5 space-y-4">
+    <div className="print:hidden fixed bottom-5 right-5 z-40 w-80 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-5 space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div
@@ -32999,7 +33005,7 @@ function Sidebar({
       )}
 
       <aside
-        className={`fixed lg:sticky lg:top-0 inset-y-0 left-0 z-40 w-80 h-screen shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between transition-transform duration-200 ${
+        className={`print:hidden fixed lg:sticky lg:top-0 inset-y-0 left-0 z-40 w-80 h-screen shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between transition-transform duration-200 ${
           isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
@@ -33614,7 +33620,7 @@ function App() {
       {/* Contenidor Principal */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Barra Superior Mòbil / Tauleta */}
-        <header className="sticky top-0 z-20 lg:hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
+        <header className="print:hidden sticky top-0 z-20 lg:hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
             className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200"
@@ -33685,7 +33691,7 @@ function App() {
         </header>
 
         {/* Àrea de Lectura i Estudi (amplada màxima òptima per evitar fatiga visual) */}
-        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 max-w-5xl w-full mx-auto">
+        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 max-w-5xl w-full mx-auto print:p-0 print:max-w-none">
           {activeView === 'dashboard' ? (
             <DashboardView
               topics={TOPICS}

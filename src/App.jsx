@@ -256,7 +256,7 @@ export default function App() {
       {/* Contenidor Principal */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Barra Superior Mòbil / Tauleta */}
-        <header className="sticky top-0 z-20 lg:hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
+        <header className="print:hidden sticky top-0 z-20 lg:hidden flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
             className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200"
@@ -327,7 +327,7 @@ export default function App() {
         </header>
 
         {/* Àrea de Lectura i Estudi (amplada màxima òptima per evitar fatiga visual) */}
-        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 max-w-5xl w-full mx-auto">
+        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 max-w-5xl w-full mx-auto print:p-0 print:max-w-none">
           {activeView === 'dashboard' ? (
             <DashboardView
               topics={TOPICS}
