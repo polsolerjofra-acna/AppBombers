@@ -11,6 +11,7 @@ import CalendarView from './components/CalendarView';
 import KeyPointsView from './components/KeyPointsView';
 import MnemonicsView from './components/MnemonicsView';
 import ManualsView from './components/ManualsView';
+import PracticeTestView from './components/PracticeTestView';
 import QuickStudyView from './components/QuickStudyView';
 import GroupStudyView from './components/GroupStudyView';
 import PomodoroWidget from './components/PomodoroWidget';
@@ -48,7 +49,7 @@ export default function App() {
   const [activeView, setActiveView] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('bombers_last_nav_v1') || '{}');
-      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'group'];
+      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'group'];
       return allowed.includes(saved.activeView) ? saved.activeView : 'home';
     } catch {
       return 'home';
@@ -303,6 +304,10 @@ export default function App() {
           setActiveView('quickstudy');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectPractice={() => {
+          setActiveView('practice');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectCalculations={() => {
           setCalcInitialMode('all');
           setActiveView('calculations');
@@ -453,6 +458,12 @@ export default function App() {
               onToggleDifficultPage={toggleDifficultPage}
               onTrainReadingPace={trainReadingPace}
               onOpenTopic={(id) => handleSelectTopic(id, null)}
+            />
+          ) : activeView === 'practice' ? (
+            <PracticeTestView
+              topics={TOPICS}
+              onRecordQuestionOutcome={recordQuestionOutcome}
+              onSaveQuizScore={saveQuizScore}
             />
           ) : activeView === 'calculations' ? (
             <CalculationsView

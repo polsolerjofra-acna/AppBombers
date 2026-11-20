@@ -12,7 +12,8 @@ import {
   ArrowRight,
   Flame,
   LogIn,
-  CheckCircle2
+  CheckCircle2,
+  ClipboardCheck
 } from 'lucide-react';
 
 export default function HomeView({
@@ -77,6 +78,17 @@ export default function HomeView({
       icon: AlertTriangle,
       accent: 'bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900/50 text-amber-800 dark:text-amber-300',
       btn: 'bg-amber-500 hover:bg-amber-600 text-slate-950'
+    },
+    {
+      id: 'practice',
+      title: 'Tests Lliures i Simulacre Oficial',
+      badge: '100 preg. · 90 min',
+      description:
+        'Mode Pràctica (sense temps, escollint temes i preguntes) o Simulacre Oficial de 100 preguntes en 90 minuts ponderat estadísticament per importància de tema.',
+      cta: 'Fer Test o Simulacre',
+      icon: ClipboardCheck,
+      accent: 'bg-sky-50 dark:bg-sky-950/30 border-sky-200 dark:border-sky-900/50 text-sky-700 dark:text-sky-300',
+      btn: 'bg-sky-600 hover:bg-sky-700 text-white'
     },
     {
       id: 'calculations',

@@ -11,6 +11,7 @@ import {
   Users,
   BookOpen,
   FolderOpen,
+  ClipboardCheck,
   CheckCircle2,
   Bookmark,
   Sun,
@@ -27,6 +28,7 @@ export default function Sidebar({
   onSelectDashboard,
   onSelectCalendar,
   onSelectQuickStudy,
+  onSelectPractice,
   onSelectCalculations,
   onSelectKeyPoints,
   onSelectMnemonics,
@@ -200,6 +202,32 @@ export default function Sidebar({
               }`}
             >
               Adaptatiu
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              onSelectPractice();
+              onCloseMobile();
+            }}
+            className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+              activeView === 'practice'
+                ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                : 'bg-sky-50/90 dark:bg-sky-950/30 text-sky-900 dark:text-sky-200 border border-sky-200/70 dark:border-sky-900/50 hover:bg-sky-100/80 dark:hover:bg-sky-950/50'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <ClipboardCheck className="w-4 h-4" />
+              <span>Tests i Simulacres</span>
+            </div>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeView === 'practice'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-sky-600/15 text-sky-700 dark:text-sky-300'
+              }`}
+            >
+              100 preg.
             </span>
           </button>
 
