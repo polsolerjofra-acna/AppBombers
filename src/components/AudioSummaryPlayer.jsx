@@ -18,6 +18,8 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
   const [rate, setRate] = useState(1.0);
   const [voices, setVoices] = useState([]);
   const [selectedVoiceURI, setSelectedVoiceURI] = useState('');
+  const [mp3Url, setMp3Url] = useState(null);
+  const mp3AudioRef = useRef(null);
   const isPlayingRef = useRef(false);
   const activeTrack = tracks[trackIndex] || tracks[0];
 
@@ -27,10 +29,28 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
     setTrackIndex(0);
     setSegmentIndex(0);
     setIsPlaying(false);
+    setMp3Url(null);
     isPlayingRef.current = false;
     if (speechSupported) {
       window.speechSynthesis.cancel();
     }
+
+    // Comprova si existeix una pista MP3 real tipus podcast a ./audio/<topic.id>.mp3
+    if (!topic?.id) return;
+    let active = true;
+    const candidate = `./audio/${topic.id}.mp3`;
+    fetch(candidate, { method: 'HEAD' })
+      .then((res) => {
+        if (!active) return;
+        const ct = res.headers.get('content-type') || '';
+        if (res.ok && (ct.includes('audio') || ct.includes('octet-stream') || ct === '')) {
+          setMp3Url(candidate);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
   }, [topic?.id]);
 
   useEffect(() => {
@@ -134,6 +154,9 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
 
   const handleRateChange = (newRate) => {
     setRate(newRate);
+    if (mp3AudioRef.current) {
+      mp3AudioRef.current.playbackRate = newRate;
+    }
     if (isPlayingRef.current) {
       speakSegment(trackIndex, segmentIndex, newRate);
     }
@@ -198,7 +221,23 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
         </div>
       </div>
 
-      {!speechSupported ? (
+      {mp3Url ? (
+        <div className="space-y-2">
+          <audio
+            ref={mp3AudioRef}
+            controls
+            autoPlay={autoPlay}
+            src={mp3Url}
+            onLoadedMetadata={() => {
+              if (mp3AudioRef.current) mp3AudioRef.current.playbackRate = rate;
+            }}
+            className="w-full"
+          />
+          <p className="text-[11px] text-emerald-700 dark:text-emerald-300 font-semibold">
+            Pista MP3 d&apos;alta qualitat carregada ({mp3Url}). Funciona amb la pantalla bloquejada!
+          </p>
+        </div>
+      ) : !speechSupported ? (
         <p className="text-xs text-red-600">
           El teu navegador no admet síntesi de veu en català. Prova-ho des de Safari o Chrome.
         </p>
