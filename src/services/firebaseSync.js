@@ -1,12 +1,14 @@
 import { initializeApp, getApps } from 'firebase/app';
 import {
   getAuth,
+  initializeAuth,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
   onAuthStateChanged,
   setPersistence,
-  browserLocalPersistence
+  browserLocalPersistence,
+  indexedDBLocalPersistence
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -30,9 +32,19 @@ function ensureFirebase() {
 
   if (!cachedApp) {
     cachedApp = getApps().length > 0 ? getApps()[0] : initializeApp(FIREBASE_CONFIG);
-    cachedAuth = getAuth(cachedApp);
-    if (typeof setPersistence === 'function' && browserLocalPersistence) {
-      setPersistence(cachedAuth, browserLocalPersistence).catch(() => {});
+    try {
+      if (typeof initializeAuth === 'function' && browserLocalPersistence) {
+        cachedAuth = initializeAuth(cachedApp, {
+          persistence: [browserLocalPersistence, indexedDBLocalPersistence].filter(Boolean)
+        });
+      } else {
+        cachedAuth = getAuth(cachedApp);
+      }
+    } catch {
+      cachedAuth = getAuth(cachedApp);
+      if (typeof setPersistence === 'function' && browserLocalPersistence) {
+        setPersistence(cachedAuth, browserLocalPersistence).catch(() => {});
+      }
     }
     cachedDb = getFirestore(cachedApp);
   }
