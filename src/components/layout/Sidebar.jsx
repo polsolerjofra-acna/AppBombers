@@ -91,15 +91,6 @@ export default function Sidebar({
               </h2>
             </div>
           </div>
-
-          <button
-            onClick={onCloseMobile}
-            className="inline-flex items-center gap-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-2.5 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition"
-            title="Amagar menú"
-          >
-            <span>Amagar</span>
-            <span>▲</span>
-          </button>
         </div>
 
         {/* Cos principal amb scroll: Accessos principals + Desplegables + Cercador + Temari */}
