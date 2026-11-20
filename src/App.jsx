@@ -502,6 +502,11 @@ export default function App() {
                   onUnscheduleTopic={unscheduleTopicForDate}
                   onToggleDailyEmail={setDailyEmailEnabled}
                   cloudUser={cloudUser}
+                  homeOnlyGrid={true}
+                  onOpenFullCalendar={() => {
+                    setActiveView('calendar');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                 />
               }
               onNavigate={(view) => {
