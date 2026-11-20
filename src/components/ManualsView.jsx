@@ -114,6 +114,8 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
   const [pageNum, setPageNum] = useState(1);
   const [pageInput, setPageInput] = useState('1');
   const [scale, setScale] = useState(1.25);
+  const [fitWidth, setFitWidth] = useState(true);
+  const [renderDims, setRenderDims] = useState({ width: 0, height: 0 });
   const [loadingPdf, setLoadingPdf] = useState(true);
   const [pdfError, setPdfError] = useState('');
   const [exportProgress, setExportProgress] = useState('');
@@ -123,6 +125,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
   const [penColor, setPenColor] = useState('#dc2626');
   const [showNotesPanel, setShowNotesPanel] = useState(true);
 
+  const viewerContainerRef = useRef(null);
   const pdfCanvasRef = useRef(null);
   const annotCanvasRef = useRef(null);
   const renderTaskRef = useRef(null);
@@ -193,7 +196,19 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
 
       const page = await pdfDoc.getPage(pageNum);
       const effectiveRotation = ((page.rotate || 0) + rotation) % 360;
-      const viewport = page.getViewport({ scale, rotation: effectiveRotation });
+      const baseViewport = page.getViewport({ scale: 1, rotation: effectiveRotation });
+
+      let targetScale = scale;
+      if (fitWidth && viewerContainerRef.current) {
+        const availW = Math.max(280, viewerContainerRef.current.clientWidth - 28);
+        targetScale = availW / baseViewport.width;
+      }
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const viewport = page.getViewport({ scale: targetScale * dpr, rotation: effectiveRotation });
+      const cssW = Math.floor(baseViewport.width * targetScale);
+      const cssH = Math.floor(baseViewport.height * targetScale);
+
       const pdfCanvas = pdfCanvasRef.current;
       const annotCanvas = annotCanvasRef.current;
 
@@ -201,6 +216,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
       pdfCanvas.height = Math.floor(viewport.height);
       annotCanvas.width = pdfCanvas.width;
       annotCanvas.height = pdfCanvas.height;
+      setRenderDims({ width: cssW, height: cssH });
 
       const ctx = pdfCanvas.getContext('2d');
       const task = page.render({ canvasContext: ctx, viewport });
@@ -212,11 +228,18 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
       if (err && err.name === 'RenderingCancelledException') return;
       console.error('Error renderitzant pàgina PDF:', err);
     }
-  }, [pdfDoc, pageNum, scale, rotation, currentStrokes]);
+  }, [pdfDoc, pageNum, scale, fitWidth, rotation, currentStrokes]);
 
   useEffect(() => {
     renderCurrentPage();
   }, [renderCurrentPage]);
+
+  useEffect(() => {
+    if (!fitWidth) return;
+    const onResize = () => renderCurrentPage();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [fitWidth, renderCurrentPage]);
 
   useEffect(() => {
     setPageInput(String(pageNum));
@@ -636,17 +659,31 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
 
             <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
               <button
-                onClick={() => setScale((s) => Math.max(0.7, Number((s - 0.15).toFixed(2))))}
+                onClick={() => {
+                  setFitWidth(false);
+                  setScale((s) => Math.max(0.5, Number((s - 0.15).toFixed(2))));
+                }}
                 className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
                 title="Reduir zoom"
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="text-xs font-bold px-1.5 text-slate-700 dark:text-slate-200">
-                {Math.round(scale * 100)}%
-              </span>
               <button
-                onClick={() => setScale((s) => Math.min(2.4, Number((s + 0.15).toFixed(2))))}
+                onClick={() => setFitWidth(true)}
+                className={`text-xs font-bold px-2 py-1 rounded-lg transition ${
+                  fitWidth
+                    ? 'bg-red-600 text-white'
+                    : 'text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700'
+                }`}
+                title="Ajustar automàticament a l'amplada de la pantalla"
+              >
+                {fitWidth ? 'Ajustat' : `${Math.round(scale * 100)}%`}
+              </button>
+              <button
+                onClick={() => {
+                  setFitWidth(false);
+                  setScale((s) => Math.min(2.5, Number((s + 0.15).toFixed(2))));
+                }}
                 className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
                 title="Ampliar zoom"
               >
@@ -736,9 +773,22 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
           />
         </div>
       ) : (
-        <div className="overflow-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-200/70 dark:bg-slate-950 p-4 flex justify-center">
-          <div className="relative inline-block shadow-xl bg-white">
-            <canvas ref={pdfCanvasRef} className="block" />
+        <div
+          ref={viewerContainerRef}
+          className="overflow-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-200/70 dark:bg-slate-950 p-3"
+        >
+          <div
+            className="relative mx-auto shadow-xl bg-white"
+            style={
+              renderDims.width
+                ? { width: `${renderDims.width}px`, height: `${renderDims.height}px` }
+                : undefined
+            }
+          >
+            <canvas
+              ref={pdfCanvasRef}
+              className="block w-full h-full"
+            />
             {showReadingGuide && guideY !== null && (
               <div
                 style={{ top: `${guideY * 100}%` }}
@@ -753,7 +803,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
               onPointerCancel={handlePointerUp}
               onPointerLeave={() => setGuideY(null)}
               style={{ touchAction: 'none' }}
-              className="absolute inset-0 cursor-crosshair"
+              className="absolute inset-0 w-full h-full cursor-crosshair"
             />
           </div>
         </div>

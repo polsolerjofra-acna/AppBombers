@@ -327,7 +327,7 @@ export default function App() {
         </header>
 
         {/* Àrea de Lectura i Estudi (amplada màxima òptima per evitar fatiga visual) */}
-        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 max-w-5xl w-full mx-auto print:p-0 print:max-w-none">
+        <main className={`flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 w-full mx-auto print:p-0 print:max-w-none ${activeView === 'manuals' ? 'max-w-7xl' : 'max-w-5xl'}`}>
           {activeView === 'dashboard' ? (
             <DashboardView
               topics={TOPICS}
