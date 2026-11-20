@@ -49,6 +49,7 @@ export default function CalendarView({
   });
   const [topicToPlan, setTopicToPlan] = useState(topics[0]?.id || 'tema-1');
   const [congratsBanner, setCongratsBanner] = useState(null);
+  const [showCurveInfo, setShowCurveInfo] = useState(true);
 
   const spacedMap = progress.spacedRepetition || {};
   const studyPlan = progress.studyPlan || {};
@@ -222,6 +223,48 @@ export default function CalendarView({
           >
             {dailyEmailEnabled ? 'Avisos 01:00 AM: Activats ✓' : 'Avisos 01:00 AM: Desactivats'}
           </button>
+        </div>
+
+        {/* Explicació de la Corba de l'Oblit d'Ebbinghaus */}
+        <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/60 dark:bg-indigo-950/20 p-4 space-y-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-800 dark:text-indigo-300">
+              Com funciona la Corba de l&apos;Oblit (Repàs Espaiat d&apos;Ebbinghaus)?
+            </span>
+            <button
+              onClick={() => setShowCurveInfo((v) => !v)}
+              className="text-[11px] font-bold text-indigo-700 dark:text-indigo-300 hover:underline"
+            >
+              {showCurveInfo ? 'Amagar explicació' : 'Mostrar explicació'}
+            </button>
+          </div>
+          {showCurveInfo && (
+            <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed space-y-1.5">
+              <p>
+                Sense repàs, el cervell oblida fins al ~70% d&apos;un tema en les primeres 24–48 hores. Cada repàs fet just abans d&apos;oblidar-lo aplana la corba i consolida el record a llarg termini.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                <div className="rounded-xl bg-white/80 dark:bg-slate-900/70 border border-indigo-100 dark:border-indigo-900/40 px-3 py-2">
+                  <span className="font-extrabold text-indigo-700 dark:text-indigo-300">1. Quan s&apos;activa?</span>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                    En completar una pàgina, un tema o fer un Pomodoro, entra a l&apos;<strong>Etapa 1 (+1 dia)</strong>.
+                  </p>
+                </div>
+                <div className="rounded-xl bg-white/80 dark:bg-slate-900/70 border border-indigo-100 dark:border-indigo-900/40 px-3 py-2">
+                  <span className="font-extrabold text-emerald-700 dark:text-emerald-300">2. Com avança?</span>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                    En clicar <strong>Repassat ✓ / Fet ✓</strong> o aprovar el test (≥ 60%), salta al següent interval: <strong>1d → 3d → 7d → 14d → 30d → 60d</strong>.
+                  </p>
+                </div>
+                <div className="rounded-xl bg-white/80 dark:bg-slate-900/70 border border-indigo-100 dark:border-indigo-900/40 px-3 py-2">
+                  <span className="font-extrabold text-red-700 dark:text-red-300">3. Si falles el test (&lt; 60%)</span>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                    El tema torna automàticament a <strong>+1 dia</strong> per reforçar els punts febles abans d&apos;espaiar-lo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Barra d'estat de la Corba de l'Oblit (Ebbinghaus) */}

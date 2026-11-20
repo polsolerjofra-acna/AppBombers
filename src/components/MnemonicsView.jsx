@@ -272,16 +272,26 @@ export default function MnemonicsView({ topics, onSelectTopic }) {
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-purple-600/10 text-purple-700 dark:text-purple-300">
                     {item.category}
                   </span>
                   <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
                     Tema {item.topicNumber}
-                    {item.relatedTopics && item.relatedTopics.length > 1
-                      ? ` (també T${item.relatedTopics.filter((n) => n !== item.topicNumber).join(', T')})`
-                      : ''}
                   </span>
+                  {item.relatedTopics &&
+                    item.relatedTopics
+                      .filter((n) => n !== item.topicNumber)
+                      .map((relNum) => (
+                        <button
+                          key={relNum}
+                          onClick={() => onSelectTopic(`tema-${relNum}`, null)}
+                          className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-950/50 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                          title={`Obrir Tema ${relNum}`}
+                        >
+                          També T{relNum} ↗
+                        </button>
+                      ))}
                 </div>
                 <h2 className="text-lg font-extrabold text-slate-900 dark:text-white">
                   {item.title}
@@ -299,10 +309,19 @@ export default function MnemonicsView({ topics, onSelectTopic }) {
                   </button>
                 )}
                 <button
-                  onClick={() => onSelectTopic(item.topicId)}
+                  onClick={() =>
+                    onSelectTopic(
+                      item.topicId,
+                      item.pageNumber ? `page:${item.pageNumber}` : null
+                    )
+                  }
                   className="inline-flex items-center gap-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-purple-400"
                 >
-                  <span>Anar al Tema {item.topicNumber}</span>
+                  <span>
+                    {item.pageNumber
+                      ? `Anar al Tema ${item.topicNumber} · Pàg. ${item.pageNumber}`
+                      : `Anar al Tema ${item.topicNumber}`}
+                  </span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -336,6 +355,23 @@ export default function MnemonicsView({ topics, onSelectTopic }) {
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               {item.explanation}
             </p>
+
+            {item.reference && (
+              <div className="pt-1">
+                <button
+                  onClick={() =>
+                    onSelectTopic(
+                      item.topicId,
+                      item.pageNumber ? `page:${item.pageNumber}` : null
+                    )
+                  }
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/70 px-3 py-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
+                >
+                  <span>Referència al temari: {item.reference}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -18203,6 +18203,8 @@ const KEY_POINT_GROUPS = [
 const INITIAL_MNEMONICS = [
   {
     id: 'mnem-avisos-sonors-colapses',
+    pageNumber: 5,
+    reference: 'Tema 30 · Pàg. 5 (Avisos acústics INSARAG i codis d’evacuació)',
     topicNumber: 30,
     topicId: 'tema-30',
     category: 'Col·lapses i Rescat',
@@ -18218,6 +18220,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-fases-vs-etapes',
+    pageNumber: 3,
+    reference: 'Tema 25 · Pàg. 3 (4 Fases INFOCAT del foc vs. 3 Etapes dels equips)',
     topicNumber: 25,
     topicId: 'tema-25',
     relatedTopics: [8, 24, 25],
@@ -18239,6 +18243,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-redox-porc-groc',
+    pageNumber: 4,
+    reference: 'Tema 10 · Pàg. 4 (Reaccions Redox: oxidant vs. reductor)',
     topicNumber: 10,
     topicId: 'tema-10',
     relatedTopics: [8, 10],
@@ -18260,6 +18266,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-gasos-pavo-te',
+    pageNumber: 3,
+    reference: 'Tema 10 · Pàg. 3 (Lleis dels gasos: Boyle, Charles, Gay-Lussac i PV=nRT)',
     topicNumber: 10,
     topicId: 'tema-10',
     category: 'Química i Gasos',
@@ -18288,6 +18296,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-pressions-arterials',
+    pageNumber: 2,
+    reference: 'Tema 28 · Pàg. 2 (Constants vitals: tensió arterial normal, HTA i hipotensió)',
     topicNumber: 28,
     topicId: 'tema-28',
     category: 'Assistència Sanitària',
@@ -18312,6 +18322,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-lluna-maresme-pallars',
+    pageNumber: 3,
+    reference: 'Tema 14 · Pàg. 3 (Orientació astronòmica amb la Lluna: creixent vs. minvant)',
     topicNumber: 14,
     topicId: 'tema-14',
     category: 'Cartografia i Orientació',
@@ -18332,6 +18344,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-electrons-bateria',
+    pageNumber: 1,
+    reference: 'Tema 11 · Pàg. 1 (Sentit convencional vs. sentit real dels electrons)',
     topicNumber: 11,
     topicId: 'tema-11',
     category: 'Electricitat',
@@ -18352,6 +18366,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-ce-169',
+    pageNumber: 1,
+    reference: 'Tema 1 · Pàg. 1–2 (Estructura CE 1978, reformes i Estats art. 116)',
     topicNumber: 1,
     topicId: 'tema-1',
     category: 'Codi Fonètic · Dret Constitucional',
@@ -18376,6 +18392,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-acer-foc',
+    pageNumber: 3,
+    reference: 'Tema 24 · Pàg. 3 (Comportament de l’acer al foc: 300 °C i 550 °C)',
     topicNumber: 24,
     topicId: 'tema-24',
     relatedTopics: [8, 15, 24],
@@ -18397,6 +18415,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-airbags-30-60-90',
+    pageNumber: 4,
+    reference: 'Tema 32 · Pàg. 4 (Regla 30-60-90 de seguretat amb airbags)',
     topicNumber: 32,
     topicId: 'tema-32',
     category: 'Codi Fonètic · Excarceració',
@@ -18421,6 +18441,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-prl-rebt',
+    pageNumber: 2,
+    reference: 'Tema 3 · Pàg. 2 (Paralització 24 h art. 21 LPRL i Comitè ≥ 50 treballadors)',
     topicNumber: 3,
     topicId: 'tema-3',
     relatedTopics: [3, 11, 12],
@@ -18446,6 +18468,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-inuncat-smc',
+    pageNumber: 3,
+    reference: 'Tema 34 · Pàg. 3 (Llindars d’avís del SMC i INUNCAT: 30 min vs. 24 h)',
     topicNumber: 34,
     topicId: 'tema-34',
     category: 'Codi Fonètic · Inundacions i SMC',
@@ -18466,6 +18490,8 @@ const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-gasos-vehicles',
+    pageNumber: 2,
+    reference: 'Tema 26 · Pàg. 2 (Vehicles GNC 200 bar, GNL -162 °C i H₂ 350/700 bar)',
     topicNumber: 26,
     topicId: 'tema-26',
     relatedTopics: [11, 26, 32],
@@ -27190,6 +27216,11 @@ function TopicView({
       setActiveTab('study');
       const sumIdx = pages.findIndex((p) => Boolean(p.isSummary) || Boolean(p.isFormulaSheet));
       setCurrentPageIndex(sumIdx >= 0 ? sumIdx : Math.max(0, totalPages - 2));
+    } else if (typeof initialTarget === 'string' && initialTarget.startsWith('page:')) {
+      const targetPageNum = Number(initialTarget.split(':')[1]);
+      const pIdx = pages.findIndex((p) => (p.pageNumber || 0) === targetPageNum);
+      setActiveTab('study');
+      setCurrentPageIndex(pIdx >= 0 ? pIdx : Math.max(0, Math.min(totalPages - 1, targetPageNum - 1)));
     } else {
       setActiveTab('study');
       setCurrentPageIndex(hasSchemas ? -1 : 0);
@@ -28294,6 +28325,7 @@ function CalendarView({
   });
   const [topicToPlan, setTopicToPlan] = useState(topics[0]?.id || 'tema-1');
   const [congratsBanner, setCongratsBanner] = useState(null);
+  const [showCurveInfo, setShowCurveInfo] = useState(true);
 
   const spacedMap = progress.spacedRepetition || {};
   const studyPlan = progress.studyPlan || {};
@@ -28467,6 +28499,48 @@ function CalendarView({
           >
             {dailyEmailEnabled ? 'Avisos 01:00 AM: Activats ✓' : 'Avisos 01:00 AM: Desactivats'}
           </button>
+        </div>
+
+        {/* Explicació de la Corba de l'Oblit d'Ebbinghaus */}
+        <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/60 dark:bg-indigo-950/20 p-4 space-y-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-800 dark:text-indigo-300">
+              Com funciona la Corba de l&apos;Oblit (Repàs Espaiat d&apos;Ebbinghaus)?
+            </span>
+            <button
+              onClick={() => setShowCurveInfo((v) => !v)}
+              className="text-[11px] font-bold text-indigo-700 dark:text-indigo-300 hover:underline"
+            >
+              {showCurveInfo ? 'Amagar explicació' : 'Mostrar explicació'}
+            </button>
+          </div>
+          {showCurveInfo && (
+            <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed space-y-1.5">
+              <p>
+                Sense repàs, el cervell oblida fins al ~70% d&apos;un tema en les primeres 24–48 hores. Cada repàs fet just abans d&apos;oblidar-lo aplana la corba i consolida el record a llarg termini.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                <div className="rounded-xl bg-white/80 dark:bg-slate-900/70 border border-indigo-100 dark:border-indigo-900/40 px-3 py-2">
+                  <span className="font-extrabold text-indigo-700 dark:text-indigo-300">1. Quan s&apos;activa?</span>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                    En completar una pàgina, un tema o fer un Pomodoro, entra a l&apos;<strong>Etapa 1 (+1 dia)</strong>.
+                  </p>
+                </div>
+                <div className="rounded-xl bg-white/80 dark:bg-slate-900/70 border border-indigo-100 dark:border-indigo-900/40 px-3 py-2">
+                  <span className="font-extrabold text-emerald-700 dark:text-emerald-300">2. Com avança?</span>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                    En clicar <strong>Repassat ✓ / Fet ✓</strong> o aprovar el test (≥ 60%), salta al següent interval: <strong>1d → 3d → 7d → 14d → 30d → 60d</strong>.
+                  </p>
+                </div>
+                <div className="rounded-xl bg-white/80 dark:bg-slate-900/70 border border-indigo-100 dark:border-indigo-900/40 px-3 py-2">
+                  <span className="font-extrabold text-red-700 dark:text-red-300">3. Si falles el test (&lt; 60%)</span>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                    El tema torna automàticament a <strong>+1 dia</strong> per reforçar els punts febles abans d&apos;espaiar-lo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Barra d'estat de la Corba de l'Oblit (Ebbinghaus) */}
@@ -29932,16 +30006,26 @@ function MnemonicsView({ topics, onSelectTopic }) {
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-purple-600/10 text-purple-700 dark:text-purple-300">
                     {item.category}
                   </span>
                   <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
                     Tema {item.topicNumber}
-                    {item.relatedTopics && item.relatedTopics.length > 1
-                      ? ` (també T${item.relatedTopics.filter((n) => n !== item.topicNumber).join(', T')})`
-                      : ''}
                   </span>
+                  {item.relatedTopics &&
+                    item.relatedTopics
+                      .filter((n) => n !== item.topicNumber)
+                      .map((relNum) => (
+                        <button
+                          key={relNum}
+                          onClick={() => onSelectTopic(`tema-${relNum}`, null)}
+                          className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-950/50 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                          title={`Obrir Tema ${relNum}`}
+                        >
+                          També T{relNum} ↗
+                        </button>
+                      ))}
                 </div>
                 <h2 className="text-lg font-extrabold text-slate-900 dark:text-white">
                   {item.title}
@@ -29959,10 +30043,19 @@ function MnemonicsView({ topics, onSelectTopic }) {
                   </button>
                 )}
                 <button
-                  onClick={() => onSelectTopic(item.topicId)}
+                  onClick={() =>
+                    onSelectTopic(
+                      item.topicId,
+                      item.pageNumber ? `page:${item.pageNumber}` : null
+                    )
+                  }
                   className="inline-flex items-center gap-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-purple-400"
                 >
-                  <span>Anar al Tema {item.topicNumber}</span>
+                  <span>
+                    {item.pageNumber
+                      ? `Anar al Tema ${item.topicNumber} · Pàg. ${item.pageNumber}`
+                      : `Anar al Tema ${item.topicNumber}`}
+                  </span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -29996,6 +30089,23 @@ function MnemonicsView({ topics, onSelectTopic }) {
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               {item.explanation}
             </p>
+
+            {item.reference && (
+              <div className="pt-1">
+                <button
+                  onClick={() =>
+                    onSelectTopic(
+                      item.topicId,
+                      item.pageNumber ? `page:${item.pageNumber}` : null
+                    )
+                  }
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/70 px-3 py-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
+                >
+                  <span>Referència al temari: {item.reference}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -31797,7 +31907,7 @@ function App() {
           ) : activeView === 'mnemonics' ? (
             <MnemonicsView
               topics={TOPICS}
-              onSelectTopic={(id) => handleSelectTopic(id, null)}
+              onSelectTopic={(id, target = null) => handleSelectTopic(id, target)}
             />
           ) : activeView === 'group' ? (
             <GroupStudyView

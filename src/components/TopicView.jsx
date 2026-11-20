@@ -63,6 +63,11 @@ export default function TopicView({
       setActiveTab('study');
       const sumIdx = pages.findIndex((p) => Boolean(p.isSummary) || Boolean(p.isFormulaSheet));
       setCurrentPageIndex(sumIdx >= 0 ? sumIdx : Math.max(0, totalPages - 2));
+    } else if (typeof initialTarget === 'string' && initialTarget.startsWith('page:')) {
+      const targetPageNum = Number(initialTarget.split(':')[1]);
+      const pIdx = pages.findIndex((p) => (p.pageNumber || 0) === targetPageNum);
+      setActiveTab('study');
+      setCurrentPageIndex(pIdx >= 0 ? pIdx : Math.max(0, Math.min(totalPages - 1, targetPageNum - 1)));
     } else {
       setActiveTab('study');
       setCurrentPageIndex(hasSchemas ? -1 : 0);

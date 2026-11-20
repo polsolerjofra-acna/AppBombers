@@ -1,6 +1,8 @@
 export const INITIAL_MNEMONICS = [
   {
     id: 'mnem-avisos-sonors-colapses',
+    pageNumber: 5,
+    reference: 'Tema 30 · Pàg. 5 (Avisos acústics INSARAG i codis d’evacuació)',
     topicNumber: 30,
     topicId: 'tema-30',
     category: 'Col·lapses i Rescat',
@@ -16,6 +18,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-fases-vs-etapes',
+    pageNumber: 3,
+    reference: 'Tema 25 · Pàg. 3 (4 Fases INFOCAT del foc vs. 3 Etapes dels equips)',
     topicNumber: 25,
     topicId: 'tema-25',
     relatedTopics: [8, 24, 25],
@@ -37,6 +41,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-redox-porc-groc',
+    pageNumber: 4,
+    reference: 'Tema 10 · Pàg. 4 (Reaccions Redox: oxidant vs. reductor)',
     topicNumber: 10,
     topicId: 'tema-10',
     relatedTopics: [8, 10],
@@ -58,6 +64,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-gasos-pavo-te',
+    pageNumber: 3,
+    reference: 'Tema 10 · Pàg. 3 (Lleis dels gasos: Boyle, Charles, Gay-Lussac i PV=nRT)',
     topicNumber: 10,
     topicId: 'tema-10',
     category: 'Química i Gasos',
@@ -86,6 +94,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-pressions-arterials',
+    pageNumber: 2,
+    reference: 'Tema 28 · Pàg. 2 (Constants vitals: tensió arterial normal, HTA i hipotensió)',
     topicNumber: 28,
     topicId: 'tema-28',
     category: 'Assistència Sanitària',
@@ -110,6 +120,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-lluna-maresme-pallars',
+    pageNumber: 3,
+    reference: 'Tema 14 · Pàg. 3 (Orientació astronòmica amb la Lluna: creixent vs. minvant)',
     topicNumber: 14,
     topicId: 'tema-14',
     category: 'Cartografia i Orientació',
@@ -130,6 +142,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-electrons-bateria',
+    pageNumber: 1,
+    reference: 'Tema 11 · Pàg. 1 (Sentit convencional vs. sentit real dels electrons)',
     topicNumber: 11,
     topicId: 'tema-11',
     category: 'Electricitat',
@@ -150,6 +164,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-ce-169',
+    pageNumber: 1,
+    reference: 'Tema 1 · Pàg. 1–2 (Estructura CE 1978, reformes i Estats art. 116)',
     topicNumber: 1,
     topicId: 'tema-1',
     category: 'Codi Fonètic · Dret Constitucional',
@@ -174,6 +190,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-acer-foc',
+    pageNumber: 3,
+    reference: 'Tema 24 · Pàg. 3 (Comportament de l’acer al foc: 300 °C i 550 °C)',
     topicNumber: 24,
     topicId: 'tema-24',
     relatedTopics: [8, 15, 24],
@@ -195,6 +213,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-airbags-30-60-90',
+    pageNumber: 4,
+    reference: 'Tema 32 · Pàg. 4 (Regla 30-60-90 de seguretat amb airbags)',
     topicNumber: 32,
     topicId: 'tema-32',
     category: 'Codi Fonètic · Excarceració',
@@ -219,6 +239,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-prl-rebt',
+    pageNumber: 2,
+    reference: 'Tema 3 · Pàg. 2 (Paralització 24 h art. 21 LPRL i Comitè ≥ 50 treballadors)',
     topicNumber: 3,
     topicId: 'tema-3',
     relatedTopics: [3, 11, 12],
@@ -244,6 +266,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-inuncat-smc',
+    pageNumber: 3,
+    reference: 'Tema 34 · Pàg. 3 (Llindars d’avís del SMC i INUNCAT: 30 min vs. 24 h)',
     topicNumber: 34,
     topicId: 'tema-34',
     category: 'Codi Fonètic · Inundacions i SMC',
@@ -264,6 +288,8 @@ export const INITIAL_MNEMONICS = [
   },
   {
     id: 'mnem-major-gasos-vehicles',
+    pageNumber: 2,
+    reference: 'Tema 26 · Pàg. 2 (Vehicles GNC 200 bar, GNL -162 °C i H₂ 350/700 bar)',
     topicNumber: 26,
     topicId: 'tema-26',
     relatedTopics: [11, 26, 32],

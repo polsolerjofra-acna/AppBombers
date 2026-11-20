@@ -368,7 +368,7 @@ export default function App() {
           ) : activeView === 'mnemonics' ? (
             <MnemonicsView
               topics={TOPICS}
-              onSelectTopic={(id) => handleSelectTopic(id, null)}
+              onSelectTopic={(id, target = null) => handleSelectTopic(id, target)}
             />
           ) : activeView === 'group' ? (
             <GroupStudyView
