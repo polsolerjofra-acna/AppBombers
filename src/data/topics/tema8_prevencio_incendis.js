@@ -488,6 +488,19 @@ export const tema8PrevencioIncendis = {
       ],
       correctIndex: 2,
       explanation: "Afirmació incorrecta: les Euroclasses de reacció al foc NO avaluen ni classifiquen la toxicitat dels fums (el subíndex 't1' de Broof(t1) fa referència al mètode d'assaig per a cobertes davant foc exterior, no pas a la toxicitat)."
+    },
+    {
+      id: 'q23-18',
+      difficulty: 'Difícil',
+      question: "Quina funció compleix la ventilació d'un aparcament durant un incendi segons el CTE DB-SI 3?",
+      options: [
+        "Crear una capa lliure de fums amb totes les prestacions exigides a un SCTIEF.",
+        "Confinar els fums dins la planta incendiada mitjançant barreres resistents al foc.",
+        "Garantir una pressurització permanent de totes les vies d'evacuació de l'aparcament.",
+        "Fer un escombrat dels fums sense assolir necessàriament tots els objectius d'un SCTIEF."
+      ],
+      correctIndex: 3,
+      explanation: "La ventilació d'extracció d'un aparcament convencional (6 renovacions/hora per ventilació mecànica o obertures) fa un escombrat de fums per facilitar l'evacuació i intervenció, però NO garanteix totes les prestacions ni capa lliure de fums d'un SCTIEF complet."
     }
   ]
 };

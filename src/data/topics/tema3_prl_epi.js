@@ -448,6 +448,19 @@ export const tema3PrlEpi = {
       ],
       correctIndex: 0,
       explanation: 'T ≤ 50 °C és Categoria I (5 riscos mínims). Altes T (≥ 100 °C), baixes T (≤ -50 °C) i caigudes d\'altura són Categoria III (13 riscos mortals/irreversibles).'
+    },
+    {
+      id: 't3-q19',
+      difficulty: 'Mitjà',
+      question: 'A partir de quants treballadors es canalitza la participació preventiva mitjançant representants (Delegats de Prevenció) segons la LPRL?',
+      options: [
+        'A partir de deu treballadors',
+        'A partir de sis treballadors',
+        'A partir de trenta treballadors',
+        'A partir de cinquanta treballadors'
+      ],
+      correctIndex: 1,
+      explanation: 'En empreses o centres de treball amb 6 o més treballadors, la participació es canalitza a través dels representants (Delegats de Prevenció). No ho confonguis amb el llindar de 50 treballadors (obligatori Comitè de Seguretat i Salut) ni amb 30!'
     }
   ]
 };

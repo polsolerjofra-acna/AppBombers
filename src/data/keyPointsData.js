@@ -191,6 +191,24 @@ export const KEY_POINT_GROUPS = [
         value: '"Vexatori" = Llei 19/2020 (art. 4.e) · "Molest" = Llei 17/2015 (raó de sexe) i Protocol 2023 (sexual)',
         confusionWarning: 'Inversió càrrega prova: "indicis RACIONALS i fonamentats" (19/2020) vs "indicis fonamentats" (17/2015).',
         topicNumber: 4
+      },
+      {
+        concept: 'Participació preventiva LPRL: ≥ 6 vs ≥ 50 treballadors (Tema 3)',
+        value: '≥ 6 treballadors = representants (Delegats de Prevenció) · ≥ 50 treballadors = Comitè de Seguretat i Salut',
+        confusionWarning: 'No confonguis 6 (Delegats de Prevenció en general) amb 30 (delegat = delegat de personal) ni 50 (Comitè)!',
+        topicNumber: 3
+      },
+      {
+        concept: 'Equació de continuïtat vs Bernoulli (Tema 13)',
+        value: 'Continuïtat (Q = A·v) = Conservació de la MASSA · Bernoulli = Conservació de l’ENERGIA (pressió canvia amb la velocitat!)',
+        confusionWarning: 'La pressió NO es conserva en estretir la canonada (baixa en augmentar la velocitat); el que es conserva és la massa!',
+        topicNumber: 13
+      },
+      {
+        concept: 'Ventilació d’aparcament vs SCTIEF (Tema 23)',
+        value: 'Ventilació aparcament = fa un escombrat de fums SENSE assolir necessàriament tots els objectius d’un SCTIEF',
+        confusionWarning: 'No garanteix una capa lliure de fums amb totes les prestacions d’un SCTIEF complet.',
+        topicNumber: 23
       }
     ]
   }

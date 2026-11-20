@@ -418,6 +418,19 @@ export const tema7GuardiaOrganigrama = {
       ],
       correctIndex: 0,
       explanation: 'El Decret 16/2026 crea la 5a Subdirecció General (SG d\'Assumptes Jurídics i Institucionals), amplia les funcions de la SG Operativa de 13 a 16 i crea la 8a Regió (Pirineus).'
+    },
+    {
+      id: 't7-q19',
+      difficulty: 'Mitjà',
+      question: 'De quina divisió depèn la Unitat de Suport Operatiu (USO) dins l’estructura de la DGPEIS?',
+      options: [
+        'De la Divisió d’Operacions',
+        'De la Divisió de Planificació i Gestió',
+        'De la Divisió d’Emergències Climàtiques i Grups Operatius Especials',
+        'De la Divisió de Coordinació d’Emergències'
+      ],
+      correctIndex: 3,
+      explanation: 'La Unitat de Suport Operatiu (USO) forma part de la Divisió de Coordinació d’Emergències (no de la Divisió d’Operacions ni de la de Planificació).'
     }
   ]
 };

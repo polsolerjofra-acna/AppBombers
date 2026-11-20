@@ -612,6 +612,19 @@ export const tema16Hidraulica = {
       ],
       correctIndex: 1,
       explanation: 'Els manòmetres convencionals mesuren la pressió relativa (manomètrica), és a dir, la diferència entre la pressió interna del circuit i la pressió atmosfèrica exterior (P_abs = P_atm + P_rel).'
+    },
+    {
+      id: 't13-q16',
+      difficulty: 'Mitjà',
+      question: 'En què es basa físicament l’equació de continuïtat (Q = A · v = constant) en un fluid incompressible?',
+      options: [
+        'En la conservació de la pressió.',
+        'En la transmissió uniforme de la força.',
+        'En l’equilibri entre pes i empenta.',
+        'En la conservació de la massa.'
+      ],
+      correctIndex: 3,
+      explanation: 'L’equació de continuïtat es basa en la conservació de la massa: en un fluid incompressible sense derivacions, tota la massa (i volum) que entra per una secció ha de sortir per una altra. La pressió NO es conserva en canviar de secció (Bernoulli: conservació de l’energia!).'
     }
   ]
 };

@@ -648,6 +648,19 @@ export const tema2Quimica = {
       ],
       correctIndex: 0,
       explanation: "La Temperatura d'Ebullició (Te) augmenta si puja la pressió (ex. olla a pressió o BLEVE). La Temperatura Crítica (Tc), en canvi, és el límit absolut per sobre del qual cap pressió pot liquar el gas."
+    },
+    {
+      id: 'q10-19',
+      difficulty: 'Fàcil',
+      question: 'Com es comporten habitualment les substàncies polars respecte als dissolvents?',
+      options: [
+        'Es dissolen millor en dissolvents no polars que en aigua.',
+        'No poden dissoldre’s en altres substàncies polars.',
+        'Es dissolen igual en dissolvents polars i no polars.',
+        'Es dissolen en aigua i en altres dissolvents polars.'
+      ],
+      correctIndex: 3,
+      explanation: 'Regla química "el semblant dissol el semblant": l’aigua (H₂O) és un dissolvent polar, de manera que les substàncies polars s’hi dissolen bé (ex. alcohols, sals, amoníac), mentre que les apolars (hidrocarburs, olis) no s’hi dissolen.'
     }
   ]
 };

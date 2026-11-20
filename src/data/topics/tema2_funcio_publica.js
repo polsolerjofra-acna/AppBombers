@@ -478,6 +478,19 @@ export const tema2FuncioPublica = {
       ],
       correctIndex: 0,
       explanation: 'El procediment ordinari dura com a màxim 6 mesos (l\'incoa el Secretari General i les sancions per faltes molt greus les imposa el Conseller). El procediment sumari (5+5+3 dies) és per a faltes lleus.'
+    },
+    {
+      id: 't2-q19',
+      difficulty: 'Mitjà',
+      question: 'A quin personal s’aplica el Reglament disciplinari aprovat pel Decret 243/1995?',
+      options: [
+        'Al personal funcionari, aspirant, interí, eventual i amb contracte administratiu dels departaments de la Generalitat',
+        'Als càrrecs electes i als membres del Parlament de Catalunya',
+        'Al personal laboral de totes les empreses privades contractistes',
+        'Exclusivament als alts càrrecs nomenats per Decret del Govern'
+      ],
+      correctIndex: 0,
+      explanation: 'L’àmbit del Decret 243/1995 s’aplica al personal vinculat als departaments de l’Administració de la Generalitat (funcionari, aspirant, interí, eventual i contracte administratiu). Els càrrecs electes i el personal d’empreses privades en queden fora.'
     }
   ]
 };
