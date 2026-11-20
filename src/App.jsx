@@ -16,6 +16,7 @@ import GroupStudyView from './components/GroupStudyView';
 import PomodoroWidget from './components/PomodoroWidget';
 import {
   subscribeAuth,
+  loginWithGoogle,
   loadPrivateProgress,
   saveCloudProgress,
   subscribeGroupProfiles,
@@ -80,6 +81,31 @@ export default function App() {
   const [groupProfiles, setGroupProfiles] = useState([]);
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
+  const [showAuthReminder, setShowAuthReminder] = useState(false);
+  const [authReminderDismissed, setAuthReminderDismissed] = useState(false);
+
+  // Recordatori emergent després d'una estona navegant sense iniciar sessió
+  useEffect(() => {
+    if (cloudUser || authReminderDismissed) {
+      setShowAuthReminder(false);
+      return;
+    }
+    const timer = setTimeout(() => {
+      setShowAuthReminder(true);
+    }, 90000); // 90 segons navegant sense sessió iniciada
+    return () => clearTimeout(timer);
+  }, [cloudUser, authReminderDismissed]);
+
+  const handleQuickGoogleLogin = async () => {
+    try {
+      setAuthError('');
+      await loginWithGoogle();
+      setShowAuthReminder(false);
+    } catch (err) {
+      setAuthError(err?.message || 'Error iniciant sessió amb Google');
+      setActiveView('group');
+    }
+  };
 
   // Suport per a enllaços directes (ex. ?tema=tema-6&vista=summary des del correu diari)
   useEffect(() => {
@@ -366,6 +392,8 @@ export default function App() {
             <HomeView
               topicsCount={TOPICS.length}
               dueReviewsCount={dueReviewsCount}
+              cloudUser={cloudUser}
+              onSignIn={handleQuickGoogleLogin}
               onNavigate={(view) => {
                 setActiveView(view);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -444,6 +472,44 @@ export default function App() {
           )}
         </main>
       </div>
+
+      {/* Missatge emergent si porta una estona navegant sense haver iniciat sessió */}
+      {showAuthReminder && !cloudUser && (
+        <div className="print:hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4">
+          <div className="max-w-md w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center shrink-0">
+                <AlertTriangle className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                No has iniciat sessió
+              </h3>
+            </div>
+
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Ara mateix <strong>no s&apos;està guardant el teu avanç al núvol</strong> i <strong>no rebràs les notificacions de la regla de l&apos;oblit</strong> sobre què et toca estudiar cada dia.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-2 pt-1">
+              <button
+                onClick={handleQuickGoogleLogin}
+                className="flex-1 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
+              >
+                Iniciar Sessió amb Google
+              </button>
+              <button
+                onClick={() => {
+                  setAuthReminderDismissed(true);
+                  setShowAuthReminder(false);
+                }}
+                className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                Continuar sense sessió
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Temporitzador Pomodoro persistent */}
       <PomodoroWidget

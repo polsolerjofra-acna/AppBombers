@@ -10,12 +10,16 @@ import {
   BarChart3,
   Users,
   ArrowRight,
-  Flame
+  Flame,
+  LogIn,
+  CheckCircle2
 } from 'lucide-react';
 
 export default function HomeView({
   topicsCount = 34,
   dueReviewsCount = 0,
+  cloudUser = null,
+  onSignIn,
   onNavigate
 }) {
   const sections = [
@@ -24,7 +28,7 @@ export default function HomeView({
       title: 'Temari Oficial (34 Temes)',
       badge: `${topicsCount} temes`,
       description:
-        'Cada tema inclou esquema complet en primera pàgina, resum estil OPOCast, explicacions senzilles, diagrames visuals, mnemotècnies i qüestionaris tipus Generalitat.',
+        'Cada tema inclou esquema complet en primera pàgina, resums d’estudi estructurats, explicacions senzilles, diagrames visuals, mnemotècnies i qüestionaris tipus Generalitat.',
       cta: 'Anar al Temari',
       icon: BookOpen,
       accent: 'bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-300',
@@ -144,6 +148,48 @@ export default function HomeView({
           </div>
         </div>
       </section>
+
+      {/* Bloc d'Iniciar Sessió per guardar avanç i rebre notificacions */}
+      {cloudUser ? (
+        <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 p-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <div>
+              <p className="text-sm font-extrabold text-emerald-950 dark:text-emerald-200">
+                Sessió iniciada com a {cloudUser.displayName || cloudUser.email}
+              </p>
+              <p className="text-xs text-emerald-800 dark:text-emerald-300">
+                El teu avanç es guarda automàticament al núvol i tens actives les notificacions de la corba de l&apos;oblit.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => onNavigate('group')}
+            className="rounded-xl border border-emerald-300 dark:border-emerald-800 bg-white dark:bg-slate-900 px-3.5 py-2 text-xs font-bold text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100/60"
+          >
+            Gestionar compte i grup
+          </button>
+        </div>
+      ) : (
+        <div className="rounded-2xl border-2 border-red-200 dark:border-red-900/60 bg-white dark:bg-slate-900 p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <h2 className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+              <LogIn className="w-4 h-4 text-red-600" />
+              <span>Inicia sessió per desar el teu avanç</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Si inicies sessió amb Google, tot el teu progrés, voltes, tests i subratllats es guardaran al núvol entre dispositius i podràs rebre les notificacions diàries de què et toca estudiar segons la corba de l&apos;oblit.
+            </p>
+          </div>
+          <button
+            onClick={onSignIn}
+            className="shrink-0 inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 text-white px-5 py-3 text-xs sm:text-sm font-extrabold shadow-sm transition"
+          >
+            <LogIn className="w-4 h-4" />
+            <span>Iniciar Sessió amb Google</span>
+          </button>
+        </div>
+      )}
 
       {/* Graella d'apartats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
