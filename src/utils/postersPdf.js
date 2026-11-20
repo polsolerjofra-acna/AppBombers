@@ -97,15 +97,14 @@ function renderSvgToPngDataUrl(svgEl, targetWidth = 2200) {
   });
 }
 
-export async function downloadAllPostersPdf(topics, onProgress = null) {
+async function buildPostersJsPdfDoc(topics, onProgress = null) {
   const jsPDF = window.jspdf && window.jspdf.jsPDF;
   if (!jsPDF) {
-    window.print();
-    return;
+    return { doc: null, count: 0 };
   }
 
   const diagrams = collectAllDiagrams(topics);
-  if (diagrams.length === 0) return;
+  if (diagrams.length === 0) return { doc: null, count: 0 };
 
   // Contenidor ocult fora de pantalla en mode clar per renderitzar cada SVG
   const host = document.createElement('div');
@@ -119,6 +118,7 @@ export async function downloadAllPostersPdf(topics, onProgress = null) {
 
   const root = ReactDOM.createRoot(host);
   let doc = null;
+  let renderedCount = 0;
 
   try {
     for (let i = 0; i < diagrams.length; i++) {
@@ -147,6 +147,7 @@ export async function downloadAllPostersPdf(topics, onProgress = null) {
       } else {
         doc.addPage('a4', orientation);
       }
+      renderedCount++;
 
       const pageW = doc.internal.pageSize.getWidth();
       const pageH = doc.internal.pageSize.getHeight();
@@ -188,12 +189,23 @@ export async function downloadAllPostersPdf(topics, onProgress = null) {
       }
     }
 
-    if (doc) {
-      doc.save('Lamines_Visuals_Suro_Bombers_SGO_2026.pdf');
-    }
+    return { doc, count: renderedCount };
   } finally {
     root.unmount();
     if (host.parentNode) host.parentNode.removeChild(host);
     if (onProgress) onProgress('');
+  }
+}
+
+export async function generatePostersPdfBlobUrl(topics, onProgress = null) {
+  const { doc, count } = await buildPostersJsPdfDoc(topics, onProgress);
+  if (!doc) return { blobUrl: '', count: 0 };
+  return { blobUrl: doc.output('bloburl'), count };
+}
+
+export async function downloadAllPostersPdf(topics, onProgress = null) {
+  const { doc } = await buildPostersJsPdfDoc(topics, onProgress);
+  if (doc) {
+    doc.save('Lamines_Visuals_Suro_Bombers_SGO_2026.pdf');
   }
 }

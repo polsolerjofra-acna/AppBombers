@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   AlertTriangle,
   ArrowUpRight,
   Filter,
   FileText,
-  Download
+  Download,
+  ExternalLink
 } from 'lucide-react';
 import { KEY_POINT_GROUPS } from '../data/keyPointsData';
 import { TOPICS } from '../data/index';
@@ -15,7 +16,10 @@ import {
   downloadAllKeyPointsPdf,
   splitBoldPrefix
 } from '../utils/keyPointsPdf';
-import { downloadAllPostersPdf } from '../utils/postersPdf';
+import {
+  generatePostersPdfBlobUrl,
+  downloadAllPostersPdf
+} from '../utils/postersPdf';
 
 export default function KeyPointsView({ onSelectTopic }) {
   const [viewMode, setViewMode] = useState('pdf-sheets'); // 'pdf-sheets' | 'confusions'
@@ -23,6 +27,24 @@ export default function KeyPointsView({ onSelectTopic }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [posterProgress, setPosterProgress] = useState('');
+  const [postersPdfUrl, setPostersPdfUrl] = useState('');
+  const [postersCount, setPostersCount] = useState(0);
+
+  useEffect(() => {
+    return () => {
+      if (postersPdfUrl) URL.revokeObjectURL(postersPdfUrl);
+    };
+  }, [postersPdfUrl]);
+
+  const handleOpenPostersOnline = async () => {
+    setViewMode('posters-pdf');
+    if (postersPdfUrl) return;
+    const { blobUrl, count } = await generatePostersPdfBlobUrl(TOPICS, setPosterProgress);
+    if (blobUrl) {
+      setPostersPdfUrl(blobUrl);
+      setPostersCount(count);
+    }
+  };
 
   const selectedTopic = useMemo(
     () => TOPICS.find((t) => t.id === selectedTopicId) || TOPICS[0],
@@ -91,7 +113,7 @@ export default function KeyPointsView({ onSelectTopic }) {
             </p>
           </div>
 
-          <div className="flex items-center gap-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 p-1">
+          <div className="flex flex-wrap items-center gap-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 p-1">
             <button
               onClick={() => setViewMode('pdf-sheets')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all ${
@@ -104,10 +126,21 @@ export default function KeyPointsView({ onSelectTopic }) {
               <span>Fitxes Punts Clau (PDF)</span>
             </button>
             <button
+              onClick={handleOpenPostersOnline}
+              className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all ${
+                viewMode === 'posters-pdf'
+                  ? 'bg-amber-500 text-slate-950 shadow-sm'
+                  : 'text-slate-600 dark:text-slate-300'
+              }`}
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Làmines Suro (PDF Online)</span>
+            </button>
+            <button
               onClick={() => setViewMode('confusions')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all ${
                 viewMode === 'confusions'
-                  ? 'bg-amber-500 text-slate-950 shadow-sm'
+                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm'
                   : 'text-slate-600 dark:text-slate-300'
               }`}
             >
@@ -168,13 +201,13 @@ export default function KeyPointsView({ onSelectTopic }) {
             </button>
 
             <button
-              onClick={() => downloadAllPostersPdf(TOPICS, setPosterProgress)}
+              onClick={handleOpenPostersOnline}
               disabled={Boolean(posterProgress)}
               className="inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-slate-950 px-4 py-2.5 text-xs sm:text-sm font-extrabold shadow-sm transition-colors"
-              title="Descarrega un PDF amb tots els dibuixos esquemàtics en gran (cada un en una pàgina) per penjar al suro"
+              title="Obre el PDF amb tots els dibuixos esquemàtics en gran per veure'l online o descarregar-lo"
             >
-              <Download className="w-4 h-4" />
-              <span>{posterProgress || 'Làmines Suro (PDF)'}</span>
+              <FileText className="w-4 h-4" />
+              <span>{posterProgress || 'Veure Làmines Suro (PDF)'}</span>
             </button>
 
             {selectedTopic && onSelectTopic && (
@@ -186,6 +219,39 @@ export default function KeyPointsView({ onSelectTopic }) {
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
             )}
+          </div>
+        ) : viewMode === 'posters-pdf' ? (
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <p className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300">
+              {posterProgress
+                ? posterProgress
+                : postersCount > 0
+                ? `${postersCount} làmines visuals llestes en PDF (cada dibuix en una pàgina gran A4).`
+                : 'Generant PDF de làmines visuals...'}
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {postersPdfUrl && (
+                <>
+                  <a
+                    href={postersPdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-amber-500"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Pestanya nova</span>
+                  </a>
+                  <a
+                    href={postersPdfUrl}
+                    download="Lamines_Visuals_Suro_Bombers_SGO_2026.pdf"
+                    className="inline-flex items-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-xs sm:text-sm font-extrabold shadow-sm"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Descarregar PDF</span>
+                  </a>
+                </>
+              )}
+            </div>
           </div>
         ) : (
           <div className="flex flex-wrap items-center gap-2 pt-2">
@@ -227,7 +293,21 @@ export default function KeyPointsView({ onSelectTopic }) {
         )}
       </div>
 
-      {viewMode === 'pdf-sheets' && docData ? (
+      {viewMode === 'posters-pdf' ? (
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-sm">
+          {postersPdfUrl ? (
+            <iframe
+              src={postersPdfUrl}
+              title="Làmines Visuals per al Suro (PDF)"
+              className="w-full h-[78vh] rounded-xl border border-slate-200 dark:border-slate-700 bg-white"
+            />
+          ) : (
+            <div className="p-12 text-center text-sm font-bold text-slate-600 dark:text-slate-300">
+              {posterProgress || 'Generant vista prèvia del PDF de làmines visuals...'}
+            </div>
+          )}
+        </div>
+      ) : viewMode === 'pdf-sheets' && docData ? (
         /* Previsualització estil document A4 oficial (idèntic als 3 PDFs de referència) */
         <article
           style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
