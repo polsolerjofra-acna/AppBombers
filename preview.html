@@ -30156,29 +30156,49 @@ function TopicView({
   const currentPageStatus = topicPagesStatus[currentPageNumber] || 'pending';
   const topicGlobalStatus = progress.topicStatus?.[topic.id] || 'in_progress';
 
+  const studyContentRef = useRef(null);
+  const didMountPageScrollRef = useRef(false);
+
   const completedPagesCount = Object.values(topicPagesStatus).filter(
     (s) => s === 'completed'
   ).length;
   const readingProgressPercentage =
-    currentPageIndex < 0 ? 0 : Math.round(((currentPageIndex + 1) / totalPages) * 100);
+    typeof currentPageIndex !== 'number' || currentPageIndex < 0
+      ? 0
+      : Math.round(((currentPageIndex + 1) / totalPages) * 100);
 
   const summaryPagesCount = pages.filter((p) => p.isSummary).length;
   const hasFormulaSheet = pages.some((p) => p.isFormulaSheet);
 
+  useEffect(() => {
+    if (!didMountPageScrollRef.current) {
+      didMountPageScrollRef.current = true;
+      return;
+    }
+    if (activeTab !== 'study') return;
+    const raf = requestAnimationFrame(() => {
+      if (studyContentRef.current) {
+        studyContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [currentPageIndex, activeTab]);
+
   const goPrev = () => {
-    if (currentPageIndex > 0) {
+    if (typeof currentPageIndex === 'number' && currentPageIndex > 0) {
       setCurrentPageIndex((i) => i - 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (currentPageIndex === 0 && hasSchemas) {
       setCurrentPageIndex(-schemas.length);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (currentPageIndex === 0 && topic.importance) {
+      setCurrentPageIndex('radar');
     }
   };
 
   const goNext = () => {
-    if (currentPageIndex < totalPages - 1) {
+    if (typeof currentPageIndex === 'number' && currentPageIndex < totalPages - 1) {
       setCurrentPageIndex((i) => i + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setActiveTab('quiz');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -30465,7 +30485,7 @@ function TopicView({
           savedQuizResult={progress.quizResults?.[topic.id]}
         />
       ) : (
-        <>
+        <div ref={studyContentRef} className="scroll-mt-20 space-y-6">
           {/* Targeta Destacada "Anàlisi d'Importància" NOMÉS a la primera pàgina dedicada ('radar') */}
           {currentPageIndex === 'radar' && topic.importance ? (
             <div className="space-y-4">
@@ -30722,7 +30742,7 @@ function TopicView({
             </div>
           </div>
           )}
-        </>
+        </div>
       )}
     </div>
   );
