@@ -73,6 +73,7 @@ export default function App() {
     markTopicReviewed,
     logPomodoroSession,
     completeTopicRound,
+    completeFirstRoundAll,
     scheduleTopicForDate,
     unscheduleTopicForDate,
     saveFridayCalcSession,
@@ -626,6 +627,7 @@ export default function App() {
               }}
               onMarkTopicReviewed={markTopicReviewed}
               onCompleteTopicRound={completeTopicRound}
+              onCompleteFirstRoundAll={() => completeFirstRoundAll(TOPICS.map((t) => t.id))}
               onScheduleTopic={scheduleTopicForDate}
               onUnscheduleTopic={unscheduleTopicForDate}
               onToggleDailyEmail={setDailyEmailEnabled}

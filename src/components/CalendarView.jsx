@@ -67,6 +67,7 @@ export default function CalendarView({
   onOpenCalculations,
   onMarkTopicReviewed,
   onCompleteTopicRound,
+  onCompleteFirstRoundAll,
   onScheduleTopic,
   onUnscheduleTopic,
   onToggleDailyEmail,
@@ -668,6 +669,22 @@ export default function CalendarView({
                 {topicsWithRound2}/{topics.length}
               </div>
             </div>
+            {topicsWithRound1 < topics.length && onCompleteFirstRoundAll && (
+              <button
+                onClick={() => {
+                  onCompleteFirstRoundAll();
+                  setCongratsBanner({
+                    topicTitle: `tots els ${topics.length} temes`,
+                    roundNumber: 1
+                  });
+                }}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 px-3.5 py-2.5 text-xs font-extrabold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition"
+                title="Marca tots els temes del temari com a 1a volta feta per passar directament a resums i preguntes noves"
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Donar per feta la 1a volta de tots ({topics.length})</span>
+              </button>
+            )}
           </div>
 
           <button

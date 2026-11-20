@@ -358,6 +358,29 @@ export function useStudyProgress() {
     });
   };
 
+  // Marca tots els temes com a 1a volta completada de cop (per a qui ja l'ha feta prèviament)
+  const completeFirstRoundAll = (topicIds = []) => {
+    const today = getTodayISO();
+    setProgress((prev) => {
+      const nextRounds = { ...(prev.topicRounds || {}) };
+      const nextStatus = { ...(prev.topicStatus || {}) };
+      topicIds.forEach((id) => {
+        if ((nextRounds[id] || 0) < 1) {
+          nextRounds[id] = 1;
+        }
+        if (!nextStatus[id]) {
+          nextStatus[id] = 'completed';
+        }
+      });
+      return {
+        ...prev,
+        topicRounds: nextRounds,
+        topicStatus: nextStatus,
+        lastActiveDate: today
+      };
+    });
+  };
+
   const scheduleTopicForDate = (isoDate, topicId) => {
     if (!isoDate || !topicId) return;
     setProgress((prev) => {
@@ -521,6 +544,7 @@ export function useStudyProgress() {
     markTopicReviewed,
     logPomodoroSession,
     completeTopicRound,
+    completeFirstRoundAll,
     scheduleTopicForDate,
     unscheduleTopicForDate,
     saveFridayCalcSession,
