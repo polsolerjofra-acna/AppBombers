@@ -16,7 +16,8 @@ import {
   ExternalLink,
   BookOpen,
   CheckCircle2,
-  FolderOpen
+  FolderOpen,
+  RotateCw
 } from 'lucide-react';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
 
@@ -128,9 +129,13 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
   const isDrawingRef = useRef(false);
   const activeStrokeRef = useRef(null);
 
-  const manualData = savedStore[manual.id] || { pages: {}, notes: {} };
+  const manualData = savedStore[manual.id] || { pages: {}, notes: {}, rotation: 0 };
   const currentStrokes = (manualData.pages && manualData.pages[pageNum]) || [];
   const currentNote = (manualData.notes && manualData.notes[pageNum]) || '';
+  const [rotation, setRotation] = useState(() => manualData.rotation || 0);
+  const [straightLine, setStraightLine] = useState(true);
+  const [showReadingGuide, setShowReadingGuide] = useState(true);
+  const [guideY, setGuideY] = useState(null);
 
   // Carrega del document PDF amb pdf.js
   useEffect(() => {
@@ -187,7 +192,8 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
       }
 
       const page = await pdfDoc.getPage(pageNum);
-      const viewport = page.getViewport({ scale });
+      const effectiveRotation = ((page.rotate || 0) + rotation) % 360;
+      const viewport = page.getViewport({ scale, rotation: effectiveRotation });
       const pdfCanvas = pdfCanvasRef.current;
       const annotCanvas = annotCanvasRef.current;
 
@@ -206,7 +212,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
       if (err && err.name === 'RenderingCancelledException') return;
       console.error('Error renderitzant pàgina PDF:', err);
     }
-  }, [pdfDoc, pageNum, scale, currentStrokes]);
+  }, [pdfDoc, pageNum, scale, rotation, currentStrokes]);
 
   useEffect(() => {
     renderCurrentPage();
@@ -216,10 +222,21 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
     setPageInput(String(pageNum));
   }, [pageNum]);
 
+  const handleRotate90 = () => {
+    const nextRot = (rotation + 90) % 360;
+    setRotation(nextRot);
+    onUpdateManualStore(manual.id, {
+      pages: { ...(manualData.pages || {}) },
+      notes: { ...(manualData.notes || {}) },
+      rotation: nextRot,
+    });
+  };
+
   const commitPageStrokes = (nextStrokes) => {
     const nextManualData = {
       pages: { ...(manualData.pages || {}), [pageNum]: nextStrokes },
       notes: { ...(manualData.notes || {}) },
+      rotation,
     };
     onUpdateManualStore(manual.id, nextManualData);
   };
@@ -261,10 +278,25 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
   };
 
   const handlePointerMove = (e) => {
-    if (!isDrawingRef.current || !activeStrokeRef.current || !annotCanvasRef.current) return;
-    e.preventDefault();
+    if (!annotCanvasRef.current) return;
     const pt = getNormalizedPoint(e);
-    activeStrokeRef.current.points.push(pt);
+    if (showReadingGuide) {
+      setGuideY(pt.y);
+    }
+    if (!isDrawingRef.current || !activeStrokeRef.current) return;
+    e.preventDefault();
+
+    const useStraight = (straightLine || e.shiftKey) && tool !== 'eraser';
+    if (useStraight) {
+      const start = activeStrokeRef.current.points[0];
+      const dx = Math.abs(pt.x - start.x);
+      const dy = Math.abs(pt.y - start.y);
+      const snapped = dx >= dy ? { x: pt.x, y: start.y } : { x: start.x, y: pt.y };
+      activeStrokeRef.current.points = [start, snapped];
+      if (showReadingGuide) setGuideY(snapped.y);
+    } else {
+      activeStrokeRef.current.points.push(pt);
+    }
     drawStrokesOnCanvas(annotCanvasRef.current, [...currentStrokes, activeStrokeRef.current]);
   };
 
@@ -340,7 +372,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         const p = targetPages[i];
         setExportProgress(`Generant PDF anotat (${i + 1}/${targetPages.length})...`);
         const page = await pdfDoc.getPage(p);
-        const viewport = page.getViewport({ scale: 1.5 });
+        const viewport = page.getViewport({ scale: 1.5, rotation: ((page.rotate || 0) + rotation) % 360 });
         tempPdfCanvas.width = Math.floor(viewport.width);
         tempPdfCanvas.height = Math.floor(viewport.height);
         tempAnnotCanvas.width = tempPdfCanvas.width;
@@ -542,6 +574,30 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
               <span>Goma</span>
             </button>
 
+            <button
+              onClick={() => setStraightLine((v) => !v)}
+              className={`inline-flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 text-xs font-bold transition border ${
+                straightLine
+                  ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-700 text-amber-800 dark:text-amber-300'
+                  : 'bg-slate-100 dark:bg-slate-800 border-transparent text-slate-600 dark:text-slate-300'
+              }`}
+              title="Fa que el subratllador i el llapis dibuixin línies rectes automàticament"
+            >
+              <span>{straightLine ? '— Línia recta' : '〰 Traç lliure'}</span>
+            </button>
+
+            <button
+              onClick={() => setShowReadingGuide((v) => !v)}
+              className={`inline-flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-bold transition border ${
+                showReadingGuide
+                  ? 'bg-sky-50 dark:bg-sky-950/40 border-sky-300 dark:border-sky-700 text-sky-800 dark:text-sky-300'
+                  : 'bg-slate-100 dark:bg-slate-800 border-transparent text-slate-600 dark:text-slate-300'
+              }`}
+              title="Mostra una guia horitzontal per seguir la línia del text"
+            >
+              <span>Guia</span>
+            </button>
+
             <div className="h-5 w-px bg-slate-200 dark:bg-slate-700 mx-1" />
 
             <button
@@ -567,6 +623,17 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
 
           {/* Navegació de pàgines i zoom */}
           <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
+              <button
+                onClick={handleRotate90}
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200"
+                title="Girar pàgina 90° (ideal per als manuals de lleis en horitzontal)"
+              >
+                <RotateCw className="w-3.5 h-3.5" />
+                <span>Girar 90°</span>
+              </button>
+            </div>
+
             <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
               <button
                 onClick={() => setScale((s) => Math.max(0.7, Number((s - 0.15).toFixed(2))))}
@@ -672,12 +739,19 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         <div className="overflow-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-200/70 dark:bg-slate-950 p-4 flex justify-center">
           <div className="relative inline-block shadow-xl bg-white">
             <canvas ref={pdfCanvasRef} className="block" />
+            {showReadingGuide && guideY !== null && (
+              <div
+                style={{ top: `${guideY * 100}%` }}
+                className="pointer-events-none absolute left-0 right-0 border-t-2 border-dashed border-sky-500/60"
+              />
+            )}
             <canvas
               ref={annotCanvasRef}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerCancel={handlePointerUp}
+              onPointerLeave={() => setGuideY(null)}
               style={{ touchAction: 'none' }}
               className="absolute inset-0 cursor-crosshair"
             />
