@@ -38,7 +38,8 @@ export default function TopicView({
   onSetTopicMark,
   onToggleDifficultPage,
   onCompleteTopicRound,
-  onSaveQuizScore
+  onSaveQuizScore,
+  onOpenOfficialManual
 }) {
   // Màxim estricte de 10 pàgines per tema
   const pages = (topic.pages || []).slice(0, MAX_PAGES_PER_TOPIC);
@@ -156,6 +157,16 @@ export default function TopicView({
 
           {/* Botons d'estat global del Tema */}
           <div className="flex flex-wrap items-center gap-2">
+            {onOpenOfficialManual && (
+              <button
+                onClick={() => onOpenOfficialManual(topic.number)}
+                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-all"
+                title="Obre el manual oficial en PDF d'aquest tema per llegir o subratllar online"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Manual Oficial (PDF)</span>
+              </button>
+            )}
             <button
               onClick={() => {
                 const confusions = [];

@@ -75,6 +75,7 @@ export default function App() {
     }
   }, [activeView, selectedTopicId]);
   const [topicTarget, setTopicTarget] = useState(null); // null | 'manual' | 'summary' | 'quiz'
+  const [manualTopicTarget, setManualTopicTarget] = useState(null);
   const [calcInitialMode, setCalcInitialMode] = useState('all'); // 'all' | 'friday'
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -298,6 +299,7 @@ export default function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onSelectManuals={() => {
+          setManualTopicTarget(null);
           setActiveView('manuals');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
@@ -449,8 +451,13 @@ export default function App() {
             />
           ) : activeView === 'manuals' ? (
             <ManualsView
+              initialManualTopicNumber={manualTopicTarget}
               cloudAnnotations={progress.manualAnnotations || {}}
               onUpdateCloudAnnotation={setManualAnnotation}
+              onOpenTopicSummary={(topicNum) => {
+                const found = TOPICS.find((t) => t.number === topicNum);
+                if (found) handleSelectTopic(found.id, null);
+              }}
             />
           ) : activeView === 'group' ? (
             <GroupStudyView
@@ -472,6 +479,11 @@ export default function App() {
               onToggleDifficultPage={toggleDifficultPage}
               onCompleteTopicRound={completeTopicRound}
               onSaveQuizScore={saveQuizScore}
+              onOpenOfficialManual={(topicNum) => {
+                setManualTopicTarget(topicNum);
+                setActiveView('manuals');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
           )}
         </main>

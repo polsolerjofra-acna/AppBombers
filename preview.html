@@ -29079,7 +29079,8 @@ function TopicView({
   onSetTopicMark,
   onToggleDifficultPage,
   onCompleteTopicRound,
-  onSaveQuizScore
+  onSaveQuizScore,
+  onOpenOfficialManual
 }) {
   // Màxim estricte de 10 pàgines per tema
   const pages = (topic.pages || []).slice(0, MAX_PAGES_PER_TOPIC);
@@ -29197,6 +29198,16 @@ function TopicView({
 
           {/* Botons d'estat global del Tema */}
           <div className="flex flex-wrap items-center gap-2">
+            {onOpenOfficialManual && (
+              <button
+                onClick={() => onOpenOfficialManual(topic.number)}
+                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-all"
+                title="Obre el manual oficial en PDF d'aquest tema per llegir o subratllar online"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Manual Oficial (PDF)</span>
+              </button>
+            )}
             <button
               onClick={() => {
                 const confusions = [];
@@ -32454,7 +32465,7 @@ function drawStrokesOnCanvas(canvas, strokes) {
   }
 }
 
-function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
+function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOpenTopicSummary }) {
   const [pdfDoc, setPdfDoc] = useState(null);
   const [numPages, setNumPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
@@ -32822,6 +32833,15 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          {manual.topicNumber && onOpenTopicSummary && (
+            <button
+              onClick={() => onOpenTopicSummary(manual.topicNumber)}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/40 px-3 py-2 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100"
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>Resum del Tema</span>
+            </button>
+          )}
           <a
             href={manual.url}
             download={manual.fileName}
@@ -33161,7 +33181,8 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
 function ManualsView({
   initialManualTopicNumber = null,
   cloudAnnotations = {},
-  onUpdateCloudAnnotation = null
+  onUpdateCloudAnnotation = null,
+  onOpenTopicSummary = null
 }) {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('all');
@@ -33211,6 +33232,7 @@ function ManualsView({
         savedStore={savedStore}
         onUpdateManualStore={handleUpdateManualStore}
         onBack={() => setSelectedManual(null)}
+        onOpenTopicSummary={onOpenTopicSummary}
       />
     );
   }
@@ -33343,6 +33365,16 @@ function ManualsView({
                   <Highlighter className="w-3.5 h-3.5" />
                   <span>Obrir i Subratllar Online</span>
                 </button>
+                {manual.topicNumber && onOpenTopicSummary && (
+                  <button
+                    onClick={() => onOpenTopicSummary(manual.topicNumber)}
+                    className="inline-flex items-center justify-center gap-1 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 text-indigo-700 dark:text-indigo-300 px-3 py-2 text-xs font-bold transition"
+                    title="Anar als apartats resumits, esquema i test d'aquest tema"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Resum</span>
+                  </button>
+                )}
                 <a
                   href={manual.url}
                   download={manual.fileName}
@@ -35174,6 +35206,7 @@ function App() {
     }
   }, [activeView, selectedTopicId]);
   const [topicTarget, setTopicTarget] = useState(null); // null | 'manual' | 'summary' | 'quiz'
+  const [manualTopicTarget, setManualTopicTarget] = useState(null);
   const [calcInitialMode, setCalcInitialMode] = useState('all'); // 'all' | 'friday'
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35397,6 +35430,7 @@ function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onSelectManuals={() => {
+          setManualTopicTarget(null);
           setActiveView('manuals');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
@@ -35548,8 +35582,13 @@ function App() {
             />
           ) : activeView === 'manuals' ? (
             <ManualsView
+              initialManualTopicNumber={manualTopicTarget}
               cloudAnnotations={progress.manualAnnotations || {}}
               onUpdateCloudAnnotation={setManualAnnotation}
+              onOpenTopicSummary={(topicNum) => {
+                const found = TOPICS.find((t) => t.number === topicNum);
+                if (found) handleSelectTopic(found.id, null);
+              }}
             />
           ) : activeView === 'group' ? (
             <GroupStudyView
@@ -35571,6 +35610,11 @@ function App() {
               onToggleDifficultPage={toggleDifficultPage}
               onCompleteTopicRound={completeTopicRound}
               onSaveQuizScore={saveQuizScore}
+              onOpenOfficialManual={(topicNum) => {
+                setManualTopicTarget(topicNum);
+                setActiveView('manuals');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
           )}
         </main>

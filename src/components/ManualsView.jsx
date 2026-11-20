@@ -108,7 +108,7 @@ function drawStrokesOnCanvas(canvas, strokes) {
   }
 }
 
-function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
+function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOpenTopicSummary }) {
   const [pdfDoc, setPdfDoc] = useState(null);
   const [numPages, setNumPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
@@ -476,6 +476,15 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          {manual.topicNumber && onOpenTopicSummary && (
+            <button
+              onClick={() => onOpenTopicSummary(manual.topicNumber)}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/40 px-3 py-2 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100"
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>Resum del Tema</span>
+            </button>
+          )}
           <a
             href={manual.url}
             download={manual.fileName}
@@ -815,7 +824,8 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
 export default function ManualsView({
   initialManualTopicNumber = null,
   cloudAnnotations = {},
-  onUpdateCloudAnnotation = null
+  onUpdateCloudAnnotation = null,
+  onOpenTopicSummary = null
 }) {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('all');
@@ -865,6 +875,7 @@ export default function ManualsView({
         savedStore={savedStore}
         onUpdateManualStore={handleUpdateManualStore}
         onBack={() => setSelectedManual(null)}
+        onOpenTopicSummary={onOpenTopicSummary}
       />
     );
   }
@@ -997,6 +1008,16 @@ export default function ManualsView({
                   <Highlighter className="w-3.5 h-3.5" />
                   <span>Obrir i Subratllar Online</span>
                 </button>
+                {manual.topicNumber && onOpenTopicSummary && (
+                  <button
+                    onClick={() => onOpenTopicSummary(manual.topicNumber)}
+                    className="inline-flex items-center justify-center gap-1 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 text-indigo-700 dark:text-indigo-300 px-3 py-2 text-xs font-bold transition"
+                    title="Anar als apartats resumits, esquema i test d'aquest tema"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Resum</span>
+                  </button>
+                )}
                 <a
                   href={manual.url}
                   download={manual.fileName}
