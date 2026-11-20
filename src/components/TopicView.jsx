@@ -94,6 +94,7 @@ export default function TopicView({
   const topicGlobalStatus = progress.topicStatus?.[topic.id] || 'in_progress';
 
   const studyContentRef = useRef(null);
+  const theoryStartRef = useRef(null);
   const didMountPageScrollRef = useRef(false);
 
   const completedPagesCount = Object.values(topicPagesStatus).filter(
@@ -114,8 +115,12 @@ export default function TopicView({
     }
     if (activeTab !== 'study') return;
     const raf = requestAnimationFrame(() => {
-      if (studyContentRef.current) {
-        studyContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const targetEl =
+        typeof currentPageIndex === 'number' && currentPageIndex >= 0 && theoryStartRef.current
+          ? theoryStartRef.current
+          : studyContentRef.current;
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
@@ -134,6 +139,9 @@ export default function TopicView({
   };
 
   const goNext = () => {
+    if (typeof currentPageIndex === 'number' && currentPageIndex >= 0 && currentPageStatus !== 'completed') {
+      onSetPageMark(topic.id, currentPageNumber, 'completed');
+    }
     if (typeof currentPageIndex === 'number' && currentPageIndex < totalPages - 1) {
       setCurrentPageIndex((i) => i + 1);
     } else {
@@ -556,7 +564,7 @@ export default function TopicView({
             </div>
 
             {/* Renderitzador modular de blocs del temari */}
-            <div className="space-y-6">
+            <div ref={theoryStartRef} className="scroll-mt-20 space-y-6">
               {(currentPage?.blocks || []).map((block, bIdx) => {
                 switch (block.type) {
                   case 'importance':
