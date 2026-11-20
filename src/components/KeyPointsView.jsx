@@ -21,8 +21,19 @@ import {
   downloadAllPostersPdf
 } from '../utils/postersPdf';
 
-export default function KeyPointsView({ onSelectTopic }) {
-  const [viewMode, setViewMode] = useState('pdf-sheets'); // 'pdf-sheets' | 'confusions'
+export default function KeyPointsView({
+  onSelectTopic,
+  userMistakes = {},
+  onClearMistake = null
+}) {
+  const [viewMode, setViewMode] = useState('pdf-sheets'); // 'pdf-sheets' | 'posters-pdf' | 'confusions' | 'my-errors'
+  const mistakesList = useMemo(
+    () =>
+      Object.values(userMistakes || {}).sort(
+        (a, b) => (b.count || 1) - (a.count || 1)
+      ),
+    [userMistakes]
+  );
   const [selectedTopicId, setSelectedTopicId] = useState(TOPICS[0]?.id || 'tema-1');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [search, setSearch] = useState('');
@@ -147,6 +158,17 @@ export default function KeyPointsView({ onSelectTopic }) {
               <AlertTriangle className="w-3.5 h-3.5" />
               <span>Detector de Confusions</span>
             </button>
+            <button
+              onClick={() => setViewMode('my-errors')}
+              className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all ${
+                viewMode === 'my-errors'
+                  ? 'bg-rose-600 text-white shadow-sm'
+                  : 'text-slate-600 dark:text-slate-300'
+              }`}
+            >
+              <AlertTriangle className="w-3.5 h-3.5" />
+              <span>Els meus errors ({mistakesList.length})</span>
+            </button>
           </div>
         </div>
 
@@ -252,6 +274,10 @@ export default function KeyPointsView({ onSelectTopic }) {
                 </>
               )}
             </div>
+          </div>
+        ) : viewMode === 'my-errors' ? (
+          <div className="pt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+            Aquí queden desades automàticament les preguntes de test que falles amb el teu usuari (desades al teu compte privat al núvol).
           </div>
         ) : (
           <div className="flex flex-wrap items-center gap-2 pt-2">
@@ -435,6 +461,68 @@ export default function KeyPointsView({ onSelectTopic }) {
             </div>
           ))}
         </article>
+      ) : viewMode === 'my-errors' ? (
+        <div className="space-y-4">
+          {mistakesList.length === 0 ? (
+            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-10 text-center space-y-2">
+              <p className="text-base font-extrabold text-slate-900 dark:text-white">
+                Encara no tens cap error registrat al teu usuari!
+              </p>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                Quan fallis una pregunta en qualsevol test dels temes, apareixerà aquí amb la resposta correcta i l&apos;explicació perquè la puguis repassar.
+              </p>
+            </div>
+          ) : (
+            mistakesList.map((err) => (
+              <div
+                key={err.id}
+                className="rounded-2xl border border-rose-200 dark:border-rose-900/60 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-2.5"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300">
+                      Tema {err.topicNumber}
+                    </span>
+                    <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                      Fallada {err.count || 1} {err.count === 1 ? 'vegada' : 'vegades'}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {err.topicId && onSelectTopic && (
+                      <button
+                        onClick={() => onSelectTopic(err.topicId)}
+                        className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-1 text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-red-400"
+                      >
+                        Anar al Tema {err.topicNumber}
+                      </button>
+                    )}
+                    {onClearMistake && (
+                      <button
+                        onClick={() => onClearMistake(err.id)}
+                        className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 text-xs font-bold"
+                      >
+                        Ja ho domino
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">
+                  {err.question}
+                </h3>
+                {err.correctAnswer && (
+                  <p className="text-xs sm:text-sm font-bold text-emerald-700 dark:text-emerald-300">
+                    Resposta correcta: {err.correctAnswer}
+                  </p>
+                )}
+                {err.explanation && (
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {err.explanation}
+                  </p>
+                )}
+              </div>
+            ))
+          )}
+        </div>
       ) : (
         <div className="space-y-6">
           {filteredGroups.map((group) => (

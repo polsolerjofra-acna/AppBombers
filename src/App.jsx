@@ -39,6 +39,8 @@ export default function App() {
     toggleDifficultPage,
     trainReadingPace,
     setManualAnnotation,
+    recordQuestionOutcome,
+    clearUserMistake,
     replaceProgressFromCloud,
     resetAllProgress
   } = useStudyProgress();
@@ -459,7 +461,11 @@ export default function App() {
               onSaveFridaySession={saveFridayCalcSession}
             />
           ) : activeView === 'keypoints' ? (
-            <KeyPointsView onSelectTopic={(id) => handleSelectTopic(id, null)} />
+            <KeyPointsView
+              onSelectTopic={(id) => handleSelectTopic(id, null)}
+              userMistakes={progress.quizResults?.__mistakes || {}}
+              onClearMistake={clearUserMistake}
+            />
           ) : activeView === 'mnemonics' ? (
             <MnemonicsView
               topics={TOPICS}
@@ -495,6 +501,7 @@ export default function App() {
               onToggleDifficultPage={toggleDifficultPage}
               onCompleteTopicRound={completeTopicRound}
               onSaveQuizScore={saveQuizScore}
+              onRecordQuestionOutcome={recordQuestionOutcome}
               onOpenOfficialManual={(topicNum) => {
                 setManualTopicTarget(topicNum);
                 setActiveView('manuals');

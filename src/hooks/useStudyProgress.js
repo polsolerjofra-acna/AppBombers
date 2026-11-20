@@ -428,6 +428,53 @@ export function useStudyProgress() {
     });
   };
 
+  // Registra si l'usuari falla o encerta una pregunta concreta (desat al seu compte privat)
+  const recordQuestionOutcome = (topicId, topicNumber, questionObj, isCorrect) => {
+    if (!questionObj || !questionObj.id) return;
+    setProgress((prev) => {
+      const prevQuiz = prev.quizResults || {};
+      const prevMistakes = prevQuiz.__mistakes || {};
+      const nextMistakes = { ...prevMistakes };
+
+      if (!isCorrect) {
+        const existing = nextMistakes[questionObj.id];
+        nextMistakes[questionObj.id] = {
+          id: questionObj.id,
+          topicId,
+          topicNumber,
+          question: questionObj.question,
+          correctAnswer:
+            (questionObj.options && questionObj.options[questionObj.correctIndex]) || '',
+          explanation: questionObj.explanation || '',
+          count: (existing?.count || 0) + 1,
+          lastFailedAt: getTodayISO()
+        };
+      }
+      return {
+        ...prev,
+        quizResults: {
+          ...prevQuiz,
+          __mistakes: nextMistakes
+        }
+      };
+    });
+  };
+
+  const clearUserMistake = (questionId) => {
+    setProgress((prev) => {
+      const prevQuiz = prev.quizResults || {};
+      const nextMistakes = { ...(prevQuiz.__mistakes || {}) };
+      delete nextMistakes[questionId];
+      return {
+        ...prev,
+        quizResults: {
+          ...prevQuiz,
+          __mistakes: nextMistakes
+        }
+      };
+    });
+  };
+
   // Desa anotacions i subratllats dels Manuals PDF (sincronitzat amb Firebase)
   const setManualAnnotation = (manualId, nextData) => {
     setProgress((prev) => ({
@@ -454,6 +501,8 @@ export function useStudyProgress() {
     toggleDifficultPage,
     trainReadingPace,
     setManualAnnotation,
+    recordQuestionOutcome,
+    clearUserMistake,
     replaceProgressFromCloud,
     resetAllProgress
   };

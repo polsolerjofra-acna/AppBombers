@@ -39,6 +39,7 @@ export default function TopicView({
   onToggleDifficultPage,
   onCompleteTopicRound,
   onSaveQuizScore,
+  onRecordQuestionOutcome,
   onOpenOfficialManual
 }) {
   // Màxim estricte de 10 pàgines per tema
@@ -378,6 +379,7 @@ export default function TopicView({
           extraQuestions={extraQuestions}
           difficultCount={Object.keys(progress.difficultPages?.[topic.id] || {}).length}
           onSaveScore={onSaveQuizScore}
+          onRecordOutcome={onRecordQuestionOutcome}
           savedQuizResult={progress.quizResults?.[topic.id]}
         />
       ) : (

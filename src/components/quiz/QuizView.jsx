@@ -22,6 +22,7 @@ export default function QuizView({
   extraQuestions = [],
   difficultCount = 0,
   onSaveScore,
+  onRecordOutcome = null,
   savedQuizResult
 }) {
   const baseQuestions = [...(topic.quiz || []), ...(extraQuestions || [])];
@@ -47,6 +48,11 @@ export default function QuizView({
     if (selectedAnswers[questionId] !== undefined) return;
     const updated = { ...selectedAnswers, [questionId]: optionIndex };
     setSelectedAnswers(updated);
+
+    const qObj = questions.find((q) => q.id === questionId);
+    if (qObj && onRecordOutcome) {
+      onRecordOutcome(topic.id, topic.number, qObj, optionIndex === qObj.correctIndex);
+    }
 
     // Si ja s'han contestat totes les preguntes del tema, desar automàticament la puntuació
     if (Object.keys(updated).length === questions.length) {
