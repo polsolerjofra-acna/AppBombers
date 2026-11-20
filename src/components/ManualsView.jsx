@@ -20,9 +20,6 @@ import {
   RotateCw
 } from 'lucide-react';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
-import { TOPICS } from '../data/index';
-import { TOPIC_OUTLINES } from '../data/topicOutlines';
-import { generateFullTopicDocumentBuffer } from '../utils/keyPointsPdf';
 
 const MANUALS_ANNOTATIONS_STORAGE_KEY = 'bombers_manual_annotations_v1';
 
@@ -142,10 +139,8 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
   const [straightLine, setStraightLine] = useState(true);
   const [showReadingGuide, setShowReadingGuide] = useState(true);
   const [guideY, setGuideY] = useState(null);
-  const isLawManual = manual.category === 'general' && manual.topicNumber >= 1 && manual.topicNumber <= 7;
-  const [sourceMode, setSourceMode] = useState(() => (isLawManual ? 'a4' : 'original'));
 
-  // Carrega del document PDF amb pdf.js (Document A4 vertical per a lleis o PDF original)
+  // Carrega del document PDF amb pdf.js
   useEffect(() => {
     let cancelled = false;
     setLoadingPdf(true);
@@ -166,27 +161,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     }
 
-    let loadingTask;
-    if (isLawManual && sourceMode === 'a4') {
-      const topicObj = TOPICS.find((t) => t.number === manual.topicNumber);
-      const rawOutlines = topicObj ? TOPIC_OUTLINES[topicObj.id] : null;
-      const schemas = !rawOutlines
-        ? []
-        : Array.isArray(rawOutlines)
-        ? rawOutlines
-        : rawOutlines.schemas
-        ? rawOutlines.schemas
-        : [rawOutlines];
-      const buffer = generateFullTopicDocumentBuffer(topicObj, schemas);
-      if (buffer) {
-        loadingTask = pdfjsLib.getDocument({ data: buffer });
-      } else {
-        loadingTask = pdfjsLib.getDocument(manual.url);
-      }
-    } else {
-      loadingTask = pdfjsLib.getDocument(manual.url);
-    }
-
+    const loadingTask = pdfjsLib.getDocument(manual.url);
     loadingTask.promise
       .then((doc) => {
         if (cancelled) return;
@@ -204,7 +179,7 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
     return () => {
       cancelled = true;
     };
-  }, [manual.url, manual.topicNumber, isLawManual, sourceMode]);
+  }, [manual.url]);
 
   // Renderitzat de la pàgina actual
   const renderCurrentPage = useCallback(async () => {
@@ -501,15 +476,6 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          {isLawManual && (
-            <button
-              onClick={() => setSourceMode((m) => (m === 'a4' ? 'original' : 'a4'))}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/40 px-3 py-2 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100"
-            >
-              <FileText className="w-4 h-4" />
-              <span>{sourceMode === 'a4' ? 'Diapositives Originals' : 'Document A4 Vertical'}</span>
-            </button>
-          )}
           <a
             href={manual.url}
             download={manual.fileName}
