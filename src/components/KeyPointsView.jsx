@@ -11,7 +11,8 @@ import { TOPICS } from '../data/index';
 import { TOPIC_OUTLINES } from '../data/topicOutlines';
 import {
   buildTopicKeyPointsDoc,
-  downloadKeyPointsPdf
+  downloadKeyPointsPdf,
+  splitBoldPrefix
 } from '../utils/keyPointsPdf';
 
 export default function KeyPointsView({ onSelectTopic }) {
@@ -188,49 +189,65 @@ export default function KeyPointsView({ onSelectTopic }) {
       </div>
 
       {viewMode === 'pdf-sheets' && docData ? (
-        /* Previsualització estil document A4 oficial (com els PDF adjuntats) */
-        <article className="max-w-4xl mx-auto rounded-2xl border border-slate-300 bg-white text-slate-900 p-6 sm:p-10 shadow-md space-y-6">
+        /* Previsualització estil document A4 oficial (idèntic als 3 PDFs de referència) */
+        <article
+          style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+          className="max-w-4xl mx-auto border border-black bg-white text-black p-8 sm:p-14 shadow-md space-y-6"
+        >
           {/* Caixa de títol superior */}
-          <div className="border-2 border-slate-900 px-4 py-3">
-            <h2 className="text-base sm:text-lg font-extrabold text-slate-900">
+          <div className="border border-black px-4 py-3">
+            <h2 className="text-[15px] sm:text-[17px] font-bold text-black leading-snug">
               {docData.headerBox}
             </h2>
           </div>
-
-          <p className="text-xs font-semibold text-slate-500 -mt-3">
-            {docData.subtitle}
-          </p>
 
           {/* Seccions numerades */}
           <div className="space-y-5">
             {docData.sections.map((sec) => (
               <section key={sec.number} className="space-y-2">
-                <h3 className="text-sm sm:text-base font-extrabold text-slate-900">
+                <h3 className="text-[13.5px] sm:text-[14.5px] font-bold text-black">
                   {sec.number}. {sec.title}
                 </h3>
 
-                <ul className="space-y-2 pl-4">
-                  {sec.subblocks.map((sub, sIdx) => (
-                    <li key={sIdx} className="space-y-1">
-                      <div className="text-xs sm:text-sm font-bold text-slate-900 flex items-start gap-2">
-                        <span className="mt-0.5 text-slate-700">●</span>
-                        <span>{sub.label}</span>
-                      </div>
-                      {sub.bullets.length > 0 && (
-                        <ul className="pl-6 space-y-1">
-                          {sub.bullets.map((b, bIdx) => (
-                            <li
-                              key={bIdx}
-                              className="text-xs sm:text-sm text-slate-700 leading-relaxed flex items-start gap-2"
-                            >
-                              <span className="text-slate-500 mt-0.5">○</span>
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
+                <ul className="space-y-2 pl-5">
+                  {sec.subblocks.map((sub, sIdx) => {
+                    const { bold, rest } = splitBoldPrefix(sub.label);
+                    const hasChildren = sub.bullets && sub.bullets.length > 0;
+                    const effBold = bold || (hasChildren ? sub.label : '');
+                    const effRest = bold ? rest : hasChildren ? '' : sub.label;
+                    return (
+                      <li key={sIdx} className="space-y-1">
+                        <div className="text-[12.5px] sm:text-[13px] text-black leading-relaxed flex items-start gap-2.5">
+                          <span className="mt-0.5 text-[10px] text-black">●</span>
+                          <span>
+                            {effBold && <strong className="font-bold">{effBold} </strong>}
+                            {effRest}
+                          </span>
+                        </div>
+                        {hasChildren && (
+                          <ul className="pl-6 space-y-1">
+                            {sub.bullets.map((b, bIdx) => {
+                              const childParts = splitBoldPrefix(b);
+                              return (
+                                <li
+                                  key={bIdx}
+                                  className="text-[12px] sm:text-[12.5px] text-black leading-relaxed flex items-start gap-2.5"
+                                >
+                                  <span className="text-[10px] text-black mt-0.5">○</span>
+                                  <span>
+                                    {childParts.bold && (
+                                      <strong className="font-bold">{childParts.bold} </strong>
+                                    )}
+                                    {childParts.rest}
+                                  </span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </section>
             ))}
@@ -239,17 +256,15 @@ export default function KeyPointsView({ onSelectTopic }) {
           {/* Taules comparatives */}
           {docData.tables.map((tbl, tIdx) => (
             <div key={tIdx} className="space-y-2 pt-2">
-              <h4 className="text-xs sm:text-sm font-extrabold text-slate-900">
-                {tbl.title}
-              </h4>
+              <h4 className="text-[13px] font-bold text-black">{tbl.title}</h4>
               <div className="overflow-x-auto">
-                <table className="w-full border-collapse border border-slate-700 text-xs">
+                <table className="w-full border-collapse border border-black text-[12px]">
                   <thead>
-                    <tr className="bg-slate-100">
+                    <tr className="bg-white">
                       {tbl.headers.map((h, hIdx) => (
                         <th
                           key={hIdx}
-                          className="border border-slate-700 px-3 py-2 text-left font-extrabold text-slate-900"
+                          className="border border-black px-3 py-2 text-left font-bold text-black"
                         >
                           {h}
                         </th>
@@ -262,7 +277,9 @@ export default function KeyPointsView({ onSelectTopic }) {
                         {row.map((cell, cIdx) => (
                           <td
                             key={cIdx}
-                            className="border border-slate-400 px-3 py-1.5 text-slate-800 align-top"
+                            className={`border border-black px-3 py-2 text-black align-top ${
+                              cIdx === 0 ? 'font-bold' : ''
+                            }`}
                           >
                             {cell}
                           </td>
@@ -277,23 +294,24 @@ export default function KeyPointsView({ onSelectTopic }) {
 
           {/* Quadres destacats */}
           {docData.callouts.map((box, cIdx) => (
-            <div
-              key={cIdx}
-              className="border border-slate-800 px-4 py-3 space-y-1.5 bg-slate-50/50"
-            >
-              <h4 className="text-xs sm:text-sm font-extrabold text-slate-900">
-                {box.title}
-              </h4>
-              <ul className="space-y-1 pl-3">
-                {box.lines.map((ln, lIdx) => (
-                  <li
-                    key={lIdx}
-                    className="text-xs text-slate-800 leading-relaxed flex items-start gap-2"
-                  >
-                    <span>•</span>
-                    <span>{ln}</span>
-                  </li>
-                ))}
+            <div key={cIdx} className="border border-black px-5 py-4 space-y-2 bg-white">
+              <h4 className="text-[13.5px] font-bold text-black">{box.title}</h4>
+              <ul className="space-y-1.5 pl-4">
+                {box.lines.map((ln, lIdx) => {
+                  const parts = splitBoldPrefix(ln);
+                  return (
+                    <li
+                      key={lIdx}
+                      className="text-[12.5px] text-black leading-relaxed flex items-start gap-2.5"
+                    >
+                      <span className="text-[10px] mt-0.5">●</span>
+                      <span>
+                        {parts.bold && <strong className="font-bold">{parts.bold} </strong>}
+                        {parts.rest}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

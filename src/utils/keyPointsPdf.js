@@ -1,13 +1,26 @@
 /**
- * Construeix l'estructura de document "Punts Clau" (estil fitxa A4 oficial)
- * per a qualsevol dels 34 temes i genera un PDF descarregable amb jsPDF.
+ * Construeix l'estructura de document "Punts Clau" (estil fitxa A4 oficial,
+ * idèntic als PDFs de referència: Arial/Helvetica negre pur, marges 25.4 mm,
+ * caixa de títol amb vora negra, apartats numerats, vinyetes ●/○/▪ amb prefix
+ * en negreta seguit de text normal, taules blanques amb vora negra i quadres).
  */
+
+export function splitBoldPrefix(text) {
+  const str = String(text || '').trim();
+  const idx = str.indexOf(':');
+  if (idx > 0 && idx <= 68 && !str.slice(0, idx).includes('http')) {
+    return {
+      bold: str.slice(0, idx + 1),
+      rest: str.slice(idx + 1).trimStart()
+    };
+  }
+  return { bold: '', rest: str };
+}
 
 export function buildTopicKeyPointsDoc(topic, schemas = [], confusionItems = []) {
   const sections = [];
   let secNum = 1;
 
-  // 1..N: Seccions estructurades a partir dels esquemes complets del tema
   (schemas || []).forEach((schema) => {
     (schema.branches || []).forEach((branch) => {
       const subblocks = (branch.items || []).map((it) => ({
@@ -22,7 +35,6 @@ export function buildTopicKeyPointsDoc(topic, schemas = [], confusionItems = [])
     });
   });
 
-  // Taules clau del tema (si n'hi ha)
   const tables = [];
   (topic.pages || []).forEach((p) => {
     (p.blocks || []).forEach((b) => {
@@ -36,7 +48,6 @@ export function buildTopicKeyPointsDoc(topic, schemas = [], confusionItems = [])
     });
   });
 
-  // Quadres destacats (Trampes d'examen + No confondre!)
   const callouts = [];
   if (topic.importance?.traps && topic.importance.traps.length > 0) {
     callouts.push({
@@ -46,7 +57,7 @@ export function buildTopicKeyPointsDoc(topic, schemas = [], confusionItems = [])
   }
   if (confusionItems && confusionItems.length > 0) {
     callouts.push({
-      title: 'Conceptes Fàcils de Confondre (Alerta!)',
+      title: 'Conceptes Fàcils de Confondre',
       lines: confusionItems.map(
         (c) => `${c.concept}: ${c.value} — ${c.confusionWarning}`
       )
@@ -55,11 +66,99 @@ export function buildTopicKeyPointsDoc(topic, schemas = [], confusionItems = [])
 
   return {
     headerBox: `Punts Clau ${topic.code || `Tema ${topic.number}`} - ${topic.title}`,
-    subtitle: `Tema ${topic.number} · ${topic.category || 'Temari Oficial SGO 2026'}`,
     sections,
     tables: tables.slice(0, 3),
     callouts
   };
+}
+
+/**
+ * Dibuixa una línia de text amb un prefix en negreta seguit de text normal
+ * mantenint el salt de línia natural i l'alineació sagnada.
+ */
+function drawMixedParagraph(doc, boldPrefix, regularText, startX, startY, maxW, fontSize, lineH, ensureSpace) {
+  let y = startY;
+  doc.setFontSize(fontSize);
+  doc.setTextColor(0, 0, 0);
+
+  if (!boldPrefix) {
+    doc.setFont('helvetica', 'normal');
+    const lines = doc.splitTextToSize(regularText, maxW);
+    lines.forEach((ln) => {
+      y = ensureSpace(lineH, y);
+      doc.text(ln, startX, y);
+      y += lineH;
+    });
+    return y;
+  }
+
+  if (!regularText) {
+    doc.setFont('helvetica', 'bold');
+    const lines = doc.splitTextToSize(boldPrefix, maxW);
+    lines.forEach((ln) => {
+      y = ensureSpace(lineH, y);
+      doc.text(ln, startX, y);
+      y += lineH;
+    });
+    return y;
+  }
+
+  // Combinació en línia: "Prefix:" en negreta + " descripció" en normal
+  doc.setFont('helvetica', 'bold');
+  const boldW = doc.getTextWidth(`${boldPrefix} `);
+
+  if (boldW < maxW * 0.72) {
+    y = ensureSpace(lineH, y);
+    doc.setFont('helvetica', 'bold');
+    doc.text(boldPrefix, startX, y);
+
+    doc.setFont('helvetica', 'normal');
+    const firstLineAvail = maxW - boldW;
+    const words = regularText.split(/\s+/);
+    let firstLine = '';
+    let idx = 0;
+    while (idx < words.length) {
+      const candidate = firstLine ? `${firstLine} ${words[idx]}` : words[idx];
+      if (doc.getTextWidth(candidate) <= firstLineAvail) {
+        firstLine = candidate;
+        idx++;
+      } else {
+        break;
+      }
+    }
+    if (firstLine) {
+      doc.text(firstLine, startX + boldW, y);
+    }
+    y += lineH;
+
+    const remaining = words.slice(idx).join(' ');
+    if (remaining) {
+      const restLines = doc.splitTextToSize(remaining, maxW);
+      restLines.forEach((ln) => {
+        y = ensureSpace(lineH, y);
+        doc.text(ln, startX, y);
+        y += lineH;
+      });
+    }
+    return y;
+  }
+
+  // Si el prefix és molt llarg, el dibuixem i continuem a sota
+  doc.setFont('helvetica', 'bold');
+  const bLines = doc.splitTextToSize(boldPrefix, maxW);
+  bLines.forEach((ln) => {
+    y = ensureSpace(lineH, y);
+    doc.text(ln, startX, y);
+    y += lineH;
+  });
+  doc.setFont('helvetica', 'normal');
+  const rLines = doc.splitTextToSize(regularText, maxW);
+  rLines.forEach((ln) => {
+    y = ensureSpace(lineH, y);
+    doc.text(ln, startX, y);
+    y += lineH;
+  });
+  return y;
 }
 
 export function downloadKeyPointsPdf(docData, topic) {
@@ -72,150 +171,198 @@ export function downloadKeyPointsPdf(docData, topic) {
   const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  const marginX = 18;
+  const marginX = 25.4; // Marges oficials Google Docs (1 polzada)
+  const marginTop = 25.4;
+  const marginBottom = 22;
   const maxW = pageWidth - marginX * 2;
-  let y = 18;
+  let y = marginTop;
 
-  const ensureSpace = (needed = 10) => {
-    if (y + needed > pageHeight - 16) {
+  const ensureSpace = (needed, currentY) => {
+    if (currentY + needed > pageHeight - marginBottom) {
       doc.addPage();
-      y = 18;
+      return marginTop;
     }
+    return currentY;
   };
 
-  // Caixa de títol superior (estil fitxa oficial)
+  // Caixa de títol superior: vora fina negra #000000, fons blanc, Arial/Helvetica Negreta 13.5pt
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(13);
+  doc.setFontSize(13.5);
+  doc.setTextColor(0, 0, 0);
   const titleLines = doc.splitTextToSize(docData.headerBox, maxW - 8);
-  const boxH = titleLines.length * 6 + 6;
-  doc.setDrawColor(30, 41, 59);
-  doc.setLineWidth(0.5);
+  const boxH = titleLines.length * 6.2 + 7;
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(0.35);
   doc.rect(marginX, y, maxW, boxH);
-  doc.setTextColor(15, 23, 42);
-  doc.text(titleLines, marginX + 4, y + 7);
-  y += boxH + 4;
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(100, 116, 139);
-  doc.text(docData.subtitle, marginX, y);
-  y += 7;
+  doc.text(titleLines, marginX + 4, y + 7.5);
+  y += boxH + 9;
 
   // Seccions numerades (1., 2., 3...)
   docData.sections.forEach((sec) => {
-    ensureSpace(14);
+    y = ensureSpace(13, y);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.setTextColor(15, 23, 42);
+    doc.setFontSize(11.5);
+    doc.setTextColor(0, 0, 0);
     const secTitleLines = doc.splitTextToSize(`${sec.number}. ${sec.title}`, maxW);
-    doc.text(secTitleLines, marginX, y);
-    y += secTitleLines.length * 5.2 + 1.5;
+    secTitleLines.forEach((ln) => {
+      y = ensureSpace(5.5, y);
+      doc.text(ln, marginX, y);
+      y += 5.5;
+    });
+    y += 1.5;
 
     (sec.subblocks || []).forEach((sub) => {
-      ensureSpace(9);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9.5);
-      doc.setTextColor(30, 41, 59);
-      const labelLines = doc.splitTextToSize(`•  ${sub.label}`, maxW - 5);
-      doc.text(labelLines, marginX + 3, y);
-      y += labelLines.length * 4.5 + 1;
+      y = ensureSpace(7, y);
+      // Vinyeta nivell 1: cercle ple negre
+      doc.setFillColor(0, 0, 0);
+      doc.circle(marginX + 7.5, y - 1.2, 0.85, 'F');
 
+      const { bold, rest } = splitBoldPrefix(sub.label);
+      const effectiveBold = bold || (sub.bullets && sub.bullets.length > 0 ? sub.label : '');
+      const effectiveRest = bold ? rest : (sub.bullets && sub.bullets.length > 0 ? '' : sub.label);
+
+      y = drawMixedParagraph(
+        doc,
+        effectiveBold,
+        effectiveRest,
+        marginX + 11.5,
+        y,
+        maxW - 11.5,
+        10.5,
+        4.7,
+        ensureSpace
+      );
+      y += 0.8;
+
+      // Subpunts nivell 2: cercle buit ○
       (sub.bullets || []).forEach((b) => {
-        ensureSpace(6);
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(9);
-        doc.setTextColor(51, 65, 85);
-        const bLines = doc.splitTextToSize(`◦  ${b}`, maxW - 11);
-        doc.text(bLines, marginX + 9, y);
-        y += bLines.length * 4.2 + 0.8;
+        y = ensureSpace(6, y);
+        doc.setDrawColor(0, 0, 0);
+        doc.setLineWidth(0.28);
+        doc.circle(marginX + 15.5, y - 1.2, 0.8, 'S');
+
+        const childParts = splitBoldPrefix(b);
+        y = drawMixedParagraph(
+          doc,
+          childParts.bold,
+          childParts.rest,
+          marginX + 19.5,
+          y,
+          maxW - 19.5,
+          10,
+          4.5,
+          ensureSpace
+        );
+        y += 0.4;
       });
-      y += 1.2;
+      y += 0.8;
     });
-    y += 2.5;
+    y += 3.5;
   });
 
-  // Taules comparatives
+  // Taules comparatives (estil Google Docs: fons blanc, vora negra fina #000000)
   (docData.tables || []).forEach((tbl) => {
-    ensureSpace(22);
+    y = ensureSpace(22, y);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.setTextColor(15, 23, 42);
+    doc.setFontSize(10.5);
+    doc.setTextColor(0, 0, 0);
     const tLines = doc.splitTextToSize(tbl.title, maxW);
-    doc.text(tLines, marginX, y);
-    y += tLines.length * 4.5 + 2;
+    tLines.forEach((ln) => {
+      y = ensureSpace(5, y);
+      doc.text(ln, marginX, y);
+      y += 5;
+    });
+    y += 1.5;
 
     const cols = tbl.headers.length;
     const colW = maxW / cols;
 
-    // Capçalera
-    doc.setFillColor(241, 245, 249);
-    doc.rect(marginX, y, maxW, 7, 'F');
-    doc.setDrawColor(148, 163, 184);
-    doc.rect(marginX, y, maxW, 7);
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(0.3);
+    doc.rect(marginX, y, maxW, 8);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8.2);
+    doc.setFontSize(9.5);
     tbl.headers.forEach((h, i) => {
-      const cellTxt = doc.splitTextToSize(String(h), colW - 3)[0] || '';
-      doc.text(cellTxt, marginX + i * colW + 1.5, y + 4.8);
+      if (i > 0) doc.line(marginX + i * colW, y, marginX + i * colW, y + 8);
+      const cellTxt = doc.splitTextToSize(String(h), colW - 4)[0] || '';
+      doc.text(cellTxt, marginX + i * colW + 2, y + 5.3);
     });
-    y += 7;
+    y += 8;
 
-    // Files
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
+    doc.setFontSize(9.5);
     tbl.rows.forEach((row) => {
-      const wrappedCols = row.map((cell) => doc.splitTextToSize(String(cell || ''), colW - 3));
+      const wrappedCols = row.map((cell) => doc.splitTextToSize(String(cell || ''), colW - 4));
       const maxLines = Math.max(...wrappedCols.map((w) => w.length), 1);
-      const rowH = maxLines * 3.8 + 3;
-      ensureSpace(rowH + 2);
-      doc.setDrawColor(203, 213, 225);
+      const rowH = maxLines * 4.3 + 4;
+      y = ensureSpace(rowH + 2, y);
+      doc.setDrawColor(0, 0, 0);
+      doc.setLineWidth(0.3);
       doc.rect(marginX, y, maxW, rowH);
       wrappedCols.forEach((lines, i) => {
         if (i > 0) doc.line(marginX + i * colW, y, marginX + i * colW, y + rowH);
-        doc.text(lines, marginX + i * colW + 1.5, y + 4);
+        doc.setFont('helvetica', i === 0 ? 'bold' : 'normal');
+        doc.text(lines, marginX + i * colW + 2, y + 5);
       });
       y += rowH;
     });
-    y += 5;
+    y += 6;
   });
 
-  // Quadres destacats (estil caixa amb vora)
+  // Quadres destacats (vora negra fina #000000, fons blanc, títol en negreta + vinyetes)
   (docData.callouts || []).forEach((box) => {
-    ensureSpace(18);
-    const wrappedLines = [];
-    box.lines.forEach((ln) => {
-      doc.splitTextToSize(`• ${ln}`, maxW - 8).forEach((wl) => wrappedLines.push(wl));
+    const wrappedItems = box.lines.map((ln) => {
+      const parts = splitBoldPrefix(ln);
+      return {
+        bold: parts.bold,
+        rest: parts.rest,
+        linesCount: doc.splitTextToSize(ln, maxW - 16).length
+      };
     });
-    const boxHeight = 8 + wrappedLines.length * 4.3 + 3;
-    ensureSpace(boxHeight + 2);
-    doc.setDrawColor(71, 85, 105);
-    doc.setLineWidth(0.35);
-    doc.rect(marginX, y, maxW, boxHeight);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9.5);
-    doc.setTextColor(15, 23, 42);
-    doc.text(box.title, marginX + 4, y + 5.5);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8.5);
-    doc.setTextColor(51, 65, 85);
-    doc.text(wrappedLines, marginX + 4, y + 10.5);
-    y += boxHeight + 5;
-  });
+    const estH = 12 + wrappedItems.reduce((acc, it) => acc + it.linesCount * 4.6 + 1.5, 0);
+    y = ensureSpace(Math.min(estH, 45), y);
 
-  // Peu de pàgina
-  const totalPages = doc.internal.getNumberOfPages();
-  for (let p = 1; p <= totalPages; p++) {
-    doc.setPage(p);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    doc.setTextColor(148, 163, 184);
-    doc.text(
-      `Punts Clau · Tema ${topic.number} (${topic.code || 'SGO 2026'})`,
-      marginX,
-      pageHeight - 8
-    );
-    doc.text(`Pàgina ${p} de ${totalPages}`, pageWidth - marginX - 18, pageHeight - 8);
-  }
+    const boxStartY = y;
+    y += 6.5;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(0, 0, 0);
+    doc.text(box.title, marginX + 4, y);
+    y += 6;
+
+    wrappedItems.forEach((it) => {
+      y = ensureSpace(6, y);
+      doc.setFillColor(0, 0, 0);
+      doc.circle(marginX + 8.5, y - 1.2, 0.75, 'F');
+      y = drawMixedParagraph(
+        doc,
+        it.bold,
+        it.rest,
+        marginX + 12,
+        y,
+        maxW - 16,
+        10,
+        4.6,
+        (needed, curY) => {
+          if (curY + needed > pageHeight - marginBottom) {
+            // Tanca el quadre a la pàgina actual i continua a la següent
+            doc.setDrawColor(0, 0, 0);
+            doc.setLineWidth(0.35);
+            doc.rect(marginX, boxStartY, maxW, curY - boxStartY + 2);
+            doc.addPage();
+            return marginTop;
+          }
+          return curY;
+        }
+      );
+      y += 1;
+    });
+
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(0.35);
+    doc.rect(marginX, boxStartY, maxW, y - boxStartY + 3);
+    y += 8;
+  });
 
   const safeCode = (topic.code || `Tema_${topic.number}`).replace(/[^a-zA-Z0-9._-]/g, '_');
   doc.save(`Punts_Clau_T${topic.number}_${safeCode}.pdf`);
