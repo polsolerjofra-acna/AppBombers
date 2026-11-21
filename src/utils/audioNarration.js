@@ -125,11 +125,9 @@ function extractSummaryLessonSegments(page) {
 export function buildAudioTracksForTopic(topic) {
   if (!topic) return [];
   const pages = topic.pages || [];
-  const summaryPages = pages.filter((p) => p.isSummary || p.isFormulaSheet);
-  const sourcePages = summaryPages.length > 0 ? summaryPages : pages.slice(-2);
 
   const allSegments = [
-    `Hola! Comencem la classe d'àudio del Tema ${topic.number}: ${cleanForSpeech(topic.title)}. Et guiaré amb ordre i lògica perquè ho entenguis tot sense mirar la pantalla.`
+    `Hola! Comencem la classe d'àudio del Tema ${topic.number}: ${cleanForSpeech(topic.title)}. Repassarem totes les pàgines del temari resumit amb ordre i lògica.`
   ];
 
   // 1. Esquemes interpretats amb ordre i jerarquia
@@ -138,33 +136,24 @@ export function buildAudioTracksForTopic(topic) {
     allSegments.push(...schemaSegments);
   }
 
-  // 2. Punts clau d'examen
-  const keyPoints = topic.importance?.keyPoints || [];
-  if (keyPoints.length > 0) {
-    allSegments.push(`Ara resumim els ${keyPoints.length} punts clau que més pregunten a l'examen.`);
-    keyPoints.forEach((kp, idx) => {
-      const cleaned = cleanForSpeech(kp);
-      if (cleaned) allSegments.push(`Punt clau ${idx + 1}: ${cleaned}.`);
-    });
-  }
+  // 2. Explicacions completes de totes les pàgines del temari resumit
+  pages.forEach((page, idx) => {
+    allSegments.push(`Pàgina ${page.pageNumber || idx + 1}.`);
+    allSegments.push(...extractSummaryLessonSegments(page));
+  });
 
   // 3. Paranys típics del tribunal amb èmfasi
   const traps = topic.importance?.traps || topic.importance?.commonTraps || [];
   if (traps.length > 0) {
-    allSegments.push('Atenció màxima! Ara veiem els paranys típics del tribunal perquè no hi caiguis mai.');
+    allSegments.push('Atenció màxima! Abans d\'acabar, repassem els paranys típics del tribunal perquè no hi caiguis mai.');
     traps.forEach((tr) => {
       const cleaned = cleanForSpeech(tr);
       if (cleaned) allSegments.push(`Vigila amb aquest parany: ${cleaned}.`);
     });
   }
 
-  // 4. Resums finals i fórmules explicats
-  sourcePages.forEach((page) => {
-    allSegments.push(...extractSummaryLessonSegments(page));
-  });
-
   allSegments.push(
-    `I fins aquí el repàs del Tema ${topic.number}. Quan puguis, fes unes preguntes de test per fixar-ho del tot!`
+    `I fins aquí el repàs complet del Tema ${topic.number}. Quan puguis, fes unes preguntes de test per fixar-ho del tot!`
   );
 
   // Trosseja en pistes de màxim 10 minuts (~1.400 paraules)

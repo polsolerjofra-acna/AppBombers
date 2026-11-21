@@ -18,10 +18,12 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
   const [rate, setRate] = useState(1.0);
   const [voices, setVoices] = useState([]);
   const [selectedVoiceURI, setSelectedVoiceURI] = useState('');
-  const [mp3Url, setMp3Url] = useState(null);
+  const [mp3Tracks, setMp3Tracks] = useState([]);
+  const [mp3Index, setMp3Index] = useState(0);
   const mp3AudioRef = useRef(null);
   const isPlayingRef = useRef(false);
   const activeTrack = tracks[trackIndex] || tracks[0];
+  const mp3Url = mp3Tracks[mp3Index] || null;
 
   const speechSupported = typeof window !== 'undefined' && 'speechSynthesis' in window;
 
@@ -29,27 +31,50 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
     setTrackIndex(0);
     setSegmentIndex(0);
     setIsPlaying(false);
-    setMp3Url(null);
+    setMp3Tracks([]);
+    setMp3Index(0);
     isPlayingRef.current = false;
     if (speechSupported) {
       window.speechSynthesis.cancel();
     }
 
-    // Comprova si existeix una pista MP3 real tipus podcast a ./audio/<topic.id>.mp3 (o ./public/audio/ en preview local)
+    // Comprova pistes MP3 reals (multi-pista -1.mp3, -2.mp3... o única .mp3) a ./audio/ o ./public/audio/
     if (!topic?.id) return;
     let active = true;
-    const candidates = [`./audio/${topic.id}.mp3`, `./public/audio/${topic.id}.mp3`];
+    const isAudioRes = (res) => {
+      const ct = res.headers.get('content-type') || '';
+      return res.ok && (ct.includes('audio') || ct.includes('octet-stream') || ct === '');
+    };
+    const checkUrl = async (url) => {
+      try {
+        const res = await fetch(url, { method: 'HEAD' });
+        return isAudioRes(res) ? url : null;
+      } catch {
+        return null;
+      }
+    };
+
     (async () => {
-      for (const candidate of candidates) {
-        if (!active) return;
-        try {
-          const res = await fetch(candidate, { method: 'HEAD' });
-          const ct = res.headers.get('content-type') || '';
-          if (res.ok && (ct.includes('audio') || ct.includes('octet-stream') || ct === '')) {
-            if (active) setMp3Url(candidate);
-            return;
+      const found = [];
+      for (const base of ['./audio', './public/audio']) {
+        const firstPart = await checkUrl(`${base}/${topic.id}-1.mp3`);
+        if (firstPart) {
+          found.push(firstPart);
+          for (let part = 2; part <= 6; part++) {
+            const nextPart = await checkUrl(`${base}/${topic.id}-${part}.mp3`);
+            if (nextPart) found.push(nextPart);
+            else break;
           }
-        } catch {}
+          break;
+        }
+        const single = await checkUrl(`${base}/${topic.id}.mp3`);
+        if (single) {
+          found.push(single);
+          break;
+        }
+      }
+      if (active && found.length > 0) {
+        setMp3Tracks(found);
       }
     })();
     return () => {
@@ -226,7 +251,25 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
       </div>
 
       {mp3Url ? (
-        <div className="space-y-2">
+        <div className="space-y-2.5">
+          {mp3Tracks.length > 1 && (
+            <div className="flex flex-wrap gap-1.5">
+              {mp3Tracks.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setMp3Index(idx)}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-extrabold border ${
+                    idx === mp3Index
+                      ? 'bg-indigo-600 text-white border-indigo-600'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+                  }`}
+                >
+                  Pista {idx + 1}/{mp3Tracks.length} (≤ 10 min)
+                </button>
+              ))}
+            </div>
+          )}
           <audio
             ref={mp3AudioRef}
             controls
@@ -235,10 +278,15 @@ export default function AudioSummaryPlayer({ topic, onClose = null, autoPlay = f
             onLoadedMetadata={() => {
               if (mp3AudioRef.current) mp3AudioRef.current.playbackRate = rate;
             }}
+            onEnded={() => {
+              if (mp3Index + 1 < mp3Tracks.length) {
+                setMp3Index((i) => i + 1);
+              }
+            }}
             className="w-full"
           />
           <p className="text-[11px] text-emerald-700 dark:text-emerald-300 font-semibold">
-            Pista MP3 d&apos;alta qualitat carregada ({mp3Url}). Funciona amb la pantalla bloquejada!
+            Podcast MP3 amb explicacions completes ({mp3Url}). Funciona amb la pantalla bloquejada!
           </p>
         </div>
       ) : !speechSupported ? (
