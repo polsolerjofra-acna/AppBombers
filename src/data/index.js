@@ -53,6 +53,8 @@ import { QUESTIONS_GENERADES_2 } from './questions_generades_2';
 import { QUESTIONS_GENERADES_3 } from './questions_generades_3';
 import { QUESTIONS_PUNYETERES_1 } from './questions_punyeteres_1';
 import { QUESTIONS_PUNYETERES_2 } from './questions_punyeteres_2';
+import { QUESTIONS_PUNYETERES_3 } from './questions_punyeteres_3';
+import { QUESTIONS_PUNYETERES_4 } from './questions_punyeteres_4';
 
 const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_125,
@@ -73,7 +75,9 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_GENERADES_2,
   ...QUESTIONS_GENERADES_3,
   ...QUESTIONS_PUNYETERES_1,
-  ...QUESTIONS_PUNYETERES_2
+  ...QUESTIONS_PUNYETERES_2,
+  ...QUESTIONS_PUNYETERES_3,
+  ...QUESTIONS_PUNYETERES_4
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`
