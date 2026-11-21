@@ -18,6 +18,7 @@ import { OFFICIAL_MANUALS } from '../data/manualsData';
 
 const BANK_ANSWERED_KEY = 'bombers_answered_bank_ids_v1';
 const REPORTS_KEY = 'bombers_question_reports_v1';
+const LAST_ASKED_KEY = 'bombers_question_last_asked_v1';
 
 function loadJsonSet(key) {
   try {
@@ -59,7 +60,13 @@ function shuffleArray(arr) {
   return copy;
 }
 
-function buildWeightedExamQuestions(topics, selectedIds, count, useOfficialWeights) {
+function sortWithCooldown(arr, lastAskedMap = {}) {
+  // Prioritza preguntes mai vistes (0) i després les que fa més temps que van sortir
+  const shuffled = shuffleArray(arr);
+  return shuffled.sort((a, b) => (lastAskedMap[a.id] || 0) - (lastAskedMap[b.id] || 0));
+}
+
+function buildWeightedExamQuestions(topics, selectedIds, count, useOfficialWeights, lastAskedMap = {}) {
   const poolTopics = topics.filter((t) => selectedIds.includes(t.id) && (t.quiz || []).length > 0);
   if (poolTopics.length === 0) return [];
 
@@ -70,15 +77,16 @@ function buildWeightedExamQuestions(topics, selectedIds, count, useOfficialWeigh
         all.push({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title });
       });
     });
-    return shuffleArray(all).slice(0, count);
+    return shuffleArray(sortWithCooldown(all, lastAskedMap).slice(0, count));
   }
 
   // Distribució proporcional segons probabilitat estadística d'examen
   const totalW = poolTopics.reduce((acc, t) => acc + getTopicWeight(t.number), 0);
   const byTopicShuffled = {};
   poolTopics.forEach((t) => {
-    byTopicShuffled[t.id] = shuffleArray(
-      (t.quiz || []).map((q) => ({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title }))
+    byTopicShuffled[t.id] = sortWithCooldown(
+      (t.quiz || []).map((q) => ({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title })),
+      lastAskedMap
     );
   });
 
@@ -137,6 +145,7 @@ export default function PracticeTestView({
 
   // Estat de sessió activa
   const [activeQuestions, setActiveQuestions] = useState(null);
+  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isFinished, setIsFinished] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(85 * 60); // 85 minuts oficials (70 + 7 reserva)
@@ -198,9 +207,20 @@ export default function PracticeTestView({
     const targetIds = targetMode === 'simulacre' ? topics.map((t) => t.id) : selectedTopicIds;
     const count = targetMode === 'simulacre' ? 77 : Math.max(1, Number(questionCount) || 20); // 70 + 7 de reserva
     const weighted = targetMode === 'simulacre' ? true : useWeightedPractice;
+    const lastAskedMap = loadJsonSet(LAST_ASKED_KEY);
 
-    const qs = buildWeightedExamQuestions(topics, targetIds, count, weighted);
+    const qs = buildWeightedExamQuestions(topics, targetIds, count, weighted, lastAskedMap);
+    const now = Date.now();
+    const updatedAsked = { ...lastAskedMap };
+    qs.forEach((q, idx) => {
+      updatedAsked[q.id] = now + idx;
+    });
+    try {
+      localStorage.setItem(LAST_ASKED_KEY, JSON.stringify(updatedAsked));
+    } catch {}
+
     setActiveQuestions(qs);
+    setCurrentQuestionIdx(0);
     setAnswers({});
     setIsFinished(false);
     setSecondsLeft(85 * 60);
@@ -395,9 +415,14 @@ export default function PracticeTestView({
           </div>
         )}
 
-        {/* Llista de preguntes */}
+        {/* Llista de preguntes: una seguida de l'altra mentre fas el test; totes en acabar per revisar */}
         <div className="space-y-4">
-          {activeQuestions.map((q, idx) => {
+          {(isFinished
+            ? activeQuestions.map((q, idx) => ({ q, idx }))
+            : activeQuestions[currentQuestionIdx]
+            ? [{ q: activeQuestions[currentQuestionIdx], idx: currentQuestionIdx }]
+            : []
+          ).map(({ q, idx }) => {
             const choice = answers[q.id];
             const showFeedback = isFinished || (mode === 'practice' && choice !== undefined);
             const isCorrect = choice === q.correctIndex;
@@ -586,6 +611,48 @@ export default function PracticeTestView({
             );
           })}
         </div>
+
+        {/* Navegació una pregunta darrere l'altra amb opció de tornar enrere */}
+        {!isFinished && activeQuestions.length > 0 && (
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+            <button
+              type="button"
+              onClick={() => {
+                setCurrentQuestionIdx((i) => Math.max(0, i - 1));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              disabled={currentQuestionIdx === 0}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-4 py-2 text-xs font-extrabold text-slate-700 dark:text-slate-200 disabled:opacity-40 disabled:pointer-events-none hover:bg-slate-100"
+            >
+              <span>← Anterior</span>
+            </button>
+
+            <span className="text-xs font-extrabold text-slate-600 dark:text-slate-300">
+              Pregunta {currentQuestionIdx + 1} de {activeQuestions.length}
+            </span>
+
+            {currentQuestionIdx < activeQuestions.length - 1 ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentQuestionIdx((i) => Math.min(activeQuestions.length - 1, i + 1));
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-xs font-extrabold shadow-sm"
+              >
+                <span>Següent →</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={finishExam}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold shadow-sm"
+              >
+                <span>Corregir i Finalitzar ✓</span>
+              </button>
+            )}
+          </div>
+        )}
       </div>
     );
   }
