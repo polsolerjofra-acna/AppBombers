@@ -103,6 +103,12 @@ export const tema7GuardiaOrganigrama = {
           explanation:
             'El Decret 16/2026 crea la 8a Regió d\'Emergències (Pirineus). Cada una de les 8 Regions té la seva Àrea d\'Operacions, Àrea de Gestió i Servei d\'Administració. Però només hi ha 6 Sales Territorials (Terres de l\'Ebre es connecta a Tarragona, i Pirineus es connecta a Lleida) i 7 Unitats de Prevenció (Terres de l\'Ebre SÍ en té, però Pirineus també depèn de Lleida).',
           takeaway: '8 Regions · 19 Unitats Territorials · 6 Sales Territorials · 7 Unitats de Prevenció.'
+        },
+        {
+          type: 'diagram',
+          title: 'Organigrama Visual Complet DGPEIS 2026 (per Subdireccions, Divisions, Àrees i Unitats)',
+          diagramType: 'dgpeis_2026_table',
+          caption: 'Quadre visual complet amb codi de colors: 5 Subdireccions Generals + Àrea de Comunicació i Premsa.'
         }
       ]
     },
@@ -174,6 +180,12 @@ export const tema7GuardiaOrganigrama = {
             ['Territori i SG Tècnica', '8 Regions · 19 Unitats Territorials · 6 Sales · 7 Unitats Prevenció · 5 Àrees SG Tècnica']
           ],
           footnote: '4 nivells estructurals: 1. Divisió/Regió (estratègica) → 2. Àrea (tàctica) → 3. Unitat (operativa) → 4. Grup/Parc (execució).'
+        },
+        {
+          type: 'diagram',
+          title: 'Organigrama Visual Complet DGPEIS 2026 (per Subdireccions, Divisions, Àrees i Unitats)',
+          diagramType: 'dgpeis_2026_table',
+          caption: 'Quadre visual complet per estudiar d\'un sol cop d\'ull totes les divisions, àrees, unitats i serveis.'
         },
         {
           type: 'mnemonic',

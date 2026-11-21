@@ -1066,6 +1066,188 @@ export default function DiagramContainer({ title, caption, diagramType, customSv
             <text x="340" y="322" textAnchor="middle" fontSize="10.5" fill="#475569">4 nivells estructurals: 1. Divisió/Regió (estratègica) → 2. Àrea (tàctica) → 3. Unitat (operativa) → 4. Grup/Parc (execució)</text>
           </svg>
         );
+      case 'dgpeis_2026_table':
+        return (
+          <div className="w-full overflow-x-auto">
+            <div className="min-w-[880px] rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 text-[10.5px] leading-snug text-slate-900">
+              {/* Capçalera DGPEIS 2026 */}
+              <div className="bg-purple-200 dark:bg-purple-900/70 dark:text-white text-center py-2 px-3 border-b border-slate-300 dark:border-slate-700">
+                <div className="text-sm font-extrabold tracking-wide">DGPEIS · 2026</div>
+              </div>
+              {/* Àrea de Comunicació i Premsa */}
+              <div className="bg-slate-200 dark:bg-slate-800 dark:text-slate-100 text-center py-1 px-3 font-extrabold uppercase tracking-wide border-b border-slate-300 dark:border-slate-700">
+                ÀREA DE COMUNICACIÓ I PREMSA (directa DG · laboral)
+              </div>
+
+              {/* 5 Subdireccions Generals */}
+              <div className="grid grid-cols-12 border-b border-slate-300 dark:border-slate-700 font-extrabold text-center text-white">
+                <div className="col-span-5 bg-sky-600 py-2 px-2 border-r border-white/40 flex items-center justify-center">
+                  SUBDIRECCIÓ GENERAL OPERATIVA
+                </div>
+                <div className="col-span-3 bg-rose-500 py-2 px-2 border-r border-white/40 flex items-center justify-center">
+                  SUBDIRECCIÓ GENERAL TÈCNICA
+                </div>
+                <div className="col-span-2 bg-amber-400 text-slate-950 py-2 px-2 border-r border-white/40 flex items-center justify-center">
+                  SG DE CONTRACTACIÓ I PRESSUPOSTOS
+                </div>
+                <div className="col-span-1 bg-emerald-600 py-2 px-1 border-r border-white/40 flex items-center justify-center text-[9.5px]">
+                  SG PERSONES I ORG.
+                </div>
+                <div className="col-span-1 bg-slate-300 text-slate-900 py-2 px-1 flex items-center justify-center text-[9.5px]">
+                  SG ASS. JURÍDICS
+                </div>
+              </div>
+
+              {/* Cos principal per columnes amb codi de colors */}
+              <div className="grid grid-cols-12 bg-white dark:bg-slate-900">
+                {/* Columna 1: SG OPERATIVA (5/12) */}
+                <div className="col-span-5 border-r border-slate-300 dark:border-slate-700 divide-y divide-slate-300 dark:divide-slate-700 bg-sky-50/70 dark:bg-sky-950/30 dark:text-slate-100">
+                  {/* Divisió Planificació i Gestió */}
+                  <div className="grid grid-cols-3">
+                    <div className="p-2 font-extrabold border-r border-slate-300 dark:border-slate-700 bg-sky-100/80 dark:bg-sky-900/40 flex items-center justify-center text-center">
+                      DIVISIÓ PLANIFICACIÓ I GESTIÓ
+                    </div>
+                    <div className="col-span-2 divide-y divide-slate-200 dark:divide-slate-700">
+                      <div className="grid grid-cols-2">
+                        <div className="p-1.5 font-bold border-r border-slate-200 dark:border-slate-700 flex items-center justify-center text-center">ÀREA PLANIFICACIÓ DE RECURSOS</div>
+                        <div className="p-1.5 space-y-1 bg-emerald-50/60 dark:bg-emerald-950/20">
+                          <div>• Unitat Planificació i Gestió de Personal</div>
+                          <div>• Unitat Planificació i Gestió Vehicles i Materials</div>
+                        </div>
+                      </div>
+                      <div className="p-1.5 font-bold text-center">ÀREA BOMBERS VOLUNTARIS</div>
+                      <div className="p-1.5 font-bold text-center">ÀREA DE LOGÍSTICA <span className="text-red-600 dark:text-red-400">(2026)</span></div>
+                    </div>
+                  </div>
+
+                  {/* Divisió Emergències Climàtiques i GOE */}
+                  <div className="grid grid-cols-3">
+                    <div className="p-2 font-extrabold border-r border-slate-300 dark:border-slate-700 bg-sky-100/80 dark:bg-sky-900/40 flex items-center justify-center text-center">
+                      DIVISIÓ D&apos;EMERGÈNCIES CLIMÀTIQUES I GOE
+                    </div>
+                    <div className="col-span-2 divide-y divide-slate-200 dark:divide-slate-700">
+                      <div className="p-1.5 font-bold text-center">ÀREA DE GESTIÓ DE GOE</div>
+                      <div className="p-1.5 font-bold text-center">ÀREA D&apos;EMERGÈNCIES METEOROLÒGIQUES I CLIMÀTIQUES</div>
+                      <div className="p-1.5 font-bold text-center">ÀREA GRAF</div>
+                      <div className="grid grid-cols-2">
+                        <div className="p-1.5 font-bold border-r border-slate-200 dark:border-slate-700 flex items-center justify-center text-center">ÀREA GRAE / GEA</div>
+                        <div className="p-1.5 space-y-1 bg-emerald-50/60 dark:bg-emerald-950/20">
+                          <div>• Unitat Recerques i Rescats de Muntanya</div>
+                          <div>• Unitat Aquàtica i Incidents Marítims</div>
+                        </div>
+                      </div>
+                      <div className="p-1.5 font-bold text-center">UNITAT GEM (laboral)</div>
+                    </div>
+                  </div>
+
+                  {/* Regions d'Emergències */}
+                  <div className="grid grid-cols-3">
+                    <div className="p-2 font-extrabold border-r border-slate-300 dark:border-slate-700 bg-sky-100/80 dark:bg-sky-900/40 flex items-center justify-center text-center">
+                      REGIONS D&apos;EMERGÈNCIES (8 RE)
+                    </div>
+                    <div className="col-span-2 divide-y divide-slate-200 dark:divide-slate-700">
+                      <div className="grid grid-cols-2">
+                        <div className="p-1.5 font-bold border-r border-slate-200 dark:border-slate-700 flex items-center justify-center text-center">ÀREA D&apos;OPERACIONS (1 × RE)</div>
+                        <div className="p-1.5 space-y-1 bg-emerald-50/60 dark:bg-emerald-950/20">
+                          <div>• Unitats Territorials (19): 2×Cent, Tarr, Llei, Pir, Ebr; 3×Ma, Ms, Gir</div>
+                          <div>• Sala Territorial (6): Ebre→Tarr · Pir→Lleida</div>
+                          <div>• Parcs de Bombers</div>
+                        </div>
+                      </div>
+                      <div className="p-1.5 font-bold text-center">ÀREA DE GESTIÓ</div>
+                    </div>
+                  </div>
+
+                  {/* Divisió d'Operacions */}
+                  <div className="grid grid-cols-3">
+                    <div className="p-2 font-extrabold border-r border-slate-300 dark:border-slate-700 bg-sky-100/80 dark:bg-sky-900/40 flex items-center justify-center text-center">
+                      DIVISIÓ D&apos;OPERACIONS
+                    </div>
+                    <div className="col-span-2 divide-y divide-slate-200 dark:divide-slate-700">
+                      <div className="grid grid-cols-2">
+                        <div className="p-1.5 font-bold border-r border-slate-200 dark:border-slate-700 flex items-center justify-center text-center">ÀREA INNOVACIÓ I DESENVOLUP. OPERATIU</div>
+                        <div className="p-1.5 space-y-1 bg-emerald-50/60 dark:bg-emerald-950/20">
+                          <div>• Unitat Desenvolupament Operatiu</div>
+                          <div>• Unitat Relacions i Desplegaments Exteriors</div>
+                        </div>
+                      </div>
+                      <div className="p-1.5 font-bold text-center">UNITAT DE PREVENCIÓ OPERATIVA</div>
+                      <div className="grid grid-cols-2">
+                        <div className="p-1.5 font-bold border-r border-slate-200 dark:border-slate-700 flex items-center justify-center text-center">ÀREA TÈCNICA D&apos;EMERGÈNCIES</div>
+                        <div className="p-1.5 space-y-1 bg-emerald-50/60 dark:bg-emerald-950/20">
+                          <div>• Unitat Riscos Tecnològics</div>
+                          <div>• Unitat Col·lapses Estructurals</div>
+                          <div>• Unitat Incendis Estructurals</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Divisió de Coordinació d'Emergències */}
+                  <div className="grid grid-cols-3">
+                    <div className="p-2 font-extrabold border-r border-slate-300 dark:border-slate-700 bg-sky-100/80 dark:bg-sky-900/40 flex items-center justify-center text-center">
+                      DIVISIÓ DE COORDINACIÓ D&apos;EMERGÈNCIES
+                    </div>
+                    <div className="col-span-2 divide-y divide-slate-200 dark:divide-slate-700">
+                      <div className="p-1.5 font-bold text-center">ÀREA DE MITJANS AERIS</div>
+                      <div className="p-1.5 font-bold text-center">ÀREA DE SALA CENTRAL DE COORDINACIÓ</div>
+                      <div className="p-1.5 font-bold text-center">UNITAT DE SUPORT OPERATIU (USO)</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Columna 2: SG TÈCNICA (3/12) */}
+                <div className="col-span-3 border-r border-slate-300 dark:border-slate-700 divide-y divide-slate-300 dark:divide-slate-700 bg-rose-50/70 dark:bg-rose-950/25 dark:text-slate-100">
+                  <div className="grid grid-cols-2">
+                    <div className="p-2 font-extrabold border-r border-slate-200 dark:border-slate-700 bg-rose-100/80 dark:bg-rose-900/40 flex items-center justify-center text-center">
+                      ÀREA D&apos;EQUIPAMENTS OPERATIUS
+                    </div>
+                    <div className="p-2 space-y-1 flex flex-col justify-center">
+                      <div>• Unitat d&apos;Equips i Materials Operatius</div>
+                      <div>• Unitat de Vestuari</div>
+                    </div>
+                  </div>
+                  <div className="p-3 font-extrabold bg-rose-100/60 dark:bg-rose-900/30 text-center">ÀREA DE TECNOLOGIA</div>
+                  <div className="p-3 font-extrabold bg-rose-100/60 dark:bg-rose-900/30 text-center">ÀREA DE MOBILITAT OPERATIVA</div>
+                  <div className="p-3 font-extrabold bg-rose-100/60 dark:bg-rose-900/30 text-center">ÀREA D&apos;INFRAESTRUCTURES I SOSTENIBILITAT</div>
+                  <div className="grid grid-cols-2">
+                    <div className="p-2 font-extrabold border-r border-slate-200 dark:border-slate-700 bg-rose-100/80 dark:bg-rose-900/40 flex items-center justify-center text-center">
+                      ÀREA DE PREVENCIÓ I INVESTIGACIÓ D&apos;INCENDIS
+                    </div>
+                    <div className="p-2 space-y-1 flex flex-col justify-center">
+                      <div>• Unitat de Prevenció Tècnica</div>
+                      <div>• Unitats territorials de prevenció (7: Pirineus→Lleida)</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Columna 3: SG CONTRACTACIÓ I PRESSUPOSTOS (2/12) */}
+                <div className="col-span-2 border-r border-slate-300 dark:border-slate-700 divide-y divide-slate-300 dark:divide-slate-700 bg-amber-50/80 dark:bg-amber-950/25 dark:text-slate-100 flex flex-col">
+                  <div className="flex-1 p-3 font-extrabold flex items-center justify-center text-center">
+                    SERVEI DE CONTRACTACIÓ I PATRIMONI
+                  </div>
+                  <div className="flex-1 p-3 font-extrabold flex items-center justify-center text-center">
+                    SERVEI DE GESTIÓ ECONÒMICA I PRESSUPOSTÀRIA
+                  </div>
+                </div>
+
+                {/* Columna 4: SG PERSONES I ORGANITZACIÓ (1/12) */}
+                <div className="col-span-1 border-r border-slate-300 dark:border-slate-700 divide-y divide-slate-300 dark:divide-slate-700 bg-emerald-50/80 dark:bg-emerald-950/25 dark:text-slate-100 flex flex-col text-[9.5px]">
+                  <div className="flex-1 p-1.5 font-bold flex items-center justify-center text-center">SERVEI DE CONVOCATÒRIES</div>
+                  <div className="flex-1 p-1.5 font-bold flex items-center justify-center text-center">SERVEI PERSONES, CURA I TALENT</div>
+                  <div className="flex-1 p-1.5 font-bold flex items-center justify-center text-center">SERVEI ADMIN. REGIONS (1×RE)</div>
+                  <div className="flex-1 p-1.5 font-bold flex items-center justify-center text-center">SERVEI ADMIN. CENTRAL</div>
+                  <div className="flex-1 p-1.5 font-bold flex items-center justify-center text-center">SERVEI ORGANITZACIÓ I DADES</div>
+                </div>
+
+                {/* Columna 5: SG ASSUMPTES JURÍDICS (1/12) */}
+                <div className="col-span-1 bg-slate-100/80 dark:bg-slate-800/60 dark:text-slate-200 flex items-center justify-center p-2 text-center font-bold text-[9.5px]">
+                  Nova 2026 (sense serveis propis)
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       case 'gas_laws':
         return (
           <svg viewBox="0 0 680 260" className="w-full h-auto font-sans" role="img" aria-label="Lleis dels gasos Boyle Charles Gay-Lussac">
