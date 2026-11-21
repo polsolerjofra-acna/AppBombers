@@ -13,8 +13,11 @@ import {
   Flame,
   LogIn,
   CheckCircle2,
-  ClipboardCheck
+  ClipboardCheck,
+  Newspaper,
+  XCircle
 } from 'lucide-react';
+import { getTodayCurrentAffairsQuestion } from '../data/dailyCurrentAffairsQuestions';
 
 export default function HomeView({
   topicsCount = 34,
@@ -22,8 +25,45 @@ export default function HomeView({
   cloudUser = null,
   onSignIn,
   onNavigate,
+  onOpenTopic,
+  onRecordQuestionOutcome,
   calendarElement = null
 }) {
+  const todayISO = React.useMemo(() => {
+    try {
+      return new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Europe/Madrid',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(new Date());
+    } catch {
+      return new Date().toISOString().slice(0, 10);
+    }
+  }, []);
+
+  const dailyQuestion = React.useMemo(() => getTodayCurrentAffairsQuestion(todayISO), [todayISO]);
+  const storageKey = `bombers_daily_q_${todayISO}`;
+  const [selectedDailyOpt, setSelectedDailyOpt] = React.useState(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      return saved !== null ? Number(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const handleAnswerDaily = (optIdx) => {
+    if (selectedDailyOpt !== null) return;
+    setSelectedDailyOpt(optIdx);
+    try {
+      localStorage.setItem(storageKey, String(optIdx));
+    } catch {}
+    if (typeof onRecordQuestionOutcome === 'function') {
+      const isCorrect = optIdx === dailyQuestion.correctIndex;
+      onRecordQuestionOutcome(dailyQuestion.id, isCorrect, dailyQuestion.topicId);
+    }
+  };
   const sections = [
     {
       id: 'calendar',
@@ -206,6 +246,93 @@ export default function HomeView({
 
       {/* Calendari complet integrat directament sota el títol */}
       {calendarElement}
+
+      {/* Pregunta del Dia (Actualitat, Serveis i Temari) */}
+      <section className="rounded-2xl border border-amber-200 dark:border-amber-900/60 bg-gradient-to-br from-amber-50/70 via-white to-orange-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/20 p-5 sm:p-6 shadow-sm space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 dark:bg-amber-950/70 px-3 py-1 text-xs font-extrabold text-amber-800 dark:text-amber-300">
+            <Newspaper className="w-3.5 h-3.5" />
+            <span>Pregunta del Dia · {dailyQuestion.tag}</span>
+          </div>
+          <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
+            {todayISO}
+          </span>
+        </div>
+
+        {dailyQuestion.context && (
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 bg-white/80 dark:bg-slate-800/60 border border-amber-100 dark:border-slate-800 rounded-xl px-3.5 py-2.5 leading-relaxed">
+            {dailyQuestion.context}
+          </p>
+        )}
+
+        <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-snug">
+          {dailyQuestion.question}
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          {dailyQuestion.options.map((opt, idx) => {
+            const answered = selectedDailyOpt !== null;
+            const isSelected = selectedDailyOpt === idx;
+            const isCorrect = idx === dailyQuestion.correctIndex;
+            let btnClass =
+              'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/70 hover:border-amber-400 dark:hover:border-amber-600 text-slate-800 dark:text-slate-200';
+            if (answered) {
+              if (isCorrect) {
+                btnClass =
+                  'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200';
+              } else if (isSelected) {
+                btnClass =
+                  'border-red-500 bg-red-50 dark:bg-red-950/40 text-red-900 dark:text-red-200';
+              } else {
+                btnClass =
+                  'border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/40 text-slate-400 dark:text-slate-500';
+              }
+            }
+
+            return (
+              <button
+                key={idx}
+                type="button"
+                disabled={answered}
+                onClick={() => handleAnswerDaily(idx)}
+                className={`text-left rounded-xl border px-3.5 py-2.5 text-xs sm:text-sm font-medium transition flex items-start gap-2.5 ${btnClass}`}
+              >
+                <span className="font-extrabold shrink-0">
+                  {String.fromCharCode(65 + idx)}.
+                </span>
+                <span className="flex-1">{opt}</span>
+                {answered && isCorrect && (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                )}
+                {answered && isSelected && !isCorrect && (
+                  <XCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {selectedDailyOpt !== null && (
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 p-3.5 space-y-2">
+            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong className={selectedDailyOpt === dailyQuestion.correctIndex ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}>
+                {selectedDailyOpt === dailyQuestion.correctIndex ? 'Correcte! ' : 'Incorrecte. '}
+              </strong>
+              {dailyQuestion.explanation}
+            </p>
+            {typeof onOpenTopic === 'function' && dailyQuestion.topicId && (
+              <button
+                type="button"
+                onClick={() => onOpenTopic(dailyQuestion.topicId)}
+                className="inline-flex items-center gap-1.5 text-xs font-extrabold text-red-600 dark:text-red-400 hover:underline"
+              >
+                <span>Repassar {dailyQuestion.topicLabel || dailyQuestion.topicId}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        )}
+      </section>
 
       {/* Resum de funcions principals de l'app */}
       <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3">

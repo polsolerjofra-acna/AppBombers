@@ -61,7 +61,85 @@ function loadTopicCatalog() {
   return catalog.sort((a, b) => a.number - b.number);
 }
 
-async function sendDailyEmails(todayISO, catalog) {
+async function getOrGenerateDailyCurrentAffairsQuestion(todayISO, catalog) {
+  const docRef = db.collection('dailyQuestions').doc('actualitat').collection('questions').doc(todayISO);
+  try {
+    const snap = await docRef.get();
+    if (snap.exists) {
+      return snap.data();
+    }
+  } catch (err) {
+    console.warn('No s\'ha pogut llegir la pregunta del dia a Firestore:', err?.message || err);
+  }
+
+  if (GEMINI_API_KEY) {
+    const topicHint = catalog.map((t) => `Tema ${t.number}: ${t.title}`).join('; ');
+    const prompt = `Genera EXACTAMENT 1 pregunta nova tipus test (4 opcions) d'oposició de Bombers de la Generalitat en català per a la data ${todayISO}.
+La pregunta ha de connectar l'actualitat institucional, de serveis d'emergència, protecció civil, normativa vigent o polítiques públiques a Catalunya/UE amb algun dels temes del temari oficial (${topicHint}).
+Retorna NOMÉS un JSON objecte vàlid amb aquest esquema exacte:
+{"tag":"Actualitat · ...","topicId":"tema-XX","topicLabel":"Tema X · ...","context":"Breu context d'actualitat (1 frase)","question":"...","options":["A","B","C","D"],"correctIndex":0,"explanation":"Explicació clara de la resposta correcta"}`;
+
+    try {
+      const resp = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { responseMimeType: 'application/json' }
+          })
+        }
+      );
+      if (resp.ok) {
+        const data = await resp.json();
+        const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+        const q = JSON.parse(rawText);
+        if (q?.question && Array.isArray(q.options) && q.options.length === 4) {
+          const payload = {
+            id: `act-${todayISO}`,
+            date: todayISO,
+            tag: q.tag || 'Actualitat · Servei i Temari',
+            topicId: q.topicId || 'tema-14',
+            topicLabel: q.topicLabel || 'Temari SGO 2026',
+            context: q.context || '',
+            question: q.question,
+            options: q.options,
+            correctIndex: Number(q.correctIndex) || 0,
+            explanation: q.explanation || '',
+            createdDate: todayISO,
+            createdAt: admin.firestore.FieldValue.serverTimestamp()
+          };
+          await docRef.set(payload);
+          console.log(`Pregunta del dia generada i desada per a ${todayISO}`);
+          return payload;
+        }
+      }
+    } catch (err) {
+      console.warn('Error generant pregunta del dia amb Gemini:', err?.message || err);
+    }
+  }
+
+  return {
+    id: `act-${todayISO}`,
+    date: todayISO,
+    tag: 'Actualitat · Organització DGPEIS 2026',
+    topicId: 'tema-14',
+    topicLabel: 'Tema 14 · DGPEIS i Bombers',
+    context: 'El Decret 16/2026 reestructura la DGPEIS per reforçar la cobertura territorial i jurídica del servei.',
+    question: 'Quina nova Regió d\'Emergències i quina nova Subdirecció General incorpora la DGPEIS segons el Decret 16/2026?',
+    options: [
+      'La Regió d\'Emergències del Pirineu (8a regió) i la Subdirecció General d\'Assumptes Jurídics.',
+      'La Regió d\'Emergències de les Terres de l\'Ebre i la Subdirecció General de Protecció Civil.',
+      'La Regió d\'Emergències de la Catalunya Central i la Subdirecció General de Prevenció Forestal.',
+      'La Regió d\'Emergències de l\'Alt Empordà i la Subdirecció General de Logística.'
+    ],
+    correctIndex: 0,
+    explanation: 'El Decret 16/2026 crea la 8a Regió d\'Emergències (Pirineu) i la Subdirecció General d\'Assumptes Jurídics.'
+  };
+}
+
+async function sendDailyEmails(todayISO, catalog, dailyQuestion) {
   if (!RESEND_API_KEY) {
     console.log('RESEND_API_KEY no configurada; s\'omet l\'enviament de correus.');
     return;
@@ -89,7 +167,6 @@ async function sendDailyEmails(todayISO, catalog) {
       .map(([id]) => id);
 
     const allTodayIds = Array.from(new Set([...dueIds, ...plan]));
-    if (allTodayIds.length === 0 && !friday) continue;
 
     const itemsHtml = allTodayIds
       .map((id) => {
@@ -116,12 +193,27 @@ async function sendDailyEmails(todayISO, catalog) {
          </p>`
       : '';
 
+    const dailyQHtml = dailyQuestion
+      ? `<div style="margin-top:18px;padding:14px;border-radius:10px;background:#f8fafc;border:1px solid #cbd5e1;">
+           <p style="margin:0 0 6px;font-size:12px;font-weight:bold;color:#dc2626;text-transform:uppercase;">
+             Pregunta del Dia · ${dailyQuestion.tag || 'Actualitat i Temari'}
+           </p>
+           ${dailyQuestion.context ? `<p style="margin:0 0 8px;font-size:13px;color:#475569;">${dailyQuestion.context}</p>` : ''}
+           <p style="margin:0 0 10px;font-size:14px;font-weight:bold;color:#0f172a;">${dailyQuestion.question}</p>
+           <ol type="A" style="margin:0 0 10px;padding-left:18px;font-size:13px;color:#1e293b;">
+             ${(dailyQuestion.options || []).map((opt) => `<li style="margin-bottom:4px;">${opt}</li>`).join('')}
+           </ol>
+           <a href="${APP_BASE_URL}" style="color:#dc2626;font-size:13px;font-weight:bold;">Respondre i veure la solució a l'app →</a>
+         </div>`
+      : '';
+
     const html = `
       <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:auto;color:#0f172a;">
         <h2 style="color:#dc2626;">Pla d'estudi i repàs d'avui (${todayISO})</h2>
         <p>Hola ${prof.displayName || 'opositor/a'}, aquí tens el que toca repassar avui segons la teva corba de l'oblit:</p>
-        <ul>${itemsHtml || '<li>Cap repàs pendent per a avui.</li>'}</ul>
+        <ul>${itemsHtml || '<li>Cap repàs pendent per a avui — aprofita per avançar temari o fer un test ràpid!</li>'}</ul>
         ${fridayHtml}
+        ${dailyQHtml}
         <p style="margin-top:16px;">
           <a href="${APP_BASE_URL}?vista=calendari" style="background:#dc2626;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;">
             Obrir el meu Calendari d'Estudi
@@ -130,7 +222,7 @@ async function sendDailyEmails(todayISO, catalog) {
       </div>
     `;
 
-    await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -139,11 +231,16 @@ async function sendDailyEmails(todayISO, catalog) {
       body: JSON.stringify({
         from: 'AppBombers <onboarding@resend.dev>',
         to: [priv.email],
-        subject: `AppBombers · Repàs d'avui (${todayISO})`,
+        subject: `AppBombers · Repàs i Pregunta del Dia (${todayISO})`,
         html
       })
     });
-    console.log(`Correu enviat a ${priv.email}`);
+    if (!res.ok) {
+      const errBody = await res.text();
+      console.error(`Error enviant correu via Resend a ${priv.email} (${res.status}):`, errBody);
+    } else {
+      console.log(`Correu enviat a ${priv.email}`);
+    }
   }
 }
 
@@ -211,7 +308,8 @@ async function main() {
   const todayISO = getMadridTodayISO();
   const catalog = loadTopicCatalog();
   console.log(`Executant tasques diàries per a ${todayISO} (${catalog.length} temes)...`);
-  await sendDailyEmails(todayISO, catalog);
+  const dailyQuestion = await getOrGenerateDailyCurrentAffairsQuestion(todayISO, catalog);
+  await sendDailyEmails(todayISO, catalog, dailyQuestion);
   await generateDailyQuestions(todayISO, catalog);
   console.log('Tasques diàries finalitzades.');
 }

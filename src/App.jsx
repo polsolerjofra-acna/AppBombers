@@ -587,6 +587,8 @@ export default function App() {
               dueReviewsCount={dueReviewsCount}
               cloudUser={cloudUser}
               onSignIn={handleQuickGoogleLogin}
+              onOpenTopic={(id) => handleSelectTopic(id)}
+              onRecordQuestionOutcome={recordQuestionOutcome}
               calendarElement={
                 <CalendarView
                   topics={TOPICS}
