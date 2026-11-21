@@ -275,13 +275,13 @@ export const tema13AssistenciaSanitaria = {
   quiz: [
     {
       id: 'q28-1',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "Segons l'actualització de la Versió 3 del manual MAN.SANI.000 sobre el control d'hemorràgies externes (apartat 4.1), què s'ha de fer si la primera gasa queda amarada de sang i a quina distància es col·loca un torniquet?",
       options: [
-        'Retirar la primera gasa per netejar la ferida i posar el torniquet sobre mateix de l’articulació.',
+        'Retirar la primera gasa per netejar el coàgul i aplicar-ne una d’estèril; el torniquet es col·loca directament sobre la ferida o a 1-2 cm per sota, i s’ha de prioritzar sempre l’elevació de l’extremitat abans de comprimir.',
         'NO retirar mai la primera gasa (aplicar noves gases a sobre); si cal torniquet, es col·loca entre 5 i 7 cm per sobre de la ferida (mai sobre una articulació), anotant l’hora. L’elevació i la compressió arterial indirecta ja no són mesures prioritàries.',
-        'Prioritzar sempre l’elevació del braç abans de comprimir.',
-        'Afluixar el torniquet cada 10 minuts perquè circuli la sang.'
+        'Substituir la primera gasa cada 3 minuts per evitar infeccions; el torniquet s’aplica sobre l’articulació proximal per bloquejar el flux arterial, i la compressió arterial indirecta continua sent la primera mesura abans que el torniquet.',
+        'Mantenir la primera gasa però afluixar la pressió manual cada 5 minuts; si cal torniquet, es col·loca entre 10 i 15 cm per sota de la ferida i s’afluixa cada 15 minuts per evitar la isquèmia irreversible del membre.'
       ],
       correctIndex: 1,
       explanation: "La V.3 del manual especifica que no s'ha de retirar mai el primer apòsit per no trencar el coàgul, que l'elevació i compressió arterial ja no són prioritàries i que el torniquet es posa 5-7 cm per sobre de la ferida anotant l'hora."
@@ -317,36 +317,36 @@ export const tema13AssistenciaSanitaria = {
       difficulty: 'Mitjà',
       question: "Quina modificació crucial s'aplica a l'inici de la RCP en víctimes pediàtriques (nens i lactants), ofegats en aigua o sepultats per allaus en comparació amb l'aturada cardíaca d'un adult?",
       options: [
-        'No es fan ventilacions en cap moment.',
+        'S’inicien directament 30 compressions toràciques sense ventilacions durant els primers 2 minuts per afavorir la perfusió cerebral i coronària immediata.',
         'S’administren 5 ventilacions de rescat inicials abans de començar les compressions toràciques (i si el socorrista està sol, fa 1 minut de RCP abans d’anar a alertar).',
-        'S’aplica immediatament el DEA amb descàrrega de 360 J sense fer compressions.',
-        'Es fan 60 compressions i 5 ventilacions.'
+        'S’aplica immediatament el DEA amb descàrrega d’alta energia sense fer compressions prèvies i, si el socorrista està sol, alerta el 112 abans d’iniciar la RCP.',
+        'S’administren 2 ventilacions de rescat inicials seguides d’una seqüència fixa de 60 compressions i 5 ventilacions, alertant el 112 abans de tocar la víctima.'
       ],
       correctIndex: 1,
       explanation: "Com que en nens, ofegats i allaus l'origen de l'aturada és asfíctic (hipòxic), el protocol ERC del manual indica començar amb 5 ventilacions de rescat inicials."
     },
     {
       id: 'q28-5',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Per què no ens podem fiar d'un pulsioxímetre convencional per valorar la saturació d'oxigen d'una víctima rescatada d'un incendi amb inhalació de fum (monòxid de carboni - CO)?",
       options: [
-        'Perquè el sutge espatlla la bateria de l’aparell.',
+        'Perquè el sutge i la humitat del fum obstrueixen el sensor infraroig de la pinça digital i fan que l’aparell s’apagui automàticament en menys de deu segons.',
         'Perquè el pulsioxímetre convencional no distingeix la carboxihemoglobina (COHb) de l’oxihemoglobina i marca un fals 99-100%; cal utilitzar un pulsicooxímetre.',
-        'Perquè en presència de CO el pulsioxímetre marca sempre 0%.',
-        'Perquè només funciona en nens.'
+        'Perquè en presència de monòxid de carboni el pulsioxímetre convencional marca sempre un valor erroni del 0% o inferior al 50% encara que el pacient estigui estable.',
+        'Perquè la lectura del pulsioxímetre convencional només és fiable a temperatures ambient inferiors a 25 °C i la calor de l’incendi altera la freqüència cardíaca.'
       ],
       correctIndex: 1,
       explanation: "L'apartat 4.8 adverteix que el pulsioxímetre estàndard llegeix la carboxihemoglobina com si fos oxigen, donant valors falsament normals; per detectar COHb cal un pulsicooxímetre."
     },
     {
       id: 'q28-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "En la seqüència de valoració primària XABCDE (apartat 3.1 de MAN.SANI.000 V.3), què significa la 'X' inicial i quant de temps màxim s'ha de dedicar a comprovar la respiració (VOS) al pas B?",
       options: [
         "X = Control immediat d'hemorràgies externes exsanguinants (abans fins i tot d'obrir la via aèria) | Pas B (VOS): màxim 10 segons.",
-        'X = Radiografia d’urgència | Pas B (VOS): mínim 60 segons.',
-        'X = Examen secundari complet SPUMA | Pas B (VOS): 30 segons.',
-        'X = Exposició a la intempèrie | Pas B (VOS): 3 segons.'
+        "X = Estabilització cervical bimanual immediata (abans d'avaluar la consciència del ferit) | Pas B (VOS): mínim 30 segons.",
+        "X = Exploració secundària ràpida de lesions ocultes mitjançant l'esquema SPUMA | Pas B (VOS): entre 20 i 30 segons.",
+        "X = Extricació urgent d'un vehicle sinistrat en risc d'incendi o explosió imminent | Pas B (VOS): màxim 5 segons."
       ],
       correctIndex: 0,
       explanation: "La 'X' prioritza el control d'hemorràgies massives exsanguinants que maten en menys de 3 minuts; al pas B, la maniobra VOS (Veure, Oir, Sentir) dura com a màxim 10 segons."
@@ -356,10 +356,10 @@ export const tema13AssistenciaSanitaria = {
       difficulty: 'Mitjà',
       question: "Quina postura d'espera o trasllat és correcta per a una dona embarassada (>20 setmanes) inconscient que respira normalment sense trauma, i quina per a un pacient conscient amb dificultat respiratòria (dispnea)?",
       options: [
-        'Embarassada: decúbit supí pla | Dispnea: Trendelemburg amb cames aixecades.',
-        'Embarassada: PLS sobre el costat dret | Dispnea: decúbit pron.',
+        'Embarassada: decúbit supí estricte amb coixí sota les espatlles | Dispnea: posició de Trendelemburg amb les cames elevades a 30°.',
+        'Embarassada: Posició Lateral de Seguretat (PLS) sobre el costat DRET per protegir el cor fetal | Dispnea: decúbit pron amb el cap lateralitzat.',
         'Embarassada: Posició Lateral de Seguretat (PLS) sempre sobre el costat ESQUERRE (per no comprimir la vena cava inferior) | Dispnea: Fowler / Semifowler (30°–90°).',
-        'Totes dues en Antitrendelemburg amb cames flexionades.'
+        'Embarassada: posició d’Antitrendelemburg a 45° en decúbit supí | Dispnea: Posició Lateral de Seguretat sobre el costat esquerre amb cames flexionades.'
       ],
       correctIndex: 2,
       explanation: "L'embarassada (>20 setmanes) en PLS es col·loca sempre sobre el costat esquerre per evitar la compressió de la vena cava inferior; per a dispnea en pacient conscient s'usa Fowler/Semifowler (30°–90°)."
@@ -369,9 +369,9 @@ export const tema13AssistenciaSanitaria = {
       difficulty: 'Difícil',
       question: "Davant d'un traumatisme cranioencefàlic (TCE) que presenta 'ulls d'ós rentador', signe de Battle i sortida de sang o líquid cefaloraquidi per l'oïda (otorràgia/otorrea), què hem de sospitar i com hem d'actuar?",
       options: [
-        'Fractura nasal simple; s’ha de taponar fortament l’oïda amb bena hemostàtica.',
-        'Intoxicació per opiacis; administrar aigua freda i posar taps auditius.',
-        'Lesió cervical lleu; aplicar torniquet al coll.',
+        'Fractura dels ossos propis del nas; s’ha de taponar fortament l’oïda i les fosses nasals amb bena hemostàtica a pressió per aturar la sortida de sang.',
+        'Contusió facial lleu amb afectació del timpà; cal rentar el conducte auditiu amb sèrum fisiològic fred i col·locar un tap oclusiu per evitar infeccions.',
+        'Lesió cervical alta amb compressió arterial; s’ha de mantenir el cap en hiperextensió forçada i aplicar un embenat compressiu circular sobre el conducte auditiu.',
         'Fractura de base de crani; està PROHIBIT taponar l’oïda o el nas (augmentaria la pressió intracranial) i només s’hi posa una gasa estèril suaument sense fer pressió.'
       ],
       correctIndex: 3,
@@ -383,22 +383,22 @@ export const tema13AssistenciaSanitaria = {
       question: "En la RCP bàsica d'un adult i l'ús del DEA (apartats 4.5 i 4.6), quins són els paràmetres exactes de compressió i quins dos ritmes són desfibril·lables?",
       options: [
         'Relació 30:2, ritme 100–120/min, profunditat 5–6 cm (relleu cada 2 min) | Només desfibril·la Fibril·lació Ventricular (FV) i Taquicàrdia Ventricular sense pols (TVsp).',
-        'Relació 15:2, ritme 60–80/min, profunditat 2–3 cm | Desfibril·la l’Asistòlia.',
-        'Relació 30:2, ritme 140–160/min, profunditat 8–9 cm | Desfibril·la tots els ritmes.',
-        'Relació 5:1, ritme 100/min | Només desfibril·la la bradicàrdia sinusal.'
+        'Relació 15:2, ritme 80–100/min, profunditat 3–4 cm (relleu cada 4 min) | Només desfibril·la l’Asistòlia i l’Activitat Elèctrica sense Pols (AESP).',
+        'Relació 30:2, ritme 120–140/min, profunditat 7–8 cm (relleu cada 5 min) | Desfibril·la tots els ritmes d’aturada cardíaca, inclosa l’asistòlia sostinguda.',
+        'Relació 15:1, ritme 100–110/min, profunditat 4–5 cm (relleu cada 3 min) | Només desfibril·la la Bradicàrdia extrema i la Fibril·lació Auricular ràpida.'
       ],
       correctIndex: 0,
       explanation: "La RCP en adult és 30:2 a 100–120 compressions/min i 5–6 cm de profunditat, amb relleu cada 2 minuts. El DEA només dóna descàrrega en FV i TVsp (mai en asistòlia)."
     },
     {
       id: 'q28-10',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Com s'ha d'actuar davant d'una obstrucció greu (completa) de la via aèria per cos estrany (OVACE) en un lactant (<1 any) que està conscient?",
       options: [
-        'Animar-lo a tossir sense tocar-lo en cap moment.',
-        'Aplicar directament 5 compressions abdominals (maniobra de Heimlich).',
+        'Mantenir el lactant incorporat i animar-lo a tossir sense tocar-lo ni fer cap escombrada, esperant que expulsi el cos estrany de manera espontània.',
+        'Aplicar directament sèries de 5 compressions abdominals (maniobra de Heimlich) amb els dos punys per sobre del melic fins a desobstruir la via aèria.',
         'Alternar 5 cops interescapulars a l’esquena (cap avall) amb 5 compressions toràciques amb 2 dits (prohibit fer Heimlich abdominal pel risc de trencar el fetge).',
-        'Iniciar immediatament 30 compressions i 2 ventilacions encara que estigui conscient.'
+        'Iniciar immediatament cicles de 30 compressions toràciques i 2 ventilacions de rescat encara que el lactant mantingui la consciència i la respiració agònica.'
       ],
       correctIndex: 2,
       explanation: "En lactants (<1 any) amb OVACE greu conscient està prohibida la maniobra abdominal de Heimlich pel risc de lesió hepàtica; s'alternen 5 cops interescapulars amb 5 compressions toràciques."
@@ -408,9 +408,9 @@ export const tema13AssistenciaSanitaria = {
       difficulty: 'Mitjà',
       question: "Segons la Regla dels 9 de Wallace en un adult (apartat 4.9), quin percentatge de superfície corporal cremada representen les dues cames completes més el tronc anterior, i com s'ha d'extreure correctament una paparra (apartat 4.10)?",
       options: [
-        '27% | Aplicant oli o vaselina abans d’estirar-la.',
-        '36% | Cremant-la amb un encenedor perquè deixi anar la pell.',
-        '72% | Retorçant-la amb els dits després d’aplicar alcohol.',
+        '27% (9% cada cama + 9% pit) | Aplicant oli mineral o vaselina estèril sobre la paparra abans d’estirar-la per asfixiar-la i evitar que es trenqui el cap.',
+        '36% (9% cada cama + 18% tronc anterior) | Aproximant una font de calor controlada o alcohol de 96° perquè la paparra deixi anar la pell espontàniament.',
+        '45% (18% cada cama + 9% abdomen) | Retorçant-la en sentit horari amb els dits enguantats després d’impregnar-la amb pomada antibiòtica i antisèptic iodat.',
         '54% (18% cada cama + 18% pit/abdomen) | En sec, amb pinces de punta fina arran de pell i tracció perpendicular contínua (prohibit aplicar oli, alcohol o calor).'
       ],
       correctIndex: 3,
@@ -421,10 +421,10 @@ export const tema13AssistenciaSanitaria = {
       difficulty: 'Difícil',
       question: "Quin és el llindar tèrmic d'hipotèrmia i per què s'ha de mobilitzar en horitzontal amb extrema suavitat un hipotèrmic moderat/greu, i quants socorristes participen en el Pont Simple vs. Pont Millorat?",
       options: [
-        'Hipotèrmia < 37 °C; es mou dret per activar la circulació | Pont Simple = 2; Pont Millorat = 3.',
+        'Hipotèrmia ≤ 36 °C; es mou incorporat en sedestació per activar el retorn venós cap al cor | Pont Simple = 3 socorristes (2+1); Pont Millorat = 4 socorristes (3+1), donant l’ordre sempre qui subjecta la pelvis.',
         'Hipotèrmia ≤ 35 °C; un moviment brusc envia sang freda perifèrica al cor i pot causar Fibril·lació Ventricular mortal | Pont Simple = 4 socorristes (3+1); Pont Millorat = 5 socorristes (4+1), donant l’ordre sempre qui subjecta el cap.',
-        'Hipotèrmia ≤ 30 °C; només risc de cremades per fred | Pont Simple = 5; Pont Millorat = 6.',
-        'Hipotèrmia ≤ 35 °C; no hi ha risc cardíac en moure’l | L’ordre de moviment la dóna sempre qui porta la llitera.'
+        'Hipotèrmia ≤ 32 °C; el risc principal és la fractura òssia per rigidesa muscular i cal fregament vigorós de les extremitats | Pont Simple = 5 socorristes (4+1); Pont Millorat = 6 socorristes (5+1), manant qui porta la llitera.',
+        'Hipotèrmia ≤ 35 °C; el moviment brusc només provoca hipertensió transitòria sense risc d’arítmies letals | Pont Simple = 4 socorristes (3+1); Pont Millorat = 5 socorristes (4+1), donant l’ordre sempre qui subjecta les cames.'
       ],
       correctIndex: 1,
       explanation: "La hipotèrmia s'inicia a ≤ 35 °C (<32-28 °C moderada/greu) i els moviments bruscos precipiten fibril·lació ventricular per retorn de sang freda perifèrica. Pont Simple = 3+1 (4); Pont Millorat = 4+1 (5), manant sempre qui controla el cap."
@@ -447,23 +447,23 @@ export const tema13AssistenciaSanitaria = {
       difficulty: 'Fàcil',
       question: "Davant d'una obstrucció completa (greu) de la via aèria per cos estrany (OVACE) en un adult conscient que no pot tossir ni parlar, quina és la pauta correcta d'actuació?",
       options: [
-        "Animar-lo únicament a tossir i donar-li aigua.",
+        "Animar-lo únicament a tossir amb força mentre se li administren petits glops d'aigua, sense aplicar cops a l'esquena per evitar que el cos estrany baixi més.",
         "Alternar sèries de 5 cops interescapulars a l'esquena amb 5 compressions abdominals (maniobra de Heimlich) fins a resoldre l'obstrucció o que perdi la consciència.",
-        "Realitzar directament 30 compressions toràciques dret.",
-        "Fer una escombrada digital a cegues dins la boca abans de fer cap maniobra."
+        "Realitzar directament sèries de 30 compressions toràciques dret contra una paret sense alternar-les amb cops interescapulars ni compressions abdominals.",
+        "Fer una escombrada digital a cegues dins la cavitat bucal abans de realitzar cap maniobra de desobstrucció i tot seguit col·locar la víctima en decúbit supí."
       ],
       correctIndex: 1,
       explanation: "En l'OVACE greu en adult conscient (tos ineficaç), el protocol ERC indica alternar 5 cops secs interescapulars a l'esquena amb 5 compressions abdominals (Heimlich). Si queda inconscient, s'inicia RCP immediatament."
     },
     {
       id: 'q28-15',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Durant una aturada cardiorespiratòria amb dos reanimadors, què ha de fer el primer reanimador mentre el segon arriba amb el DEA i n'enganxa els elèctrodes al tòrax del pacient?",
       options: [
-        "Aturar les compressions toràciques des que s'obre el maletí del DEA fins després de la descàrrega.",
+        "Aturar les compressions toràciques des que s'obre el maletí del DEA fins després de la descàrrega per evitar interferències electromagnètiques en la lectura inicial.",
         "Continuar realitzant les compressions toràciques (RCP) sense interrupció mentre l'altre company col·loca els pegats, aturant-se només quan el DEA indiqui que està analitzant el ritme.",
-        "Realitzar només ventilacions boca a boca mentre es col·loquen els pegats.",
-        "Comprovar el pols carotidi durant 30 segons abans d'encendre el DEA."
+        "Realitzar únicament ventilacions de rescat amb bossa-màscara mentre es col·loquen els pegats al tòrax, suspenent les compressions fins que l'aparell completi la càrrega.",
+        "Comprovar el pols carotidi bilateral i la respiració (VOS) durant 30 segons abans d'encendre el DEA i enganxar els elèctrodes sobre la pell seca del pacient."
       ],
       correctIndex: 1,
       explanation: "Per minimitzar les pauses sense flux sanguini, un reanimador manté les compressions toràciques mentre l'altre encén el DEA i col·loca els elèctrodes; només s'atura el massatge quan el DEA ordena no tocar el pacient per analitzar o descarregar."
@@ -473,10 +473,10 @@ export const tema13AssistenciaSanitaria = {
       difficulty: 'Fàcil',
       question: "En un lactant (< 1 any), quina és la localització anatòmica recomanada per comprovar el pols arterial central?",
       options: [
-        "A l'artèria radial, al canell.",
+        "A l'artèria radial, a la cara anterior i lateral del canell, just per sota del polze.",
         "A l'artèria braquial (humeral), a la cara interna del braç entre el colze i l'aixella.",
-        "A l'artèria pèdia, al dors del peu.",
-        "A l'artèria temporal, al lateral del front."
+        "A l'artèria pèdia dorsal, a la cara superior de l'empenya del peu, prop dels dits.",
+        "A l'artèria caròtide primitiva, a la cara anterolateral del coll, al costat de la tràquea."
       ],
       correctIndex: 1,
       explanation: "En lactants, el coll curt i adipós dificulta palpar el pols carotidi, per la qual cosa es recomana palpar el pols braquial a la cara interna del braç (o alternativament el femoral)."
@@ -496,13 +496,13 @@ export const tema13AssistenciaSanitaria = {
     },
     {
       id: 'q28-18',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "En la terminologia clínica del capítol 2 de MAN.SANI.000, quina diferència hi ha entre un SIGNE i un SÍMPTOMA, i quin dels següents exemples és un signe?",
       options: [
-        "El signe és una sensació subjectiva que relata la víctima i el símptoma és mesurable; el mareig és un signe.",
+        "El signe és una sensació subjectiva que relata la víctima i el símptoma és una dada objectiva mesurable; per exemple, el mareig o les nàusees són signes clínics directes.",
         "El signe és una dada objectiva i mesurable pel socorrista (p. ex., cianosi, FC de 125 bpm o anisocòria), mentre que el símptoma és una sensació subjectiva que només pot explicar el pacient (p. ex., dolor, mareig o nàusees).",
-        "Tots dos termes són sinònims i només s'apliquen en cremades de tercer grau.",
-        "El dolor toràcic i les nàusees són signes objectius, mentre que la temperatura de 39 °C és un símptoma."
+        "Tots dos termes són sinònims clínics equivalents en la valoració XABCDE i s'utilitzen indistintament tant per a les constants vitals com per a la intensitat del dolor referida.",
+        "El dolor toràcic opressiu i les nàusees són signes objectius perquè es poden interrogar amb l'esquema SPUMA, mentre que la temperatura de 39 °C i la cianosi són símptomes."
       ],
       correctIndex: 1,
       explanation: "Els signes són dades objectives observables o mesurables (pols, Tª, cianosi, pupil·les), mentre que els símptomes són percepcions subjectives descrites pel pacient (dolor, mareig, nàusees)."

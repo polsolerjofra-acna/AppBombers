@@ -342,9 +342,9 @@ export const tema2FuncioPublica = {
       question: 'Quantes situacions administratives preveu el Text Únic (DL 1/1997) que no apareixen llistades com a bàsiques a l\'EBEP?',
       options: [
         '8 en total al TU (afegeix excedència forçosa, voluntària incentivada i expectativa de destinació)',
-        '6 en total al TU (afegeix només expectativa de destinació)',
-        '5 en total, exactament les mateixes que l\'EBEP',
-        '7 en total al TU (afegeix segona activitat i excedència forçosa)'
+        '6 en total al TU (afegeix únicament la situació d\'expectativa de destinació per reestructuració)',
+        '5 en total al TU (coincideix exactament amb les cinc situacions administratives bàsiques de l\'EBEP)',
+        '7 en total al TU (afegeix la situació de segona activitat operativa i la d\'excedència forçosa)'
       ],
       correctIndex: 0,
       explanation: 'L\'EBEP en té 5 i el TU 8 (afegeix excedència forçosa, voluntària incentivada [5 anys] i expectativa de destinació).'
@@ -403,13 +403,13 @@ export const tema2FuncioPublica = {
     },
     {
       id: 't2-q13',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Quina diferència hi ha entre l\'excedència voluntària per interès particular (TU) i l\'excedència per cura de familiars?',
       options: [
         'La d\'interès particular exigeix 5 anys de serveis previs i no reserva lloc; la de cura de familiars no exigeix temps previ, computa a tots els efectes i reserva el lloc 2 anys (màxim 3 anys)',
-        'La d\'interès particular dura màxim 3 anys i reserva el lloc durant 2 anys',
-        'La de cura de familiars exigeix 2 anys de serveis previs i no computa per a triennis',
-        'Cap de les dues excedències computa a efectes de carrera ni reserva el lloc de treball'
+        'La d\'interès particular exigeix 2 anys de serveis previs, dura com a màxim 3 anys i reserva el mateix lloc de treball durant els primers 2 anys',
+        'La de cura de familiars exigeix 2 anys de serveis efectius previs, té una durada màxima de 5 anys i no computa a efectes de triennis ni carrera',
+        'Cap de les dues excedències computa a efectes de triennis, grau personal o drets passius ni comporta reserva del lloc de treball en cap període'
       ],
       correctIndex: 0,
       explanation: 'Interès particular (TU): 5 anys previs, mínim 2 de permanència, sense sou, còmput ni reserva. Cura de familiars: màx. 3 anys, sense temps previ, computa tot i reserva el lloc durant 2 anys.'
@@ -420,9 +420,9 @@ export const tema2FuncioPublica = {
       question: 'Quants anys de serveis en un mateix nivell calen per consolidar el grau personal i quina és la regla d\'ascens de nivells?',
       options: [
         '2 anys consecutius o 3 amb interrupció; puja de 2 en 2 nivells cada 2 anys (amb límit de l\'interval del cos)',
-        '1 any consecutiu o 2 amb interrupció; puja d\'1 en 1 nivell cada any',
-        '3 anys consecutius o 5 amb interrupció; puja de 2 en 2 nivells cada 3 anys',
-        '2 anys consecutius sempre (no s\'admet interrupció)'
+        '1 any consecutiu o 2 amb interrupció; puja d\'1 en 1 nivell cada any de servei efectiu fins al màxim del grup',
+        '3 anys consecutius o 5 amb interrupció; puja de 2 en 2 nivells cada 3 anys sense superar el límit de l\'interval',
+        '2 anys consecutius en el mateix lloc sense interrupció; puja de 2 en 2 nivells cada 4 anys de serveis prestats'
       ],
       correctIndex: 0,
       explanation: 'El grau personal es consolida amb 2 anys consecutius o 3 amb interrupció en un lloc d\'aquell nivell o superior, i avança de 2 en 2 nivells cada 2 anys.'
@@ -446,9 +446,9 @@ export const tema2FuncioPublica = {
       question: 'Quina és la diferència entre la "llicència per assumptes propis" de l\'art. 95 del Text Únic i els "dies per assumptes particulars" de l\'art. 48.k de l\'EBEP?',
       options: [
         'La llicència del TU dura fins a 6 mesos cada 2 anys sense retribució; els assumptes particulars de l\'EBEP són 6 dies retribuïts a l\'any',
-        'Tots dos són 6 dies retribuïts a l\'any i signifiquen exactament el mateix',
-        'La llicència del TU és de 6 dies sense sou i l\'EBEP dóna 6 mesos amb sou',
-        'La llicència del TU només s\'aplica als bombers interins per estudis oficials'
+        'Totes dues figures reconeixen 6 dies retribuïts a l\'any natural i s\'utilitzen com a denominacions equivalents en ambdues normes',
+        'La llicència del TU té una durada màxima de 6 dies sense retribució i l\'article 48.k de l\'EBEP atorga fins a 6 mesos amb sou íntegre',
+        'La llicència del TU només s\'aplica als funcionaris interins per motius formatius i l\'EBEP la reserva exclusivament als de carrera'
       ],
       correctIndex: 0,
       explanation: 'No confondre: Llicència per assumptes propis (art. 95 TU) = màxim 6 mesos cada 2 anys sense cobrar; Assumptes particulars (art. 48.k EBEP) = 6 dies lliures retribuïts.'
@@ -485,9 +485,9 @@ export const tema2FuncioPublica = {
       question: 'A quin personal s’aplica el Reglament disciplinari aprovat pel Decret 243/1995?',
       options: [
         'Al personal funcionari, aspirant, interí, eventual i amb contracte administratiu dels departaments de la Generalitat',
-        'Als càrrecs electes i als membres del Parlament de Catalunya',
-        'Al personal laboral de totes les empreses privades contractistes',
-        'Exclusivament als alts càrrecs nomenats per Decret del Govern'
+        'Als alts càrrecs electes, als membres del Govern de la Generalitat i als diputats del Parlament de Catalunya',
+        'Al personal laboral fix i temporal de totes les empreses privades contractistes de serveis amb la Generalitat',
+        'Exclusivament als funcionaris de carrera amb nomenament definitiu i als alts càrrecs nomenats per Decret del Govern'
       ],
       correctIndex: 0,
       explanation: 'L’àmbit del Decret 243/1995 s’aplica al personal vinculat als departaments de l’Administració de la Generalitat (funcionari, aspirant, interí, eventual i contracte administratiu). Els càrrecs electes i el personal d’empreses privades en queden fora.'

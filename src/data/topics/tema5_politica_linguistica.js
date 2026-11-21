@@ -223,9 +223,9 @@ export const tema5PoliticaLinguistica = {
       question: 'En un procediment administratiu (art. 10), quan cal sol·licitar expressament l\'ús del castellà?',
       options: [
         'Per rebre les notificacions en castellà (no cal demanar-ho per presentar escrits ni manifestar-se)',
-        'Per presentar qualsevol escrit al registre',
-        'Tant per presentar escrits com per parlar a les compareixences',
-        'No es pot rebre cap notificació en castellà en cap cas'
+        'Per presentar qualsevol escrit al registre general (tot i que les notificacions es fan d\'ofici en castellà)',
+        'Tant per presentar escrits com per parlar a les compareixences orals davant l\'òrgan instructor',
+        'No es pot rebre cap notificació ni resolució en castellà en procediments tramitats per ens locals catalans'
       ],
       correctIndex: 0,
       explanation: 'Presentar escrits o manifestar-se en castellà no requereix sol·licitud prèvia; rebre-hi les notificacions sí.'
@@ -275,9 +275,9 @@ export const tema5PoliticaLinguistica = {
       question: 'Com s\'aplica la Llei 1/1998 als documents privats (art. 15) i als assentaments registrals (art. 17)?',
       options: [
         'Els privats són vàlids en qualsevol idioma (xecs/pagarés almenys català); l\'assentament segueix la llengua del document (llevat registres només administratius)',
-        'Els privats només són vàlids en català o castellà; els registres són sempre en castellà',
-        'Els xecs només poden anar en castellà',
-        'Els assentaments registrals es tradueixen obligatòriament a totes dues llengües'
+        'Els privats només són vàlids en català o castellà (xecs només en castellà); l\'assentament en registres públics s\'estén sempre en llengua castellana',
+        'Els privats es redacten en la llengua pactada però els xecs i pagarés només poden anar en castellà; els registres mercantils s\'assenten sempre en català',
+        'Els privats en llengua estrangera són nuls sense traducció jurada; els assentaments registrals es tradueixen i estenen obligatòriament a totes dues llengües'
       ],
       correctIndex: 0,
       explanation: 'Art. 15: privats en qualsevol idioma, però xecs/pagarés almenys català. Art. 17: assentament en la llengua del document.'
@@ -288,9 +288,9 @@ export const tema5PoliticaLinguistica = {
       question: 'Segons l\'article 2.2 de la Llei 1/1998, com utilitza el català l\'Administració de l\'Estat situada a Catalunya?',
       options: [
         'Com a llengua preferentment emprada (mentre que per a les institucions de Catalunya és la llengua pròpia que les obliga)',
-        'Exclusivament en les comunicacions internes, mai amb els ciutadans',
-        'Com a llengua cooficial únicament si el ciutadà ho demana per escrit',
-        'De manera obligatòria i excloent del castellà en tots els seus actes'
+        'Exclusivament en les comunicacions internes entre òrgans perifèrics, sense poder-la emprar amb els ciutadans en cap tràmit',
+        'Com a llengua merament subsidiària del castellà, només aplicable quan l\'interessat ho sol·liciti per escrit motivadament',
+        'De manera obligatòria i excloent del castellà en totes les resolucions, notificacions i comunicacions oficials a Catalunya'
       ],
       correctIndex: 0,
       explanation: 'L\'art. 2.2 defineix el català com la llengua DE les institucions de Catalunya i, particularment, la llengua preferentment emprada per l\'Administració de l\'Estat a Catalunya.'
@@ -340,9 +340,9 @@ export const tema5PoliticaLinguistica = {
       question: 'Quina excepció preveu l\'article 17 de la Llei 1/1998 respecte a la llengua dels assentaments en els registres públics?',
       options: [
         'Els registres de caràcter únicament administratiu (la resta segueixen la llengua del document)',
-        'Els registres de la propietat i mercantils, que són sempre en castellà',
-        'Els registres civils, que es fan sempre en totes dues llengües',
-        'No preveu cap excepció en cap tipus de registre'
+        'Els registres de la propietat i mercantils (que s\'han d\'estendre sempre en llengua castellana)',
+        'Els registres civils i de parelles estables (que s\'estenen sempre en totes dues llengües oficials)',
+        'No preveu cap excepció (tots els registres públics s\'assenten exclusivament en llengua catalana)'
       ],
       correctIndex: 0,
       explanation: 'Art. 17: l\'assentament segueix la llengua del document presentat, llevat dels registres de caràcter només administratiu.'
@@ -362,13 +362,13 @@ export const tema5PoliticaLinguistica = {
     },
     {
       id: 't5-q17',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Quantes disposicions addicionals té la Llei 1/1998 i què cal recordar sobre els processos de selecció de personal laboral (art. 11.2)?',
       options: [
         'Té 9 disposicions addicionals (la 9a afegida el 2017) i en els processos de selecció de personal laboral també s\'ha d\'acreditar el coneixement del català',
-        'Té 4 disposicions addicionals i el personal laboral està exempt d\'acreditar el català',
-        'Té 9 disposicions addicionals i només els funcionaris de carrera acrediten el català',
-        'Té 15 disposicions addicionals i en selecció cal acreditar tant el català com l\'aranès a tot Catalunya'
+        'Té 4 disposicions addicionals i el personal laboral temporal o fix està exempt d\'acreditar el coneixement del català en la fase de selecció',
+        'Té 9 disposicions addicionals i només els funcionaris de carrera han d\'acreditar el català, mentre que el laboral només acredita el castellà',
+        'Té 15 disposicions addicionals i en tots els processos de selecció a Catalunya cal acreditar obligatòriament tant el català com l\'aranès'
       ],
       correctIndex: 0,
       explanation: 'La Llei 1/1998 té 9 disposicions addicionals (la 9a afegida el 2017) i l\'art. 11.2 exigeix acreditar el coneixement del català també en els processos de selecció de personal laboral.'

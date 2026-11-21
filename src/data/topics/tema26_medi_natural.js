@@ -221,13 +221,13 @@ export const tema26MediNatural = {
   quiz: [
     {
       id: 't31-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'En quin any es va crear el GRAE (de la fusió del GRM i el GRS) i quines són les 4 seus actuals del GRAE Muntanya a Catalunya segons el manual MAN.SVMN.000?',
       options: [
-        'Creat el 2005; seus a Barcelona, Tarragona, Lleida i Girona.',
+        'Creat l’any 2005; les 4 seus del GRAE Muntanya són: Barcelona, Tarragona, Lleida i Girona (i GRAE Subaquàtic a Tarragona).',
         'Creat l’any 1997; les 4 seus del GRAE Muntanya són: Cerdanyola, Olot, la Seu d’Urgell i Valls (i GRAE Subaquàtic a Cerdanyola).',
-        'Creat l’any 1985; seus a Vic, Manresa, Sort i Reus.',
-        'Creat l’any 2010; seus a Lleida i Vic.'
+        'Creat l’any 1985; les 4 seus del GRAE Muntanya són: Vic, Manresa, Sort i Reus (i GRAE Subaquàtic a Mataró).',
+        'Creat l’any 2001; les 4 seus del GRAE Muntanya són: Sabadell, Figueres, Tremp i Tortosa (i GRAE Subaquàtic a Badalona).'
       ],
       correctIndex: 1,
       explanation: 'Capítol 1 del manual MAN.SVMN.000: el GRAE neix l’any 1997 unificant GRM i GRS, i té les seves 4 bases de muntanya a Cerdanyola, Olot, la Seu d’Urgell i Valls.'
@@ -250,10 +250,10 @@ export const tema26MediNatural = {
       difficulty: 'Mitjà',
       question: 'Segons el Capítol 5 del manual MAN.SVMN.000, de quina hipòtesi sobre l’estat de la víctima parteix la Recerca EXTENSIVA i de quina parteix la Recerca INTENSIVA?',
       options: [
-        'Extensiva: víctima estàtica | Intensiva: víctima en moviment.',
+        'Extensiva: parteix de la hipòtesi que la persona està ESTÀTICA (escombrat lent i minuciós per sectors) | Intensiva: parteix de la hipòtesi que la persona està EN MOVIMENT (poc personal i alta velocitat per pistes).',
         'Extensiva: parteix de la hipòtesi que la persona està EN MOVIMENT (poc personal, alta velocitat per camins) | Intensiva: parteix de la hipòtesi que la persona està ESTÀTICA (per línies naturals o per sectors).',
-        'Totes dues pressuposen que la víctima ja ha sortit del bosc.',
-        'L’Extensiva només es fa amb helicòpter.'
+        'Extensiva: pressuposa que la persona ja ha sortit de la zona boscana cap a nuclis urbans | Intensiva: s’executa exclusivament mitjançant helicòpter de rescat i càmeres tèrmiques sense desplegament a peu.',
+        'Extensiva: només es fa amb gossos de rastreig des de l’UPA durant les primeres 2 hores | Intensiva: només es fa de dia per punts probables (refugis i masies) quan s’ha descartat qualsevol moviment previ.'
       ],
       correctIndex: 1,
       explanation: 'Apartats 5.1 i 5.2: la recerca extensiva busca algú en moviment al llarg de vies de comunicació amb poc personal i rapidesa; la intensiva busca algú estàtic.'
@@ -263,10 +263,10 @@ export const tema26MediNatural = {
       difficulty: 'Mitjà',
       question: 'Quina modalitat de recerca intensiva destaca al manual per tenir una ALTA EFECTIVITAT NOCTURNA?',
       options: [
-        'La recerca intensiva per sectors amb 200 voluntaris.',
+        'La recerca intensiva per SECTORS (fent un escombrat en línia paral·lela camp a través amb desenes de voluntaris coordinats durant la matinada).',
         'La recerca intensiva per LÍNIES NATURALS (explorant els vorals i marges propers als camins i cursos d’aigua amb suport de llum i crida i escolta).',
-        'La recerca aèria amb helicòpter sense visió nocturna.',
-        'La recerca de punts probables.'
+        'La recerca EXTENSIVA amb vehicles tot terreny a gran velocitat per pistes forestals secundàries sense aturar-se a realitzar crida i escolta.',
+        'La recerca de PUNTS PROBABLES executada exclusivament amb helicòpter sense càmera tèrmica ni focus d’il·luminació per evitar enlluernaments.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 5.2.a del manual: la recerca intensiva per línies naturals (marges i vorals de camins) presenta una alta efectivitat durant la nit.'
@@ -276,36 +276,36 @@ export const tema26MediNatural = {
       difficulty: 'Mitjà',
       question: 'Quina és la diferència exacta entre un GUIATGE i un ACOMPANYAMENT segons el Capítol 2 del manual MAN.SVMN.000?',
       options: [
-        'El Guiatge el fa el GRAE i l’Acompanyament els Mossos.',
+        'El Guiatge és una actuació PRESENCIAL dels bombers especialistes GRAE amb cordes de seguretat sobre terreny abrupte, mentre que l’Acompanyament el fan els Mossos d’Esquadra per carretera fins al centre sanitari més proper.',
         'El Guiatge es fa de manera REMOTA (a distància per telèfon quan hi ha comunicació amb una persona il·lesa desorientada), mentre que l’Acompanyament és PRESENCIAL sobre el terreny amb una persona il·lesa sense necessitat de maniobra tècnica.',
-        'El Guiatge és per a ferits greus i l’Acompanyament per a morts.',
-        'Són sinònims.'
+        'El Guiatge s’aplica únicament a ferits greus que no poden caminar i requereixen extracció amb llitera i polispast, mentre que l’Acompanyament és l’evacuació preventiva d’un càmping o casa rural davant d’una crescuda sobtada.',
+        'Tots dos termes són sinònims operatius per a l’auxili presencial d’una persona esgotada en un sender, diferenciant-se únicament en si la víctima disposa o no de cobertura de telefonia mòbil per contactar amb el 112.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 2.3 del manual: Guiatge = orientació remota per comunicació telefònica; Acompanyament = auxili presencial fins a lloc segur sense maniobres tècniques de rescat.'
     },
     {
       id: 't31-q6',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Quina diferència hi ha entre la recerca canina per RASTREIG i la recerca canina per VENTEIG (Cap. 5.6)?',
       options: [
-        'El Rastreig es fa en allaus i el Venteig per carretera.',
+        'El Rastreig s’aplica exclusivament en allaus de neu i estructures col·lapsades sense mostra d’olor, mentre que el Venteig segueix la petjada exacta sobre l’asfalt o camins forestals amb corretja curta des de l’UPA.',
         'El Rastreig segueix el camí exacte d’olor dipositat sobre el TERRA per una persona concreta (a partir d’una mostra d’olor i des de l’UPA), mentre que el Venteig detecta olor humana dispersa a l’AIRE en grans àrees (amb la zona lliure de gent).',
-        'El Venteig necessita corretja curta i mostra de roba de la víctima.',
-        'Els gossos del GRCR només fan rastreig.'
+        'El Venteig necessita obligatòriament corretja curta de 2 metres, una peça de roba de la víctima i la presència d’un binomi de bombers caminant al costat del gos, mentre que el Rastreig es fa sempre amb el gos solt.',
+        'Els gossos del GRCR només treballen per Rastreig en el medi natural quan ha plogut recentment, i reserven la tècnica de Venteig únicament per a la recerca de víctimes sota runa en edificis urbans col·lapsats.'
       ],
       correctIndex: 1,
       explanation: 'Rastreig = olor específica al terra des de l’UPA amb peça de roba/olor; Venteig = con d’olor humana genèrica en l’aire dins d’un sector buit de personal.'
     },
     {
       id: 't31-q7',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Què és l’UPA (Últim Punt d’Albirament) i quina és la primera acció obligatòria que han de fer els bombers en arribar-hi?',
       options: [
-        'És l’hospital de destí; cal enviar-hi el SEM.',
+        'És el punt de trobada amb l’helicòpter medicalitzat del SEM; cal netejar la zona de vegetació i aparcar-hi tots els vehicles d’emergència per facilitar el transbordament ràpid del ferit.',
         'És l’últim lloc confirmat on es va veure la persona desapareguda (o el seu vehicle); cal PROTEGIR-LO i ABALISAR-LO immediatament per no contaminar l’olor, ubicant el Centre de Comandament allunyat de l’UPA.',
-        'És el punt on s’aparca tota la flota de camions de bombers.',
-        'És el cim més alt de la comarca.'
+        'És el perímetre exterior on s’inicien les línies de contenció; cal desplegar-hi immediatament totes les patrulles a peu per trepitjar el terreny abans que s’esborrin les petjades visuals.',
+        'És el punt de màxima alçada topogràfica de la zona de recerca; cal instal·lar-hi el repetidor de comunicacions i el Centre de Comandament Avançat per garantir la cobertura de ràdio.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 6.1 del manual: l’UPA s’ha de preservar i abalisar immediatament per no destruir el rastre olfactiu; el Centre de Comandament s’ubica a prop però allunyat de l’UPA.'
@@ -329,9 +329,9 @@ export const tema26MediNatural = {
       question: 'Quina de les següents opcions recull les 8 maniobres amb cordes descrites a l’apartat 4.2 del manual MAN.SVMN.000?',
       options: [
         'Ancoratges, Ràpel, Ascens tipus escalada, Ascens per corda fixa, Tirolina, Assegurament de víctima, Polispast i Passamans.',
-        'Només Ràpel i Polispast.',
-        'Salt al buit, tirolina i busseig.',
-        'Apuntalament, tall amb cisalla i ràpel.'
+        'Ancoratges, Ràpel guiat, Rescat en allau, Estabilització de talús, Tirolina, Polispast compost, Apuntalament i Passamans.',
+        'Ràpel amb llitera, Escalada artificial, Descens en helicòpter, Tirolina doble, Tall amb serra sabre, Polispast 3:1 i Busseig.',
+        'Ancoratges naturals, Ràpel invertit, Pont de mico, Rescat aquàtic, Evacuació en grua, Polispast simple i Passamans fix.'
       ],
       correctIndex: 0,
       explanation: 'Les 8 maniobres del Capítol 4.2 són: 1. Ancoratges, 2. Ràpel, 3. Ascens tipus escalada, 4. Ascens per corda fixa, 5. Tirolina, 6. Assegurament de víctima, 7. Polispast i 8. Passamans.'
@@ -354,10 +354,10 @@ export const tema26MediNatural = {
       difficulty: 'Mitjà',
       question: 'S’activa un dispositiu ampli de recerca immediatament després de desaparèixer un nen de 5 anys en una zona boscosa propera a un càmping, amb disponibilitat immediata de desenes d’efectius de Bombers i Mossos. Quina metodologia de recerca humana és la més indicada d’entrada?',
       options: [
-        'Recerca intensiva per sectors sense cap control perimetral.',
+        'Recerca intensiva per sectors en línia paral·lela, avançant lentament des del càmping sense establir cap control perimetral previ.',
         'Recerca per CONTENCIÓ (tancant primer un perímetre exterior a pistes, cruïlles i carreteres per anar tancant el cercle cap al centre).',
-        'Guiatge remot per telèfon mòbil.',
-        'Recerca exclusiva amb helicòpter sense suport a terra.'
+        'Guiatge remot per telèfon mòbil i senyals acústics des del Centre de Comandament Avançat esperant que el nen respongui.',
+        'Recerca exclusiva amb helicòpter tèrmic a gran alçada sense desplegar efectius a terra per no trepitjar possibles rastres.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 5.4 del manual: la recerca per contenció tanca un perímetre exterior cap al centre i és la metodologia idònia quan es disposa de molt personal immediat, especialment en desaparicions de nens petits.'
@@ -367,10 +367,10 @@ export const tema26MediNatural = {
       difficulty: 'Mitjà',
       question: 'A les 23:30 h, un boletaire sense mòbil ni llanterna no ha tornat al seu cotxe. Després d’una batuda ràpida per pistes sense èxit, el comandament decideix buscar a peu fins a 10–20 m a banda i banda dels marges dels camins i torrents. Quina metodologia s’aplica i per què?',
       options: [
-        'Recerca extensiva, perquè pressuposa que la víctima corre ràpidament pel bosc.',
+        'Recerca extensiva, perquè pressuposa que la víctima es desplaça ràpidament pel bosc i s’executa amb poc personal per pistes principals.',
         'Recerca intensiva per LÍNIES NATURALS, perquè pressuposa víctima estàtica prop d’un camí/rierol i presenta una alta efectivitat nocturna.',
-        'Recerca per contenció, perquè només hi ha 4 bombers disponibles.',
-        'Recerca canina per venteig dins de l’edifici del Centre de Comandament.'
+        'Recerca per contenció, perquè tanca un perímetre exterior amb poc personal quan la víctima es troba en moviment continu durant la nit.',
+        'Recerca canina per venteig dins de l’edifici del Centre de Comandament per detectar la direcció del vent abans de sortir a peu.'
       ],
       correctIndex: 1,
       explanation: 'La recerca intensiva per línies naturals explora vorals, marges i barrancs propers (10–20 m) sota la hipòtesi de víctima estàtica i destaca per la seva alta efectivitat nocturna amb llanternes i crida i escolta.'
@@ -416,13 +416,13 @@ export const tema26MediNatural = {
     },
     {
       id: 't31-q16',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Dins les 8 maniobres amb cordes descrites a l’apartat 4.2 del manual MAN.SVMN.000, quina maniobra queda reservada als especialistes GRAE per les enormes tensions mecàniques que genera sobre els ancoratges, i quin angle màxim s’ha de respectar en la triangulació d’ancoratges?',
       options: [
-        'El passamans queda reservat al GRAE | L’angle de triangulació ha de ser sempre de 150°.',
+        'El passamans queda reservat al GRAE | Els ancoratges han de mantenir un angle màxim de 120° entre cintes.',
         'La tirolina queda reservada al GRAE | Els ancoratges redundants (mínim 2 punts) han de mantenir un angle < 60° entre cintes.',
-        'El ràpel queda reservat al GRAE | Només cal 1 punt d’ancoratge amb angle de 120°.',
-        'El polispast 2:1 queda reservat al GRAE | L’angle òptim és de 90°.'
+        'El ràpel guiat queda reservat al GRAE | Només cal 1 punt d’ancoratge principal amb un angle de treball de 90°.',
+        'El polispast 3:1 queda reservat al GRAE | Els ancoratges redundants han de mantenir un angle òptim de 90° a 110°.'
       ],
       correctIndex: 1,
       explanation: 'Segons el manual, la tirolina (pas aeri tensat) es reserva als especialistes GRAE per les elevades tensions que genera. Els ancoratges han de ser redundants (mínim 2 punts) i amb un angle < 60° entre cintes.'
@@ -432,23 +432,23 @@ export const tema26MediNatural = {
       difficulty: 'Fàcil',
       question: 'Quina seu del GRAE a Catalunya concentra també la base del GRAE Subaquàtic i l’helicòpter de rescat amb grua i personal mèdic del GEM, i quins dos plans especials de protecció civil s’integren al Capítol 1 de MAN.SVMN.000?',
       options: [
-        'Seu d’Olot | Plans INFOCAT i INUNCAT.',
+        'Seu d’Olot | Plans INFOCAT (incendis forestals) i INUNCAT (inundacions), sota el marc de la Llei 5/1994.',
         'Seu de Cerdanyola del Vallès | Plans NEUCAT (nevades) i ALLAUCAT (allaus), sota el marc de la Llei 5/1994.',
-        'Seu de Valls | Plans PLASEQCAT i TRANSCAT.',
-        'Seu de la Seu d’Urgell | Plans PENTA i RADCAT.'
+        'Seu de Valls | Plans PLASEQCAT (risc químic) i TRANSCAT (accidents de trànsit), sota el marc de la Llei 5/1994.',
+        'Seu de la Seu d’Urgell | Plans PENTA (energia elèctrica) i RADCAT (risc radiològic), sota el marc de la Llei 5/1994.'
       ],
       correctIndex: 1,
       explanation: 'A Cerdanyola del Vallès hi ha una de les 4 seus del GRAE Muntanya (juntament amb Olot, la Seu d’Urgell i Valls), a més del GRAE Subaquàtic i l’helicòpter de rescat amb grua i metge del GEM. Els plans del Capítol 1 són NEUCAT i ALLAUCAT.'
     },
     {
       id: 't31-q18',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quina és la diferència principal entre la Recerca Intensiva per Sectors i la Recerca de Punts Probables segons el Capítol 5 del manual MAN.SVMN.000?',
       options: [
         'La intensiva per sectors fa un escombrat en línia paral·lela cobrint el 100% d’una parcel·la (molt personal, baixa velocitat, màxima minuciositat), mentre que la de punts probables comprova directament llocs d’interès concrets (masies, refugis, coves, fonts).',
-        'La intensiva per sectors es fa només en vehicle tot terreny a gran velocitat i la de punts probables tanca un perímetre amb 100 patrulles.',
-        'La de punts probables és exclusiva dels gossos de venteig i la intensiva per sectors és exclusiva de l’helicòpter.',
-        'Totes dues pressuposen que la víctima camina a gran velocitat per carreteres asfaltades.'
+        'La intensiva per sectors es fa únicament en vehicle tot terreny a gran velocitat per pistes asfaltades (poc personal, alta velocitat), mentre que la de punts probables tanca un perímetre exterior amb desenes de patrulles per contenir una víctima en moviment.',
+        'La de punts probables és una tècnica exclusiva dels gossos de venteig en zones sense vegetació, mentre que la intensiva per sectors s’executa exclusivament des de l’aire amb helicòpter i càmera tèrmica durant les primeres hores de recerca diürna.',
+        'Totes dues metodologies parteixen de la hipòtesi que la víctima camina a gran velocitat per carreteres secundàries, però la intensiva per sectors utilitza guiatge telefònic remot i la de punts probables utilitza ràpel guiat i tirolines.'
       ],
       correctIndex: 0,
       explanation: 'La recerca intensiva per sectors pentina minuciosament tota una parcel·la en paral·lel (molt personal, baixa velocitat); la de punts probables envia equips ràpids a comprovar refugis, cabanes, masies o zones freqüentades.'

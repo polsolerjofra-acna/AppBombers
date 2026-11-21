@@ -314,13 +314,13 @@ export const tema10IncendisForestals = {
   quiz: [
     {
       id: 'q25-1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "En la sectorització operativa d'un incendi forestal segons el manual MAN.INVE.000, quin número s'assigna a la cua de l'incendi i com es numeren els sectors del flanc esquerre i del flanc dret?",
       options: [
-        'Sector 1 a la cua, lletres A-B a l’esquerra i C-D a la dreta.',
+        'Sector 1 a la cua, lletres A-B al flanc esquerre i lletres C-D al flanc dret (segons ordre d’arribada).',
         'Sector 0 a la cua, números imparells (1, 3...) al flanc esquerre i números parells (2, 4...) al flanc dret.',
-        'Sector 0 al cap, números parells al flanc esquerre i imparells al flanc dret.',
-        'Es numeren en sentit horari de l’1 al 4.'
+        'Sector 0 al cap de l’incendi, números parells (2, 4...) al flanc esquerre i números imparells (1, 3...) al dret.',
+        'Sector 1 al cap de l’incendi, numerant la resta de sectors en sentit horari de l’1 al 4 com en edificis.'
       ],
       correctIndex: 1,
       explanation: "Mirant des de la cua cap al cap, la cua és el Sector 0, el flanc esquerre rep els sectors imparells (1, 3, 5...) i el flanc dret rep els sectors parells (2, 4, 6...)."
@@ -346,7 +346,7 @@ export const tema10IncendisForestals = {
         '3 Etapes: Inici, Desenvolupament i Final | 4 Fases: G0, G1, G2 i G3.',
         '3 Etapes: Atac, Remat i Rereguarda | 4 Fases: Actiu, Estabilitzat, Controlat i Extingit.',
         '3 Etapes: Actiu, Controlat i Extingit | 4 Fases: Atac, Defensa, Remat i Vigilància.',
-        'Són exactament el mateix.'
+        '3 Etapes: Detecció, Confinament i Liquidació | 4 Fases: Sector 0, Flancs i Cap.'
       ],
       correctIndex: 1,
       explanation: 'Les 3 etapes operatives del treball d’extinció són Atac, Remat i Rereguarda; les 4 fases d’estat de l’incendi són Actiu, Estabilitzat, Controlat i Extingit.'
@@ -379,13 +379,13 @@ export const tema10IncendisForestals = {
     },
     {
       id: 'q25-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Com es classifiquen els incendis forestals segons la superfície afectada al capítol 2 de MAN.INVE.000 i què descriu la 'Paradoxa de l'Extinció'?",
       options: [
-        "Conat (< 1 ha), Incendi Forestal (1–500 ha) i GIF (> 500 ha); la paradoxa indica que el 99% dels focs cremen < 10% de superfície, mentre que < 1% dels focs (els GIF) cremen el 90% del total d'hectàrees.",
-        "Conat (< 10 ha), IF (10–100 ha) i GIF (> 1.000 ha); la paradoxa indica que tots els incendis tenen la mateixa intensitat.",
-        "Conat (< 5 ha), IF (5–50 ha) i GIF (> 100 ha); la paradoxa indica que el 90% dels incendis superen les 500 ha.",
-        "Conat (< 0,1 ha), IF (0,1–250 ha) i GIF (> 250 ha); la paradoxa indica que l'aigua mai apaga conats."
+        "Conat (< 1 ha), IF (1–500 ha) i GIF (> 500 ha); la paradoxa indica que el 99% dels focs cremen < 10% de superfície, mentre < 1% (els GIF) cremen el 90% de les hectàrees.",
+        "Conat (< 10 ha), IF (10–100 ha) i GIF (> 1.000 ha); la paradoxa indica que tots els incendis forestals tenen la mateixa intensitat lineal i velocitat de propagació.",
+        "Conat (< 5 ha), IF (5–50 ha) i GIF (> 100 ha); la paradoxa indica que el 90% dels incendis superen les 500 ha quan l'atac inicial es fa exclusivament amb mitjans aeris.",
+        "Conat (< 0,1 ha), IF (0,1–250 ha) i GIF (> 250 ha); la paradoxa indica que l'ús d'aigua en atac directe augmenta sempre la intensitat de les flames en matollar mediterrani."
       ],
       correctIndex: 0,
       explanation: "Un conat afecta < 1 ha, un IF entre 1 i 500 ha i un GIF > 500 ha. La Paradoxa de l'Extinció reflecteix que l'èxit en el 99% dels focs petits (<10% de superfície) acumula biomassa que alimenta el <1% de GIF responsables del 90% de la superfície cremada."
@@ -408,10 +408,10 @@ export const tema10IncendisForestals = {
       difficulty: 'Mitjà',
       question: "Dins de la classificació de les 6 Generacions d'incendis forestals del manual MAN.INVE.000, quina diferència caracteritza la 3a, la 4a i la 6a generació?",
       options: [
-        "3a: abandonament agrícola; 4a: focus secundaris per paveses; 6a: incendis de subsòl de torba.",
-        "3a: focs de capçades per continuïtat vertical (1994/1998); 4a: Interfície Urbà-Forestal (IUF) amb col·lapse de recursos protegint habitatges; 6a: megaincendis convectius extrems amb Pirocumulonimbus (PyroCb).",
-        "3a: simultaneïtat regional; 4a: només crema de pastures; 6a: focs topogràfics nocturns lents.",
-        "Totes les generacions a partir de la 2a descriuen exactament el mateix fenomen de vent sinòptic."
+        "3a: abandonament agrícola i continuïtat horitzontal; 4a: focus secundaris per paveses a llarga distància; 6a: incendis de subsòl de torba amb propagació lenta.",
+        "3a: focs de capçades per continuïtat vertical; 4a: Interfície Urbà-Forestal (IUF) amb col·lapse de recursos; 6a: megaincendis convectius extrems amb Pirocumulonimbus.",
+        "3a: simultaneïtat regional de múltiples GIF; 4a: crema exclusiva de pastures en altitud; 6a: focs topogràfics nocturns lents controlats per marinades suaus.",
+        "3a: incendis de baixa intensitat amb flama < 1 m; 4a: incendis sense propagació per paveses; 6a: tots els incendis dominats pel vent sinòptic sense columna convectiva."
       ],
       correctIndex: 1,
       explanation: "Les 6 generacions evolucionen així: 1a continuïtat horitzontal, 2a velocitat/paveses, 3a continuïtat vertical/capçades, 4a Interfície Urbà-Forestal (IUF), 5a simultaneïtat de GIF + IUF i 6a crisi climàtica amb PyroCb."
@@ -422,9 +422,9 @@ export const tema10IncendisForestals = {
       question: "Segons l'escala de Llargada de Flama (Lf) de l'apartat 2.4.2, quin mitjà correspon a cada interval i a partir de quina Lf un incendi es troba fora de capacitat d'extinció en atac directe?",
       options: [
         "Lf < 1 m: eines manuals i motxilles | 1–3 m: línies d'aigua d'autobomba i helicòpters | 3–5 m: límit amb maquinària/avions | Lf > 5 m: fora de capacitat d'extinció en atac directe.",
-        "Lf < 3 m: eines manuals | 3–5 m: autobomba | > 10 m: fora de capacitat.",
-        "Lf < 0,5 m: autobomba | 0,5–2 m: només avions | > 2 m: fora de capacitat.",
-        "Lf < 5 m: eines manuals i motxilles sense límit de velocitat."
+        "Lf < 3 m: eines manuals i batefocs | 3–5 m: únicament línies d'aigua d'autobomba sense mitjans aeris | 5–10 m: maquinària pesant | Lf > 10 m: fora de capacitat d'extinció.",
+        "Lf < 0,5 m: autobomba amb mànega de Ø25 | 0,5–2 m: només avions amfibis amb retardant | > 2 m: fora de capacitat d'extinció en atac directe ni tan sols amb maquinària.",
+        "Lf < 5 m: eines manuals i motxilles sense límit de velocitat de propagació | 5–8 m: helicòpters bombarders | > 8 m: exclusivament contrafoc frontal des del cap."
       ],
       correctIndex: 0,
       explanation: "El manual fixa: Lf < 1 m (atac directe manual), 1–3 m (autobomba i helicòpters), 3–5 m (límit d'atac directe) i > 5 m (fora de capacitat d'extinció en atac directe; només maniobres indirectes o foc tècnic als flancs)."
@@ -434,10 +434,10 @@ export const tema10IncendisForestals = {
       difficulty: 'Mitjà',
       question: "En la valoració dels 4 patrons de propagació (apartat 3.1), què són els fenòmens 'indraft' i 'downdraft' propis d'un incendi convectiu (dominat pel plomall)?",
       options: [
-        "'Indraft' és el pas del foc per una carena i 'downdraft' és la crema de sotabosc a l'obaga.",
-        "'Indraft' és un vent sinòptic de mestral i 'downdraft' és una línia humida d'aigua.",
+        "'Indraft' és el pas del foc per una carena amb inversió tèrmica nocturna i 'downdraft' és la crema lenta de sotabosc a l'obaga sense columna de convecció.",
+        "'Indraft' és un vent sinòptic sostingut de mestral o tramuntana i 'downdraft' és una línia humida d'aigua aplicada amb autobomba des d'una pista forestal.",
         "'Indraft' és el vent d'aspiració cap a la base de la columna de convecció i 'downdraft' és el desplom violent de la columna que genera vents erràtics en 360° i pluja de paveses.",
-        "Tots dos termes designen el mateix tipus de vent suau de marinada nocturna."
+        "'Indraft' és la brisa suau de marinada que puja per la vall durant el dia i 'downdraft' és la brisa descendent de muntanya que bufa de forma regular a la nit."
       ],
       correctIndex: 2,
       explanation: "En un incendi convectiu, la forta columna tèrmica genera vents d'aspiració cap endins (indraft) i, si es desploma o col·lapsa, provoca corrents descendents violents (downdraft) amb vents erràtics en 360° i llançament massiu de paveses."
@@ -447,10 +447,10 @@ export const tema10IncendisForestals = {
       difficulty: 'Difícil',
       question: "Què signifiquen les sigles RAF i LACES en seguretat forestal, i quina condició defineix una Zona Segura (S) segons el capítol 5 de MAN.INVE.000?",
       options: [
-        "RAF = Ràdio, Aigua, Foc; LACES = Línies d'Atac; la Zona Segura requereix sempre confinar-se dins la cabina amb mantes.",
-        "RAF = Retirada, Aïllament, Flanc; LACES = Localització i Control; la Zona Segura és qualsevol pista de 2 metres d'ample.",
-        "RAF = Reagrupament, Autoprotecció, Fugida; LACES = Lookouts, Anchor/Awareness, Communications, Escape routes, Safety zones; la Zona Segura permet sobreviure SENSE utilitzar cap mitjà d'autoprotecció ni cabina.",
-        "RAF = Rescat en Altura Forestal; LACES = Llista d'Eines; la Zona Segura és sempre al cap de l'incendi."
+        "RAF = Ràdio, Aigua, Foc; LACES = Línies d'Atac, Aigua, Comunicació, Eines, Sector; la Zona Segura requereix confinar-se dins la cabina amb mantes ignífugues.",
+        "RAF = Retirada, Aïllament, Flanc; LACES = Localització, Ancoratge, Control, Extinció, Seguiment; la Zona Segura és qualsevol pista forestal de 2 metres d'ample.",
+        "RAF = Reagrupament, Autoprotecció, Fugida; LACES = Lookouts, Anchor, Communications, Escape routes, Safety zones; la Zona Segura permet sobreviure SENSE autoprotecció.",
+        "RAF = Rescat en Altura Forestal; LACES = Llista d'Eines de Seguretat; la Zona Segura s'estableix sempre a favor de vent al cap de l'incendi sobre matollar baix."
       ],
       correctIndex: 2,
       explanation: "RAF correspon a Reagrupament, Autoprotecció i Fugida. LACES (Lookouts, Anchor/Awareness, Communications, Escape routes, Safety zones) defineix la Zona Segura (amb radi R ≥ 4 × Lf) com un espai on es pot sobreviure sense mitjans d'autoprotecció ni cabina."
@@ -460,10 +460,10 @@ export const tema10IncendisForestals = {
       difficulty: 'Difícil',
       question: "Dins les tres situacions d'atrapament en autobomba (apartat 5.5), com s'executa la Situació 2 (defensa exterior activa) i quin angle han de mantenir les llances de protecció?",
       options: [
-        "S'abandona el camió a peu sense aigua i es puja pel vessant a favor de vent.",
-        "Tota la dotació es tanca dins la cabina des del primer moment sense desplegar cap mànega.",
-        "Es col·loca el camió sobre matoll alt amb el motor parat i una línia de Ø70 cap al cel a 90°.",
-        "S'estaciona sobre zona sense vegetació amb el motor en marxa, es despleguen 2 línies curtes de Ø25 i els bombers, protegits al costat oposat de la carrosseria, projecten cortines d'aigua a un angle de 45° a 60°."
+        "S'abandona el camió a peu sense desplegar línies d'aigua i la dotació puja ràpidament pel vessant a favor de vent buscant la carena més propera.",
+        "Tota la dotació es tanca dins la cabina des del primer moment amb els ruixadors en marxa sense desplegar cap mànega exterior ni baixar del vehicle.",
+        "Es col·loca el camió sobre matoll alt amb el motor parat i es desplega una única línia de Ø70 projectant aigua verticalment cap al cel a un angle de 90°.",
+        "S'estaciona sense vegetació amb el motor en marxa, es despleguen 2 línies curtes de Ø25 des del costat protegit i es projecten cortines d'aigua a 45°–60°."
       ],
       correctIndex: 3,
       explanation: "En la Situació 2 d'atrapament, amb clariana i aigua suficient, s'estaciona sense vegetació sota el xassís amb el motor en marxa i es projecten cortines d'aigua amb 2 línies de Ø25 des del costat protegit de la carrosseria amb un angle de 45° a 60°."
@@ -522,13 +522,13 @@ export const tema10IncendisForestals = {
     },
     {
       id: 'q25-17',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "En un sector de cua amb matollar baix (Lf = 0,7 m i velocitat d'avanç < 1 km/h), s'ordena fer atac directe amb eines manuals per consolidar la línia fins a terra mineral. Quina és la seqüència correcta d'operadors i quina etapa segueix un cop apagada la flama viva?",
       options: [
-        "1r Pala → 2n Pulaski → 3r Batefocs → 4t Motxilla, passant tot seguit a la fase d'Incendi Extingit.",
-        "1r Motxilla d'aigua → 2n Batefocs → 3r Pulaski → 4t Pala (amb separació de seguretat entre operadors), passant posteriorment a l'etapa de Remat (liquidació de brases) i finalment a Rereguarda.",
-        "1r Motoserra → 2n Foc tècnic → 3r Batefocs → 4t Motxilla, passant directament de l'etapa d'Atac a l'etapa d'Estabilitzat.",
-        "1r Batefocs → 2n Motxilla d'aigua → 3r Pala → 4t Pulaski, sense necessitat d'ancoratge ni guaites."
+        "1r Pala → 2n Pulaski → 3r Batefocs → 4t Motxilla d'aigua (sense separació entre operadors), passant tot seguit a la fase d'Incendi Extingit.",
+        "1r Motxilla d'aigua → 2n Batefocs → 3r Pulaski → 4t Pala (amb separació de seguretat), passant posteriorment a l'etapa de Remat i finalment a Rereguarda.",
+        "1r Motoserra → 2n Foc tècnic → 3r Batefocs → 4t Motxilla d'aigua, passant directament de l'etapa d'Atac a la fase d'Incendi Estabilitzat.",
+        "1r Batefocs → 2n Motxilla d'aigua → 3r Pala → 4t Pulaski (treballant en paral·lel), sense necessitat de punt d'ancoratge ni guaites a la línia."
       ],
       correctIndex: 1,
       explanation: "La cadena d'eines manuals segueix l'ordre inalterable Motxilla (refreda) → Batefocs (sufoca) → Pulaski (talla/cava) → Pala (raspa i enterra), donant pas després a les etapes de Remat (liquidació) i Rereguarda (vigilància)."
@@ -538,10 +538,10 @@ export const tema10IncendisForestals = {
       difficulty: 'Mitjà',
       question: "Quina diferència exacta existeix entre un incendi en fase 'Estabilitzat' i un incendi en fase 'Controlat' segons la classificació INFOCAT del manual MAN.INVE.000?",
       options: [
-        "En fase Controlat encara hi ha fronts de flama avançant lliurement fora de les línies previstes, mentre que en Estabilitzat ja no queda cap brasa calenta.",
-        "En fase Estabilitzat l'incendi ja no avança lliurement i evoluciona dins les previsions però el perímetre encara NO està completament envoltat; en fase Controlat tot el perímetre està tancat per una línia de control contínua (tot i poder quedar punts calents dins).",
-        "Tots dos termes corresponen a les Etapes dels equips d'extinció i són sinònims operatius.",
-        "Un incendi passa directament d'Actiu a Extingit sense fases intermèdies."
+        "En fase Controlat encara hi ha fronts de flama avançant lliurement fora de les línies previstes, mentre que en Estabilitzat ja no queda cap brasa calenta ni fum dins del perímetre.",
+        "En Estabilitzat el foc no avança lliurement però el perímetre NO està del tot envoltat; en Controlat tot el perímetre està tancat per una línia contínua (tot i haver-hi punts calents).",
+        "Tots dos termes corresponen a les Etapes operatives dels equips d'extinció (Atac, Remat i Rereguarda) i s'utilitzen indistintament com a sinònims operatius al CECAT.",
+        "Un incendi forestal passa directament de la fase Actiu a la fase Extingit quan desapareixen les flames vives, sense que existeixin fases intermèdies de seguiment."
       ],
       correctIndex: 1,
       explanation: "Estabilitzat significa evolució dins les línies previstes però sense perímetre tancat al 100%; Controlat significa tot el perímetre envoltat per línia de control contínua (fins a sòl mineral o humida) sense possibilitat de creixement."

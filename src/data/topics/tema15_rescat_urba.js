@@ -235,10 +235,10 @@ export const tema15RescatUrba = {
       difficulty: 'Mitjà',
       question: "Quina característica d'homologació tenen les cordes del paquet de rescat en alçada de Bombers de la Generalitat segons l'apartat 2.2.1 del manual MAN.SVXX.000?",
       options: [
-        'Són cordes metàl·liques d’acer trenat.',
+        'Són cordes metàl·liques d’acer galvanitzat trenat per resistir el fregament sobre arestes vives d’estructures urbanes.',
         'Tenen doble homologació: estan certificades simultàniament com a corda semiestàtica i com a corda dinàmica en simple.',
-        'Són exclusivament cordes auxiliars estirpables (cordinos de 4 mm).',
-        'Només estan homologades per a ús aquàtic.'
+        'Són cordes auxiliars estirpables (cordinos de 6 mm d’aramida) homologades únicament per a sistemes de retenció i polispasts.',
+        'Estan certificades exclusivament com a cordes semiestàtiques tipus B per a rescat aquàtic i treballs en espais confinats.'
       ],
       correctIndex: 1,
       explanation: "El manual destaca que la corda de rescat de Bombers disposa de doble homologació (semiestàtica + dinàmica simple)."
@@ -248,23 +248,23 @@ export const tema15RescatUrba = {
       difficulty: 'Mitjà',
       question: "Segons l'apartat 2.4.2 del manual MAN.SVXX.000, quines mesures de seguretat són obligatòries quan s'utilitza l'Autoescala Automàtica (AEA) com a punt d'ancoratge d'un sistema de cordes?",
       options: [
-        'Mantenir el motor accelerat al màxim i moure l’escala contínuament.',
+        'Mantenir el motor en marxa al ralentí accelerat per garantir la pressió hidràulica del tram i moure l’escala de manera contínua durant el descens.',
         'Mantenir sempre un operador a la torreta, tenir el motor aturat un cop ancorades les cordes (per evitar moviments accidentals) i operar dins dels límits MGO.',
-        'Desplegar només 2 dels 4 estabilitzadors.',
-        'No cal cap operador a la torreta.'
+        'Desplegar només els 2 estabilitzadors del costat de treball, mantenir la torreta desocupada per reduir càrrega i operar fora dels límits MGO en emergència.',
+        'No cal cap operador a la torreta un cop bloquejats els estabilitzadors, però s’ha de mantenir el motor encès per poder corregir la posició si la corda cedeix.'
       ],
       correctIndex: 1,
       explanation: "Quan s'ancoren cordes a l'AEA que també estan lligades a l'estructura o al rescatador, cal aturar el motor per impedir moviments hidràulics involuntaris i mantenir un bomber a la torreta."
     },
     {
       id: 'q33-4',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "En una intervenció de rescat en un ascensor HIDRÀULic avariat sense corrent, cap a on es pot moure la cabina accionant la vàlvula manual d'emergència de la central hidràulica? I cap a on tendirà a moure's un ascensor ELECTROMECÀNIC amb contrapès si s'allibera el fre amb una sola persona a dins?",
       options: [
-        'L’hidràulic només pot pujar i l’electromecànic sempre baixa.',
+        'L’ascensor hidràulic NOMÉS es pot fer pujar accionant la bomba manual; en canvi, l’electromecànic amb poca càrrega tendirà a BAIXAR pel pes propi de la cabina i dels cables.',
         'L’ascensor hidràulic NOMÉS es pot fer baixar per gravetat; en canvi, l’electromecànic amb poca càrrega a dins tendirà a PUJAR perquè el contrapès pesa més que la cabina.',
-        'Tots dos només poden pujar.',
-        'Cap dels dos es pot moure sense electricitat.'
+        'Tant l’ascensor hidràulic com l’electromecànic amb una sola persona tendiran sempre a PUJAR cap a l’última planta en obrir la vàlvula o el fre mecànic.',
+        'Cap dels dos tipus d’ascensor es pot moure manualment sense subministrament elèctric trifàsic, ja que els sistemes de seguretat bloquegen el pistó i el motor.'
       ],
       correctIndex: 1,
       explanation: "En l'ascensor hidràulic la vàlvula manual retorna oli al tanc i la cabina només pot baixar; en l'electromecànic el contrapès equival a la cabina + 50% de la càrrega, de manera que amb 1 sola persona el contrapès pesa més i fa pujar la cabina."
@@ -274,23 +274,23 @@ export const tema15RescatUrba = {
       difficulty: 'Difícil',
       question: "Segons l'apartat 3.3 de seguretat en ascensors del manual MAN.SVXX.000, quantes i quines són les sèries elèctriques de seguretat que cal activar per assegurar l'immobilització de l'aparell abans d'accedir al forat o al sostre de cabina?",
       options: [
-        'N’hi ha prou amb prémer el botó d’alarma interior de la cabina.',
+        'N’hi ha prou amb activar 1 sola sèrie de seguretat: prémer el botó d’STOP o d’alarma interior de la cabina abans d’obrir la porta exterior.',
         'Cal activar com a mínim 2 de les 3 sèries elèctriques de seguretat: 1) Porta exterior de planta (clau triangular), 2) STOP del fossat i 3) STOP del sostre de cabina.',
-        'Només existeix 1 sèrie elèctrica a la porta del portal.',
-        'Cal tallar els cables de tracció amb cisalla.'
+        'Cal activar obligatòriament totes 4 sèries existents: interruptor general de força, porta del portal, botó de pànic interior i final de cursa superior.',
+        'No cal activar sèries elèctriques si l’ascensor és electromecànic: n’hi ha prou amb tallar els cables de tracció amb cisalla hidràulica des de la cambra de màquines.'
       ],
       correctIndex: 1,
       explanation: "La regla de seguretat del manual exigeix activar com a mínim 2 de les 3 sèries elèctriques: enclavament de porta de planta, STOP del fossat i STOP del sostre de cabina."
     },
     {
       id: 'q33-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quines dues parts formen una corda de rescat (i quin percentatge de resistència aporta el nucli), quin nus reglamentari s'usa per a ancoratge/encordament i quin percentatge de resistència fa perdre qualsevol nus a la corda?",
       options: [
         "Ànima (nucli interior, 80% de la resistència) i Camisa (funda exterior) | Nus del vuit | Tot nus redueix la resistència nominal entre un 20% i un 50%.",
-        'Filaments d’acer (50%) i recobriment de PVC | Nus pla | Un nus augmenta la resistència un 20%.',
-        'Camisa (80% de la resistència) i Ànima (20%) | Nus ballestrinca | No hi ha pèrdua de resistència.',
-        'Ànima (100%) sense camisa | Nus Prusik | Pèrdua del 5%.'
+        "Filaments d'acer (50% de la resistència) i recobriment de PVC | Nus pla | Un nus reglamentari augmenta la resistència nominal de la corda fins a un 20%.",
+        "Camisa (funda exterior, 80% de la resistència) i Ànima (nucli interior, 20%) | Nus ballestrinca | Els nusos homologats no provoquen cap pèrdua de resistència.",
+        "Ànima trenada (60% de la resistència) i Camisa impermeable (40%) | Nus Prusik | Qualsevol nus redueix la resistència nominal únicament entre un 5% i un 10%."
       ],
       correctIndex: 0,
       explanation: "L'ànima suporta el 80% de la resistència mecànica i la camisa la protegeix del fregament i els raigs UV. El nus d'ancoratge/encordament és el del vuit i qualsevol nus resta entre un 20% i un 50% de resistència."
@@ -300,10 +300,10 @@ export const tema15RescatUrba = {
       difficulty: 'Mitjà',
       question: "Si hem d'hissar una càrrega de 120 kg, quanta força hem d'aplicar teòricament amb una politja simple fixa (1:1), amb un polispast en 'Z' (3:1) i amb un polispast compost (6:1)?",
       options: [
-        '1:1 = 60 kg | 3:1 = 30 kg | 6:1 = 10 kg.',
-        '1:1 = 120 kg | 3:1 = 120 kg | 6:1 = 60 kg.',
+        '1:1 = 60 kg (divideix per 2) | 3:1 = 30 kg | 6:1 = 10 kg.',
+        '1:1 = 120 kg (sense avantatge) | 3:1 = 60 kg | 6:1 = 30 kg.',
         '1:1 = 120 kg (només canvia direcció) | 3:1 = 40 kg | 6:1 = 20 kg.',
-        '1:1 = 240 kg | 3:1 = 80 kg | 6:1 = 40 kg.'
+        '1:1 = 240 kg (duplica per fregament) | 3:1 = 80 kg | 6:1 = 40 kg.'
       ],
       correctIndex: 2,
       explanation: "Una politja fixa (1:1) no desmultiplica (120 kg). Un polispast 3:1 divideix la força per 3 (120 ÷ 3 = 40 kg) i un polispast compost 6:1 la divideix per 6 (120 ÷ 6 = 20 kg)."
@@ -313,9 +313,9 @@ export const tema15RescatUrba = {
       difficulty: 'Difícil',
       question: "En un Sistema d'Ancoratge de Seguretat (SAS) muntat en triangulació sobre un mínim de 2 punts independents, quin és l'angle òptim recomanat i què passa si l'angle arriba als 120°?",
       options: [
-        'L’angle òptim és de 150° i a 120° cada punt suporta només el 25% de la càrrega.',
-        'L’angle és indiferent sempre que els mosquetons tinguin la virolla oberta.',
-        'L’angle òptim és ≥ 90° i a 120° la càrrega es reparteix a la meitat (50% cada punt).',
+        'L’angle òptim és de 120°–150°, perquè a 120° cadascun dels dos punts d’ancoratge suporta únicament el 25% de la càrrega total.',
+        'L’angle de triangulació és indiferent per a la càrrega suportada sempre que els dos mosquetons de l’ancoratge tinguin la virolla tancada.',
+        'L’angle òptim és de 90°, ja que a 120° la càrrega es reparteix exactament a la meitat (50% sobre cada un dels dos punts d’ancoratge).',
         'L’angle òptim és ≤ 60° (no superar mai els 90°–120°), perquè a 120° cadascun dels dos punts d’ancoratge acaba suportant el 100% de la càrrega total.'
       ],
       correctIndex: 3,
@@ -323,26 +323,26 @@ export const tema15RescatUrba = {
     },
     {
       id: 'q33-9',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "Quin dels tres sistemes de protecció contra caigudes (Retenció, Posicionament/Suspensió i Anticaigudes) s'ha de connectar exclusivament a les anelles marcades amb la lletra 'A' de l'arnés i quina exigència té el treball en suspensió?",
       options: [
         'L’Anticaigudes es connecta a l’anella "A" (esternal o dorsal, limitant xoc < 6 kN i calculant l’alçada lliure); el de Posicionament/Suspensió s’ha de combinar sempre amb una 2a corda independent anticaigudes.',
-        'El de Retenció es connecta a l’anella "A" i el de Suspensió funciona amb una sola corda sense redundància.',
-        'Tots tres s’han de connectar a la cinta lumbar lateral sense anella "A".',
-        'El sistema Anticaigudes impedeix arribar a la vora del precipici i té factor de caiguda 0.'
+        'El de Retenció es connecta exclusivament a l’anella "A" (dorsal, limitant la força de xoc a < 12 kN); el de Posicionament/Suspensió pot treballar amb una sola corda semiestàtica sense necessitat de redundància.',
+        'Tots tres sistemes s’han de connectar obligatòriament a les anelles laterals de posicionament lumbar de l’arnés, i el treball en suspensió no requereix cap segona corda si l’ancoratge té dos punts.',
+        'El sistema Anticaigudes impedeix físicament arribar a la vora del precipici (factor de caiguda 0), mentre que el de Posicionament es connecta a l’anella dorsal "A" sense calcular el tirant d’aire.'
       ],
       correctIndex: 0,
       explanation: "Només el sistema Anticaigudes va a les anelles 'A' (EN 361) i exigeix calcular el tirant d'aire/alçada lliure. El sistema de Posicionament/Suspensió (anella ventral/esternal) sempre necessita una 2a corda de seguretat anticaigudes."
     },
     {
       id: 'q33-10',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quines són les 3 tipologies de rescat urbà que recull el capítol 1 de MAN.SVXX.000 i entre quins valors oscil·la el Factor de Caiguda (FC = altura caiguda / longitud corda)?",
       options: [
-        'Incendis, forestals i aquàtic | FC entre 1 i 10.',
-        'Només façanes i grues | FC sempre igual a 5.',
+        '1) Incendis en edificis d’altura, 2) Rescats forestals i 3) Rescat aquàtic en aigües braves | FC entre 1 (mínim) i 10 (màxim teòric).',
+        '1) Treballs en façanes, 2) Grues torre i 3) Bastides tubulars | FC sempre igual a 5 en sistemes amb corda semiestàtica de 10,5 mm.',
         '1) En alçada, 2) Sota rasant / espais confinats verticals i 3) Aparells elevadors (ascensors) | FC entre 0 (ancoratge a sobre) i 2 (ancoratge als peus).',
-        'Accidents viaris, NRBQ i allaus | FC negatiu.'
+        '1) Accidents viaris amb turismes, 2) Riscos tecnològics NRBQ i 3) Allaus de neu | FC entre -1 (ancoratge lateral) i +1 (ancoratge vertical).'
       ],
       correctIndex: 2,
       explanation: "Les 3 tipologies de rescat urbà són: intervencions en alçada, sota rasant/pous i ascensors. El Factor de Caiguda va de 0 (corda tensa per sobre) a 2 (caiguda del doble de la longitud de corda per ancoratge als peus)."
@@ -352,9 +352,9 @@ export const tema15RescatUrba = {
       difficulty: 'Mitjà',
       question: "En el protocol de rescat d'ocupants atrapats dins la cabina d'un ascensor (apartat 3.2), què cal tallar i què cal mantenir encès a la cambra de màquines, i quina és la prioritat abans d'obrir portes?",
       options: [
-        'Tallar tant la força com l’enllumenat de cabina; treure la gent pel sostre encara que la cabina estigui a nivell de planta.',
-        'Obrir la porta de planta immediatament amb la clau triangular sense mirar ni tallar res.',
-        'No tallar l’interruptor general i fer baixar sempre l’ascensor fins al soterrani.',
+        'Tallar tant la força motriu trifàsica com l’enllumenat interior de cabina, i evacuar els ocupants per la trapa del sostre encara que la cabina estigui anivellada a planta.',
+        'Obrir la porta exterior de planta immediatament amb la clau triangular sense tallar l’interruptor de força, i fer saltar els ocupants abans d’anivellar la cabina.',
+        'Mantenir connectat l’interruptor general trifàsic de força per conservar els frens elèctrics, i fer baixar sempre la cabina fins al fossat inferior abans d’obrir portes.',
         'Desconnectar l’interruptor general trifàsic de força deixant connectat l’enllumenat/ventilació de cabina, i prioritzar sempre anivellar la cabina amb una planta abans d’obrir portes.'
       ],
       correctIndex: 3,
@@ -365,10 +365,10 @@ export const tema15RescatUrba = {
       difficulty: 'Difícil',
       question: "Si en un ascensor el paracaigudes mecànic s'ha encunyat i la cabina ha quedat aturada MÉS ALTA que el replà de la planta (sense poder anivellar-la), quina mesura de seguretat crítica és obligatòria abans de treure les víctimes? I on es troba el motor en un ascensor MRL (Gearless)?",
       options: [
-        'Fer saltar les víctimes sense protecció | El motor MRL és sempre en un soterrani annex.',
+        'Fer sortir les víctimes ràpidament d’una en una saltant cap al replà sense necessitat de cobrir el buit inferior | En un MRL (sense cambra de màquines) el motor compacte és sempre en un soterrani annex al fossat.',
         'Tapar i bloquejar físicament el buit obert que queda sota la cabina cap al fossat (amb tauler, escala o bomber assegurat) | En un MRL (sense cambra de màquines) el motor compacte és dins del propi forat superior i el quadre al replà de l’última planta.',
-        'Retirar el faldó de la cabina per ampliar el forat | En un MRL no hi ha quadre de maniobra.',
-        'Desactivar totes les sèries elèctriques | El motor MRL funciona sempre amb pistó d’oli hidràulic.'
+        'Retirar el faldó metàl·lic inferior de la cabina amb una palanca per ampliar l’espai lliure de sortida cap al replà | En un MRL no hi ha quadre de maniobra perquè tota la gestió és mecànica dins la cabina.',
+        'Desactivar totes les sèries elèctriques de seguretat i obrir el fre manual perquè la cabina baixi per gravetat | El motor d’un ascensor MRL funciona sempre mitjançant un pistó d’oli hidràulic sense contrapès.'
       ],
       correctIndex: 1,
       explanation: "Quan la cabina queda per sobre del replà hi ha risc mortal de caiguda pel buit inferior cap al fossat, per la qual cosa és obligatori tapar-lo físicament abans de rescatar ningú. En els MRL (Gearless), el motor és dins del forat i l'armari de maniobra al replà superior."
@@ -391,10 +391,10 @@ export const tema15RescatUrba = {
       difficulty: 'Mitjà',
       question: "Un bomber treballa en alçada ancorat a l'alçada dels peus amb un cap d'ancoratge amb absorbidor d'energia d'1 metre de longitud. Si pateix una caiguda vertical de 2 metres, quin és el Factor de Caiguda (FC) i quina força màxima de xoc sobre el cos garanteix el sistema anticaigudes?",
       options: [
-        "FC = 0,5 | Força de xoc màxima < 15 kN.",
+        "FC = 0,5 (longitud corda 1 m ÷ altura caiguda 2 m) | Força de xoc màxima limitada a < 12 kN (no cal verificar el tirant d'aire).",
         "FC = 2 (altura caiguda 2 m ÷ longitud corda 1 m) | Força de xoc limitada a < 6 kN (calculem també l'alçada lliure sota els peus).",
-        "FC = 1 | Força de xoc limitada a < 20 kN.",
-        "FC = 0 | No cal calcular l'alçada lliure sota els peus."
+        "FC = 1 (altura caiguda 2 m ÷ doble tram de corda) | Força de xoc limitada a < 15 kN (amb absorbidor tèxtil desplegat).",
+        "FC = 0 (en portar absorbidor d'energia el factor s'anul·la) | Força de xoc limitada a < 6 kN sense necessitat de calcular l'alçada lliure."
       ],
       correctIndex: 1,
       explanation: "FC = Altura de caiguda / Longitud de corda disponible = 2 m / 1 m = 2 (factor màxim). Els sistemes anticaigudes limiten la força d'impacte a < 6 kN i exigeixen verificar el tirant d'aire (alçada lliure) sota els peus."
@@ -417,10 +417,10 @@ export const tema15RescatUrba = {
       difficulty: 'Mitjà',
       question: "En un ascensor electromecànic d'adherència amb cambra de màquines aturat entre la planta 3 i la planta 4 amb una única persona de 65 kg a dins, s'accedeix a la cambra de màquines, es talla la força i s'obre manualment el fre mecànic. Cap a on tendirà a moure's la cabina per si sola?",
       options: [
-        "Sempre baixarà fins al fossat perquè la cabina amb una persona pesa més que el contrapès.",
+        "Sempre baixarà fins al fossat perquè el pes combinat de la cabina i una persona de 65 kg supera sempre el pes del contrapès.",
         "Tendirà a PUJAR cap amunt, perquè el contrapès està equilibrat per a la cabina buida + el 50% de la càrrega màxima i pesa més que la cabina amb una sola persona.",
-        "No es mourà mai en cap direcció en alliberar el fre.",
-        "S'activarà automàticament la vàlvula vermella d'oli hidràulic."
+        "No es mourà en cap direcció en alliberar el fre mecànic, perquè la fricció de les guies manté la cabina bloquejada fins que no entra més càrrega.",
+        "S'activarà automàticament la vàlvula vermella de retorn d'oli hidràulic i la cabina descendirà suaument fins a quedar anivellada amb la planta 3."
       ],
       correctIndex: 1,
       explanation: "En un ascensor electromecànic el contrapès pesa com la cabina buida més el 50% de la càrrega nominal. Amb només 1 persona a dins, el contrapès pesa més i, en alliberar el fre, la cabina tendeix a PUJAR."

@@ -183,9 +183,9 @@ export const tema4IgualtatAssetjament = {
       question: 'En quina norma apareix el terme "vexatori" en la definició d\'assetjament, i en quines apareix "molest"?',
       options: [
         '"Vexatori" és a la Llei 19/2020 (art. 4.e); "molest" és a la Llei 17/2015 (per raó de sexe) i al Protocol 2023 (assetjament sexual)',
-        '"Vexatori" és al Protocol 2023; "molest" és només a la Llei 19/2020',
-        'Tots dos termes apareixen per igual al Protocol 2023 i a la Llei 19/2020',
-        '"Molest" no apareix a cap de les tres normes'
+        '"Vexatori" és exclusiu del Protocol 2023 (assetjament psicològic); "molest" apareix únicament a la Llei 19/2020 (art. 4.e)',
+        'Tots dos termes ("vexatori" i "molest") apareixen per igual tant al Protocol de 2023 com a l\'article 4.e de la Llei 19/2020',
+        '"Vexatori" és a la Llei 17/2015 (assetjament sexual); "molest" no figura en cap de les tres normes del temari d\'igualtat'
       ],
       correctIndex: 0,
       explanation: '"Vexatori" és exclusiu de l\'art. 4.e de la Llei 19/2020 (0 cops al Protocol). "Molest" surt a la 17/2015 i al Protocol 2023.'
@@ -196,9 +196,9 @@ export const tema4IgualtatAssetjament = {
       question: 'Com formula la Llei 19/2020 (art. 22.4) la inversió de la càrrega de la prova respecte de la Llei 17/2015 (art. 32.2.e)?',
       options: [
         '19/2020 exigeix "indicis racionals i fonamentats" (per a qualsevol discriminació); 17/2015 parla d\'"indicis fonamentats" (només assetjament sexual o per raó de sexe)',
-        '17/2015 exigeix "indicis racionals i fonamentats"; 19/2020 només "sospites"',
-        'Cap de les dues preveu la inversió de la càrrega de la prova',
-        'Totes dues fan servir exactament "indicis racionals"'
+        '17/2015 exigeix "indicis racionals i fonamentats" (per a tota discriminació); 19/2020 només requereix "sospites versemblants" (només en via penal)',
+        'Cap de les dues lleis preveu la inversió de la càrrega de la prova en via administrativa, sinó que la remet exclusivament a la jurisdicció social',
+        'Totes dues normes utilitzen exactament la fórmula d\'"indicis racionals i suficients" aplicada de manera idèntica a qualsevol procediment sancionador'
       ],
       correctIndex: 0,
       explanation: 'La diferència literal és la paraula "racionals" present a la 19/2020 i absent a la 17/2015.'
@@ -209,9 +209,9 @@ export const tema4IgualtatAssetjament = {
       question: 'Quina diferència hi ha a l\'art. 26 de la Llei 19/2020 entre l\'acció en via administrativa (26.2) i l\'acció judicial (26.3)?',
       options: [
         'En via administrativa no s\'hi inclouen els partits polítics; en via judicial sí, i cal autorització expressa de la persona afectada',
-        'En via administrativa cal autorització del Síndic; en via judicial no cal cap autorització',
-        'Els partits polítics només poden actuar en via administrativa',
-        'En via judicial no hi poden intervenir associacions'
+        'En via administrativa cal autorització expressa del Síndic de Greuges; en via judicial les entitats actuen sense autorització de l\'afectat',
+        'Els partits polítics només poden personar-se en via administrativa prèvia; en via judicial la legitimació es limita als sindicats majoritaris',
+        'En via judicial no hi poden intervenir associacions ni fundacions; la legitimació col·lectiva es restringeix a la via administrativa ordinària'
       ],
       correctIndex: 0,
       explanation: 'Art. 26.2 exclou partits polítics en via administrativa; art. 26.3 permet l\'acció judicial (amb partits) si hi ha autorització expressa.'
@@ -248,9 +248,9 @@ export const tema4IgualtatAssetjament = {
       question: 'En quina de les tres normes la definició de "discriminació múltiple" es refereix específicament a "una dona"?',
       options: [
         'Només a la Llei 17/2015 (a la 19/2020 i al Protocol es refereix a "una persona")',
-        'A la Llei 19/2020 únicament',
-        'Al Protocol 2023 únicament',
-        'A totes tres normes per igual'
+        'Només a la Llei 19/2020 (a la 17/2015 i al Protocol es refereix a "una persona")',
+        'Només al Protocol 2023 (a les lleis 17/2015 i 19/2020 es refereix a "una persona")',
+        'A totes tres normes per igual, emprant sempre la referència expressa a "una dona"'
       ],
       correctIndex: 0,
       explanation: 'La Llei 17/2015 parla d\'"una dona", mentre que la 19/2020 i el Protocol 2023 utilitzen "una persona".'
@@ -300,9 +300,9 @@ export const tema4IgualtatAssetjament = {
       question: 'En quines dues normes apareix el mot "interpretació" dins de la definició de discriminació indirecta?',
       options: [
         'A la Llei 17/2015 i al Protocol d\'assetjament 2023 (NO apareix a la Llei 19/2020)',
-        'Només a la Llei 19/2020',
-        'A totes tres normes (19/2020, 17/2015 i Protocol 2023)',
-        'Només al Protocol d\'assetjament 2023'
+        'Només a la Llei 19/2020 (NO apareix ni a la Llei 17/2015 ni al Protocol 2023)',
+        'A totes tres normes per igual (Llei 19/2020, Llei 17/2015 i Protocol 2023)',
+        'Només al Protocol d\'assetjament 2023 (NO apareix a cap de les dues lleis)'
       ],
       correctIndex: 0,
       explanation: 'La definició de discriminació indirecta inclou el terme "interpretació" a la Llei 17/2015 i al Protocol 2023, però NO a la Llei 19/2020.'
@@ -326,9 +326,9 @@ export const tema4IgualtatAssetjament = {
       question: 'Quina diferència hi ha entre l\'assetjament sexual i l\'assetjament per raó de sexe?',
       options: [
         'L\'assetjament sexual és un comportament d\'índole sexual; l\'assetjament per raó de sexe es produeix en funció del sexe d\'una persona amb el propòsit o efecte d\'atemptar contra la seva dignitat',
-        'L\'assetjament per raó de sexe només pot ser físic i l\'assetjament sexual només verbal',
-        'No hi ha cap diferència jurídica ni conceptual entre ambdós',
-        'L\'assetjament per raó de sexe només s\'aplica fora de l\'àmbit laboral'
+        'L\'assetjament per raó de sexe només pot consistir en agressions físiques reiterades i l\'assetjament sexual es limita exclusivament a expressions verbals dins l\'entorn laboral',
+        'No hi ha cap diferència jurídica ni conceptual entre ambdós supòsits, ja que la Llei 17/2015 i el Protocol 2023 els defineixen com una única conducta sancionable',
+        'L\'assetjament per raó de sexe només s\'aplica fora de l\'àmbit laboral o administratiu, mentre que l\'assetjament sexual únicament es persegueix dins dels centres de treball'
       ],
       correctIndex: 0,
       explanation: 'Assetjament sexual = comportament verbal, no verbal o físic d\'índole sexual. Assetjament per raó de sexe = en funció del sexe d\'una persona (sense contingut sexual).'
@@ -339,9 +339,9 @@ export const tema4IgualtatAssetjament = {
       question: 'Segons el Protocol d\'assetjament de 2023, quin requisit determina que el Protocol sigui aplicable en un cas concret?',
       options: [
         'Que la víctima formi part de l\'àmbit subjectiu inclòs dins del Protocol (encara que la persona presumptament assetjadora sigui externa)',
-        'Només s\'aplica si tant la víctima com la persona assetjadora són funcionaris de carrera',
-        'Només s\'aplica si la denúncia es presenta davant un jutjat penal',
-        'S\'aplica únicament quan els fets passen dins d\'un parc de bombers fora de servei'
+        'Només s\'aplica si tant la víctima com la persona presumptament assetjadora són funcionaris de carrera o personal laboral de la Generalitat',
+        'Només s\'aplica si la denúncia s\'ha formalitzat prèviament davant d\'un jutjat penal o de la Inspecció de Treball i Seguretat Social',
+        'S\'aplica únicament quan els fets hagin tingut lloc dins les dependències d\'un centre de treball i durant l\'horari de jornada ordinària'
       ],
       correctIndex: 0,
       explanation: 'El Protocol 2023 s\'aplica sempre que la VÍCTIMA estigui inclosa en l\'àmbit subjectiu del Protocol.'
@@ -352,22 +352,22 @@ export const tema4IgualtatAssetjament = {
       question: 'Quines mesures preveuen els articles 16 i 17.2 de la Llei 17/2015 per a les administracions públiques catalanes?',
       options: [
         'La composició paritària als tribunals i comissions de selecció (art. 16) i la realització d\'auditories de gènere (art. 17.2)',
-        'La prohibició de perfils racials (art. 16) i la lectura fàcil (art. 17.2)',
-        'L\'avaluació del Protocol per l\'OPPI cada 3 anys',
-        'L\'acció popular judicial amb partits polítics'
+        'La prohibició d\'utilitzar perfils racials policials (art. 16) i l\'obligació de lectura fàcil als documents públics (art. 17.2)',
+        'L\'avaluació triennal del Protocol d\'assetjament per l\'OPPI (art. 16) i la creació d\'unitats d\'igualtat locals (art. 17.2)',
+        'L\'exercici de l\'acció popular judicial amb partits polítics (art. 16) i la inversió de la càrrega de la prova (art. 17.2)'
       ],
       correctIndex: 0,
       explanation: 'Art. 16 Llei 17/2015 = paritat als tribunals de selecció; art. 17.2 = auditories de gènere. (Perfils racials 21.4, lectura fàcil 15 i acció popular 26 són de la Llei 19/2020).'
     },
     {
       id: 't4-q17',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quin dia va ser ratificat per Acord de Govern el Protocol per a la prevenció, la detecció, l\'actuació i la resolució de situacions d\'assetjament de 2023?',
       options: [
         'El 28 de març de 2023 (aprovat a la Mesa el 9 de març de 2023)',
-        'El 30 de desembre de 2020',
-        'El 21 de juliol de 2015',
-        'El 9 de març de 2024'
+        'El 30 de desembre de 2020 (aprovat a la Mesa el 15 de desembre de 2020)',
+        'El 21 de juliol de 2015 (aprovat a la Mesa el 7 de juliol de 2015)',
+        'El 9 de març de 2024 (aprovat a la Mesa el 28 de febrer de 2024)'
       ],
       correctIndex: 0,
       explanation: 'Aprovat a la Mesa el 9 de març de 2023 i ratificat per Acord de Govern el 28 de març de 2023.'

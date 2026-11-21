@@ -235,10 +235,10 @@ export const tema12RiscosNrbq = {
       difficulty: 'Mitjà',
       question: "Segons la metodologia de valoració del capítol 3 del manual MAN.RRTT.000, quin és l'ordre de l'esquema d'anàlisi del sinistre i quin és l'ordre de prioritat en les accions d'intervenció?",
       options: [
-        'Tant l’anàlisi com la intervenció segueixen l’ordre Font → Flux → Diana.',
+        'Tant l’anàlisi com la intervenció segueixen estrictament el mateix ordre seqüencial de la cadena de risc: 1r Font → 2n Flux → 3r Diana.',
         'L’anàlisi segueix l’ordre Font → Flux → Diana, però les accions d’intervenció segueixen l’ordre invers: 1r Diana → 2n Flux → 3r Font.',
-        'L’anàlisi és Diana → Flux → Font i la intervenció és Font → Flux → Diana.',
-        'Primer s’actua sempre sobre la Font i l’últim sobre la Diana.'
+        'L’anàlisi s’inicia sempre per la Diana → Flux → Font, mentre que la intervenció prioritza actuar primer sobre la Font i després el Flux.',
+        'La valoració operativa comença pel Flux → Font → Diana, i la intervenció s’executa en paral·lel prioritzant primer la contenció de la Font.'
       ],
       correctIndex: 1,
       explanation: "El manual estableix que l'incident s'analitza de la Font cap al Flux i la Diana, però s'hi intervé en ordre invers: 1r protegir la Diana (persones), 2n controlar el Flux i 3r contenir la Font."
@@ -248,10 +248,10 @@ export const tema12RiscosNrbq = {
       difficulty: 'Difícil',
       question: "Segons l'apartat 5.4 del manual MAN.RRTT.000, en quin moment i en quina zona s'ha d'instal·lar l'Àrea Bàsica de Descontaminació (ABD) dels bombers?",
       options: [
-        'En finalitzar la intervenció, dins de la Zona Freda.',
+        'Un cop finalitzada la fase de contenció de la fuita, ubicada dins de la Zona Freda per evitar el contacte amb vapors tòxics.',
         'Abans que el primer binomi entri a intervenir, ubicada dins de la Zona Calenta (al límit amb la Zona Temperada).',
-        'Durant el retorn al parc de bombers.',
-        'Dins del Centre de Comandament Avançat (CCA).'
+        'Simultàniament a la sortida del primer binomi d’intervenció, muntada al perímetre exterior de la Zona Temperada.',
+        'Només quan es confirmi contaminació real d’intervinents, ubicada al costat del Centre de Comandament Avançat (CCA).'
       ],
       correctIndex: 1,
       explanation: "L'ABD ha d'estar operativa abans d'entrar a la Zona Calenta i es munta a la vora interior de la pròpia Zona Calenta per evitar exportar contaminació."
@@ -261,10 +261,10 @@ export const tema12RiscosNrbq = {
       difficulty: 'Mitjà',
       question: "En un panell taronja ADR, què indiquen els codis de perill (Kemler) '333', 'X423' i '606'?",
       options: [
-        '333 = Gas criogènic | X423 = Explosiu | 606 = Radioactiu',
+        '333 = Gas liquat refrigerat inflamable | X423 = Matèria explosiva que detona amb l’aigua | 606 = Matèria radioactiva de baixa activitat',
         '333 = Líquid pirofòric (s’inflama espontàniament) | X423 = Sòlid que reacciona perillosament amb l’aigua emetent gasos inflamables | 606 = Matèria infecciosa',
-        '333 = Gasolina | X423 = Gasoil | 606 = Corrosiu',
-        'Tots tres indiquen matèries perilloses per al medi ambient.'
+        '333 = Líquid molt inflamable amb risc corrosiu | X423 = Gas tòxic que reacciona amb l’aire | 606 = Matèria comburent molt tòxica',
+        '333 = Líquid inflamable a temperatura elevada | X423 = Sòlid corrosiu incompatible amb àcids | 606 = Substància perillosa per al medi ambient'
       ],
       correctIndex: 1,
       explanation: '333 = líquid pirofòric; X423 = sòlid inflamable que reacciona perillosament amb l’aigua desprenent gas inflamable; 606 = matèria infecciosa (Classe 6.2).'
@@ -274,10 +274,10 @@ export const tema12RiscosNrbq = {
       difficulty: 'Fàcil',
       question: "Fins a quina pressió màxima interior es recomana realitzar maniobres de taponament directe d'una fuita i en quina fase s'ha de realitzar sempre la despressurització d'un recipient segons el capítol 4 de MAN.RRTT.000?",
       options: [
-        'Fins a 10 bar | Despressuritzar sempre en fase líquida',
+        'Fins a 10 bar de pressió interior | Despressuritzar sempre en fase líquida',
         'Per sota d’1,5 bar (< 1,5 bar) | Despressuritzar sempre en fase gas',
-        'Fins a 50 bar | Tant és la fase',
-        'Fins a 200 bar | Despressuritzar per sota de la cisterna'
+        'Fins a 5 bar de pressió interior | Indiferentment en fase gas o líquida',
+        'Fins a 3,5 bar de pressió interior | Despressuritzar per la vàlvula de fons'
       ],
       correctIndex: 1,
       explanation: 'El taponament directe amb falques o coixins es limita a pressions inferiors a 1,5 bar, i la despressurització d’un tanc es fa sempre des de la fase gas.'
@@ -289,8 +289,8 @@ export const tema12RiscosNrbq = {
       options: [
         'Creat el 1999 i operatiu l’1 de març de 1999',
         'Creat el 2020 i operatiu l’1 de maig de 2021',
-        'Creat el 2010 i operatiu el 2012',
-        'Creat el 2025'
+        'Creat el 2015 i operatiu l’1 de juny de 2016',
+        'Creat el 2022 i operatiu l’1 de gener de 2023'
       ],
       correctIndex: 1,
       explanation: 'Segons la secció 1.3 del manual, el GRIT es va crear el 2020 i va entrar en servei operatiu l’1 de maig de 2021.'
@@ -301,22 +301,22 @@ export const tema12RiscosNrbq = {
       question: "Segons les dades oficials del capítol 1 del manual MAN.RRTT.000 sobre el risc NRBQ a Catalunya, quants reactors nuclears actius, quantes instal·lacions radioactives (RADCAT) i quants establiments Seveso hi consten?",
       options: [
         '3 reactors nuclears (Ascó I, Ascó II i Vandellòs II), 234 instal·lacions radioactives i 164 establiments Seveso (amb 9 milions de tones de MMPP/any).',
-        '5 reactors nuclears, 50 instal·lacions radioactives i 40 establiments Seveso.',
-        '2 reactors nuclears, 164 instal·lacions radioactives i 234 establiments Seveso.',
-        '1 reactor nuclear, 9 instal·lacions radioactives i 500 establiments Seveso.'
+        '4 reactors nuclears (incloent-hi Vandellòs I en actiu), 185 instal·lacions radioactives i 120 establiments Seveso (amb 6 milions de tones de MMPP/any).',
+        '2 reactors nuclears actius (Ascó I i Vandellòs II), 164 instal·lacions radioactives i 234 establiments Seveso (amb 12 milions de tones de MMPP/any).',
+        '3 reactors nuclears actius, 310 instal·lacions radioactives autoritzades i 98 establiments Seveso (amb 4,5 milions de tones de MMPP/any).'
       ],
       correctIndex: 0,
       explanation: 'El capítol 1 recull literalment: 3 reactors nuclears actius (Ascó I, Ascó II, Vandellòs II), 234 instal·lacions radioactives autoritzades (RADCAT), 9 milions de tones de MMPP/any i 164 establiments Seveso.'
     },
     {
       id: 'q27-7',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "Quin tipus de blindatge atura cada radiació ionitzant i quina diferència hi ha entre irradiació externa i contaminació radiològica?",
       options: [
-        'La radiació Alfa requereix plom gruixut; la Gamma s’atura amb paper; la irradiació continua encara que t’allunyis de la font.',
-        'Totes tres radiacions s’aturen amb un vestit químic tipus 1a.',
+        'Alfa requereix plom gruixut, Beta s’atura amb paper i Gamma amb alumini prim; tant la irradiació com la contaminació cessen immediatament en allunyar-se de la font sense necessitat de descontaminar.',
+        'Alfa, Beta i Gamma s’aturen completament amb un vestit químic hermètic tipus 1a; la irradiació externa converteix el pacient en radioactiu mentre que la contaminació només provoca cremades tèrmiques.',
         'Alfa s’atura amb paper/pell (molt perillosa si s’inhala/ingereix), Beta amb alumini/metacrilat i Gamma/Raigs X amb plom/formigó; la irradiació cessa en allunyar-se mentre que la contaminació persisteix fins a descontaminar.',
-        'Un pacient només irradiat emet radiació Gamma i contamina l’ambulància.'
+        'Alfa s’atura amb alumini, Beta amb formigó i Gamma amb paper/roba gruixuda; un pacient només irradiat externament per una font segellada emet radiació Gamma contínua i contamina l’ambulància durant el trasllat.'
       ],
       correctIndex: 2,
       explanation: 'Alfa = paper/pell; Beta = alumini/metacrilat; Gamma = plom/formigó. La irradiació externa cessa en allunyar-se o interposar blindatge (sense transferir partícules), mentre que la contaminació implica pols/líquid radioactiu adherit o inhalat.'
@@ -326,9 +326,9 @@ export const tema12RiscosNrbq = {
       difficulty: 'Difícil',
       question: "Com distingim visualment per la seva secció transversal una cisterna ADR que transporta hidrocarburs líquids a pressió atmosfèrica d'una que transporta gasos liquats o químics a pressió (secció 2.2.3)?",
       options: [
-        'Les cisternes de gasos a pressió són sempre quadrades i amb taps superiors.',
-        'Totes les cisternes ADR tenen secció el·líptica sense excepció.',
-        'Les cisternes d’hidrocarburs són circulars perfectes amb parasol superior.',
+        'La secció circular perfecta amb taps superiors correspon a hidrocarburs a pressió atmosfèrica; la secció quadrada amb parets planes reforçades correspon exclusivament a gasos liquats criogènics o tòxics a alta pressió.',
+        'Totes les cisternes ADR de líquids i gasos presenten secció el·líptica estandarditzada per normativa europea, diferenciant-se únicament pel gruix de la xapa d’acer i pel color de les plaques de perill.',
+        'Les cisternes d’hidrocarburs tenen secció circular perfecta amb parasol superior i fons plans, mentre que les cisternes de gasos liquats a pressió presenten secció el·líptica o de caixa de maleta amb múltiples domos.',
         'La secció el·líptica (o caixa de maleta, amb taps/domos superiors) correspon a líquids a pressió atmosfèrica; la secció circular perfecta (sense taps superiors i amb fons bombats) correspon a gasos o líquids a pressió.'
       ],
       correctIndex: 3,
@@ -340,34 +340,34 @@ export const tema12RiscosNrbq = {
       question: "Al diamant de perill americà NFPA 704 (escala 0 a 4), què representa cadascun dels quatre colors i què significa una 'W' ratllada al quadrant blanc?",
       options: [
         'Blau (esq.) = Salut | Vermell (dalt) = Inflamabilitat | Groc (dreta) = Reactivitat | Blanc (baix) = Risc específic (W ratllada = prohibit usar aigua).',
-        'Blau = Aigua | Vermell = Corrosiu | Groc = Radioactiu | Blanc = Explosiu.',
-        'Blau = Inflamabilitat | Vermell = Salut | Groc = Risc específic | Blanc = Reactivitat.',
-        'Verd = Salut | Taronja = Foc | Negre = Reactivitat | W ratllada = usar molta aigua.'
+        'Blau (esq.) = Risc amb aigua | Vermell (dalt) = Corrosivitat | Groc (dreta) = Radioactivitat | Blanc (baix) = Toxicitat (W ratllada = aplicar boira d’aigua).',
+        'Blau (esq.) = Inflamabilitat | Vermell (dalt) = Salut | Groc (dreta) = Risc específic | Blanc (baix) = Reactivitat (W ratllada = producte soluble en aigua).',
+        'Blau (esq.) = Reactivitat | Vermell (dalt) = Salut | Groc (dreta) = Inflamabilitat | Blanc (baix) = Risc ambiental (W ratllada = contenir amb aigua).'
       ],
       correctIndex: 0,
       explanation: 'En el diamant NFPA 704: Blau = Salut, Vermell = Inflamabilitat, Groc = Reactivitat/Inestabilitat i Blanc = Risc específic (W ratllada = no usar aigua, equivalent al prefix X del codi Kemler).'
     },
     {
       id: 'q27-10',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "A quina concentració s'utilitza la dissolució aquosa d'hipoclorit sòdic (lleixiu) per a la descontaminació NRBQ (apartat 5.3) i on s'han d'ubicar els vehicles i el CCA?",
       options: [
-        'Hipoclorit al 10% | Vehicles i CCA dins la Zona Calenta.',
-        'Hipoclorit pur al 100% | Vehicles a sotavent i part baixa del pendent.',
+        'Hipoclorit sòdic al 5% | Vehicles i CCA dins la Zona Temperada, a sobrevent però a la cota més baixa del terreny.',
+        'Hipoclorit sòdic al 10% | Vehicles i CCA a sotavent i a la part baixa del pendent per facilitar el drenatge d’aigües.',
         'Hipoclorit sòdic al 0,5% | Vehicles i CCA sempre en Zona Freda (Verda), a sobrevent i a la part alta del pendent.',
-        'Només alcohol de 96° | Vehicles en Zona Temperada.'
+        'Hipoclorit sòdic al 0,05% | Vehicles en Zona Temperada i el CCA dins la Zona Freda, perpendiculars a la direcció del vent.'
       ],
       correctIndex: 2,
       explanation: "El manual fixa la dissolució d'hipoclorit sòdic al 0,5% (dilució ~1:10 del lleixiu comercial) i situa el CCA i els vehicles en Zona Freda, a sobrevent i a la part alta del pendent."
     },
     {
       id: 'q27-11',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "Quina diferència tècnica existeix entre absorció i adsorció en les maniobres sobre el flux (capítol 4) i quins equips avançats del GRIT permeten identificar químicament substàncies desconegudes?",
       options: [
-        'Absorció només serveix per a gasos i Adsorció per a incendis forestals | Termòmetre i baròmetre.',
-        'Són sinònims exactes | Només paper indicador de pH.',
-        'Absorció es fa amb carbó actiu i Adsorció amb escuma | Explosímetre de %LII exclusivament.',
+        'En l’absorció el líquid queda retingut a la superfície sense penetrar (carbó actiu) i en l’adsorció entra als porus interns del sòlid (sepiolita) | Termòmetre infraroig i detector multigas PID.',
+        'Tots dos termes són sinònims tècnics referits a la neutralització àcid-base amb bicarbonat sòdic i escumògens fluorats de baixa expansió | Tires reactives de pH i tub colorimètric.',
+        'L’absorció s’aplica únicament a gasos tòxics solubles en aigua i l’adsorció a vessaments d’hidrocarburs amb escuma física | Explosímetre catalític de %LII i càmera tèrmica.',
         'En l’absorció el líquid penetra dins els porus del sòlid (sepiolita/vermiculita, augmentant el volum) i en l’adsorció s’adhereix a la superfície (carbó actiu) | Espectrometria Raman i FTIR.'
       ],
       correctIndex: 3,
@@ -378,10 +378,10 @@ export const tema12RiscosNrbq = {
       difficulty: 'Difícil',
       question: "Segons l'apartat 5.5 de MAN.RRTT.000, quina norma regula els vestits hermètics a gasos (Tipus 1) i quin temps real aproximat de treball efectiu permet un vestit encapsulat Tipus 1a amb ERA interior?",
       options: [
-        'UNE-EN 465 | Permet treballar 90 minuts seguits sense reserva d’aire.',
+        'UNE-EN 465 | Temps real efectiu d’uns 45-50 minuts, ja que l’ERA es porta per fora del vestit i es pot canviar l’ampolla dins la Zona Temperada.',
         'UNE-EN 943-1 i EN 943-2 (ET) | Temps real efectiu d’uns 15-20 minuts, ja que cal reservar aire per passar pel passadís de descontaminació abans de treure’s el vestit.',
-        'UNE-EN 1891 | Permet treballar 45 minuts sense passar per l’ABD.',
-        'UNE-EN 16942 | L’ERA va sempre per fora del vestit en el Tipus 1a.'
+        'UNE-EN 14605 (Tipus 3) | Temps real efectiu de 35-40 minuts, perquè el vestit disposa d’una vàlvula externa que permet connectar aire fresc a la sortida.',
+        'UNE-EN 13034 | Temps real efectiu d’uns 60 minuts, atès que el Tipus 1a funciona amb filtre combinat ABEK2P3 i no consumeix aire comprimit de l’ampolla.'
       ],
       correctIndex: 1,
       explanation: "Els vestits Tipus 1 hermètics a gasos es regeixen per EN 943-1 / EN 943-2 ET (1a = ERA dins del vestit). Tot i l'autonomia nominal de l'ampolla, el treball efectiu és d'uns 15-20 minuts perquè cal aire suficient per completar la descontaminació."
@@ -394,20 +394,20 @@ export const tema12RiscosNrbq = {
         "Fons taronja amb una bomba explotant a la meitat superior i el número 9.",
         "Fons blanc amb 7 franges verticals negres a la meitat superior i el número 9 subratllat a l'angle inferior.",
         "Meitat superior blanca amb una calavera i meitat inferior negra amb el número 9.",
-        "Fons blau amb una flama blanca i el número 9."
+        "Fons blau amb una flama blanca a la meitat superior i el número 9 subratllat."
       ],
       correctIndex: 1,
       explanation: "L'etiqueta de la Classe 9 (matèries i objectes perillosos diversos) presenta fons blanc amb 7 barres verticals negres a la meitat superior i el número 9 subratllat a la part inferior."
     },
     {
       id: 'q27-14',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "En una intervenció amb mercaderies perilloses on el panell del Regne Unit (codi Hazchem / EAC) indica '2XE', quines actuacions principals prescriu als bombers?",
       options: [
-        "Aplicar aigua a broll ple, diluir el vessament al clavegueram i sense necessitat de considerar evacuació.",
+        "Aplicar aigua a broll ple, diluir el vessament al clavegueram amb abundant cabal, protecció estructural bàsica amb ERA i sense necessitat de valorar l'evacuació.",
         "Utilitzar aigua polvoritzada/boira (prohibit aigua a broll), contenir el vessament (no diluir), protecció completa per a líquids amb ERA i valorar l'evacuació (E).",
-        "Emprar exclusivament escuma química, permetre abocament lliure i utilitzar només guants de pell.",
-        "No aplicar cap agent extintor en absolut i evacuar obligatòriament a 5 km."
+        "Emprar exclusivament escuma química, permetre l'abocament controlat al medi, utilitzar només guants de protecció tèrmica i evacuar obligatòriament a 1 km.",
+        "Utilitzar pols química seca o CO₂ (prohibit aplicar aigua en cap format), contenir el vessament i protecció hermètica a gasos Tipus 1a amb evacuació immediata."
       ],
       correctIndex: 1,
       explanation: "En el codi Hazchem 2XE: '2' = aigua en boira/polvoritzada (mai a broll); 'X' = protecció química completa per a líquids + ERA, sense reacció violenta però amb obligació de CONTENIR el vessament; 'E' = considerar l'evacuació."
@@ -456,10 +456,10 @@ export const tema12RiscosNrbq = {
       difficulty: 'Difícil',
       question: "En una fuita d'amoníac (NH₃) d'una cisterna industrial, un bomber afirma que l'ordre d'anàlisi del sinistre és Diana → Flux → Font i que l'ABD s'instal·la un cop surt el primer binomi dins la Zona Freda. Què és correcte segons MAN.RRTT.000?",
       options: [
-        "L'afirmació del bomber és completament correcta.",
+        "L'afirmació del bomber és correcta pel que fa a l'anàlisi (Diana → Flux → Font), però l'ABD s'ha de muntar dins la Zona Temperada un cop es confirmi que el binomi ha quedat contaminat.",
         "És doble error: l'ordre d'anàlisi és Font → Flux → Diana (mentre que l'ordre d'intervenció és 1r Diana → 2n Flux → 3r Font), i l'ABD s'ha de muntar dins la Zona Calenta (al límit amb la Temperada) ABANS que entri el primer binomi.",
-        "L'ordre d'anàlisi és Font → Flux → Diana, però l'ABD es munta al final dins la Zona Freda.",
-        "L'ordre d'intervenció comença sempre taponant la Font i l'ABD es munta al CCA."
+        "L'ordre d'anàlisi és efectivament Font → Flux → Diana, però la intervenció segueix exactament el mateix ordre i l'ABD es munta al final dins la Zona Freda al costat del CCA.",
+        "L'ordre d'intervenció comença sempre taponant la Font per eliminar el risc en origen, i l'ABD s'instal·la dins la Zona Freda un cop s'ha estabilitzat la fuita de la cisterna."
       ],
       correctIndex: 1,
       explanation: "Doble trampa clàssica: Anàlisi = Font → Flux → Diana; Intervenció = 1r Diana → 2n Flux → 3r Font; i l'ABD es munta DINS la Zona Calenta (a la frontera) abans d'entrar el primer binomi."

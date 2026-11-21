@@ -288,13 +288,13 @@ export const tema21Construccio = {
   quiz: [
     {
       id: 't15-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Segons el manual MAN.GRAL.006, quines són les dimensions nominals de referència d’un maó de Format Català i d’un maó de Format Castellà?',
       options: [
-        'Català: 20 × 10 cm | Castellà: 30 × 15 cm.',
+        'Català: 20 × 10 cm (19 × 9 cm reals) | Castellà: 30 × 15 cm (29 × 14 cm reals).',
         'Català: 30 × 15 cm (29 × 14 cm reals) | Castellà: 25 × 12,5 cm (24 × 11,5 cm reals).',
-        'Català: 40 × 20 cm | Castellà: 30 × 15 cm.',
-        'Tots dos mesuren 25 × 12 cm.'
+        'Català: 40 × 20 cm (39 × 19 cm reals) | Castellà: 30 × 15 cm (29 × 14 cm reals).',
+        'Català: 25 × 12,5 cm (24 × 11,5 cm reals) | Castellà: 20 × 10 cm (19 × 9 cm reals).'
       ],
       correctIndex: 1,
       explanation: 'Apartat 3.2 del manual MAN.GRAL.006: el maó de format català té unes mides modulades de 30 × 15 cm i el de format castellà de 25 × 12,5 cm (el través sempre és la meitat del llarg).'
@@ -304,10 +304,10 @@ export const tema21Construccio = {
       difficulty: 'Mitjà',
       question: 'Quin és l’ordre correcte de transmissió de càrregues de dalt a baix segons el Principi de Jerarquia Estructural (Cap. 5.3)?',
       options: [
-        'Jàsseres → Bigues → Biguetes → Fonaments → Pilars.',
+        'Jàsseres (bigues mestres) → Bigues → Biguetes (forjat) → Fonaments → Pilars o Murs → Terreny.',
         'Biguetes (forjat) → Bigues → Jàsseres (bigues mestres) → Pilars o Murs de càrrega → Fonaments → Terreny.',
-        'Envans → Bigues → Pilars → Biguetes → Fonaments.',
-        'Pilars → Jàsseres → Bigues → Biguetes → Fonaments.'
+        'Envans de distribució → Bigues → Pilars → Biguetes (forjat) → Jàsseres → Fonaments → Terreny.',
+        'Pilars o Murs de càrrega → Jàsseres (bigues mestres) → Bigues → Biguetes (forjat) → Fonaments → Terreny.'
       ],
       correctIndex: 1,
       explanation: 'Les biguetes del forjat descarreguen sobre les bigues; les bigues sobre les jàsseres (bigues mestres); les jàsseres sobre els pilars o murs; i aquests sobre els fonaments i el terreny.'
@@ -317,10 +317,10 @@ export const tema21Construccio = {
       difficulty: 'Mitjà',
       question: 'Com es comporta volumètricament el Guix, la Calç i el Ciment durant el seu enduriment segons la taula comparativa del Capítol 3.1?',
       options: [
-        'El guix es contreu, la calç s’expandeix i el ciment és neutre.',
+        'El Guix pateix RETRACCIÓ (s’encongeix en forjar), la Calç és EXPANSIVA (augmenta de volum) i el Ciment és NEUTRE (sense canvi dimensional i d’alta flexibilitat).',
         'El Guix és EXPANSIU (augmenta lleugerament de volum), la Calç és NEUTRA (i d’alta flexibilitat) i el Ciment té RETRACCIÓ (s’encongeix i té alta resistència).',
-        'Tots tres s’expandeixen en assecar-se.',
-        'El guix és el més resistent a l’aigua i a la compressió.'
+        'Tots tres conglomerants són EXPANSIUS durant el procés de forjat i només es diferencien en la resistència mecànica a compressió i la impermeabilitat.',
+        'El Guix és el més resistent a l’aigua i a la compressió (sense retracció), mentre que la Calç pateix retracció severa i el Ciment és completament neutre.'
       ],
       correctIndex: 1,
       explanation: 'Taula 3.1 del manual: el guix és expansiu (baixa resistència i baixa flexibilitat); la calç és neutra (resistència mitja i alta flexibilitat); el ciment pateix retracció (alta resistència i baixa flexibilitat).'
@@ -343,10 +343,10 @@ export const tema21Construccio = {
       difficulty: 'Mitjà',
       question: 'Segons la taula de tensions de ruptura del Capítol 2.3, quina és la resistència aproximada del Formigó en massa a Tracció i a Compressió?',
       options: [
-        'Tracció: 1.000 kg/cm² | Compressió: < 25 kg/cm².',
+        'Tracció: fins a 1.000 kg/cm² (molt alta) | Compressió: < 25 kg/cm² (molt baixa).',
         'Tracció: < 25 kg/cm² (molt baixa) | Compressió: fins a 1.000 kg/cm² (molt alta).',
-        'Tracció: 3.000 kg/cm² | Compressió: 3.000 kg/cm².',
-        'Tracció: 500 kg/cm² | Compressió: 500 kg/cm².'
+        'Tracció: fins a 3.000 kg/cm² (igual que l’acer) | Compressió: fins a 3.000 kg/cm².',
+        'Tracció: entre 300 i 500 kg/cm² (mitjana) | Compressió: entre 300 i 500 kg/cm².'
       ],
       correctIndex: 1,
       explanation: 'El formigó resisteix fins a 1.000 kg/cm² a compressió però menys de 25 kg/cm² a tracció (per això es col·loquen barres d’acer, que aguanten de 3.000 a 7.500 kg/cm² a tracció).'
@@ -369,10 +369,10 @@ export const tema21Construccio = {
       difficulty: 'Mitjà',
       question: 'Quina és la distància característica entre parets mitgeres de la tradicional "casa de cos" catalana construïda amb el sistema unitari de murs de càrrega?',
       options: [
-        'D’1,5 a 2,0 metres.',
+        'D’1,5 a 2,5 metres (marcada per l’amplada mínima de les voltes de maó de pla).',
         'De 3,5 a 4,5 metres (marcada per la longitud de les bigues de fusta tradicionals).',
-        'De 10 a 15 metres.',
-        'De 20 metres.'
+        'De 8,0 a 12,0 metres (marcada per la resistència a compressió dels murs de pedra).',
+        'De 15,0 a 20,0 metres (amb bigues mestres de fusta recolzades directament als extrems).'
       ],
       correctIndex: 1,
       explanation: 'Apartat 5.4.1 del manual: la casa de cos té una amplada típica entre mitgeres de 3,5 a 4,5 m, que era la llum òptima per als cabirons i bigues de fusta.'
@@ -382,23 +382,23 @@ export const tema21Construccio = {
       difficulty: 'Mitjà',
       question: 'En una biga horitzontal recolzada als dos extrems, quin esforç predomina al centre de la biga i quin esforç predomina just als extrems prop dels punts de recolzament?',
       options: [
-        'Al centre: Torsió | Als extrems: Vinclament.',
+        'Al centre: Torsió axial | Als extrems de recolzament: Vinclament lateral per esveltesa.',
         'Al centre: Flexió (compressió a dalt i tracció a baix) | Als extrems de recolzament: Esforç Tallant (cisallament).',
-        'Al centre: Compressió pura | Als extrems: Tracció pura.',
-        'Només hi ha tracció a tota la biga.'
+        'Al centre: Compressió pura uniforme | Als extrems de recolzament: Tracció pura per estirament.',
+        'Al centre: Esforç Tallant (cisallament) | Als extrems de recolzament: Flexió màxima amb tracció superior.'
       ],
       correctIndex: 1,
       explanation: 'Les bigues treballen a flexió al centre del seu tram, mentre que a la vora dels suports (pilars o murs) és on l’esforç tallant o de cisallament és màxim.'
     },
     {
       id: 't15-q9',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Què s’obté quan barregem Ciment + Aigua + Sorra, i què s’obté quan hi afegim a més Grava (àrids grossos)?',
       options: [
-        'Amb sorra s’obté Pasta, i amb grava s’obté Morter.',
+        'Amb sorra s’obté PASTA, i en afegir-hi grava s’obté MORTER (si només és ciment + aigua s’anomena Lletada).',
         'Amb sorra s’obté MORTER, i en afegir-hi grava s’obté FORMIGÓ (si només és conglomerant + aigua s’anomena Pasta).',
-        'Amb sorra s’obté Formigó, i amb grava s’obté Asfalt.',
-        'Tots dos s’anomenen morter.'
+        'Amb sorra s’obté FORMIGÓ, i en afegir-hi grava s’obté AGLOMERAT (si només és ciment + aigua s’anomena Morter).',
+        'Tots dos compostos s’anomenen morter hidràulic i només varien en la dosificació d’aigua de pastat.'
       ],
       correctIndex: 1,
       explanation: 'Pasta = conglomerant + aigua; Morter = conglomerant + aigua + sorra; Formigó = ciment + aigua + sorra + grava.'
@@ -409,9 +409,9 @@ export const tema21Construccio = {
       question: 'Quina diferència hi ha entre el sistema constructiu de murs de càrrega (fins als anys 1960–70) i el sistema de pilars i forjats (a partir dels anys 1970)?',
       options: [
         'El de murs de càrrega és un sistema UNITARI (les parets fan de tancament i d’estructura portant alhora), mentre que el de pilars i forjats és un sistema SEPARAT (l’esquelet portant és independent de la façana).',
-        'El de murs de càrrega és un sistema separat i el de pilars és unitari.',
-        'El de murs de càrrega s’utilitza per a grans llums de més de 25 metres.',
-        'No hi ha cap diferència estructural.'
+        'El de murs de càrrega és un sistema SEPARAT (la façana només té funció de tancament lleuger), mentre que el de pilars i forjats és un sistema UNITARI on tots els tancaments són portants.',
+        'El de murs de càrrega s’utilitza preferentment per a grans llums diàfanes de més de 25 metres en naus industrials, mentre que el de pilars es limita a habitatges unifamiliars.',
+        'No hi ha cap diferència estructural en la transmissió de càrregues verticals: tots dos sistemes permeten enderrocar qualsevol paret interior o de façana sense afectació portant.'
       ],
       correctIndex: 0,
       explanation: 'Apartat 5.4 del manual: el sistema de murs de càrrega és unitari (paret portant = tancament), mentre que el de pilars i forjats és separat.'
@@ -421,10 +421,10 @@ export const tema21Construccio = {
       difficulty: 'Mitjà',
       question: 'Com treballen estructuralment els murs de contenció o parets per gravetat (de pedra, maó o formigó en massa sense armar)?',
       options: [
-        'Resisteixen les empentes gràcies a la seva gran capacitat d’absorbir esforços de flexió i tracció pura.',
+        'Resisteixen les empentes laterals del terreny gràcies a la seva gran capacitat d’absorbir esforços de flexió composta i tracció pura a la cara exterior.',
         'Contraresten les empentes mitjançant el seu propi pes i treballen bàsicament a compressió, ja que no resisteixen bé les traccions ni la flexió.',
-        'Transmeten tota la càrrega per cisallament cap a la coberta.',
-        'Funcionen exclusivament mitjançant cables posttesats a tracció.'
+        'Transmeten tota la càrrega horitzontal per esforç tallant cap a la coberta i els forjats superiors sense necessitat de fonamentació pròpia.',
+        'Funcionen exclusivament mitjançant cables d’acer posttesats a tracció ancorats al rerefons del terreny sense aprofitar el pes propi del mur.'
       ],
       correctIndex: 1,
       explanation: 'Les estructures per gravetat s’estabilitzen pel seu pes propi i treballen a compressió; com que els materials petris o el formigó en massa no resisteixen traccions ni flexió rellevants, la resultant de forces ha de caure dins el nucli central de la base.'
@@ -444,13 +444,13 @@ export const tema21Construccio = {
     },
     {
       id: 't15-q13',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'En el càlcul d’estructures, quin principi físic fonamental permet resoldre directament les estructures isostàtiques?',
       options: [
         'La primera llei de Newton (equilibri estàtic: sumatori de forces i moments igual a zero).',
-        'La llei de Hooke de deformació plàstica exclusiva.',
-        'El principi d’Arquimedes.',
-        'La tercera llei de la termodinàmica.'
+        'La llei de Hooke de deformació elàstica i plàstica aplicada al mòdul de Young del material.',
+        'El principi de conservació de l’energia potencial elàstica en sistemes hiperestàtics.',
+        'La tercera llei de la dinàmica (principi d’acció i reacció sense equacions de moments).'
       ],
       correctIndex: 0,
       explanation: 'Una estructura isostàtica té el nombre just d’enllaços i incògnites perquè es pugui calcular únicament aplicant les equacions d’equilibri estàtic derivades de la primera llei de Newton (ΣF = 0 i ΣM = 0).'

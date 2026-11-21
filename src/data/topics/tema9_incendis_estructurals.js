@@ -332,49 +332,49 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Mitjà',
       question: "Quina és la distància mínima d'abalisament (zonatge de seguretat) respecte de la façana d'un edifici incendiat en condicions normals, i quina quan hi ha risc de col·lapse estructural?",
       options: [
-        '5 metres en condicions normals i 15 metres amb risc de col·lapse',
+        '5 metres en condicions normals i 15 metres quan existeix risc de col·lapse estructural',
         '15 metres en condicions normals i 2 vegades l’alçada de l’edifici amb risc de col·lapse estructural',
-        '25 metres sempre',
-        '10 metres en condicions normals i 1 vegada l’alçada amb risc de col·lapse'
+        '25 metres en condicions normals i 50 metres fixos amb independència de l’alçada de l’edifici',
+        '10 metres en condicions normals i 1 vegada l’alçada de l’edifici amb risc de col·lapse estructural'
       ],
       correctIndex: 1,
       explanation: "L'apartat 5.2 fixa una distància mínima de 15 m davant de façana per caiguda d'elements, que s'amplia a 2 vegades l'alçada de l'edifici si s'aprecia risc d'esfondrament."
     },
     {
       id: 'q24-5',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quina diferència hi ha entre declarar un 'Codi Vermell' i declarar un 'SOS' en una intervenció estructural?",
       options: [
-        'Codi Vermell és per a incendis forestals i SOS per a incendis urbans.',
-        'Codi Vermell és una alerta general per a tot el sector/intervenció (ordre d’evacuació immediata per perill greu), mentre que SOS és l’alerta individual d’un bomber o binomi atrapat/accidentat.',
-        'SOS és per demanar més aigua i Codi Vermell és per demanar una ambulància.',
-        'No hi ha cap diferència.'
+        'Codi Vermell s’activa exclusivament per a incendis forestals amb risc d’atrapament i SOS per a incendis urbans en edificis de gran alçada.',
+        'Codi Vermell és una alerta general d’evacuació immediata per a tot el sector/intervenció, mentre que SOS és l’alerta d’un bomber o binomi atrapat.',
+        'SOS s’utilitza per demanar un reforç immediat de cabal d’aigua al camió bomba i Codi Vermell per sol·licitar l’arribada urgent d’una ambulància SVA.',
+        'No hi ha cap diferència operativa entre tots dos codis: tots dos impliquen aturar l’extinció i activar automàticament el relleu de tot el personal.'
       ],
       correctIndex: 1,
       explanation: 'El Codi Vermell afecta a tot el personal de la intervenció/sector davant un risc imminent (col·lapse, Flashover), mentre que el SOS l’activa un bomber o binomi que necessita rescat.'
     },
     {
       id: 'q24-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quines són les 6 cares que s'han d'avaluar en la valoració tridimensional d'un incendi estructural i fins a quina planta arriba el límit operatiu d'una autoescala (AEA) estàndard de 30 metres?",
       options: [
-        "Només la façana principal i la coberta; l'AEA arriba fins a la Planta 12.",
-        "Les 4 façanes (A, B, C, D), la coberta i l'escala; l'AEA arriba fins a la Planta 5.",
-        "Les 4 façanes laterals (A, B, C, D), la cara inferior (planta inferior o soterrani) i la cara superior (planta superior o coberta); el límit operatiu d'una AEA de 30 m és la Planta 8 (PL+8).",
-        "Les 6 plantes interiors del focus; l'AEA no té límit d'alçada."
+        "Només la façana principal, la façana posterior, la coberta i tres plantes interiors; l'AEA de 30 m arriba fins a la Planta 12 (PL+12).",
+        "Les 4 façanes (A, B, C, D), la coberta i el nucli d'escala comunitària; l'AEA de 30 m arriba com a màxim fins a la Planta 5 (PL+5).",
+        "Les 4 façanes (A, B, C, D), la cara inferior (planta inferior/soterrani) i la superior (planta superior/coberta); l'AEA de 30 m arriba fins a PL+8.",
+        "Les 6 plantes immediatament superiors al focus de l'incendi sense valorar el soterrani; l'AEA de 30 m arriba fins a la Planta 10 (PL+10)."
       ],
       correctIndex: 2,
       explanation: "La valoració de les 6 cares inclou les 4 façanes (A, B, C, D) més la planta inferior i la planta superior/coberta. L'abast operatiu d'una AEA estàndard de 30 m arriba fins a la Planta 8 (PL+8)."
     },
     {
       id: 'q24-7',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quins són els 4 atributs de la lectura del fum en un incendi estructural i què anuncia un fum dens de color groguenc-marronós que surt a polsacions ('respira')?",
       options: [
         "Volum, Velocitat, Densitat i Color; el fum groguenc-marronós dens a polsacions indica acumulació de gasos de piròlisi en un incendi ofegat (ILV) amb risc extrem de Backdraft.",
-        "Temperatura, Pressió, Humitat i Olor; indica un incendi ja extingit sense perill.",
-        "Alçada, Amplada, Pes i Flama; indica que l'incendi és ric en oxigen i sense risc d'explosió.",
-        "Direcció, Durada, Luminositat i So; indica únicament vapor d'aigua net."
+        "Temperatura, Pressió, Humitat i Olor; el fum groguenc-marronós a polsacions indica un incendi en fase de decaïment ja extingit i sense risc d'inflamació.",
+        "Alçada, Amplada, Pes i Flama; el fum groguenc-marronós a polsacions indica que l'incendi és ric en oxigen (ventilat) i sense risc d'explosió de gasos.",
+        "Direcció, Durada, Luminositat i So; el fum groguenc-marronós a polsacions indica únicament vapor d'aigua net procedent del refredament de les parets."
       ],
       correctIndex: 0,
       explanation: "Els 4 atributs de la lectura del fum són Volum, Velocitat, Densitat i Color. El fum groguenc-marronós dens i turbulent o a polsacions és el signe clàssic d'acumulació de quitrans i gasos en un incendi limitat per ventilació (ILV) amb perill de Backdraft."
@@ -384,10 +384,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Mitjà',
       question: "Quines són les 5 parts de la instal·lació hidràulica d'extinció segons l'apartat 4.1.4 de MAN.INES.000 i on s'ha de muntar sempre la bifurcació?",
       options: [
-        "1) Hidrant, 2) Bomba, 3) Mànega, 4) Ràcord i 5) Llança; la bifurcació es munta davant la porta en flames.",
-        "1) Pressió, 2) Cabal, 3) Reserva, 4) Refredament i 5) Extinció; la bifurcació es munta dins del pis incendiat.",
-        "1) Bomba, 2) Columna seca, 3) Reducció, 4) Bucle i 5) Escuma; la bifurcació es munta al camió.",
-        "1) Alimentació, 2) Estesa (línia mare), 3) Bifurcació, 4) Línia d'atac (amb reserva) i 5) Línia de seguretat (SOS); la bifurcació es munta sempre en Ruta Freda, 1 planta per sota de l'incendi."
+        "1) Hidrant, 2) Bomba, 3) Mànega de Ø70, 4) Ràcord Barcelona i 5) Llança; la bifurcació es munta al replà de la mateixa planta incendiada.",
+        "1) Pressió, 2) Cabal, 3) Reserva, 4) Refredament i 5) Extinció; la bifurcació es munta dins del rebedor del pis incendiat abans d'avançar.",
+        "1) Bomba, 2) Columna seca, 3) Reducció, 4) Bucle i 5) Escuma; la bifurcació es munta directament a la sortida d'impulsió del camió bomba.",
+        "1) Alimentació, 2) Estesa (línia mare), 3) Bifurcació, 4) Línia d'atac (amb reserva) i 5) Línia SOS; la bifurcació es munta en Ruta Freda (1 planta per sota)."
       ],
       correctIndex: 3,
       explanation: "Les 5 parts són Alimentació, Estesa, Bifurcació, Línia d'atac i Línia de seguretat. La bifurcació s'ubica sempre a la Ruta Freda (una planta per sota de la planta afectada), mai davant mateix de la porta del foc."
@@ -397,10 +397,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Mitjà',
       question: "En les tècniques d'aplicació d'aigua (apartats 4.1.5–4.1.6), quina durada tenen les polsacions de refredament de gasos, quins traços dibuixen i com s'executa l'atac transicional?",
       options: [
-        "Polsació curta de 10 s i llarga de 30 s en línia recta; l'atac transicional ruixa en cercles pel terra.",
-        "Polsació curta < 1 s (test) i llarga d'1 a 5 s dibuixant 'O', 'Z' o '8' al sostre; l'atac transicional aplica un raig sòlid amb angle fix contra el sostre des d'una finestra exterior (10–20 s).",
-        "Polsacions exclusivament de 5 a 10 s contra les parets; l'atac transicional es fa des de l'escala interior.",
-        "No es fan polsacions en atac 3D, sinó un raig continu sobre el mobiliari."
+        "Polsació curta de 5 a 10 s i llarga de 30 s en línia recta sobre el terra; l'atac transicional ruixa en cercles des de l'escala interior.",
+        "Polsació curta < 1 s (test) i llarga d'1–5 s dibuixant 'O', 'Z' o '8' al sostre; l'atac transicional aplica raig sòlid fix al sostre des de fora (10–20 s).",
+        "Polsacions exclusivament de 5 a 10 s contra les parets laterals; l'atac transicional es fa obrint el con de polvorització a 60° des del replà.",
+        "No es fan polsacions en atac 3D, sinó un raig continu sobre el mobiliari; l'atac transicional s'aplica només després de completar la ventilació."
       ],
       correctIndex: 1,
       explanation: "El refredament de gasos (3D) utilitza polsacions curtes (< 1 s) de test i polsacions llargues (1–5 s) en forma de 'O', 'Z' o '8'. L'atac transicional projecta un raig sòlid fix al sostre des de l'exterior per abatre temperatura sense empènyer gasos cap a l'escala."
@@ -410,10 +410,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Mitjà',
       question: "Quina és la regla d'or obligatòria abans d'engegar el motoventilador en una Ventilació per Pressió Positiva (VPP) i en què es diferencia de la Ventilació per Pressió Negativa (VPN)?",
       options: [
-        "En VPP cal obrir SEMPRE l'obertura de sortida de fums (1 a 2 vegades l'entrada) ABANS d'engegar el ventilador exterior (1,5–2,5 m) amb línia d'aigua a punt; la VPN aspira el fum des de la finestra creant depressió.",
-        "En VPP s'engega el ventilador amb totes les finestres tancades per comprimir el fum; la VPN bufa aire cap a dins des del terrat.",
-        "En VPP el ventilador es col·loca dins l'habitació incendiada; la VPN no utilitza cap extractor mecànic.",
-        "Tant la VPP com la VPN s'apliquen abans de localitzar el focus i sense línia d'aigua preparada."
+        "En VPP cal obrir SEMPRE la sortida de fums (1–2 vegades l'entrada) ABANS d'engegar el ventilador exterior (1,5–2,5 m) amb línia a punt; la VPN aspira fum creant depressió.",
+        "En VPP s'engega el ventilador amb totes les finestres tancades per comprimir el coixí de fums; la VPN bufa aire net cap a l'interior des de la coberta de l'edifici.",
+        "En VPP el motoventilador es col·loca dins l'habitació incendiada apuntant cap al passadís; la VPN no utilitza cap extractor mecànic i depèn només del tiratge tèrmic.",
+        "Tant la VPP com la VPN s'apliquen obligatòriament abans de localitzar el focus de l'incendi i sense necessitat de tenir cap línia d'aigua pressuritzada a punt."
       ],
       correctIndex: 0,
       explanation: "En VPP el ventilador exterior injecta aire per pressuritzar el recinte, però és imprescindible obrir prèviament la sortida de fums i tenir línia d'aigua a punt. En VPN un extractor situat a la finestra o conducte aspira el fum creant depressió interior."
@@ -423,10 +423,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Difícil',
       question: "Com responen al foc les estructures metàl·liques (acer) i les estructures de formigó armat segons el capítol 2 de MAN.INES.000?",
       options: [
-        "L'acer no perd resistència fins als 1.200 °C i el formigó armat mai es trenca pel foc.",
-        "L'acer es contrau amb la calor i el formigó armat col·lapsa sempre abans que les bigues de fusta.",
-        "L'acer comença a perdre resistència a 300 °C, perd el 50% a 550 °C i la seva dilatació empeny els murs; el formigó pot patir 'spalling' (esclats del recobriment) i cal vigilar bovedilles de porexpan que fonen i gotejen inflamant-se.",
-        "Només les estructures de pedra natural pateixen dilatacions i 'spalling'."
+        "L'acer estructural sense protecció no perd resistència fins als 1.200 °C i el formigó armat mai pateix esclats ni pèrdua de recobriment durant un incendi interior.",
+        "L'acer es contrau amb l'augment de temperatura i el formigó armat col·lapsa sempre per torsió abans que les bigues de fusta massissa d'un edifici antic.",
+        "L'acer perd resistència des dels 300 °C (50% a 550 °C) i la seva dilatació empeny els murs; el formigó pot patir 'spalling' i les bovedilles de porexpan fonen i degoten en flames.",
+        "Només les estructures de pedra natural i fàbrica de maó pateixen dilatacions tèrmiques i 'spalling', mentre que el formigó i l'acer mantenen intacta la seva capacitat portant."
       ],
       correctIndex: 2,
       explanation: "L'acer sense protecció comença a perdre resistència als 300 °C i perd el 50% als 550 °C (provocant empentes per dilatació). En formigó armat cal vigilar l'esclat del recobriment (spalling) i el degoteig en flames de bovedilles de porexpan."
@@ -436,10 +436,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Difícil',
       question: "Quin és l'ordre de les 4 fases del Procediment d'Entrada Segura (apartat 5.7) i quines dades registra el responsable de la taula CACE (apartat 5.3)?",
       options: [
-        "1. Tirar aigua per sota la porta → 2. Trencar el pany → 3. Entrar corrents de peu → 4. Ventilar; el CACE només apunta el número de matrícula del camió.",
-        "1. Obrir del tot la porta → 2. Apagar el focus → 3. Tocar la porta → 4. Sortir; el CACE registra només l'hora de sortida.",
-        "1. Connectar l'ERA dins el pis → 2. Obrir les finestres → 3. Col·locar la falca → 4. Tocar les frontisses; el CACE controla les eines manuals.",
-        "1. Valorar la porta (fum, frontisses, Tª) → 2. Posicionar-se protegit al pany i obrir uns cm (2–3 s) → 3. Refredar gasos amb polsació curta → 4. Progressar ajupit sota el pla neutre amb falca; el CACE registra nom/codi, pressió inicial (300 bar), hora d'entrada, ubicació i hora límit de sortida."
+        "1. Projectar aigua per sota la porta → 2. Forçar el pany → 3. Entrar ràpidament de peu → 4. Ventilar la sala; el CACE només apunta la matrícula del camió i el codi del parc d'origen.",
+        "1. Obrir del tot la porta → 2. Apagar el focus directe → 3. Tocar la porta → 4. Sortir del pis; el CACE registra només l'hora de sortida i el nombre total de mànegues desplegades.",
+        "1. Connectar l'ERA dins el pis → 2. Obrir les finestres → 3. Col·locar la falca → 4. Tocar les frontisses; el CACE controla exclusivament el repartiment d'eines manuals i càmeres tèrmiques.",
+        "1. Valorar la porta (fum, Tª) → 2. Obrir uns cm protegit (2–3 s) → 3. Refredar gasos → 4. Progressar ajupit amb falca; el CACE registra nom/codi, pressió inicial, hora entrada, ubicació i hora límit."
       ],
       correctIndex: 3,
       explanation: "Les 4 fases d'entrada segura són: valorar porta/Tª, posicionament protegit i obertura de control, refredament de gasos i progressió sota el pla neutre deixant falca. La taula CACE registra identitat del binomi, pressió inicial, hora d'entrada, ubicació i hora límit."
@@ -449,10 +449,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Mitjà',
       question: "En arribar a un incendi en un edifici entre mitgeres, el comandament observa des del carrer (mirant la façana principal d'accés) que per la façana posterior surt fum groguenc-marronós molt dens a polsacions ('respira'), i ordena emplaçar l'autoescala a la façana lateral dreta. Com s'identifiquen aquestes façanes segons la senyalització horària A-B-C-D i quin risc anuncia el fum?",
       options: [
-        "Façana principal = A; lateral dreta = B; posterior = C | El fum indica un incendi totalment ventilat sense risc de Backdraft.",
-        "Façana principal = A; posterior = C; lateral dreta = D (numerant en sentit horari, quedant la B a l'esquerra) | El fum dens groguenc-marronós a polsacions anuncia un incendi limitat per ventilació (ILV) amb risc extrem de Backdraft.",
-        "Façana principal = A; posterior = B; lateral dreta = C | El fum indica únicament vapor d'aigua net per una avaria de calefacció.",
-        "Façana principal = 0; posterior = 2; lateral dreta = 1 (nomenclatura forestal aplicada a edificis)."
+        "Façana principal = A; lateral dreta = B; posterior = C | El fum groguenc-marronós a polsacions indica un incendi totalment ventilat i sense risc imminent de Backdraft.",
+        "Façana principal = A; posterior = C; lateral dreta = D (sentit horari, B a l'esquerra) | El fum dens groguenc-marronós a polsacions anuncia un ILV amb risc extrem de Backdraft.",
+        "Façana principal = A; posterior = B; lateral dreta = C (sentit antihorari, D a l'esquerra) | El fum indica únicament vapor d'aigua net procedent d'una avaria de calefacció.",
+        "Façana principal = 0; posterior = 2; lateral dreta = 1 (nomenclatura forestal per sectors) | El fum dens a polsacions indica un incendi ja en fase de decaïment controlat."
       ],
       correctIndex: 1,
       explanation: "La senyalització de façanes A-B-C-D es fa en sentit horari mirant la façana principal A (B = esquerra, C = posterior, D = dreta). Un fum dens groguenc-marronós a polsacions indica acumulació de gasos de piròlisi en un ILV amb risc imminent de Backdraft."
@@ -488,10 +488,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Difícil',
       question: "En un incendi desenvolupat a la planta 3 amb flames sortint per una finestra de la façana A mentre un binomi puja per l'escala interior per accedir-hi, quina seqüència operativa és la correcta?",
       options: [
-        "Muntar la bifurcació a la planta 3 davant la porta del pis afectat, engegar VPP sense obrir sortida de fums i aplicar aigua en cercles des del carrer.",
-        "Muntar la bifurcació i el bucle de reserva a la Ruta Freda (planta 2, una planta per sota), fer atac transicional des de l'exterior amb raig sòlid fix contra el sostre (sense empènyer gasos cap a l'escala) i executar les 4 fases d'entrada segura.",
-        "Obrir la porta interior de bat a bat sense falca i realitzar un atac indirecte massiu encara que hi pugui haver ocupants inconscients a l'interior.",
-        "Refredar únicament les façanes B i D amb Ø25 a 100 L/min i esperar que l'estructura arribi a 550 °C abans d'entrar."
+        "Muntar la bifurcació a la planta 3 davant la porta del pis afectat, engegar VPP sense obrir sortida de fums i aplicar aigua en cercles des del carrer cap a la finestra.",
+        "Muntar bifurcació i reserva a la Ruta Freda (planta 2), fer atac transicional exterior amb raig sòlid fix al sostre i executar les 4 fases d'entrada segura.",
+        "Obrir la porta interior de bat a bat sense falca i realitzar un atac indirecte massiu amb raig polvoritzat encara que hi pugui haver ocupants inconscients a l'interior.",
+        "Refredar únicament les façanes laterals B i D amb línia de Ø25 a 100 L/min i esperar que l'estructura arribi als 550 °C abans d'autoritzar l'entrada del binomi."
       ],
       correctIndex: 1,
       explanation: "La bifurcació i la reserva es munten sempre a la Ruta Freda (1 planta per sota); l'atac transicional des de fora amb angle fix al sostre redueix ràpidament la càrrega tèrmica sense desplaçar gasos cap a l'escala, i el binomi interior aplica les 4 fases d'entrada segura."
@@ -501,10 +501,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Mitjà',
       question: "En la valoració exterior d'un incendi en una nau industrial tancada, s'observa un volum moderat de fum gris-negre molt dens sortint a gran velocitat i pressió per les escletxes superiors d'una persiana metàl·lica, sense flama visible. Quina interpretació operativa correspon a aquesta lectura del fum?",
       options: [
-        "Indica que l'incendi ja es troba en fase de decaïment i sense energia tèrmica per falta de combustible.",
-        "L'alta velocitat i pressió de sortida d'un fum dens i fosc per la part alta indica elevada acumulació d'energia i gasos sense cremar en un incendi limitat per ventilació (ILV) amb risc d'inflamació sobtada si entra aire.",
-        "La sortida ràpida de fum significa que totes les portes interiors estan obertes i l'incendi és ric en oxigen sense perill de Backdraft.",
-        "La lectura del fum només té en compte el color i l'olor, ja que la velocitat i la densitat depenen únicament del vent exterior."
+        "Indica que l'incendi ja es troba en fase de decaïment avançat i sense energia tèrmica significativa per falta de combustible sòlid a l'interior.",
+        "L'alta velocitat i pressió d'un fum dens i fosc per la part alta indica elevada acumulació d'energia i gasos sense cremar en un ILV amb risc d'inflamació sobtada.",
+        "La sortida ràpida de fum significa que totes les portes interiors estan obertes i l'incendi és ric en oxigen sense cap perill d'explosió tipus Backdraft.",
+        "La lectura del fum només té en compte el color i l'olor del residu, ja que la velocitat i la densitat depenen únicament del vent exterior sobre la persiana."
       ],
       correctIndex: 1,
       explanation: "Els 4 atributs de lectura del fum són Volum, Velocitat, Densitat i Color. Un fum fosc/dens que surt a alta pressió i velocitat per escletxes altes sense flama visible delata una forta pressió interior i gasos combustibles calents en un ILV."
@@ -514,10 +514,10 @@ export const tema9IncendisEstructurals = {
       difficulty: 'Mitjà',
       question: "Quina diferència fonamental distingeix un 'Flashover' d'un 'Backdraft' en la dinàmica d'un incendi estructural?",
       options: [
-        "El Flashover es produeix en un incendi limitat per ventilació (ILV) en obrir una porta, mentre que el Backdraft es produeix per radiació en un incendi ventilat.",
-        "El Flashover és la inflamació generalitzada de totes les superfícies per radiació tèrmica en un incendi ventilat (controlat pel combustible), mentre que el Backdraft és l'explosió sobtada de gasos de piròlisi acumulats en un ILV quan entra oxigen de cop.",
-        "Tots dos termes són sinònims exactes i presenten sempre flames visibles intenses abans de produir-se.",
-        "El Backdraft només es produeix a l'exterior d'edificis amb façana ventilada."
+        "El Flashover es produeix en un incendi limitat per ventilació (ILV) en obrir una porta, mentre que el Backdraft es produeix per radiació tèrmica en un incendi ventilat.",
+        "El Flashover és la inflamació generalitzada per radiació en un incendi ventilat (controlat pel combustible); el Backdraft és l'explosió de gasos en un ILV en entrar oxigen.",
+        "Tots dos termes són sinònims exactes en la dinàmica d'incendis i presenten sempre flames visibles intenses i contínues a l'exterior abans de produir-se.",
+        "El Backdraft només es produeix a l'exterior d'edificis amb façana ventilada, mentre que el Flashover es limita exclusivament a compartiments sense cap obertura."
       ],
       correctIndex: 1,
       explanation: "El Flashover és una transició tèrmica per radiació en un incendi ventilat (~500–600 °C), mentre que el Backdraft és una explosió provocada per l'aportació sobtada d'aire en un incendi ofegat (ILV) carregat de gasos de piròlisi sense cremar."

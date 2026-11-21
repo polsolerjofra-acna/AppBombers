@@ -201,13 +201,13 @@ export const tema22ConduccioMecanica = {
   quiz: [
     {
       id: 't19-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Segons el Capítol 5.5 del manual MAN.EQIP.002, quin és l’ordre obligatori d’activació del bloqueig dels diferencials en un camió de bombers 4×4 i a quina velocitat màxima es pot connectar cadascun?',
       options: [
-        '1r Anterior (≤ 50 km/h) → 2n Posterior (≤ 20 km/h) → 3r Central (aturat).',
+        '1r Diferencial ANTERIOR (≤ 40 km/h) → 2n Diferencial POSTERIOR (≤ 20 km/h) → 3r Diferencial CENTRAL o longitudinal (aturat a 0 km/h).',
         '1r Diferencial CENTRAL o longitudinal (≤ 40 km/h) → 2n Diferencial POSTERIOR (≤ 5 km/h) → 3r Diferencial ANTERIOR (≤ 5 km/h, impedint girar la direcció).',
-        '1r Posterior → 2n Anterior → 3r Central, tots a qualsevol velocitat.',
-        'S’activen tots tres alhora prement el pedal de fre a 80 km/h.'
+        '1r Diferencial POSTERIOR (≤ 30 km/h) → 2n Diferencial ANTERIOR (≤ 15 km/h) → 3r Diferencial CENTRAL o longitudinal (sense límit de velocitat).',
+        'S’activen tots tres diferencials simultàniament mitjançant un únic selector rotatori prement el fre de servei a menys de 50 km/h en línia recta.'
       ],
       correctIndex: 1,
       explanation: 'La seqüència és sempre: 1r Central/longitudinal (fins a ≤ 40 km/h en línia recta), 2n Posterior (≤ 5 km/h) i 3r Anterior (≤ 5 km/h, tenint en compte que impedeix girar).'
@@ -217,10 +217,10 @@ export const tema22ConduccioMecanica = {
       difficulty: 'Fàcil',
       question: 'Quina condició és indispensable per connectar o desconnectar la marxa REDUCTORA (passar de 4H a 4L o de 4L a 4H) en la caixa de transferència?',
       options: [
-        'Circular a menys de 40 km/h en tercera marxa.',
+        'Circular en línia recta a menys de 40 km/h en tercera marxa i sense prémer el fre.',
         'Tenir el vehicle TOTALMENT ATURAT (0 km/h) i passar per punt mort (o trepitjar l’embragatge).',
-        'Fer-ho mentre les rodes estan patinant dins del fang.',
-        'Circular marxa enrere a 10 km/h.'
+        'Accionar el selector mentre les rodes motrius estan patinant dins del fang per facilitar l’acoblament.',
+        'Circular marxa enrere a menys de 10 km/h amb el bloqueig del diferencial posterior activat.'
       ],
       correctIndex: 1,
       explanation: 'A diferència del pas de 2H a 4H (que es pot fer en marxa a < 40 km/h), la connexió de la reductora (4H ↔ 4L) exigeix sempre aturar completament el vehicle i posar punt mort.'
@@ -230,10 +230,10 @@ export const tema22ConduccioMecanica = {
       difficulty: 'Mitjà',
       question: 'A partir de quina temperatura ambient perden adherència els pneumàtics convencionals i quina és la velocitat màxima permesa quan es circula amb cadenes de neu?',
       options: [
-        'A partir de 0 °C; velocitat màxima amb cadenes = 80 km/h.',
+        'A partir de < 0 °C; velocitat màxima amb cadenes = entre 70 i 80 km/h (muntades a l’eix davanter).',
         'A partir de < 7 °C; velocitat màxima amb cadenes = entre 40 i 50 km/h (muntades sempre a l’eix motriu).',
-        'A partir de -10 °C; velocitat màxima = 20 km/h.',
-        'A partir de 15 °C; velocitat màxima = 90 km/h.'
+        'A partir de < -5 °C; velocitat màxima amb cadenes = entre 20 i 25 km/h (muntades a l’eix posterior).',
+        'A partir de < 12 °C; velocitat màxima amb cadenes = fins a 90 km/h en vies interurbanes asfaltades.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 4.4 del manual: per sota de 7 °C el cautxú convencional s’endureix i perd adherència; les cadenes es munten a l’eix motriu i limiten la velocitat màxima a 40–50 km/h.'
@@ -256,10 +256,10 @@ export const tema22ConduccioMecanica = {
       difficulty: 'Fàcil',
       question: 'Segons l’apartat 3.2 del manual MAN.EQIP.002, en quin tipus de servei d’emergència s’han de desactivar les sirenes i els senyals lluminosos en el tram final d’aproximació?',
       options: [
-        'En tots els incendis industrials nocturns.',
+        'En tots els incendis industrials i forestals nocturns, per evitar confondre els vehicles d’emergència.',
         'En els serveis per temptativa de suïcidi (autòlisi), per reduir l’impacte emocional sobre la víctima.',
-        'Quan es circula per autopista.',
-        'En accidents de trànsit amb múltiples vehicles.'
+        'Quan es circula per autopista o autovia de nit amb visibilitat superior a 500 metres sense trànsit.',
+        'En accidents de trànsit amb múltiples vehicles atrapats dins d’un túnel urbà per evitar ressò acústic.'
       ],
       correctIndex: 1,
       explanation: 'En intervencions per temptativa d’autòlisi cal apagar sirenes i llums abans d’arribar a la vista o oïda de la víctima per no precipitar una acció fatal.'
@@ -282,10 +282,10 @@ export const tema22ConduccioMecanica = {
       difficulty: 'Fàcil',
       question: 'Per què s’ha d’evitar l’ús dels llums de carretera (llums llargs) quan es condueix amb boira densa o pluja molt intensa?',
       options: [
-        'Perquè consumeixen massa bateria.',
+        'Perquè consumeixen massa bateria i poden sobrecarregar l’alternador del camió mentre la presa de força de la bomba està connectada.',
         'Perquè la llum alta incideix sobre les gotes d’aigua en suspensió, es reflecteix cap al conductor i provoca autoenlluernament (efecte paret blanca).',
-        'Perquè escalfen el para-xocs.',
-        'Els llums llargs són obligatoris amb boira densa.'
+        'Perquè el feix concentrat de llarga distància escalfa el vidre del far i pot provocar condensació interna dins de l’òptica davantera.',
+        'Els llums llargs són obligatoris amb boira densa sempre que es combinin amb els llums antiboira posteriors i els senyals prioritaris V-1.'
       ],
       correctIndex: 1,
       explanation: 'Amb boira o pluja intensa cal usar llums d’encreuament (curts) i antiboira, ja que els llums llargs reboten a les microgotes i redueixen la visibilitat.'
@@ -298,7 +298,7 @@ export const tema22ConduccioMecanica = {
         'Els molls de fulla (ballestes).',
         'Els molls helicoïdals de plàstic.',
         'La suspensió magnètica.',
-        'Els camions de bombers no porten suspensió per no bolcar.'
+        'La suspensió pneumàtica independent sense amortidors.'
       ],
       correctIndex: 0,
       explanation: 'Apartat 5.3 del manual: els molls de fulla (ballestes), formats per làmines d’acer superposades, són els més resistents per suportar les grans tones d’aigua dels camions pesants.'
@@ -308,10 +308,10 @@ export const tema22ConduccioMecanica = {
       difficulty: 'Fàcil',
       question: 'Quina és la posició correcta de les mans al volant segons el manual i quina norma regeix sobre l’ús de taps auditius i cinturó de seguretat durant el trajecte?',
       options: [
-        'Les mans a "les 10 i les 10"; el conductor ha de portar taps auditius pel soroll de la sirena.',
+        'Les mans a "les 10 i les 10"; el conductor ha de portar taps auditius homologats per protegir l’oïda del soroll continu de la sirena durant el desplaçament.',
         'Les mans a "les 9 i les 3"; està prohibit que el conductor porti taps o protectors auditius i tots els ocupants han de portar el cinturó cordat durant tot el trajecte.',
-        'Una mà al volant i l’altra a la ràdio; els bombers del darrere poden anar drets vestint-se l’ERA.',
-        'Les mans a "les 12 i les 6".'
+        'Una mà al volant i l’altra al canvi; els bombers de la cabina posterior es poden descordar el cinturó els darrers quilòmetres per equipar-se amb l’ERA en marxa.',
+        'Les mans a "les 12 i les 6"; el conductor pot utilitzar auriculars d’un sol costat per escoltar l’emissora RESCAT i només és obligatori el cinturó a la cabina davantera.'
       ],
       correctIndex: 1,
       explanation: 'Capítol 6: posició de mans al volant a "les 9 i les 3" (evita lesions amb l’airbag), prohibit portar taps auditius al conductor i prohibit descordar-se el cinturó en marxa.'
@@ -399,10 +399,10 @@ export const tema22ConduccioMecanica = {
       difficulty: 'Fàcil',
       question: 'Com s’ha d’actuar si s’encén un testimoni lluminós de color TARONJA o de color VERMELL al quadre d’instruments d’un camió de bombers?',
       options: [
-        'Taronja = aturar el motor immediatament | Vermell = seguir fins al final de guàrdia.',
+        'Taronja = avaria crítica del motor que obliga a aturar immediatament | Vermell = avís preventiu que permet acabar el servei fins al retorn al parc.',
         'Taronja = avís/precaució (revisar aviat, es pot acabar la maniobra amb cautela) | Vermell = avaria greu (aturar el camió immediatament).',
-        'Tots dos indiquen únicament que la presa de força (PTO) està connectada.',
-        'Taronja indica falta de combustible d’escumogen i vermell indica porta d’armari oberta.'
+        'Tots dos testimonis indiquen únicament que la presa de força (PTO) o els bloquejos de diferencials estan acoblats en circulació per carretera.',
+        'Taronja indica nivell baix al dipòsit d’escumogen o d’AdBlue, mentre que vermell indica exclusivament que un cofre lateral ha quedat mal tancat.'
       ],
       correctIndex: 1,
       explanation: 'Al quadre d’instruments, el testimoni taronja/àmbar indica precaució o revisió, mentre que el testimoni vermell indica perill o avaria greu que obliga a aturar immediatament el vehicle o la bomba.'
@@ -425,10 +425,10 @@ export const tema22ConduccioMecanica = {
       difficulty: 'Fàcil',
       question: 'En conducció amb neu o gel per sota de 7 °C, en quin eix s’han de muntar les cadenes de neu i quines marxes convé utilitzar per evitar que les rodes patinin?',
       options: [
-        'Sempre a l’eix davanter encara que la tracció sigui posterior, i amb 1a marxa curta a altes revolucions.',
+        'Sempre a l’eix davanter encara que la tracció sigui posterior, utilitzant la 1a marxa curta amb el motor a altes revolucions i sense superar els 30 km/h.',
         'A l’eix motriu (i si és 4×4 on indiqui el fabricant/manual), utilitzant marxes llargues (2a o 3a) per reduir el parell a roda i circulació màxima a 40–50 km/h.',
-        'A les quatre rodes per poder circular a 90 km/h amb seguretat.',
-        'Només a la roda de recanvi.'
+        'A les quatre rodes simultàniament amb el bloqueig central activat, utilitzant únicament la marxa reductora (4L) i sense superar en cap cas els 80 km/h.',
+        'Exclusivament a l’eix posterior sense direcció, circulant en 4a o 5a marxa amb el retardador hidràulic al màxim per evitar que les rodes motrius patinin.'
       ],
       correctIndex: 1,
       explanation: 'Les cadenes es munten a l’eix motriu (velocitat màxima 40–50 km/h) i s’utilitzen marxes llargues (2a o 3a) per dosificar el parell motor i evitar pèrdues d’adherència.'

@@ -406,23 +406,23 @@ export const tema18Electricitat = {
       difficulty: 'Mitjà',
       question: 'Com es col·loquen elèctricament els EPIs dielèctrics (guants, botes, banqueta aïllant) respecte al cos del bomber i quin efecte tenen sobre la resistència total?',
       options: [
-        'Es col·loquen en PARAL·LEL per reduir la resistència total i desviar el corrent.',
+        'Es col·loquen en PARAL·LEL amb el cos del bomber perquè les seves resistències es divideixin i el corrent es derivi directament cap a terra.',
         'Es col·loquen en SÈRIE amb el cos del bomber perquè les seves resistències se sumin (R_total = R₁ + R₂ + R₃) i la intensitat caigui a gairebé zero.',
-        'Actuen com un condensador capacitiu.',
-        'Redueixen la tensió de la xarxa a 12 V.'
+        'Actuen com un condensador capacitiu en derivació que emmagatzema la càrrega electrostàtica fins que s’obre el circuit de protecció diferencial.',
+        'Redueixen la tensió nominal de la xarxa a una tensió de seguretat de 12 V mitjançant una caiguda inductiva proporcional a la freqüència de 50 Hz.'
       ],
       correctIndex: 1,
       explanation: 'En posar guants, botes i banqueta en SÈRIE amb el cos, totes les resistències se sumen, disparant R_total i impedint el pas d’intensitat (I = V / R_total).'
     },
     {
       id: 't11-q4',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'En el símil hidràulic del Capítol 6 del manual MAN.GRAL.005, a què equival una vàlvula d’aigua OBERTA i una vàlvula TANCADA?',
       options: [
-        'Vàlvula oberta = circuit elèctric obert | Vàlvula tancada = circuit elèctric tancat.',
+        'Vàlvula oberta = circuit elèctric obert (sense circulació) | Vàlvula tancada = circuit elèctric tancat (amb pas de corrent).',
         'Vàlvula oberta = circuit elèctric TANCAT (passa corrent) | Vàlvula tancada = circuit elèctric OBERT (no passa corrent).',
-        'Vàlvula oberta = curtcircuit | Vàlvula tancada = sobretensió.',
-        'Equivalen al factor de potència cos(φ).'
+        'Vàlvula oberta = curtcircuit directe entre fases | Vàlvula tancada = sobretensió transitòria per acumulació de càrrega.',
+        'Vàlvula oberta = factor de potència unitari (cos φ = 1) | Vàlvula tancada = circuit purament reactiu sense potència activa.'
       ],
       correctIndex: 1,
       explanation: 'És la trampa clàssica del símil hidràulic: perquè passi l’aigua la vàlvula ha d’estar OBERTA, però perquè passin els electrons l’interruptor del circuit ha d’estar TANCAT.'
@@ -445,10 +445,10 @@ export const tema18Electricitat = {
       difficulty: 'Mitjà',
       question: 'En el símil del got de cervesa per a les 3 potències en corrent altern (AC), quines són les unitats de la Potència Activa (P), la Potència Reactiva (Q) i la Potència Aparent (S)?',
       options: [
-        'Activa: kVA | Reactiva: kW | Aparent: kvar.',
+        'Activa (P): VA o kVA | Reactiva (Q): W o kW | Aparent (S): var o kvar.',
         'Activa (P): W o kW | Reactiva (Q): var o kvar | Aparent (S): VA o kVA.',
-        'Totes tres es mesuren en kWh.',
-        'Activa: Volts | Reactiva: Ohms | Aparent: Amperes.'
+        'Activa (P): kWh | Reactiva (Q): kvarh | Aparent (S): kVAh en tots els casos.',
+        'Activa (P): W o kW | Reactiva (Q): VA o kVA | Aparent (S): var o kvar.'
       ],
       correctIndex: 1,
       explanation: 'La potència activa útil (P, el líquid) es mesura en W o kW; la reactiva (Q, l’escuma dels camps magnètics) en var o kvar; i l’aparent total (S, tot el got) en VA o kVA.'
@@ -458,23 +458,23 @@ export const tema18Electricitat = {
       difficulty: 'Difícil',
       question: 'Per què una SUBTENSIÓ (baixada anormal del voltatge de la xarxa) pot provocar l’incendi d’un motor elèctric segons l’apartat 9.3 del manual?',
       options: [
-        'Perquè en baixar la tensió augmenta la freqüència a 100 Hz.',
+        'Perquè en baixar la tensió la freqüència de la xarxa puja automàticament a 100 Hz i duplica les pèrdues magnètiques per histèresi al nucli del rotor.',
         'Perquè per mantenir la mateixa potència mecànica (P = V · I), si baixa la tensió V el motor absorbeix molta més intensitat I, sobreescalfant els bobinats per efecte Joule (I² · R).',
-        'Perquè s’inverteix el sentit de gir del motor.',
-        'Una subtensió mai no pot escalfar un motor.'
+        'Perquè s’inverteix el desfasament entre dues fases consecutives i el motor intenta girar en sentit contrari mentre continua arrossegant la càrrega.',
+        'Perquè una subtensió provoca la perforació dielèctrica immediata dels aïllaments del bobinat per formació d’arcs voltaics interns d’alta tensió.'
       ],
       correctIndex: 1,
       explanation: 'En motors que treballen amb càrrega mecànica, una caiguda de tensió V fa que el motor incrementi la intensitat I per mantenir la potència, disparant la calor dissipada per efecte Joule (Q = I²·R·t).'
     },
     {
       id: 't11-q8',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quin és el llindar d’intensitat a partir del qual es pot produir la fibril·lació ventricular del cor en corrent altern (AC a 50 Hz) i com hem d’allunyar-nos d’un cable d’alta tensió caigut a terra per evitar la tensió de pas?',
       options: [
-        '300 mA; corrent amb gambades llargues.',
+        '300 mA; corrent ràpidament amb gambades llargues per sortir com abans millor del radi d’acció.',
         '30 mA; allunyant-nos amb passos molt petits i els peus ben junts i tocant-se.',
-        '5 A; caminant de quatre grapes.',
-        '1 mA; caminant cap enrere amb passos normals.'
+        '10 mA; caminant de quatre grapes per repartir el corrent de derivació entre mans i genolls.',
+        '500 mA; caminant cap enrere amb passos normals mantenint la vista fixa sobre el conductor.'
       ],
       correctIndex: 1,
       explanation: 'El llindar de fibril·lació ventricular és de 30 mA. Davant la tensió de pas, cal mantenir tots dos peus al mateix potencial avançant amb passos minúsculs i els peus junts.'
@@ -510,10 +510,10 @@ export const tema18Electricitat = {
       difficulty: 'Mitjà',
       question: 'Segons la instrucció tècnica ITC-BT-24 del REBT, quin paper té l’interruptor diferencial d’alta sensibilitat (IΔn ≤ 30 mA) davant els contactes elèctrics DIRECTES?',
       options: [
-        'Substitueix completament l’aïllament dels conductors i les envolupants protectores.',
+        'Substitueix completament l’aïllament dels conductors i les envolupants protectores com a protecció principal.',
         'És una mesura de protecció complementària contra els contactes directes (no eximeix de la protecció principal per aïllament o barreres).',
-        'Només protegeix contra curtcircuits entre fases, mai contra derivacions a terra.',
-        'Està prohibit en habitatges segons el REBT.'
+        'Només protegeix contra curtcircuits entre fases actives i sobreintensitats tèrmiques, mai contra derivacions a terra.',
+        'Està prohibit en circuits terminals d’habitatges perquè dispara de manera intempestiva amb càrregues capacitives.'
       ],
       correctIndex: 1,
       explanation: 'La ITC-BT-24 estableix que l’ús de dispositius de corrent diferencial residual amb IΔn ≤ 30 mA es reconeix com a protecció complementària contra contactes directes en cas de fallada de les mesures principals o per imprudència.'
@@ -549,10 +549,10 @@ export const tema18Electricitat = {
       difficulty: 'Difícil',
       question: 'Arribem a una instal·lació industrial i necessitem connectar un focus de 230 V, però només trobem una base d’endoll trifàsica CETAC vermella de 400 V amb 4 pols (3F + T). Podem treure 230 V d’aquest endoll amb un adaptador reglamentari?',
       options: [
-        'Sí, connectant una fase qualsevol i el conductor de terra (PE) com a neutre.',
+        'Sí, connectant una fase qualsevol (L1) i el conductor de protecció a terra (PE) com a retorn del neutre de 230 V.',
         'No, perquè un endoll CETAC de 4 pols (3F + T) NO disposa de conductor neutre (N), indispensable per obtenir 230 V respecte a fase.',
-        'Sí, perquè entre dues fases d’un endoll de 4 pols hi ha exactament 230 V.',
-        'Sí, només cal girar l’endoll 180°.'
+        'Sí, perquè en un sistema trifàsic de 400 V entre dues fases qualssevol de l’endoll de 4 pols hi ha exactament 230 V eficaços.',
+        'Sí, utilitzant un adaptador CETAC de 4 a 3 pols amb pont intern entre dues fases per reduir la tensió composta a 230 V.'
       ],
       correctIndex: 1,
       explanation: 'Un endoll trifàsic CETAC 400 V de 4 pols només porta les 3 fases (L1, L2, L3) i la terra (PE); NO té neutre (N), a diferència del de 5 pols (3F + N + T). Entre fases hi ha 400 V, i utilitzar la terra com a neutre és perillós i fa disparar el diferencial.'
@@ -562,23 +562,23 @@ export const tema18Electricitat = {
       difficulty: 'Mitjà',
       question: 'Què passa si connectem el debanat primari d’un transformador elèctric convencional directament a una bateria de corrent continu (DC) de 12 V?',
       options: [
-        'Funciona normalment i eleva o redueix la tensió continua segons la relació d’espires.',
+        'Funciona normalment i eleva o redueix la tensió contínua al secundari de forma proporcional a la relació d’espires entre tots dos debanats.',
         'No funciona (no indueix tensió sostinguda al secundari), ja que un transformador requereix corrent altern (flux magnètic variable) i la baixa resistència òhmica del primari pot sobreescalfar la bobina.',
-        'Converteix automàticament els 12 V DC en 230 V AC a 50 Hz.',
-        'Duplica la capacitat de càrrega de la bateria.'
+        'Converteix automàticament els 12 V DC d’entrada en una ona sinusoïdal de 230 V AC a 50 Hz gràcies a l’autoinducció del nucli ferromagnètic.',
+        'Genera una força contra-electromotriu constant que redueix la intensitat del primari a zero i protegeix el debanat de qualsevol sobreescalfament.'
       ],
       correctIndex: 1,
       explanation: 'Per la llei de Faraday-Lenz, un transformador necessita un flux magnètic variable (AC) per induir força electromotriu al secundari. En DC constant (dΦ/dt = 0) no transfereix energia al secundari i el corrent elevat per la baixa resistència del coure pot cremar el bobinat.'
     },
     {
       id: 't11-q16',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quina diferència hi ha entre el sentit REAL dels electrons i el sentit CONVENCIONAL del corrent elèctric en un circuit?',
       options: [
         'En el sentit real, els electrons circulen del pol negatiu (-) al pol positiu (+); en el sentit convencional dels esquemes, es dibuixa del pol positiu (+) al pol negatiu (-)',
-        'En el sentit real els electrons van del pol positiu (+) al negatiu (-)',
-        'El sentit convencional només s’utilitza en corrent altern i mai en corrent continu',
-        'Tots dos van sempre del pol negatiu (-) al pol positiu (+)'
+        'En el sentit real, els electrons circulen del pol positiu (+) al pol negatiu (-), mentre que en el sentit convencional dels esquemes es dibuixa en sentit invers',
+        'El sentit convencional només s’aplica en càlculs de corrent altern (AC) trifàsic, mentre que el sentit real només s’utilitza en circuits de corrent continu (DC)',
+        'Tots dos sentits coincideixen sempre del pol negatiu (-) al pol positiu (+) en conductors metàl·lics i només s’inverteixen en solucions electrolítiques o gasos'
       ],
       correctIndex: 0,
       explanation: 'Històricament es va convenir que el corrent anava de (+) a (-). Quan es va descobrir l’electró (càrrega negativa), es va veure que el moviment físic real dels electrons va del pol negatiu (-) al positiu (+).'
@@ -589,9 +589,9 @@ export const tema18Electricitat = {
       question: 'Segons la regla mnemotècnica "CIVIL" per a càrregues en corrent altern (AC), com es comporta la intensitat (I) respecte a la tensió (V) en una càrrega inductiva (bobina/motor) i en una capacitiva (condensador)?',
       options: [
         'En una càrrega capacitiva (C), la intensitat I va AVANÇADA respecte a V; en una càrrega inductiva (L), la intensitat I va ENDARRERIDA respecte a V',
-        'En una càrrega inductiva (L), la intensitat I va avançada respecte a V',
-        'En una càrrega resistiva pura (R), la intensitat va endarrerida 90° respecte a V',
-        'En càrregues capacitives no hi ha cap desfasament entre V i I'
+        'En una càrrega inductiva (L), la intensitat I va AVANÇADA respecte a V; en una càrrega capacitiva (C), la intensitat I va ENDARRERIDA respecte a V',
+        'En una càrrega resistiva pura (R), la intensitat I va endarrerida 90° respecte a V, mentre que en les inductives (L) van completament en fase',
+        'En càrregues capacitives (C) no hi ha cap desfasament angular entre V i I, i només apareix en circuits inductius amb factor de potència unitari'
       ],
       correctIndex: 0,
       explanation: 'CIVIL: en un Condensador (C), I va davant de V (avançada); en una bobina inductiva (L), V va davant i I va endarrerida. En càrregues resistives pures (R), V i I van en fase.'

@@ -263,10 +263,10 @@ export const tema4Comunicacions = {
       difficulty: 'Mitjà',
       question: "Quina diferència hi ha entre la funció 'Pont de ràdio (Gateway)' i el 'Mode Repetidor' en els equips TETRA de Bombers?",
       options: [
-        'Són dos noms per a la mateixa funció.',
+        'Són dues denominacions operatives equivalents per a la mateixa funció de reemissió automàtica entre terminals portàtils dins d’edificis sense cobertura.',
         'El Pont (Gateway) enllaça comunicacions en mode directe (DMO) amb la xarxa troncal (TMO), mentre que el Repetidor només amplia l’abast entre terminals en mode directe (DMO a DMO).',
-        'El Pont (Gateway) només funciona en VHF analògic i el Repetidor en digital.',
-        'El Repetidor connecta amb el satèl·lit Hispasat i el Gateway amb el 112.'
+        'El Pont (Gateway) només opera en banda VHF analògica per enllaçar amb emissores de parc, mentre que el Repetidor opera exclusivament en xarxa digital troncal TMO.',
+        'El Repetidor enllaça els terminals en mode directe (DMO) amb la xarxa troncal (TMO), mentre que el Pont (Gateway) només amplia l’abast entre terminals en mode directe (DMO a DMO).'
       ],
       correctIndex: 1,
       explanation: 'El Gateway (passarel·la) fa de pont entre DMO i TMO; el Mode Repetidor reemet DMO → DMO per superar obstacles locals.'
@@ -289,23 +289,23 @@ export const tema4Comunicacions = {
       difficulty: 'Difícil',
       question: "Quantes estacions base (TBS) fixes i quin percentatge de cobertura territorial té la xarxa RESCAT segons l'apartat 5.1 del manual MAN.COMU.000?",
       options: [
-        '150 TBS i 85% de cobertura',
+        '150 TBS (+12 extensions) i 85,0% de cobertura territorial',
         '317 TBS (+27 extensions) i 98,5% de cobertura territorial',
-        '500 TBS i 100% de cobertura',
-        '212 TBS i 92,0% de cobertura'
+        '480 TBS (+35 extensions) i 99,9% de cobertura territorial',
+        '212 TBS (+18 extensions) i 92,0% de cobertura territorial'
       ],
       correctIndex: 1,
       explanation: "El manual recull que la xarxa RESCAT disposa de 317 TBS (més 27 extensions), donant servei a 57.000 usuaris i 37.000 terminals amb un 98,5% de cobertura del territori."
     },
     {
       id: 'q17-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "A quina distància de la boca s'ha de col·locar el micròfon i quant temps cal esperar després de prémer el PTT abans de començar a parlar a la xarxa digital RESCAT?",
       options: [
-        'Enganxat als llavis (0 cm) i parlar immediatament.',
+        'Enganxat directament als llavis (0 cm) i començar a parlar de manera immediata.',
         'A 2–3 cm de la boca i esperar 1–2 segons abans de parlar perquè el sistema assigni el canal.',
-        'A 15–20 cm de la boca i esperar 5 segons.',
-        'A 2–3 cm de la boca i esperar 30 segons.'
+        'A 15–20 cm de la boca i esperar 5 segons abans de parlar perquè s’activi el repetidor.',
+        'A 5–10 cm de la boca i esperar 0,2 segons (només fins que s’apagui el to d’ocupat).'
       ],
       correctIndex: 1,
       explanation: 'Segons la secció 2.5, el micròfon se situa a 2–3 cm de la boca i cal fer una pausa d’1–2 segons després de prémer el PTT per no tallar la primera paraula mentre TETRA assigna el canal.'
@@ -354,10 +354,10 @@ export const tema4Comunicacions = {
       difficulty: 'Difícil',
       question: "Quan es fixa l'apagada definitiva de l'antiga xarxa analògica VHF segons el capítol 1 del manual, i quines accions activa el botó taronja d'emergència del terminal TETRA?",
       options: [
-        'Gener de 2024 | Envia un SDS genèric i bloqueja el micròfon.',
+        'Gener de 2024 | Envia un missatge SDS genèric d’alerta a la Sala de Control i bloqueja el micròfon per evitar interferències acústiques.',
         'Abril de 2025 | Activa la trucada prioritària SOS, obre el micròfon ambiental (escolta en calent) i envia la posició GPS a la Sala de Control.',
-        'Juliol de 2025 | Canvia automàticament de mode TMO a mode Repetidor DMO.',
-        'Abril de 2026 | Apaga la ràdio i activa només la balisa acústica.'
+        'Juliol de 2025 | Canvia automàticament de mode TMO a mode Repetidor DMO d’alta potència i emet un senyal sonor continu de localització.',
+        'Abril de 2026 | Apaga la transmissió de dades SDS, bloqueja el canvi de grup i activa únicament la balisa acústica i lluminosa del terminal.'
       ],
       correctIndex: 1,
       explanation: "El manual fixa l'apagada de la xarxa analògica VHF a l'abril de 2025. El botó taronja activa la trucada prioritària SOS, l'escolta en calent (micròfon ambiental) i l'enviament de coordenades GPS."
@@ -367,10 +367,10 @@ export const tema4Comunicacions = {
       difficulty: 'Mitjà',
       question: "Quin codi ZULU significa 'Sortida cap al servei' i quin s'utilitza per demanar prioritàriament parlar per veu amb la Sala de Control (urgència ràdio)?",
       options: [
-        'Z-1 (Sortida) i Z-9 (Urgència ràdio)',
-        'Z-0 (Sortida) i Z-4 (Urgència ràdio)',
+        'Z-1 (Sortida cap al servei) i Z-9 (Urgència ràdio / Demana parlar amb Sala de Control)',
+        'Z-0 (Sortida cap al servei) i Z-4 (Urgència ràdio / Demana parlar amb Sala de Control)',
         'Z-2 (Sortida cap al servei) i Z-3 (Urgència ràdio / Demana parlar amb Sala de Control)',
-        'Z-2 (Sortida cap al servei) i Z-8 (Urgència ràdio)'
+        'Z-3 (Sortida cap al servei) i Z-8 (Urgència ràdio / Demana parlar amb Sala de Control)'
       ],
       correctIndex: 2,
       explanation: 'Segons l’Annex 2, Z-2 indica "Sortida cap al servei" i Z-3 indica "Urgència ràdio / Demana parlar amb Sala de Control".'
@@ -393,10 +393,10 @@ export const tema4Comunicacions = {
       difficulty: 'Mitjà',
       question: "Quina diferència tècnica existeix entre el mode de transmissió Simplex i el mode Semidúplex en ràdio operativa?",
       options: [
-        'En Simplex tots dos interlocutors poden parlar simultàniament sense prémer el PTT.',
+        'En Simplex tots dos interlocutors poden parlar i escoltar simultàniament en temps real sense necessitat de prémer el PTT, mentre que en Semidúplex només un terminal pot emetre alhora sobre una única freqüència.',
         'En Simplex s’utilitza una única freqüència directa per torns (ex. DMO), mentre que en Semidúplex s’utilitzen dues freqüències a través d’una estació base o repetidor però igualment per torns prement el PTT (ex. TMO).',
-        'El Semidúplex només existeix en ràdio analògica VHF i el Simplex només en telefonia mòbil.',
-        'En Semidúplex no cal fer pausa després de prémer el PTT.'
+        'El Semidúplex només existeix en emissores analògiques de banda VHF amb dos canals separats, mentre que el Simplex és exclusiu de la xarxa digital TETRA en mode troncal TMO i de la telefonia mòbil.',
+        'En Semidúplex no cal fer cap pausa després de prémer el PTT perquè les dues freqüències romanen permanentment obertes, mentre que en Simplex cal esperar que l’estació base assigni el canal de retorn.'
       ],
       correctIndex: 1,
       explanation: 'Tant en Simplex (1 freqüència directa, DMO) com en Semidúplex (2 freqüències via estació base/repetidor, TMO) cal prémer el PTT i parlar per torns; només el Dúplex permet parlar i escoltar alhora.'
@@ -445,23 +445,23 @@ export const tema4Comunicacions = {
       difficulty: 'Mitjà',
       question: "Durant una comunicació per ràdio, el receptor respon «Espereu» per comprovar una dada al mapa. Què ha de fer l'emissor si passen 35 segons sense obtenir resposta?",
       options: [
-        'Premer el botó taronja d’emergència SOS per forçar el canal.',
-        'Canviar immediatament al Canal de Trànsit i enviar un Z-3.',
+        'Premer el botó taronja d’emergència SOS durant 3 segons per forçar la prioritat del canal.',
+        'Canviar immediatament al Canal de Trànsit i enviar un missatge d’estat Z-3 a la Sala Central.',
         'Tornar a interpel·lar el receptor per confirmar que continua a l’escolta, segons la regla dels 30 segons.',
-        'Esperar un mínim de 5 minuts en silenci absolut.'
+        'Esperar un mínim de 2 minuts en silenci absolut abans de tornar a prémer el PTT per no saturar el canal.'
       ],
       correctIndex: 2,
       explanation: 'Segons la regla dels 30 segons (apartat 3.5.3 del manual), si després d’un "Espereu" passen més de 30 segons sense resposta, l’emissor ha de tornar a cridar el receptor.'
     },
     {
       id: 'q17-18',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quina és la prioritat absoluta en les comunicacions per ràdio a Bombers (secció 2.6.2), i què significa el grau '2' en l'escala de qualitat del senyal d'1 a 5?",
       options: [
-        'Prioritat màxima: missatges rutinaris de parc | Grau 2 = Llegible sense cap dificultat.',
+        'Prioritat màxima: missatges rutinaris de canvi de torn al parc | Grau 2 = Llegible sense cap dificultat ni interferència.',
         'Prioritat màxima: missatges d’emergència o seguretat vital (SOS / perill imminent) | Grau 2 = Llegible amb molta dificultat (entretallat).',
-        'Prioritat màxima: confirmacions Z-0 | Grau 2 = Perfectament llegible.',
-        'Prioritat màxima: ordre del Cap de Torn per canviar de sector | Grau 2 = Il·legible.'
+        'Prioritat màxima: confirmacions de recepció amb codi Z-0 | Grau 2 = Perfectament llegible (alt i clar en tot el missatge).',
+        'Prioritat màxima: ordres del Cap de Torn per canviar de sector operatiu | Grau 2 = Totalment il·legible (només s’escolta soroll).'
       ],
       correctIndex: 1,
       explanation: 'Els missatges d’emergència o seguretat vital tenen prioritat absoluta i interrompen qualsevol trànsit. A l’escala 1–5: 1 = il·legible, 2 = llegible amb molta dificultat, 3 = amb certa dificultat, 4 = llegible, 5 = perfectament llegible.'

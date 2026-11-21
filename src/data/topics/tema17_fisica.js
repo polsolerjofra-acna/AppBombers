@@ -412,13 +412,13 @@ export const tema17Fisica = {
   quiz: [
     {
       id: 't9-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'De quin gènere és una palanca quan la força aplicada (potència) es troba entre el fulcre i la resistència (com és el cas del braç d’una autoescala AEA), i quin és el seu avantatge mecànic (AM)?',
       options: [
-        'De 1r gènere; AM sempre és igual a 1.',
-        'De 2n gènere; AM sempre és més gran que 1 (AM > 1).',
+        'De 1r gènere; AM sempre és igual a 1 (AM = 1), equilibrant força i desplaçament sense guany net.',
+        'De 2n gènere; AM sempre és més gran que 1 (AM > 1), multiplicant la força aplicada sobre la càrrega.',
         'De 3r gènere; AM sempre és més petit que 1 (AM < 1), perdent força però guanyant abast i velocitat.',
-        'De 2n gènere; AM sempre és més petit que 1.'
+        'De 2n gènere; AM sempre és més petit que 1 (AM < 1), reduint la velocitat lineal a la punta del braç.'
       ],
       correctIndex: 2,
       explanation: 'A les palanques de 3r gènere la força s’aplica entre el fulcre i la càrrega (d_in < d_out), de manera que l’avantatge mecànic és sempre AM < 1 (com l’autoescala o una canya de pescar).'
@@ -480,10 +480,10 @@ export const tema17Fisica = {
       difficulty: 'Fàcil',
       question: 'Quantes de les següents magnituds formen part de les 7 unitats fonamentals del Sistema Internacional (SI)?',
       options: [
-        'Metre, Quilogram, Segon, Newton, Pascal, Joule i Watt.',
+        'Metre (m), Quilogram (kg), Segon (s), Newton (N), Pascal (Pa), Joule (J) i Watt (W).',
         'Metre (m), Quilogram (kg), Segon (s), Kelvin (K), Ampere (A), Mol (mol) i Candela (cd).',
-        'Metre, Litro, Gram, Hora, Grau Celsius, Volt i Ohm.',
-        'Metre, Newton, Segon, Grau Celsius, Ampere, Mol i Lumen.'
+        'Metre (m), Litre (L), Gram (g), Hora (h), Grau Celsius (°C), Volt (V) i Ohm (Ω).',
+        'Metre (m), Newton (N), Segon (s), Grau Celsius (°C), Ampere (A), Mol (mol) i Lumen (lm).'
       ],
       correctIndex: 1,
       explanation: 'Les 7 unitats bàsiques del SI són m (longitud), kg (massa), s (temps), K (temperatura), A (intensitat elèctrica), mol (quantitat de substància) i cd (intensitat lluminosa).'
@@ -506,10 +506,10 @@ export const tema17Fisica = {
       difficulty: 'Mitjà',
       question: 'Per a què s’utilitza una politja mòbil invertida amb Avantatge Mecànic AM = 0,5 en cilindres d’ascensors hidràulics o trams d’autoescala?',
       options: [
-        'Per fer la meitat de força amb el pistó.',
+        'Per aplicar només la meitat de força amb el pistó hidràulic i reduir la pressió de treball del circuit a la meitat.',
         'Per aplicar el doble de força amb el pistó hidràulic i aconseguir que la càrrega recorri el DOBLE de distància i al doble de velocitat.',
-        'Només per canviar el sentit de la corda.',
-        'Per evitar el fregament del cable.'
+        'Únicament per invertir el sentit de tracció del cable d’acer sense modificar ni el recorregut ni la força aplicada.',
+        'Per reduir a la meitat el fregament del cable sobre les gorges de la politja i evitar l’escalfament del tambor.'
       ],
       correctIndex: 1,
       explanation: 'Segons l’apartat 5.4 del manual MAN.GRAL.003, en empènyer la politja mòbil des del cilindre (AM = 0,5), es duplica el recorregut i la velocitat d’elevació de la cabina o escala.'
@@ -532,10 +532,10 @@ export const tema17Fisica = {
       difficulty: 'Difícil',
       question: 'Volem pujar un vehicle de 2.000 kg (Pes ≈ 20.000 N) amb les rodes bloquejades (μ = 0,8) per un talús de 45° (sin 45° = cos 45° = 0,7). Quina força total de tracció cal vèncer?',
       options: [
-        '14.000 N.',
-        '11.200 N.',
+        '14.000 N (només la component del pes paral·lela al pendent: 20.000 × 0,7).',
+        '11.200 N (només la força de fregament per lliscament: 0,8 × 20.000 × 0,7).',
         '25.200 N (14.000 N del pendent + 11.200 N del fregament).',
-        '20.000 N.'
+        '19.600 N (14.000 N del pendent + 5.600 N de la meitat del fregament).'
       ],
       correctIndex: 2,
       explanation: 'F_pendent = P · sin 45° = 20.000 × 0,7 = 14.000 N. F_fregament = μ · P · cos 45° = 0,8 × 14.000 = 11.200 N. Suma total = 25.200 N.'
@@ -594,13 +594,13 @@ export const tema17Fisica = {
     },
     {
       id: 't9-q15',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quin valor té l’Avantatge Mecànic (AM) d’una palanca de 3r gènere (on la potència s’aplica entre el punt de suport i la resistència)?',
       options: [
-        'Sempre superior a 1 (AM > 1), ja que multiplica la força aplicada.',
+        'Sempre superior a 1 (AM > 1), ja que el braç de potència supera el braç de resistència.',
         'Sempre menor o igual que 1 (AM ≤ 1), ja que el braç de potència és inferior al braç de resistència.',
-        'Exactament igual a 2 en tots els casos.',
-        'Infinit quan la càrrega es troba a l’extrem.'
+        'Exactament igual a 2 (AM = 2) quan la càrrega se situa al punt mitjà de la barra.',
+        'Igual a 1 (AM = 1) o superior quan la càrrega es col·loca a l’extrem oposat al fulcre.'
       ],
       correctIndex: 1,
       explanation: 'En una palanca de 3r gènere (com unes pinces o l’avantbraç humà), la potència queda entre el fulcre i la resistència (bp ≤ br), de manera que AM = bp / br ≤ 1. No multiplica la força, sinó que permet guanyar velocitat i recorregut.'
@@ -611,9 +611,9 @@ export const tema17Fisica = {
       question: 'Quina diferència física i d’unitats hi ha entre el Treball mecànic (W) i el Moment o Parell de forces (M)?',
       options: [
         'El Treball (W = F·d·cos α) és una magnitud escalar expressada en Joules (J), mentre que el Moment (M = F·d·sin α) és una magnitud vectorial que produeix gir i s’expressa en N·m (mai en Joules)',
-        'El Moment de forces s’expressa sempre en Joules i el Treball en Watts',
-        'Són exactament la mateixa magnitud física perquè tots dos multipliquen força per distància',
-        'El Treball només existeix en moviments circulars i el Moment només en moviments rectilinis'
+        'El Moment de forces (M = F·d·cos α) és una magnitud escalar expressada en Joules (J), mentre que el Treball mecànic (W = F·d·sin α) s’expressa en Watts (W) quan hi ha desplaçament lineal',
+        'Són exactament la mateixa magnitud física en mecànica clàssica perquè tots dos resulten de multiplicar força per distància i, per tant, s’expressen indistintament en Joules o en N·m',
+        'El Treball mecànic només es defineix en moviments circulars uniformes respecte a un eix, mentre que el Moment de forces només apareix en desplaçaments rectilinis sense rotació'
       ],
       correctIndex: 0,
       explanation: 'Tot i compartir dimensions (N·m), el Treball és energia transferida per un desplaçament paral·lel (escalar, Joules) i el Moment és capacitat de fer girar mitjançant un braç perpendicular (vectorial, N·m).'

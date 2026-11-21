@@ -313,10 +313,10 @@ export const tema6EpiEra = {
       difficulty: 'Difícil',
       question: "Quina diferència hi ha entre les normes UNE-EN 443, UNE-EN 16471 i UNE-EN 16473 relatives als cascs de bomber?",
       options: [
-        'Totes tres regulen el mateix casc estructural.',
+        'Totes tres regulen el mateix tipus de casc estructural segons l’any de fabricació i el material.',
         'EN 443 és el casc estructural, EN 16471 és el casc d’incendi forestal i EN 16473 és el casc de rescat tècnic.',
-        'EN 443 és el casc forestal i EN 16471 és el casc estructural.',
-        'EN 16473 regula les botes de risc químic Tipus 3.'
+        'EN 443 és el casc d’incendi forestal, EN 16471 és el casc estructural i EN 16473 és el de risc químic.',
+        'EN 443 regula el casc de rescat en alçada, EN 16471 les botes forestals i EN 16473 els guants tècnics.'
       ],
       correctIndex: 1,
       explanation: 'EN 443 = casc estructural; EN 16471 = casc forestal; EN 16473 = casc de rescat tècnic.'
@@ -326,36 +326,36 @@ export const tema6EpiEra = {
       difficulty: 'Fàcil',
       question: "Segons el protocol de gestió de contaminants del capítol 4 de MAN.SEGU.000, on s'han de transportar els EPI bruts de sutge un cop finalitzada l'extinció d'un incendi estructural?",
       options: [
-        'Posats a sobre del bomber dins la cabina per no passar fred.',
-        'Penjats als seients del darrere de la cabina del camió.',
+        'Posats a sobre del bomber dins la cabina del vehicle per facilitar el retorn ràpid al parc en cas d’activació.',
+        'Penjats als seients posteriors de la cabina amb les finestres obertes per ventilar les partícules volàtils.',
         'Dins de bosses estanques tancades, guardades en un cofre o maleter exterior del vehicle (mai dins la cabina).',
-        'Es deixen al lloc del sinistre perquè els reculli una empresa.'
+        'Es deixen al lloc del sinistre degudament senyalitzats perquè els reculli una empresa de gestió de residus.'
       ],
       correctIndex: 2,
       explanation: "Després de la neteja in situ, els EPI contaminats s'introdueixen en bosses tancades i es transporten als cofres exteriors del vehicle per evitar contaminar la cabina."
     },
     {
       id: 'q20-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Segons el Reglament (UE) 2016/425, què indiquen els 4 dígits que apareixen al costat del marcatge CE (per exemple, CE 0158) en un EPI com l'ERA o el vestit d'intervenció?",
       options: [
-        "L'any de caducitat obligatòria del teixit ignífug.",
-        "El codi del parc de bombers al qual pertany l'equip.",
+        "L'any de fabricació i el trimestre límit de caducitat obligatòria del teixit ignífug abans de la seva retirada del servei.",
+        "El codi identificador intern del fabricant i el lot de producció assignat al cos de bombers que ha adquirit l'equip.",
         "Que es tracta d'un EPI de Categoria III (riscos mortals o irreversibles) i identifiquen l'organisme notificat que en controla la producció anualment.",
-        "Que l'EPI és de Categoria I amb autocertificació del fabricant."
+        "Que l'EPI pertany a la Categoria I amb autocertificació del fabricant i només requereix inspecció visual bianual sense organisme extern."
       ],
       correctIndex: 2,
       explanation: "Al Reglament (UE) 2016/425, el marcatge CE + 4 dígits correspon als EPI de Categoria III (riscos molt greus amb conseqüències mortals o irreversibles) i identifica l'organisme notificat controlador."
     },
     {
       id: 'q20-7',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quina norma UNE-EN regula les botes de bomber i a quin tipus d'intervenció correspon cadascuna de les tres categories (F1, F2 i F3)?",
       options: [
         "UNE-EN 15090: Tipus 1 (F1) per a exterior/forestal sense risc químic, Tipus 2 (F2) per a incendi estructural i rescat, i Tipus 3 (F3) per a emergències amb risc químic/NRBQ.",
-        "UNE-EN 659: F1 per a fred extrem, F2 per a rescat aquàtic i F3 per a alta tensió.",
-        "UNE-EN 13911: F1 per a incendi estructural, F2 per a forestal i F3 per a rescat en alçada.",
-        "UNE-EN 14605: F1 per a gasos hermètics, F2 per a raigs líquids i F3 per a pols sòlida."
+        "UNE-EN 659: Tipus 1 (F1) per a fred extrem i rescat en neu, Tipus 2 (F2) per a rescat aquàtic en riuades, i Tipus 3 (F3) per a treballs amb risc d'alta tensió elèctrica.",
+        "UNE-EN 13911: Tipus 1 (F1) per a incendi estructural interior, Tipus 2 (F2) per a extinció forestal i crema prescrita, i Tipus 3 (F3) per a rescat tècnic en alçada.",
+        "UNE-EN 14605: Tipus 1 (F1) per a protecció contra gasos hermètics, Tipus 2 (F2) per a raigs líquids a pressió, i Tipus 3 (F3) per a partícules sòlides en suspensió."
       ],
       correctIndex: 0,
       explanation: "La norma UNE-EN 15090 classifica les botes de bomber en Tipus 1 (F1: forestal/exterior), Tipus 2 (F2: estructural/rescat, amb variants F2A antiestàtica i F2I aïllament elèctric) i Tipus 3 (F3: risc químic/NRBQ)."
@@ -365,9 +365,9 @@ export const tema6EpiEra = {
       difficulty: 'Mitjà',
       question: "Dins la classificació europea dels vestits de protecció química (Tipus 1 a Tipus 6), quina diferència hi ha entre un vestit Tipus 1a, un Tipus 1b i un Tipus 3?",
       options: [
-        "El Tipus 1a és per a partícules sòlides, el 1b per a esquitxades lleugeres i el Tipus 3 per a calor radiant.",
-        "Els Tipus 1a i 1b no són hermètics a gasos i només el Tipus 3 és estanc a vapors químics.",
-        "Tots tres tipus s'utilitzen exclusivament amb filtres FFP3 sense ERA.",
+        "El Tipus 1a protegeix contra partícules sòlides en suspensió (ISO 13982), el Tipus 1b contra esquitxades lleugeres de líquids i el Tipus 3 contra calor radiant intens.",
+        "Els Tipus 1a i 1b no són hermètics a gasos ni vapors tòxics, ja que porten costures transpirables, i només el Tipus 3 garanteix estanquitat total en atmosferes NRBQ.",
+        "Tots tres tipus són vestits d'un sol ús per a descontaminació superficial i s'han d'utilitzar exclusivament amb màscares filtrants FFP3 sense equip de respiració autònom.",
         "El Tipus 1a i el 1b són hermètics a gasos (EN 943), portant l'ERA a dins del vestit en el 1a (encapsulat) i a fora en el 1b; el Tipus 3 protegeix contra raigs de líquid a pressió (EN 14605)."
       ],
       correctIndex: 3,
@@ -379,9 +379,9 @@ export const tema6EpiEra = {
       question: "Quins són els valors de pressió en les dues etapes de reducció d'un ERA de circuit obert a 300 bar i quina funció té la pressió positiva dins la màscara?",
       options: [
         "1a etapa (manoreductor): redueix a 6–8 bar | 2a etapa (pulmobanda): manté +1,5 a +3,9 mbar de sobrepressió perquè, en cas de petita fuita facial, surti aire net i mai entri fum tòxic.",
-        "1a etapa: redueix a 50 bar | 2a etapa: genera una depressió de -5 mbar per facilitar l'aspiració.",
-        "1a etapa: redueix a 15–20 bar | 2a etapa: manté exactament 1 bar negatiu respecte de l'exterior.",
-        "1a etapa: redueix directament a +1,5 mbar sense mitjana pressió."
+        "1a etapa (manoreductor): redueix a 50–60 bar | 2a etapa (pulmobanda): genera una depressió de -5 mbar dins la màscara per activar la vàlvula d'aspiració i estalviar aire comprimit.",
+        "1a etapa (manoreductor): redueix a 15–20 bar | 2a etapa (pulmobanda): manté exactament 1 bar negatiu respecte de l'exterior per millorar l'ajust facial de la silicona contra el rostre.",
+        "1a etapa (manoreductor): redueix directament de 300 bar a +1,5 mbar sense circuit de mitjana pressió, regulant la pressió positiva només quan el bomber exhal·la amb força."
       ],
       correctIndex: 0,
       explanation: "El manoreductor (1a etapa) passa de 300 bar a 6-8 bar (mitjana pressió) i la pulmobanda (2a etapa) manté una lleugera sobrepressió positiva (+1,5 a +3,9 mbar) dins la màscara per impedir l'entrada de gasos tòxics."
@@ -404,9 +404,9 @@ export const tema6EpiEra = {
       difficulty: 'Difícil',
       question: "Quan està prohibit utilitzar equips filtrants (mascaretes FFP o filtres de gasos) i quines normes UNE-EN han de complir l'ERA i la màscara facial completa reglamentaris per a bombers?",
       options: [
-        "Només es prohibeixen per sota del 10% d'oxigen; l'ERA segueix la norma UNE-EN 469 i la màscara la UNE-EN 659.",
-        "Es poden utilitzar en qualsevol incendi si porten filtre FFP3; l'ERA segueix la UNE-EN 15090.",
-        "Només estan prohibits a l'exterior; l'ERA és UNE-EN 443 Tipus B i la màscara UNE-EN 16471.",
+        "Només es prohibeixen per sota del 10% d'oxigen en atmosferes confinades; l'ERA reglamentari segueix la norma UNE-EN 469 i la màscara facial la UNE-EN 659.",
+        "Es poden utilitzar en qualsevol incendi estructural si porten filtre combinat ABEK2P3; l'ERA reglamentari segueix la norma UNE-EN 15090 i la màscara la EN 443.",
+        "Només estan prohibits a l'exterior en incendis forestals amb vent fort; l'ERA reglamentari és UNE-EN 443 Tipus B i la màscara facial la UNE-EN 16471.",
         "Estan prohibits en incendis en espais tancats, amb oxigen inferior al 19,5% o tòxic desconegut/molt concentrat; cal un ERA UNE-EN 137 Tipus 2 amb màscara UNE-EN 136 Classe 3."
       ],
       correctIndex: 3,
@@ -430,10 +430,10 @@ export const tema6EpiEra = {
       difficulty: 'Mitjà',
       question: "Quina diferència funcional hi ha entre un ERA de circuit obert (reglamentari habitual a Bombers) i un ERA de circuit tancat o de regeneració?",
       options: [
-        "En el circuit obert s'inhala aire de l'ambient filtrat i en el tancat s'utilitza aire comprimit a 300 bar expulsat a l'exterior.",
-        "En el circuit obert l'aire exhalat s'expulsa directament a l'atmosfera, mentre que en el circuit tancat l'aire exhalat es recicla eliminant el CO₂ amb un cartutx absorbent i afegint-hi oxigen per oferir llarga autonomia (2–4 h).",
-        "El circuit tancat només es pot usar en incendis forestals a l'aire lliure.",
-        "No hi ha diferència: tots dos tenen exactament la mateixa autonomia de 30 minuts."
+        "En el circuit obert s'inhala aire de l'ambient filtrat per pressió negativa i en el tancat s'utilitza aire comprimit a 300 bar expulsat directament a l'exterior en cada exhalació.",
+        "En el circuit obert l'aire exhalat s'expulsa a l'atmosfera, mentre que en el tancat es recicla retenint el CO₂ amb un absorbent i afegint-hi O₂ per assolir autonomies de 2–4 h.",
+        "El circuit tancat només es pot usar en incendis forestals a l'aire lliure per la seva baixa resistència tèrmica i té una autonomia màxima limitada a 20 minuts de treball.",
+        "No presenten diferències en la gestió del gas exhalat: tots dos reciclen el CO₂ mitjançant cartutxos de calç sodada i ofereixen exactament la mateixa autonomia de 30 minuts."
       ],
       correctIndex: 1,
       explanation: "Al circuit obert (EN 137) l'aire exhalat surt fora a cada respiració; al circuit tancat l'aire es regenera en circuit tancat retenint el CO₂ i aportant O₂, fet que permet autonomies de 2 a 4 hores (túnels llargs, mines), tot i aportar aire més calent."
@@ -466,13 +466,13 @@ export const tema6EpiEra = {
     },
     {
       id: 'q20-16',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quin tipus de vestit de protecció química correspon a una actuació de retirada d'amiant o fibrociment amb risc de partícules sòlides en suspensió, i quin a una protecció limitada contra esquitxades líquides lleugeres?",
       options: [
         "Tipus 5 (partícules sòlides, ISO 13982-1) i Tipus 6 (esquitxades lleugeres, EN 13034).",
-        "Tipus 1a (partícules) i Tipus 2 (esquitxades).",
-        "Tipus 3 (partícules) i Tipus 4 (esquitxades).",
-        "Tipus 6 (partícules) i Tipus 5 (gasos hermètics)."
+        "Tipus 1a (partícules sòlides, EN 943) i Tipus 2 (esquitxades lleugeres, EN 14605).",
+        "Tipus 3 (partícules sòlides, EN 14605) i Tipus 4 (esquitxades lleugeres, EN 13034).",
+        "Tipus 6 (partícules sòlides, EN 13034) i Tipus 5 (gasos hermètics, ISO 13982-1)."
       ],
       correctIndex: 0,
       explanation: "Dins dels vestits químics Tipus 1 a 6: el Tipus 5 (UNE-EN ISO 13982-1) protegeix contra partícules sòlides en suspensió (ex. amiant) i el Tipus 6 (UNE-EN 13034) contra petites esquitxades líquides sense pressió."
@@ -495,10 +495,10 @@ export const tema6EpiEra = {
       difficulty: 'Mitjà',
       question: "Dins del protocol de gestió de contaminants del capítol 4 (MAN.SEGU.000), quines accions corresponen al nivell de neteja 'A Parc'?",
       options: [
-        "Raspallar l'EPI en sec abans de pujar al camió i posar-lo en bosses estanques.",
-        "Enviar la jaqueta i el cubrepantaló en bossa tancada a la bugaderia industrial per a re-impregnació hidròfuga.",
+        "Raspallar l'EPI en sec abans de pujar al camió, desmuntar la màscara de l'ERA i introduir-lo en bosses estanques dins del cofre exterior del vehicle.",
+        "Enviar immediatament la jaqueta i el cubrepantaló en bossa soluble tancada a la bugaderia industrial per a rentat químic i re-impregnació hidròfuga.",
         "Dutxa immediata del bomber ('dins la primera hora') i rentat superficial d'eines, botes, casc i espatllera d'ERA a la zona bruta del parc, sense entrar l'EPI brut a les zones de vida.",
-        "Netejar el vestit estructural amb aire comprimit dins del dormitori del parc."
+        "Bufar el vestit estructural i el sotacasc amb aire comprimit a alta pressió dins la zona de vestidors per eliminar el sutge sec abans de penjar-lo a l'armari."
       ],
       correctIndex: 2,
       explanation: "El nivell 'A parc' (4.2.3) inclou la dutxa immediata del bomber ('dins la primera hora') i la neteja superficial de casc, botes, eines i espatllera a la zona bruta, mantenint els EPI contaminats fora de menjador i dormitoris."

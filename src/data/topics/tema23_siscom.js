@@ -221,10 +221,10 @@ export const tema23Siscom = {
       difficulty: 'Mitjà',
       question: 'Quin és l’ordre jeràrquic exacte de MENOR a MAJOR nivell d’agrupació dels recursos segons el Capítol 6 del manual MAN.COMD.001?',
       options: [
-        '1. Sector → 2. Grup → 3. Zona → 4. Equip → 5. Maniobra → 6. Àrea Funcional → 7. CI.',
+        '1. Sector → 2. Grup → 3. Zona → 4. Equip → 5. Maniobra → 6. Àrees Funcionals → 7. Comandament de la Intervenció (CI).',
         '1. Equip → 2. Maniobra → 3. Grup → 4. Sector → 5. Zona → 6. Àrees Funcionals → 7. Comandament de la Intervenció (CI).',
-        '1. Binomi → 2. Zona → 3. Sector → 4. Grup → 5. Maniobra → 6. CI.',
-        '1. Equip → 2. Sector → 3. Grup → 4. Maniobra → 5. Zona → 6. CI.'
+        '1. Equip → 2. Zona → 3. Sector → 4. Grup → 5. Maniobra → 6. Àrees Funcionals → 7. Comandament de la Intervenció (CI).',
+        '1. Equip → 2. Sector → 3. Grup → 4. Maniobra → 5. Zona → 6. Àrees Funcionals → 7. Comandament de la Intervenció (CI).'
       ],
       correctIndex: 1,
       explanation: 'L’escalafó oficial de 7 nivells de menor a major és: 1. Equip, 2. Maniobra, 3. Grup, 4. Sector, 5. Zona, 6. Àrees Funcionals i 7. Comandament de la Intervenció (CI).'
@@ -235,9 +235,9 @@ export const tema23Siscom = {
       question: 'Quin Decret regula el Comandament Únic d’operacions als Bombers de la Generalitat i quins documents operatius regulen el relleu de comandament?',
       options: [
         'Decret 276/2016, de 19 de juliol (i per al relleu: INT.COMD.000 i GUI.ORGO.001).',
-        'Llei 31/1995 de PRL.',
-        'Decret 100/2000.',
-        'Codi Tècnic de l’Edificació.'
+        'Decret 30/2015, de 3 de març (i per al relleu: MAN.COMD.003 i INT.ORGO.002).',
+        'Llei 5/1994, de 4 de maig, de prevenció (i per al relleu: GUI.COMD.002 i MAN.SEGU.000).',
+        'Decret 168/2010, de 16 de novembre (i per al relleu: INT.GRAL.001 i MAN.EQIP.000).'
       ],
       correctIndex: 0,
       explanation: 'Apartat 4.1 del manual: el Comandament Únic es regeix pel Decret 276/2016, de 19 de juliol, i el relleu per la instrucció INT.COMD.000 i la guia GUI.ORGO.001.'
@@ -247,36 +247,36 @@ export const tema23Siscom = {
       difficulty: 'Mitjà',
       question: 'Com s’estructuren les Àrees Funcionals al SISCOM de Bombers de la Generalitat sota el Cap d’Intervenció (CI), a diferència de les 5 àrees de l’ICS nord-americà?',
       options: [
-        'Només existeix l’Àrea d’Administració i Finances.',
+        'Al SISCOM s’apliquen exactament les 5 àrees de l’ICS nord-americà separades sota el CI: Operacions, Planificació, Logística, Finances i Seguretat.',
         'Al SISCOM no s’aplica l’àrea de Finances i s’organitza sota el CI en: Àrea d’OPERACIONS i Àrea de SUPORT (que engloba PLANIFICACIÓ i LOGÍSTICA).',
-        'Hi ha 10 àrees funcionals obligatòries en tots els serveis.',
-        'El CI només dirigeix Logística i el SEM dirigeix Operacions.'
+        'Al SISCOM existeixen 4 àrees funcionals obligatòries en tot servei: Atac Directe, Abastament Hídric, Comunicacions RESCAT i Administració/Finances.',
+        'El CI només dirigeix l’Àrea de Planificació i Finances, mentre que l’Àrea d’Operacions i Logística queda delegada directament al Centre de Control (CEC).'
       ],
       correctIndex: 1,
       explanation: 'Capítol 5 del manual: al SISCOM català s’exclou Finances i sota el CI es despleguen Operacions i Suport (que integra Planificació i Logística).'
     },
     {
       id: 't22-q6',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Quina és la diferència entre Comandament Integrat i Comandament Unificat segons l’apartat 4.2 del manual MAN.COMD.001?',
       options: [
-        'Són exactament el mateix concepte.',
-        'El Comandament Integrat és la coordinació de diferents agències (Bombers, SEM, Policia) al CCA sota l’agència responsable; el Comandament Unificat s’aplica quan l’emergència afecta territoris o jurisdiccions limítrofes que comparteixen autoritat.',
-        'L’Integrat és només per a incendis forestals i l’Unificat per a rescat urbà.',
-        'L’Unificat vol dir que mana un sol bomber sense cap altre cos.'
+        'Són termes equivalents al SISCOM que designen la integració d’un sol comandament únic quan intervenen més de tres parcs de bombers dins d’una mateixa Regió d’Emergències.',
+        'El Comandament Integrat coordina agències diferents (Bombers, SEM, Policia) al CCA sota l’agència directora; el Comandament Unificat comparteix direcció entre jurisdiccions limítrofes.',
+        'El Comandament Integrat s’aplica quan comparteixen autoritat cossos limítrofs amb competències homòlogues, i el Comandament Unificat coordina diferents agències al CCA sota un sol cos.',
+        'El Comandament Integrat s’utilitza exclusivament en incendis forestals amb mitjans aeris, mentre que el Comandament Unificat s’aplica únicament en emergències químiques amb risc NRBQ.'
       ],
       correctIndex: 1,
       explanation: 'Comandament Integrat = coordinació multiagència al CCA sota el cos director; Comandament Unificat = direcció compartida entre cossos/territoris limítrofs amb competències homòlogues.'
     },
     {
       id: 't22-q7',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Què indica la regla "+1 / -1" dins la cadena i línia de comandament del SISCOM?',
       options: [
-        'Que sempre cal demanar un camió més dels necessaris.',
-        'Que cada membre o unitat rep ordres i reporta únicament al seu esglaó jeràrquic immediatament superior (+1) i dirigeix únicament el seu esglaó immediatament inferior (-1).',
-        'Que el tram de control és d’1 bomber.',
-        'Que a l’estiu es resta 1 hora.'
+        'Que cada sector ha de demanar sempre un vehicle de reserva addicional (+1) i mantenir un equip descansant en zona segura (-1).',
+        'Que cada unitat rep ordres i reporta només al seu esglaó immediat superior (+1) i dirigeix només el seu esglaó immediat inferior (-1).',
+        'Que el tram de control màxim és d’un sol comandament superior (+1) per a cada vehicle d’intervenció desplegat a la zona calenta (-1).',
+        'Que en produir-se un relleu de comandament cal sumar un període operatiu (+1) abans de reduir el nivell d’activació SISCOM (-1).'
       ],
       correctIndex: 1,
       explanation: 'La regla +1/-1 garanteix l’ordre jeràrquic evitant que els comandaments superiors donin ordres saltant-se els comandaments intermedis.'
@@ -299,10 +299,10 @@ export const tema23Siscom = {
       difficulty: 'Fàcil',
       question: 'En un servei senzill d’estructura mínima (SISCOM 1), qui assumeix les funcions d’Operacions, Planificació i Logística?',
       options: [
-        'Es convoquen sempre 3 oficials diferents.',
+        'Es convoquen sempre tres comandaments territorials diferents per dirigir cada àrea per separat.',
         'El mateix Cap d’Intervenció (CI) assumeix totes les funcions sense necessitat de delegar àrees.',
-        'Les assumeix la Sala Central.',
-        'No es fa cap maniobra.'
+        'Les assumeix directament la Sala Central de Coordinació mentre la dotació executa la maniobra.',
+        'Es deleguen automàticament al cap de la segona sortida de reforç abans d’iniciar l’extinció.'
       ],
       correctIndex: 1,
       explanation: 'Pel principi d’escalabilitat i modularitat, en SISCOM 1 el Cap d’Intervenció (ex. el caporal de la primera sortida) assumeix totes les funcions.'
@@ -312,10 +312,10 @@ export const tema23Siscom = {
       difficulty: 'Mitjà',
       question: 'Quan es crea una ZONA dins de l’estructura operativa d’una gran emergència?',
       options: [
-        'Sempre que hi ha més de 2 bombers.',
+        'Sempre que intervenen més de dos equips d’un mateix parc en un servei urbà o industrial de durada superior a una hora.',
         'Quan el nombre de SECTORS desplegats supera el tram de control (més de 5 sectors) i cal agrupar diversos sectors sota un Cap de Zona.',
-        'Abans de crear cap Equip.',
-        'Quan s’acaba l’emergència.'
+        'Immediatament a l’arribada de la primera sortida al sinistre, abans de definir els Grups i els Equips d’intervenció inicials.',
+        'Únicament en la fase de desmobilització final quan ja s’han tancat les àrees de Planificació i Logística al Centre de Comandament.'
       ],
       correctIndex: 1,
       explanation: 'La Zona (nivell 5) és l’agrupació superior que reuneix diversos Sectors (nivell 4) quan la dimensió de l’incident supera el tram de control de 3–5 sectors.'
@@ -378,9 +378,9 @@ export const tema23Siscom = {
       question: 'Durant un incendi industrial, un Cap de Sector rep l’assignació de 7 equips diferents simultàniament sota la seva supervisió directa. Per què aquesta situació vulnera els principis del SISCOM i com s’ha de resoldre?',
       options: [
         'Vulnera el tram de control òptim (3 a 5 línies directes); s’ha de resoldre subdividint i creant Grups o un nou Sector per mantenir entre 3 i 5 línies.',
-        'Vulnera la regla de les 24 hores; s’ha de resoldre enviant 2 equips al parc en Z-6.',
-        'Vulnera el Decret 30/2015; s’ha de resoldre suprimint el PAI.',
-        'No vulnera cap principi, ja que el tram de control màxim al SISCOM és de 15 línies.'
+        'Vulnera la regla "+1 / -1" de comunicació; s’ha de resoldre retornant 2 equips al Centre de Recepció de Mitjans (CRM) en espera.',
+        'Vulnera el principi de comandament únic del Decret 276/2016; s’ha de resoldre suprimint el PAI i transferint el comandament a la Sala.',
+        'No vulnera cap principi operatiu del SISCOM, ja que el tram de control màxim establert per a un Cap de Sector és de 10 a 12 línies directes.'
       ],
       correctIndex: 0,
       explanation: 'Amb 7 línies directes se supera el tram de control màxim recomanat al SISCOM (3 a 5 línies). Cal reorganitzar els equips en Grups (amb Caps de Grup) o dividir el Sector.'
@@ -391,9 +391,9 @@ export const tema23Siscom = {
       question: 'Quin document operatiu defineix els objectius estratègics, la tàctica i les maniobres per a un període operatiu dins del SISCOM i quin codi de document el regula?',
       options: [
         'El Pla d’Acció de l’Incident (PAI), regulat per MAN.COMD.003.',
-        'El DUPROCIM, regulat pel Decret 276/2016.',
-        'El PLEGEM, regulat per MAN.ATXX.000.',
-        'El Codi SOC, regulat per MAN.GRAL.002.'
+        'El DUPROCIM operatiu, regulat pel Decret 276/2016.',
+        'El PLEGEM de campanya, regulat per MAN.ATXX.000.',
+        'El Codi SOC d’operacions, regulat per MAN.GRAL.002.'
       ],
       correctIndex: 0,
       explanation: 'El Pla d’Acció de l’Incident (PAI) —regulat pel manual MAN.COMD.003— fixa els objectius, l’estratègia i les maniobres per a cada període operatiu.'

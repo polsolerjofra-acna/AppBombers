@@ -259,7 +259,7 @@ export const tema5Vehicles = {
         'De 10 a 20 m (habitual 15 m)',
         'De 20 a 42 m (habitual 30 m)',
         'De 40 a 70 m (habitual 55 m)',
-        'Totes són exactament de 25 m'
+        'De 25 a 35 m (habitual 25 m)'
       ],
       correctIndex: 1,
       explanation: "L'apartat 4.2 del manual estableix que les AEA abasten entre 20 i 42 metres, sent la de 30 metres la més habitual als parcs."
@@ -272,7 +272,7 @@ export const tema5Vehicles = {
         'Helicòpters: 100-300 L | Avions: 1.000-2.000 L',
         'Helicòpters: 500-1.500 L | Avions: 3.000-6.000 L',
         'Helicòpters: 3.000-4.000 L | Avions: 10.000-15.000 L',
-        'Tots dos carreguen exactament 2.500 L'
+        'Helicòpters: 2.000-2.500 L | Avions: 2.500-3.000 L'
       ],
       correctIndex: 1,
       explanation: 'Els helicòpters carreguen entre 500 i 1.500 litres, mentre que els avions carreguen entre 3.000 i 6.000 litres.'
@@ -282,10 +282,10 @@ export const tema5Vehicles = {
       difficulty: 'Mitjà',
       question: 'Quines diferències tècniques principals hi ha entre una BUP (Bomba Urbana Pesant) i una BRP (Bomba Rural Pesant) segons el capítol 3 de MAN.EQIP.000?',
       options: [
-        "La BUP és 4×4 amb ruixadors d'autoprotecció i la BRP té una cisterna inferior a 2.000 L.",
+        "La BUP té xassís tot terreny 4×4 (~3.500 L) amb ruixadors d'autoprotecció i la BRP té xassís 4×2 (<2.000 L) sense reductora per a carrers estrets.",
         "La BUP té xassís 4×2 (>3.000 L) orientada a urbà/trànsit i la BRP té xassís tot terreny 4×4 (~3.000–3.500 L) amb ruixadors d'autoprotecció de cabina i rodes.",
-        "Totes dues tenen xassís 4×4 i porten ≥8.000 L d'aigua.",
-        "La BRP només porta bomba d'alta pressió i no té cisterna pròpia."
+        "Totes dues munten xassís tot terreny 4×4 amb reductora, però la BUP porta ≥8.000 L per a abastament i la BRP només incorpora bomba de baixa pressió.",
+        "La BUP incorpora tracció 4×4 amb bloqueig de diferencials i la BRP té xassís 4×2 (>3.000 L) sense dipòsit de reserva per a ruixadors de cabina."
       ],
       correctIndex: 1,
       explanation: "La BUP munta xassís urbà/carretera 4×2 (>3.000 L), mentre que la BRP és tot terreny 4×4 (~3.000–3.500 L) amb reductora, bloqueig de diferencials i ruixadors d'autoprotecció."
@@ -321,10 +321,10 @@ export const tema5Vehicles = {
       difficulty: 'Mitjà',
       question: "Quina diferència d'ús operatiu estableix el manual MAN.EQIP.000 entre la Grua de Rescat Pesada i la Grua de Rescat Lleugera?",
       options: [
-        'La Grua Pesada s’usa només per a incendis forestals i la Lleugera per a sanejament de façanes.',
+        "La Grua Pesada s'assigna exclusivament a incendis forestals i pistes de muntanya, mentre que la Grua Lleugera s'utilitza per a sanejament de façanes i tales d'arbres.",
         "La Grua Pesada es destina a aixecar i remolcar camions, autobusos o vagons bolcats, mentre que la Grua Lleugera dona suport en rescat d'animals grans (cavalls/vaques) i càrregues mitjanes.",
-        'La Grua Lleugera només actua dins de túnels ferroviaris i la Pesada en parcs urbans.',
-        'No hi ha diferència funcional, només varia el nombre de places de cabina.'
+        "La Grua Lleugera actua únicament dins de túnels ferroviaris amb tracció elèctrica, mentre que la Grua Pesada queda restringida a tasques logístiques dins dels parcs.",
+        "No presenten diferències operatives ni de capacitat d'elevació, ja que totes dues comparteixen el mateix braç hidràulic i només varia el nombre de places de cabina."
       ],
       correctIndex: 1,
       explanation: "La Grua Pesada s'utilitza per a grans tonatges (camions, autobusos, vagons), mentre que la Grua Lleugera s'empra per a càrregues mitjanes i rescat d'animals de gran pes."
@@ -344,13 +344,13 @@ export const tema5Vehicles = {
     },
     {
       id: 'q18-11',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Segons el RD 836/2012, quina diferència hi ha entre una ambulància Classe A1 i una Classe A2, i fins a quina planta aproximada arriba una AEA estàndard de 30 metres?',
       options: [
-        'A1 és de Suport Vital Bàsic i A2 de Suport Vital Avançat | Planta 12 (PL+12)',
-        'A1 és col·lectiva i A2 és individual | Planta 5 (PL+5)',
+        'A1 és de Suport Vital Bàsic i A2 de Suport Vital Avançat (ambdues assistencials) | Planta 12 (PL+12)',
+        'A1 és de transport col·lectiu i A2 de transport individual (ambdues no assistencials) | Planta 5 (PL+5)',
         'A1 és de transport individual i A2 de transport col·lectiu (ambdues no assistencials) | Planta 8 (PL+8)',
-        'Totes dues són assistencials però sense conductor | Planta 10 (PL+10)'
+        'A1 és per a urgències pediàtriques i A2 per a cures intensives (sense conductor) | Planta 10 (PL+10)'
       ],
       correctIndex: 2,
       explanation: 'Les ambulàncies A1 (individual) i A2 (col·lectiva) són no assistencials, i una AEA estàndard de 30 metres arriba aproximadament fins a una Planta 8 (PL+8).'
@@ -360,9 +360,9 @@ export const tema5Vehicles = {
       difficulty: 'Difícil',
       question: "En els mitjans aeris (Cap. 6) i la revisió diària (Cap. 7) del manual, quins sistemes de càrrega d'aigua fan servir els helicòpters i quina pressió han de tenir les ampolles d'ERA comprovades al canvi de torn?",
       options: [
-        "Només dipòsit ventral rígid amb trompa d'aspiració | 200 bar",
-        'Càrrega exclusiva lliscant sobre pantà o mar | 150 bar',
-        'Únicament càrrega en terra amb bomba de baixa pressió | 350 bar',
+        "Exclusivament dipòsit ventral rígid amb càrrega per gravetat en superfície lliscant | 200 bar",
+        'Càrrega directa en vol rasant sobre pantà o mar mitjançant comportes inferiors | 150 bar',
+        'Únicament càrrega en base terrestre amb bomba centrífuga de baixa pressió (10 bar) | 350 bar',
         "Helibalde suspès (Bambi Bucket) o dipòsit ventral rígid amb trompa d'aspiració (snorkel) | 300 bar"
       ],
       correctIndex: 3,
@@ -373,10 +373,10 @@ export const tema5Vehicles = {
       difficulty: 'Mitjà',
       question: "En la codificació operativa X.YY.ZZ dels vehicles de Bombers de la Generalitat, si ens assignen el vehicle 5.12.40, què indica el nombre '12'?",
       options: [
-        'Que pertany a la Regió d’Emergències 12.',
+        'Que pertany a la Regió d’Emergències 12 i al sector operatiu número 5.',
         'Que és el Parc de Bombers número 12 dins de la Regió d’Emergències 5.',
-        'Que la seva cisterna té 12.000 litres de capacitat.',
-        'Que és una autoescala de 12 metres d’alçada.'
+        'Que la seva cisterna d’aigua té una capacitat nominal de 12.000 litres.',
+        'Que correspon al vehicle tipus 12 d’autoescala de 40 metres d’alçada.'
       ],
       correctIndex: 1,
       explanation: 'En el format X.YY.ZZ, X (5) és la Regió d’Emergències, YY (12) és el codi del Parc dins la Regió, i ZZ (40) és el tipus funcional i ordre de vehicle.'
@@ -412,10 +412,10 @@ export const tema5Vehicles = {
       difficulty: 'Mitjà',
       question: "Quina diferència operativa hi ha entre un avió AVA (càrrega en terra) i un avió amfibi (tipus Foca / Canadair) dins dels Mitjans Aeris (Capítol 6)?",
       options: [
-        'L’AVA càrrega a terra (~3.100 L, sovint amb retardant químic), mentre que l’amfibi (~5.500–6.000 L) pot carregar aigua lliscant directament sobre el mar o un pantà.',
-        'L’amfibi només pot carregar 500 litres amb helibalde i l’AVA és un helicòpter pesant.',
-        'L’AVA només actua en incendis urbans i l’amfibi en riscos químics.',
-        'Cap diferència: tots dos carreguen exclusivament en pistes d’aeroport.'
+        'L’AVA carrega a terra (~3.100 L, sovint amb retardant químic), mentre que l’amfibi (~5.500–6.000 L) pot carregar aigua lliscant directament sobre el mar o un pantà.',
+        'L’amfibi només pot carregar 1.500 litres mitjançant helibalde suspès en estacionari, mentre que l’AVA és un helicòpter pesant de doble rotor per a transport de brigada.',
+        'L’AVA actua exclusivament en incendis urbans i industrials amb escuma, mentre que l’amfibi queda reservat a emergències de risc químic en zones portuàries i costaneres.',
+        'No existeix diferència operativa en la càrrega: tots dos models carreguen únicament en pistes d’aeroport mitjançant motobombes terrestres de gran cabal abans de l’enlairament.'
       ],
       correctIndex: 0,
       explanation: 'Dins dels avions d’extinció (3.000 a 6.000 L), els AVA carreguen en bases terrestres (~3.100 L amb aigua o retardant), mentre que els amfibis (Foca/Canadair, ~5.500–6.000 L) carreguen directament lliscant sobre superfícies d’aigua.'

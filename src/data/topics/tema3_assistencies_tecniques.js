@@ -205,13 +205,13 @@ export const tema3AssistenciesTecniques = {
   quiz: [
     {
       id: 'q16-1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Segons el manual MAN.ATXX.000, quines són les dimensions de la Zona A i de la Zona B en una intervenció d'abatiment d'arbres amb motoserra?",
       options: [
-        'Zona A = 1,5 vegades l’alçada de l’arbre | Zona B = 5 metres',
+        'Zona A = 1,5 vegades l’alçada de l’arbre (només el binomi) | Zona B = 5 metres (només el motoserrista)',
         'Zona A = 2,5 vegades l’alçada de l’arbre (només el binomi) | Zona B = 2 metres (només el motoserrista)',
-        'Zona A = 10 metres fixos | Zona B = 1 metre',
-        'Zona A = 2 metres | Zona B = 2,5 vegades l’alçada de l’arbre'
+        'Zona A = 10 metres fixos al voltant del tronc | Zona B = 1 metre al voltant de l’operador',
+        'Zona A = 2 metres al voltant del motoserrista | Zona B = 2,5 vegades l’alçada de l’arbre (només el binomi)'
       ],
       correctIndex: 1,
       explanation: "La Zona A té un radi de 2,5 vegades l'alçada de l'arbre (on només pot haver-hi el binomi), i la Zona B té un radi de 2 metres al voltant de l'operador (on només pot estar el motoserrista)."
@@ -221,10 +221,10 @@ export const tema3AssistenciesTecniques = {
       difficulty: 'Mitjà',
       question: "Com es calcula i en quines unitats s'expressa el 'pas de cadena' d'una motoserra, i en quines unitats es mesura la 'galga'?",
       options: [
-        'El pas és la distància entre 2 reblons en mm; la galga és l’amplada de l’espasa en polzades.',
+        'El pas és la distància entre 2 reblons consecutius (en mil·límetres); la galga és l’amplada de la ranura de l’espasa (en polzades).',
         'El pas és la distància entre 3 reblons consecutius dividida entre 2 (en polzades); la galga és el gruix de la baula motriu (en mil·límetres).',
-        'Tant el pas com la galga es mesuren en mil·límetres.',
-        'El pas és el nombre total de dents de tall dividit entre la longitud de l’espasa.'
+        'El pas és la distància entre 3 reblons consecutius dividida entre 2 (en mil·límetres); la galga és l’alçada de la dent de tall (en mil·límetres).',
+        'El pas és el nombre total de dents de tall dividit entre la longitud útil de l’espasa; la galga és el gruix total de la cadena (en polzades).'
       ],
       correctIndex: 1,
       explanation: 'El pas de cadena és la distància entre 3 reblons dividida per 2 i es mesura en polzades (ex. 3/8"); la galga és el gruix de la baula motriu i es mesura en mm (ex. 1,5 mm).'
@@ -247,10 +247,10 @@ export const tema3AssistenciesTecniques = {
       difficulty: 'Mitjà',
       question: "Quan hem de tallar horitzontalment un tronc caigut sotmès a flexió (amb fibres en compressió i fibres en tracció), quin és l'ordre correcte dels talls per evitar que l'espasa quedi pinçada?",
       options: [
-        'Un únic tall complet des de la zona de tracció.',
+        'Fer un únic tall complet de dalt a baix començant directament per la zona de tracció fins a travessar tot el tronc.',
         'Primer un tall d’1/3 del diàmetre a la zona de compressió i després el segon tall de 2/3 a la zona de tracció.',
-        'Primer un tall de 2/3 a la zona de tracció i després 1/3 a la zona de compressió.',
-        'Tallar la frontissa central primer.'
+        'Primer un tall de 2/3 del diàmetre a la zona de tracció i després el segon tall d’1/3 a la zona de compressió.',
+        'Practicar primer un tall d’1/3 a la línia neutra central i acabar amb dos talls oblics laterals des de la tracció.'
       ],
       correctIndex: 1,
       explanation: "Sempre es fa el 1r tall d'alleujament (1/3) a la zona de compressió i el 2n tall definitiu (2/3) a la zona de tracció."
@@ -281,10 +281,10 @@ export const tema3AssistenciesTecniques = {
       difficulty: 'Mitjà',
       question: "Com s'ha d'immobilitzar un porc o senglar i com s'ha de fer l'hissat d'un cavall o vaca en un rescat amb grua segons l'apartat 2.4 del manual?",
       options: [
-        "El porc s'agafa per les orelles i el cavall s'hissa per les potes i el coll.",
+        "El porc s'immobilitza subjectant-lo per les orelles i les potes posteriors, i el cavall s'hissa passant eslingues per les extremitats i el coll.",
         "El porc s'immobilitza amb un lligam al morro (maxil·lar superior) i el cavall/vaca amb cintes amples per sota del tòrax i l'abdomen (mai pel coll, potes ni cua).",
-        'El porc amb cinta pel tòrax i el cavall amb perxa rígida pel coll.',
-        'Tots dos s’han de tranquil·litzar amb dards preparats directament pel cap de torn de bombers.'
+        "El porc s'immobilitza amb cinta ampla per sota del tòrax i el cavall s'hissa amb una perxa rígida i arnès fixat al voltant del coll i la creu.",
+        "Tots dos s'han de sedar prèviament amb dards anestèsics preparats i disparats directament pel cap de torn o comandament de bombers."
       ],
       correctIndex: 1,
       explanation: 'Els suids (porcs/senglars) s’immobilitzen amb un llaç al morro (darrere els ullals), mentre que en èquids i bòvids es passen cintes amples per tòrax i abdomen i és prohibit hissar-los pel coll, potes o cua.'
@@ -294,10 +294,10 @@ export const tema3AssistenciesTecniques = {
       difficulty: 'Difícil',
       question: "Quina part de l'espasa de la motoserra provoca el rebot (kickback) en tocar un obstacle, i quin percentatge aproximat del diàmetre s'ha de deixar a la frontissa durant un abatiment d'arbre?",
       options: [
-        "La base de l'espasa | 50% del diàmetre (i s'acaba tallant del tot al final).",
-        'El quart inferior de la punta | 25% del diàmetre.',
+        "La base de l'espasa prop del pinyó d'arrossegament | 50% del diàmetre (i s'acaba tallant del tot al final de la caiguda).",
+        "El quart inferior de la punta de l'espasa | 25% del diàmetre (per evitar que el tronc es giri lateralment abans d'hora).",
         "El quart superior de la punta de l'espasa | 10% del diàmetre (que guia la caiguda i mai s'ha de tallar).",
-        'La cadena del carter inferior | 5% del diàmetre.'
+        "La part central del carter inferior de la cadena | 5% del diàmetre (només en arbres inclinats cap a la via d'escapament)."
       ],
       correctIndex: 2,
       explanation: "El rebot (kickback) es produeix quan el quart superior de la punta de l'espasa toca fusta o un obstacle; en l'abatiment, cal deixar sempre una frontissa d'aproximadament el 10% del diàmetre sense tallar."
@@ -359,10 +359,10 @@ export const tema3AssistenciesTecniques = {
       difficulty: 'Mitjà',
       question: "En una intervenció d'accés a habitatge on no hi ha emergència vital immediata i la porta està tancada amb voltes de clau (forrellat passat), quin ha de ser l'ordre de prioritat operatiu segons el manual?",
       options: [
-        'Trencar directament la porta amb un mall i un separador hidràulic.',
+        'Forçar directament el marc i la fulla de la porta principal amb mall i separador hidràulic per garantir la màxima rapidesa d’accés interior.',
         'Requerir presència policial (si no és emergència vital) i prioritzar l’accés menys destructiu: 1r finestra o balcó accessible, i si no és possible, extracció/fresat únicament del bombí.',
-        'Intentar passar una radiografia pel resbaló, ja que sempre obra els forrellats girats.',
-        'Entrar sense policia ni ordre judicial en tots els casos per ser servei públic.'
+        'Intentar passar una làmina de mica o radiografia entre el marc i el resbaló, ja que aquesta tècnica permet retirar també els forrellats girats amb clau.',
+        'Accedir-hi immediatament sense presència policial ni testimonis en tots els casos, emparant-se en la condició de servei públic d’emergències.'
       ],
       correctIndex: 1,
       explanation: "Sense emergència vital immediata cal requerir la policia i triar la via menys destructiva (finestra/balcó); la làmina de mica només obre el resbaló (no el forrellat girat), de manera que si s'ha d'obrir la porta es limita el dany al bombí."
@@ -398,10 +398,10 @@ export const tema3AssistenciesTecniques = {
       difficulty: 'Difícil',
       question: "Ens trobem un tronc gruixut caigut que està en voladís (recolzat només per un extrem a un marge i l'altre extrem suspès a l'aire). On es troba la zona de compressió i com l'hem de tallar?",
       options: [
-        'La compressió és a la cara superior → 1r tall d’1/3 per dalt i 2n tall de 2/3 per baix.',
+        'La compressió és a la cara superior (pel pes propi de la punta) → 1r tall d’1/3 per dalt i 2n tall de 2/3 per baix.',
         'La compressió és a la cara inferior (s’aixafa pel pes de la punta) → 1r tall d’1/3 per baix i 2n tall de 2/3 per dalt.',
-        'Tot el tronc està a tracció pura → es talla d’un sol cop de dalt a baix.',
-        'Tot el tronc està a compressió → es talla d’un sol cop de baix a dalt.'
+        'Tot el tronc està sotmès a tracció pura sense zona comprimida → es talla d’un sol cop continu de dalt a baix.',
+        'Tot el tronc està sotmès a compressió axial → es talla d’un sol cop continu de baix a dalt amb falca lateral.'
       ],
       correctIndex: 1,
       explanation: "En un voladís (a diferència d'un pont recolzat als dos extrems), la part SUPERIOR s'estira (tracció) i la part INFERIOR s'aixafa (compressió). Per tant, el 1r tall d'alleujament (1/3) es fa per BAIX (compressió) i el 2n tall (2/3) per DALT (tracció)."
@@ -421,13 +421,13 @@ export const tema3AssistenciesTecniques = {
     },
     {
       id: 'q16-18',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "En una intervenció nocturna amb himenòpters (abelles o vespes), quin detall d'EPI i quin horari d'actuació recomana el manual MAN.ATXX.000?",
       options: [
-        'Actuar al migdia amb màxima calor solar i només amb el casc d’incendi forestal.',
+        'Actuar al migdia amb màxima radiació solar perquè les obreres siguin fora del niu i només amb el casc d’incendi forestal.',
         'Actuar preferentment al capvespre o de nit amb EPI complet d’apicultor (granota blanca, careta de reixeta i guants segellats amb cinta).',
-        'Actuar amb l’equip d’intervenció estructural sense guants i ruixant aigua freda al rusc.',
-        'Actuar de matinada amb mascareta FFP1 i botes d’aigua.'
+        'Actuar a plena llum del dia amb l’equip d’intervenció estructural sense guants i ruixant aigua freda a pressió sobre el rusc.',
+        'Actuar de matinada amb mascareta autofiltrant FFP1, ulleres integrals i botes d’aigua sense necessitat de segellar punys ni turmells.'
       ],
       correctIndex: 1,
       explanation: "Cal utilitzar l'EPI complet d'apicultor ben segellat i actuar al capvespre o de nit, quan els insectes són dins del rusc o niu i tenen molta menys activitat."

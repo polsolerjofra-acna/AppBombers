@@ -449,10 +449,10 @@ export const tema16Hidraulica = {
       difficulty: 'Mitjà',
       question: 'Quina és la pressió nominal de treball i quants litres d’aigua caben aproximadament en un tram de 20 metres de mànega flexible de Ø 45 mm i de Ø 70 mm?',
       options: [
-        'Ø45: 40 bar i 10 L | Ø70: 20 bar i 30 L.',
+        'Ø45: 40 bar i ≈ 10 L (0,5 L/m) | Ø70: 20 bar i ≈ 30 L (1,5 L/m).',
         'Ø45: 20 bar i ≈ 30 L (1,5 L/m) | Ø70: 18 bar i ≈ 77–80 L (4 L/m).',
-        'Ø45: 18 bar i 45 L | Ø70: 12 bar i 70 L.',
-        'Totes dues treballen a 40 bar i contenen 50 L.'
+        'Ø45: 18 bar i ≈ 45 L (2,25 L/m) | Ø70: 12 bar i ≈ 70 L (3,5 L/m).',
+        'Ø45: 25 bar i ≈ 20 L (1,0 L/m) | Ø70: 25 bar i ≈ 50 L (2,5 L/m).'
       ],
       correctIndex: 1,
       explanation: 'Taula 6.1 del manual: Ø25 = 40 bar i 0,5 L/m (10 L/20m); Ø45 = 20 bar i 1,5 L/m (≈30 L/20m); Ø70 = 18 bar i 4 L/m (≈77 L/20m).'
@@ -462,10 +462,10 @@ export const tema16Hidraulica = {
       difficulty: 'Difícil',
       question: 'Segons l’equació de Darcy-Weisbach, què passa amb la pèrdua de càrrega (J) d’una instal·lació de mànegues si dupliquem el cabal d’aigua (Q × 2) mantenint el mateix diàmetre?',
       options: [
-        'La pèrdua de càrrega es redueix a la meitat.',
-        'La pèrdua de càrrega es duplica (× 2).',
+        'La pèrdua de càrrega es redueix a la meitat (÷ 2), perquè augmenta la inèrcia del flux en règim turbulent.',
+        'La pèrdua de càrrega es duplica de manera proporcional (× 2), perquè creix linealment amb el cabal.',
         'La pèrdua de càrrega es multiplica per QUATRE (× 4), perquè creix amb el quadrat de la velocitat/cabal.',
-        'La pèrdua de càrrega no depèn del cabal.'
+        'La pèrdua de càrrega es manté constant, perquè només depèn de la longitud, el diàmetre i la rugositat.'
       ],
       correctIndex: 2,
       explanation: 'Com que J ∝ v² (i v ∝ Q), en duplicar el cabal la velocitat es duplica i la pèrdua de càrrega es multiplica per 2² = 4.'
@@ -475,10 +475,10 @@ export const tema16Hidraulica = {
       difficulty: 'Mitjà',
       question: 'Quin tipus de bomba d’encebament incorporen els nous vehicles BRP Scania segons el Capítol 5 del manual MAN.GRAL.009?',
       options: [
-        'Una bomba centrífuga multicel·lular.',
+        'Una bomba centrífuga multicel·lular d’alta pressió.',
         'Una bomba volumètrica alternativa de pistons axials.',
-        'Una bomba peristàltica de tub.',
-        'Un hidroerenjador d’efecte Venturi.'
+        'Una bomba peristàltica rotativa d’anell líquid.',
+        'Un hidroinjector d’efecte Venturi de doble etapa.'
       ],
       correctIndex: 1,
       explanation: 'El manual especifica a l’apartat 5.2.2 que el sistema d’encebament dels BRP Scania utilitza una bomba volumètrica alternativa de pistons axials per fer el buit.'
@@ -501,10 +501,10 @@ export const tema16Hidraulica = {
       difficulty: 'Mitjà',
       question: 'En una premsa hidràulica (Principi de Pascal), si l’èmbol de sortida té un RADI 3 vegades més gran que l’èmbol d’entrada (R₂ = 3·R₁), per quant es multiplica la força?',
       options: [
-        'Per 3.',
-        'Per 6.',
+        'Per 3 (perquè la força transmesa és proporcional al radi: 3¹ = 3).',
+        'Per 6 (perquè la força es duplica en passar pel diàmetre: 2 × 3 = 6).',
         'Per 9 (perquè la superfície depèn del quadrat del radi: 3² = 9).',
-        'Per 27.'
+        'Per 27 (perquè el volum desplaçat creix al cub del radi: 3³ = 27).'
       ],
       correctIndex: 2,
       explanation: 'Com que S = π·R², si R₂ = 3·R₁ aleshores S₂ = 9·S₁, i per tant F₂ = 9·F₁.'
@@ -605,10 +605,10 @@ export const tema16Hidraulica = {
       difficulty: 'Fàcil',
       question: 'Quin tipus de pressió mesura habitualment un manòmetre instal·lat en una bomba contra incendis?',
       options: [
-        'La pressió absoluta (referida al buit perfecte).',
+        'La pressió absoluta (referida al buit perfecte de 0 bar absoluts).',
         'La pressió relativa o manomètrica (diferència respecte a la pressió atmosfèrica local).',
-        'La pressió atmosfèrica baromètrica.',
-        'Exclusivament la pressió de vapor del fluid.'
+        'La pressió atmosfèrica baromètrica corregida a nivell del mar.',
+        'Exclusivament la pressió de vapor saturat del fluid impulsat.'
       ],
       correctIndex: 1,
       explanation: 'Els manòmetres convencionals mesuren la pressió relativa (manomètrica), és a dir, la diferència entre la pressió interna del circuit i la pressió atmosfèrica exterior (P_abs = P_atm + P_rel).'

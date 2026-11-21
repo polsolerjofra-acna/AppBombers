@@ -307,22 +307,22 @@ export const tema19Instalacions = {
       question: 'A partir de quants usuaris és obligatori instal·lar l’IGM (Interruptor General de Maniobra) en la instal·lació d’enllaç elèctrica d’un edifici i on s’ubica?',
       options: [
         'A partir de més de 2 usuaris (> 2 usuaris), ubicat entre la LGA (Línia General d’Alimentació) i la centralització de comptadors.',
-        'A partir de 20 usuaris, ubicat dins de cada pis.',
-        'És obligatori fins i tot en habitatges unifamiliars d’1 sol usuari.',
-        'S’ubica abans de la CGP al carrer.'
+        'A partir de 16 usuaris (> 16 usuaris), ubicat a l’interior del quadre general de comandament i protecció de cada habitatge.',
+        'És obligatori en qualsevol edifici, inclosos els unifamiliars d’1 o 2 usuaris amb CPM, ubicat entre l’escomesa i la CGP.',
+        'A partir de més de 2 usuaris (> 2 usuaris), ubicat a la façana exterior abans de la CGP per facilitar el tall des del carrer.'
       ],
       correctIndex: 0,
       explanation: 'L’IGM és obligatori quan hi ha més de 2 usuaris i se situa just abans de la centralització de comptadors per poder deixar sense tensió tot l’edifici d’una sola maniobra.'
     },
     {
       id: 't12-q3',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quin és l’ordre exacte de les 5 Regles d’Or per treballar sense tensió en una instal·lació elèctrica?',
       options: [
-        '1. Posar a terra → 2. Desconnectar → 3. Verificar → 4. Bloquejar → 5. Senyalitzar.',
+        '1. Posar a terra i en curtcircuit → 2. Desconnectar totes les fonts → 3. Verificar l’absència de tensió → 4. Bloquejar els aparells → 5. Senyalitzar la zona de treball.',
         '1. Desconnectar → 2. Prevenir qualsevol possible realimentació (bloquejar) → 3. Verificar l’absència de tensió → 4. Posar a terra i en curtcircuit → 5. Protegir i senyalitzar.',
-        '1. Verificar → 2. Desconnectar → 3. Senyalitzar → 4. Bloquejar → 5. Posar a terra.',
-        '1. Avisar companyia → 2. Tallar amb cisalla → 3. Ruixar amb aigua → 4. Mesurar → 5. Entrar.'
+        '1. Verificar l’absència de tensió → 2. Desconnectar l’interruptor general → 3. Protegir i senyalitzar → 4. Bloquejar la realimentació → 5. Posar a terra i en curtcircuit.',
+        '1. Prevenir qualsevol possible realimentació → 2. Posar a terra i en curtcircuit → 3. Desconnectar el circuit → 4. Verificar l’absència de tensió → 5. Protegir i senyalitzar.'
       ],
       correctIndex: 1,
       explanation: 'Les 5 Regles d’Or (Cap. 2.5) s’han d’aplicar sempre en aquest ordre estricte: 1. Desconnectar, 2. Prevenir realimentació, 3. Verificar absència de tensió, 4. Posar a terra i en curtcircuit, 5. Protegir i senyalitzar.'
@@ -345,10 +345,10 @@ export const tema19Instalacions = {
       difficulty: 'Mitjà',
       question: 'Quin és l’ordre exacte dels 6 elements dins l’armari del comptador general d’aigua potable i quina mida de malla té el filtre tipus Y?',
       options: [
-        '1. Comptador → 2. Clau de tall → 3. Filtre Y (5 mm) → 4. Retenció → 5. Aixeta prova → 6. Sortida.',
+        '1. Comptador → 2. Clau de tall general → 3. Filtre tipus Y (malla de 5 mm) → 4. Vàlvula de retenció → 5. Aixeta de prova → 6. Clau de sortida.',
         '1. Clau de tall general → 2. Filtre tipus Y (malla inoxidable de 25 a 50 μm) → 3. Comptador → 4. Aixeta de prova → 5. Vàlvula de retenció → 6. Clau de sortida.',
-        '1. Vàlvula de retenció → 2. Comptador → 3. Clau de tall → 4. Filtre → 5. Purgador → 6. Sortida.',
-        'Només hi ha una clau de pas i el comptador.'
+        '1. Vàlvula de retenció → 2. Comptador → 3. Clau de tall general → 4. Filtre tipus Y (malla de 250 μm) → 5. Aixeta de prova → 6. Clau de sortida.',
+        '1. Clau de tall general → 2. Comptador → 3. Vàlvula de retenció → 4. Filtre tipus Y (malla de 100 a 150 μm) → 5. Aixeta de prova → 6. Clau de sortida.'
       ],
       correctIndex: 1,
       explanation: 'Capítol 3.1 del manual: 1. Clau de tall, 2. Filtre Y (malla 25–50 μm), 3. Comptador, 4. Aixeta de prova, 5. Vàlvula de retenció i 6. Clau de sortida.'
@@ -358,10 +358,10 @@ export const tema19Instalacions = {
       difficulty: 'Difícil',
       question: 'Segons l’apartat 3.2 de sanejament i clavegueram del manual MAN.GRAL.007, quines són les distàncies i mides reglamentàries de les sortides de ventilació de clavegueres i dels col·lectors soterrats?',
       options: [
-        'Ventilació cada 1.000 m a 2 m d’alçada | Col·lectors amb pendent 0,5% i registres cada 100 m.',
+        'Ventilació cada 500 m, alçada mínima 3 m i diàmetre ≥ 30 cm | Col·lectors per sobre de l’aigua potable, pendent ≥ 0,5% i registres cada 50 m.',
         'Ventilació cada 250 m, alçada mínima 9 m i diàmetre < 20 cm | Col·lectors per sota de l’aigua potable, pendent ≥ 2% i registres cada 15 m.',
-        'Ventilació cada 50 m a ras de vorera | Col·lectors per sobre de l’aigua potable.',
-        'Les clavegueres no tenen ventilació i els registres es posen cada 50 m.'
+        'Ventilació cada 100 m a ras de vorera i diàmetre ≥ 25 cm | Col·lectors al mateix nivell que l’aigua potable, pendent ≥ 1% i registres cada 30 m.',
+        'Ventilació cada 150 m, alçada mínima 6 m i diàmetre < 10 cm | Col·lectors per sota de l’aigua potable, pendent ≥ 5% i registres cada 25 m.'
       ],
       correctIndex: 1,
       explanation: 'Dades exactes del Capítol 3.2: sortides de ventilació cada 250 m amb alçada ≥ 9 m i Ø < 20 cm; col·lectors sempre per sota de l’aigua potable, amb pendent ≥ 2% i registres cada 15 m.'
@@ -371,10 +371,10 @@ export const tema19Instalacions = {
       difficulty: 'Mitjà',
       question: 'Quin és el rang de pressió de la xarxa de gas en Mitja Pressió B (MPB), Mitja Pressió A (MPA) i Baixa Pressió (BP), i a quina pressió aproximada treballen els aparells domèstics?',
       options: [
-        'MPB: 16–45 bar | MPA: 4–16 bar | BP: 1–4 bar (ús a 1 bar).',
+        'MPB: > 4 a 16 bar | MPA: > 0,4 a 4 bar | BP: ≤ 0,4 bar (400 mbar), amb pressió d’ús als aparells ≈ 100 mbar (0,10 bar).',
         'MPB: > 0,4 a 4 bar | MPA: > 0,05 a 0,4 bar | BP: ≤ 0,05 bar (50 mbar), amb pressió d’ús als aparells ≈ 20 mbar (0,020 bar).',
-        'MPB: 10–20 bar | MPA: 2–10 bar | BP: 0,5 bar.',
-        'Tota la xarxa de distribució treballa a 20 bar.'
+        'MPB: > 16 a 45 bar | MPA: > 4 a 16 bar | BP: ≤ 0,4 bar (400 mbar), amb pressió d’ús als aparells ≈ 50 mbar (0,050 bar).',
+        'MPB: > 0,05 a 0,4 bar | MPA: > 0,4 a 4 bar | BP: ≤ 0,02 bar (20 mbar), amb pressió d’ús als aparells ≈ 10 mbar (0,010 bar).'
       ],
       correctIndex: 1,
       explanation: 'Escala de gas (Cap. 4.2): APB (>16–45 bar), APA (>4–16 bar), MPB (>0,4–4 bar), MPA (>0,05–0,4 bar) i BP (≤0,05 bar = 50 mbar, amb pressió d’ús als aparells de 20 mbar).'
@@ -397,10 +397,10 @@ export const tema19Instalacions = {
       difficulty: 'Mitjà',
       question: 'Què significa que una clau de tall de gas tingui Accessibilitat de Grau 2 segons el manual MAN.GRAL.007?',
       options: [
-        'Que s’hi pot accedir directament amb la mà sense cap clau d’armari ni escala (això és Grau 1).',
+        'Que s’hi pot accedir directament amb la mà des de la via pública sense necessitat de cap clau d’armari, eina auxiliar ni escala portàtil.',
         'Que és accessible des de zona comuna mitjançant l’obertura d’un armari o registre amb clau normalitzada de companyia, SENSE necessitat d’escala.',
-        'Que cal utilitzar una escala o entrar en zona privada per accedir-hi (això és Grau 3).',
-        'Que només la pot tancar un enginyer de Nedgia.'
+        'Que per accedir-hi cal utilitzar obligatòriament una escala portàtil de més de 2 metres o travessar una propietat privada o local tancat.',
+        'Que es troba allotjada en una arqueta soterrada a la calçada i només la pot accionar personal autoritzat amb clau de quadrat especial de xarxa.'
       ],
       correctIndex: 1,
       explanation: 'Grau 1 = accés directe sense clau ni escala; Grau 2 = accés amb clau normalitzada sense escala; Grau 3 = cal escala o passar per zona privada.'
@@ -423,10 +423,10 @@ export const tema19Instalacions = {
       difficulty: 'Mitjà',
       question: 'En una intervenció d’incendi en un edifici d’habitatges on cal tallar el subministrament elèctric des de la Caixa General de Protecció (CGP), quina és la maniobra correcta?',
       options: [
-        'Tallar directament els cables d’entrada amb una cisalla manual aïllada.',
+        'Tallar directament els conductors d’entrada de la LGA amb una cisalla manual aïllada començant sempre pel conductor neutre abans que les fases.',
         'Extreure únicament els fusibles (amb maneta aïllant i EPI dielèctrics i de protecció contra arc elèctric), sense tallar conductors ni manipular borns nus.',
-        'Desconnectar primer el conductor neutre i deixar les fases connectades.',
-        'Llançar aigua polvoritzada a l’interior de la CGP per fer saltar les proteccions.'
+        'Desconnectar primer el conductor neutre amb una clau fixa aïllada i deixar les tres fases connectades per descarregar el circuit de forma progressiva.',
+        'Polvoritzar aigua nebulitzada a baixa pressió cap a l’interior de la CGP des d’una distància de seguretat per fer disparar els fusibles per curtcircuit.'
       ],
       correctIndex: 1,
       explanation: 'A la CGP, l’actuació correcta és obrir-la amb les degudes mesures de protecció (guants dielèctrics, pantalla facial) i extreure només els fusibles amb la maneta aïllada, sense tallar cables ni deixar el neutre obert abans que les fases.'
@@ -459,13 +459,13 @@ export const tema19Instalacions = {
     },
     {
       id: 't12-q14',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Com s’evacua la descàrrega atmosfèrica captada per un parallamps instal·lat al terrat d’un edifici?',
       options: [
-        'Es connecta directament al conductor neutre de la xarxa elèctrica de l’edifici.',
+        'Es connecta directament al conductor neutre de la xarxa elèctrica de l’edifici a través de la caixa general de protecció.',
         'Es deriva directament a terra mitjançant un conductor baixant dedicat i una presa de terra pròpia (mai al neutre).',
-        'S’acumula en una bateria de condensadors dins la sala de comptadors.',
-        'Es deriva a les canonades de gas natural de la façana.'
+        'S’acumula temporalment en una bateria de condensadors d’alta tensió situada dins la sala de comptadors centralitzats.',
+        'Es deriva a les canonades metàl·liques de la instal·lació de gas natural o d’aigua calenta de la façana de l’edifici.'
       ],
       correctIndex: 1,
       explanation: 'El parallamps deriva el corrent del llamp directament a terra a través d’un cable baixant amb el recorregut més recte possible fins a la seva presa de terra, mai al conductor neutre ni a canonades de gas.'
@@ -489,9 +489,9 @@ export const tema19Instalacions = {
       question: 'En una instal·lació elèctrica d’enllaç, quina diferència hi ha entre la CGP, la CPM i l’IGM?',
       options: [
         'La CGP conté els fusibles generals de l’edifici; la CPM fusiona CGP i comptador en edificis d’1 o 2 usuaris (sense LGA ni IGM); i l’IGM és l’interruptor obligatori abans dels comptadors quan hi ha més de 2 usuaris',
-        'La CPM és obligatòria en edificis de més de 20 habitatges i l’IGM només s’instal·la en cases unifamiliars',
-        'La CGP es troba sempre dins de cada pis al costat dels PIAs',
-        'L’IGM substitueix l’Interruptor Diferencial de 30 mA de cada habitatge'
+        'La CPM és obligatòria en edificis plurifamiliars de més de 16 habitatges per centralitzar les derivacions individuals, mentre que l’IGM només s’instal·la en cases unifamiliars d’1 o 2 usuaris sense LGA',
+        'La CGP es troba sempre dins de cada habitatge al costat dels PIAs i del diferencial, la CPM és la caixa de pas de planta de la LGA, i l’IGM és l’element de protecció contra sobretensions de la companyia',
+        'L’IGM substitueix l’Interruptor Diferencial de 30 mA i l’IGA de cada habitatge en edificis de nova construcció, mentre que la CGP i la CPM compleixen exactament la mateixa funció de mesura sense fusibles'
       ],
       correctIndex: 0,
       explanation: 'CGP = Caixa General de Protecció (fusibles generals). CPM = Caixa de Protecció i Mesura (integra CGP + comptador per a 1 o 2 usuaris). IGM = Interruptor General de Maniobra (obligatori abans de la centralització de comptadors si > 2 usuaris).'
@@ -502,9 +502,9 @@ export const tema19Instalacions = {
       question: 'En un incendi d’una nau amb plaques fotovoltaiques connectades a xarxa (on-grid), tallem el subministrament elèctric general del carrer i l’inversor s’atura per protecció anti-illa. Quina afirmació és correcta sobre el risc elèctric residual?',
       options: [
         'Mentre hi hagi llum solar (o focus potents), els panells i el tram de cablejat en Corrent Continu (DC) fins a l’inversor continuen amb tensió perillosa (fins a 1.000–1.500 V DC), i un detector sense contacte AC pot no detectar-ho',
-        'En saltar la protecció anti-illa de l’inversor, tota la instal·lació fotovoltaica queda a 0 V de manera automàtica',
-        'Els cables que baixen de les plaques porten corrent altern de 230 V i s’anul·len en baixar l’IGA del quadre',
-        'Si el detector sense contacte no pita al costat d’un cable soterrat o apantallat, garanteix al 100% l’absència de tensió'
+        'En saltar la protecció anti-illa de l’inversor després de tallar la xarxa del carrer, tota la instal·lació fotovoltaica (tant en AC com en DC fins a les plaques) queda automàticament a 0 V i sense risc d’arc elèctric',
+        'Els cables que baixen des dels mòduls fotovoltaics fins a l’inversor transporten corrent altern trifàsic a 400 V AC i queden completament desenergitzats en baixar l’Interruptor General Automàtic (IGA) del quadre',
+        'Si el detector de tensió sense contacte convencional no emet cap senyal acústic al costat d’un cable fotovoltaic en DC o d’una conducció apantallada, garanteix al 100% l’absència absoluta de tensió al conductor'
       ],
       correctIndex: 0,
       explanation: 'L’anti-illa només desconnecta la sortida AC cap a la xarxa; els panells generen DC mentre rebin llum fins a l’inversor (1.000–1.500 V DC). A més, el detector sense contacte només detecta camps AC i pot fallar amb cables apantallats o en DC.'

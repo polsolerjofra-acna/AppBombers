@@ -238,10 +238,10 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Difícil',
       question: "Segons l'apartat 3.2.4 del manual MAN.SVVH.000, quina diferència hi ha entre un 'Atrapament Físic Tipus I' i un 'Atrapament Físic Tipus II' en un accident de trànsit?",
       options: [
-        'El Físic I és en turismes i el Físic II és en camions.',
+        'En el Físic Tipus I les portes estan bloquejades mecànicament però la víctima està il·lesa i conscient; en el Físic Tipus II la víctima està inconscient dins d’un vehicle elèctric o híbrid sense bloqueig estructural.',
         'En el Físic Tipus I la víctima no està bloquejada per l’estructura del vehicle però no pot sortir per si sola a causa de les seves lesions mèdiques (cal crear espai); en el Físic Tipus II alguna part del seu cos està físicament atrapada per la ferralla deformada (cal descarceració interior).',
-        'En el Físic Tipus I les portes estan bloquejades però la víctima està il·lesa.',
-        'En el Físic Tipus II la víctima ja està fora del vehicle.'
+        'En el Físic Tipus I la víctima té les extremitats atrapades sota els pedals o el tablier (cal emprar el cilindre RAM); en el Físic Tipus II només requereix extracció alineada per una porta oberta perquè no hi ha deformació de l’habitacle.',
+        'En el Físic Tipus I l’atrapament afecta exclusivament vehicles lleugers (turismes) amb un sol ocupant; en el Físic Tipus II correspon a accidents amb vehicles pesants (camions o autocars) on cal estabilització amb puntals.'
       ],
       correctIndex: 1,
       explanation: 'El manual defineix: Mecànic (portes bloquejades, il·lès), Físic I (retingut per les seves lesions mèdiques sense bloqueig de ferralla) i Físic II (bloquejat físicament per elements deformats de l’habitacle).'
@@ -251,10 +251,10 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Mitjà',
       question: "En un accident on un vehicle ha quedat a sobre d'un altre, com denomina el manual el vehicle que conté les víctimes a rescatar, com denomina el que està a sobre i quin s'ha d'estabilitzar primer?",
       options: [
-        'Vehicle 1 i Vehicle 2; s’estabilitza primer el de sota.',
+        'Vehicle A és el que conté la víctima i Vehicle B és el que està a sobre; s’ha d’estabilitzar sempre primer el Vehicle A.',
         'Vehicle A és el que conté la víctima i Vehicle B és el que està a sobre; s’ha d’estabilitzar sempre primer el Vehicle B.',
-        'Vehicle B és el que conté la víctima i Vehicle A el de sobre.',
-        'No cal estabilitzar el vehicle superior si té el fre de mà posat.'
+        'Vehicle B és el que conté la víctima i Vehicle A és el que està a sobre; s’estabilitzen tots dos alhora un cop retirada la víctima.',
+        'Vehicle 1 és el superior i Vehicle 2 l’inferior; no cal estabilitzar el Vehicle B si té el fre d’estacionament accionat.'
       ],
       correctIndex: 1,
       explanation: "L'apartat 3.2.3 designa com a Vehicle A on hi ha la víctima i Vehicle B el que interactua a sobre; per seguretat cal assegurar i estabilitzar primer el Vehicle B."
@@ -264,49 +264,49 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Mitjà',
       question: "Segons l'apartat 3.2.6 de biomecànica de l'accident, quin tipus de fractura òssia característica produeix un mecanisme de COMPRESSIÓ i quin produeix un mecanisme de TORSIÓ?",
       options: [
-        'Compressió = Espiroide | Torsió = Comminuta',
+        'Compressió = Fractura espiroide (en espiral) | Torsió = Fractura comminuta (múltiples fragments)',
         'Compressió = Fractura comminuta (múltiples fragments) | Torsió = Fractura espiroide (en espiral)',
-        'Totes dues produeixen fractures per avulsió.',
-        'Compressió = Ofecció | Torsió = Luxació simple.'
+        'Compressió = Fractura transversal neta | Torsió = Fractura per avulsió articular simple',
+        'Compressió = Fractura en tija verda | Torsió = Fractura longitudinal obliqua per cisallament'
       ],
       correctIndex: 1,
       explanation: 'La força de compressió axial produeix fractures comminutes (aixafament en múltiples fragments), mentre que la torsió produeix fractures espiroides.'
     },
     {
       id: 'q32-4',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "En l'estabilització primària d'un turisme sobre les 4 rodes, on es col·loca i quina funció té l'anomenada 'cinquena falca' (estabilització en 5 punts)?",
       options: [
-        'Es posa sota el volant per subjectar l’airbag.',
+        'Es col·loca sota el travesser davanter del motor per absorbir el pes de la bateria de 12 V i evitar el balanceig quan s’obre el capó.',
         'Es col·loca a la part posterior o sota el muntant C del costat d’extracció per evitar que la part posterior del vehicle s’enfonsi en tallar l’estructura o pujar-hi els bombers.',
-        'Es col·loca davant del radiador.',
-        'És la falca que bloqueja el pedal de fre.'
+        'Es col·loca sota l’eix davanter del costat oposat a l’extracció per blocar la direcció i impedir la guinyada del vehicle durant el tall del muntant A.',
+        'Es col·loca directament sota el pedal de fre o la roda davantera dreta per immobilitzar la transmissió abans de desconnectar el born negatiu.'
       ],
       correctIndex: 1,
       explanation: 'La cinquena falca reforça la part posterior / muntant C perquè el xassís no cedeixi quan es talla el sostre ni quan s’hi afegeix el pes dels rescatadors.'
     },
     {
       id: 'q32-5',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Com s'anomenen els 4 moviments d'inestabilitat d'un vehicle sinistrat i quines són les 3 àrees funcionals del cercle exterior de l'Àrea de Gestió Operativa (AGO)?",
       options: [
-        'Moviments: Nord, Sud, Est, Oest | Àrees: Calenta, Temperada, Freda.',
+        'Moviments: Transversal, Vertical, Rotacional i Axial | Àrees: Zona Calenta, Zona Temperada i Zona Freda.',
         'Moviments: Longitudinal (horitzontal), Balanceig, Capcineig i Guinyada | Àrees: Àrea d’eines, Àrea de ferralla i Àrea de relleu.',
-        'Moviments: A, B, C, D | Àrees: PMA, CCA i Helisuperfície.',
-        'Moviments: Compressió, Tracció, Flexió i Torsió.'
+        'Moviments: Deriva, Bolcada, Enfonsament i Torsió | Àrees: PMA sanitari, CCA de comandament i Helisuperfície.',
+        'Moviments: Compressió, Tracció, Flexió i Cisallament | Àrees: Àrea d’estabilització, Àrea de tall i Àrea d’extracció.'
       ],
       correctIndex: 1,
       explanation: "Els 4 moviments són longitudinal, balanceig, capcineig i guinyada; l'AGO organitza l'Àrea d'eines, l'Àrea de ferralla i l'Àrea de relleu."
     },
     {
       id: 'q32-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Segons el capítol 2 del manual MAN.SVVH.000, quin tipus de vidre porta el parabrisa davanter i quin les finestres laterals, i què és obligatori fer abans de tallar un muntant (A, B, C o D) amb la cisalla?",
       options: [
         'Parabrisa = vidre laminat (es talla amb serra); laterals = vidre temperat (s’engruna amb punxó a la cantonada) | És obligatori "pelar" (desvestir) el guarnecido interior per no tallar bombones d’airbag de cortina ni pretensors.',
-        'Parabrisa = vidre temperat; laterals = vidre laminat | Tallar directament sense treure els plàstics per guanyar temps.',
-        'Tots els vidres són de policarbonat | Desmuntar les rodes abans de tallar els muntants.',
-        'Tots els vidres són laminats | Tirar aigua a pressió abans de fer servir la cisalla.'
+        'Parabrisa = vidre temperat (s’engruna amb punxó); laterals = vidre laminat (es talla amb serra sabre) | És obligatori tallar directament per la zona superior sense retirar els plàstics per reduir el temps d’excarceració.',
+        'Parabrisa = policarbonat multicapa; laterals = vidre laminat reforçat (no es trenquen amb punxó) | És obligatori desmuntar les quatre rodes i buidar el dipòsit de combustible abans d’accionar la cisalla hidràulica.',
+        'Parabrisa i finestres laterals són tots de vidre laminat de seguretat | És obligatori ruixar abundant aigua a pressió sobre el guarnit interior del muntant abans de fer el tall per refredar els pretensors.'
       ],
       correctIndex: 0,
       explanation: "El parabrisa és laminat (PVB, es talla amb serra) i els laterals/luneta són temperats (punxó a la cantonada). Abans de tallar muntants cal 'pelar' el revestiment interior per detectar airbags de cortina i pretensors."
@@ -316,10 +316,10 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Mitjà',
       question: "Dins dels tres nivells de seguretat del vehicle (primària, secundària i terciària), a quin pertany el sistema eCall, i quines són les distàncies de seguretat davant d'airbags no activats (regla 30-60-90)?",
       options: [
-        'Seguretat primària | 10 cm del volant, 20 cm del tablier i 30 cm dels laterals.',
-        'Seguretat secundària | No cal mantenir distància un cop aturat el motor.',
+        'Seguretat primària (activa) | 15 cm del volant, 30 cm del tablier de l’acompanyant i 45 cm dels airbags de cortina/sostre sense necessitat d’espera.',
+        'Seguretat secundària (passiva) | Un cop aturat el motor de combustió i retirat el contacte no cal mantenir cap distància de seguretat respecte als mòduls.',
         'Seguretat terciària (post-accident) | 30 cm del volant, 60 cm del tablier acompanyant i 90 cm de cortina/sostre (i esperar 1-2 min després de desconnectar bateria).',
-        'Seguretat primària | 60 cm del volant, 90 cm del tablier i 120 cm del sostre.'
+        'Seguretat primària (activa) | 60 cm del volant, 90 cm del tablier de l’acompanyant i 120 cm del sostre (esperant 10 minuts després de tallar la bateria).'
       ],
       correctIndex: 2,
       explanation: "L'eCall i el tall automàtic de bateria/combustible són seguretat terciària (post-accident). La regla de seguretat dels airbags no disparats estableix 30 cm (volant), 60 cm (tablier) i 90 cm (cortina/sostre) i esperar 1-2 minuts pel condensador."
@@ -329,9 +329,9 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Difícil',
       question: "Segons la fórmula biomecànica de l'energia cinètica (Ec = ½ · m · v²), quant augmenta l'energia d'un impacte si un vehicle duplica la velocitat, i quins són els llindars d'alta energia del manual (apartat 3.2.6)?",
       options: [
-        'Es duplica (×2) | Deformació > 10 cm i projecció > 2 m.',
-        'Es multiplica per vuit (×8) | Caiguda > 1 m i projecció > 3 m.',
-        'No depèn de la velocitat sinó només del pes | Deformació > 100 cm.',
+        'Es duplica (×2) | Deformació > 15 cm lateral (> 25 cm global), projecció/ejecció > 3 m, caiguda > 1,5 m o excarceració > 10 min.',
+        'Es multiplica per vuit (2³ = 8) | Deformació > 20 cm lateral (> 30 cm global), projecció/ejecció > 5 m, caiguda > 2 m o excarceració > 15 min.',
+        'No depèn de la velocitat sinó únicament de la massa del vehicle | Deformació > 50 cm lateral (> 70 cm global) i projecció > 10 m.',
         'Es multiplica per quatre (2² = 4) | Deformació > 30 cm lateral (> 45 cm global), projecció/ejecció > 7 m, caiguda > 3 m o excarceració > 20 min.'
       ],
       correctIndex: 3,
@@ -339,38 +339,38 @@ export const tema14AccidentsMobilitat = {
     },
     {
       id: 'q32-9',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "En un accident ferroviari amb Tren d'Alta Velocitat (TAV > 300 km/h i catenària fins a 25.000 V), quina és la regla de seguretat absoluta abans d'entrar a la caixa de vies, i quina particularitat té la cabina d'un camió (24 V)?",
       options: [
         'Cal confirmació oficial del Centre de Control Ferroviari del tall de circulació a totes dues vies i posada a terra de la catenària | En camions cal bloquejar la suspensió pròpia de la cabina respecte al xassís abans d’excarcerar.',
-        'N’hi ha prou amb mirar a dreta i esquerra | Els camions funcionen a 12 V i tenen cabina fixa rígida.',
-        'Posar un con reflector a 25 metres de la via | Els camions de 3 eixos tenen una MMA màxima de 12 tones.',
-        'Tallar la catenària amb la cisalla hidràulica de 700 bar | En camions mai es fa estabilització.'
+        'N’hi ha prou amb confirmar visualment que la via afectada està lliure i senyalitzar amb cons a 100 metres | Els camions funcionen a 12 V i tenen una cabina rígida solidària al xassís que no requereix bloqueig específic.',
+        'Cal col·locar una barra de curtcircuit sobre els raïls i esperar que el maquinista desconnecti el pantògraf | Els camions de 3 eixos tenen una MMA màxima de 12 tones i s’estabilitzen només amb falques sota el dipòsit.',
+        'Cal tallar primer els cables auxiliars de la catenària amb guants dielèctrics de baixa tensió i cizalla de 700 bar | En camions mai es fa estabilització de la cabina perquè el pes del motor impedeix qualsevol balanceig.'
       ],
       correctIndex: 0,
       explanation: "En ferrocarril és obligatòria la confirmació oficial del Centre de Control Ferroviari (tall en ambdues vies i posada a terra de la catenària). En camions (24 V) la cabina va suspesa sobre amortidors i cal bloquejar-la respecte al xassís."
     },
     {
       id: 'q32-10',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quin temps total comprèn l'Hora d'Or (Regla 10-10-20-20) i en quines situacions s'executa un alliberament d'emergència (maniobra de Rautek)?",
       options: [
-        '30 minuts | Quan el pacient té una fractura tancada de canell i està estable.',
-        '90 minuts | Quan es vol practicar el tall del sostre amb tranquil·litat.',
+        '45 minuts (5 arribada + 10 valoració + 15 excarceració + 15 trasllat) | Quan el pacient té una fractura tancada d’extremitat però manté les constants estables i conscients.',
+        '90 minuts (15 arribada + 15 valoració + 30 excarceració + 30 trasllat) | Quan l’equip opta per una extracció controlada a 0° amb abatiment complet del sostre.',
         '60 minuts (10 arribada + 10 valoració + 20 excarceració + 20 trasllat) | Quan hi ha un perill vital extern imminent (incendi, risc d’explosió, enfonsament a l’aigua o ACR) que obliga a una extracció manual immediata en segons.',
-        '120 minuts | Quan arriba el Centre de Control Ferroviari.'
+        '60 minuts (20 arribada + 10 valoració + 10 excarceració + 20 trasllat) | Sempre que es tracti d’un atrapament físic tipus II encara que no hi hagi foc ni risc d’aturada.'
       ],
       correctIndex: 2,
       explanation: "L'Hora d'Or (60 min) es divideix en 10+10+20+20 (objectiu màxim de 20 min d'excarceració). L'alliberament d'emergència (Rautek) s'aplica només davant perill vital extern imminent o ACR."
     },
     {
       id: 'q32-11',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: "A quin escenari d'excarceració correspon cadascuna de les tres maniobres amb nom propi descrites al manual MAN.SVVH.000: 'llauna de sardines', 'la catalana' i 'la tenda'?",
       options: [
-        'Llauna de sardines = vehicle en aigua; La Catalana = moto; La Tenda = camió articulat.',
-        'Totes tres són sinònims de creació de tercera porta en turisme de 3 portes.',
-        'Llauna de sardines = tall de muntant B; La Catalana = retirada de parabrisa; La Tenda = tall de pedals.',
+        'Llauna de sardines = elevació amb coixins pneumàtics d’un camió sobre un turisme; La Catalana = extracció en vehicle submergit; La Tenda = creació de tercera porta en un turisme de 3 portes sobre les rodes.',
+        'Llauna de sardines = desplaçament frontal del tablier amb doble RAM; La Catalana = retirada completa del sostre en turisme sobre les 4 rodes; La Tenda = obertura lateral del xassís d’un tren d’alta velocitat.',
+        'Llauna de sardines = tall seqüencial del muntant B i obertura de porta posterior; La Catalana = retirada del parabrisa laminat amb serra sabre; La Tenda = alliberament dels pedals amb separador hidràulic.',
         'Llauna de sardines = obertura de sostre/terra d’autobús bolcat lateralment; La Catalana = abatiment del panell del sostre en vehicle en bolcada lateral; La Tenda = elevació posterior amb RAM/coixins en vehicle bolcat sobre el sostre.'
       ],
       correctIndex: 3,
@@ -381,10 +381,10 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Difícil',
       question: "En una descarceració interior per aixecar o desplaçar el tablier amb un cilindre RAM (700 bar), on es recolza la base del RAM i què cal col·locar a terra sota el llindar del muntant abans d'empènyer?",
       options: [
-        'Es recolza sobre el vidre posterior i no cal posar res a terra.',
+        'Es recolza a la part superior del muntant B i s’empeny cap al vidre posterior sense fer cap tall d’alleujament ni col·locar cap bloc de suport a terra.',
         'Es recolza a la base del muntant B (després de fer tall d’alleujament a la base del muntant A) i s’ha de col·locar un bloc de fusta sota mateix de la base del muntant A/B a terra perquè la xapa del llindar no s’enfonsi cap avall.',
-        'Es recolza directament sobre el seient del conductor sense cap tall d’alleujament.',
-        'Es recolza al sostre i es retiren les falques d’estabilització primària.'
+        'Es recolza directament sobre els rails del seient del conductor sense tall d’alleujament al muntant A, retirant prèviament totes les falques laterals per permetre que el xassís flexi.',
+        'Es recolza a l’arc del sostre per empènyer el muntant A cap enrere i es retiren les falques d’estabilització primària del costat del conductor perquè el vehicle recuperi l’alçada.'
       ],
       correctIndex: 1,
       explanation: "Per desplaçar el tablier amb el RAM (recolzat a la base del muntant B amb tall d'alleujament a la base del muntant A) cal posar un bloc de fusta a terra sota el llindar perquè l'empenta hidràulica no aixafi el xassís cap avall."
@@ -394,10 +394,10 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Mitjà',
       question: "En una intervenció d'excarceració en un vehicle híbrid o elèctric (HEV/BEV), quin color identifica obligatòriament el cablejat d'alta tensió (HV) i quina funció té el sistema HVIL (High Voltage Interlock Loop)?",
       options: [
-        "Color groc | És un sistema pirotècnic que trenca les finestres laterals en detectar un xoc.",
+        "Color groc | És un sistema pirotècnic que trenca automàticament les finestres laterals i desplega els airbags en detectar una col·lisió frontal.",
         "Color taronja | És un circuit de control en llaç de baixa tensió que recorre connectors i tapes d'alta tensió; si s'obre o es talla, ordena obrir els contactors principals per tallar l'alta tensió de la bateria.",
-        "Color blau | És una vàlvula pneumàtica que bloqueja la suspensió de la cabina.",
-        "Color vermell | Descarrega instantàniament tota l'energia de la bateria de tracció a través de la carrosseria."
+        "Color blau | És una vàlvula pneumàtica de seguretat que bloqueja la suspensió i despressuritza el circuit hidràulic de frenada quan s'obre el capó.",
+        "Color vermell | És un circuit de descàrrega ràpida que buida instantàniament tota l'energia de la bateria de tracció a través de la massa del xassís."
       ],
       correctIndex: 1,
       explanation: "Els cables d'alta tensió en vehicles híbrids i elèctrics són sempre de color TARONJA. El sistema HVIL (High Voltage Interlock Loop) supervisa la continuïtat dels connectors i tapes d'HV: si es desconnecta o es talla el llaç (segons el full de rescat), obre els contactors principals per aïllar la bateria."
@@ -434,9 +434,9 @@ export const tema14AccidentsMobilitat = {
       question: "En un turisme sinistrat on cap airbag s'ha disparat i hi ha una víctima amb atrapament físic tipus I dins l'habitacle, quines distàncies mínimes fixa la regla 30-60-90 i quina mesura cal respectar en desconnectar la bateria de 12 V?",
       options: [
         "30 cm del volant, 60 cm del tablier de l'acompanyant i 90 cm dels airbags de cortina/sostre (col·locant protector al volant i esperant 1–2 minuts després de desconnectar la bateria pel condensador de reserva).",
-        "30 cm del tablier, 60 cm del sostre i 90 cm del volant, podent tallar els pilars a l'instant sense esperar després de desconnectar la bateria.",
-        "10 cm de qualsevol airbag, ja que en parar el motor de combustió els airbags queden desactivats immediatament.",
-        "60 cm del volant, 30 cm del tablier i 90 cm dels pedals, sense necessitat de protegir el volant ni desvestir els pilars."
+        "30 cm del tablier de l'acompanyant, 60 cm dels airbags de cortina/sostre i 90 cm del volant, podent tallar els pilars a l'instant sense esperar cap temps de descàrrega després de desconnectar la bateria.",
+        "15 cm de qualsevol mòdul d'airbag sense necessitat de protector de volant, ja que en posar la posició P i parar el motor de combustió tots els airbags queden desactivats instantàniament.",
+        "60 cm del volant, 30 cm del tablier de l'acompanyant i 90 cm de la zona dels pedals, sense necessitat de desvestir els pilars si es desconnecta el born positiu de 12 V."
       ],
       correctIndex: 0,
       explanation: "La regla 30-60-90 estableix mantenir 30 cm respecte al volant, 60 cm al tablier de l'acompanyant i 90 cm als airbags de cortina/sostre (evitant situar-hi el cos o eines), posar protector de volant i esperar 1–2 minuts després de desconnectar la bateria perquè es descarregui el condensador del mòdul SRS."
@@ -446,10 +446,10 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Difícil',
       question: "En arribar a un accident de trànsit amb un vehicle elèctric/híbrid en bolcada lateral i un ocupant conscient atrapat a l'interior, quina és la seqüència operativa correcta?",
       options: [
-        "Tallar directament els cables taronja amb la cisalla hidràulica de 700 bar i extreure la víctima pel parabrisa sense estabilitzar el vehicle.",
+        "Tallar directament els cables taronja amb la cisalla hidràulica de 700 bar amb guants dielèctrics, desconnectar la bateria de 12 V només al final i extreure la víctima pel parabrisa sense estabilitzar el vehicle.",
         "Assegurar l'escena, immobilitzar i desactivar el vehicle (posició P, allunyar clau, desconnectar 12 V / tallar bucle HVIL o service plug segons full de rescat), estabilitzar el vehicle, esperar la descàrrega de condensadors i executar l'obertura (p. ex. 'la catalana') evitant tallar o tocar cables taronja.",
-        "Ruixar amb escuma tot el vehicle abans de comprovar si està en marxa, retirar les falques i trencar primer el parabrisa laminat amb punxó.",
-        "Desplaçar el tablier amb el RAM abans d'estabilitzar el vehicle ni comprovar si els cables taronja passen pels estreps o pel pilar B."
+        "Ruixar amb escuma física tot el compartiment del motor abans de comprovar si el quadre està en marxa, retirar les falques de les rodes superiors i trencar primer el parabrisa laminat amb el punxó de vidres.",
+        "Desplaçar primer el tablier amb el cilindre RAM des del muntant B per guanyar espai interior abans d'estabilitzar el vehicle ni comprovar si els cables taronja d'alta tensió passen pels estreps o pel pilar B."
       ],
       correctIndex: 1,
       explanation: "La seqüència segura en vehicle electrificat exigeix protegir l'escena, immobilitzar i desconnectar l'alta tensió seguint el full de rescat (12 V + bucle HVIL / service plug), estabilitzar abans de tallar, respectar el temps de descàrrega dels condensadors i no tallar ni manipular mai el cablejat taronja d'HV."
@@ -459,10 +459,10 @@ export const tema14AccidentsMobilitat = {
       difficulty: 'Mitjà',
       question: "En la descripció dels 4 moviments d'inestabilitat d'un vehicle sinistrat (apartat 2.1.3 de MAN.SVVH.000), a quin moviment correspon l'oscil·lació lateral esquerra-dreta sobre l'eix longitudinal i a quin el balanceig del morro i la part posterior amunt i avall?",
       options: [
-        "Lateral esquerra-dreta = Guinyada (Yaw) | Morro amunt i avall = Balanceig (Roll).",
+        "Lateral esquerra-dreta = Guinyada (Yaw) | Morro amunt i avall = Balanceig (Roll) | Gir sobre eix vertical = Capcineig (Pitch).",
         "Lateral esquerra-dreta = Balanceig (Roll) | Morro amunt i avall = Capcineig (Pitch) | Gir horitzontal sobre eix vertical = Guinyada (Yaw).",
-        "Lateral esquerra-dreta = Capcineig (Pitch) | Morro amunt i avall = Moviment longitudinal.",
-        "Tots dos moviments s'anomenen guinyada i no es bloquegen amb falques."
+        "Lateral esquerra-dreta = Capcineig (Pitch) | Morro amunt i avall = Moviment longitudinal | Gir sobre eix vertical = Balanceig (Roll).",
+        "Lateral esquerra-dreta = Moviment longitudinal | Morro amunt i avall = Guinyada (Yaw) | Gir sobre eix vertical = Capcineig (Pitch)."
       ],
       correctIndex: 1,
       explanation: "Balanceig (Roll) = oscil·lació lateral esquerra-dreta sobre l'eix longitudinal; Capcineig (Pitch) = moviment del morro i maleter amunt i avall sobre l'eix transversal; Guinyada (Yaw) = rotació sobre l'eix vertical."

@@ -375,9 +375,9 @@ export const tema1Constitucio = {
       question: 'Quina afirmació és correcta respecte a l\'Estatut d\'Autonomia de Catalunya (LO 6/2006) després de la STC 31/2010?',
       options: [
         'L\'incís "i preferent" del català a l\'art. 6.1 i el caràcter vinculant dels dictàmens del Consell de Garanties (art. 76.4) van ser anul·lats',
-        'Els 4 símbols nacionals de l\'art. 8 són la bandera, l\'escut, la diada i l\'himne',
-        'El Consell de Justícia de Catalunya (arts. 97–100) és plenament vigent i operatiu',
-        'El Preàmbul té plena eficàcia jurídica interpretativa sobre el terme nació'
+        'Els quatre símbols nacionals reconeguts a l\'article 8 de l\'Estatut són la bandera, l\'escut heràldic, la diada i l\'himne',
+        'El Consell de Justícia de Catalunya previst als articles 97 a 100 és plenament vigent i exerceix funcions de govern judicial',
+        'El Preàmbul de l\'Estatut té plena eficàcia jurídica vinculant en la interpretació constitucional del terme nació catalana'
       ],
       correctIndex: 0,
       explanation: 'La STC 31/2010 va anul·lar el caràcter preferent del català (6.1) i els efectes vinculants del Consell de Garanties (76.4). A més, l\'escut no és a l\'art. 8 i el Consell de Justícia no és vigent.'
@@ -388,9 +388,9 @@ export const tema1Constitucio = {
       question: 'Quin tipus de competència atribueix l\'article 132.1 de l\'EAC a la Generalitat en matèria de protecció civil i prevenció i extinció d\'incendis?',
       options: [
         'Competència exclusiva (respectant les competències dels governs locals i la seguretat pública estatal)',
-        'Competència compartida amb l\'Estat',
-        'Competència executiva únicament',
-        'Participació en l\'execució'
+        'Competència compartida amb l\'Estat (reservant a l\'Estat la legislació bàsica i a la Generalitat el desplegament)',
+        'Competència executiva únicament (aplicació i gestió ordinària de la legislació estatal en matèria d\'emergències)',
+        'Participació en l\'execució (mitjançant l\'emissió d\'informes previs i la col·laboració amb l\'Administració estatal)'
       ],
       correctIndex: 0,
       explanation: 'L\'art. 132.1 EAC assigna competència exclusiva en protecció civil i prevenció/extinció d\'incendis (mentre salvament marítim és executiva 132.3 i nuclear participació 132.4).'
@@ -401,9 +401,9 @@ export const tema1Constitucio = {
       question: 'En la reforma de l\'Estatut pels Títols I i II (art. 222 EAC), quina majoria cal al Parlament i quants passos segueix?',
       options: [
         '2/3 del Parlament i 4 passes (inclou consulta prèvia a les Corts abans de la ratificació per Llei Orgànica i referèndum)',
-        '3/5 del Parlament i 3 passes sense consulta a les Corts',
-        'Majoria absoluta del Parlament i referèndum potestatiu',
-        '2/3 del Parlament sense referèndum si l\'aproven les Corts'
+        '3/5 del Parlament i 3 passes (tramitació directa a les Corts Generals mitjançant Llei Orgànica i referèndum posterior)',
+        'Majoria absoluta del Parlament i 4 passes (amb consulta prèvia al Govern de l\'Estat i referèndum potestatiu a Catalunya)',
+        '2/3 del Parlament i 3 passes (aprovació per Llei Orgànica de les Corts Generals sense necessitat de referèndum ciutadà)'
       ],
       correctIndex: 0,
       explanation: 'Tant l\'art. 222 com el 223 exigeixen 2/3 del Parlament i referèndum, però el 222 té 4 passes perquè inclou la consulta a les Corts.'
@@ -466,9 +466,9 @@ export const tema1Constitucio = {
       question: 'Quins drets queden protegits pel recurs d\'empara davant el Tribunal Constitucional segons l\'article 53.2 de la CE?',
       options: [
         'L\'article 14 (igualtat), la Secció 1a del Capítol II (arts. 15–29) i l\'objecció de consciència (art. 30.2)',
-        'Tot el Títol I sencer, incloent els principis rectors del Capítol III',
-        'Només els articles 15 al 29, excloent l\'article 14 i l\'article 30.2',
-        'Els articles 14 al 38 (tot el Capítol II) i l\'article 45 sobre medi ambient'
+        'Tot el Títol I de la Constitució, incloent-hi els principis rectors de la política social (arts. 39–52)',
+        'Exclusivament els drets fonamentals de la Secció 1a (arts. 15–29), excloent-ne l\'article 14 i el 30.2',
+        'Els articles 14 al 38 (tot el Capítol II) juntament amb el dret al medi ambient adequat (article 45)'
       ],
       correctIndex: 0,
       explanation: 'L\'art. 53.2 CE limita el recurs d\'empara davant el TC a l\'art. 14, la Secció 1a (arts. 15–29) i l\'objecció de consciència (art. 30.2).'
@@ -492,9 +492,9 @@ export const tema1Constitucio = {
       question: 'En l\'Administració pública, què distingeix la delegació de competències de l\'avocació i de la suplència?',
       options: [
         'En la delegació es cedeix l\'exercici (no la titularitat) i els actes s\'imputen al delegant; en l\'avocació el superior atrau un assumpte concret; en la suplència es substitueix temporalment el titular sense alterar la competència',
-        'En la delegació es transfereix la titularitat definitiva de la competència i els actes s\'imputen al delegat',
-        'L\'avocació requereix publicació obligatòria al DOGC i contra el seu acord hi cap recurs d\'alçada autònom',
-        'La suplència només es pot acordar per raons tècniques o econòmiques i canvia la titularitat de l\'òrgan'
+        'En la delegació es transfereix la titularitat definitiva i els actes s\'imputen al delegat; l\'avocació només la pot acordar un òrgan inferior; i la suplència comporta sempre una modificació permanent de la competència de l\'òrgan',
+        'En la delegació no cal publicació oficial al DOGC; l\'avocació exigeix publicació obligatòria i contra el seu acord hi cap recurs d\'alçada autònom; i la suplència requereix delegació expressa prèvia mitjançant conveni interadministratiu',
+        'En la delegació s\'altera la titularitat orgànica; en l\'avocació s\'encomana una activitat material o tècnica sense decisió jurídica; i la suplència només es pot acordar per raons econòmiques alterant la titularitat de l\'òrgan'
       ],
       correctIndex: 0,
       explanation: 'Delegació = cessió d\'exercici (no titularitat), publicació i imputació al delegant. Avocació = atracció d\'un assumpte per l\'òrgan superior motivadament (sense recurs autònom). Suplència = substitució temporal del titular per vacant/absència/malaltia.'
@@ -527,13 +527,13 @@ export const tema1Constitucio = {
     },
     {
       id: 't1-q17',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Segons la Llei 13/1989, qui resol els conflictes d\'atribucions dins d\'un mateix Departament i qui té la condició de 2a autoritat del departament i cap superior de tot el personal?',
       options: [
         'El Conseller resol els conflictes interns (i suscita els interdepartamentals); el Secretari General és la 2a autoritat i cap superior del personal',
-        'El Secretari General resol tots els conflictes; el Director General és cap superior del personal',
-        'El President de la Generalitat resol els conflictes interns; el Conseller és cap de personal',
-        'El Director General resol els conflictes interns; el Subdirector General és la 2a autoritat'
+        'El Secretari General resol tots els conflictes interns i externs; el Director General de Serveis és el cap superior de tot el personal',
+        'El President de la Generalitat resol els conflictes interns de cada conselleria; el Conseller exerceix com a cap superior de tot el personal',
+        'El Director General resol els conflictes entre serveis del departament; el Subdirector General n\'és la 2a autoritat administrativa'
       ],
       correctIndex: 0,
       explanation: 'Art. 12 Llei 13/1989: el Conseller resol conflictes dins del seu departament i els suscita amb altres. Art. 13: el Secretari General és la 2a autoritat i cap superior de tot el personal.'

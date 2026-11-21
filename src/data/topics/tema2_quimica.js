@@ -504,9 +504,9 @@ export const tema2Quimica = {
       question: "Per què l'aigua (H₂O, M = 18 g/mol) bull a 100 °C mentre que el metà (CH₄, M = 16 g/mol) bull a -161 °C tot i tenir una massa molar molt similar?",
       options: [
         "Perquè l'aigua és una molècula polar que forma ponts d'hidrogen entre molècules, mentre que el metà és apolar i només presenta forces febles de Van der Waals.",
-        "Perquè l'aigua té un enllaç iònic intramolecular i el metà té un enllaç metàl·lic.",
-        "Perquè l'angle dels enllaços de l'aigua és de 180° i la fa apolar.",
-        "Perquè el metà presenta ponts d'hidrogen amb el carboni."
+        "Perquè l'aigua presenta un enllaç iònic intramolecular amb forta atracció electrostàtica, mentre que el metà forma xarxes covalents febles de baixa cohesió.",
+        "Perquè la geometria lineal de l'aigua (angle d'enllaç de 180°) maximitza la superfície de contacte molecular, mentre que el metà tetraèdric es repel·leix.",
+        "Perquè el metà només estableix ponts d'hidrogen intermoleculars a pressions superiors a la crítica, mentre que l'aigua ho fa per atracció dipol-dipol induït."
       ],
       correctIndex: 0,
       explanation: "L'aigua (angle 104,5°) és molt polar i forma ponts d'hidrogen forts (H unit a O), mentre que el metà és apolar i només té forces febles de Van der Waals."
@@ -534,12 +534,12 @@ export const tema2Quimica = {
     },
     {
       id: 'q10-10',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Segons la definició del Punt Crític del capítol 6 del manual, quina és la diferència física entre un 'vapor' i un 'gas'?",
       options: [
-        'Un vapor no té massa i un gas sí.',
-        'Un gas es troba per sota de la seva Temperatura Crítica (Tc) i un vapor per sobre.',
-        "Un vapor sempre és més dens que l'aire i un gas sempre és més lleuger.",
+        'Un vapor es troba per sobre de la seva Temperatura Crítica (Tc) sense poder-se condensar, mentre que un gas es troba per sota de Tc i liqua en escalfar-se.',
+        'Un gas es troba per sota de la seva Temperatura Crítica (Tc) i es pot liquar per compressió; un vapor es troba per sobre de Tc i requereix refredament previ.',
+        "Un vapor sempre presenta una densitat relativa superior a la de l'aire en condicions normals, mentre que un gas permanent sempre és més lleuger que l'aire.",
         'Un vapor es troba per sota de la seva Temperatura Crítica (Tc) i es pot liquar per compressió; un gas es troba per sobre de Tc i no es pot liquar només comprimint-lo.'
       ],
       correctIndex: 3,
@@ -563,9 +563,9 @@ export const tema2Quimica = {
       difficulty: 'Difícil',
       question: 'Com varia la viscositat (μ) quan augmenta la temperatura en els líquids i en els gasos segons el capítol 9 del manual MAN.GRAL.004?',
       options: [
-        'Augmenta tant en líquids com en gasos.',
-        'Disminueix tant en líquids com en gasos.',
-        'En líquids augmenta amb la temperatura i en gasos disminueix.',
+        'Augmenta tant en líquids com en gasos perquè creix l’energia cinètica i el fregament intern.',
+        'Disminueix tant en líquids com en gasos en debilitar-se les forces de cohesió intermoleculars.',
+        'En líquids augmenta amb la temperatura per dilatació, mentre que en gasos disminueix en reduir-se la densitat.',
         'En líquids disminueix si puja la temperatura, mentre que en gasos augmenta amb la temperatura.'
       ],
       correctIndex: 3,
@@ -642,9 +642,9 @@ export const tema2Quimica = {
       question: "Quina diferència fonamental hi ha entre la Temperatura d'Ebullició (Te) i la Temperatura Crítica (Tc) d'una substància?",
       options: [
         "La Te depèn de la pressió exterior (és la Tª a la qual la pressió de vapor iguala la pressió externa), mentre que la Tc és un valor fix intrínsec per sobre del qual el gas no es pot liquar per cap pressió.",
-        "La Te és sempre superior a la Tc en qualsevol líquid.",
-        "La Tc varia linealment amb la pressió atmosfèrica i la Te és sempre invariant.",
-        "Per sobre de la Te una substància mai pot passar a estat líquid encara que s'augmenti la pressió."
+        "La Te és un valor fix intrínsec de cada substància independent de l'entorn, mentre que la Tc varia directament amb la pressió atmosfèrica exterior i sempre és inferior a la Te en qualsevol líquid.",
+        "La Tc indica el punt exacte en què la pressió de vapor iguala la pressió atmosfèrica estàndard (1 atm), mentre que la Te marca el límit absolut per sobre del qual no pot existir fase líquida a cap pressió.",
+        "Per sobre de la Te una substància mai pot passar a estat líquid encara que s'augmenti la pressió del recipient, mentre que per sobre de la Tc només es pot liquar aplicant una compressió isotèrmica ràpida."
       ],
       correctIndex: 0,
       explanation: "La Temperatura d'Ebullició (Te) augmenta si puja la pressió (ex. olla a pressió o BLEVE). La Temperatura Crítica (Tc), en canvi, és el límit absolut per sobre del qual cap pressió pot liquar el gas."

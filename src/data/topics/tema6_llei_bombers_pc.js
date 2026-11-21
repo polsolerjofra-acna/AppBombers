@@ -199,13 +199,13 @@ export const tema6LleiBombersPc = {
   quiz: [
     {
       id: 't6-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quines categories formen la nova Escala de suport creada pel DL 14/2025 a l\'article 15 de la Llei 5/1994?',
       options: [
         'TECOR, TEOV, EPAF (grup C2) i TELOG, sense possibilitat de promocionar a les altres escales',
-        'Caporal, sergent i oficial, amb promoció directa a sotsinspector',
-        'Bombers voluntaris i bombers d\'empresa únicament',
-        'Inspector i sotsinspector en segona activitat'
+        'Caporal, sergent i oficial (grups C1 i B), amb promoció interna directa cap a l\'Escala Executiva',
+        'Bombers voluntaris, bombers d\'empresa i auxiliars forestals, integrats en el règim estatutari ordinari',
+        'Inspector i sotsinspector en situació de segona activitat operativa, adscrits a tasques de gestió tècnica'
       ],
       correctIndex: 0,
       explanation: 'L\'Escala de suport (TECOR, TEOV, EPAF [C2], TELOG) accedeix per concurs oposició lliure i no pot promocionar a les altres escales.'
@@ -216,9 +216,9 @@ export const tema6LleiBombersPc = {
       question: 'Qui té la condició d\'agent de l\'autoritat segons la Llei 5/1994?',
       options: [
         'Els membres del Cos de Bombers de la Generalitat i dels serveis locals en acte de servei (i fora de servei acreditant-se en urgència)',
-        'També els bombers voluntaris i els bombers d\'empresa en tot moment',
-        'Únicament els inspectors i sotsinspectors',
-        'Només quan s\'ha activat un pla territorial'
+        'Tant els membres del Cos de Bombers de la Generalitat com els bombers voluntaris i els bombers d\'empresa quan actuen en un sinistre',
+        'Únicament els titulars de les escales Superior i Executiva (inspectors i sotsinspectors) durant l\'exercici de tasques inspectores',
+        'Només els caps de guàrdia i de regió d\'emergències mentre romangui activat formalment un pla territorial de protecció civil'
       ],
       correctIndex: 0,
       explanation: 'Els bombers voluntaris i els bombers d\'empresa NO tenen la condició d\'agent de l\'autoritat.'
@@ -229,9 +229,9 @@ export const tema6LleiBombersPc = {
       question: 'Com es qualifica a la Llei 5/1994 consumir begudes alcohòliques durant el servei respecte d\'embriagar-se o consumir drogues?',
       options: [
         'Consumir alcohol en servei = falta greu; embriagar-se o consumir drogues = falta molt greu',
-        'Totes dues són faltes molt greus',
-        'Consumir alcohol = falta lleu; embriagar-se = falta greu',
-        'No estan tipificades a la Llei 5/1994'
+        'Totes dues conductes es qualifiquen indistintament com a faltes molt greus a l\'article 37',
+        'Consumir alcohol en servei = falta lleu; embriagar-se o consumir drogues = falta greu',
+        'Només constitueix falta disciplinària si es produeix conduint un vehicle d\'emergència'
       ],
       correctIndex: 0,
       explanation: 'La Llei 5/1994 distingeix consumir alcohol en servei (Greu) d\'embriagar-se o consumir drogues (Molt greu).'
@@ -307,9 +307,9 @@ export const tema6LleiBombersPc = {
       question: 'Quin règim s\'aplica a les centrals nuclears segons la Disposició Addicional 2a de la Llei 4/1997?',
       options: [
         'Queden excloses del règim d\'emergència de la llei, però sí que estan subjectes al gravamen',
-        'Queden totalment excloses tant de l\'emergència com del gravamen',
-        'Estan incloses dins els 6 plans especials de Catalunya',
-        'Depenen exclusivament de l\'alcalde del municipi'
+        'Queden totalment excloses tant del règim d\'emergència com de l\'obligació de pagar el gravamen',
+        'Estan incloses dins els sis plans especials de Catalunya i sotmeses al règim ordinari de la llei',
+        'Depenen exclusivament de l\'alcalde del municipi afectat pel que fa a l\'emergència i al gravamen'
       ],
       correctIndex: 0,
       explanation: 'DA 2a Llei 4/1997: les centrals nuclears estan excloses de l\'emergència (competència estatal) però sí subjectes al gravamen.'
@@ -320,9 +320,9 @@ export const tema6LleiBombersPc = {
       question: 'Qui homologa els plans territorials bàsics municipals i els plans d\'autoprotecció?',
       options: [
         'La Comissió de Protecció Civil de Catalunya (en els PAU, amb informe favorable de l\'Ajuntament)',
-        'El Ple de l\'Ajuntament directament',
-        'El CECAT mitjançant resolució',
-        'La Comissió Comarcal de Protecció Civil'
+        'El Ple de l\'Ajuntament directament (en els municipals, amb informe previ de la Diputació corresponent)',
+        'El Centre de Coordinació Operativa de Catalunya (CECAT) mitjançant resolució executiva del seu director',
+        'La Comissió Comarcal de Protecció Civil (en els PAU, amb ratificació posterior del Delegat del Govern)'
       ],
       correctIndex: 0,
       explanation: 'La Comissió de Protecció Civil de Catalunya és l\'òrgan encarregat d\'homologar els plans municipals i d\'autoprotecció.'
@@ -333,9 +333,9 @@ export const tema6LleiBombersPc = {
       question: 'Segons l\'article 3 de la Llei 5/1994, quina diferència econòmica hi ha entre la prestació personal obligatòria i la requisa de béns en una emergència?',
       options: [
         'La prestació personal obligatòria NO dóna dret a indemnització; la requisa de béns SÍ que s\'indemnitza',
-        'Totes dues s\'indemnitzen sempre pel seu valor de mercat',
-        'Cap de les dues s\'indemnitza en situacions de catàstrofe',
-        'La prestació personal s\'indemnitza al doble del salari mínim i la requisa no s\'indemnitza'
+        'Totes dues s\'indemnitzen sempre pel seu valor de mercat o segons les hores de dedicació prestades',
+        'Cap de les dues dóna dret a indemnització econòmica en situacions de greu risc o catàstrofe pública',
+        'La prestació personal s\'indemnitza al doble del salari mínim i la requisa de béns no s\'indemnitza'
       ],
       correctIndex: 0,
       explanation: 'Art. 3 Llei 5/1994: la col·laboració personal ciutadana (prestació personal obligatòria) no s\'indemnitza; en canvi, la requisa o ocupació temporal de béns sí dóna dret a indemnització.'
@@ -381,13 +381,13 @@ export const tema6LleiBombersPc = {
     },
     {
       id: 't6-q15',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'A la Llei 4/1997 de Protecció Civil, què distingeix la "Previsió" de la "Prevenció"?',
       options: [
         'La previsió analitza i determina on són els riscos (Mapa de Protecció Civil, art. 12); la prevenció evita que el risc es produeixi mitjançant inspecció i vigilància',
-        'La previsió s\'ocupa dels simulacres escolars i la prevenció de les multes',
-        'La prevenció fa els mapes de risc i la previsió ordena l\'evacuació',
-        'Són termes sinònims sense diferència legal a la Llei 4/1997'
+        'La previsió s\'ocupa exclusivament d\'organitzar els simulacres escolars anuals i la prevenció consisteix en la imposició de multes i sancions administratives',
+        'La prevenció elabora els mapes de risc territorial i els catàlegs de recursos (art. 12) i la previsió ordena l\'evacuació immediata de la població afectada',
+        'Tots dos termes s\'utilitzen com a sinònims equivalents dins l\'estructura de la Llei 4/1997 sense cap distinció funcional ni de competències administratives'
       ],
       correctIndex: 0,
       explanation: 'Previsió = conèixer i localitzar el risc (Mapa de Protecció Civil, art. 12). Prevenció = mesures d\'inspecció i vigilància per evitar que passi.'
@@ -411,9 +411,9 @@ export const tema6LleiBombersPc = {
       question: 'Quina afirmació és INCORRECTA respecte als 6 Plans Especials i al règim sancionador de la Llei 4/1997?',
       options: [
         'Els Plans Especials (inundacions, sísmics, químics, mercaderies perilloses, forestals i volcànics) necessiten homologació posterior de la Comissió de Protecció Civil de Catalunya un cop aprovats pel Govern',
-        'El Govern pot imposar sancions per infraccions molt greus de fins a 100 milions de pessetes',
-        'No acudir a una mobilització real és infracció greu, mentre que no acudir a un simulacre és infracció lleu',
-        'Els simulacres als centres escolars s\'han de fer com a mínim 1 cop l\'any'
+        'El Govern pot imposar sancions per infraccions molt greus de fins a 100 milions de pessetes, mentre que el Conseller té un topall màxim de 25 milions de pessetes',
+        'No acudir a una mobilització real de mitjans o recursos es tipifica com a infracció greu, mentre que no acudir a un simulacre convocat constitueix una infracció lleu',
+        'Els simulacres d\'evacuació o confinament als centres escolars s\'han de realitzar com a mínim una vegada l\'any sota la supervisió dels òrgans competents'
       ],
       correctIndex: 0,
       explanation: 'El PROCICAT i els 6 Plans Especials els aprova el Govern amb informe previ de la Comissió de PC de Catalunya i NO necessiten homologació posterior (només s\'homologuen els plans municipals i d\'autoprotecció).'

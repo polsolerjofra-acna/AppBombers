@@ -220,13 +220,13 @@ export const tema20Cartografia = {
   quiz: [
     {
       id: 't14-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'En quina zona UTM (fus i banda), amb quin Datum oficial i amb quantes xifres en metres s’expressen les coordenades X i Y a Catalunya?',
       options: [
-        'Zona 30S · Datum ED50 · X de 7 xifres i Y de 6 xifres.',
+        'Zona 30S · Datum ED50 · Coordenada X (Est-Oest) de 7 xifres i Coordenada Y (Nord-Sud) de 6 xifres.',
         'Zona 31T · Datum ETRS89 · Coordenada X (Est-Oest) de 6 xifres i Coordenada Y (Nord-Sud) de 7 xifres.',
-        'Zona 31N · Datum WGS72 · X i Y de 5 xifres.',
-        'Zona 29T · Datum ETRS89 · X de 8 xifres i Y de 8 xifres.'
+        'Zona 31N · Datum WGS72 · Coordenada X (Est-Oest) de 5 xifres i Coordenada Y (Nord-Sud) de 6 xifres.',
+        'Zona 30T · Datum ETRS89 · Coordenada X (Est-Oest) de 7 xifres i Coordenada Y (Nord-Sud) de 7 xifres.'
       ],
       correctIndex: 1,
       explanation: 'Catalunya es troba íntegrament al fus 31 banda T (31T), amb Datum oficial ETRS89. La coordenada X té sempre 6 xifres en metres i la Y (distància a l’Equador) en té 7.'
@@ -236,10 +236,10 @@ export const tema20Cartografia = {
       difficulty: 'Mitjà',
       question: 'Segons la classificació de la Cartografia Operativa d’Emergències (COE), quines característiques defineixen un Camí Primari i un Camí Secundari?',
       options: [
-        'Primari: ≥ 10 m asfaltat | Secundari: < 2 m de terra.',
+        'Primari: amplada ≥ 10 m sempre asfaltat (traç blau continu) | Secundari: amplada < 2 m sense sobreamples i només apte per a vehicles lleugers.',
         'Primari: amplada ≥ 6 m (es poden creuar 2 BRP en qualsevol punt, traç groc continu) | Secundari: amplada de 3 a 5 m amb sobreamples (> 5 m) cada 100–150 m.',
-        'Primari: 3 m sense sobreamples | Secundari: vermell discontinu no accessible a BRP.',
-        'Tots dos tenen 4 m d’amplada i són d’un sol sentit.'
+        'Primari: amplada ≥ 3 m sense sobreamples (1 sol sentit) | Secundari: traç vermell discontinu sobre fons blanc no accessible per a vehicles BRP.',
+        'Primari: amplada ≥ 4 m amb sobreamples cada 500 m | Secundari: amplada de 2 a 3 m sense possibilitat de creuament ni maniobra de gir per a BRP.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 5.2.1 del manual MAN.GRAL.002: Camí Primari ≥ 6 m (es creuen 2 BRP); Camí Secundari de 3 a 5 m amb sobreamples cada 100–150 m; Camí Terciari ≥ 3 m sense sobreamples (1 sol sentit).'
@@ -249,23 +249,23 @@ export const tema20Cartografia = {
       difficulty: 'Mitjà',
       question: 'Quines dimensions tenen el quadrant principal (en vermell) i les 25 seccions internes (en gris, del 01 al 25) del Codi SOC (Sistema d’Orientació Cartogràfica) a la COE?',
       options: [
-        'Quadrant de 10 × 10 km i 100 seccions d’1 × 1 km.',
+        'Quadrant de 10 × 10 km (2 lletres + 2 números) dividit en 100 seccions d’1 × 1 km (numerades del 00 al 99).',
         'Quadrant de 5 × 5 km (2 números + 2 lletres) dividit en 25 seccions d’1 × 1 km (numerades del 01 al 25).',
-        'Quadrant d’1 × 1 km dividit en 25 seccions de 100 × 100 m.',
-        'Quadrant de 25 × 25 km dividit en 5 seccions.'
+        'Quadrant d’1 × 1 km (2 números + 2 lletres) dividit en 25 seccions de 200 × 200 m (numerades del 01 al 25).',
+        'Quadrant de 25 × 25 km (2 lletres + 2 números) dividit en 25 seccions de 5 × 5 km (numerades del 01 al 25).'
       ],
       correctIndex: 1,
       explanation: 'El Codi SOC (ex. 22AP06) consta d’un quadrant de 5 × 5 km (2 números que creixen O→E i 2 lletres que creixen N→S) subdividit en 25 quadrats d’1 × 1 km numerats del 01 al 25.'
     },
     {
       id: 't14-q4',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quina és la capacitat mínima d’aigua d’un PAIF (Punt d’Aigua per a Incendis Forestals) i què indica la lletra "T" situada sobre el símbol d’un punt d’aigua a la COE?',
       options: [
-        'Capacitat > 50 m³; la "T" indica que l’aigua és tèrbola.',
+        'Capacitat > 50 m³ (50.000 litres); la lletra "T" indica que l’aigua és tèrbola o no apta per a bombes centrífugues.',
         'Capacitat > 200 m³ (200.000 litres, incloent antics de > 120 m³); la lletra "T" indica que és apte per a la càrrega d’helicòpters.',
-        'Capacitat > 1.000 m³; la "T" indica titularitat privada.',
-        'Capacitat > 10 m³; la "T" indica que té boca Storz.'
+        'Capacitat > 1.000 m³ (1.000.000 litres); la lletra "T" indica que és de titularitat privada i requereix clau d’accés.',
+        'Capacitat > 100 m³ (100.000 litres); la lletra "T" indica que disposa de boca de connexió normalitzada tipus Storz.'
       ],
       correctIndex: 1,
       explanation: 'Segons l’apartat 5.2.2 del manual MAN.GRAL.002, els PAIF tenen una capacitat superior a 200 m³ (incloent antics > 120 m³) i la lletra "T" sobre el símbol indica que és accessible per a helicòpters.'
@@ -275,10 +275,10 @@ export const tema20Cartografia = {
       difficulty: 'Mitjà',
       question: 'Si volem orientar-nos amb el Sol i un rellotge d’agulles a Catalunya durant l’horari oficial d’ESTIU, quantes hores hem de restar per obtenir l’hora solar i quin punt cardinal ens marca la bisectriu entre l’agulla de les hores i les 12?',
       options: [
-        'Restar 1 hora; la bisectriu marca el Nord.',
+        'Restar 1 hora a l’estiu (-2 hores a l’hivern); s’apunta l’agulla de les hores al Sol i la bisectriu amb les 12 marca el NORD.',
         'Restar 2 hores a l’estiu (-1 hora a l’hivern); s’apunta l’agulla de les hores al Sol i la bisectriu amb les 12 marca el SUD.',
-        'Sumar 2 hores; la bisectriu marca l’Est.',
-        'No cal restar cap hora; l’agulla dels minuts marca el Nord.'
+        'Sumar 2 hores a l’estiu (+1 hora a l’hivern); s’apunta el número 12 cap al Sol i la bisectriu amb les hores marca l’EST.',
+        'No cal restar cap hora respecte a l’hora oficial; s’apunta l’agulla dels minuts al Sol i la bisectriu marca el NORD.'
       ],
       correctIndex: 1,
       explanation: 'A Catalunya l’hora solar és -2 h a l’estiu i -1 h a l’hivern respecte a l’hora oficial. Apuntant l’agulla petita (hores) al Sol, la bisectriu amb les 12 assenyala el Sud.'
@@ -288,10 +288,10 @@ export const tema20Cartografia = {
       difficulty: 'Mitjà',
       question: 'Durant una recerca nocturna, observem la Lluna en fase de Quart Creixent (forma de "D"). Cap a quin punt cardinal apunta la seva panxa o part corba il·luminada?',
       options: [
-        'Cap al Nord.',
-        'Cap a l’Est.',
+        'Cap al NORD (i si és Quart Minvant, amb forma de "C", la panxa apunta igualment cap al SUD).',
+        'Cap a l’EST (i si és Quart Minvant, amb forma de "C", la panxa apunta cap a l’OEST).',
         'Cap a l’OEST (i si és Quart Minvant, amb forma de "C", la panxa apunta cap a l’EST).',
-        'Cap al Sud.'
+        'Cap al SUD (i si és Quart Minvant, amb forma de "C", la panxa apunta cap al NORD).'
       ],
       correctIndex: 2,
       explanation: 'Apartat 3.3 del manual: en Quart Creixent les banyes apunten a l’Est i la panxa il·luminada apunta a l’Oest; en Quart Minvant la panxa il·luminada apunta a l’Est.'
@@ -340,10 +340,10 @@ export const tema20Cartografia = {
       difficulty: 'Mitjà',
       question: 'En les bandes de latitud de la quadrícula UTM (lletres de la C a la X sense I ni O), a partir de quina lletra comença l’Hemisferi Nord?',
       options: [
-        'A partir de la lletra A.',
+        'A partir de la lletra A (de la A a la L és Hemisferi Nord; de la M a la Z és Hemisferi Sud).',
         'A partir de la lletra N (de la N a la X és Hemisferi Nord; de la C a la M és Hemisferi Sud).',
-        'A partir de la lletra T.',
-        'A partir de la lletra G.'
+        'A partir de la lletra T (de la T a la X és Hemisferi Nord; de la C a la S és Hemisferi Sud).',
+        'A partir de la lletra M (de la M a la X és Hemisferi Nord; de la C a la L és Hemisferi Sud).'
       ],
       correctIndex: 1,
       explanation: 'Les bandes C a M corresponen a l’Hemisferi Sud i les bandes N a X corresponen a l’Hemisferi Nord (fàcil de recordar: N de Nord!).'
@@ -354,9 +354,9 @@ export const tema20Cartografia = {
       question: 'Quina diferència hi ha entre la declinació magnètica i la convergència de meridians en un mapa topogràfic UTM?',
       options: [
         'La declinació magnètica és l’angle entre el Nord Geogràfic i el Nord Magnètic; la convergència de meridians és l’angle entre el Nord Geogràfic i el Nord de la Quadrícula UTM.',
-        'Són dos termes sinònims per referir-se a la inclinació de les corbes de nivell.',
-        'La declinació magnètica només afecta els mapes ràster i la convergència de meridians només es dona a l’hemisferi Sud.',
-        'La convergència de meridians és l’error d’altitud del receptor GNSS quan només capta 3 satèl·lits.'
+        'Són dos termes equivalents per designar l’angle entre el Nord Magnètic i el Nord de la Quadrícula UTM, que varia en funció de l’escala del mapa topogràfic.',
+        'La declinació magnètica només s’aplica en projeccions cilíndriques de mapes ràster i la convergència de meridians només es produeix a les zones polars de l’hemisferi Sud.',
+        'La convergència de meridians és l’error altimètric acumulat pel receptor GNSS quan treballa amb menys de 4 satèl·lits o amb un datum geodèsic desactualitzat (ED50).'
       ],
       correctIndex: 0,
       explanation: 'La declinació magnètica separa el Nord Geogràfic del Nord Magnètic (a Catalunya < 2°), mentre que la convergència de meridians és l’angle entre els meridians geogràfics i les línies verticals de la quadrícula UTM.'
@@ -366,10 +366,10 @@ export const tema20Cartografia = {
       difficulty: 'Mitjà',
       question: 'Quina afirmació és correcta respecte a la distinció clàssica entre azimut i rumb?',
       options: [
-        'L’azimut es mesura sempre de 0° a 90° des del Nord o del Sud cap a l’Est o l’Oest.',
+        'L’azimut es mesura sempre de 0° a 90° partint del Nord o del Sud cap a l’Est o l’Oest, mentre que el rumb topogràfic es mesura de 0° a 360° en sentit antihorari.',
         'L’azimut es mesura en sentit horari de 0° a 360° des del Nord, mentre que el rumb topogràfic per quadrants es mesura de 0° a 90° partint del Nord o del Sud cap a l’Est o l’Oest.',
-        'El rumb sempre s’expressa en coordenades UTM de 7 xifres i l’azimut en metres sobre el nivell del mar.',
-        'L’azimut només es pot calcular de nit amb l’Estrella Polar.'
+        'El rumb sempre s’expressa mitjançant coordenades UTM de 7 xifres en metres i l’azimut s’expressa en tant per cent de pendent respecte al nivell del mar.',
+        'L’azimut només es pot determinar respecte al Nord Magnètic amb brúixola de limb fix, mentre que el rumb sempre es refereix exclusivament al Nord Geogràfic.'
       ],
       correctIndex: 1,
       explanation: 'En topografia i orientació, l’azimut va de 0° a 360° en sentit horari des del Nord (ex. 225°), mentre que el rumb clàssic per quadrants s’expressa de 0° a 90° des de N o S cap a E o O (ex. S 45° O).'

@@ -183,10 +183,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Difícil',
       question: "Segons l'apartat 2.7.2 del manual MAN.INXX.000, quina és la maniobra correcta respecte a l'aplicació d'aigua sobre els dipòsits d'un vehicle de GLP, un de GNC i un de GNL en cas d'incendi?",
       options: [
-        'S’ha de projectar aigua a raig sobre els dipòsits de tots tres sistemes per igual.',
-        'En GLP es refrigera el dipòsit amb aigua (sense apagar la flama); en GNC està PROHIBIT tirar aigua sobre els cilindres (per no bloquejar el fusible tèrmic); i en GNL es desaconsella tirar aigua sobre el dipòsit criogènic o la bassa.',
-        'En GNC s’ha de tirar molta aigua als cilindres i en GLP està prohibit.',
-        'En cap vehicle de gas o elèctric es pot utilitzar aigua.'
+        'S’ha de projectar aigua a raig ple directament sobre els dipòsits de tots tres sistemes per igual per reduir la pressió interna i evitar el risc de BLEVE.',
+        'En GLP es refrigera el dipòsit (sense apagar la flama); en GNC es PROHIBEIX tirar aigua als cilindres (per no bloquejar el TPRD); en GNL es desaconsella tirar aigua a la bassa.',
+        'En GNC s’ha de refrigerar intensament els cilindres amb abundant aigua i en GLP està prohibit aplicar aigua sobre el dipòsit per evitar el bloqueig del fusible.',
+        'En cap vehicle propulsat per gasos inflamables o per bateries elèctriques d’ió liti es pot utilitzar aigua d’extinció, havent d’emprar exclusivament pols ABC.'
       ],
       correctIndex: 1,
       explanation: "El manual diferencia clarament: GLP = refrigerar el dipòsit sense apagar el dardo; GNC = prohibit tirar aigua als cilindres perquè refreda el fusible tèrmic i impedeix la despressurització; GNL = desaconsellat tirar aigua perquè aporta calor al líquid criogènic (-162 °C)."
@@ -230,10 +230,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Mitjà',
       question: "Quins dos riscos específics destaca la Versió 2 del manual MAN.INXX.000 en els incendis d'abocadors i quin fenomen passa en aplicar aigua freda a un contenidor verd de vidre?",
       options: [
-        'Risc d’allau de neu i risc elèctric | El vidre es fon.',
+        'Risc d’allau de residus sòlids i risc elèctric d’alta tensió | El vidre es fon instantàniament sense projectar fragments.',
         'Risc d’enfonsament (per cavitats subterrànies cremades) i risc biològic | El vidre calent esclata i projecta esquirles per xoc tèrmic.',
-        'Risc nuclear i risc d’inundació | El contenidor verd és ignífug.',
-        'Només risc de relliscada.'
+        'Risc radiològic per residus industrials i risc d’inundació | El contenidor verd és ignífug i suporta l’aigua sense fragmentar-se.',
+        'Únicament risc de relliscada sobre el paviment mullat | El vidre refredat amb aigua forma una pasta compacta sense projecció.'
       ],
       correctIndex: 1,
       explanation: "En abocadors el manual destaca el risc d'enfonsament del terreny i el risc biològic; en contenidors de vidre destaca l'esclat d'esquirles per xoc tèrmic."
@@ -244,9 +244,9 @@ export const tema11IncendisVaris = {
       question: "Quins gasos tòxics principals allibera un vehicle modern en flames (especialment amb bateries d'ió liti) i quin equipament de protecció és obligatori des de l'inici de la intervenció segons MAN.INXX.000?",
       options: [
         "CO, HCN, HCl i fluorur d'hidrogen (HF) | Ús obligatori de l'EPI pesant complet i l'ERA des del primer instant.",
-        "Només vapor d'aigua i diòxid de carboni | N'hi ha prou amb mascareta FFP2.",
-        'Només metà i nitrogen | EPI forestal sense ERA a l’exterior.',
-        'Heli i argó | No cal protecció respiratòria a l’aire lliure.'
+        "Només vapor d'aigua net i diòxid de carboni | N'hi ha prou amb una mascareta autofiltrant FFP2 a l'exterior.",
+        "Únicament metà i nitrogen sense toxicitat aguda | EPI forestal lleuger sense ERA si hi ha ventilació natural.",
+        "Gasos inerts com heli i argó | No cal cap protecció respiratòria específica treballant a sobrevent."
       ],
       correctIndex: 0,
       explanation: "Els plàstics, escumes, cautxú i bateries d'ió liti alliberen CO, HCN, HCl i HF; per això el manual estableix l'obligatorietat de l'EPI pesant complet i l'ERA des del primer instant."
@@ -256,10 +256,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Mitjà',
       question: "D'acord amb la taula de propietats fisicoquímiques del capítol 2 de MAN.INXX.000, quin és el punt d'inflamació del gasoil/dièsel (B7/B10/XTL) en comparació amb el de la gasolina (E5/E10/E85)?",
       options: [
-        'Gasoil ≈ -40 °C | Gasolina > 150 °C',
-        'Tots dos tenen un punt d’inflamació idèntic de 20 °C.',
+        'Gasoil ≈ -40 °C (molt volàtil) | Gasolina > 150 °C (vapors més lleugers que l’aire, d < 1).',
+        'Tots dos combustibles presenten un punt d’inflamació idèntic al voltant dels 20 °C en via pública.',
         'Gasoil > 62 °C (entre 62 °C i 100 °C) | Gasolina ≈ -40 °C (molt volàtil i vapors més pesants que l’aire, d = 3 a 4).',
-        'El gasoil no té punt d’inflamació i la gasolina s’inflama a partir de 200 °C.'
+        'El gasoil no té punt d’inflamació definit i la gasolina només s’inflama a partir dels 200 °C.'
       ],
       correctIndex: 2,
       explanation: "Segons el manual, la gasolina té un punt d'inflamació d'uns -40 °C amb vapors molt més pesants que l'aire (d = 3 a 4), mentre que el gasoil/dièsel (B/XTL) té un punt d'inflamació > 62 °C (entre 62 °C i 100 °C)."
@@ -269,10 +269,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Difícil',
       question: "Per quina raó tècnica exacta PROHIBEIX el manual MAN.INXX.000 tirar aigua sobre els cilindres d'un vehicle de Gas Natural Comprimit (GNC) a 200 bar?",
       options: [
-        "Perquè el metà reacciona químicament amb l'aigua formant àcid sulfúric.",
-        "Perquè l'aigua fa surar el vehicle i en dificulta l'estabilització.",
-        "Perquè el GNC és criogènic a -162 °C i l'aigua el congela.",
-        "Perquè el xoc tèrmic fred de l'aigua bloqueja o impedeix que el fusible tèrmic (TPRD, ~110 °C) s'obri per despressuritzar, fent que el cilindre de 200 bar rebenti mecànicament."
+        "Perquè el metà comprimit reacciona químicament amb l'aigua freda formant àcid sulfúric corrosiu sobre les vàlvules.",
+        "Perquè l'acumulació d'aigua sota el xassís fa surar el vehicle i en dificulta l'estabilització amb falques.",
+        "Perquè el GNC s'emmagatzema en estat líquid criogènic a -162 °C i el contacte amb l'aigua congela les canonades.",
+        "Perquè el xoc fred de l'aigua impedeix que el fusible tèrmic (TPRD, ~110 °C) s'obri per despressuritzar, fent rebentar el cilindre de 200 bar."
       ],
       correctIndex: 3,
       explanation: "Els cilindres de GNC treballen a 200 bar i porten un fusible tèrmic TPRD (~110 °C). Si es refreda el fusible amb aigua mentre el dipòsit segueix escalfant-se, s'impedeix la despressurització i el cilindre pot rebentar."
@@ -282,23 +282,23 @@ export const tema11IncendisVaris = {
       difficulty: 'Mitjà',
       question: "En un incendi d'un vehicle propulsat per hidrogen (H₂, pila de combustible FCEV), a quina pressió s'emmagatzema el gas i quina particularitat crítica té la seva flama durant el dia?",
       options: [
-        'A 8-10 bar | Flama molt fumosa i de color verd intens.',
+        'A 8–10 bar en estat liquat | Flama molt fumosa, densa i de color verd intens visible a llarga distància.',
         'A 350 bar o 700 bar | Flama gairebé invisible de dia, per la qual cosa cal usar sempre càmera tèrmica abans d’acostar-s’hi.',
-        'A 2 bar | No pot generar dardo de foc en cap cas.',
-        'En estat líquid a -20 °C | Flama molt lenta i més pesant que l’aire.'
+        'A 2 bar de pressió residual | Gas més pesant que l’aire que no pot generar dardo de foc en cap circumstància.',
+        'En estat líquid criogènic a -20 °C | Flama molt lenta i lluminosa de color groc ataronjat amb fum negre.'
       ],
       correctIndex: 1,
       explanation: "L'hidrogen s'emmagatzema comprimit a 350 o 700 bar, té una densitat molt baixa (d = 0,07) i la seva flama és gairebé invisible de dia; cal detectar el dardo amb càmera tèrmica i no refredar el TPRD ni apagar la flama."
     },
     {
       id: 'q26-10',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quina és la maniobra correcta per extingir un incendi en un contenidor soterrat segons l'apartat 3 del manual MAN.INXX.000?",
       options: [
-        'Baixar un binomi amb escala dins del fossat de formigó per remoure la brossa.',
-        'Buidar el contenidor amb una grua mentre crema.',
+        'Baixar un binomi equipat amb ERA i escala corredissa dins del fossat de formigó per remoure la brossa i refredar les brases.',
+        'Buidar completament el contenidor amb una grua hidràulica mentre crema per estendre i apagar els residus sobre la calçada.',
         'No baixar mai dins del fossat i extingir des de fora per inundació amb aigua o omplint el fossat amb escuma de mitjana o alta expansió.',
-        'Aplicar exclusivament extintors de CO₂ des de 25 metres.'
+        'Aplicar exclusivament extintors de CO₂ o pols ABC des d’una distància mínima de 25 metres sense utilitzar aigua ni escuma.'
       ],
       correctIndex: 2,
       explanation: "En contenidors soterrats (foc confinat en un fossat sota terra) està prohibit baixar al fossat; s'extingeix des de l'exterior per inundació amb aigua o omplint-lo d'escuma de mitjana/alta expansió."
@@ -308,10 +308,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Mitjà',
       question: "Quina diferència operativa destaca el manual MAN.INXX.000 V.2 entre l'incendi d'un contenidor blau (paper/cartró) i el d'un contenidor marró/gris (resta)?",
       options: [
-        'El blau fa una combustió profunda en somort (aigua amb humectant i remogut amb bichero); el marró/gris comporta risc biològic per residus sanitaris i punxants (evitar esquitxades i usar guants antipunció).',
-        'El blau genera xoc tèrmic d’esquirles i el marró només crema amb flama groga neta.',
-        'Tots dos s’extingeixen sense aigua tapant la boca amb una lona.',
-        'El marró/gris només requereix guants de pell fina i el blau escuma d’alta expansió.'
+        'El blau fa combustió en somort (aigua amb humectant i remogut amb bichero); el marró/gris té risc biològic per residus sanitaris i punxants (guants antipunció).',
+        'El blau genera xoc tèrmic amb projecció d’esquirles de vidre i el marró/gris només crema en superfície amb flama groga neta sense risc biològic ni punxants.',
+        'Tots dos contenidors s’extingeixen sense aplicar aigua tapant la boca superior amb una lona ignífuga per aconseguir l’extinció per sufocació completa.',
+        'El marró/gris només requereix guants de pell fina de rescat mecànic i el blau s’ha d’omplir obligatòriament amb escuma d’alta expansió sense remoure.'
       ],
       correctIndex: 0,
       explanation: "El paper/cartró (blau) presenta combustió en somort que exigeix aigua amb humectant i remogut amb bichero; la fracció resta/orgànica (marró/gris) introdueix a la V.2 el risc biològic (xeringues/patògens)."
@@ -321,9 +321,9 @@ export const tema11IncendisVaris = {
       difficulty: 'Difícil',
       question: "En un camió de Gas Natural Liquat (GNL) a -162 °C, per què es desaconsella projectar aigua sobre el dipòsit criogènic o sobre una bassa de GNL vessat a terra?",
       options: [
-        'Perquè el GNL apaga la bomba del camió de bombers.',
-        'Perquè l’aigua té una densitat inferior al metà líquid i el fa flotar.',
-        'Perquè el GNL porta un fusible TPRD que es bloqueja a 0 °C.',
+        'Perquè el GNL a baixa temperatura congela instantàniament la bomba centrífuga i les mànegues de Ø25 del camió de bombers.',
+        'Perquè l’aigua té una densitat molt inferior al metà líquid i el fa surar en superfície ampliant la zona d’incendi actiu.',
+        'Perquè el dipòsit de GNL incorpora un fusible tèrmic TPRD que queda bloquejat a 0 °C si es projecta aigua freda al damunt.',
         'Perquè l’aigua està molt més calenta que el GNL (-162 °C), li aporta calor, multiplica l’ebullició i vaporització i pot provocar una transició ràpida de fase (RPT).'
       ],
       correctIndex: 3,
@@ -347,10 +347,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Difícil',
       question: "Una dotació intervé en dos sinistres consecutius: al primer crema un autobús urbà de GNC (200 bar) i al segon s'ha produït un vessament de GNL (-162 °C) d'un camió cisterna formant una bassa amb núvol fred visible. Quina pauta d'actuació amb aigua correspon a cadascun?",
       options: [
-        "En tots dos casos cal aplicar raig ple d'aigua directament sobre els dipòsits i sobre la bassa per diluir el metà immediatament.",
-        "En el GNC (200 bar) NO s'ha de tirar aigua sobre els cilindres per no impedir l'obertura del TPRD (~110 °C); en el GNL (-162 °C) NO s'ha d'aplicar aigua sobre la bassa ni sobre el tanc criogènic pel risc d'ebullició violenta i RPT.",
-        "En el GNC s'aplica escuma d'alta expansió dins dels cilindres i en el GNL s'escalfa la bassa amb aigua calenta per evaporar-la més ràpidament.",
-        "El GNC s'acumula sempre arran de terra com la gasolina, mentre que el GNL a -162 °C incorpora fusible TPRD a 700 bar."
+        "En tots dos casos cal aplicar raig ple d'aigua directament sobre els dipòsits i sobre la bassa vessada per diluir el metà i abatre el núvol fred immediatament.",
+        "En GNC (200 bar) NO s'ha de tirar aigua als cilindres per no bloquejar el TPRD (~110 °C); en GNL (-162 °C) NO s'aplica aigua a la bassa ni al tanc pel risc de RPT.",
+        "En GNC s'aplica escuma d'alta expansió dins dels cilindres i en GNL s'escalfa la bassa amb aigua a pressió per accelerar-ne l'evaporació controlada sense flama.",
+        "El GNC s'acumula sempre arran de terra com els vapors de gasolina, mentre que el GNL a -162 °C incorpora vàlvula fusible TPRD tarada a una pressió de 700 bar."
       ],
       correctIndex: 1,
       explanation: "Tant en GNC com en GNL l'aplicació directa d'aigua sobre el dipòsit/bassa està desaconsellada per motius físics oposats: al GNC (200 bar) refreda i bloqueja el TPRD (~110 °C); al GNL (-162 °C) l'aigua aporta calor i dispara la vaporització amb risc de RPT."
@@ -360,10 +360,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Mitjà',
       question: "A ple migdia crema un turisme d'hidrogen (H₂, pila de combustible) al voral d'una autovia. Des de 25 metres no es veu cap flama sortint de la part posterior, però se sent un fort xiulet de fuita a alta pressió. Quina actuació és la correcta?",
       options: [
-        "Apropar-se immediatament pel lateral sense càmera tèrmica perquè, si no es veu flama, vol dir que el gas s'escapa sense cremar.",
-        "Utilitzar la càmera tèrmica abans d'acostar-s'hi per detectar un possible dardo de flama invisible (H₂ a 350/700 bar), mantenir el zonatge ≥ 25 m, no refredar el TPRD ni apagar el dardo i protegir l'entorn.",
-        "Ruixar aigua directament sobre la sortida de la fuita a 1 metre per comprovar si hi ha temperatura.",
-        "Tallar els pilars amb la cisalla pel costat on se sent el xiulet per descompressar el dipòsit de 700 bar."
+        "Apropar-se immediatament pel lateral sense càmera tèrmica perquè, si no es veu cap flama visible a plena llum del dia, vol dir que el gas s'escapa sense cremar.",
+        "Usar la càmera tèrmica abans d'acostar-s'hi per detectar un possible dardo invisible (H₂ a 350/700 bar), mantenir zonatge ≥ 25 m i no refredar el TPRD ni apagar el dardo.",
+        "Ruixar aigua polvoritzada directament sobre la sortida de la fuita des d'1 metre de distància per comprovar si hi ha temperatura i refredar la vàlvula fusible TPRD.",
+        "Tallar els pilars del vehicle amb la cisalla hidràulica pel costat on se sent el xiulet per alliberar la pressió del dipòsit de 700 bar abans d'extingir el foc."
       ],
       correctIndex: 1,
       explanation: "La flama de l'hidrogen (350/700 bar) és pràcticament invisible a la llum del dia i amb d = 0,07 puja verticalment a gran velocitat; cal inspeccionar sempre amb càmera tèrmica des de distància segura (≥ 25 m) abans d'apropar-s'hi."
@@ -386,10 +386,10 @@ export const tema11IncendisVaris = {
       difficulty: 'Mitjà',
       question: "En arribar a un incendi de vehicle en via pública amb pendent, quina és la seqüència d'emplaçament i aproximació correcta segons el manual MAN.INXX.000?",
       options: [
-        "Emplaçar l'autobomba a la part baixa del pendent a 5 m, acostar-se frontalment a 0° amb EPI lleuger i obrir el capó d'una tirada.",
-        "Emplaçar l'autobomba a la part alta del pendent i a sobrevent, establir zonatge ≥ 25 m, identificar el combustible/propulsió (etiquetatge UNE-EN 16942 o distintius) amb EPI complet i ERA, i aproximar-se a 45° amb línia de Ø25.",
-        "Estacionar a sotavent per tenir millor visibilitat sota el fum, apropar-se a 90° pel mig de la porta i aplicar aigua directa a les bateries durant 30 segons.",
-        "Desconnectar primer la bateria d'alta tensió amb eines manuals abans de posar-se l'ERA ni desplegar la línia de seguretat."
+        "Emplaçar l'autobomba a la part baixa del pendent a 5 m del vehicle, acostar-se frontalment a 0° amb EPI lleuger i obrir el capó d'una tirada per extingir el motor.",
+        "Emplaçar a la part alta del pendent i a sobrevent, zonatge ≥ 25 m, identificar el combustible (UNE-EN 16942) amb EPI complet i ERA, i aproximar-se a 45° amb Ø25.",
+        "Estacionar a sotavent per tenir millor visibilitat sota la columna de fum, apropar-se a 90° pel mig de la porta del conductor i aplicar aigua directa durant 30 segons.",
+        "Desconnectar primer la bateria d'alta tensió amb eines manuals aïllants abans d'equipar-se amb l'ERA ni desplegar cap línia d'aigua pressuritzada de seguretat."
       ],
       correctIndex: 1,
       explanation: "El procediment estableix emplaçar el camió a la part alta del pendent i a sobrevent, mantenir 25 m de zonatge, identificar el combustible amb EPI complet + ERA i aproximar-se en angle de 45° (mai frontal ni posterior per evitar projeccions de pistons/para-xocs) amb mànega de Ø25."

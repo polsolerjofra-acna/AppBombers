@@ -270,13 +270,13 @@ export const tema8PrevencioIncendis = {
   quiz: [
     {
       id: 'q23-1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Segons la Instrucció Tècnica Complementària SP-120 recollida al manual MAN.SP.000, quin cabal, autonomia, pressió mínima i reserva total d'aigua ha de garantir un hidrant d'incendi a la xarxa pública?",
       options: [
-        '500 L/min durant 1 hora a 5 bar (30 m³)',
+        '500 L/min durant 1 hora a una pressió mínima de 2 bar (reserva de 60 m³)',
         '1.000 L/min durant 2 hores a una pressió mínima d’1 bar (reserva de 240 m³)',
-        '2.000 L/min durant 3 hores a 3 bar (360 m³)',
-        '1.500 L/min durant 1 hora a 5 bar (90 m³)'
+        '2.000 L/min durant 3 hores a una pressió mínima de 3 bar (reserva de 360 m³)',
+        '1.500 L/min durant 1 hora a una pressió mínima de 5 bar (reserva de 180 m³)'
       ],
       correctIndex: 1,
       explanation: 'La ITC SP-120 exigeix un cabal mínim de 1.000 L/min durant 2 hores (120 min × 1.000 L = 120.000 L per hidrant; per a 2 hidrants simultanis o reserva de xarxa = 240 m³) a una pressió dinàmica mínima d’1 bar.'
@@ -299,10 +299,10 @@ export const tema8PrevencioIncendis = {
       difficulty: 'Mitjà',
       question: "En una instal·lació de Columna Seca (DN 80 mm), com es distribueixen les bocas de sortida per plantes i cada quantes plantes s'instal·la una vàlvula de seccionament?",
       options: [
-        'Sortides a totes les plantes des de la 1a i vàlvula a cada planta.',
+        'Sortides a totes les plantes des de la 1a fins a la coberta, amb vàlvula de seccionament a cada planta parell.',
         'Sortides a les plantes parells fins a la 8a i a totes a partir de la 8a, amb vàlvula de seccionament cada 4 plantes.',
-        'Sortides només a les plantes senars i vàlvula cada 2 plantes.',
-        'Sortides cada 3 plantes fins a la 12a.'
+        'Sortides només a les plantes senars fins a la 10a i a totes per sobre, amb vàlvula de seccionament cada 2 plantes.',
+        'Sortides cada 3 plantes des de la planta baixa fins a la 12a, amb una única vàlvula de seccionament a la façana.'
       ],
       correctIndex: 1,
       explanation: 'La columna seca disposa de sortides dobles de Ø45 a les plantes parells fins a la 8a planta i en totes les plantes a partir de la 8a, amb clau de seccionament cada 4 plantes.'
@@ -312,10 +312,10 @@ export const tema8PrevencioIncendis = {
       difficulty: 'Difícil',
       question: "Quines són les exigències d'amplada, alçada lliure, pendent màxim i resistència al punxonament de les potes d'autoescala en un Espai de Maniobra per a bombers (per a edificis >9 m d'alçada d'evacuació)?",
       options: [
-        'Amplada ≥ 3,5 m | Alçada ≥ 3,5 m | Pendent ≤ 15% | Punxonament 50 kN',
+        'Amplada ≥ 3,5 m | Alçada ≥ 3,5 m | Pendent ≤ 15% | Capacitat 10 kN/m² i punxonament de 50 kN en Ø 20 cm',
         'Amplada ≥ 5 m | Alçada ≥ 4,5 m | Pendent ≤ 10% | Capacitat 20 kN/m² i punxonament de 125 kN en Ø 20 cm',
-        'Amplada ≥ 6 m | Alçada ≥ 5 m | Pendent ≤ 5% | Punxonament 200 kN',
-        'Amplada ≥ 4 m | Alçada ≥ 4 m | Pendent ≤ 12% | Punxonament 80 kN'
+        'Amplada ≥ 6 m | Alçada ≥ 5,0 m | Pendent ≤ 5% | Capacitat 25 kN/m² i punxonament de 200 kN en Ø 25 cm',
+        'Amplada ≥ 4 m | Alçada ≥ 4,0 m | Pendent ≤ 12% | Capacitat 15 kN/m² i punxonament de 80 kN en Ø 15 cm'
       ],
       correctIndex: 1,
       explanation: "L'espai de maniobra requereix amplada mínima de 5 m, alçada lliure de 4,5 m, pendent màxim del 10%, sobrecàrrega de 20 kN/m² i resistència al punxonament de 125 kN sobre un cercle de 20 cm de diàmetre."
@@ -335,26 +335,26 @@ export const tema8PrevencioIncendis = {
     },
     {
       id: 'q23-6',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Quines són les 6 exigències bàsiques de seguretat en cas d'incendi (SI 1 a SI 6) en què s'articula el CTE DB-SI segons el capítol 1 de MAN.SP.000?",
       options: [
         "SI 1 Propagació interior, SI 2 Propagació exterior, SI 3 Evacuació d'ocupants, SI 4 Instal·lacions PCI, SI 5 Intervenció dels bombers i SI 6 Resistència al foc de l'estructura.",
-        "SI 1 Detecció, SI 2 Alarma, SI 3 Extintors, SI 4 Hidrants, SI 5 Ruixadors i SI 6 Columna seca.",
-        "SI 1 Risc baix, SI 2 Risc mitjà, SI 3 Risc alt, SI 4 Industrial, SI 5 Hospitalari i SI 6 Aparcaments.",
-        "SI 1 Accessos, SI 2 Façana, SI 3 Escales, SI 4 Mitgeres, SI 5 Fums i SI 6 Simulacres."
+        "SI 1 Detecció automàtica, SI 2 Alarma acústica, SI 3 Extintors portàtils, SI 4 Hidrants exteriors, SI 5 Ruixadors automàtics i SI 6 Columna seca i BIE.",
+        "SI 1 Establiments de risc baix, SI 2 Risc mitjà, SI 3 Risc alt, SI 4 Ús industrial RSCIEI, SI 5 Ús hospitalari i residencial, i SI 6 Aparcaments subterranis.",
+        "SI 1 Vials d'aproximació, SI 2 Façana accessible, SI 3 Escales protegides, SI 4 Parets mitgeres, SI 5 Control de fums SCTIEF i SI 6 Plans d'autoprotecció."
       ],
       correctIndex: 0,
       explanation: "Les 6 exigències bàsiques són: SI 1 (Propagació interior), SI 2 (Propagació exterior), SI 3 (Evacuació d'ocupants), SI 4 (Instal·lacions de protecció contra incendis), SI 5 (Intervenció dels bombers) i SI 6 (Resistència al foc de l'estructura)."
     },
     {
       id: 'q23-7',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "En la Versió 2 del manual MAN.SP.000, què designa la nova Classe L del glossari i què indica el codi FOER 'BAD-HOS-00001'?",
       options: [
-        "Focs en líquids inflamables; BAD-HOS-00001 indica un edifici comercial de Barcelona.",
-        "Focs d'olis en cuines; BAD-HOS-00001 indica la revisió quinquennal d'una columna seca.",
+        "Focs en líquids inflamables i dissolvents polars; BAD-HOS-00001 identifica un centre comercial de gran superfície situat al municipi de Badalona (BAD).",
+        "Focs d'olis i greixos en cuines industrials; BAD-HOS-00001 indica la revisió quinquennal reglamentària d'una columna seca d'un edifici residencial.",
         "Focs en bateries d'ió liti (Li-ion) amb risc d'embalaçament tèrmic; BAD-HOS-00001 identifica la fitxa número 00001 d'un Hospital (HOS) al municipi de Badalona (BAD).",
-        "Focs en gasos a pressió; BAD-HOS-00001 identifica una nau industrial sense hidrants."
+        "Focs en gasos inflamables a pressió en canonades; BAD-HOS-00001 identifica una nau industrial d'alt risc intrínsec sense xarxa d'hidrants pròpia."
       ],
       correctIndex: 2,
       explanation: "La Versió 2 incorpora la Classe L per als focs en bateries d'ió liti (amb risc de Thermal Runaway). El codi FOER segueix l'estructura [MUNICIPI 3 lletres]-[TIPUS 3 lletres]-[5 DÍGITS]."
@@ -377,10 +377,10 @@ export const tema8PrevencioIncendis = {
       difficulty: 'Mitjà',
       question: "En la classificació de productes de construcció (Reglament UE 2024/3110), a quina antiga classe equival l'euroclasse de reacció al foc C-s2,d0 i quin criteri tèrmic defineix la lletra 'I' de resistència al foc?",
       options: [
-        "Equival a M4; 'I' és integritat mecànica contra impactes.",
+        "Equival a l'antiga classe M4; 'I' és integritat mecànica contra impactes (capacitat de suportar la caiguda d'elements estructurals).",
         "Equival a l'antiga classe M1; 'I' és aïllament tèrmic (la cara no exposada no supera un increment mitjà de 140 °C ni 180 °C en cap punt).",
-        "Equival a A1 (incombustible total); 'I' és impermeabilitat al fum fred.",
-        "Equival a M2; 'I' és capacitat portant d'un pilar sense col·lapsar."
+        "Equival a la classe A1 (incombustible total); 'I' és impermeabilitat al pas de flames i gasos calents cap a la cara no exposada.",
+        "Equival a l'antiga classe M2; 'I' és capacitat portant d'un pilar o biga per mantenir l'estabilitat estructural sense col·lapsar."
       ],
       correctIndex: 1,
       explanation: "El manual estableix l'equivalència clau C-s2,d0 = antiga classe M1. En resistència al foc (R-E-I), la 'I' indica aïllament tèrmic: increment màxim mitjà de 140 °C i puntual de 180 °C a la cara no exposada."
@@ -391,9 +391,9 @@ export const tema8PrevencioIncendis = {
       question: "Quins requisits d'ubicació, cabal i pressió ha de complir un hidrant d'establiment industrial segons el nou RSCIEI recollit a l'apartat 4.2.3 del manual?",
       options: [
         "Situat a ≤ 40 m de qualsevol accés i separat entre 5 m i 15 m de la façana, amb cabal de 1.500 a 3.000 L/min i pressió mínima de 5 bar durant 60–90 min.",
-        "Situat a ≤ 100 m de l'accés i enganxat a la façana (0–2 m), amb cabal de 500 L/min a 1 bar.",
-        "Situat a > 50 m de l'edifici, amb cabal de 1.000 L/min i pressió d'1 bar durant 2 hores.",
-        "No necessita pressió mínima perquè sempre s'hi connecta una bomba aspirant."
+        "Situat a ≤ 100 m de qualsevol accés i enganxat a la façana (entre 0 m i 2 m), amb cabal mínim de 500 L/min i pressió d'1 bar durant 60 min.",
+        "Situat a > 50 m de l'edifici industrial, amb cabal mínim de 1.000 L/min i pressió dinàmica d'1 bar garantida durant 2 hores (120 min).",
+        "Situat dins del recinte tancat de la nau sense límit de distància ni pressió mínima, ja que sempre s'hi connecta una bomba aspirant de bombers."
       ],
       correctIndex: 0,
       explanation: "A diferència de l'hidrant públic SP-120 (1.000 L/min a 1 bar), l'hidrant industrial ha d'estar a ≤ 40 m de l'accés, separat 5–15 m de la façana, i garantir 1.500–3.000 L/min a 5 bar durant 60-90 minuts."
@@ -403,10 +403,10 @@ export const tema8PrevencioIncendis = {
       difficulty: 'Difícil',
       question: "En un grup d'abastament d'aigua PCI dissenyat segons la norma UNE 23500 (apartat 4.2.5), com funcionen l'arrencada i l'aturada de la bomba principal (elèctrica o dièsel) en comparació amb la bomba Jockey?",
       options: [
-        "Tant la bomba Jockey com la bomba principal arrenquen i s'aturen automàticament quan es recupera la pressió.",
-        "La bomba principal només arrenca manualment i s'atura sola quan s'esgota el dipòsit.",
-        "La bomba Jockey té arrencada i aturada automàtiques, mentre que la bomba principal té arrencada automàtica per caiguda de pressió i aturada EXCLUSIVAMENT manual al quadre de la sala de bombes.",
-        "Cap de les dues bombes té arrencada automàtica."
+        "Tant la bomba Jockey com la bomba principal arrenquen i s'aturen automàticament quan el pressòstat detecta la recuperació de la pressió nominal.",
+        "La bomba principal només arrenca de forma manual des del quadre elèctric i s'atura automàticament quan s'esgota el dipòsit de reserva.",
+        "La bomba Jockey arrenca i s'atura automàticament, però la bomba principal arrenca per caiguda de pressió i té aturada EXCLUSIVAMENT manual a la sala de bombes.",
+        "Cap de les dues bombes disposa d'arrencada automàtica per pressòstat; totes dues requereixen activació manual des de la central d'incendis."
       ],
       correctIndex: 2,
       explanation: "Dada crítica UNE 23500: la bomba Jockey manté la pressió de repòs amb arrencada i aturada automàtiques, però la bomba principal arrenca automàticament en caure la pressió i només es pot aturar de manera manual a la sala de bombes."
@@ -416,9 +416,9 @@ export const tema8PrevencioIncendis = {
       difficulty: 'Difícil',
       question: "Quina resistència al foc mínima s'exigeix a una paret mitgera entre dos edificis o establiments i quines dimensions ha de tenir la franja resistent a la trobada amb la coberta o façana?",
       options: [
-        "Mitgera EI 30 i franja de 0,30 m d'amplada EI 15.",
-        "Mitgera EI 60 i franja de 0,50 m d'amplada EI 30 sense cap alternativa.",
-        "Mitgera R 90 i franja de 2 metres de grava sense resistència al foc.",
+        "Mitgera mínim EI 30 i franja d'amplada ≥ 0,30 m amb resistència EI 15, sense possibilitat de sobresortir sobre la coberta.",
+        "Mitgera mínim EI 60 i franja d'amplada ≥ 0,50 m amb resistència EI 30 a banda i banda, sense cap alternativa constructiva.",
+        "Mitgera mínim R 90 i franja de 2 metres de grava incombustible sense resistència al foc ni requeriment d'aïllament tèrmic.",
         "Mitgera mínim EI 120 i franja d'amplada ≥ 1 metre amb resistència EI t/2 (mínim EI 60), o bé que la mitgera sobresurti 0,60 m sobre la coberta."
       ],
       correctIndex: 3,
@@ -455,10 +455,10 @@ export const tema8PrevencioIncendis = {
       difficulty: 'Difícil',
       question: "En una instal·lació de columna seca amb tram descendent (per exemple, cap a plantes sota rasant), com es disposen les vàlvules i les claus de seccionament segons el RIPCI?",
       options: [
-        "Només té presa d'alimentació a l'interior del soterrani i cap sortida a les plantes.",
+        "Només té presa d'alimentació a l'interior del soterrani inferior i no disposa de boques de sortida a les plantes intermèdies.",
         "Disposa de boca de sortida amb vàlvula a cada planta i una clau de seccionament situada a la part inferior (a peu de baixant / connexió de façana).",
-        "No admet claus de seccionament perquè funciona sempre amb pressió permanent d'aigua.",
-        "Les boques de sortida són exclusivament de 70 mm amb acoblament Storz."
+        "No admet claus de seccionament ni purga perquè funciona sempre carregada amb aigua a pressió permanent des de la xarxa pública.",
+        "Les boques de sortida són exclusivament de 70 mm amb acoblament Storz i només s'instal·len a les plantes parells sota rasant."
       ],
       correctIndex: 1,
       explanation: "En una columna seca descendent (a diferència de l'ascendent estàndard amb preses a plantes parells fins a la 8a), es disposa de vàlvula de sortida siamesa a cada planta i clau de seccionament a baix per aïllar i purgar el tram."

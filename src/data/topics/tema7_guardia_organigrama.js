@@ -229,9 +229,9 @@ export const tema7GuardiaOrganigrama = {
       question: 'Com s\'estructura la cadena de dades entre les posicions operatives al Decret 276/2016?',
       options: [
         'El Cap de sortida les recull, el Sotscap territorial en garanteix la recollida i el Cap territorial les supervisa',
-        'El Cap territorial les recull i el Cap de sortida les supervisa',
-        'Només les recull l\'SCB directament',
-        'El Sotscap territorial les recull i les aprova el Cap de sortida'
+        'El Cap territorial les recull directament, el Sotscap territorial les valida i el Cap de sortida les arxiva',
+        'El Cap de coordinació de l\'SCB les recull directament des del sistema i les remet al Cap territorial per a supervisió',
+        'El Sotscap territorial les recull al sinistre, el Cap de torn les garanteix i el Cap de sortida les aprova'
       ],
       correctIndex: 0,
       explanation: 'Recollida (Cap de sortida) → Garantia (Sotscap territorial) → Supervisió (Cap territorial).'
@@ -251,13 +251,13 @@ export const tema7GuardiaOrganigrama = {
     },
     {
       id: 't7-q5',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quantes Subdireccions Generals té la DGPEIS en el text consolidat vigent (Decret 12/2023 + Decret 16/2026)?',
       options: [
         '5 Subdireccions Generals (inclosa la nova SG Assumptes Jurídics i Institucionals) més 1 Àrea de Comunicació i Premsa',
-        '4 Subdireccions Generals únicament',
-        '3 Subdireccions Generals i 2 Àrees directes',
-        '6 Subdireccions Generals sense cap Àrea directa'
+        '4 Subdireccions Generals (Operativa, Tècnica, Planificació i Gestió, i Recursos Humans) sense cap Àrea adscrita al DG',
+        '3 Subdireccions Generals (Operativa, Tècnica i Coordinació) més 2 Àrees directes del Director General',
+        '6 Subdireccions Generals (inclosa la SG de Mitjans Aeris i Logística) sense cap Àrea de Comunicació directa'
       ],
       correctIndex: 0,
       explanation: 'La DGPEIS té 5 Subdireccions Generals i 1 Àrea de Comunicació i Premsa (única àrea directa del DG).'
@@ -281,9 +281,9 @@ export const tema7GuardiaOrganigrama = {
       question: 'Quines 3 unitats integren l\'Àrea Tècnica d\'Emergències dins la Divisió d\'Operacions?',
       options: [
         'Unitat de Riscos Tecnològics, Unitat de Col·lapses i Unitat d\'Incendis Estructurals (NO hi ha Unitat d\'Accidents de Mobilitat)',
-        'Unitat de Riscos Tecnològics, Unitat d\'Accidents de Mobilitat i Unitat GRAF',
-        'Unitat de Muntanya, Unitat Aquàtica i Unitat GEM',
-        'Unitat de Col·lapses, Unitat d\'Incendis Forestals i Unitat de Mitjans Aeris'
+        'Unitat de Riscos Tecnològics, Unitat d\'Accidents de Mobilitat i Unitat GRAF (Grup de Recolzament d\'Actuacions Forestals)',
+        'Unitat de Muntanya (GRAE), Unitat Aquàtica i Unitat GEM (Grup d\'Emergències Mèdiques) en suport operatiu directe',
+        'Unitat de Col·lapses Estructurals, Unitat d\'Incendis Forestals i Unitat de Mitjans Aeris adscrites a Operacions'
       ],
       correctIndex: 0,
       explanation: 'L\'Àrea Tècnica d\'Emergències té Riscos Tecnològics, Col·lapses i Incendis Estructurals; no hi existeix cap Unitat d\'Accidents de Mobilitat.'
@@ -294,9 +294,9 @@ export const tema7GuardiaOrganigrama = {
       question: 'De quin òrgan depenen funcionalment els Parcs de Bombers i qui els inspecciona?',
       options: [
         'Pengen de l\'Àrea d\'Operacions de la Regió; les 19 Unitats Territorials els inspeccionen',
-        'Pengen directament de la Subdirecció General Tècnica',
-        'Pengen de les Sales Territorials (SCT)',
-        'Pengen de les 7 Unitats de Prevenció'
+        'Pengen directament de la Subdirecció General Tècnica; les 7 Unitats de Prevenció els inspeccionen',
+        'Pengen de les 6 Sales Territorials (SCT); el Cap de coordinació de l\'SCB els inspecciona',
+        'Pengen de les 7 Unitats de Prevenció; l\'Àrea d\'Operacions de cada Regió els inspecciona'
       ],
       correctIndex: 0,
       explanation: 'Les 19 Unitats Territorials inspeccionen els parcs, però els parcs depenen de l\'Àrea d\'Operacions de cada Regió.'
@@ -320,9 +320,9 @@ export const tema7GuardiaOrganigrama = {
       question: 'Com es determina el Cap de torn d\'un Parc de Bombers (art. 12 Decret 276/2016) i en quina modalitat treballa el Sotscap territorial?',
       options: [
         'Cap de torn: sergent > caporal > bomber 1a per prelació/antiguitat; Sotscap territorial: només en disponibilitat immediata',
-        'Cap de torn: sempre un inspector; Sotscap territorial: sempre en localització',
-        'Cap de torn: per sorteig mensual; Sotscap territorial: localització o immediata',
-        'Cap de torn: bomber 1a sempre; Sotscap territorial: no necessita habilitació'
+        'Cap de torn: sempre un inspector o sotsinspector assignat al parc; Sotscap territorial: sempre en modalitat de localització',
+        'Cap de torn: per designació rotativa mensual del cap de regió; Sotscap territorial: en localització o disponibilitat immediata',
+        'Cap de torn: bomber de 1a amb més antiguitat al parc sempre; Sotscap territorial: no necessita habilitació prèvia específica'
       ],
       correctIndex: 0,
       explanation: 'El Cap de torn segueix la prelació sergent > caporal > bomber 1a, i el Sotscap territorial només actua en disponibilitat immediata.'
@@ -346,9 +346,9 @@ export const tema7GuardiaOrganigrama = {
       question: 'Quins requisits ha de complir el suplent obligatori del Subdirector General Operatiu (Cap de Bombers) segons el Decret 276/2016?',
       options: [
         'Ha de ser un inspector habilitat com a cap operatiu, preferentment amb nivell orgànic de Subdirecció General',
-        'Pot ser qualsevol sotsinspector habilitat com a cap territorial',
-        'Ha de ser un oficial en modalitat de disponibilitat immediata',
-        'El designa cada parc de bombers per torns rotatius'
+        'Pot ser qualsevol sotsinspector habilitat com a cap territorial que estigui en situació de disponibilitat immediata',
+        'Ha de ser un oficial o sotsinspector habilitat que presti servei en modalitat de disponibilitat immediata a l\'SCB',
+        'El designa cada regió d\'emergències per torns rotatius semestrals entre els caps d\'unitat territorial habilitats'
       ],
       correctIndex: 0,
       explanation: 'El Subdirector General Operatiu (Nivell 5, inspector en localització) té un suplent obligatori que ha de ser inspector habilitat com a cap operatiu (preferentment amb nivell de Subdirecció General).'
@@ -372,9 +372,9 @@ export const tema7GuardiaOrganigrama = {
       question: 'Quins són els 3 organismes autònoms o entitats adscrits al Departament d\'Interior i quina àrea penja directament del Director General de la DGPEIS?',
       options: [
         'Organismes adscrits: SCT (Trànsit), ISPC i CAT112 · Àrea directa del DG: Àrea de Comunicació i Premsa (vinculació laboral)',
-        'Organismes adscrits: SEM, Forestals i ADF · Àrea directa del DG: Àrea de Logística',
-        'Organismes adscrits: SCT, ISPC i Protecció Civil · Àrea directa del DG: Àrea GRAF',
-        'El Departament d\'Interior no té organismes adscrits ni cap àrea directa del DG'
+        'Organismes adscrits: SEM, Agents Rurals i ADF · Àrea directa del DG: Àrea de Logística i Infraestructures (vinculació funcionarial)',
+        'Organismes adscrits: SCT (Trànsit), ISPC i Protecció Civil · Àrea directa del DG: Àrea GRAF (Grup d\'Actuacions Forestals)',
+        'El Departament d\'Interior no té organismes autònoms adscrits ni cap àrea que pengi directament del Director General de la DGPEIS'
       ],
       correctIndex: 0,
       explanation: 'Els 3 organismes adscrits al Departament d\'Interior són SCT (Trànsit), ISPC i CAT112; l\'Àrea de Comunicació i Premsa (laboral) és l\'única àrea que penja directe del DGPEIS.'
@@ -407,26 +407,26 @@ export const tema7GuardiaOrganigrama = {
     },
     {
       id: 't7-q17',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Dins de quina Divisió s\'integra la nova Àrea de Logística (2026) i de quina Àrea formen part els grups GRAE Muntanya, GRAE Caní i GRAE Subaquàtic?',
       options: [
         'L\'Àrea de Logística s\'integra a la Divisió de Planificació i Gestió; els GRAE s\'integren a l\'Àrea GEA (Unitat Muntanya i Unitat Aquàtica) dins d\'Emergències Climàtiques i GOE',
-        'L\'Àrea de Logística s\'integra a la SG Tècnica; els GRAE pengen de la Divisió d\'Operacions',
-        'L\'Àrea de Logística s\'integra a la Divisió de Coordinació d\'Emergències; la Unitat GEM és l\'encarregada dels GRAE',
-        'L\'Àrea de Logística depèn directe del DGPEIS juntament amb Comunicació i Premsa'
+        'L\'Àrea de Logística s\'integra a la Subdirecció General Tècnica; els grups GRAE pengen directament de la Divisió d\'Operacions a través de l\'Àrea Tècnica d\'Emergències',
+        'L\'Àrea de Logística s\'integra a la Divisió de Coordinació d\'Emergències; la Unitat GEM (Grup d\'Emergències Mèdiques) és l\'encarregada d\'enquadrar tots els grups GRAE',
+        'L\'Àrea de Logística depèn directament del Director General de la DGPEIS juntament amb l\'Àrea de Comunicació i Premsa; els GRAE formen una divisió autònoma pròpia'
       ],
       correctIndex: 0,
       explanation: 'Àrea de Logística (nova 2026) → Divisió de Planificació i Gestió. Àrea GEA (Unitat Muntanya [GRAE Muntanya + Caní] i Unitat Aquàtica [GRAE Subaquàtic]) → Divisió d\'Emergències Climàtiques i GOE.'
     },
     {
       id: 't7-q18',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quina és la nova Subdirecció General creada pel Decret 16/2026 dins de la DGPEIS i quantes funcions té la SG Operativa al text consolidat?',
       options: [
         'SG d\'Assumptes Jurídics i Institucionals (fa un total de 5 SG); la SG Operativa té 16 funcions al consolidat',
-        'SG de Mitjans Aeris; la SG Operativa té 13 funcions',
-        'SG de Voluntaris i Logística; la SG Operativa té 12 funcions',
-        'SG de Coordinació d\'Emergències; la SG Operativa té 10 funcions'
+        'SG de Mitjans Aeris i Logística (fa un total de 5 SG); la SG Operativa manté les 13 funcions originàries',
+        'SG de Voluntaris i Infraestructures (fa un total de 4 SG); la SG Operativa passa a tenir 12 funcions',
+        'SG de Coordinació d\'Emergències (fa un total de 6 SG); la SG Operativa exerceix 10 funcions bàsiques'
       ],
       correctIndex: 0,
       explanation: 'El Decret 16/2026 crea la 5a Subdirecció General (SG d\'Assumptes Jurídics i Institucionals), amplia les funcions de la SG Operativa de 13 a 16 i crea la 8a Regió (Pirineus).'

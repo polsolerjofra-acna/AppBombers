@@ -338,13 +338,13 @@ export const tema1TeoriaFoc = {
   quiz: [
     {
       id: 'q8-1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: "Segons el manual MAN.GRAL.008, quina és la diferència fonamental entre una deflagració i una detonació?",
       options: [
-        'La deflagració sempre es produeix en líquids i la detonació en gasos.',
+        'La deflagració es propaga només per conducció tèrmica en líquids pesants i la detonació únicament en mescles gasoses estequiomètriques.',
         'La deflagració té una velocitat de propagació subsònica (ona de pressió d’1 a 10 vegades la P inicial) i la detonació és supersònica (fins a 100 vegades la P inicial).',
-        'La deflagració no genera ona de pressió i la detonació sí.',
-        'La detonació és una reacció endotèrmica i la deflagració és exotèrmica.'
+        'La deflagració es propaga a velocitat supersònica sense generar ona de pressió perceptible i la detonació es propaga a velocitat subsònica (<340 m/s).',
+        'La detonació és una reacció química endotèrmica que absorbeix calor de l’entorn i la deflagració és una reacció exotèrmica sense ona expansiva.'
       ],
       correctIndex: 1,
       explanation: 'La deflagració viatja a velocitat subsònica (<340 m/s, generant 1-10 vegades la pressió inicial), mentre que la detonació viatja a velocitat supersònica (km/s, fins a 100 vegades la pressió inicial).'
@@ -427,9 +427,9 @@ export const tema1TeoriaFoc = {
       difficulty: 'Difícil',
       question: "Segons la llei de Stefan-Boltzmann recollida al capítol 9 del manual, si es duplica la temperatura absoluta T (en Kelvin) d'una font radiant, com varia l'energia transmesa per radiació?",
       options: [
-        'Es duplica (×2), ja que és proporcional a T.',
-        'Es quadruplica (×4), ja que és proporcional a T².',
-        'Es multiplica per 8 (×8), ja que és proporcional a T³.',
+        'Es duplica (×2), ja que l\'energia radiada creix de manera lineal i proporcional a la temperatura absoluta (T).',
+        'Es quadruplica (×4), ja que l\'energia radiada és directament proporcional al quadrat de la temperatura absoluta (T²).',
+        'Es multiplica per 8 (×8), ja que l\'energia radiada varia proporcionalment al cub de la temperatura absoluta (T³).',
         "Es multiplica per 16 (×16), ja que l'energia radiada creix amb la quarta potència de la temperatura absoluta (T⁴)."
       ],
       correctIndex: 3,
@@ -518,10 +518,10 @@ export const tema1TeoriaFoc = {
       difficulty: 'Mitjà',
       question: "Quin és el mecanisme físic principal que desencadena el fenomen de la BLEVE (Boiling Liquid Expanding Vapor Explosion) en un dipòsit que conté un líquid liquat a pressió?",
       options: [
-        "L'entrada sobtada d'aire fresc en un recinte confinat amb acumulació de fums i gasos de piròlisi.",
+        "L'entrada sobtada d'aire fresc exterior en un recinte confinat saturat de fums i gasos de piròlisi per sobre del límit superior d'inflamabilitat.",
         "La fallada mecànica del recipient i la baixada sobtada de pressió fins a la pressió atmosfèrica, que provoca l'ebullició instantània i massiva del líquid sobreescalfat.",
-        "La reacció exotèrmica entre l'aigua d'extinció i un metall alcalí fos a més de 800 °C.",
-        "La combustió lenta sense flama a l'interior d'una pila de sòlids porosos."
+        "La reacció química altament exotèrmica entre l'aigua projectada per a l'extinció i un metall alcalí fos a temperatures superiors als 800 °C.",
+        "L'arribada de l'ona de calor descendent fins al coixí d'aigua decantada al fons d'un tanc obert d'hidrocarbur pesant, projectant el combustible en flames."
       ],
       correctIndex: 1,
       explanation: "La BLEVE es produeix quan el recipient falla i pateix una baixada sobtada de pressió; com que el líquid interior està a una temperatura molt superior al seu punt d'ebullició a pressió atmosfèrica, vaporitza de manera instantània i explosiva."
@@ -558,9 +558,9 @@ export const tema1TeoriaFoc = {
       question: "Quina diferència hi ha entre el Punt d'Inflamació (Flash Point), el Punt de Combustió (Fire Point) i el Punt d'Autoignició d'un combustible líquid?",
       options: [
         "Al punt d'inflamació s'encén amb font externa però s'apaga en retirar-la; al de combustió manté la flama (≥ 5 s) en retirar la font; i a l'autoignició s'inflama sol sense font externa.",
-        "Al punt d'inflamació no cal cap font d'ignició externa; al d'autoignició sí que cal una espurna.",
-        "El punt de combustió sempre és inferior al punt d'inflamació.",
-        "La gasolina té un punt d'autoignició més baix (~100 °C) que el gasoil (~450 °C)."
+        "Al punt d'inflamació s'encén espontàniament sense font externa; al de combustió necessita una espurna contínua; i a l'autoignició només crema de manera incandescent sense flama.",
+        "El punt de combustió és sempre inferior al punt d'inflamació en tots els hidrocarburs líquids i requereix una concentració d'oxigen superior al 25% per mantenir-se.",
+        "La gasolina té un punt d'autoignició molt més baix (~100 °C) que el gasoil (~450 °C) perquè el seu punt d'inflamació també és més baix (-40 °C)."
       ],
       correctIndex: 0,
       explanation: "Flash Point = s'encén amb flama externa però s'apaga si la retires. Fire Point = uns graus per sobre, manté la combustió ≥ 5 s sense la font. Autoignició = s'encén espontàniament sense font externa (gasoil ~220 °C < gasolina ~280 °C)."

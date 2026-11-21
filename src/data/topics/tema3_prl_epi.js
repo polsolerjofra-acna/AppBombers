@@ -217,13 +217,13 @@ export const tema3PrlEpi = {
   quiz: [
     {
       id: 't3-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Com s\'aplica l\'article 3.2 de la Llei 31/1995 (LPRL) als serveis de bombers i protecció civil?',
       options: [
         'Exclou per raó de la situació les activitats operatives en casos de greu risc, catàstrofe i calamitat pública, tot i que la llei ha d\'inspirar la normativa',
-        'Exclou de manera absoluta i permanent tot el cos de bombers de qualsevol prevenció',
-        'Només s\'aplica als bombers voluntaris i no als funcionaris',
-        'Obliga a imposar multes econòmiques directes al parc de bombers en cas d\'accident'
+        'Exclou de manera absoluta i permanent tot el col·lectiu de bombers i protecció civil de qualsevol obligació preventiva regulada a la llei',
+        'Només s\'aplica als bombers voluntaris i col·laboradors ocasionals en activitats formatives, però mai als funcionaris de carrera en guàrdia ordinària',
+        'Obliga a imposar sancions econòmiques directes al cap de parc i a l\'entitat pública quan es produeixi un accident en acte de servei operatiu'
       ],
       correctIndex: 0,
       explanation: 'L\'art. 3.2 exclou la situació concreta de greu risc, catàstrofe i calamitat pública, no el col·lectiu de manera absoluta.'
@@ -312,9 +312,9 @@ export const tema3PrlEpi = {
       question: 'Segons la Guia Tècnica de l\'INSST, quina característica tenen els ancoratges per a treballs en alçada que SÍ es consideren EPI?',
       options: [
         'Només els ancoratges provisionals/mòbils de tipus B i tipus E; força de xoc limitada a 6 kN',
-        'Els ancoratges fixos de tipus A, C i D; força de xoc limitada a 12 kN',
-        'Tots els ancoratges de la classe A a la E indistintament',
-        'La Guia Tècnica de l\'INSST té rang de Llei Orgànica vinculant'
+        'Els ancoratges estructurals fixos de tipus A, C i D; força de xoc limitada a 12 kN màxims',
+        'Tots els dispositius d\'ancoratge de les classes A a la E indistintament si porten marcatge CE',
+        'Els ancoratges de tipus A i B únicament, regulats per la Guia INSST amb rang de Llei Orgànica'
       ],
       correctIndex: 0,
       explanation: 'Només els tipus B i E són EPI (A, C, D són dispositius fixos estructurals), el límit de força de xoc anticaigudes és 6 kN i la Guia INSST no és vinculant.'
@@ -325,9 +325,9 @@ export const tema3PrlEpi = {
       question: 'Quin senyal de seguretat indica l\'ús obligatori d\'un EPI i quina condició cromàtica ha de complir?',
       options: [
         'Forma rodona, pictograma blanc sobre fons blau (que ocupi com a mínim el 50% del senyal)',
-        'Forma triangular, pictograma negre sobre fons groc',
-        'Forma quadrada verda amb text "usar només en cas d\'emergència"',
-        'Forma rodona vermella amb franja diagonal'
+        'Forma triangular, pictograma negre sobre fons groc (que ocupi com a mínim el 50% del senyal)',
+        'Forma quadrada o rectangular, pictograma blanc sobre fons verd (d\'ús obligatori en emergències)',
+        'Forma rodona, pictograma negre sobre fons blanc amb vora i franja diagonal de color vermell'
       ],
       correctIndex: 0,
       explanation: 'Obligació = rodona blanca sobre blau (≥ 50% blau). El color verd correspon als senyals d\'emergència/salvament.'
@@ -338,9 +338,9 @@ export const tema3PrlEpi = {
       question: 'Quan NO s\'han d\'utilitzar guants de protecció mecànica prop de màquines amb parts mòbils segons la Guia Tècnica INSST?',
       options: [
         'Quan tinguin una resistència a l\'esquinçament igual o superior a 1, pel risc d\'atrapament',
-        'Quan tinguin resistència a la perforació d\'agulles hipodèrmiques',
-        'Quan protegeixin fins a temperatures de -50 °C',
-        'Sempre que portin marcatge CE de Categoria II'
+        'Quan tinguin resistència certificada a la perforació per punxada d\'agulles hipodèrmiques',
+        'Quan estiguin certificats per protegir contra baixes temperatures inferiors a -50 °C',
+        'Sempre que disposin de marcatge CE de Categoria II per a riscos mecànics intermedis'
       ],
       correctIndex: 0,
       explanation: 'Amb parts mòbils, un guant massa resistent a l\'esquinçament (≥ 1) no es trenca si s\'enganxa i pot arrossegar la mà cap a la màquina.'
@@ -377,9 +377,9 @@ export const tema3PrlEpi = {
       question: 'Quin règim sancionador s\'aplica a les Administracions Públiques quan incompleixen la normativa de PRL segons l\'article 45 de la LPRL?',
       options: [
         'S\'imposen mesures correctores (requeriments), però NO multes o sancions econòmiques; a més, els arts. 46–52 de la LPRL estan derogats',
-        'S\'imposen les mateixes multes econòmiques que a les empreses privades segons els arts. 46–52 de la LPRL',
-        'S\'ordena el tancament definitiu del centre de treball públic',
-        'Només s\'apliquen sancions econòmiques si hi ha un Comitè de Seguretat i Salut'
+        'S\'imposen les mateixes multes econòmiques que a les empreses privades d\'acord amb l\'escala dels arts. 46–52 vigents de la LPRL',
+        'S\'ordena el tancament definitiu del centre de treball públic fins a l\'execució total de les mesures correctores per l\'òrgan gestor',
+        'Només s\'apliquen sancions econòmiques directes si el centre públic té constituït un Comitè de Seguretat i Salut paritari'
       ],
       correctIndex: 0,
       explanation: 'Art. 45 LPRL: a les AAPP no se\'ls imposen multes econòmiques sinó mesures correctores. Els arts. 46–52 van quedar derogats en passar a la LISOS.'
@@ -390,9 +390,9 @@ export const tema3PrlEpi = {
       question: 'Quines són les 3 excepcions en què la vigilància de la salut (art. 22 LPRL) deixa de ser voluntària per al treballador?',
       options: [
         'Quan sigui imprescindible per avaluar efectes sobre la salut, per verificar si l\'estat del treballador pot ser un perill per a ell o tercers, o quan ho estableixi una disposició legal',
-        'Sempre que ho demani el delegat sindical, el cap de parc o cada 6 mesos per defecte',
-        'Únicament en empreses de més de 500 treballadors o en treballs administratius',
-        'La vigilància de la salut és sempre voluntària sense cap excepció'
+        'Sempre que ho sol·liciti el delegat de prevenció, el cap de servei per sospita d\'aptitud o bé amb caràcter general cada 6 mesos per defecte',
+        'Únicament en centres de treball de més de 500 treballadors, en activitats administratives de risc baix o per acord unilateral de la direcció',
+        'La vigilància de la salut és sempre estrictament voluntària per al treballador i no admet cap excepció legal ni reglamentària en cap sector'
       ],
       correctIndex: 0,
       explanation: 'L\'art. 22.1 LPRL fixa aquestes 3 excepcions taxades (sempre amb informe previ dels representants dels treballadors), i l\'empresa només rep conclusions d\'aptitud.'

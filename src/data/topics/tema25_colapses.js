@@ -205,26 +205,26 @@ export const tema25Colapses = {
   quiz: [
     {
       id: 't30-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Segons el Capítol 6.5 del manual MAN.SVES.000, quin és el senyal acústic d’emergència que ordena EVACUAR IMMEDIATAMENT l’estructura col·lapsada i quin ordena ATURAR OPERACIONS / SILENCI?',
       options: [
-        'Evacuar: 1 toc llarg de 3 s | Aturar: 3 tocs curts d’1 s.',
+        'Evacuar immediatament: 1 toc llarg (de 3 segons) | Aturar operacions / Silenci: 3 tocs curts (d’1 segon cadascun).',
         'Evacuar immediatament: 3 tocs curts (d’1 segon cadascun) | Aturar operacions / Silenci: 1 toc llarg (de 3 segons).',
-        'Evacuar: 1 toc llarg + 1 toc curt | Aturar: 2 tocs llargs.',
-        'Evacuar: sirena contínua de 2 minuts.'
+        'Evacuar immediatament: 1 toc llarg (de 3 segons) + 1 toc curt | Aturar operacions / Silenci: 2 tocs llargs (de 3 segons).',
+        'Evacuar immediatament: tocs curts repetitius continus sense pausa | Aturar operacions / Silenci: 2 tocs curts (d’1 segon).'
       ],
       correctIndex: 1,
       explanation: 'Taula 6.5 del manual: Evacuar = 3 tocs curts (1 s cadascun); Aturar operacions = 1 toc llarg (3 s); Continuar operacions = 1 toc llarg (3 s) + 1 toc curt; SOS = tocs curts repetitius continus.'
     },
     {
       id: 't30-q2',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'En un apuntalament d’emergència (Cap. 4 del manual MAN.SVES.000), quina és la distància màxima permesa entre puntals i quina resistència màxima de càrrega es considera per a cada puntal?',
       options: [
-        'Distància màxima: 2,5 metres | Resistència: 5.000 kg per puntal.',
+        'Distància màxima entre puntals: ≤ 2 metres (no pot superar els 2 metres) | Resistència màxima considerada: 2.500 kg (2,5 tones) per puntal.',
         'Distància màxima entre puntals: ≤ 1 metre (no pot superar el metre) | Resistència màxima considerada: 1.000 kg (1 tona) per puntal.',
-        'Distància màxima: 50 cm | Resistència: 200 kg per puntal.',
-        'Distància màxima: 3 metres | Resistència: 10 tones per puntal.'
+        'Distància màxima entre puntals: ≤ 0,5 metres (no pot superar els 50 cm) | Resistència màxima considerada: 500 kg (0,5 tones) per puntal.',
+        'Distància màxima entre puntals: ≤ 1,5 metres (no pot superar el metre i mig) | Resistència màxima considerada: 3.000 kg (3 tones) per puntal.'
       ],
       correctIndex: 1,
       explanation: 'Segons el Capítol 4 del manual MAN.SVES.000, la distància entre puntals no ha de superar 1 metre i es calcula una capacitat portant segura de 1.000 kg (1 tona) per cada puntal.'
@@ -234,10 +234,10 @@ export const tema25Colapses = {
       difficulty: 'Mitjà',
       question: 'Quines són les 3 parts fonamentals d’un apuntalament vertical ordenades de DALT a BAIX i quina funció compleix cadascuna?',
       options: [
-        '1. Jaç de taulons (dalt) → 2. Tornapunta (mig) → 3. Sotapont (baix).',
+        '1. Jaç de taulons (a dalt, recull la càrrega del sostre) → 2. Tornapuntes (al mig, transmeten l’empenta) → 3. Sotapont (a baix, reparteix la càrrega al terra).',
         '1. Sotapont (a dalt, recull la càrrega) → 2. Puntals (al mig, traslladen la càrrega) → 3. Jaç de taulons (a baix sobre el terra, reparteix la càrrega).',
-        '1. Biga → 2. Jàssera → 3. Sabata.',
-        '1. Falca → 2. Puntal → 3. Pilastra.'
+        '1. Solera (a dalt, fixa els puntals al forjat) → 2. Estampidors (al mig, suporten la compressió) → 3. Sotapont (a baix, evita el punxonament del terra).',
+        '1. Falques contraposades (a dalt, ajusten l’alçada) → 2. Jàssera (al mig, rebrà l’esforç) → 3. Sabata metàl·lica (a baix, absorbeix l’empenta lateral).'
       ],
       correctIndex: 1,
       explanation: 'Apartat 4.2 del manual: el Sotapont (superior) recull la càrrega de l’element danyat; els Puntals (verticals) la traslladen; i el Jaç de taulons (inferior) la reparteix al terra.'
@@ -260,10 +260,10 @@ export const tema25Colapses = {
       difficulty: 'Mitjà',
       question: 'A quina distància mínima de seguretat s’han d’emplaçar els vehicles d’emergència en arribar a una estructura amb risc de col·lapse segons l’apartat 6.1?',
       options: [
-        'Just davant de la porta principal de l’edifici.',
+        'A una distància mínima d’1 vegada l’alçada de l’edifici (1 × h) o a la façana contigua, situant-los preferentment a la part baixa del pendent per facilitar l’accés.',
         'A una distància mínima de 2 vegades l’alçada de l’edifici (2 × h) o a una distància mínima de dues edificacions no afectades (i sempre a la part alta del pendent).',
-        'A 5 metres de la façana.',
-        'A 500 metres en tots els casos.'
+        'A una distància fixa mínima de 15 metres de la façana principal, sempre en línia perpendicular al carrer encara que hi hagi risc de projecció de runa.',
+        'A una distància mínima d’1,5 vegades l’alçada de l’edifici (1,5 × h) o d’una edificació no afectada, mantenint els motors engegats a sotavent de l’estructura.'
       ],
       correctIndex: 1,
       explanation: 'Els vehicles s’han d’ubicar a la part alta del pendent i a una distància mínima de 2 × h (dues vegades l’alçada de l’edificació) o superant dues edificacions sanes.'
@@ -273,10 +273,10 @@ export const tema25Colapses = {
       difficulty: 'Fàcil',
       question: 'En quin any es va constituir oficialment el GREC (Grup de Recolzament en Estructures Col·lapsades) als Bombers de la Generalitat i quins dos terratrèmols històrics van motivar la creació d’INSARAG?',
       options: [
-        'GREC: 1997 | Terratrèmols de Lisboa i San Francisco.',
+        'GREC: 1997 (amb certificació INSARAG el 2010) | Terratrèmols de Lisboa (1969) i San Francisco (1989).',
         'GREC: 2021 (amb procés de certificació STRAC el 2025) | Terratrèmols de Mèxic (1985) i Armènia (1988).',
-        'GREC: 2010 | Terratrèmols d’Haití i Japó.',
-        'GREC: 2007 | Terratrèmol de Lorca.'
+        'GREC: 2011 (arran de la creació del GRAE urbà) | Terratrèmols d’Haití (2010) i Fukushima (2011).',
+        'GREC: 2007 (integrat al Grup de Riscos Tecnològics) | Terratrèmols d’Itàlia (2009) i Lorca (2011).'
       ],
       correctIndex: 1,
       explanation: 'Capítol 1 del manual MAN.SVES.000: INSARAG neix arran dels terratrèmols de Mèxic (1985) i Armènia (1988), i el GREC es constitueix oficialment a Bombers de la Generalitat l’any 2021.'
@@ -286,23 +286,23 @@ export const tema25Colapses = {
       difficulty: 'Mitjà',
       question: 'En el sistema de marcatge INSARAG de víctimes sobre una estructura col·lapsada, què indiquen la lletra "V" (de 50 cm), els codis "L - 2", "D - 1" i un rombe amb una "C" (Clear)?',
       options: [
-        'V = Vehicle; L = Lleu; D = Desaparegut; C = Col·lapse.',
+        'V = Vehicle sepultat; L - 2 = 2 víctimes Lleus (Low); D - 1 = 1 víctima Desapareguda (Disappeared); C = Col·lapse estructural imminent (Collapse).',
         'V = ubicació de víctima potencial; L - 2 = 2 víctimes Vives confirmades (Live); D - 1 = 1 víctima Morta confirmada (Dead); C = Clear (totes les víctimes ja han estat evacuades).',
-        'V = Verd; L = Lliure; D = Dins; C = Calent.',
-        'Indiquen el nombre de plantes de l’edifici.'
+        'V = Zona Verda segura; L - 2 = 2 nivells de runa Lliures; D - 1 = 1 cavitat Dins l’estructura; C = Zona Calenta sense accés per als equips de rescat.',
+        'V = Via d’accés apuntalada; L - 2 = 2 línies de vida actives; D - 1 = 1 detector sísmic col·locat; C = Edifici Controlat per a desenrunament mecànic.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 5.2 del manual: V (50 cm) assenyala el punt de víctimes; L-n indica vives (Live); D-n indica mortes (Dead); es ratlla en extreure-les i es tanca amb C (Clear) quan s’ha buidat el punt.'
     },
     {
       id: 't30-q8',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quina maniobra olfactiva utilitzen els gossos de recerca (GRCR) en estructures col·lapsades i quina condició ha de complir la zona calenta?',
       options: [
-        'Maniobra de rastreig amb corretja curta i 20 bombers caminant al costat.',
+        'Maniobra de RASTREIG amb corretja curta seguint la petjada directa sobre la runa, amb un binomi de bombers avançant al costat per assegurar el guia caní.',
         'Maniobra de VENTEIG (detecció del con d’olor humana dispers a l’aire que surt d’entre la runa), amb la zona en silenci i LLIURE de personal per no contaminar l’olor.',
-        'Maniobra aquàtica.',
-        'Només s’utilitzen gossos quan ja s’ha retirat tota la runa amb excavadores.'
+        'Maniobra de MARCATGE PASSIU amb manteniment dels equips de generació elèctrica engegat perquè el flux d’aire dels ventiladors orienti l’olor cap al gos.',
+        'Maniobra de SONDEIG PROHIBIDA en estructures col·lapsades: els gossos del GRCR només s’utilitzen un cop les retroexcavadores han retirat els forjats superiors.'
       ],
       correctIndex: 1,
       explanation: 'En estructures col·lapsades (apartat 3.3), els gossos treballen per VENTEIG (olor en l’aire) i cal retirar el personal de la zona calenta perquè els gossos no marquin els mateixos bombers.'
@@ -312,10 +312,10 @@ export const tema25Colapses = {
       difficulty: 'Fàcil',
       question: 'Quin senyal acústic indica als equips de rescat que poden CONTINUAR o REPRENDRE les operacions després d’una parada?',
       options: [
-        '3 tocs curts.',
+        '3 tocs curts (d’1 segon cadascun) repetits en sèries de dos: [ ▄  ▄  ▄ ].',
         '1 toc llarg (de 3 segons) seguit d’1 toc curt (d’1 segon): [ ▄▄▄▄  ▄ ].',
-        '1 sol toc llarg de 3 segons.',
-        'Tocs curts repetitius continus.'
+        '1 sol toc llarg (de 3 segons) sense tocs curts posteriors: [ ▄▄▄▄ ].',
+        'Tocs curts repetitius continus durant 10 segons: [ ▄  ▄  ▄  ▄ ... ].'
       ],
       correctIndex: 1,
       explanation: '1 toc llarg (3 s) + 1 toc curt indica "Continuar / Reprendre operacions".'
@@ -325,10 +325,10 @@ export const tema25Colapses = {
       difficulty: 'Fàcil',
       question: 'Quins aparells s’utilitzen en la Fase 2 de Recerca Instrumentalitzada per detectar mínimes vibracions o cops de víctimes sepultades sota metres de runa?',
       options: [
-        'Els explosímetres i anemòmetres.',
+        'Els explosímetres catalítics de %LII, els anemòmetres de paleta i els detectors multigas PID.',
         'Els GEÒFONS (sensors sísmics i acústics d’alta sensibilitat) i les càmeres endoscòpiques o de pèrtiga.',
-        'Els dosímetres de radiació.',
-        'Els higròmetres.'
+        'Els dosímetres personals de radiació ionitzant i els espectròmetres portàtils de masses (FTIR).',
+        'Els higròmetres ambientals, les brúixoles digitals de precisió i els inclinòmetres làser manuals.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 3.2 del manual: la recerca instrumentalitzada empra geòfons (detecció acústica/sísmica de vibracions) i càmeres de cerca visual en cavitats.'
@@ -338,10 +338,10 @@ export const tema25Colapses = {
       difficulty: 'Difícil',
       question: 'En una intervenció en un edifici d’habitatges de 4 plantes (PB + 3), la jàssera principal de la planta 2 presenta una fissura greu amb fletxa evident i risc de col·lapse secundari. Quina actuació operativa és IMPRESCINDIBLE en muntar l’apuntalament vertical?',
       options: [
-        'Apuntalar únicament la planta 2 recolzant els puntals directament sobre el forjat d’aquesta planta sense element repartidor.',
+        'Apuntalar únicament la planta 2 recolzant els puntals directament sobre el forjat d’aquesta planta sense element repartidor, ja que el formigó armat absorbeix la càrrega puntual.',
         'Apuntalar la jàssera afectada a la planta 2 i replicar l’apuntalament a totes les plantes inferiors (planta 1 i planta baixa) fins a transmetre la càrrega als fonaments o terreny ferm.',
-        'Col·locar puntals només a la planta 3 (per sobre de la jàssera) per penjar-la del forjat de coberta.',
-        'Aplicar força amb els puntals telescòpics fins a retornar la jàssera a la seva cota original abans que arribin els tècnics municipals.'
+        'Col·locar puntals només a la planta 3 (per sobre de la jàssera danyada) per suspendre-la mitjançant eslingues des del forjat de coberta i evitar sobrecarregar la planta 1.',
+        'Aplicar força hidràulica amb els puntals telescòpics fins a retornar la jàssera a la seva cota horitzontal original abans que arribin els tècnics municipals a inspeccionar-la.'
       ],
       correctIndex: 1,
       explanation: 'Quan s’apuntala una jàssera o forjat en una planta elevada, el forjat inferior no sol estar dimensionat per suportar una càrrega puntual transmesa des de dalt; per això cal continuar apuntalant totes les plantes inferiors fins arribar a planta baixa / fonaments.'
@@ -374,13 +374,13 @@ export const tema25Colapses = {
     },
     {
       id: 't30-q14',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Durant una fase de recerca instrumentalitzada amb geòfons en una estructura col·lapsada, el comandament ordena aturada total i silenci absolut, i al cap de 4 minuts autoritza reprendre els treballs. Quins avisos sonors (codi INSARAG) corresponen a cadascuna de les dues ordres?',
       options: [
         'Aturada total / silenci: seqüència "1 i 3" (1 toc llarg de 3 segons) | Reprendre treballs: seqüència "1 i 1" (1 toc llarg de 3 segons + 1 toc curt d’1 segon).',
-        'Aturada total / silenci: 3 tocs curts ("3 i 1") | Reprendre treballs: 2 tocs llargs ("2 i 3").',
-        'Aturada total / silenci: seqüència "1 i 1" | Reprendre treballs: seqüència "1 i 3".',
-        'Aturada total / silenci: tocs curts continus sense pausa | Reprendre treballs: 3 tocs curts d’1 segon.'
+        'Aturada total / silenci: seqüència "3 i 1" (3 tocs curts d’1 segon) | Reprendre treballs: seqüència "2 i 3" (2 tocs llargs de 3 segons cadascun).',
+        'Aturada total / silenci: seqüència "1 i 1" (1 toc llarg de 3 segons + 1 toc curt d’1 segon) | Reprendre treballs: seqüència "1 i 3" (1 toc llarg de 3 segons).',
+        'Aturada total / silenci: tocs curts repetitius continus sense pausa | Reprendre treballs: 3 tocs curts d’1 segon separats per una pausa breu.'
       ],
       correctIndex: 0,
       explanation: 'Al codi acústic INSARAG: "1 i 3" (1 toc llarg de 3 s) ordena aturada total de treballs i silenci; "1 i 1" (1 toc llarg de 3 s + 1 toc curt d’1 s) ordena reprendre les operacions; 3 tocs curts d’1 s ordenen evacuació immediata.'
@@ -390,10 +390,10 @@ export const tema25Colapses = {
       difficulty: 'Difícil',
       question: 'En una intervenció per esfondrament parcial d’un edifici amb possibles víctimes atrapades sota runa, quin és l’ordre seqüencial d’actuació operativa correcte abans d’iniciar el desenrunament pesat?',
       options: [
-        'Entrar directament amb retroexcavadores pesants per retirar la runa, fer sondeig caní al final i marcar amb una "C" totes les parets exteriors.',
+        'Entrar directament amb retroexcavadores pesants per retirar la runa superficial, emplaçar els camions a la façana per facilitar el desenrunament, fer sondeig caní al final i marcar amb una "C" totes les parets exteriors.',
         'Emplaçar vehicles fora de la zona de risc (≥ 2 × h), assegurar subministraments i estabilitzar riscos imminents, fer la recerca en silenci (crida i escolta / geòfons / gossos per venteig), marcar segons INSARAG i obrir corredors apuntalats fins a les víctimes.',
-        'Pintar immediatament "L-1" i "C" a la façana abans de confirmar víctimes, fer soroll amb generadors per despertar els atrapats i situar els camions davant la porta.',
-        'Apuntalar primer els murs sans exteriors amb tornapuntes a 15° i fer la recerca canina amb tot el personal dins la zona calenta.'
+        'Pintar immediatament "L-1" i "C" a la façana principal abans de confirmar víctimes, mantenir els grups electrògens engegats per il·luminar el perímetre i situar els vehicles lleugers dins l’edificació contigua.',
+        'Apuntalar primer els murs sans exteriors amb tornapuntes a 15°, fer la recerca canina per rastreig amb tot el personal dins la zona calenta i esperar els tècnics municipals abans de tallar el gas i l’electricitat.'
       ],
       correctIndex: 1,
       explanation: 'La seqüència operativa estableix: zonatge i emplaçament segur (≥ 2 × h), tall de subministraments i estabilització inicial, recerca en silenci (física, instrumentalitzada i canina per venteig), senyalització INSARAG i accés segur mitjançant apuntalaments consolidats.'
@@ -403,10 +403,10 @@ export const tema25Colapses = {
       difficulty: 'Mitjà',
       question: 'Quin tipus d’apuntalament s’utilitza per contenir les dues parets paral·leles d’una rasa o excavació, i quin per estabilitzar una façana exterior amb risc de bolcada cap al carrer?',
       options: [
-        'Rasa = Apuntalament inclinat a 15° | Façana = Jaç de taulons sense puntals.',
+        'Rasa = Apuntalament inclinat amb tornapuntes a 15° sobre el fons | Façana = Jaç de taulons horitzontal sense puntals verticals ni inclinats.',
         'Rasa = Apuntalament horitzontal (estampidor) que transmet l’empenta d’un mur a l’altre | Façana = Apuntalament inclinat o oblic amb tornapuntes formant un angle òptim de 45° a 60° amb el terra.',
-        'Tots dos casos es resolen amb puntals verticals separats 3 metres.',
-        'Rasa = Sotapont vertical | Façana = Apuntalament horitzontal (estampidor) a 90°.'
+        'Rasa = Apuntalament vertical amb sotaponts i puntals separats 3 metres | Façana = Apuntalament vertical aplomat a 90° arran de vorera.',
+        'Rasa = Sotapont vertical amb falques contraposades a la base | Façana = Apuntalament horitzontal (estampidor) ancorat a 90° contra la calçada.'
       ],
       correctIndex: 1,
       explanation: 'L’apuntalament horitzontal (estampidor) conté dues parets paral·leles o d’una rasa; l’apuntalament inclinat/oblic amb tornapuntes a 45°–60° estabilitza façanes o murs amb risc de bolcada.'

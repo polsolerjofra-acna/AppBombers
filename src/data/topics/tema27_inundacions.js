@@ -207,13 +207,13 @@ export const tema27Inundacions = {
   quiz: [
     {
       id: 't34-q1',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Segons la taula de l’apartat 2.4 del manual MAN.SVMN.001, quina és la probabilitat anual que es produeixi una inundació de Període de Retorn T = 10 anys, T = 50 anys, T = 100 anys i T = 500 anys?',
       options: [
-        'T10: 90% | T50: 50% | T100: 10% | T500: 5%.',
+        'T10: 20% anual | T50: 5% anual | T100: 2% anual | T500: 0,5% anual.',
         'T10: 10% anual | T50: 2% anual | T100: 1% anual | T500: 0,2% anual.',
-        'T10: 1% | T50: 5% | T100: 10% | T500: 50%.',
-        'Totes tenen una probabilitat del 50% cada any.'
+        'T10: 1% anual | T50: 5% anual | T100: 10% anual | T500: 50% anual.',
+        'T10: 10% anual | T50: 50% anual | T100: 1% anual | T500: 0,5% anual.'
       ],
       correctIndex: 1,
       explanation: 'La probabilitat anual és P = (1 / T) × 100: T10 = 10%, T50 = 2%, T100 = 1% i T500 = 0,2%.'
@@ -223,36 +223,36 @@ export const tema27Inundacions = {
       difficulty: 'Mitjà',
       question: 'Quins són els llindars baix i alt del Servei Meteorològic de Catalunya (SMC) per emetre avís SMP per INTENSITAT de pluja (en 30 minuts) i per ACUMULACIÓ de pluja (en 24 hores)?',
       options: [
-        'Intensitat 30 min: > 5 mm / > 10 mm | Acumulació 24 h: > 20 mm / > 40 mm.',
+        'Intensitat en 30 min: Llindar baix > 10 mm i Llindar alt > 20 mm | Acumulació en 24 h: Llindar baix > 50 mm i Llindar alt > 100 mm.',
         'Intensitat en 30 min: Llindar baix > 20 mm i Llindar alt > 40 mm | Acumulació en 24 h: Llindar baix > 100 mm i Llindar alt > 200 mm.',
-        'Intensitat 30 min: > 100 mm | Acumulació 24 h: > 500 mm.',
-        'Intensitat 30 min: > 50 mm / > 100 mm | Acumulació 24 h: > 300 mm / > 600 mm.'
+        'Intensitat en 30 min: Llindar baix > 30 mm i Llindar alt > 60 mm | Acumulació en 24 h: Llindar baix > 150 mm i Llindar alt > 300 mm.',
+        'Intensitat en 30 min: Llindar baix > 40 mm i Llindar alt > 80 mm | Acumulació en 24 h: Llindar baix > 200 mm i Llindar alt > 400 mm.'
       ],
       correctIndex: 1,
       explanation: 'Capítol 3 del manual MAN.SVMN.001: Intensitat en 30 minuts = baix > 20 mm i alt > 40 mm; Acumulació en 24 hores = baix > 100 mm i alt > 200 mm.'
     },
     {
       id: 't34-q3',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Segons el Capítol 5.1 del manual MAN.SVMN.001, quins són els 3 límits de seguretat que NO han d’ultrapassar mai els rescatadors NO especialitzats (dotacions de parc no GRAE) en medi aquàtic?',
       options: [
-        'No entrar si l’aigua fa més de 50 cm de fondària.',
+        'Evitar entrar al mar amb onatge > 1,25 m (a partir de Forta Maror, Grau 4 Douglas), evitar entrar en rius d’aigües braves de Grau > 2 i no entrar a l’aigua si la profunditat supera els 80 cm.',
         'Evitar entrar al mar amb onatge > 2,5 m (a partir de Maregassa, Grau 5 Douglas), evitar entrar en rius d’aigües braves de Grau > 3 i no entrar a l’aigua per fer maniobres de desembossament.',
-        'Evitar entrar al mar amb onatge > 6 m i en rius de Grau > 6.',
-        'Poden entrar en qualsevol estat de la mar si porten corda.'
+        'Evitar entrar al mar amb onatge > 4,0 m (a partir de Mar Gruixuda, Grau 6 Douglas), evitar entrar en rius d’aigües braves de Grau > 4 i no entrar a l’aigua en horari nocturn sense focus.',
+        'Poden entrar en qualsevol estat de la mar fins a Grau 6 i en rius de Grau 5 sempre que portin armilla de flotació, casc aquàtic i estiguin assegurats amb corda fixa a la cintura.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 5.1 del manual: els rescatadors no especialitzats han d’evitar entrar a l’aigua amb onatge al mar > 2,5 m (Grau 4 Forta Maror és el límit: 1,25–2,5 m), en rius de grau > 3 o en maniobres de desembossament.'
     },
     {
       id: 't34-q4',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'De les 3 categories de maniobres de rescat aquàtic (Indirectes, Directes i Combinades), quines són sempre les PRIORITÀRIES i com s’ha de subjectar la corda en una maniobra combinada?',
       options: [
-        'Les Directes són prioritàries; en les combinades es lliga la corda amb un nus de vuit fix a la cintura del bomber.',
+        'Les DIRECTES (nedant directament fins a la víctima) són sempre les prioritàries per guanyar temps; en les Combinades la corda es lliga amb un nus de vuit fix a la cintura del bomber per evitar perdre la línia.',
         'Les INDIRECTES (des de fora de l’aigua: bossa de corda, perxa, AEA) són sempre les prioritàries; en les Combinades la corda ha d’anar connectada al sistema DESEMBRAGABLE (zafada ràpida) de l’armilla o a un cap flotant.',
-        'Les Combinades amb EPI de foc complet.',
-        'Les Directes sense armilla per nedar més ràpid.'
+        'Les COMBINADES (amb EPI estructural d’incendi complet per protegir-se dels cops contra roques) són sempre les prioritàries; la corda s’ancora amb un nus ballestrinca al talús exterior del riu.',
+        'Les DIRECTES sense armilla de flotació (per reduir la resistència hidrodinàmica i nedar més ràpid) són prioritàries en corrent fort; en les Combinades es fixa la corda a l’anella dorsal anticaigudes de l’arnés.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 4.4 del manual: les maniobres indirectes són prioritàries perquè no exposen cap bomber dins del corrent; en les combinades la subjecció ha de ser sempre desembragable.'
@@ -262,10 +262,10 @@ export const tema27Inundacions = {
       difficulty: 'Mitjà',
       question: 'Com es subdivideix la Zona Calenta en una intervenció de rescat aquàtic segons l’apartat 5.4 del manual MAN.SVMN.001?',
       options: [
-        'En Zona de Foc i Zona de Fum.',
+        'En Zona de Corrent Principal (el tram central navegable amb embarcació) i Zona d’Esgotament (on s’instal·len les bombes de llots per drenar les rieres).',
         'En Zona d’Aigua (o crítica, la llera inundada) i Zona Humida (els marges i riberes amb risc de caiguda a l’aigua, on ja és obligatori l’EPI aquàtic i prohibit l’EPI de foc).',
-        'En Primer Cercle i Segon Cercle.',
-        'En Zona Nord i Zona Sud.'
+        'En Primer Cercle de Seguretat (operat pels Mossos d’Esquadra a la llera) i Segon Cercle de Seguretat (operat per Bombers a la zona seca).',
+        'En Zona de Guaita (aigües amunt del punt d’impacte, sense necessitat d’EPI aquàtic) i Zona de Recuperació (aigües avall, on s’espera el SEM).'
       ],
       correctIndex: 1,
       explanation: 'Apartat 5.4: la Zona Calenta aquàtica comprèn tant la Zona d’Aigua (crítica) com la Zona Humida (franja de ribera propera amb risc de relliscada o esfondrament).'
@@ -275,23 +275,23 @@ export const tema27Inundacions = {
       difficulty: 'Fàcil',
       question: 'En un meandre (corba) d’un riu crescut, quina part de la corba pateix la màxima velocitat, erosió i risc de col·lapse del marge sota els peus dels bombers o dels vehicles?',
       options: [
-        'La part interior de la corba.',
+        'La part INTERIOR de la corba del meandre.',
         'La part EXTERIOR de la corba del meandre.',
-        'El centre exacte del riu.',
-        'En un meandre no hi ha erosió.'
+        'El centre exacte de la llera del meandre.',
+        'Tots dos marges per igual sense diferència.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 2.3 del manual: per força centrífuga el corrent colpeja i soscava la part exterior de la corba del meandre, podent fer cedir el talús.'
     },
     {
       id: 't34-q7',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'En el dispositiu de seguretat d’un rescat en riu, on s’ubica el bomber GUAITA i on s’ubica l’equip de SEGURETAT amb bosses de rescat?',
       options: [
-        'Tots dos s’ubiquen aigües avall.',
+        'Tots dos equips s’ubiquen AIGÜES AVALL del punt de rescat per interceptar alhora tant la víctima com els troncs flotants arrossegats pel corrent.',
         'El Guaita s’ubica AIGÜES AMUNT (per alertar d’objectes flotants o crescudes) i l’equip de Seguretat s’ubica AIGÜES AVALL (per recuperar qualsevol rescatador o víctima arrossegada).',
-        'El Guaita s’ubica aigües avall i la seguretat aigües amunt.',
-        'Tots dos dins de l’aigua.'
+        'El Guaita s’ubica AIGÜES AVALL (per controlar la deriva dels rescatadors) i l’equip de Seguretat s’ubica AIGÜES AMUNT (per llançar bosses a favor de corrent).',
+        'Tots dos equips s’ubiquen dins de l’aigua ancorats al centre de la llera amb cordes fixes per reduir la distància de llançament cap al rescatador.'
       ],
       correctIndex: 1,
       explanation: 'Capítol 5 del manual: Guaita sempre aigües amunt i línia de seguretat/recuperació sempre aigües avall del punt de treball.'
@@ -301,23 +301,23 @@ export const tema27Inundacions = {
       difficulty: 'Mitjà',
       question: 'Quin percentatge dels desastres naturals mundials representen les inundacions i quin va ser l’episodi més mortífer de la història contemporània a Catalunya citat al Capítol 1?',
       options: [
-        'El 10%; els aiguats de 2019.',
+        'Aproximadament el 15% dels desastres naturals mundials; els aiguats del novembre de 2019 a les comarques de Tarragona i Lleida.',
         'Més del 40% (> 40%) dels desastres naturals mundials; les riuades del Vallès Occidental del setembre de 1962 (amb prop de 1.000 morts).',
-        'El 80%; les inundacions de 1994.',
-        'El 5%; la riuada de 1971.'
+        'Prop del 75% (> 75%) dels desastres naturals mundials; les inundacions del Segre i del Llobregat del novembre de 1982 (amb més de 500 morts).',
+        'Al voltant del 25% dels desastres naturals mundials; la riuada del Besòs i el Maresme d’octubre de 1971 (amb prop de 400 morts).'
       ],
       correctIndex: 1,
       explanation: 'Capítol 1 del manual MAN.SVMN.001: les inundacions suposen > 40% dels desastres naturals mundials, i la catàstrofe del Vallès de 1962 va causar prop d’un miler de víctimes mortals.'
     },
     {
       id: 't34-q9',
-      difficulty: 'Fàcil',
+      difficulty: 'Mitjà',
       question: 'Quines són les 2 fases del procés de potabilització d’aigua en emergències descrites a l’apartat 4.3 del manual?',
       options: [
-        '1. Ebullició i 2. Congelació.',
+        '1. Ebullició tèrmica (eliminació de patògens per calor) i 2. Congelació ràpida (separació de sals dissoltes).',
         '1. Clarificació (eliminació de matèria en suspensió i terbolesa) i 2. Desinfecció (eliminació de microorganismes patògens).',
-        '1. Salinització i 2. Bombament.',
-        'Només s’hi tira escumogen.'
+        '1. Salinització controlada (floculació d’argiles) i 2. Bombament a pressió mitjançant turbobomba d’aigua neta.',
+        '1. Aireig forçat (eliminació de gasos dissolts) i 2. Neutralització amb escumogen sintètic de baixa expansió.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 4.3: la potabilització consta de dues etapes consecutives: 1) Clarificació i 2) Desinfecció.'
@@ -327,23 +327,23 @@ export const tema27Inundacions = {
       difficulty: 'Fàcil',
       question: 'Quins dos visors hidrològics oficials s’utilitzen a Catalunya per consultar en temps real el cabal dels rius de les conques internes i de la conca de l’Ebre?',
       options: [
-        'Google Maps i Waze.',
+        'El visor cartogràfic de l’ICGC (Institut Cartogràfic i Geològic de Catalunya) i el visor de trànsit del Servei Català de Trànsit.',
         'El visor d’aforadors de l’ACA (Agència Catalana de l’Aigua, conques internes) i el visor SAIH Ebro (conca hidrogràfica de l’Ebre).',
-        'El visor d’ADIF i el d’AENA.',
-        'Només el baròmetre del parc.'
+        'El visor d’infraestructures d’ADIF (xarxa ferroviària) i el visor meteorològic d’AENA per a conques mediterrànies.',
+        'El visor de Protecció Civil (CECAT) per a xarxes municipals i el visor exclusiu de l’SMC per a cabals subterranis.'
       ],
       correctIndex: 1,
       explanation: 'Apartat 3.3 del manual: l’ACA gestiona els aforadors de les conques internes i la CHE gestiona el sistema SAIH Ebro.'
     },
     {
       id: 't34-q11',
-      difficulty: 'Mitjà',
+      difficulty: 'Difícil',
       question: 'Durant una riuada en un meandre pronunciat amb una persona dalt d’un vehicle atrapat al marge exterior, un bomber pretén acostar-se a la vora de la riba exterior amb el jaquetó i les botes d’incendi estructural per llançar una corda. Quins dos riscos greus incompleix segons MAN.SVMN.001?',
       options: [
-        'Cap risc, perquè a la part exterior del meandre l’aigua va més lenta i el jaquetó de foc sura com una armilla.',
+        'Cap risc operatiu greu, perquè a la part exterior del meandre el corrent perd velocitat per força centrípeta i el jaquetó d’incendi estructural té càmeres d’aire que actuen com a armilla de flotació.',
         'Incompleix que a la part exterior del meandre hi ha màxima erosió i risc de col·lapse del marge sota el pes, i que a la Zona Humida està prohibit l’EPI de foc (s’amara i enfonsa) sent obligatòria l’armilla de flotació i casc.',
-        'Només incompleix l’ordre de potabilització de l’aigua.',
-        'El risc afecta únicament a la corba interior del meandre on hi ha sedimentació.'
+        'Només incompleix la distància mínima de 50 metres per llançar la bossa de rescat, ja que el risc de soscavació i col·lapse del marge afecta únicament la corba interior del meandre on s’acumulen sediments.',
+        'Incompleix únicament l’obligació de portar l’ERA posat a la Zona Humida per protegir la via aèria, atès que les botes d’incendi estructural ofereixen la màxima adherència sobre fang i talussos mullats.'
       ],
       correctIndex: 1,
       explanation: 'Doble risc clàssic: 1) la corba exterior del meandre pateix màxima velocitat, soscavació i risc d’esfondrament; 2) a la Zona Humida és obligatori portar armilla de flotació i casc, i mai EPI estructural de foc.'
@@ -353,10 +353,10 @@ export const tema27Inundacions = {
       difficulty: 'Mitjà',
       question: 'En un episodi meteorològic a Catalunya s’han registrat 45 mm de pluja en 30 minuts en una comarca del litoral, i 130 mm acumulats en 24 hores en una comarca del Pirineu. Quins llindars SMP del Servei Meteorològic de Catalunya s’han superat en cada cas?',
       options: [
-        '45 mm/30 min = Llindar baix d’intensitat | 130 mm/24 h = Llindar alt d’acumulació.',
+        '45 mm/30 min = Llindar BAIX d’intensitat (> 20 mm/30 min) | 130 mm/24 h = Llindar ALT d’acumulació (> 100 mm/24 h).',
         '45 mm/30 min = Llindar ALT d’intensitat (> 40 mm/30 min) | 130 mm/24 h = Llindar BAIX d’acumulació (> 100 mm/24 h, sense arribar a > 200 mm).',
-        'Cap dels dos supera el llindar baix de l’SMC.',
-        'Tots dos superen el llindar alt (Nivell 6).'
+        'Cap dels dos registres supera el llindar baix de l’SMC, ja que els avisos SMP s’activen a partir de 50 mm/30 min i 150 mm/24 h.',
+        'Tots dos registres superen el llindar ALT (graus 4–6 de la Matriu de Perill), ja que superen els 40 mm/30 min i els 120 mm/24 h.'
       ],
       correctIndex: 1,
       explanation: 'Intensitat en 30 min: Baix > 20 mm / Alt > 40 mm (45 mm supera el llindar alt). Acumulació en 24 h: Baix > 100 mm / Alt > 200 mm (130 mm supera el llindar baix, però no l’alt).'
@@ -406,9 +406,9 @@ export const tema27Inundacions = {
       question: 'D’acord amb l’escala de l’estat de la mar de Douglas i la graduació d’aigües braves (Cap. 5.1 de MAN.SVMN.001), quin és el límit màxim d’onatge i de grau de riu per a dotacions no especialistes (no GRAE)?',
       options: [
         'Al mar fins a Grau 4 Douglas (Forta Maror: 1,25 a 2,5 m; evitar entrar amb > 2,5 m = Grau 5 Maregassa) i en rius fins a Grau 3 (evitar Grau > 3 i maniobres de desembossament).',
-        'Al mar fins a Grau 6 Douglas (4 a 6 m) i en rius fins a Grau 5.',
-        'Al mar màxim 0,5 m (Grau 2) i en rius Grau 1 exclusivament.',
-        'No hi ha cap límit d’onatge si el bomber porta botes d’intervenció urbana.'
+        'Al mar fins a Grau 6 Douglas (Mar Gruixuda: 4 a 6 m; evitar entrar amb > 6 m = Grau 7) i en rius fins a Grau 5 (evitar únicament els salts d’aigua de Grau 6).',
+        'Al mar fins a Grau 2 Douglas (Marejol: màxim 0,5 m d’onatge) i en rius fins a Grau 1 exclusivament (aigües tranquil·les sense cap ràpid ni remolí).',
+        'Al mar fins a Grau 5 Douglas (Maregassa: 2,5 a 4 m) i en rius fins a Grau 4 sempre que el rescatador porti corda fixa a la cintura i botes d’intervenció urbana.'
       ],
       correctIndex: 0,
       explanation: 'El manual fixa com a límits per a no especialistes: al mar evitar onatge > 2,5 m (Maregassa Grau 5; topall Grau 4 Forta Maror 1,25–2,5 m), en rius evitar Grau > 3 i no entrar per desembossar (efecte sifó).'
@@ -418,10 +418,10 @@ export const tema27Inundacions = {
       difficulty: 'Fàcil',
       question: 'Dins la gestió del risc d’inundacions (Cap. 1 de MAN.SVMN.001), quin exemple correspon a una mesura NO estructural i quina és la seu del GRAE Subaquàtic?',
       options: [
-        'Mesura no estructural = construcció d’un dic de contenció | Seu GRAE Subaquàtic = Lleida.',
+        'Mesura no estructural = construcció d’un dic de contenció, esculleres i murs de defensa | Seu GRAE Subaquàtic = Lleida.',
         'Mesura no estructural = pla especial INUNCAT, cartografia de zones inundables i sistemes d’alerta meteorològica | Seu GRAE Subaquàtic = Cerdanyola del Vallès.',
-        'Mesura no estructural = bassa de laminació i canalització | Seu GRAE Subaquàtic = Valls.',
-        'Mesura no estructural = xarxa de clavegueram | Seu GRAE Subaquàtic = Olot.'
+        'Mesura no estructural = bassa de laminació, canalització de riera urbana i sobreeixidors | Seu GRAE Subaquàtic = Valls.',
+        'Mesura no estructural = ampliació de la xarxa de clavegueram, col·lectors i embornals | Seu GRAE Subaquàtic = Olot.'
       ],
       correctIndex: 1,
       explanation: 'Les mesures estructurals són obres d’enginyeria física (dics, basses, canalitzacions); les no estructurals inclouen planificació urbanística, cartografia, alertes i el pla INUNCAT. El GRAE Subaquàtic té la base a Cerdanyola.'
