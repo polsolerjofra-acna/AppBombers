@@ -38486,9 +38486,20 @@ function PracticeTestView({
     <div className="space-y-6">
       {/* Capçalera */}
       <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white via-red-50/30 to-blue-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-red-950/20 p-6 sm:p-8 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 rounded-full bg-red-100 dark:bg-red-950/60 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300">
-          <ClipboardCheck className="w-3.5 h-3.5" />
-          <span>Entrenador d&apos;Examen · SGO 2026</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="inline-flex items-center gap-2 rounded-full bg-red-100 dark:bg-red-950/60 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300">
+            <ClipboardCheck className="w-3.5 h-3.5" />
+            <span>Entrenador d&apos;Examen · SGO 2026</span>
+          </div>
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 px-3 py-1 text-xs font-extrabold text-emerald-800 dark:text-emerald-300">
+            <BarChart3 className="w-3.5 h-3.5" />
+            <span>{totalBankQuestions} preguntes generades al banc</span>
+            {answeredBankCount > 0 && (
+              <span className="opacity-80 font-bold">
+                · {answeredBankCount} fetes ({bankCoveragePct}%)
+              </span>
+            )}
+          </div>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           Pràctica de Tests i Simulacre Oficial
