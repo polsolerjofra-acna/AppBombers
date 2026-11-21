@@ -42,8 +42,12 @@ export default function HomeView({
     }
   }, []);
 
-  const dailyQuestion = React.useMemo(() => getTodayCurrentAffairsQuestion(todayISO), [todayISO]);
-  const storageKey = `bombers_daily_q_${todayISO}`;
+  const [dailyOffset, setDailyOffset] = React.useState(0);
+  const dailyQuestion = React.useMemo(
+    () => getTodayCurrentAffairsQuestion(todayISO, dailyOffset),
+    [todayISO, dailyOffset]
+  );
+  const storageKey = `bombers_daily_q_${todayISO}_${dailyQuestion.id}`;
   const [selectedDailyOpt, setSelectedDailyOpt] = React.useState(() => {
     try {
       const saved = localStorage.getItem(storageKey);
@@ -53,6 +57,15 @@ export default function HomeView({
     }
   });
 
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      setSelectedDailyOpt(saved !== null ? Number(saved) : null);
+    } catch {
+      setSelectedDailyOpt(null);
+    }
+  }, [storageKey]);
+
   const handleAnswerDaily = (optIdx) => {
     if (selectedDailyOpt !== null) return;
     setSelectedDailyOpt(optIdx);
@@ -61,7 +74,8 @@ export default function HomeView({
     } catch {}
     if (typeof onRecordQuestionOutcome === 'function') {
       const isCorrect = optIdx === dailyQuestion.correctIndex;
-      onRecordQuestionOutcome(dailyQuestion.id, isCorrect, dailyQuestion.topicId);
+      const tNum = Number(String(dailyQuestion.topicId || '').replace('tema-', '')) || null;
+      onRecordQuestionOutcome(dailyQuestion.topicId, tNum, dailyQuestion, isCorrect);
     }
   };
   const sections = [
@@ -254,15 +268,33 @@ export default function HomeView({
             <Newspaper className="w-3.5 h-3.5" />
             <span>Pregunta del Dia · {dailyQuestion.tag}</span>
           </div>
-          <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
-            {todayISO}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
+              {todayISO}
+            </span>
+            <button
+              type="button"
+              onClick={() => setDailyOffset((d) => d + 1)}
+              className="rounded-lg border border-amber-300 dark:border-amber-800 bg-white/80 dark:bg-slate-900 px-2.5 py-1 text-[11px] font-extrabold text-amber-800 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-950/50 transition"
+            >
+              Següent notícia →
+            </button>
+          </div>
         </div>
 
-        {dailyQuestion.context && (
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 bg-white/80 dark:bg-slate-800/60 border border-amber-100 dark:border-slate-800 rounded-xl px-3.5 py-2.5 leading-relaxed">
-            {dailyQuestion.context}
-          </p>
+        {(dailyQuestion.newsTitle || dailyQuestion.context) && (
+          <div className="bg-white/85 dark:bg-slate-800/70 border border-amber-200/80 dark:border-slate-700 rounded-xl px-4 py-3 space-y-1">
+            {dailyQuestion.newsTitle && (
+              <div className="text-xs sm:text-sm font-extrabold text-amber-900 dark:text-amber-300">
+                📰 Notícia / Actualització: {dailyQuestion.newsTitle}
+              </div>
+            )}
+            {dailyQuestion.context && (
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                {dailyQuestion.context}
+              </p>
+            )}
+          </div>
         )}
 
         <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-snug">
@@ -320,6 +352,12 @@ export default function HomeView({
               </strong>
               {dailyQuestion.explanation}
             </p>
+            {dailyQuestion.howItAffectsUs && (
+              <div className="rounded-lg bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/50 px-3 py-2 text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
+                <strong className="text-amber-900 dark:text-amber-300">🚒 Com ens afecta com a bombers i estudiants: </strong>
+                {dailyQuestion.howItAffectsUs}
+              </div>
+            )}
             {typeof onOpenTopic === 'function' && dailyQuestion.topicId && (
               <button
                 type="button"
