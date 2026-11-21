@@ -88,14 +88,22 @@ function sortWithCooldown(arr, lastAskedMap = {}) {
   return shuffled.sort((a, b) => (lastAskedMap[a.id] || 0) - (lastAskedMap[b.id] || 0));
 }
 
-function buildWeightedExamQuestions(topics, selectedIds, count, useOfficialWeights, lastAskedMap = {}) {
-  const poolTopics = topics.filter((t) => selectedIds.includes(t.id) && (t.quiz || []).length > 0);
+function buildWeightedExamQuestions(
+  topics,
+  selectedIds,
+  count,
+  useOfficialWeights,
+  lastAskedMap = {},
+  includeExtension = true
+) {
+  const getTopicPool = (t) => (t.quiz || []).filter((q) => includeExtension || !q.isExtension);
+  const poolTopics = topics.filter((t) => selectedIds.includes(t.id) && getTopicPool(t).length > 0);
   if (poolTopics.length === 0) return [];
 
   if (!useOfficialWeights) {
     const all = [];
     poolTopics.forEach((t) => {
-      (t.quiz || []).forEach((q) => {
+      getTopicPool(t).forEach((q) => {
         all.push({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title });
       });
     });
@@ -107,7 +115,7 @@ function buildWeightedExamQuestions(topics, selectedIds, count, useOfficialWeigh
   const byTopicShuffled = {};
   poolTopics.forEach((t) => {
     byTopicShuffled[t.id] = sortWithCooldown(
-      (t.quiz || []).map((q) => ({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title })),
+      getTopicPool(t).map((q) => ({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title })),
       lastAskedMap
     );
   });
@@ -157,6 +165,7 @@ export default function PracticeTestView({
   const [selectedTopicIds, setSelectedTopicIds] = useState(() => topics.map((t) => t.id));
   const [questionCount, setQuestionCount] = useState(25);
   const [useWeightedPractice, setUseWeightedPractice] = useState(true);
+  const [includeExtension, setIncludeExtension] = useState(true);
   const [showStatsTable, setShowStatsTable] = useState(false);
 
   // Estat global del banc respost + informes/impugnacions
@@ -233,11 +242,17 @@ export default function PracticeTestView({
     const targetIds = targetMode === 'simulacre' ? topics.map((t) => t.id) : selectedTopicIds;
     const count = targetMode === 'simulacre' ? 77 : Math.max(1, Number(questionCount) || 20); // 70 + 7 de reserva
     const weighted = targetMode === 'simulacre' ? true : useWeightedPractice;
+    const allowExtension = targetMode === 'simulacre' ? false : includeExtension;
     const lastAskedMap = loadJsonSet(LAST_ASKED_KEY);
 
-    const qs = buildWeightedExamQuestions(topics, targetIds, count, weighted, lastAskedMap).map(
-      shuffleQuestionOptions
-    );
+    const qs = buildWeightedExamQuestions(
+      topics,
+      targetIds,
+      count,
+      weighted,
+      lastAskedMap,
+      allowExtension
+    ).map(shuffleQuestionOptions);
     const now = Date.now();
     const updatedAsked = { ...lastAskedMap };
     qs.forEach((q, idx) => {
@@ -683,7 +698,12 @@ export default function PracticeTestView({
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {q.isExtension && (
+                      <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                        {q.extensionLabel || "Material d'ampliació"}
+                      </span>
+                    )}
                     {q.difficulty && (
                       <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                         {q.difficulty}
@@ -1017,7 +1037,10 @@ export default function PracticeTestView({
   // Vista de configuració (Pràctica vs Simulacre)
   const totalSelectedAvail = topics
     .filter((t) => selectedTopicIds.includes(t.id))
-    .reduce((acc, t) => acc + (t.quiz?.length || 0), 0);
+    .reduce(
+      (acc, t) => acc + (t.quiz || []).filter((q) => includeExtension || !q.isExtension).length,
+      0
+    );
 
   return (
     <div className="space-y-6">
@@ -1238,6 +1261,14 @@ export default function PracticeTestView({
                   onChange={(e) => setUseWeightedPractice(e.target.checked)}
                 />
                 <span>Prioritzar temes més preguntats</span>
+              </label>
+              <label className="flex items-center gap-1.5 text-xs font-semibold text-amber-800 dark:text-amber-300 ml-2 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/70 rounded-lg px-2.5 py-1 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={includeExtension}
+                  onChange={(e) => setIncludeExtension(e.target.checked)}
+                />
+                <span>Incloure material d&apos;ampliació (Caporal, Sergent, Oficial, Sotsinspector, Inspector)</span>
               </label>
             </div>
 
