@@ -7,7 +7,8 @@ import {
   Trophy,
   Filter,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  Check
 } from 'lucide-react';
 import WhiteboardCanvas from '../WhiteboardCanvas';
 
@@ -36,6 +37,7 @@ export default function QuizView({
     : baseQuestions;
   const [difficultyFilter, setDifficultyFilter] = useState('Totes');
   const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [draftSelections, setDraftSelections] = useState({});
   const [submittedScore, setSubmittedScore] = useState(null);
   const [showWhiteboard, setShowWhiteboard] = useState(false);
 
@@ -55,8 +57,22 @@ export default function QuizView({
       : questions.filter((q) => q.difficulty === difficultyFilter);
 
   const handleSelectOption = (questionId, optionIndex) => {
-    // Un cop resposta una pregunta, oferim feedback immediat i bloquegem canvis fins a reiniciar
     if (selectedAnswers[questionId] !== undefined) return;
+    setDraftSelections((prev) => {
+      if (prev[questionId] === optionIndex) {
+        const copy = { ...prev };
+        delete copy[questionId];
+        return copy;
+      }
+      return { ...prev, [questionId]: optionIndex };
+    });
+  };
+
+  const handleValidateOption = (questionId) => {
+    if (selectedAnswers[questionId] !== undefined) return;
+    const optionIndex = draftSelections[questionId];
+    if (optionIndex === undefined) return;
+
     const updated = { ...selectedAnswers, [questionId]: optionIndex };
     setSelectedAnswers(updated);
 
@@ -87,6 +103,7 @@ export default function QuizView({
 
   const handleReset = () => {
     setSelectedAnswers({});
+    setDraftSelections({});
     setSubmittedScore(null);
   };
 
@@ -257,8 +274,10 @@ export default function QuizView({
               <div className="space-y-2.5">
                 {q.options.map((opt, optIdx) => {
                   const letter = ['A', 'B', 'C', 'D'][optIdx];
-                  let btnStyle =
-                    'border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-slate-700 bg-slate-50/60 dark:bg-slate-800/40 text-slate-800 dark:text-slate-200';
+                  const isDraft = !isAnswered && draftSelections[q.id] === optIdx;
+                  let btnStyle = isDraft
+                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/40 text-blue-950 dark:text-blue-200 font-semibold'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-slate-700 bg-slate-50/60 dark:bg-slate-800/40 text-slate-800 dark:text-slate-200';
 
                   if (isAnswered) {
                     if (optIdx === q.correctIndex) {
@@ -297,6 +316,25 @@ export default function QuizView({
                   );
                 })}
               </div>
+
+              {!isAnswered && (
+                <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                    {draftSelections[q.id] !== undefined
+                      ? `Opció ${['A', 'B', 'C', 'D'][draftSelections[q.id]]} preseleccionada. Pots canviar-la o validar-la per corregir.`
+                      : 'Selecciona una opció per poder validar-la.'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => handleValidateOption(q.id)}
+                    disabled={draftSelections[q.id] === undefined}
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:pointer-events-none text-white px-4 py-2 text-xs font-extrabold shadow-sm transition"
+                  >
+                    <Check className="w-3.5 h-3.5" />
+                    <span>Validar resposta</span>
+                  </button>
+                </div>
+              )}
 
               {/* Feedback Immediat i Explicació de la Resposta */}
               {isAnswered && (

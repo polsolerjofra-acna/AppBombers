@@ -99,14 +99,14 @@ export const tema5Vehicles = {
         {
           type: 'table',
           title: '5.1. Classificació Oficial dels Vehicles Sanitaris segons el RD 836/2012',
-          subtitle: 'Taula literal del manual MAN.EQIP.000 (Secció 5.1) — Pregunta molt freqüent!',
-          headers: ['Classe / Tipus (RD 836/2012)', 'Denominació Oficial', 'Capacitat i Funció Sanitària'],
+          subtitle: 'Taula literal del manual MAN.EQIP.000 (Secció 5.1) + dotació mínima de personal (art. 4 RD 836/2012)',
+          headers: ['Classe / Tipus (RD 836/2012)', 'Denominació Oficial', 'Capacitat i Funció Sanitària', 'Personal Sanitari (TES / Infermer / Metge)'],
           rows: [
-            ['Classe A1 (No assistencial)', 'Ambulància de transport individual', 'Transport de pacients en llitera que NO requereixen assistència tècnica sanitària en ruta (1 sol pacient).'],
-            ['Classe A2 (No assistencial)', 'Ambulància de transport col·lectiu', 'Transport conjunt de diversos pacients (asseguts o en cadira) sense malaltia infectocontagiosa ni urgència vital.'],
-            ['Classe B (Assistencial)', 'Ambulància de Suport Vital Bàsic (SVB)', 'Destinada a proporcionar Suport Vital Bàsic i atenció sanitària inicial a urgències i emergències.'],
-            ['Classe C (Assistencial)', 'Ambulància de Suport Vital Avançat (SVA)', 'Equipada com a UVI mòbil per proporcionar Suport Vital Avançat (amb personal mèdic/infermeria, monitor desfibril·lador, respirador).'],
-            ['VIR', 'Vehicle d’Intervenció Ràpida', 'Vehicle lleuger (4×4 o turisme) que desplaça ràpidament l’equip mèdic/sanitari (ex: GEM/GROS) i l’equipament SVA al lloc, però NO pot traslladar pacients en llitera.']
+            ['Classe A1 (No assistencial)', 'Ambulància de transport individual', 'Transport de pacients en llitera que NO requereixen assistència tècnica sanitària en ruta (1 sol pacient).', 'Conductor (certificat transport sanitari / TES) + ajudant (mateixa qualificació) si cal. Sense metge ni infermer.'],
+            ['Classe A2 (No assistencial)', 'Ambulància de transport col·lectiu', 'Transport conjunt de diversos pacients (asseguts o en cadira) sense malaltia infectocontagiosa ni urgència vital.', 'Conductor (certificat transport sanitari / TES) + ajudant (mateixa qualificació) si cal. Sense metge ni infermer.'],
+            ['Classe B (Assistencial)', 'Ambulància de Suport Vital Bàsic (SVB)', 'Destinada a proporcionar Suport Vital Bàsic i atenció sanitària inicial a urgències i emergències.', 'Mínim 2 TES: 1 conductor TES + 1 TES amb funcions d’ajudant. Sense metge ni infermer.'],
+            ['Classe C (Assistencial)', 'Ambulància de Suport Vital Avançat (SVA)', 'Equipada com a UVI mòbil per proporcionar Suport Vital Avançat (monitor desfibril·lador, respirador).', 'Mínim 1 conductor TES + 1 infermer/a (DUE/Grau) + 1 metge/essa (si fa assistència mèdica avançada; en SVA-I SEM: TES + infermer/a).'],
+            ['VIR', 'Vehicle d’Intervenció Ràpida', 'Vehicle lleuger (4×4 o turisme) que desplaça ràpidament l’equip sanitari (ex: GEM/GROS) i l’equipament SVA al lloc, però NO pot traslladar pacients en llitera.', 'Conductor TES + metge/essa i/o infermer/a (equip SVA / GEM / GROS).']
           ],
           footnote: 'Truc per no fallar mai el RD 836/2012: A1 = Individual no assistencial | A2 = Col·lectiva no assistencial | B = SVB (Bàsic) | C = SVA (Avançat / Crítics).'
         },

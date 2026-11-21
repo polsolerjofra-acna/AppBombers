@@ -11,7 +11,9 @@ import {
   Filter,
   AlertTriangle,
   BookOpen,
-  ExternalLink
+  ExternalLink,
+  Mail,
+  Check
 } from 'lucide-react';
 import { OFFICIAL_EXAM_STATS_BY_TOPIC } from '../data/officialExamStats';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
@@ -147,8 +149,10 @@ export default function PracticeTestView({
   const [activeQuestions, setActiveQuestions] = useState(null);
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [draftSelections, setDraftSelections] = useState({});
   const [isFinished, setIsFinished] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(85 * 60); // 85 minuts oficials (70 + 7 reserva)
+  const [emailCopiedNotice, setEmailCopiedNotice] = useState(false);
 
   useEffect(() => {
     try {
@@ -222,7 +226,9 @@ export default function PracticeTestView({
     setActiveQuestions(qs);
     setCurrentQuestionIdx(0);
     setAnswers({});
+    setDraftSelections({});
     setIsFinished(false);
+    setEmailCopiedNotice(false);
     setSecondsLeft(85 * 60);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -274,10 +280,23 @@ export default function PracticeTestView({
 
   const handleSelectOption = (q, optIdx) => {
     if (isFinished) return;
-    if (mode === 'practice' && answers[q.id] !== undefined) return;
+    if (mode === 'practice') {
+      // En mode pràctica, primer es deixa seleccionada com a provisional fins que l'usuari cliqui "Validar resposta"
+      if (answers[q.id] !== undefined) return;
+      setDraftSelections((prev) => {
+        if (prev[q.id] === optIdx) {
+          const copy = { ...prev };
+          delete copy[q.id];
+          return copy;
+        }
+        return { ...prev, [q.id]: optIdx };
+      });
+      return;
+    }
+
     setAnswers((prev) => {
       // En simulacre, clicar la mateixa opció la deixa en blanc (sense penalització!)
-      if (mode === 'simulacre' && prev[q.id] === optIdx) {
+      if (prev[q.id] === optIdx) {
         const copy = { ...prev };
         delete copy[q.id];
         return copy;
@@ -286,9 +305,19 @@ export default function PracticeTestView({
     });
 
     markQuestionAnsweredInBank(q.id);
+  };
 
-    if (mode === 'practice' && onRecordQuestionOutcome) {
-      onRecordQuestionOutcome(q._topicId, q._topicNumber, q, optIdx === q.correctIndex);
+  const handleValidatePracticeOption = (q) => {
+    if (isFinished || mode !== 'practice') return;
+    if (answers[q.id] !== undefined) return;
+    const chosen = draftSelections[q.id];
+    if (chosen === undefined) return;
+
+    setAnswers((prev) => ({ ...prev, [q.id]: chosen }));
+    markQuestionAnsweredInBank(q.id);
+
+    if (onRecordQuestionOutcome) {
+      onRecordQuestionOutcome(q._topicId, q._topicNumber, q, chosen === q.correctIndex);
     }
   };
 
@@ -409,8 +438,86 @@ export default function PracticeTestView({
                   Encerts: <strong className="text-emerald-700 dark:text-emerald-400">{correctCount}</strong> ·{' '}
                   Errades: <strong className="text-red-600 dark:text-red-400">{wrongCount}</strong> (-0,33/errada) ·{' '}
                   En blanc: <strong>{blankCount}</strong>
+                  {Object.keys(reportsMap).filter((id) => activeQuestions.some((q) => q.id === id)).length > 0 && (
+                    <>
+                      {' · '}Impugnades:{' '}
+                      <strong className="text-amber-700 dark:text-amber-400">
+                        {Object.keys(reportsMap).filter((id) => activeQuestions.some((q) => q.id === id)).length}
+                      </strong>
+                    </>
+                  )}
                 </p>
               </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  const letters = ['A', 'B', 'C', 'D'];
+                  const today = new Date().toISOString().slice(0, 10);
+                  const header = [
+                    `APPBOMBERS · CORRECCIÓ ${mode === 'simulacre' ? 'SIMULACRE OFICIAL' : 'PRÀCTICA'} (${today})`,
+                    `Nota neta: ${score10} / 10 | Encerts: ${correctCount} | Errades: ${wrongCount} | En blanc: ${blankCount}`,
+                    '='.repeat(60),
+                    ''
+                  ].join('\n');
+
+                  const details = activeQuestions
+                    .map((q, i) => {
+                      const userIdx = answers[q.id];
+                      const status =
+                        userIdx === undefined
+                          ? 'EN BLANC'
+                          : userIdx === q.correctIndex
+                          ? 'CORRECTA'
+                          : 'ERRADA';
+                      const userTxt = userIdx !== undefined ? `${letters[userIdx]}) ${q.options[userIdx]}` : 'Cap (en blanc)';
+                      const rightTxt = `${letters[q.correctIndex]}) ${q.options[q.correctIndex]}`;
+                      const imp = reportsMap[q.id] ? `\nImpugnació: ${reportsMap[q.id].reason}` : '';
+                      return [
+                        `P${i + 1} [Tema ${q._topicNumber} · ${status}] ${q.question}`,
+                        `La teva resposta: ${userTxt}`,
+                        `Resposta correcta: ${rightTxt}`,
+                        `Explicació: ${q.explanation || '-'}${imp}`,
+                        ''
+                      ].join('\n');
+                    })
+                    .join('\n');
+
+                  const fullReport = header + details;
+                  try {
+                    navigator.clipboard?.writeText(fullReport);
+                    setEmailCopiedNotice(true);
+                    setTimeout(() => setEmailCopiedNotice(false), 5000);
+                  } catch {}
+
+                  // També obrim el client de correu amb un resum i les errades/en blanc (dins el límit segur d'URL)
+                  const failedOnly = activeQuestions
+                    .map((q, i) => ({ q, i, userIdx: answers[q.id] }))
+                    .filter((x) => x.userIdx !== x.q.correctIndex)
+                    .map(({ q, i, userIdx }) => {
+                      const userTxt = userIdx !== undefined ? `${letters[userIdx]}) ${q.options[userIdx]}` : 'En blanc';
+                      const rightTxt = `${letters[q.correctIndex]}) ${q.options[q.correctIndex]}`;
+                      return `P${i + 1} (T${q._topicNumber}): ${q.question}\nLa teva: ${userTxt}\nCorrecta: ${rightTxt}\nExplicació: ${q.explanation || '-'}\n`;
+                    })
+                    .join('\n');
+
+                  const mailBodyRaw = `${header}${failedOnly || 'Cap errada! Tot perfecte.'}\n\n[Nota: s'ha copiat la correcció completa de les ${activeQuestions.length} preguntes al porta-retalls per si la vols enganxar.]`;
+                  const mailBody = mailBodyRaw.slice(0, 1750);
+                  const subject = encodeURIComponent(`AppBombers · Correcció ${mode === 'simulacre' ? 'Simulacre Oficial' : 'Test'} (${today}) · Nota ${score10}/10`);
+                  window.location.href = `mailto:?subject=${subject}&body=${encodeURIComponent(mailBody)}`;
+                }}
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm transition"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Enviar còpia corregida al correu</span>
+              </button>
+              {emailCopiedNotice && (
+                <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+                  ✓ Informe complet copiat al porta-retalls
+                </span>
+              )}
             </div>
           </div>
         )}
@@ -511,7 +618,12 @@ export default function PracticeTestView({
 
                 <div className="space-y-2">
                   {(q.options || []).map((opt, optIdx) => {
-                    const isSelected = choice === optIdx;
+                    const draftChoice = draftSelections[q.id];
+                    const isSelected = showFeedback
+                      ? choice === optIdx
+                      : mode === 'simulacre'
+                      ? choice === optIdx
+                      : draftChoice === optIdx;
                     const isRightOpt = optIdx === q.correctIndex;
                     let cls =
                       'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/40 text-slate-800 dark:text-slate-200 hover:border-red-300';
@@ -542,6 +654,25 @@ export default function PracticeTestView({
                     );
                   })}
                 </div>
+
+                {!isFinished && mode === 'practice' && choice === undefined && (
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                      {draftSelections[q.id] !== undefined
+                        ? `Opció ${String.fromCharCode(65 + draftSelections[q.id])} preseleccionada. Pots canviar-la o validar-la per veure la correcció.`
+                        : 'Selecciona una opció per poder validar-la.'}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleValidatePracticeOption(q)}
+                      disabled={draftSelections[q.id] === undefined}
+                      className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:pointer-events-none text-white px-4 py-2 text-xs font-extrabold shadow-sm transition"
+                    >
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Validar resposta</span>
+                    </button>
+                  </div>
+                )}
 
                 {showFeedback && (() => {
                   const manualRef = OFFICIAL_MANUALS.find((m) => m.topicNumber === q._topicNumber);
