@@ -697,6 +697,8 @@ export default function App() {
           ) : activeView === 'practice' ? (
             <PracticeTestView
               topics={TOPICS}
+              userMistakes={progress.quizResults?.__mistakes || {}}
+              onClearMistake={clearUserMistake}
               onRecordQuestionOutcome={recordQuestionOutcome}
               onSaveQuizScore={saveQuizScore}
               onOpenTopicSummary={(id) => handleSelectTopic(id, null)}

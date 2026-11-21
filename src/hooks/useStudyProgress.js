@@ -464,6 +464,7 @@ export function useStudyProgress() {
       if (!isCorrect) {
         const existing = nextMistakes[questionObj.id];
         const newCount = (existing?.count || 0) + 1;
+        const today = getTodayISO();
         nextMistakes[questionObj.id] = {
           id: questionObj.id,
           topicId,
@@ -475,12 +476,15 @@ export function useStudyProgress() {
             (questionObj.options && questionObj.options[questionObj.correctIndex]) || '',
           explanation: questionObj.explanation || '',
           count: newCount,
-          lastFailedAt: getTodayISO()
+          reviewStage: 0,
+          streak: 0,
+          lastFailedAt: today,
+          lastReviewedAt: today,
+          nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[0])
         };
 
         // Entrelliga l'error amb la regla de l'oblit: si el tema no té repàs imminent, el programa per avui/demà
         if (topicId) {
-          const today = getTodayISO();
           const targetDate = newCount >= 2 ? today : addDaysISO(today, 1);
           const prevSp = nextSpaced[topicId];
           if (!prevSp?.nextReviewAt || prevSp.nextReviewAt > targetDate) {
@@ -495,8 +499,24 @@ export function useStudyProgress() {
           }
         }
       } else if (nextMistakes[questionObj.id]) {
-        // Si s'encerta després d'haver-la fallat, la netegem dels errors pendents
-        delete nextMistakes[questionObj.id];
+        // Regla de l'oblit aplicada a preguntes fallades:
+        // Cada encert puja una etapa (1d -> 3d -> 7d -> 14d). A la 4a consolidació es considera assimilada!
+        const existing = nextMistakes[questionObj.id];
+        const nextStage = (existing.reviewStage ?? 0) + 1;
+        if (nextStage >= 4) {
+          delete nextMistakes[questionObj.id];
+        } else {
+          const today = getTodayISO();
+          const intervalDays =
+            EBBINGHAUS_INTERVALS[Math.min(nextStage, EBBINGHAUS_INTERVALS.length - 1)];
+          nextMistakes[questionObj.id] = {
+            ...existing,
+            reviewStage: nextStage,
+            streak: (existing.streak || 0) + 1,
+            lastReviewedAt: today,
+            nextReviewAt: addDaysISO(today, intervalDays)
+          };
+        }
       }
 
       return {

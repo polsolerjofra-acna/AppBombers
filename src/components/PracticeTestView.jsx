@@ -169,6 +169,8 @@ function buildWeightedExamQuestions(
 
 export default function PracticeTestView({
   topics,
+  userMistakes = {},
+  onClearMistake = null,
   onRecordQuestionOutcome = null,
   onSaveQuizScore = null,
   onOpenTopicSummary = null,
@@ -289,6 +291,51 @@ export default function PracticeTestView({
     setShowFinishConfirm(false);
     setEmailCopiedNotice(false);
     setSecondsLeft(85 * 60);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const todayISO = new Date().toISOString().split('T')[0];
+
+  const mistakesSummary = useMemo(() => {
+    const entries = Object.values(userMistakes || {}).filter((m) => m && m.id);
+    const sorted = [...entries].sort((a, b) => {
+      const da = a.nextReviewAt || '0000-00-00';
+      const db = b.nextReviewAt || '0000-00-00';
+      if (da !== db) return da.localeCompare(db);
+      return (b.count || 1) - (a.count || 1);
+    });
+    const due = sorted.filter((m) => !m.nextReviewAt || m.nextReviewAt <= todayISO);
+    const upcoming = sorted.filter((m) => m.nextReviewAt && m.nextReviewAt > todayISO);
+    return { all: sorted, due, upcoming };
+  }, [userMistakes, todayISO]);
+
+  const startMistakeReview = (onlyDue = true) => {
+    const targetList = onlyDue && mistakesSummary.due.length > 0 ? mistakesSummary.due : mistakesSummary.all;
+    if (targetList.length === 0) return;
+
+    const lookup = new Map();
+    topics.forEach((t) => {
+      (t.quiz || []).forEach((q) => {
+        lookup.set(q.id, { ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title });
+      });
+    });
+
+    const qs = targetList
+      .map((m) => lookup.get(m.id))
+      .filter(Boolean)
+      .map(shuffleQuestionOptions);
+
+    if (qs.length === 0) return;
+
+    setMode('practice');
+    setActiveQuestions(qs);
+    setCurrentQuestionIdx(0);
+    setAnswers({});
+    setDraftSelections({});
+    setSimulacreImpugnations({});
+    setIsFinished(false);
+    setShowFinishConfirm(false);
+    setEmailCopiedNotice(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -717,6 +764,11 @@ export default function PracticeTestView({
                     )}
                   </div>
                   <div className="flex items-center gap-2 flex-wrap">
+                    {userMistakes[q.id] && (
+                      <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-800">
+                        Corba Oblit · Etapa {(userMistakes[q.id].reviewStage || 0)}/4 · Fallada {userMistakes[q.id].count || 1}x
+                      </span>
+                    )}
                     {q.isOfficialExam && (
                       <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800">
                         Oficial
@@ -1134,6 +1186,58 @@ export default function PracticeTestView({
               Temps oficial de 85 minuts, 70 preguntes puntuables + 7 de reserva, possibilitat de deixar en blanc, penalització -0,33 per error i proporció ponderada.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Banc de Preguntes Fallades · Regla de l'Oblit */}
+      <div className="rounded-2xl border border-rose-200 dark:border-rose-900/60 bg-gradient-to-br from-rose-50/70 via-white to-amber-50/40 dark:from-rose-950/30 dark:via-slate-900 dark:to-amber-950/10 p-5 shadow-sm space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="space-y-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Banc de Preguntes Fallades · Regla de l&apos;Oblit</span>
+              </span>
+              {mistakesSummary.due.length > 0 && (
+                <span className="rounded-full bg-rose-600 text-white px-2.5 py-0.5 text-[11px] font-extrabold">
+                  {mistakesSummary.due.length} per repassar avui
+                </span>
+              )}
+              {mistakesSummary.all.length > 0 && (
+                <span className="rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 text-[11px] font-bold">
+                  {mistakesSummary.all.length} totals al banc
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              {mistakesSummary.all.length === 0
+                ? "Encara no tens cap pregunta fallada pendent. Quan fallis una pregunta en qualsevol test o simulacre, s'afegirà aquí i l'app te la programarà segons la corba de l'oblit (+1d → +3d → +7d → +14d) fins assimilar-la."
+                : mistakesSummary.due.length > 0
+                ? `Tens ${mistakesSummary.due.length} preguntes que toca repassar avui per consolidar-les. Cada encert puja d'etapa (+1d → +3d → +7d → +14d → Assimilada); si la falles, torna a l'etapa 0.`
+                : `Avui no tens repassos vençuts (${mistakesSummary.upcoming.length} programades per als pròxims dies: pròxim repàs ${mistakesSummary.upcoming[0]?.nextReviewAt}).`}
+            </p>
+          </div>
+
+          {mistakesSummary.all.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2">
+              {mistakesSummary.due.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => startMistakeReview(true)}
+                  className="rounded-xl bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 text-xs font-extrabold shadow-sm"
+                >
+                  Repassar Fallades d&apos;Avui ({mistakesSummary.due.length})
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => startMistakeReview(false)}
+                className="rounded-xl border border-rose-300 dark:border-rose-800 bg-white dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-rose-700 dark:text-rose-300 px-4 py-2 text-xs font-extrabold"
+              >
+                Repassar Tot el Banc ({mistakesSummary.all.length})
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
