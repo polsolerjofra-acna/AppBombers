@@ -41056,6 +41056,1419 @@ const QUESTIONS_OPTIM_PP1 = [
 ];
 
 /**
+ * Banc extra de 50 preguntes originals d'alt nivell (Temes 1 a 17).
+ * Estil oposicions Bombers de la Generalitat 2025/2026 (MATAFOCS / Òptim).
+ */
+const QUESTIONS_GENERADES_2 = [
+  // ==================== TEMA 1 (3 preguntes) ====================
+  {
+    topic: 1,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T1] Segons l\'article 116 de la Constitució Espanyola, quina afirmació sobre els estats d\'alarma, d\'excepció i de setge és INCORRECTA?',
+    options: [
+      'L\'estat d\'alarma és declarat pel Govern mitjançant decret acordat en Consell de Ministres per un termini màxim de 15 dies',
+      'L\'estat d\'excepció és declarat pel Govern mitjançant decret acordat en Consell de Ministres, prèvia autorització del Congrés dels Diputats',
+      'L\'estat de setge és declarat per la majoria absoluta del Congrés dels Diputats, a proposta exclusiva del Govern',
+      'Durant la vigència de l\'estat d\'alarma es pot procedir a la dissolució del Congrés dels Diputats si s\'esgota la legislatura'
+    ],
+    correctIndex: 3,
+    explanation: 'Art. 116.5 CE: no es pot procedir a la dissolució del Congrés mentre estiguin declarats alguns dels estats compresos en aquest article (alarma, excepció o setge).'
+  },
+  {
+    topic: 1,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T1] D\'acord amb l\'Estatut d\'Autonomia de Catalunya (LO 6/2006), qui té la potestat de dissoldre anticipadament el Parlament de Catalunya?',
+    options: [
+      'El president o presidenta del Parlament, prèvia deliberació de la Mesa',
+      'El president o presidenta de la Generalitat, sota la seva exclusiva responsabilitat i prèvia deliberació del Govern',
+      'El Govern de la Generalitat per acord de majoria absoluta en Consell Executiu',
+      'El Ple del Parlament per majoria de dues terceres parts dels diputats'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons l\'article 66 de l\'EAC (i l\'art. 75 de la Llei 13/1989 / Llei 13/2008), la potestat de dissoldre anticipadament el Parlament correspon al president o presidenta de la Generalitat, sota la seva exclusiva responsabilitat i prèvia deliberació del Govern.'
+  },
+  {
+    topic: 1,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T1] Segons la Llei 13/1989 d\'organització, procediment i règim jurídic de l\'Administració de la Generalitat, quin òrgan exerceix la potestat reglamentària originària a Catalunya?',
+    options: [
+      'Exclusivament els consellers dins l\'àmbit del seu departament',
+      'El Parlament de Catalunya mitjançant decrets legislatius',
+      'El Govern de la Generalitat, sense perjudici que els consellers puguin dictar normes reglamentàries quan una llei o decret els hi autoritzi',
+      'Els directors generals per delegació tàcita del secretari general'
+    ],
+    correctIndex: 2,
+    explanation: 'La potestat reglamentària correspon al Govern de la Generalitat; els consellers només la poden exercir en matèries pròpies del seu departament quan hi hagi habilitació legal o reglamentària expressa.'
+  },
+
+  // ==================== TEMA 2 (3 preguntes) ====================
+  {
+    topic: 2,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T2] Un bomber funcionari de carrera sol·licita una excedència voluntària per interès particular segons el DL 1/1997 (Funció Pública de Catalunya). Quin requisit de serveis efectius previs i quina durada mínima exigeix la normativa?',
+    options: [
+      'Haver prestat serveis efectius durant els 3 anys immediatament anteriors i permanència mínima d\'1 any',
+      'Haver prestat serveis efectius durant els 5 anys immediatament anteriors i permanència mínima de 2 anys',
+      'Haver prestat serveis efectius durant els 2 anys immediatament anteriors i permanència mínima de 2 anys',
+      'No exigeix temps previ de serveis efectius si es renuncia a la reserva del lloc de treball'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons l\'article 86 del DL 1/1997, l\'excedència voluntària per interès particular requereix haver prestat serveis efectius en qualsevol administració pública durant els 5 anys immediatament anteriors i no s\'hi pot romandre menys de 2 anys continuats.'
+  },
+  {
+    topic: 2,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T2] Quin dels permisos següents previstos al TREBEP (RDL 5/2015) té una durada de 5 dies hàbils?',
+    options: [
+      'Trasllat de domicili sense canvi de residència',
+      'Accident o malaltia greus, hospitalització o intervenció quirúrgica sense hospitalització que precisi repòs domiciliari del cònjuge o familiar de primer grau',
+      'Defunció d\'un familiar de segon grau de consanguinitat dins la mateixa localitat',
+      'Matrimoni o registre o constitució formalitzada per document públic de parella de fet'
+    ],
+    correctIndex: 1,
+    explanation: 'Art. 48.a) TREBEP (modificat pel RDL 5/2023): 5 dies hàbils per accident o malaltia greus, hospitalització o intervenció quirúrgica sense hospitalització amb repòs domiciliari del cònjuge, parella de fet o familiars fins al 1r grau (i 4 dies hàbils per a 2n grau).'
+  },
+  {
+    topic: 2,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T2] D\'acord amb la Llei 21/1987 d\'incompatibilitats del personal al servei de l\'Administració de la Generalitat, quina afirmació és FALSA?',
+    options: [
+      'El personal comprès en l\'àmbit d\'aplicació no pot percebre més d\'una remuneració amb càrrec als pressupostos de les administracions públiques, llevat dels supòsits legalment previstos',
+      'L\'exercici d\'una segona activitat privada requereix reconeixement previ de compatibilitat, que no es pot atorgar si el lloc públic té assignat un complement específic superior al límit legal',
+      'La preparació per a l\'accés a la funció pública està exempta d\'incompatibilitat sempre que no superi les 75 hores anuals',
+      'L\'incompliment de les normes sobre incompatibilitats es considera en tot cas falta lleu si no causa perjudici econòmic al servei'
+    ],
+    correctIndex: 3,
+    explanation: 'L\'incompliment de les normes sobre incompatibilitats constitueix falta molt greu (o greu si es tracta d\'incompliment de terminis/procediment sense incompatibilitat real), mai falta lleu per defecte.'
+  },
+
+  // ==================== TEMA 3 (3 preguntes) ====================
+  {
+    topic: 3,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T3] En una intervenció d\'emergència en un edifici amb risc imminent d\'esfondrament, quin article de la Llei 31/1995 (LPRL) regula les particularitats de l\'aplicació de la llei als serveis operatius de protecció civil i peritatge forense?',
+    options: [
+      'L\'article 3.2, que exclou l\'aplicació estricta de la llei en aquelles activitats les particularitats de les quals ho impedeixin en l\'àmbit de la protecció civil, tot garantint la seguretat i salut en la mesura possible',
+      'L\'article 15.1, que estableix el principi de substitució d\'equips perillosos',
+      'L\'article 21.3, que prohibeix als bombers abandonar un sinistre encara que hi hagi risc greu i imminent',
+      'L\'article 4.2, que assimila els parcs de bombers a centres industrials d\'alt risc'
+    ],
+    correctIndex: 0,
+    explanation: 'L\'article 3.2 de la Llei 31/1995 estableix que la llei no serà aplicable en aquelles activitats en què les particularitats ho impedeixin en l\'àmbit dels serveis operatius de protecció civil i peritatge forense en casos de greu risc, catàstrofe i calamitat pública, si bé s\'ha d\'inspirar en els seus principis.'
+  },
+  {
+    topic: 3,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T3] Segons el Reglament (UE) 2016/425 sobre equips de protecció individual, a quina categoria pertanyen un equip de respiració autònoma (ERA) i un vestit d\'intervenció estructural per a bombers?',
+    options: [
+      'Categoria I (riscos mínims)',
+      'Categoria II (riscos intermedis, no inclosos a I ni a III)',
+      'Categoria III (riscos que poden tenir conseqüències molt greus, com la mort o danys irreversibles per a la salut)',
+      'L\'ERA és Categoria III i el vestit d\'intervenció estructural és Categoria I'
+    ],
+    correctIndex: 2,
+    explanation: 'Tant els equips destinats a protegir contra riscos mortals o irreversibles (atmosferes tòxiques/deficients en O₂: ERA) com els destinats a protegir contra calor extrema (>100 °C) i flames (vestit d\'intervenció) són EPI de Categoria III.'
+  },
+  {
+    topic: 3,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T3] Segons l\'article 35 de la Llei 31/1995 (LPRL), quants delegats de prevenció corresponen a una empresa o centre de treball que té 650 treballadors?',
+    options: [
+      '3 delegats de prevenció',
+      '4 delegats de prevenció',
+      '5 delegats de prevenció',
+      '6 delegats de prevenció'
+    ],
+    correctIndex: 1,
+    explanation: 'Escala de l\'art. 35.2 LPRL: 50-100 → 2; 101-500 → 3; 501-1.000 → 4; 1.001-2.000 → 5; 2.001-3.000 → 6. Per a 650 treballadors corresponen 4 delegats de prevenció.'
+  },
+
+  // ==================== TEMA 4 (3 preguntes) ====================
+  {
+    topic: 4,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T4] D\'acord amb la Llei 19/2020 d\'igualtat de tracte i no-discriminació de Catalunya, com es defineix la «discriminació per associació»?',
+    options: [
+      'La situació en què una persona és discriminada a causa d\'una percepció errònia sobre les seves característiques personals',
+      'La situació en què una persona o un grup és objecte de discriminació a causa de la seva relació o vinculació amb una persona o un grup en què concorre algun dels motius de discriminació',
+      'La discriminació que es produeix exclusivament dins d\'associacions culturals o esportives',
+      'La suma de dues o més causes de discriminació que actuen simultàniament sobre la mateixa persona'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons la Llei 19/2020, la discriminació per associació es produeix quan una persona o grup pateix un tracte discriminatori pel seu vincle o relació amb algú que presenta un motiu protegit (p. ex., un familiar amb discapacitat).'
+  },
+  {
+    topic: 4,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T4] Segons el Protocol per a la prevenció, la detecció, l\'actuació i la resolució de situacions d\'assetjament sexual i per raó de sexe (2023) de la Generalitat de Catalunya, quina afirmació és INCORRECTA?',
+    options: [
+      'L\'assetjament sexual pot incloure conductes verbals, no verbals o físiques de naturalesa sexual no desitjades',
+      'La comissió d\'investigació ha de garantir la confidencialitat i la protecció contra possibles represàlies a la persona denunciant i als testimonis',
+      'Per iniciar l\'actuació del protocol és imprescindible que la conducta s\'hagi repetit com a mínim en tres ocasions documentades',
+      'S\'aplica tant al personal funcionari com al laboral i eventual de l\'Administració de la Generalitat'
+    ],
+    correctIndex: 2,
+    explanation: 'A diferència d\'altres formes d\'assetjament laboral que exigeixen reiteració, un únic episodi greu d\'assetjament sexual pot ser suficient per activar el protocol i constituir infracció.'
+  },
+  {
+    topic: 4,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T4] Segons la Llei 17/2015 d\'igualtat efectiva de dones i homes, quin percentatge mínim de representació de cadascun dels sexes s\'entén com a representació paritària en els òrgans col·legiats i candidatures?',
+    options: [
+      'Un mínim del 30 % de cadascun dels sexes',
+      'Un mínim del 40 % de cadascun dels sexes',
+      'Exactament el 50 % en tots els casos',
+      'Un mínim del 35 % en l\'àmbit local i del 45 % en l\'autonòmic'
+    ],
+    correctIndex: 1,
+    explanation: 'La Llei 17/2015 defineix la representació paritària com aquella en què cap dels sexes supera el 60 % ni és inferior al 40 % del conjunt.'
+  },
+
+  // ==================== TEMA 5 (2 preguntes) ====================
+  {
+    topic: 5,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T5] Segons l\'article 11 de la Llei 1/1998, de política lingüística, quin requisit lingüístic s\'exigeix per accedir a places de l\'Administració de la Generalitat de Catalunya?',
+    options: [
+      'Acreditar únicament el coneixement oral del català en el moment de la presa de possessió',
+      'Acreditar el coneixement de les dues llengües oficials, tant en l\'expressió oral com en l\'escrita, en el grau adequat a les funcions pròpies de la plaça',
+      'Acreditar el nivell C2 de català per a qualsevol escala i categoria',
+      'Estar exempt de la prova de català si s\'ha cursat l\'ensenyament secundari a qualsevol comunitat autònoma'
+    ],
+    correctIndex: 1,
+    explanation: 'L\'art. 11 de la Llei 1/1998 estableix que el personal al servei de les administracions de Catalunya ha de tenir un nivell de coneixement adequat i suficient de les dues llengües oficials, tant oral com escrit, que el faci apte per desenvolupar les funcions del lloc.'
+  },
+  {
+    topic: 5,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T5] D\'acord amb la Llei 1/1998, de política lingüística, quina afirmació sobre l\'ús del català i del castellà en els procediments administratius és FALSA?',
+    options: [
+      'Les actuacions administratives fetes en qualsevol de les dues llengües oficials a Catalunya són plenament vàlides',
+      'En els procediments iniciats a instància de part, la llengua utilitzada per la persona interessada determina la llengua del procediment',
+      'Les resolucions i notificacions adreçades a una ciutadana que ho sol·liciti s\'han de fer en la llengua oficial triada per ella',
+      'Si en un procediment hi ha diverses persones interessades que no es posen d\'acord sobre la llengua, el procediment s\'ha de tramitar exclusivament en castellà'
+    ],
+    correctIndex: 3,
+    explanation: 'Segons l\'art. 10.2 de la Llei 1/1998, si hi ha diverses persones interessades i discrepen sobre la llengua, el procediment s\'ha de fer en català, sens perjudici d\'expedir en castellà els documents que sol·licitin les parts.'
+  },
+
+  // ==================== TEMA 6 (3 preguntes) ====================
+  {
+    topic: 6,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T6] Amb la modificació introduïda pel Decret llei 14/2025 a l\'article 15 de la Llei 5/1994, quines categories integren la nova Escala de suport del Cos de Bombers de la Generalitat?',
+    options: [
+      'Bomber/a de primera, caporal/a, sergent/a i sotsinspector/a',
+      'TECOR (tècnic especialista de control operatiu), TEOV (tècnic especialista operador de vehicles), EPAF (especialista en prevenció activa forestal, grup C2) i TELOG (tècnic especialista logístic)',
+      'Únicament els bombers voluntaris i els auxiliars forestals de campanya',
+      'Inspector/a de suport, sotsinspector/a de suport i tècnic/a superior de gestió'
+    ],
+    correctIndex: 1,
+    explanation: 'El DL 14/2025 modifica l\'art. 15 de la Llei 5/1994 i crea la 4a escala (Escala de suport), integrada per TECOR, TEOV, EPAF (grup C2) i TELOG, amb accés per concurs oposició lliure i sense promoció interna cap a les altres escales.'
+  },
+  {
+    topic: 6,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T6] Durant un incendi industrial, un bomber que actua en l\'exercici de les seves funcions ordena desallotjar una nau adjacent amb risc d\'explosió. Segons l\'article 10 de la Llei 5/1994, quina condició jurídica té el bomber en aquest acte de servei?',
+    options: [
+      'Té la condició d\'agent de l\'autoritat',
+      'Té la condició de col·laborador civil sense potestat coercitiva',
+      'Només té condició d\'autoritat si ostenta la categoria mínima de sotsinspector',
+      'Té la condició de policia judicial genèrica'
+    ],
+    correctIndex: 0,
+    explanation: 'Art. 10 de la Llei 5/1994: els membres del Cos de Bombers de la Generalitat en l\'exercici de llurs funcions tenen la consideració d\'agents de l\'autoritat.'
+  },
+  {
+    topic: 6,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T6] Segons la Llei 4/1997 de protecció civil de Catalunya, a qui correspon declarar l\'activació del PROCICAT en fase d\'emergència quan l\'àmbit supera el terme municipal i afecta diverses comarques?',
+    options: [
+      'Al cap del parc de bombers més proper a l\'incident',
+      'Al conseller o consellera competent en matèria de seguretat pública / protecció civil (com a director/a del pla autonòmic)',
+      'A l\'alcalde del municipi més poblat de l\'àrea afectada',
+      'Al president del consell comarcal de la comarca d\'origen'
+    ],
+    correctIndex: 1,
+    explanation: 'En els plans territorials i especials d\'àmbit de Catalunya (com el PROCICAT), la direcció correspon al conseller/a competent en matèria de protecció civil (Interior).'
+  },
+
+  // ==================== TEMA 7 (3 preguntes) ====================
+  {
+    topic: 7,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T7] D\'acord amb el Decret 16/2026 (de modificació de l\'estructura del Departament d\'Interior i de la DGPEIS), quantes Regions d\'Emergències i quantes Subdireccions Generals té la DGPEIS?',
+    options: [
+      '7 Regions d\'Emergències i 4 Subdireccions Generals',
+      '8 Regions d\'Emergències (incloent-hi la Regió d\'Emergències dels Pirineus) i 5 Subdireccions Generals (incorporant la SG d\'Assumptes Jurídics)',
+      '9 Regions d\'Emergències i 3 Subdireccions Generals',
+      '7 Regions d\'Emergències i 5 Subdireccions Generals'
+    ],
+    correctIndex: 1,
+    explanation: 'El Decret 16/2026 (06.02.2026) consolida 8 Regions d\'Emergències (amb la nova Regió d\'Emergències dels Pirineus) i 5 Subdireccions Generals (sumant la nova SG d\'Assumptes Jurídics) a la DGPEIS.'
+  },
+  {
+    topic: 7,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T7] Segons el Decret 276/2016, pel qual es regula la guàrdia en el Cos de Bombers de la Generalitat, quines són les dues modalitats de prestació de la posició de guàrdia?',
+    options: [
+      'Guàrdia ordinària i guàrdia extraordinària de campanya',
+      'Disponibilitat immediata (presencial al centre de guàrdia) i localització',
+      'Guàrdia diürna i guàrdia nocturna de reten',
+      'Guàrdia operativa i guàrdia de prevenció passiva'
+    ],
+    correctIndex: 1,
+    explanation: 'El Decret 276/2016 distingeix dues modalitats de posició de guàrdia: disponibilitat immediata (al centre de guàrdia) i localització.'
+  },
+  {
+    topic: 7,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T7] En l\'estructura de comandament de guàrdia regulada pel Decret 276/2016, quina afirmació sobre el nivell 1 (guàrdia de parc) és INCORRECTA?',
+    options: [
+      'Es presta en règim de disponibilitat immediata',
+      'L\'exerceix un sergent, caporal o bomber habilitat al parc corresponent',
+      'Inclou l\'elaboració del brífing d\'inici de guàrdia i la gestió operativa de les sortides del parc',
+      'Té assignada la percepció del complement PAGI (Presència Activa de Guàrdia Interregional) de nivell superior'
+    ],
+    correctIndex: 3,
+    explanation: 'El nivell 1 correspon al cap de guàrdia de parc (disponibilitat immediata). La responsabilitat interregional o de coordinació central correspon als nivells superiors (Nivells 4 i 5).'
+  },
+
+  // ==================== TEMA 8 (3 preguntes) ====================
+  {
+    topic: 8,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T8] En un incendi d\'un dipòsit de combustible líquid (classe B), observem que la temperatura del líquid es troba per sobre del seu punt d\'ignició (fire point) però per sota de la seva temperatura d\'autoignició. Què passarà si retirem la font d\'ignició externa després que hagi començat a cremar?',
+    options: [
+      'El foc s\'apagarà immediatament perquè no ha assolit la temperatura d\'autoignició',
+      'La combustió es mantindrà de manera sostinguda perquè per sobre del punt d\'ignició es generen prou vapors per mantenir la flama',
+      'Només es produiran flaixos intermitents sense flama contínua',
+      'El líquid passarà directament a combustió sense flama (incandescent)'
+    ],
+    correctIndex: 1,
+    explanation: 'El punt d\'ignició (fire point) és la temperatura mínima a la qual un combustible líquid emet vapors suficients per mantenir una combustió sostinguda un cop iniciada, fins i tot retirant la font d\'ignició.'
+  },
+  {
+    topic: 8,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T8] Quin és el mecanisme d\'extinció principal de la pols química seca (bicarbonat de sodi o fosfat monoamònic) i per què NO és recomanable utilitzar-la com a agent únic en un foc profund de bales de palla o fusta massissa?',
+    options: [
+      'Extingeix per refredament; no és recomanable perquè congela la superfície de la fusta',
+      'Extingeix per inhibició química de la reacció en cadena (i lleugera sufocació); té un poder de refredament molt baix i no penetra en les brases profundes, fet que pot provocar reignició',
+      'Extingeix per dilució de l\'oxigen amb vapor d\'aigua; no és recomanable per risc elèctric',
+      'Extingeix per saponificació; només funciona amb olis vegetals'
+    ],
+    correctIndex: 1,
+    explanation: 'La pols química seca interromp la reacció en cadena (radicals lliures) i apaga ràpidament les flames, però gairebé no refreda. En brases profundes (classe A), la calor residual pot provocar la reignició si no es refreda amb aigua.'
+  },
+  {
+    topic: 8,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T8] Quin agent extintor és el més adequat i segur per a un incendi de metalls alcalins o magnesi (classe D) en un taller industrial?',
+    options: [
+      'Aigua polvoritzada a alta pressió',
+      'Escuma filmògena AFFF',
+      'Pols seca específica de classe D (com clorur de sodi, grafit o sorra seca) que actua per sufocació i absorció de calor sense reaccionar amb el metall',
+      'Diòxid de carboni (CO₂) aplicat a curta distància'
+    ],
+    correctIndex: 2,
+    explanation: 'L\'aigua, l\'escuma i fins i tot el CO₂ poden reaccionar violentament amb metalls com el magnesi o el sodi a altes temperatures (alliberant hidrogen o accelerant la reacció). Cal usar agents específics de classe D inerts.'
+  },
+
+  // ==================== TEMA 9 (3 preguntes) ====================
+  {
+    topic: 9,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T9] Un equip de bombers ha d\'arrossegar cap amunt una càrrega de 100 kg per una rampa inclinada 37° (sin 37° = 0,6; cos 37° = 0,8) amb un coeficient de fregament dinàmic μ = 0,2. Prenent g = 10 m/s², quina força mínima paral·lela al pla inclinat cal aplicar per mantenir la càrrega en moviment uniforme?',
+    options: [
+      '600 N',
+      '760 N',
+      '800 N',
+      '960 N'
+    ],
+    correctIndex: 1,
+    explanation: 'Component paral·lela del pes: Px = m·g·sin(37°) = 100×10×0,6 = 600 N. Força normal: N = m·g·cos(37°) = 100×10×0,8 = 800 N. Fregament: Ff = μ·N = 0,2×800 = 160 N. Força total = 600 + 160 = 760 N.'
+  },
+  {
+    topic: 9,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T9] En una maniobra d\'elevació utilitzem un polispast ideal amb un avantatge mecànic teòric de 6:1 per aixecar una biga de 180 kg una alçada de 2 metres (g = 10 m/s²). Quina força haurem d\'aplicar a la corda i quina longitud de corda haurem de recuperar?',
+    options: [
+      '300 N i 12 m de corda',
+      '300 N i 6 m de corda',
+      '600 N i 12 m de corda',
+      '180 N i 10 m de corda'
+    ],
+    correctIndex: 0,
+    explanation: 'Pes = 180 × 10 = 1.800 N. Amb polispast 6:1, F = 1.800 / 6 = 300 N. Per conservar el treball, la longitud de corda recuperada es multiplica per 6: L = 2 m × 6 = 12 m.'
+  },
+  {
+    topic: 9,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T9] Un vehicle autobomba de 14.000 kg circula a 54 km/h (15 m/s) i frena fins a aturar-se completament en 5 segons amb desceleració constant. Quina força mitjana de frenada actua sobre el vehicle?',
+    options: [
+      '21.000 N',
+      '42.000 N',
+      '70.000 N',
+      '151.200 N'
+    ],
+    correctIndex: 1,
+    explanation: 'v₀ = 54 km/h = 15 m/s. Desceleració a = Δv / t = 15 / 5 = 3 m/s². Força F = m · a = 14.000 kg × 3 m/s² = 42.000 N.'
+  },
+
+  // ==================== TEMA 10 (3 preguntes) ====================
+  {
+    topic: 10,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T10] Una ampolla d\'aire comprimit d\'un ERA té una pressió de 300 bar a una temperatura de 27 °C (300 K). Si queda exposada a la radiació d\'un incendi i l\'aire interior arriba als 127 °C (400 K), quina pressió assolirà (suposant volum constant i comportament de gas ideal)?',
+    options: [
+      '350 bar',
+      '400 bar',
+      '450 bar',
+      '1.411 bar'
+    ],
+    correctIndex: 1,
+    explanation: 'Llei de Gay-Lussac (V constant): P₁/T₁ = P₂/T₂ → P₂ = 300 bar × (400 K / 300 K) = 400 bar.'
+  },
+  {
+    topic: 10,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T10] En la combustió completa del metà (CH₄ + 2 O₂ → CO₂ + 2 H₂O), quants grams d\'oxigen (O₂, M = 32 g/mol) calen per cremar completament 64 g de metà (CH₄, M = 16 g/mol)?',
+    options: [
+      '64 g d\'O₂',
+      '128 g d\'O₂',
+      '256 g d\'O₂',
+      '512 g d\'O₂'
+    ],
+    correctIndex: 2,
+    explanation: 'n(CH₄) = 64 g / 16 g/mol = 4 mols. Segons l\'estequiometria (1:2), calen 4 × 2 = 8 mols d\'O₂. Massa d\'O₂ = 8 mols × 32 g/mol = 256 g.'
+  },
+  {
+    topic: 10,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T10] Quina afirmació sobre el pH d\'una substància química perillosa en una fuita és CORRECTA?',
+    options: [
+      'Una solució amb pH = 2 té una concentració d\'ions H⁺ deu vegades inferior a una amb pH = 3',
+      'L\'escala de pH és logarítmica: passar de pH 9 a pH 11 suposa augmentar la basicitat (reduir [H⁺]) en un factor de 100',
+      'Qualsevol substància amb pH = 7 és altament corrosiva per als teixits vius',
+      'Les bases fortes tenen valors de pH compresos entre 0 i 3'
+    ],
+    correctIndex: 1,
+    explanation: 'L\'escala de pH és logarítmica en base 10. Cada unitat suposa un factor de 10; 2 unitats (de 9 a 11) suposen un factor de 10² = 100 vegades menys concentració de protons (més bàsica).'
+  },
+
+  // ==================== TEMA 11 (3 preguntes) ====================
+  {
+    topic: 11,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T11] En un quadre elèctric connectem dues resistències de 12 Ω i 4 Ω en paral·lel a una font de tensió contínua de 24 V. Quina intensitat total de corrent circula pel circuit principal?',
+    options: [
+      '1,5 A',
+      '3 A',
+      '8 A',
+      '16 A'
+    ],
+    correctIndex: 2,
+    explanation: 'Resistència equivalent en paral·lel: Req = (12 × 4) / (12 + 4) = 48 / 16 = 3 Ω. Per la llei d\'Ohm: I = V / Req = 24 V / 3 Ω = 8 A.'
+  },
+  {
+    topic: 11,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T11] Una motobomba elèctrica auxiliar monofàsica de 2.300 W de potència activa funciona a 230 V amb un factor de potència cos φ = 0,8. Quina intensitat consumeix?',
+    options: [
+      '8 A',
+      '10 A',
+      '12,5 A',
+      '16 A'
+    ],
+    correctIndex: 2,
+    explanation: 'En corrent altern monofàsic: P = V · I · cos φ → I = P / (V · cos φ) = 2.300 / (230 × 0,8) = 10 / 0,8 = 12,5 A.'
+  },
+  {
+    topic: 11,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T11] En una intervenció per caiguda d\'un cable d\'alta tensió sobre el terra mullat prop d\'un turisme accidentat, per què els bombers han de respectar la zona de seguretat i, en cas d\'haver-se d\'allunyar d\'un punt energitzat, fer-ho a passes molt curtes o a peu coix?',
+    options: [
+      'Per reduir la tensió de contacte entre el vehicle i el fanal',
+      'Per minimitzar la diferència de potencial entre els dos peus (tensió de pas) generada pel gradient de potencial radial a terra',
+      'Per evitar que la càrrega electrostàtica de les botes faci saltar l\'arc elèctric a l\'aire',
+      'Per impedir que el corrent continu s\'inverteixi en corrent altern'
+    ],
+    correctIndex: 1,
+    explanation: 'Quan un conductor d\'alta tensió toca terra, es crea un embut de potencial radial. Si els dos peus es troben a distàncies diferents del punt de contacte, apareix una tensió de pas perillosa entre les cames.'
+  },
+
+  // ==================== TEMA 12 (3 preguntes) ====================
+  {
+    topic: 12,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T12] En una instal·lació elèctrica interior de baixa tensió (REBT), quin dispositiu protegeix específicament les persones contra contactes indirectes i derivacions a terra?',
+    options: [
+      'L\'interruptor magnetotèrmic (PIA) de corba C',
+      'L\'interruptor de control de potència (ICP)',
+      'L\'interruptor diferencial (ID), habitualment d\'alta sensibilitat (30 mA) en habitatges',
+      'El limitador de sobretensions permanents'
+    ],
+    correctIndex: 2,
+    explanation: 'L\'interruptor diferencial compara el corrent d\'entrada i el de sortida; si detecta una fuita a terra superior a la seva sensibilitat (p. ex. 30 mA), obre el circuit per protegir les persones.'
+  },
+  {
+    topic: 12,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T12] En una intervenció per olor de gas en un edifici amb subministrament de gas natural canalitzat i sense risc de flama immediat, on es troba la clau que permet tallar el subministrament de tot l\'edifici sense accedir als comptadors individuals?',
+    options: [
+      'A la clau d\'aparell situada dins la cuina de cada habitatge',
+      'A la clau d\'edifici (o clau de branca / d\'escomesa) situada habitualment a l\'armari de regulació o façana a l\'exterior',
+      'Exclusivament a la planta de regasificació municipal',
+      'A la vàlvula de purga de la caldera comunitària'
+    ],
+    correctIndex: 1,
+    explanation: 'La clau d\'escomesa o clau d\'edifici (en armari exterior/façana) permet tallar el pas del gas a tota la finca des de l\'exterior de manera ràpida i segura.'
+  },
+  {
+    topic: 12,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T12] Quina és la diferència principal entre una xarxa de sanejament separativa i una d\'unitària en un nucli urbà?',
+    options: [
+      'La xarxa separativa utilitza canonades de plom i la unitària de PVC',
+      'La xarxa separativa condueix per conductes independents les aigües pluvials i les aigües residuals (fecals), mentre que la unitària les recull en un únic col·lector',
+      'La xarxa unitària només existeix en polígons industrials amb depuradora pròpia',
+      'La xarxa separativa funciona sempre a pressió positiva amb bombes i la unitària per gravetat'
+    ],
+    correctIndex: 1,
+    explanation: 'En una xarxa separativa hi ha dos col·lectors diferenciats (pluvials i fecals/residuals), mentre que en la unitària tot va al mateix col·lector.'
+  },
+
+  // ==================== TEMA 13 (3 preguntes) ====================
+  {
+    topic: 13,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T13] Muntem una instal·lació amb 100 m de mànega de Ø 45 mm (pèrdua de càrrega = 1,2 bar per cada 100 m a aquest cabal) per atacar un incendi en una 4a planta situada a 12 m d\'alçada respecte a la bomba. Si la llança necessita 6 bar de pressió en punta, quina pressió de sortida ha de donar la bomba?',
+    options: [
+      '6,0 bar',
+      '7,2 bar',
+      '8,4 bar',
+      '9,6 bar'
+    ],
+    correctIndex: 2,
+    explanation: 'P_bomba = P_llança + P_alçada + J_mànegues. Alçada 12 m ≈ 1,2 bar; pèrdua de càrrega J = 1,2 bar; llança = 6 bar. Total = 6 + 1,2 + 1,2 = 8,4 bar.'
+  },
+  {
+    topic: 13,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T13] Per l\'equació de continuïtat en règim estacionari (Q = S · v), si l\'aigua circula a 2 m/s per una canonada de Ø 100 mm i passa a una reducció de Ø 50 mm, quina velocitat assolirà al tram estret?',
+    options: [
+      '4 m/s',
+      '6 m/s',
+      '8 m/s',
+      '1 m/s'
+    ],
+    correctIndex: 2,
+    explanation: 'La secció és proporcional al quadrat del diàmetre (S = π·d²/4). En reduir el diàmetre a la meitat (de 100 a 50 mm), la secció es redueix a 1/4; per mantenir Q constant, la velocitat es multiplica per 4: 2 m/s × 4 = 8 m/s.'
+  },
+  {
+    topic: 13,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T13] En el funcionament d\'una bomba centrífuga d\'un vehicle autobomba aspirant d\'un riu, què és el fenomen de la cavitació i quina conseqüència pot tenir?',
+    options: [
+      'L\'entrada d\'aire per la llança que millora l\'abast del raig',
+      'La formació i implosió violenta de bombolles de vapor dins la bomba quan la pressió en aspiració cau per sota de la pressió de vapor del líquid, causant vibracions, pèrdua de rendiment i erosió del rodet',
+      'El blocatge tèrmic de la vàlvula de peu quan l\'aigua supera els 4 °C',
+      'L\'augment sobtat del cabal en tancar bruscament la llança (cop d\'ariet)'
+    ],
+    correctIndex: 1,
+    explanation: 'La cavitació es produeix quan la pressió a l\'aspiració baixa per sota de la pressió de vapor de l\'aigua; es formen bombolles que implosionen violentament a la zona d\'alta pressió del rodet, danyant-lo i fent caure el cabal.'
+  },
+
+  // ==================== TEMA 14 (3 preguntes) ====================
+  {
+    topic: 14,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T14] En un mapa topogràfic a escala 1:25.000, dos punts A (cota 450 m) i B (cota 600 m) estan separats per una distància mesurada sobre el mapa de 4 cm. Quin és el pendent del terreny entre A i B?',
+    options: [
+      '10 %',
+      '15 %',
+      '20 %',
+      '25 %'
+    ],
+    correctIndex: 1,
+    explanation: 'Distància horitzontal real = 4 cm × 25.000 = 100.000 cm = 1.000 m. Desnivell = 600 − 450 = 150 m. Pendent = (150 / 1.000) × 100 = 15 %.'
+  },
+  {
+    topic: 14,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T14] Des d\'un punt de guaita observem una columna de fum amb un rumb directe (azimut) de 235°. Quin és el contrarumb (rumb invers) des del punt del foc cap al nostre punt de guaita?',
+    options: [
+      '45°',
+      '55°',
+      '125°',
+      '305°'
+    ],
+    correctIndex: 1,
+    explanation: 'Quan el rumb directe és ≥ 180°, el contrarumb es calcula restant 180°: 235° − 180° = 55°.'
+  },
+  {
+    topic: 14,
+    difficulty: 'Fàcil',
+    question: '[BANC EXTRA · T14] En quina zona o fus UTM (sistema de referència ETRS89) s\'emmarca la pràctica totalitat del territori de Catalunya?',
+    options: [
+      'Fus 29T',
+      'Fus 30T',
+      'Fus 31T',
+      'Fus 32T'
+    ],
+    correctIndex: 2,
+    explanation: 'Catalunya es troba majoritàriament al fus UTM 31T (meridià central 3° E), tot i que una petita franja occidental entra al fus 30T.'
+  },
+
+  // ==================== TEMA 15 (3 preguntes) ====================
+  {
+    topic: 15,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T15] En una biga bi-recolzada sotmesa a una càrrega vertical cap avall al centre de la llum, quins esforços pateixen respectivament les fibres superiors i les fibres inferiors de la secció?',
+    options: [
+      'Les fibres superiors pateixen tracció i les inferiors compressió',
+      'Les fibres superiors pateixen compressió i les inferiors tracció',
+      'Totes dues fibres pateixen únicament esforç tallant pur',
+      'Les fibres superiors pateixen torsió i les inferiors cisallament'
+    ],
+    correctIndex: 1,
+    explanation: 'En flexió positiva (biga bi-recolzada amb càrrega cap avall), la part superior s\'escurça (compressió) i la part inferior s\'allarga (tracció); per això l\'armadura d\'acer principal es col·loca a la cara inferior.'
+  },
+  {
+    topic: 15,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T15] Per què en un incendi estructural prolongat les bigues metàl·liques d\'acer laminat sense protecció passiva presenten un risc elevat de col·lapse sobtat?',
+    options: [
+      'Perquè l\'acer fon completament a partir dels 400 °C',
+      'Perquè l\'acer té una conductivitat tèrmica elevada, es dilata molt (empenyent murs perimetrals) i perd aproximadament el 50 % de la seva resistència mecànica al voltant dels 500–550 °C',
+      'Perquè l\'acer allibera gasos inflamables en escalfar-se per sobre de 300 °C',
+      'Perquè l\'acer es carbonata en contacte amb el CO₂ de l\'incendi'
+    ],
+    correctIndex: 1,
+    explanation: 'Tot i que l\'acer no és combustible i fon cap als 1.400–1.500 °C, la seva alta conductivitat tèrmica i dilatació fan que cap als 500–550 °C perdi prop de la meitat de la seva capacitat portant.'
+  },
+  {
+    topic: 15,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T15] Quin element estructural horitzontal treballa principalment a tracció per contrarestar l\'empenta lateral cap enfora que transmeten els arcs o les encavallades d\'una coberta?',
+    options: [
+      'El pilar o columna',
+      'El tirant',
+      'La sabata aïllada',
+      'La biga mestra en voladís'
+    ],
+    correctIndex: 1,
+    explanation: 'El tirant és un element lineal dissenyat per treballar a tracció i absorbir les empentes horitzontals d\'arcs, voltes o parells d\'una encavallada.'
+  },
+
+  // ==================== TEMA 16 (3 preguntes) ====================
+  {
+    topic: 16,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T16] En una assistència tècnica per atrapament d\'una persona en un ascensor elèctric convencional aturat entre dues plantes, quina és la primera acció de seguretat imprescindible abans de fer cap maniobra manual a la cabina o a la sala de màquines?',
+    options: [
+      'Forçar les portes de pis amb el separador hidràulic des del primer moment',
+      'Tallar l\'alimentació elèctrica general de l\'ascensor (interruptor de força a la sala de màquines o quadre) i senyalitzar/bloquejar per evitar que ningú el rearmi',
+      'Deixar anar el fre electromecànic sense comprovar on és la cabina',
+      'Trucar a l\'empresa mantenidora i esperar sense apropar-se al forat'
+    ],
+    correctIndex: 1,
+    explanation: 'En qualsevol rescat en ascensor, la mesura prèvia obligatòria és desconnectar el corrent elèctric de força (mantenint l\'enllumenat si és independent) per evitar una arrencada sobtada de la cabina durant la maniobra.'
+  },
+  {
+    topic: 16,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T16] En l\'obertura forçada d\'una porta d\'habitatge (sense foc) per assistir una persona caiguda a l\'interior, quin criteri operatiu d\'intervenció s\'ha de seguir?',
+    options: [
+      'Trencar sempre el pany amb l\'ariet per guanyar temps, encara que hi hagi finestres practicables segures',
+      'Buscar la via d\'accés menys destructiva possible (p. ex. finestra o balcó accessible amb escala, o extracció de bombí) si el temps i la seguretat ho permeten, i deixar la porta assegurada o custodiada en acabar',
+      'No es pot accedir mai a un domicili sense una ordre judicial prèvia signada, encara que hi hagi perill imminent per a la vida',
+      'Utilitzar sempre una radial sobre les frontisses encara que hi hagi risc de projecció d\'espurnes a l\'interior'
+    ],
+    correctIndex: 1,
+    explanation: 'En assistències tècniques (obertures de domicili) s\'aplica el principi de mínima lesivitat: accés alternatiu segur o extracció neta del bombí si l\'urgència mèdica ho permet, sempre garantint la proporcionalitat.'
+  },
+  {
+    topic: 16,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T16] Durant una intervenció per un element constructiu inestable en façana (cornisa o ràfec amb risc de caiguda a la via pública), quina zona s\'ha d\'establir i abalisar immediatament?',
+    options: [
+      'Només l\'amplada exacta de la vorera sota la cornisa',
+      'Un perímetre de seguretat ampli que contempli la possible trajectòria de caiguda i rebot dels fragments a la calçada i vorera',
+      'Únicament la porta d\'accés al vestíbul de l\'edifici',
+      'No cal abalisar si hi ha un agent de policia local dirigint el trànsit'
+    ],
+    correctIndex: 1,
+    explanation: 'Els elements que cauen des d\'alçada poden rebotar o projectar fragments lluny de la vertical; cal un perímetre de seguretat suficient i abalisat abans de sanejar.'
+  },
+
+  // ==================== TEMA 17 (3 preguntes) ====================
+  {
+    topic: 17,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T17] En la xarxa de radiocomunicacions d\'emergències RESCAT de la Generalitat de Catalunya (tecnologia TETRA), què significa treballar en mode DMO (Direct Mode Operation)?',
+    options: [
+      'Comunicació a través de la xarxa d\'antenes repetidores troncals (mode TMO)',
+      'Comunicació directa terminal-a-terminal sense passar per la infraestructura de repetidors de la xarxa (útil dins de soterranis, túnels o zones sense cobertura)',
+      'Comunicació encriptada exclusiva per a trucades telefòniques a la xarxa pública',
+      'Mode de baix consum en què el terminal només rep dades GPS'
+    ],
+    correctIndex: 1,
+    explanation: 'El mode DMO (Direct Mode Operation) permet la comunicació directa walkie-walkie entre terminals TETRA dins del seu abast ràdio, sense dependre de la cobertura dels repetidors (TMO).'
+  },
+  {
+    topic: 17,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T17] En una intervenció amb múltiples unitats treballant en una mateixa emissora en mode directe (símplex), quin problema operatiu es produeix si dos terminals premen el PTT (Push-To-Talk) simultàniament?',
+    options: [
+      'Les dues veus se senten mesclades amb perfecta claredat a tots els receptors',
+      'Es produeix una interferència/col·lisió de senyal (o bloqueig del canal) que impedeix la recepció intel·ligible; per això cal esperar que l\'interlocutor acabi i confirmar el «canvi»',
+      'L\'emissora canvia automàticament de banda de VHF a UHF',
+      'Es duplica l\'abast de la transmissió per suma de potències'
+    ],
+    correctIndex: 1,
+    explanation: 'En comunicacions símplex per ràdio, només pot emetre un terminal alhora. Dues emissions simultànies col·lisionen i impedeixen entendre el missatge.'
+  },
+  {
+    topic: 17,
+    difficulty: 'Fàcil',
+    question: '[BANC EXTRA · T17] En el procediment radiofònic dels Bombers de la Generalitat, quina de les següents normes de disciplina de ràdio és INCORRECTA?',
+    options: [
+      'Identificar primer l\'indicatiu del destinatari i tot seguit el nostre propi indicatiu',
+      'Transmetre missatges breus, clars, precisos i en to serè, evitant expressions col·loquials',
+      'Prémer el PTT i començar a parlar immediatament abans que s\'estableixi la portadora per guanyar mil·lisegons',
+      'Utilitzar l\'alfabet fonètic internacional (ICAO) per lletrejar matrícules, codis o noms dubtosos'
+    ],
+    correctIndex: 2,
+    explanation: 'Cal prémer el PTT, esperar aproximadament un segon perquè s\'obri el canal/repetidor (s\'estableixi la portadora o soni el to de pas en TETRA) i llavors parlar; si no, es talla l\'inici del missatge.'
+  }
+];
+
+/**
+ * Banc extra de preguntes generades (Bloc 3) — 50 preguntes originals d'alt nivell (Temes 18 a 34).
+ */
+const QUESTIONS_GENERADES_3 = [
+  // =========================================================================
+  // TEMA 18: Vehicles d'intervenció en emergències (MAN.EQIP.000) — 2 preguntes
+  // =========================================================================
+  {
+    topic: 18,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T18] En una BUP (Bomba Urbana Pesant) dels Bombers de la Generalitat, quina és la capacitat habitual de la cisterna d\'aigua i el cabal nominal aproximat de la bomba centrífuga combinada?',
+    options: [
+      'Cisterna de 3.000 a 3.500 litres i bomba de 3.000 L/min a 10 bar (baixa pressió)',
+      'Cisterna de 1.500 litres i bomba de 1.000 L/min a 40 bar (alta pressió)',
+      'Cisterna de 8.000 litres i bomba de 4.500 L/min a 10 bar (baixa pressió)',
+      'Cisterna de 500 litres i bomba de 600 L/min a 15 bar'
+    ],
+    correctIndex: 0,
+    explanation: 'Les BUP tenen una cisterna d\'entre 3.000 i 3.500 L i una bomba combinada amb un cabal nominal entorn dels 3.000 L/min a 10 bar en baixa pressió (i ~250-400 L/min a 40 bar en alta).'
+  },
+  {
+    topic: 18,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T18] En estacionar un vehicle autoescala automàtica (AEA) per fer un rescat en façana a una 5a planta, quin criteri d\'emplaçament i estabilització és prioritari respecte al terreny i la distància a la façana?',
+    options: [
+      'Col·locar els estabilitzadors directament sobre tapes de clavegueram per repartir millor la càrrega puntual',
+      'Situar el vehicle a una distància horitzontal òptima de la façana (aprox. 6-9 m) sobre ferm compacte, anivellant el xassís dins la tolerància i comprovant la càrrega admissible dels suports',
+      'Apropar el xassís a menys de 2 m de la façana perquè l\'escala treballi completament vertical sense deflexió',
+      'Desplegar només els estabilitzadors del costat de treball per guanyar amplada de pas a la calçada'
+    ],
+    correctIndex: 1,
+    explanation: 'Cal evitar tapes de clavegueram o buits subterranis, anivellar el vehicle amb tots els estabilitzadors desplegats segons la càrrega del terreny i mantenir una distància òptima a la façana per obtenir el màxim abast i angle de treball segur.'
+  },
+
+  // =========================================================================
+  // TEMA 19: Conducció d'Emergència, Tracció 4x4 i Mecànica (MAN.EQIP.002) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 19,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T19] En una BRP (Bomba Rural Pesant) 4×4 que circula per una pista forestal amb fang profund on una roda d\'un eix patina i perd adherència, quin element mecànic permet transmetre parell motor a la roda que sí té tracció?',
+    options: [
+      'La caixa transferidora en posició de marxes llargues (4H) sense bloqueig',
+      'El bloqueig del diferencial transversal (d\'eix)',
+      'El retardador hidràulic (intarder) activat al màxim',
+      'La desconnexió de l\'ABS per augmentar la pressió de frenada'
+    ],
+    correctIndex: 1,
+    explanation: 'Un diferencial obert envia el parell cap a la roda amb menys resistència (la que patina). El bloqueig del diferencial d\'eix solidaritza ambdós semieixos i força la roda amb adherència a traccionar.'
+  },
+  {
+    topic: 19,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T19] Durant el descens d\'un pendent pronunciat i relliscós amb un camió bomba de 18 tones carregat d\'aigua, quina combinació de conducció és la més segura per evitar el sobreescalfament dels frens de servei i la pèrdua de control?',
+    options: [
+      'Circular en punt mort i controlar la velocitat exclusivament amb el pedal del fre de servei',
+      'Seleccionar una marxa curta, utilitzar el fre motor i el retardador/fre elèctric de manera progressiva, reservant el fre de servei per a correccions puntuals',
+      'Connectar el bloqueig del diferencial d\'eix a 70 km/h per estabilitzar el tren posterior',
+      'Pujar una marxa llarga per reduir les revolucions del motor i evitar que les rodes motrius rellisquin'
+    ],
+    correctIndex: 1,
+    explanation: 'En descensos llargs amb vehicles pesants, la retenció principal s\'ha de fer amb marxes curtes (fre motor) i els sistemes auxiliars (retardador/fre motor), evitant el "fading" o sobreescalfament dels frens de servei.'
+  },
+  {
+    topic: 19,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T19] En conducció d\'emergència en servei urgent amb senyals acústics i lluminosos activats, què estableix la normativa i el criteri de seguretat viària quan s\'arriba a una intersecció amb el semàfor en vermell?',
+    options: [
+      'El conductor té prioritat absoluta i pot creuar a la mateixa velocitat sense reduir',
+      'Pot sobrepassar la intersecció sota la seva responsabilitat, reduint la velocitat i assegurant-se que la resta d\'usuaris li han cedit el pas i no hi ha risc de col·lisió',
+      'Ha d\'aturar-se obligatòriament i esperar sempre que el semàfor canviï a verd',
+      'Només pot creuar en vermell si circula darrere d\'un vehicle policial que obri pas'
+    ],
+    correctIndex: 1,
+    explanation: 'Els vehicles prioritaris en servei urgent poden no respectar senyals com semàfors en vermell sempre que extremin la precaució, redueixin la velocitat i comprovin que no posen en perill cap usuari ni es produeix una col·lisió.'
+  },
+
+  // =========================================================================
+  // TEMA 20: EPI d'intervenció en emergències (MAN.SEGU.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 20,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T20] En un Equip de Respiració Autònoma (ERA) de circuit obert amb ampolla de 6,8 litres a 300 bar de pressió nominal, quin és el volum aproximat d\'aire disponible i en quin rang de pressió s\'activa habitualment el xiulet d\'alarma de reserva?',
+    options: [
+      'Uns 2.040 litres d\'aire (factor de compressibilitat inclòs ~1.850-2.040 L) i alarma entre 50 i 60 bar',
+      'Uns 680 litres d\'aire i alarma entre 100 i 110 bar',
+      'Uns 3.400 litres d\'aire i alarma entre 20 i 25 bar',
+      'Uns 1.200 litres d\'aire i alarma entre 80 i 90 bar'
+    ],
+    correctIndex: 0,
+    explanation: '6,8 L × 300 bar ≈ 2.040 L (amb factor Z a 300 bar ~1.850 L útils). Segons la norma EN 137, l\'alarma acústica de baixa pressió s\'activa a 55 ± 5 bar (rang 50-60 bar).'
+  },
+  {
+    topic: 20,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T20] Durant un atac interior en un incendi d\'habitatge, un bomber nota que el seu manòmetre marca 55 bar i sona el xiulet de reserva mentre encara és a l\'interior. Quin és el procediment operatiu correcte?',
+    options: [
+      'Continuar extingint fins a arribar a 20 bar i sortir corrents sense avisar',
+      'Comunicar immediatament la situació al binomi i al comandament, i iniciar la retirada conjunta de la zona de perill abans d\'esgotar l\'aire',
+      'Obrir la vàlvula de by-pass (flux continu) per respirar més fàcilment durant la sortida',
+      'Treure\'s la màscara un cop passat el foc principal encara que hi hagi fum lleuger'
+    ],
+    correctIndex: 1,
+    explanation: 'L\'alarma de reserva (55 ± 5 bar) indica que s\'ha d\'iniciar la sortida immediata de l\'ambient irrespirable amb tot el binomi i informant el comandament; la reserva és per a la retirada segura, no per continuar treballant.'
+  },
+  {
+    topic: 20,
+    difficulty: 'Fàcil',
+    question: '[BANC EXTRA · T20] Quina diferència fonamental existeix entre el vestit d\'intervenció estructural (EN 469) i el vestit d\'intervenció en incendis forestals (EN 15614 / ISO 15384)?',
+    options: [
+      'El vestit estructural és monocapa per afavorir la transpiració i el forestal porta barrera d\'humitat impermeable',
+      'El vestit estructural incorpora capes tèrmica i barrera d\'humitat per protegir contra alta radiació i vapor en espais tancats, mentre que el forestal prioritza la lleugeresa i transpirabilitat per evitar l\'estrès tèrmic en marxes llargues',
+      'El vestit forestal ofereix major protecció contra el flashover que l\'estructural',
+      'No hi ha diferència normativa; ambdós compleixen exactament la norma EN 469'
+    ],
+    correctIndex: 1,
+    explanation: 'El vestit estructural (EN 469) té diverses capes (exterior, barrera d\'humitat, aïllant tèrmic) per a alta càrrega tèrmica en interiors; el forestal és més lleuger i transpirable per reduir el risc de cop de calor en esforços prolongats a l\'exterior.'
+  },
+
+  // =========================================================================
+  // TEMA 21: Gestió d'emergències i Protecció Civil (MAN.GRAL.001) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 21,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T21] En l\'activació d\'un pla de protecció civil de Catalunya (com l\'INFOCAT o l\'INUNCAT) en fase d\'Emergència, on s\'integra el cap de la intervenció dels Bombers sobre el terreny per coordinar els grups d\'actuació?',
+    options: [
+      'Al Centre de Coordinació Operativa de Catalunya (CECAT) a Barcelona exclusivament',
+      'Al Centre de Comandament Avançat (CCA), on s\'assumeix la direcció tàctica i coordinació operativa dels grups sobre el terreny',
+      'Al Centre de Recepció de Mitjans (CRM) sense comunicació amb altres cossos',
+      'A la sala de crisi del Parlament de Catalunya'
+    ],
+    correctIndex: 1,
+    explanation: 'El CCA (Centre de Comandament Avançat) s\'estableix prop de la zona de l\'emergència per dirigir i coordinar tàcticament els grups operatius (Intervenció, Sanitari, Ordre, Logístic) en contacte amb el CECAT.'
+  },
+  {
+    topic: 21,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T21] Dins l\'estructura operativa dels plans de protecció civil a Catalunya, quina funció correspon específicament al Grup d\'Ordre?',
+    options: [
+      'Realitzar el triatge sanitari avançat i l\'evacuació dels ferits greus',
+      'Garantir la seguretat ciutadana, establir els perímetres de seguretat, regular els accessos i controlar el trànsit per facilitar la tasca dels equips d\'intervenció',
+      'Subministrar combustible i avituallament als camions de bombers',
+      'Avaluar l\'estabilitat estructural dels edificis sinistrats'
+    ],
+    correctIndex: 1,
+    explanation: 'El Grup d\'Ordre (Mossos d\'Esquadra, Policies Locals, etc.) s\'encarrega del control d\'accessos, perímetres, seguretat ciutadana, regulació viària i suport en evacuacions/confinaments.'
+  },
+  {
+    topic: 21,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T21] Quina diferència conceptual hi ha entre la fase de Prealerta, la d\'Alerta i la d\'Emergència en un pla de protecció civil?',
+    options: [
+      'La Prealerta implica danys greus ja produïts; l\'Alerta només mobilitza voluntaris',
+      'La Prealerta respon a una situació de risc potencial o predicció (seguiment preventiu); l\'Alerta s\'activa quan l\'evolució fa preveure un risc imminent o incidències menors i requereix dispositiu preventiu; l\'Emergència implica l\'ocurrència del sinistre amb afectació greu o necessitat de mobilització extraordinària de mitjans',
+      'Són termes sinònims que només canvien segons el municipi afectat',
+      'L\'Emergència només es pot declarar si hi ha més de deu víctimes mortals'
+    ],
+    correctIndex: 1,
+    explanation: 'Les fases segueixen una escala progressiva: Prealerta (seguiment d\'una possible situació de risc), Alerta (risc imminent o afectació lleu amb preposicionament/avís) i Emergència (sinistre manifest amb activació plena de recursos).'
+  },
+
+  // =========================================================================
+  // TEMA 22: Sistema de Comandament - SISCOM (MAN.COMD.001) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 22,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T22] Segons els principis del SISCOM dels Bombers de la Generalitat, què significa el principi d\'"abast de control" (span of control)?',
+    options: [
+      'La distància màxima en quilòmetres que pot cobrir una emissora TETRA',
+      'El nombre òptim de subordinats o unitats que un sol comandament pot dirigir eficaçment (habitualment entre 3 i 7, amb un òptim de 5)',
+      'El perímetre total de la zona calenta d\'un incendi industrial',
+      'El temps màxim que pot durar una guàrdia de 24 hores'
+    ],
+    correctIndex: 1,
+    explanation: 'L\'abast de control estableix quants recursos pot supervisar un comandament amb seguretat i eficàcia: entre 3 i 7 unitats/persones (idealment 5). Si se supera, cal sectoritzar o delegar.'
+  },
+  {
+    topic: 22,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T22] En una intervenció complexa que creix ràpidament, arriba un comandament de rang superior per assumir el comandament del servei. Quina és la seqüència correcta per fer el relleu (transferència de comandament) segons el SISCOM?',
+    options: [
+      'El nou comandament dona ordres directes per ràdio sense parlar amb l\'anterior per no perdre temps',
+      'Reunió presencial o comunicació directa de traspàs (briefing de situació, objectius, recursos assignats, riscos i sectorització), assumpció formal comunicada per ràdio a la sala de control i a tots els recursos intervinents',
+      'El comandament sortint abandona el lloc immediatament abans que arribi el relleu',
+      'Es mantenen dos caps de intervenció simultanis donant ordres paral·leles als mateixos sectors'
+    ],
+    correctIndex: 1,
+    explanation: 'El traspàs de comandament exigeix un briefing complet de la situació i una comunicació clara i formal a tots els intervinents i a la sala de control perquè es mantingui la unitat de comandament.'
+  },
+  {
+    topic: 22,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T22] En l\'organigrama SISCOM d\'un incendi forestal o estructural de grans dimensions, quina diferència hi ha entre la sectorització geogràfica i la funcional?',
+    options: [
+      'La sectorització geogràfica divideix l\'escenari per àrees físiques (ex. Sector A/Flanc Dret, Planta 2), mentre que la funcional agrupa tasques especialitzades (ex. Sector d\'Aigua/Proveïment, Sector Sanitari, Sector de Ventilació)',
+      'La geogràfica només s\'usa de nit i la funcional de dia',
+      'La funcional prohibeix tenir un cap de sector',
+      'No existeix la sectorització funcional al SISCOM'
+    ],
+    correctIndex: 0,
+    explanation: 'El SISCOM permet organitzar els sectors per zones físiques (sectors geogràfics: flancs, plantes, façanes) o per funcions específiques transversals (abastament d\'aigua, logística, rehabilitació, etc.).'
+  },
+
+  // =========================================================================
+  // TEMA 23: Prevenció bàsica d'incendis (MAN.SP.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 23,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T23] En protecció passiva contra incendis d\'un edifici, què indica una classificació EI 60 en una porta tallafocs o un element compartimentador?',
+    options: [
+      'Que resisteix 60 minuts sense perdre la seva estabilitat mecànica (capacitat portant), però pot deixar passar flames',
+      'Que manté la seva integritat contra el pas de flames i gasos calents (E) i l\'aïllament tèrmic (I) a la cara no exposada durant almenys 60 minuts',
+      'Que s\'obre automàticament als 60 segons de sonar l\'alarma',
+      'Que suporta un impacte mecànic de 60 kg'
+    ],
+    correctIndex: 1,
+    explanation: 'En la classificació europea de resistència al foc: R (capacitat portant), E (integritat davant flames i gasos calents) i I (aïllament tèrmic). EI 60 garanteix integritat i aïllament durant 60 minuts.'
+  },
+  {
+    topic: 23,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T23] Pel que fa a les BIE (Boques d\'Incendi Equipades) segons el RIPCI (RD 513/2017), quina afirmació és correcta respecte a les BIE de 25 mm i les de 45 mm?',
+    options: [
+      'Les BIE de 25 mm porten mànega plana que s\'ha de desplegar completament abans d\'obrir l\'aigua, mentre que les de 45 mm porten mànega semirígida',
+      'Les BIE de 25 mm porten mànega semirígida (permet obrir el pas sense desplegar-la del tot) i un rodet amb més longitud màxima (fins a 30 m), mentre que les de 45 mm porten mànega plana (màx. 20 m) i requereixen desplegament complet abans de pressuritzar',
+      'Ambdues tenen un cabal idèntic i s\'utilitzen sense diferència per a usuaris no formats',
+      'Les BIE de 45 mm no necessiten xarxa d\'abastament d\'aigua a pressió'
+    ],
+    correctIndex: 1,
+    explanation: 'La BIE 25 mm usa mànega semirígida (fins a 30 m), usable per una sola persona sense desplegar-la totalment. La BIE 45 mm usa mànega plana (20 m) de major cabal i s\'ha de desplegar íntegrament abans d\'obrir la vàlvula.'
+  },
+  {
+    topic: 23,
+    difficulty: 'Fàcil',
+    question: '[BANC EXTRA · T23] Quina diferència hi ha entre la "reacció al foc" i la "resistència al foc" d\'un material o element constructiu?',
+    options: [
+      'La reacció al foc mesura la contribució d\'un material a l\'inici i propagació de l\'incendi (ex. Euroclasses A1..F), mentre que la resistència al foc mesura la capacitat d\'un element constructiu de mantenir les seves funcions (R, E, I) durant un temps determinat davant d\'un incendi desenvolupat',
+      'Són exactament el mateix concepte expressat en unitats diferents',
+      'La reacció al foc només s\'aplica a estructures d\'acer i la resistència a cortines',
+      'La resistència al foc mesura la toxicitat del fum i la reacció la càrrega de foc del mobiliari'
+    ],
+    correctIndex: 0,
+    explanation: 'La reacció al foc avalua com un material es comporta en contactar amb el foc (combustibilitat, propagació, fum, gotes: A1-F). La resistència al foc avalua el temps (minuts) que un element constructiu manté estabilitat, integritat i aïllament (REI).'
+  },
+
+  // =========================================================================
+  // TEMA 24: Intervenció bàsica en incendis estructurals (MAN.INES.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 24,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T24] En arribar a un incendi en un pis tancat d\'un edifici d\'habitatges, l\'equip observa fum dens i fosc que surt a polsacions per les escletxes de la porta, vidres bruts de sutge sense flames visibles i una temperatura molt elevada a la part alta de la porta. Quin fenomen és imminent i quina mesura preventiva cal aplicar abans d\'obrir?',
+    options: [
+      'Bleve; aplicar escuma d\'alta expansió des del replà',
+      'Backdraft (explosió de fum per aportació sobtada d\'oxigen); preparar línia d\'aigua carregada, controlar l\'obertura de la porta, refredar el coixí de gasos si cal o ventilar des de coberta abans de permetre l\'entrada d\'aire descontrolada',
+      'Boilover; ruixar amb aigua a raig ple el sostre del replà',
+      'Flashover induït pel vent; obrir totes les finestres del replà de cop'
+    ],
+    correctIndex: 1,
+    explanation: 'Fum dens a polsacions, absència de flames per falta d\'oxigen, vidres ennegrits i alta temperatura són signes clàssics d\'un incendi limitat per ventilació amb risc de backdraft. Cal controlar l\'aportació d\'aire i tenir línia protegida.'
+  },
+  {
+    topic: 24,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T24] En un atac interior en un incendi d\'habitatge amb fum dens i temperatura elevada al sostre, com s\'ha d\'executar el refredament de gasos amb llança de cabal regulable?',
+    options: [
+      'Aplicar un raig ple continu cap al terra durant 30 segons per inundar l\'estança',
+      'Fer polsacions curtes d\'aigua polvoritzada (cono estret/mitjà ~30-45°) dirigides al coixí de gasos calents del sostre per evaporar les gotes abans que caiguin i reduir la temperatura sense desestabilitzar el pla neutre',
+      'Obrir el cono màxim de protecció (120°) de manera contínua mentre s\'avança a peu dret',
+      'Utilitzar únicament extintor de CO₂ per refredar el sostre'
+    ],
+    correctIndex: 1,
+    explanation: 'Les polsacions curtes (3D gas cooling) cap al coixí de gasos permeten que l\'aigua s\'evapori en l\'aire calent absorbint molta energia (calor latent) sense generar excés de vapor que cremi el binomi ni baixar el pla neutre.'
+  },
+  {
+    topic: 24,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T24] En una ventilació tàctica per pressió positiva (VPP) en un edifici amb escala protegida o convencional, quin requisit és indispensable abans d\'engegar el ventilador a l\'accés?',
+    options: [
+      'No obrir cap obertura de sortida perquè la pressió apagui el foc per sufocació',
+      'Garantir que existeix una obertura de sortida (exutori/finestra) dimensionada i controlada a la zona sinistrada perquè el flux d\'aire expulsi el fum i la calor cap a l\'exterior sense empènyer el foc cap a zones segures',
+      'Col·locar el ventilador a l\'interior del pis en flames apuntant cap a l\'escala',
+      'Fer-ho sense línia d\'aigua preparada per evitar pèrdues de pressió'
+    ],
+    correctIndex: 1,
+    explanation: 'La VPP exigeix coordinar entrada (ventilador) i sortida (obertura controlada a la zona del focus). Sense sortida, es pressuritza l\'edifici i es pot propagar el foc o el fum cap a vies d\'evacuació.'
+  },
+
+  // =========================================================================
+  // TEMA 25: Intervenció bàsica en incendis forestals (MAN.INVE.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 25,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T25] En un incendi forestal que puja per un pendent pronunciat i amb vent a favor, quina és l\'estratègia d\'ancoratge i atac segur recomanada per evitar quedar atrapat?',
+    options: [
+      'Atacar directament el cap de l\'incendi des de la part superior del pendent sense línia d\'escapament',
+      'Ancorar les línies en un punt segur (cua o zona ja cremada) i avançar progressivament pels flancs cap al cap, mantenint rutes d\'escapament i zones segures identificades (protocol OACEL)',
+      'Col·locar els vehicles en línia a la carena d\'un barranc estret per tallar el pas del front',
+      'Treballar en atac indirecte sense comunicar la posició als mitjans aeris'
+    ],
+    correctIndex: 1,
+    explanation: 'Mai s\'ataca un cap agressiu de cara en pendent ascendent sense ancoratge ni escapament. S\'ancora a la cua o zona segura i s\'estrangulen els flancs aplicant el protocol OACEL (Observació, Atenció, Comunicació, Escapament, Lloc segur).'
+  },
+  {
+    topic: 25,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T25] Què descriu la "regla del 30-30-30" en el comportament d\'un incendi forestal i quin efecte té sobre la propagació?',
+    options: [
+      'Temperatura > 30 °C, humitat relativa < 30% i vent > 30 km/h: condicions meteorològiques crítiques que afavoreixen un comportament extrem, ràpida propagació i focs secundaris',
+      '30% de pendent, 30 m d\'alçada de flama i 30 minuts d\'autonomia d\'aigua',
+      '30 bombers, 30 mànegues de 25 mm i 30 bar de pressió',
+      'Temperatura < 30 °C, humitat > 30% i vent < 30 km/h'
+    ],
+    correctIndex: 0,
+    explanation: 'La regla del 30-30-30 (>30 °C, <30% HR, >30 km/h de vent) defineix un llindar d\'alt risc d\'incendi forestal amb combustibles fins molt secs i gran velocitat de propagació.'
+  },
+  {
+    topic: 25,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T25] En una operació amb descàrregues d\'aigua d\'un mitjà aeri (helicòpter bombarder o avió amfibi) en un flanc on treballa personal a terra, quina precaució de seguretat és obligatòria?',
+    options: [
+      'Romandre sota la vertical de la descàrrega amb el casc posat per aprofitar la humitat',
+      'Retirar el personal fora de la zona d\'impacte de la descàrrega, agrupar-se en lloc segur perpendicular a la trajectòria i protegir-se de possibles caigudes de branques o pedres',
+      'Deixar les eines manuals dretes clavades a terra i allunyar-se 2 metres',
+      'Apagar totes les emissores perquè no interfereixin amb el rotor de l\'helicòpter'
+    ],
+    correctIndex: 1,
+    explanation: 'La massa d\'aigua (1.000-6.000 L) d\'una descàrrega té una gran energia cinètica i pot trencar branques, desplaçar roques o fer caure el personal. Cal retirar-se de la trajectòria abans del llançament i coordinar-se per ràdio.'
+  },
+
+  // =========================================================================
+  // TEMA 26: Intervenció bàsica en incendis varis (MAN.INXX.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 26,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T26] En un incendi d\'un vehicle elèctric (VE) on la bateria de tracció d\'ions de liti ha entrat en embalamen tèrmic (thermal runaway), quina actuació és la més adequada un cop controlada la fase inicial?',
+    options: [
+      'Extingir amb 10 segons de CO₂ i donar el servei per tancat immediatament',
+      'Aplicar aigua abundant i sostinguda directament sobre el paquet de bateries per refredar les cel·les, monitoritzar amb càmera tèrmica durant un temps prolongat davant possibles reignicions i mantenir el vehicle aïllat',
+      'Tallar immediatament els cables taronges d\'alta tensió amb cisalla sense EPI aïllant',
+      'Cobrir el vehicle amb una manta de llana seca i pujar-lo al camió grua de seguida'
+    ],
+    correctIndex: 1,
+    explanation: 'L\'embalament tèrmic de bateries Li-ion genera oxigen i calor internament; requereix grans quantitats d\'aigua per refredar les cel·les i evitar la propagació cel·la a cel·la, així com control tèrmic pel risc de reignició diferida.'
+  },
+  {
+    topic: 26,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T26] Davant d\'un incendi en un transformador elèctric o subestació amb tensió activa, quin agent extintor i quina distància/precaució són correctes abans de confirmar el tall de subministrament?',
+    options: [
+      'Aigua a raig ple a 1 metre de distància per apagar l\'oli ràpidament',
+      'Confirmar amb la companyia elèctrica el tall i posada a terra; si cal actuar abans en fase inicial, fer-ho sense contacte elèctric (CO₂ o pols seca respectant distàncies de seguretat) i mai amb aigua a raig ple sobre elements en tensió',
+      'Escuma de baixa expansió amb llança metàl·lica tocant la carcassa',
+      'Aigua polvoritzada a 0,5 metres de les bornes d\'alta tensió'
+    ],
+    correctIndex: 1,
+    explanation: 'Amb instal·lacions en alta tensió el risc d\'arc elèctric i electrocució és mortal. Cal coordinar el tall i descàrrega a terra amb la companyia; abans del tall, mantenir distàncies de seguretat i no usar raig ple d\'aigua ni escuma conductora.'
+  },
+  {
+    topic: 26,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T26] En l\'extinció d\'una fuita de gas inflamada procedent d\'una canonada o d\'una vàlvula d\'un dipòsit de GLP (flama d\'antorxa), quina és la regla operativa fonamental?',
+    options: [
+      'Apagar la flama immediatament amb pols química ABC encara que no es pugui tancar la fuita',
+      'No apagar la flama mentre no es pugui tallar el subministrament de gas; refredar els elements propers i el dipòsit fins a poder tancar la vàlvula de pas de manera segura',
+      'Tapar la fuita amb fang humit mentre crema',
+      'Utilitzar un ventilador VPP per bufar la flama i apagar-la per velocitat de l\'aire'
+    ],
+    correctIndex: 1,
+    explanation: 'Si s\'apaga la flama d\'una fuita de gas sense tallar el flux, el gas s\'acumularà formant un núvol inflamable amb risc greu d\'explosió (UVCE). Cal refredar l\'entorn i tancar la vàlvula.'
+  },
+
+  // =========================================================================
+  // TEMA 27: Intervenció bàsica en riscos NRBQ (MAN.RRTT.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 27,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T27] En un accident de transport de mercaderies perilloses (ADR), s\'observa un panell taronja amb el número d\'identificació de perill "X338" a la part superior i "1203" a la inferior. Què indica específicament la lletra "X" i els dígits "338"?',
+    options: [
+      'X: producte radioactiu; 338: sòlid comburent',
+      'X: reacciona perillosament amb l\'aigua (prohibit usar-la); 338: líquid molt inflamable (33) i corrosiu (8)',
+      'X: gas tòxic comprimit; 338: explosiu en massa',
+      'X: transport exempt d\'ADR; 338: líquid estable no inflamable'
+    ],
+    correctIndex: 1,
+    explanation: 'En els codis Kemler (ADR), la "X" inicial prohibeix el contacte amb l\'aigua per reacció perillosa; "33" indica líquid molt inflamable (punt d\'inflamació < 23 °C) i "8" corrosiu.'
+  },
+  {
+    topic: 27,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T27] En la zonificació d\'un incident NRBQ amb fuita d\'un gas tòxic més pesant que l\'aire (ex. clor), com s\'han de situar la Zona Calenta, el Corredor de Descontaminació i el CCA?',
+    options: [
+      'Tots tres a sotavent i a la part més baixa del terreny per tenir millor visibilitat',
+      'La Zona Calenta engloba el focus i la ploma; el Corredor de Descontaminació se situa al límit entre Zona Calenta i Zona Tèbia a sobrevent (vent a l\'esquena) i en cota elevada; el CCA s\'ubica en Zona Freda també a sobrevent',
+      'El CCA dins la Zona Calenta per dirigir de prop l\'equip NRBQ',
+      'La Zona Freda a sotavent per aprofitar la ventilació natural'
+    ],
+    correctIndex: 1,
+    explanation: 'Sempre cal treballar a sobrevent (amb el vent a l\'esquena) i, si el gas és més dens que l\'aire, evitar cotes baixes/soterranis. El passadís de descontaminació (Zona Tèbia) i el CCA (Zona Freda) s\'ubiquen a sobrevent.'
+  },
+  {
+    topic: 27,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T27] Quin nivell de protecció química correspon a un vestit encapsulat hermètic a gasos (Tipus 1a/1b segons EN 943-1) amb ERA portat a l\'interior?',
+    options: [
+      'Nivell 1 (o Nivell A en terminologia EPA): màxima protecció respiratòria i cutània contra gasos, vapors i líquids tòxics/corrosius',
+      'Nivell 3: vestit d\'esquitxades amb mascareta FFP2',
+      'Vestit estructural EN 469 sense cap protecció addicional',
+      'Nivell 2: uniforme de parc amb guants de nitril'
+    ],
+    correctIndex: 0,
+    explanation: 'Els vestits Tipus 1a (hermètics a gasos amb l\'ERA a l\'interior) corresponen al màxim nivell de protecció química (Nivell 1 / Nivell A) davant atmosferes tòxiques o corrosives en fase gasosa o vapor.'
+  },
+
+  // =========================================================================
+  // TEMA 28: Intervenció bàsica en assistència sanitària (MAN.SANI.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 28,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T28] En l\'avaluació primària d\'un pacient traumatitzat greu seguint l\'algoritme XABCDE, quina actuació correspon a la lletra "X" i quina a la "A"?',
+    options: [
+      'X: exploració neurològica; A: auscultació cardíaca',
+      'X: control d\'hemorràgies exsanguinants (compressió directa, empaquetament o torniquet); A: permeabilització de la via aèria amb control cervical',
+      'X: exposició completa del cos; A: administració d\'analgèsia',
+      'X: radiografia portàtil; A: immobilització d\'extremitats'
+    ],
+    correctIndex: 1,
+    explanation: 'En trauma greu, l\'XABCDE prioritza en primer lloc (X) aturar l\'hemorràgia exsanguinant que mata en minuts, i tot seguit (A) assegurar la via aèria amb protecció de la columna cervical.'
+  },
+  {
+    topic: 28,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T28] Un motorista accidentat presenta obertura ocular només a l\'estímul dolorós (2), resposta verbal amb paraules inapropiades (3) i resposta motora de flexió anormal/decorticació al dolor (3). Quina puntuació obté a l\'Escala de Coma de Glasgow (GCS) i què indica?',
+    options: [
+      'GCS = 8 (2+3+3); indica traumatisme cranioencefàlic greu (≤ 8) amb compromís potencial de la via aèria',
+      'GCS = 10 (2+3+5); indica traumatisme cranioencefàlic lleu',
+      'GCS = 6 (1+2+3); indica mort encefàlica',
+      'GCS = 12 (4+4+4); indica estat de consciència normal'
+    ],
+    correctIndex: 0,
+    explanation: 'Ocular al dolor = 2, Verbal paraules inapropiades = 3, Motora flexió anormal = 3. Total = 8/15. Un GCS ≤ 8 defineix TCE greu i indica risc elevat de pèrdua de protecció de la via aèria.'
+  },
+  {
+    topic: 28,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T28] En una parada cardiorespiratòria (PCR) d\'un adult presenciada, quina és la relació compressions-ventilacions en RCP bàsica amb dos reanimadors i la profunditat/freqüència recomanada de les compressions?',
+    options: [
+      '15:2, profunditat 2-3 cm i freqüència 60-80 compressions/min',
+      '30:2, profunditat de 5 a 6 cm i freqüència de 100 a 120 compressions/min, deixant reexpandir completament el tòrax',
+      '5:1, profunditat de 8 cm i freqüència de 140 compressions/min',
+      '30:2, però només en nens; en adults és 15:2'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons les guies ERC per a adults, la RCP manté una relació 30:2, amb compressions al centre del tòrax de 5-6 cm de profunditat a un ritme de 100-120/min i permetent la reexpansió toràcica completa.'
+  },
+
+  // =========================================================================
+  // TEMA 29: Incidents de Múltiples Víctimes (IMV) i Triatge START (MAN.SANI.001) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 29,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T29] Durant un triatge bàsic START en un IMV, trobem una víctima que no pot caminar, respira amb una freqüència de 24 rpm, té pols radial present (o reompliment capil·lar < 2 s), però no respon a ordres senzilles. Quin color de targeta se li assigna?',
+    options: [
+      'Verd (prioritat 3)',
+      'Groc (prioritat 2)',
+      'Vermell (prioritat 1 - immediat)',
+      'Negre (prioritat 0 - mort)'
+    ],
+    correctIndex: 2,
+    explanation: 'Al triatge START s\'avaluen en ordre: 1) Camina (Verd), 2) Respiració (<30 rpm passa al següent pas; si no respira després d\'obrir via aèria -> Negre; si >30 -> Vermell), 3) Perfusió (pols radial present), 4) Estat mental: si NO obeeix ordres senzilles -> Vermell.'
+  },
+  {
+    topic: 29,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T29] En un IMV amb desenes de víctimes dins d\'un túnel ferroviari, quina és la primera acció de triatge que permet separar ràpidament els ferits lleus del lloc de l\'impacte?',
+    options: [
+      'Fer un electrocardiograma a totes les víctimes dins del túnel',
+      'Donar l\'ordre verbal en veu alta perquè tothom qui pugui caminar surti cap a una zona segura designada (classificació inicial com a Verds)',
+      'Col·locar tauler espinal i collarí cervical a totes les persones que caminen',
+      'Esperar que arribin 20 ambulàncies abans de moure cap víctima lleu'
+    ],
+    correctIndex: 1,
+    explanation: 'El primer filtre del mètode START consisteix a cridar que tothom qui pugui caminar es desplaci a una àrea segura (Verd), alliberant l\'escenari per atendre els que no poden moure\'s.'
+  },
+  {
+    topic: 29,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T29] Dins l\'organització sanitària i operativa d\'un IMV, quina funció té el PMA (Punt Mèdic Avançat) o Niu de Ferits?',
+    options: [
+      'És l\'àrea d\'estacionament de les bombes forestals',
+      'És la zona segura fora de la zona calenta on es concentren, es retriatgen, s\'estabilitzen les víctimes i s\'organitza la seva evacuació ordenada cap als hospitals',
+      'És el lloc on es deixa únicament el material trencat dels vehicles',
+      'És la sala de premsa per a familiars i mitjans de comunicació'
+    ],
+    correctIndex: 1,
+    explanation: 'El PMA s\'ubica en zona segura (tèbia/freda) per rebre les víctimes evacuades pels equips de rescat, fer el segon triatge/estabilització clínica i gestionar el carregament ordenat a les ambulàncies.'
+  },
+
+  // =========================================================================
+  // TEMA 30: Estructures Col·lapsades, Apuntalaments i INSARAG (MAN.SVES.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 30,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T30] Segons la metodologia internacional INSARAG de marcatge d\'estructures col·lapsades, què indica una marca exterior que mostra una fletxa d\'entrada, la identificació de l\'equip, data/hora i un "0" dins un quadrat (o indicació sense víctimes confirmades) un cop completada la recerca?',
+    options: [
+      'Que l\'edifici està pendent d\'enderroc immediat amb explosius',
+      'Que l\'estructura ha estat inspeccionada/cercada per l\'equip indicat, amb el resultat registrat de víctimes vives/mortes o pendents de rescat, evitant duplicitats d\'esforç entre equips',
+      'Que hi ha risc radioactiu de nivell 0',
+      'Que l\'estructura és segura per reallotjar-hi els veïns'
+    ],
+    correctIndex: 1,
+    explanation: 'El sistema de marcatge INSARAG estandarditza a l\'exterior de l\'edifici la situació estructural, els riscos, l\'equip actuant, l\'estat de la recerca i el recompte de víctimes vives/mortes per coordinar equips relleu.'
+  },
+  {
+    topic: 30,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T30] En un apuntalament d\'emergència d\'un forjat de formigó que amenaça ruïna per evitar-ne l\'enfonsament sobre una víctima atrapada a sota, com s\'ha de transmetre la càrrega cap al terra inferior?',
+    options: [
+      'Col·locant puntals aïllats directament sobre el paviment sense sabata ni durment',
+      'Instal·lant una solera/durment inferior i un capçal superior per repartir la càrrega, alineant els puntals verticalment en plom i arriostrant-los (en creu de Sant Andreu) per evitar el vinclament, i recalçant de manera progressiva sense aixecar bruscament l\'estructura',
+      'Empentant el forjat cap amunt amb un gat hidràulic fins a recuperar la cota original de construcció',
+      'Clavant els puntals amb un angle de 45° sense cap travesser'
+    ],
+    correctIndex: 1,
+    explanation: 'Un apuntalament segur necessita repartir càrregues (durment i capçal), verticalitat i arriostrament contra el vinclament, i simplement sostenir/estabilitzar la càrrega existent sense forçar elevacions que puguin trencar elements fràgils.'
+  },
+  {
+    topic: 30,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T30] Durant una operació de recerca de víctimes sepultades sota runes en un col·lapse estructural, què s\'entén per "silenci d\'obra" i per a què s\'aplica?',
+    options: [
+      'És una ordre per aturar tots els motors, generadors, eines i moviments del personal durant uns minuts per permetre l\'escolta directa o amb geòfons/càmeres acústiques de senyals de vida',
+      'És la prohibició d\'utilitzar emissores durant tota la intervenció',
+      'És el temps de descans nocturn obligatori dels bombers',
+      'És un protocol exclusiu per a incendis en biblioteques'
+    ],
+    correctIndex: 0,
+    explanation: 'En la fase de recerca i localització, es decreta el silenci absolut a l\'escenari (aturada de maquinària i pas) perquè els equips d\'escolta acústica o els gossos de recerca puguin detectar colps o veus febles.'
+  },
+
+  // =========================================================================
+  // TEMA 31: Salvaments i Recerques en el Medi Natural Terrestre (MAN.SVMN.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 31,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T31] En rebre l\'avís d\'un excursionista perdut de nit a l\'alta muntanya amb temperatures sota zero, quina informació inicial és crítica obtenir durant l\'entrevista telefònica (si hi ha cobertura) per orientar la recerca i demanar-li autoprotecció?',
+    options: [
+      'Només el seu número de DNI i la matrícula del vehicle',
+      'Últim punt conegut/track o referències visuals, estat físic i equipament (roba, frontal, bateria del mòbil), indicant-li que NO es mogui del lloc si no coneix el camí, s\'aïlli del terra i estalviï bateria',
+      'Aconsellar-li que baixi corrents per un torrent sense camí per arribar abans a la carretera',
+      'Demanar-li que apagui el telèfon permanentment i tiri la motxilla per pesar menys'
+    ],
+    correctIndex: 1,
+    explanation: 'Fixar l\'últim punt conegut (LKP/PLS), avaluar l\'estat i equipament, i donar instruccions de quedar-se quiet, protegir-se del fred/vent i racionar bateria evita que la víctima s\'allunyi de la zona de recerca o pateixi caigudes.'
+  },
+  {
+    topic: 31,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T31] En un rescat de muntanya on cal immobilitzar i evacuar en llitera per terreny molt inclinat una víctima amb sospita de lesió medul·lar i risc d\'hipotèrmia, quin dispositiu combina millor immobilització completa i aïllament tèrmic?',
+    options: [
+      'Una cadira d\'evacuació d\'edificis sense subjeccions',
+      'El matalàs de buit dins la llitera de rescat (amb manta tèrmica/sac d\'hipotèrmia i protecció cranio-cervical)',
+      'Portar la víctima a collibè per guanyar rapidesa',
+      'Només un collarí cervical tou caminant amb bastons'
+    ],
+    correctIndex: 1,
+    explanation: 'El matalàs de buit s\'adapta anatòmicament a tot el cos, ofereix una immobilització rígida excel·lent per a la columna i pelvis, i aïlla tèrmicament del fred respecte al tauler espinal rígids.'
+  },
+  {
+    topic: 31,
+    difficulty: 'Fàcil',
+    question: '[BANC EXTRA · T31] En un rescat amb helicòpter en zona de muntanya, per quin sector està totalment prohibit apropar-se a l\'aeronau quan té el rotor en marxa?',
+    options: [
+      'Pel sector frontal (dins el camp visual del pilot) en terreny pla',
+      'Pel sector posterior (rotor de cua) i des de la part més alta d\'un pendent lateral cap al rotor principal',
+      'Pel lateral dret quan el pilot fa el senyal d\'autorització',
+      'Per cap sector; tots són igualment segurs si es porta casc'
+    ],
+    correctIndex: 1,
+    explanation: 'El rotor de cua és gairebé invisible en gir i mortal; a més, en pendents, el rotor principal passa molt a prop del terra pel costat de muntanya amunt. L\'aproximació es fa sempre ajupit, pel sector frontal/lateral autoritzat i a la vista de la tripulació.'
+  },
+
+  // =========================================================================
+  // TEMA 32: Accidents de mobilitat viària (MAN.SVVH.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 32,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T32] En un accident de trànsit amb un turisme bolcat lateralment (sobre un costat) i una víctima conscient a l\'interior, quina és la seqüència tècnica correcta abans d\'iniciar les maniobres d\'excarceració?',
+    options: [
+      'Redreçar el vehicle a braç immediatament per treballar més còmodes',
+      'Assegurar l\'escenari i senyalitzar el trànsit, estabilitzar el vehicle (puntals d\'estabilització/eslingues i falques) sense modificar-ne la posició, desconnectar la bateria si és accessible, protegir la víctima i obrir un accés segur (ex. abatiment/tall de sostre)',
+      'Trencar el parabrisa amb una destral directament sobre la cara de la víctima sense protecció',
+      'Retirar la víctima tibant-la pels braços a través de la finestra superior sense collarí'
+    ],
+    correctIndex: 1,
+    explanation: 'Mai es redreça un vehicle amb víctimes a dins. Cal estabilitzar-lo primer amb puntals/falques per evitar moviments bruscos, gestionar riscos (bateria, airbags, combustible), protegir la víctima i fer un accés ampli (ex. sostre) per a l\'extracció alineada.'
+  },
+  {
+    topic: 32,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T32] Durant una excarceració en un vehicle modern, per què s\'ha de pelar o retirar el guarneix interior dels pilars A, B i C abans de tallar-los amb la cisalla hidràulica?',
+    options: [
+      'Per estalviar bateria a la cisalla perquè el plàstic és molt dur',
+      'Per localitzar i evitar tallar els generadors de gas (cartutxos a alta pressió) dels airbags de cortina o reforços d\'acer d\'ultra-alta resistència, prevenint una detonació accidental o el trencament de les fulles',
+      'Perquè la normativa de reciclatge obliga a separar els plàstics a la carretera',
+      'Per comprovar el color dels cables de la ràdio'
+    ],
+    correctIndex: 1,
+    explanation: 'La tècnica de "pelar" els pilars (peel & peek) permet veure si hi ha cartutxos d\'airbag no detonats (alta pressió/explosió), cablejat d\'alta tensió o zones de reforç que puguin danyar la cisalla o ferir el rescatador i la víctima.'
+  },
+  {
+    topic: 32,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T32] En un accident amb un vehicle pesant (camió) i un turisme encastat sota el remolc, quin criteri de protecció viària i estabilització cal aplicar en una autopista?',
+    options: [
+      'Aparcar els vehicles de bombers en paral·lel al carril contrari sense cons',
+      'Col·locar el primer vehicle d\'intervenció en posició defensiva (en diagonal/escut uns metres abans de l\'accident, amb les rodes girades cap al voral) per protegir la zona de treball contra possibles encalços, i senyalitzar amb cons des de força distància abans',
+      'Treballar sense armilla d\'alta visibilitat per comoditat amb l\'equip d\'excarceració',
+      'Desplaçar el remolc amb la BUP abans de valorar l\'estat de l\'atrapat'
+    ],
+    correctIndex: 1,
+    explanation: 'La col·locació defensiva del camió escut (en angle i amb rodes direccionals cap a fora de la zona de treball) protegeix els intervinents i les víctimes d\'un atropellament o segon xoc en vies ràpides.'
+  },
+
+  // =========================================================================
+  // TEMA 33: Intervenció bàsica en rescat urbà (MAN.SVXX.000) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 33,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T33] En un rescat d\'una persona atrapada dins d\'un ascensor aturat entre dues plantes sense risc imminent d\'incendi o emergència mèdica, quina és l\'actuació correcta i segura?',
+    options: [
+      'Forçar les portes de la cabina amb el separador hidràulic immediatament',
+      'Desconnectar l\'interruptor general de força motriu a la sala de màquines/quadre (bloquejant i senyalitzant), comprovar la posició de la cabina, i si cal obrir la porta de pis amb clau triangular, fer-ho només quan la cabina estigui frenada i a nivell segur, protegint el buit del forat',
+      'Baixar la víctima fent ràpel pel forat de l\'ascensor sense aturar la corrent elèctrica',
+      'Deixar que la víctima surti per un buit inferior de 30 cm sota la cabina amb el motor engegat'
+    ],
+    correctIndex: 1,
+    explanation: 'El risc principal en ascensors és el moviment inesperat de la cabina o la caiguda al buit. Sempre cal tallar la força motriu, comunicar-se amb els atrapats, verificar la posició i mai evacuar amb desnivells perillosos sense protegir la caiguda al buit.'
+  },
+  {
+    topic: 33,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T33] En un rescat vertical urbà (ex. treballador suspès d\'un arnès en una bastida o pati de llums) amb risc de síndrome de l\'arnès (trauma per suspensió), quina mesura és fonamental?',
+    options: [
+      'Mantenir la víctima completament vertical un cop rescatada i posar-la dreta de seguida',
+      'Executar el rescat amb la màxima celeritat possible (animant la víctima a moure les cames si està conscient) i, un cop a terra, evitar estirar-la de cop en decúbit supí total si porta molta estona suspesa; col·locar-la en posició semiasseguda/gatzoneta progressiva abans d\'anar tombant-la segons criteri sanitari',
+      'Tallar la corda de vida abans d\'assegurar-la amb una línia secundària',
+      'Esperar 45 minuts a fer el rescat perquè s\'acostumi a l\'arnès'
+    ],
+    correctIndex: 1,
+    explanation: 'La síndrome de l\'arnès provoca acumulació de sang a les cames i retorn brusc de toxines/sang freda en tombar-la de cop (mort per rescat). Cal rescatar ràpidament i passar progressivament per posició semiasseguda/ajupida.'
+  },
+  {
+    topic: 33,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T33] En una intervenció per un nen que té el braç atrapat entre els barrots metàl·lics d\'una reixa o un banc urbà, quin procediment minimitza el risc de lesió secundària?',
+    options: [
+      'Estirar el braç amb força fent palanca amb una pota de cabra contra la pell del nen',
+      'Protegir l\'extremitat amb una pantalla rígida/tovallola, tranquil·litzar el menor, i aplicar un separador hidràulic petit o serra manual/elèctrica controlada allunyant l\'esforç de la pell per obrir els barrots',
+      'Tallar el barrot amb radial d\'espurnes a 2 cm de la mà descoberta',
+      'Aplicar oli de motor per relliscar el braç encara que estigui molt inflamat'
+    ],
+    correctIndex: 1,
+    explanation: 'Cal protegir sempre l\'extremitat de possibles cops, espurnes o pessigaments (pantalla rígida), evitar traccions forçades que lesionin articulacions o pell, i obrir l\'element atrapant de forma controlada.'
+  },
+
+  // =========================================================================
+  // TEMA 34: Inundacions, Hidrologia, Llindars SMC i Rescat Aquàtic (MAN.SVMN.001) — 3 preguntes
+  // =========================================================================
+  {
+    topic: 34,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T34] Segons els llindars d\'avís de situació meteorològica de perill (SMP) del Servei Meteorològic de Catalunya (SMC) per intensitat de pluja, quin registre correspon a un llindar d\'avís (grau alt / perill moderat-alt)?',
+    options: [
+      'Més de 5 mm en 24 hores',
+      'Més de 20 mm en 30 minuts (perill moderat) o més de 40 mm en 30 minuts (perill alt/molt alt)',
+      'Més de 100 mm en un mes',
+      'Més de 2 mm en 1 hora'
+    ],
+    correctIndex: 1,
+    explanation: 'Els llindars SMC per intensitat de pluja es mesuren en acumulació en 30 minuts: > 20 mm/30 min (avís groc/taronja segons probabilitat) i > 40 mm/30 min (llindar superior d\'intensitat molt forta).'
+  },
+  {
+    topic: 34,
+    difficulty: 'Difícil',
+    question: '[BANC EXTRA · T34] En un rescat d\'una persona atrapada al sostre d\'un vehicle en una riera amb corrent fort (aigües vives), quin principi tàctic i d\'equipament s\'ha de respectar absolutament?',
+    options: [
+      'Entrar a l\'aigua amb les botes d\'incendi estructural i el vestit EN 469 lligat a una corda a la cintura sense alliberament ràpid',
+      'Utilitzar EPI aquàtic específic (neoprè/vestit sec, armilla de flotació amb alliberament ràpid, casc aquàtic), establir equip de seguretat riu avall (llançador de bossa de rescat) i prioritzar l\'opció de rescat més segura (des de la vora / llançament / tirolina abans que l\'entrada directa a nado)',
+      'Creuar el corrent caminant en línia perpendicular sense bastó ni assegurança',
+      'Utilitzar l\'escala de ganxos des del pont sense armilla salvavides'
+    ],
+    correctIndex: 1,
+    explanation: 'En aigües en moviment mai s\'ha d\'entrar amb botes o vestit estructural (s\'omplen d\'aigua i enfonsen) ni lligar-se amb nusos fixos al cos (risc d\'ofegament per força del corrent). Cal aplicar l\'escala de risc (parlar -> allargar/llançar -> remar -> entrar com a últim recurs amb EPI aquàtic i seguretat riu avall).'
+  },
+  {
+    topic: 34,
+    difficulty: 'Mitjà',
+    question: '[BANC EXTRA · T34] En el buidatge d\'un aparcament soterrani completament inundat on hi pot haver vehicles submergits i risc elèctric, quina comprovació prèvia és obligatòria abans d\'introduir equips amb bombes d\'esgotament elèctriques o personal?',
+    options: [
+      'Entrar directament amb el camió fins a la rampa inundada per aspirar amb la bomba',
+      'Verificar i assegurar el tall del subministrament elèctric de l\'aparcament (quadres i punts de càrrega), comprovar si hi ha possibles víctimes o vessaments d\'hidrocarburs/gasos i utilitzar bombes submergibles o turbobombes amb seguretat diferencial adequada',
+      'Tirar-hi escuma per neutralitzar l\'electricitat de l\'aigua',
+      'Bombejar l\'aigua cap a l\'ascensor de l\'edifici'
+    ],
+    correctIndex: 1,
+    explanation: 'L\'aigua en soterranis presenta risc greu d\'electrocució (quadres, punts de recàrrega VE, il·luminació) i d\'atmosfera tòxica/explosiva si s\'utilitzen motobombes de combustió en espais tancats sense ventilació.'
+  }
+];
+
+/**
  * Banc de preguntes d'actualitat, serveis i política pública vinculades al temari SGO 2026.
  * S'utilitza com a Pregunta del Dia a la pantalla d'inici i com a fallback si no hi ha pregunta
  * generada per Gemini a Firestore (`dailyQuestions/actualitat/questions/{YYYY-MM-DD}`).
@@ -41320,7 +42733,9 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_OPTIM_B26,
   ...QUESTIONS_OPTIM_A26,
   ...QUESTIONS_OPTIM_PP2,
-  ...QUESTIONS_OPTIM_PP1
+  ...QUESTIONS_OPTIM_PP1,
+  ...QUESTIONS_GENERADES_2,
+  ...QUESTIONS_GENERADES_3
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`

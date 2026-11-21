@@ -49,6 +49,8 @@ import { QUESTIONS_OPTIM_B26 } from './questions_optim_b26';
 import { QUESTIONS_OPTIM_A26 } from './questions_optim_a26';
 import { QUESTIONS_OPTIM_PP2 } from './questions_optim_pp2';
 import { QUESTIONS_OPTIM_PP1 } from './questions_optim_pp1';
+import { QUESTIONS_GENERADES_2 } from './questions_generades_2';
+import { QUESTIONS_GENERADES_3 } from './questions_generades_3';
 
 const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_125,
@@ -65,7 +67,9 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_OPTIM_B26,
   ...QUESTIONS_OPTIM_A26,
   ...QUESTIONS_OPTIM_PP2,
-  ...QUESTIONS_OPTIM_PP1
+  ...QUESTIONS_OPTIM_PP1,
+  ...QUESTIONS_GENERADES_2,
+  ...QUESTIONS_GENERADES_3
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`
