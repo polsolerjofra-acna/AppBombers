@@ -43,6 +43,7 @@ import { QUESTIONS_SIM_130 } from './questions_sim_130';
 import { QUESTIONS_MATAFOCS_1 } from './questions_matafocs_1';
 import { QUESTIONS_MATAFOCS_2 } from './questions_matafocs_2';
 import { QUESTIONS_MATAFOCS_3 } from './questions_matafocs_3';
+import { QUESTIONS_MATAFOCS_4 } from './questions_matafocs_4';
 
 const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_125,
@@ -53,7 +54,8 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_130,
   ...QUESTIONS_MATAFOCS_1,
   ...QUESTIONS_MATAFOCS_2,
-  ...QUESTIONS_MATAFOCS_3
+  ...QUESTIONS_MATAFOCS_3,
+  ...QUESTIONS_MATAFOCS_4
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`
