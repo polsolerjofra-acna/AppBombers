@@ -36,10 +36,10 @@ export const QUESTIONS_PUNYETERES_3 = [
     difficulty: 'Difícil',
     question: '[PUNYETERA III · T1] Segons la Llei 13/1989, d\'organització, procediment i règim jurídic de l\'Administració de la Generalitat de Catalunya, quines resolucions posen fi a la via administrativa amb caràcter general?',
     options: [
-      'Les del President, del Govern, dels Consellers i dels Directors Generals en l\'exercici de les seves competències pròpies',
-      'Únicament les del President i del Govern, ja que les dels Consellers són recurribles en alçada davant el President',
+      'Les del President, del Govern, dels Consellers i dels Directors Generals en l\'exercici de les seves competències pròpies, mentre que únicament les dels caps de servei admeten recurs d\'alçada davant el Conseller',
+      'Únicament les del President i del Govern (així com les dictades per delegació seva), mentre que les resolucions dels Consellers i Directors Generals admeten sempre recurs d\'alçada davant l\'òrgan superior',
       'Les del President, del Govern i dels Consellers (així com les dictades per delegació d\'aquests), mentre que les dels Directors Generals admeten recurs d\'alçada davant el Conseller llevat d\'excepció legal',
-      'Les dels Secretaris Generals i Directors Generals sempre esgoten la via administrativa, però les dels òrgans inferiors per delegació no'
+      'Les dels Secretaris Generals i Directors Generals sempre posen fi a la via administrativa amb caràcter general, però les dictades per delegació dels Consellers admeten recurs d\'alçada davant del Govern'
     ],
     correctIndex: 2,
     explanation: 'Detall decisiu (Llei 13/1989): posen fi a la via administrativa les resolucions del President, el Govern i els Consellers (i les dictades per delegació seva, que s\'imputen a l\'òrgan delegant). En canvi, els Directors Generals i Secretaris Generals NO esgoten la via administrativa amb caràcter general (llevat de disposició legal expressa).'
@@ -118,10 +118,10 @@ export const QUESTIONS_PUNYETERES_3 = [
     difficulty: 'Difícil',
     question: '[PUNYETERA III · T3] Segons el Reglament (UE) 2016/425, què indica el marcatge CE seguit d\'un número d\'identificació de quatre dígits en un EPI i a quina categoria correspon?',
     options: [
-      'Correspon a EPI de Categoria II i III, i les quatre xifres indiquen l\'any de caducitat de l\'equip',
+      'Correspon a EPI de Categoria II i III (riscos mitjans o greus), i les quatre xifres indiquen l\'any i el mes de caducitat màxima establerts pel fabricant abans de la revisió periòdica',
       'Correspon exclusivament a EPI de Categoria III (riscos molt greus o mortals), i les quatre xifres identifiquen l\'organisme notificat que participa en el control de la producció',
-      'Correspon exclusivament a EPI de Categoria I, i les quatre xifres identifiquen el fabricant autoritzat dins la Unió Europea',
-      'Correspon a EPI de Categoria II, i les quatre xifres identifiquen el laboratori que ha fet l\'examen UE de tipus (Mòdul B)'
+      'Correspon exclusivament a EPI de Categoria I (riscos mínims), i les quatre xifres identifiquen el codi de registre del fabricant autoritzat dins el mercat de la Unió Europea',
+      'Correspon a EPI de Categoria II (riscos intermedis), i les quatre xifres identifiquen el laboratori acreditat que ha emès el certificat d\'examen UE de tipus (Mòdul B)'
     ],
     correctIndex: 1,
     explanation: 'Detall decisiu (Reglament UE 2016/425): només els EPI de Categoria III porten el marcatge CE seguit de les 4 xifres de l\'organisme notificat encarregat del procediment d\'avaluació de la conformitat de la producció (Mòdul C2 o D). Els EPI de Categoria I i II porten només les lletres CE sense xifres.'
@@ -146,10 +146,10 @@ export const QUESTIONS_PUNYETERES_3 = [
     difficulty: 'Difícil',
     question: '[PUNYETERA III · T4] D\'acord amb la Llei 17/2015, d\'igualtat efectiva de dones i homes, què s\'entén específicament per «presència equilibrada» (o composició equilibrada) respecte a la «representació paritària»?',
     options: [
-      'La presència equilibrada exigeix exactament un 50 % de cada sexe, mentre que la representació paritària admet la franja 40 % – 60 %',
-      'La presència equilibrada suposa que cap sexe no superi el 70 % ni sigui inferior al 30 %, mentre que la representació paritària exigeix el 50 %',
+      'La presència equilibrada exigeix exactament un 50 % de cada sexe (o la proporció més propera en nombre senar), mentre que la representació paritària admet que cada sexe es mantingui dins la franja del 40 % al 60 % (criteri 40/60)',
+      'La presència equilibrada suposa que les persones de cada sexe no superin el 70 % ni siguin inferiors al 30 % (franja 30/70), mentre que la representació paritària exigeix exactament un 50 % sense excepció en els òrgans senars',
       'La presència equilibrada suposa que les persones de cada sexe no superin el 60 % ni siguin inferiors al 40 % (franja 40/60), mentre que la representació paritària implica una proporció del 50 % (o la més propera en nombre senar)',
-      'Tots dos termes són sinònims estrictes a la Llei 17/2015 i signifiquen exclusivament 50 % – 50 %'
+      'Tots dos termes són sinònims estrictes a la Llei 17/2015 i signifiquen exclusivament una proporció del 50 % – 50 % de dones i homes en tots els òrgans col·legiats, tribunals de selecció i consells d\'administració'
     ],
     correctIndex: 2,
     explanation: 'Detall decisiu (art. 2 Llei 17/2015): la «presència equilibrada» (o composició equilibrada) es compleix dins la franja 40 %–60 %, mentre que la «representació paritària» apunta a la proporció del 50 % de dones i homes.'
@@ -244,9 +244,9 @@ export const QUESTIONS_PUNYETERES_3 = [
     question: '[PUNYETERA III · T7] Segons el Decret 276/2016, quina diferència exacta hi ha entre el Cap de Sortida i el Cap de Torn d\'un parc de bombers?',
     options: [
       'El Cap de Sortida és una posició operativa de guàrdia (no requereix habilitació, 7 funcions), mentre que el Cap de Torn dirigeix un centre de coordinació de guàrdia, el Parc de Bombers (prelació sergent > caporal > bomber de 1a, 8 funcions)',
-      'El Cap de Sortida dirigeix el Parc de Bombers (8 funcions), mentre que el Cap de Torn és una posició operativa al carrer que requereix habilitació prèvia (7 funcions)',
-      'Tots dos requereixen habilitació prèvia i disposen de PAGI i brífings segons el Decret 276/2016',
-      'El Parc de Bombers no té la consideració de centre de coordinació de guàrdia a l\'article 12 del Decret 276/2016'
+      'El Cap de Sortida dirigeix un centre de coordinació de guàrdia, el Parc de Bombers (prelació sergent > caporal > bomber de 1a, 8 funcions), mentre que el Cap de Torn és una posició operativa al carrer que requereix habilitació (7 funcions)',
+      'Tots dos són posicions operatives de guàrdia de nivell 2 que requereixen habilitació prèvia i disposen de PAGI i brífings periòdics segons els articles 7 i 12 del Decret 276/2016, diferenciant-se únicament en el nombre de funcions',
+      'El Cap de Sortida només actua en serveis urbans amb vehicle lleuger i el Cap de Torn exerceix la direcció del Parc de Bombers, però aquest darrer no té la consideració de centre de coordinació de guàrdia a l\'article 12 del Decret 276/2016'
     ],
     correctIndex: 0,
     explanation: 'Detall decisiu (arts. 7 i 12 Decret 276/2016): el Cap de Sortida és una posició operativa (Nivell 1, 7 funcions, sense habilitació), i el Cap de Torn és el responsable del centre de coordinació «Parc de Bombers» (8 funcions, prelació sergent > caporal > bomber 1a). Només el Cap operatiu i el Cap territorial tenen PAGI i brífings.'
@@ -256,10 +256,10 @@ export const QUESTIONS_PUNYETERES_3 = [
     difficulty: 'Difícil',
     question: '[PUNYETERA III · T7] D\'acord amb l\'organigrama vigent de la DGPEIS (Decret 12/2023 consolidat amb el Decret 16/2026), quantes Unitats Territorials existeixen i de qui depenen orgànicament els parcs de bombers i les Unitats de Prevenció?',
     options: [
-      '19 Unitats Territorials; tant els parcs de bombers com les 7 Unitats de Prevenció depenen orgànicament de les Unitats Territorials',
+      '19 Unitats Territorials (3 a Metro Nord, Metro Sud i Girona; 2 a la resta); tant els parcs de bombers com les 7 Unitats de Prevenció depenen orgànicament i funcionalment de les Unitats Territorials de cada Regió d\'Emergències',
       '19 Unitats Territorials (3 a Metro Nord, Metro Sud i Girona; 2 a la resta); les UT inspeccionen parcs però els parcs pengen de l\'Àrea d\'Operacions, i les 7 Unitats de Prevenció depenen orgànicament de la SG Tècnica (funcionalment de la Regió)',
-      '16 Unitats Territorials (2 per cada una de les 8 Regions d\'Emergències), i les 8 Unitats de Prevenció depenen orgànicament de l\'Àrea de Gestió regional',
-      '19 Unitats Territorials; les 7 Unitats de Prevenció depenen orgànicament de la SG Operativa i funcionalment de la SG Tècnica'
+      '16 Unitats Territorials (2 per cada una de les 8 Regions d\'Emergències); els parcs depenen directament de la direcció de la Unitat Territorial corresponent, i les 8 Unitats de Prevenció depenen orgànicament de l\'Àrea de Gestió regional',
+      '19 Unitats Territorials (3 a Metro Nord, Metro Sud i Girona; 2 a la resta); els parcs pengen de l\'Àrea de Gestió regional, i les 7 Unitats de Prevenció depenen orgànicament de la SG Operativa i funcionalment de la SG Tècnica'
     ],
     correctIndex: 1,
     explanation: 'Detall decisiu (Decret 12/2023 + 16/2026): hi ha 19 Unitats Territorials (3 a Metro Nord, Metro Sud i Girona; 2 a les altres 5 regions). Tot i que les UT inspeccionen parcs, els parcs depenen de l\'Àrea d\'Operacions regional, i les 7 Unitats de Prevenció depenen orgànicament de la SG Tècnica i funcionalment de la Regió.'
@@ -284,10 +284,10 @@ export const QUESTIONS_PUNYETERES_3 = [
     difficulty: 'Mitjà',
     question: '[PUNYETERA III · T8] Segons la classificació europea UNE-EN 2 de les classes de foc, com es classifica un incendi d\'oli vegetal en una fregidora industrial i un incendi en un quadre elèctric sota tensió?',
     options: [
-      'L\'oli de cuina és Classe B i el quadre elèctric sota tensió és Classe E',
-      'L\'oli de cuina és Classe F i el quadre elèctric sota tensió és Classe E',
+      'L\'oli de cuina és Classe B (líquid combustible) i el quadre elèctric sota tensió constitueix la Classe E específica segons la norma europea UNE-EN 2',
+      'L\'oli de cuina és Classe F (olis i greixos vegetals o animals) i el quadre elèctric sota tensió constitueix la Classe E específica a la norma UNE-EN 2',
       'L\'oli de cuina és Classe F, i els focs amb presència de tensió elèctrica NO constitueixen cap classe específica (la Classe E no existeix a la UNE-EN 2)',
-      'L\'oli de cuina és Classe D i els focs elèctrics constitueixen la Classe E'
+      'L\'oli de cuina és Classe D (juntament amb els metalls combustibles) i els focs amb presència de tensió elèctrica constitueixen la Classe E a la UNE-EN 2'
     ],
     correctIndex: 2,
     explanation: 'Detall decisiu (MAN.GRAL.008 / UNE-EN 2): els olis i greixos de cuina són Classe F (no B ni D), i a la norma europea UNE-EN 2 NO existeix la Classe E (la presència d\'electricitat és un risc addicional, no una classe de combustible).'
@@ -298,9 +298,9 @@ export const QUESTIONS_PUNYETERES_3 = [
     question: '[PUNYETERA III · T8] Quina diferència física fonamental distingeix una deflagració d\'una detonació?',
     options: [
       'La deflagració es propaga a velocitat subsònica (inferior a la velocitat del so en el medi sense reaccionar) per conducció tèrmica i difusió, mentre que la detonació es propaga a velocitat supersònica mitjançant una ona de xoc',
-      'La deflagració es propaga a velocitat supersònica mitjançant una ona de xoc, mentre que la detonació és una combustió subsònica per conducció tèrmica',
-      'La deflagració només pot tenir lloc en sòlids explosius i la detonació únicament en gasos inflamables',
-      'En la deflagració la sobrepressió és sempre superior a la de la detonació perquè el front de flama avança més lentament'
+      'La deflagració es propaga a velocitat supersònica mitjançant una ona de xoc compressiva que inicia la reacció, mentre que la detonació és una combustió subsònica que avança per conducció tèrmica i difusió de calor',
+      'La deflagració només pot tenir lloc en sòlids explosius d\'alta densitat a velocitat subsònica, mentre que la detonació es produeix únicament en mescles de gasos inflamables confinats a velocitat supersònica',
+      'En la deflagració la sobrepressió generada és sempre superior a la de la detonació perquè el front de flama avança més lentament i acumula energia tèrmica per conducció i radiació dins del recinte tancat'
     ],
     correctIndex: 0,
     explanation: 'Detall decisiu (MAN.GRAL.008): deflagració = propagació SUBSÒNICA (conducció tèrmica i difusió de calor/massa); detonació = propagació SUPERSÒNICA (ona de xoc compressiva que inicia la reacció).'
@@ -338,10 +338,10 @@ export const QUESTIONS_PUNYETERES_3 = [
     difficulty: 'Difícil',
     question: '[PUNYETERA III · T9] En una palanca de segon gènere (com un carretó de mà), com es disposen els elements i quin avantatge mecànic ideal s\'obté sempre?',
     options: [
-      'La força (potència) se situa entre el fulcre i la resistència, de manera que l\'avantatge mecànic és sempre inferior a 1',
-      'El fulcre se situa entre la força (potència) i la resistència, de manera que l\'avantatge mecànic és sempre igual a 1',
+      'La força (potència) se situa entre el fulcre i la resistència (càrrega), de manera que el braç de potència és més petit que el de resistència i l\'avantatge mecànic és sempre inferior a 1',
+      'El fulcre se situa entre la força (potència) i la resistència (càrrega), de manera que els dos braços tenen la mateixa longitud i l\'avantatge mecànic és sempre igual a 1 en qualsevol posició',
       'La resistència (càrrega) se situa entre el fulcre i la força (potència), de manera que el braç de potència és més gran que el de resistència i l\'avantatge mecànic és sempre superior a 1',
-      'La resistència se situa entre el fulcre i la potència, però l\'avantatge mecànic és sempre inferior a 1'
+      'La resistència (càrrega) se situa entre el fulcre i la força (potència), però com que el braç de resistència supera el de potència l\'avantatge mecànic resultant és sempre inferior a 1'
     ],
     correctIndex: 2,
     explanation: 'Detall decisiu (MAN.GRAL.003): en una palanca de 2n gènere la RESISTÈNCIA està al mig (entre fulcre i potència) → braç de potència > braç de resistència → avantatge mecànic sempre > 1. (Quan la potència és al mig és de 3r gènere, amb avantatge mecànic < 1).'
@@ -393,9 +393,9 @@ export const QUESTIONS_PUNYETERES_3 = [
     question: '[PUNYETERA III · T10] En un recinte tancat hi ha una fuga d\'un gas inflamable la concentració del qual se situa per SOBRE del seu Límit Superior d\'Inflamabilitat (LSI). Quina implicació tècnica té aquesta situació si s\'obre una porta per ventilar amb aire?',
     options: [
       'La mescla actualment no crema perquè hi ha massa combustible (falta oxigen), però en entrar aire baixarà la concentració i travessarà el rang d\'inflamabilitat (entre LSI i LII) amb risc greu d\'explosió',
-      'La mescla actualment crema amb flama estable, i en entrar aire s\'apagarà immediatament perquè es refreda per sota del LII',
-      'Estar per sobre del LSI indica que la concentració de gas és massa pobra per cremar i ventilar amb aire la manté segura en tot moment',
-      'Estar per sobre del LSI significa que ja s\'ha produït la detonació i no queda combustible disponible'
+      'La mescla actualment crema amb flama estable per excés de combustible, i en entrar aire s\'apagarà immediatament perquè la dilució la refreda i la situa directament per sota del LII sense risc d\'explosió',
+      'Estar per sobre del LSI indica que la concentració de gas és massa pobra en combustible per iniciar la combustió, de manera que ventilar amb aire la manté fora del rang d\'inflamabilitat en tot moment',
+      'Estar per sobre del LSI significa que ja s\'ha produït la detonació completa de la mescla i que no queda combustible disponible per reaccionar, per la qual cosa l\'entrada d\'aire no comporta risc tèrmic'
     ],
     correctIndex: 0,
     explanation: 'Detall decisiu (MAN.GRAL.004): per sobre del LSI la mescla és massa rica (falta O₂), però en diluir-la amb aire la concentració disminueix i NECESSÀRIAMENT passa per dins la franja explosiva (LII–LSI) abans d\'arribar a una concentració segura (< LII).'
@@ -407,10 +407,10 @@ export const QUESTIONS_PUNYETERES_3 = [
     difficulty: 'Difícil',
     question: '[PUNYETERA III · T11] Si connectem dues resistències de 10 Ω cadascuna en PARAL·LEL a una font de tensió constant U, quina resistència equivalent obtenim i com es comporten la tensió i la intensitat?',
     options: [
-      'Resistència equivalent = 20 Ω; la intensitat és la mateixa a totes dues resistències i la tensió es reparteix',
+      'Resistència equivalent = 20 Ω; la intensitat de corrent és la mateixa a totes dues resistències i la tensió U es reparteix proporcionalment entre ambdues',
       'Resistència equivalent = 5 Ω; la tensió U és la mateixa als borns de totes dues resistències i la intensitat total és la suma de les intensitats de cada branca',
-      'Resistència equivalent = 5 Ω; la intensitat és la mateixa a totes dues branques i la tensió es divideix a la meitat',
-      'Resistència equivalent = 0,2 Ω; la tensió és la mateixa als borns de totes dues resistències'
+      'Resistència equivalent = 5 Ω; la intensitat de corrent és la mateixa a totes dues branques del circuit i la tensió U aplicada es divideix a la meitat en cada branca',
+      'Resistència equivalent = 0,2 Ω; la tensió U és la mateixa als borns de totes dues resistències i la intensitat total es divideix per la meitat en cada branca'
     ],
     correctIndex: 1,
     explanation: 'Detall decisiu (MAN.GRAL.005): en paral·lel, 1/Req = 1/10 + 1/10 = 2/10 → Req = 5 Ω (no 20 Ω ni 0,2 Ω, que seria 1/Req sense invertir!), la tensió U és idèntica a cada branca i la intensitat total es suma (I_total = I1 + I2).'
@@ -585,9 +585,9 @@ export const QUESTIONS_PUNYETERES_3 = [
     question: '[PUNYETERA III · T15] Comparant el comportament estructural davant d\'un incendi de l\'acer sense protecció i de la fusta massissa de gran secció, quina afirmació és exacta?',
     options: [
       'L\'acer perd aproximadament el 50 % de la seva resistència cap als 500–550 °C (temperatura crítica) de forma ràpida per la seva alta conductivitat, mentre que la fusta massissa forma una crosta carbonitzada que aïlla tèrmicament el nucli sa',
-      'L\'acer manté el 100 % de la seva resistència fins als 900 °C, mentre que la fusta massissa col·lapsa sempre abans dels 300 °C perquè crema instantàniament en tota la secció',
-      'L\'acer perd el 50 % de la seva resistència ja als 200 °C, mentre que la fusta no pateix cap reducció de secció útil mentre hi hagi flama',
-      'Tant l\'acer com la fusta tenen la mateixa conductivitat tèrmica però l\'acer dilata menys amb la calor'
+      'L\'acer manté el 100 % de la seva resistència estructural fins als 900 °C per la seva inèrcia tèrmica, mentre que la fusta massissa col·lapsa sempre abans dels 300 °C perquè crema de manera instantània en tota la seva secció transversal',
+      'L\'acer perd aproximadament el 50 % de la seva resistència ja als 200 °C per efecte de la dilatació tèrmica lineal, mentre que la fusta massissa no pateix cap reducció de la seva secció útil resistent mentre hi hagi presència de flama',
+      'Tant l\'acer com la fusta massissa tenen una conductivitat tèrmica pràcticament equivalent davant d\'un incendi desenvolupat, però l\'acer dilata menys amb l\'augment de temperatura i manté intacta la seva capacitat portant fins a la fusió'
     ],
     correctIndex: 0,
     explanation: 'Detall decisiu (MAN.GRAL.006): l\'acer sense protecció s\'escalfa molt ràpidament i cap als 500–550 °C ja ha perdut ~50 % de la seva resistència (col·lapse ràpid); en canvi, la fusta massissa es carbonitza a velocitat lenta i previsible (~0,6–0,8 mm/min) i el carbó superficial protegeix l\'interior.'

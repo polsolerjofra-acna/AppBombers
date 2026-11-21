@@ -22,10 +22,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T1] D\'acord amb l\'Estatut d\'Autonomia de Catalunya (LO 6/2006), qui té la potestat de dissoldre anticipadament el Parlament de Catalunya?',
     options: [
-      'El president o presidenta del Parlament, prèvia deliberació de la Mesa',
+      'El president o presidenta del Parlament, sota la seva exclusiva responsabilitat i prèvia deliberació de la Mesa',
       'El president o presidenta de la Generalitat, sota la seva exclusiva responsabilitat i prèvia deliberació del Govern',
-      'El Govern de la Generalitat per acord de majoria absoluta en Consell Executiu',
-      'El Ple del Parlament per majoria de dues terceres parts dels diputats'
+      'El Govern de la Generalitat, mitjançant decret acordat per majoria absoluta en sessió extraordinària del Consell Executiu',
+      'El Ple del Parlament de Catalunya, per acord adoptat per majoria de dues terceres parts dels diputats i diputades'
     ],
     correctIndex: 1,
     explanation: 'Segons l\'article 66 de l\'EAC (i l\'art. 75 de la Llei 13/1989 / Llei 13/2008), la potestat de dissoldre anticipadament el Parlament correspon al president o presidenta de la Generalitat, sota la seva exclusiva responsabilitat i prèvia deliberació del Govern.'
@@ -35,10 +35,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T1] Segons la Llei 13/1989 d\'organització, procediment i règim jurídic de l\'Administració de la Generalitat, quin òrgan exerceix la potestat reglamentària originària a Catalunya?',
     options: [
-      'Exclusivament els consellers dins l\'àmbit del seu departament',
-      'El Parlament de Catalunya mitjançant decrets legislatius',
+      'Exclusivament els consellers dins l\'àmbit del seu departament, sense necessitat d\'habilitació legal o reglamentària expressa',
+      'El Parlament de Catalunya mitjançant decrets legislatius i lleis de delegació, sense perjudici de la potestat de la Mesa',
       'El Govern de la Generalitat, sense perjudici que els consellers puguin dictar normes reglamentàries quan una llei o decret els hi autoritzi',
-      'Els directors generals per delegació tàcita del secretari general'
+      'Els directors generals i secretaris generals per delegació tàcita del Govern en matèries d\'organització interna del departament'
     ],
     correctIndex: 2,
     explanation: 'La potestat reglamentària correspon al Govern de la Generalitat; els consellers només la poden exercir en matèries pròpies del seu departament quan hi hagi habilitació legal o reglamentària expressa.'
@@ -63,10 +63,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T2] Quin dels permisos següents previstos al TREBEP (RDL 5/2015) té una durada de 5 dies hàbils?',
     options: [
-      'Trasllat de domicili sense canvi de residència',
+      'Trasllat de domicili habitual sense canvi de residència en la mateixa localitat ni justificació d\'obra major al municipi',
       'Accident o malaltia greus, hospitalització o intervenció quirúrgica sense hospitalització que precisi repòs domiciliari del cònjuge o familiar de primer grau',
-      'Defunció d\'un familiar de segon grau de consanguinitat dins la mateixa localitat',
-      'Matrimoni o registre o constitució formalitzada per document públic de parella de fet'
+      'Defunció d\'un familiar de segon grau de consanguinitat o afinitat quan el fet es produeixi dins la mateixa localitat de destinació',
+      'Matrimoni o registre o constitució formalitzada per document públic de parella de fet acreditada davant el registre corresponent'
     ],
     correctIndex: 1,
     explanation: 'Art. 48.a) TREBEP (modificat pel RDL 5/2023): 5 dies hàbils per accident o malaltia greus, hospitalització o intervenció quirúrgica sense hospitalització amb repòs domiciliari del cònjuge, parella de fet o familiars fins al 1r grau (i 4 dies hàbils per a 2n grau).'
@@ -92,9 +92,9 @@ export const QUESTIONS_GENERADES_2 = [
     question: '[BANC EXTRA · T3] En una intervenció d\'emergència en un edifici amb risc imminent d\'esfondrament, quin article de la Llei 31/1995 (LPRL) regula les particularitats de l\'aplicació de la llei als serveis operatius de protecció civil i peritatge forense?',
     options: [
       'L\'article 3.2, que exclou l\'aplicació estricta de la llei en aquelles activitats les particularitats de les quals ho impedeixin en l\'àmbit de la protecció civil, tot garantint la seguretat i salut en la mesura possible',
-      'L\'article 15.1, que estableix el principi de substitució d\'equips perillosos',
-      'L\'article 21.3, que prohibeix als bombers abandonar un sinistre encara que hi hagi risc greu i imminent',
-      'L\'article 4.2, que assimila els parcs de bombers a centres industrials d\'alt risc'
+      'L\'article 15.1, que estableix el principi general de substitució d\'equips perillosos i obliga a suspendre qualsevol intervenció operativa mentre no es garanteixi el risc zero',
+      'L\'article 21.3, que prohibeix als membres dels serveis de prevenció i extinció d\'incendis abandonar un sinistre encara que existeixi un risc greu, imminent i inevitable per a la vida',
+      'L\'article 4.2, que assimila els parcs de bombers i els centres operatius d\'emergències a centres industrials d\'alt risc sotmesos a avaluació periòdica d\'agents externs'
     ],
     correctIndex: 0,
     explanation: 'L\'article 3.2 de la Llei 31/1995 estableix que la llei no serà aplicable en aquelles activitats en què les particularitats ho impedeixin en l\'àmbit dels serveis operatius de protecció civil i peritatge forense en casos de greu risc, catàstrofe i calamitat pública, si bé s\'ha d\'inspirar en els seus principis.'
@@ -104,10 +104,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T3] Segons el Reglament (UE) 2016/425 sobre equips de protecció individual, a quina categoria pertanyen un equip de respiració autònoma (ERA) i un vestit d\'intervenció estructural per a bombers?',
     options: [
-      'Categoria I (riscos mínims)',
-      'Categoria II (riscos intermedis, no inclosos a I ni a III)',
+      'Categoria I (riscos mínims i lesions superficials amb efectes fàcilment reversibles per a l\'usuari)',
+      'Categoria II (riscos intermedis que no s\'inclouen en la Categoria I ni en la Categoria III)',
       'Categoria III (riscos que poden tenir conseqüències molt greus, com la mort o danys irreversibles per a la salut)',
-      'L\'ERA és Categoria III i el vestit d\'intervenció estructural és Categoria I'
+      'L\'ERA pertany a la Categoria III i el vestit d\'intervenció estructural pertany a la Categoria II'
     ],
     correctIndex: 2,
     explanation: 'Tant els equips destinats a protegir contra riscos mortals o irreversibles (atmosferes tòxiques/deficients en O₂: ERA) com els destinats a protegir contra calor extrema (>100 °C) i flames (vestit d\'intervenció) són EPI de Categoria III.'
@@ -132,10 +132,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T4] D\'acord amb la Llei 19/2020 d\'igualtat de tracte i no-discriminació de Catalunya, com es defineix la «discriminació per associació»?',
     options: [
-      'La situació en què una persona és discriminada a causa d\'una percepció errònia sobre les seves característiques personals',
+      'La situació en què una persona és discriminada a causa d\'una percepció errònia sobre les seves característiques personals o sobre la seva pertinença a un col·lectiu protegit',
       'La situació en què una persona o un grup és objecte de discriminació a causa de la seva relació o vinculació amb una persona o un grup en què concorre algun dels motius de discriminació',
-      'La discriminació que es produeix exclusivament dins d\'associacions culturals o esportives',
-      'La suma de dues o més causes de discriminació que actuen simultàniament sobre la mateixa persona'
+      'La discriminació que es produeix exclusivament dins d\'associacions culturals, esportives o entitats sense ànim de lucre reconegudes pel registre corresponent',
+      'La suma de dues o més causes de discriminació que actuen de manera simultània i inseparable sobre una mateixa persona en un àmbit laboral o administratiu'
     ],
     correctIndex: 1,
     explanation: 'Segons la Llei 19/2020, la discriminació per associació es produeix quan una persona o grup pateix un tracte discriminatori pel seu vincle o relació amb algú que presenta un motiu protegit (p. ex., un familiar amb discapacitat).'
@@ -173,10 +173,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T5] Segons l\'article 11 de la Llei 1/1998, de política lingüística, quin requisit lingüístic s\'exigeix per accedir a places de l\'Administració de la Generalitat de Catalunya?',
     options: [
-      'Acreditar únicament el coneixement oral del català en el moment de la presa de possessió',
+      'Acreditar únicament el coneixement oral de la llengua catalana en el moment de la presa de possessió del lloc de treball',
       'Acreditar el coneixement de les dues llengües oficials, tant en l\'expressió oral com en l\'escrita, en el grau adequat a les funcions pròpies de la plaça',
-      'Acreditar el nivell C2 de català per a qualsevol escala i categoria',
-      'Estar exempt de la prova de català si s\'ha cursat l\'ensenyament secundari a qualsevol comunitat autònoma'
+      'Acreditar el nivell C2 de català i el nivell C1 de castellà per a qualsevol escala, categoria i grup de classificació professional',
+      'Estar exempt de qualsevol prova de coneixement de català si s\'ha cursat l\'ensenyament secundari obligatori en qualsevol comunitat autònoma'
     ],
     correctIndex: 1,
     explanation: 'L\'art. 11 de la Llei 1/1998 estableix que el personal al servei de les administracions de Catalunya ha de tenir un nivell de coneixement adequat i suficient de les dues llengües oficials, tant oral com escrit, que el faci apte per desenvolupar les funcions del lloc.'
@@ -201,10 +201,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T6] Amb la modificació introduïda pel Decret llei 14/2025 a l\'article 15 de la Llei 5/1994, quines categories integren la nova Escala de suport del Cos de Bombers de la Generalitat?',
     options: [
-      'Bomber/a de primera, caporal/a, sergent/a i sotsinspector/a',
+      'Bomber/a de primera (grup C1), caporal/a, sergent/a i sotsinspector/a adscrits en exclusiva a tasques de suport logístic i sala de control',
       'TECOR (tècnic especialista de control operatiu), TEOV (tècnic especialista operador de vehicles), EPAF (especialista en prevenció activa forestal, grup C2) i TELOG (tècnic especialista logístic)',
-      'Únicament els bombers voluntaris i els auxiliars forestals de campanya',
-      'Inspector/a de suport, sotsinspector/a de suport i tècnic/a superior de gestió'
+      'Únicament els bombers voluntaris de la secció activa, els bombers honoraris i els auxiliars forestals contractats per a la campanya d\'estiu',
+      'Inspector/a de suport operatiu, sotsinspector/a de suport tècnic i tècnic/a superior de gestió administrativa adscrits a la subdirecció general'
     ],
     correctIndex: 1,
     explanation: 'El DL 14/2025 modifica l\'art. 15 de la Llei 5/1994 i crea la 4a escala (Escala de suport), integrada per TECOR, TEOV, EPAF (grup C2) i TELOG, amb accés per concurs oposició lliure i sense promoció interna cap a les altres escales.'
@@ -227,10 +227,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T6] Segons la Llei 4/1997 de protecció civil de Catalunya, a qui correspon declarar l\'activació del PROCICAT en fase d\'emergència quan l\'àmbit supera el terme municipal i afecta diverses comarques?',
     options: [
-      'Al cap del parc de bombers més proper a l\'incident',
+      'Al cap del parc de bombers més proper a l\'incident, com a comandament operatiu inicial de la intervenció',
       'Al conseller o consellera competent en matèria de seguretat pública / protecció civil (com a director/a del pla autonòmic)',
-      'A l\'alcalde del municipi més poblat de l\'àrea afectada',
-      'Al president del consell comarcal de la comarca d\'origen'
+      'A l\'alcalde o alcaldessa del municipi més poblat de l\'àrea afectada, per delegació directa dels municipis veïns',
+      'Al president o presidenta del consell comarcal de la comarca on s\'hagi originat l\'emergència territorial'
     ],
     correctIndex: 1,
     explanation: 'En els plans territorials i especials d\'àmbit de Catalunya (com el PROCICAT), la direcció correspon al conseller/a competent en matèria de protecció civil (Interior).'
@@ -242,10 +242,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T7] D\'acord amb el Decret 16/2026 (de modificació de l\'estructura del Departament d\'Interior i de la DGPEIS), quantes Regions d\'Emergències i quantes Subdireccions Generals té la DGPEIS?',
     options: [
-      '7 Regions d\'Emergències i 4 Subdireccions Generals',
+      '7 Regions d\'Emergències (sense segregar la regió dels Pirineus) i 4 Subdireccions Generals d\'estructura central',
       '8 Regions d\'Emergències (incloent-hi la Regió d\'Emergències dels Pirineus) i 5 Subdireccions Generals (incorporant la SG d\'Assumptes Jurídics)',
-      '9 Regions d\'Emergències i 3 Subdireccions Generals',
-      '7 Regions d\'Emergències i 5 Subdireccions Generals'
+      '9 Regions d\'Emergències (desdoblegant la Regió Metropolitana Nord en dues) i 3 Subdireccions Generals operatives i tècniques',
+      '7 Regions d\'Emergències (integrant els Pirineus dins la regió de Lleida) i 5 Subdireccions Generals d\'estructura central'
     ],
     correctIndex: 1,
     explanation: 'El Decret 16/2026 (06.02.2026) consolida 8 Regions d\'Emergències (amb la nova Regió d\'Emergències dels Pirineus) i 5 Subdireccions Generals (sumant la nova SG d\'Assumptes Jurídics) a la DGPEIS.'
@@ -255,10 +255,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T7] Segons el Decret 276/2016, pel qual es regula la guàrdia en el Cos de Bombers de la Generalitat, quines són les dues modalitats de prestació de la posició de guàrdia?',
     options: [
-      'Guàrdia ordinària i guàrdia extraordinària de campanya',
+      'Guàrdia ordinària presencial al parc i guàrdia extraordinària de campanya forestal',
       'Disponibilitat immediata (presencial al centre de guàrdia) i localització',
-      'Guàrdia diürna i guàrdia nocturna de reten',
-      'Guàrdia operativa i guàrdia de prevenció passiva'
+      'Guàrdia diürna de servei actiu i guàrdia nocturna de reten en disposició',
+      'Guàrdia operativa d\'intervenció i guàrdia de prevenció passiva no presencial'
     ],
     correctIndex: 1,
     explanation: 'El Decret 276/2016 distingeix dues modalitats de posició de guàrdia: disponibilitat immediata (al centre de guàrdia) i localització.'
@@ -283,10 +283,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T8] En un incendi d\'un dipòsit de combustible líquid (classe B), observem que la temperatura del líquid es troba per sobre del seu punt d\'ignició (fire point) però per sota de la seva temperatura d\'autoignició. Què passarà si retirem la font d\'ignició externa després que hagi començat a cremar?',
     options: [
-      'El foc s\'apagarà immediatament perquè no ha assolit la temperatura d\'autoignició',
+      'El foc s\'apagarà immediatament en retirar el focus extern perquè el líquid encara no ha assolit la temperatura d\'autoignició',
       'La combustió es mantindrà de manera sostinguda perquè per sobre del punt d\'ignició es generen prou vapors per mantenir la flama',
-      'Només es produiran flaixos intermitents sense flama contínua',
-      'El líquid passarà directament a combustió sense flama (incandescent)'
+      'Només es produiran flaixos intermitents de vapor sense flama contínua fins que s\'arribi al punt d\'ebullició del combustible',
+      'El líquid passarà directament a combustió sense flama (incandescent) per manca d\'energia d\'activació suficient a la fase gasosa'
     ],
     correctIndex: 1,
     explanation: 'El punt d\'ignició (fire point) és la temperatura mínima a la qual un combustible líquid emet vapors suficients per mantenir una combustió sostinguda un cop iniciada, fins i tot retirant la font d\'ignició.'
@@ -296,10 +296,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T8] Quin és el mecanisme d\'extinció principal de la pols química seca (bicarbonat de sodi o fosfat monoamònic) i per què NO és recomanable utilitzar-la com a agent únic en un foc profund de bales de palla o fusta massissa?',
     options: [
-      'Extingeix per refredament; no és recomanable perquè congela la superfície de la fusta',
+      'Extingeix principalment per refredament endotèrmic; no és recomanable perquè congela la superfície de la fusta i en provoca l\'esquerdament estructural',
       'Extingeix per inhibició química de la reacció en cadena (i lleugera sufocació); té un poder de refredament molt baix i no penetra en les brases profundes, fet que pot provocar reignició',
-      'Extingeix per dilució de l\'oxigen amb vapor d\'aigua; no és recomanable per risc elèctric',
-      'Extingeix per saponificació; només funciona amb olis vegetals'
+      'Extingeix per dilució de l\'oxigen amb vapor d\'aigua generat per la calor; no és recomanable perquè condueix l\'electricitat en equips sota tensió',
+      'Extingeix per saponificació de les resines vegetals; només funciona amb olis i greixos de cuina de classe F i no té cap efecte sobre combustibles sòlids'
     ],
     correctIndex: 1,
     explanation: 'La pols química seca interromp la reacció en cadena (radicals lliures) i apaga ràpidament les flames, però gairebé no refreda. En brases profundes (classe A), la calor residual pot provocar la reignició si no es refreda amb aigua.'
@@ -309,10 +309,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T8] Quin agent extintor és el més adequat i segur per a un incendi de metalls alcalins o magnesi (classe D) en un taller industrial?',
     options: [
-      'Aigua polvoritzada a alta pressió',
-      'Escuma filmògena AFFF',
+      'Aigua polvoritzada a alta pressió aplicada en forma de con ampli per refredar la massa metàl·lica incandescent',
+      'Escuma filmògena AFFF amb proporció de dosificació al 3 % per aïllar la superfície de l\'oxigen ambiental',
       'Pols seca específica de classe D (com clorur de sodi, grafit o sorra seca) que actua per sufocació i absorció de calor sense reaccionar amb el metall',
-      'Diòxid de carboni (CO₂) aplicat a curta distància'
+      'Diòxid de carboni (CO₂) aplicat a curta distància en descàrrega contínua per desplaçar l\'oxigen de la zona'
     ],
     correctIndex: 2,
     explanation: 'L\'aigua, l\'escuma i fins i tot el CO₂ poden reaccionar violentament amb metalls com el magnesi o el sodi a altes temperatures (alliberant hidrogen o accelerant la reacció). Cal usar agents específics de classe D inerts.'
@@ -432,10 +432,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T11] En una intervenció per caiguda d\'un cable d\'alta tensió sobre el terra mullat prop d\'un turisme accidentat, per què els bombers han de respectar la zona de seguretat i, en cas d\'haver-se d\'allunyar d\'un punt energitzat, fer-ho a passes molt curtes o a peu coix?',
     options: [
-      'Per reduir la tensió de contacte entre el vehicle i el fanal',
+      'Per reduir la tensió de contacte que apareix entre la carrosseria del vehicle i el fanal metàl·lic proper',
       'Per minimitzar la diferència de potencial entre els dos peus (tensió de pas) generada pel gradient de potencial radial a terra',
-      'Per evitar que la càrrega electrostàtica de les botes faci saltar l\'arc elèctric a l\'aire',
-      'Per impedir que el corrent continu s\'inverteixi en corrent altern'
+      'Per evitar que la càrrega electrostàtica acumulada a les botes d\'intervenció faci saltar l\'arc elèctric a través de l\'aire',
+      'Per impedir que el corrent continu de la línia es transformi en corrent altern per inducció magnètica sobre el paviment'
     ],
     correctIndex: 1,
     explanation: 'Quan un conductor d\'alta tensió toca terra, es crea un embut de potencial radial. Si els dos peus es troben a distàncies diferents del punt de contacte, apareix una tensió de pas perillosa entre les cames.'
@@ -447,10 +447,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T12] En una instal·lació elèctrica interior de baixa tensió (REBT), quin dispositiu protegeix específicament les persones contra contactes indirectes i derivacions a terra?',
     options: [
-      'L\'interruptor magnetotèrmic (PIA) de corba C',
-      'L\'interruptor de control de potència (ICP)',
+      'L\'interruptor magnetotèrmic (PIA) de corba C calibrat per a circuits d\'enllumenat o força',
+      'L\'interruptor de control de potència (ICP) ubicat a la caixa general de protecció exterior',
       'L\'interruptor diferencial (ID), habitualment d\'alta sensibilitat (30 mA) en habitatges',
-      'El limitador de sobretensions permanents'
+      'El limitador de sobretensions permanents i transitòries instal·lat a la derivació individual'
     ],
     correctIndex: 2,
     explanation: 'L\'interruptor diferencial compara el corrent d\'entrada i el de sortida; si detecta una fuita a terra superior a la seva sensibilitat (p. ex. 30 mA), obre el circuit per protegir les persones.'
@@ -460,10 +460,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T12] En una intervenció per olor de gas en un edifici amb subministrament de gas natural canalitzat i sense risc de flama immediat, on es troba la clau que permet tallar el subministrament de tot l\'edifici sense accedir als comptadors individuals?',
     options: [
-      'A la clau d\'aparell situada dins la cuina de cada habitatge',
+      'A la clau d\'aparell situada dins la cuina o galeria de cada habitatge particular abans del regulador',
       'A la clau d\'edifici (o clau de branca / d\'escomesa) situada habitualment a l\'armari de regulació o façana a l\'exterior',
-      'Exclusivament a la planta de regasificació municipal',
-      'A la vàlvula de purga de la caldera comunitària'
+      'Exclusivament a la planta de regasificació i regulació municipal mitjançant maniobra de la companyia distribuïdora',
+      'A la vàlvula de purga i seguretat instal·lada a la sala de màquines de la caldera comunitària de l\'immoble'
     ],
     correctIndex: 1,
     explanation: 'La clau d\'escomesa o clau d\'edifici (en armari exterior/façana) permet tallar el pas del gas a tota la finca des de l\'exterior de manera ràpida i segura.'
@@ -473,10 +473,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T12] Quina és la diferència principal entre una xarxa de sanejament separativa i una d\'unitària en un nucli urbà?',
     options: [
-      'La xarxa separativa utilitza canonades de plom i la unitària de PVC',
+      'La xarxa separativa utilitza canonades de plom o fibrociment de petit diàmetre i la xarxa unitària empra exclusivament col·lectors de PVC reforçat',
       'La xarxa separativa condueix per conductes independents les aigües pluvials i les aigües residuals (fecals), mentre que la unitària les recull en un únic col·lector',
-      'La xarxa unitària només existeix en polígons industrials amb depuradora pròpia',
-      'La xarxa separativa funciona sempre a pressió positiva amb bombes i la unitària per gravetat'
+      'La xarxa unitària només existeix en polígons industrials amb depuradora pròpia i la xarxa separativa és obligatòria únicament en zones rurals aïllades',
+      'La xarxa separativa funciona sempre a pressió positiva mitjançant estacions de bombament i la xarxa unitària circula exclusivament per gravetat'
     ],
     correctIndex: 1,
     explanation: 'En una xarxa separativa hi ha dos col·lectors diferenciats (pluvials i fecals/residuals), mentre que en la unitària tot va al mateix col·lector.'
@@ -514,10 +514,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T13] En el funcionament d\'una bomba centrífuga d\'un vehicle autobomba aspirant d\'un riu, què és el fenomen de la cavitació i quina conseqüència pot tenir?',
     options: [
-      'L\'entrada d\'aire per la llança que millora l\'abast del raig',
+      'L\'entrada controlada d\'aire atmosfèric per la llança d\'aigua que augmenta l\'abast del raig i en redueix el retrocés hidràulic en maniobres de llarga distància',
       'La formació i implosió violenta de bombolles de vapor dins la bomba quan la pressió en aspiració cau per sota de la pressió de vapor del líquid, causant vibracions, pèrdua de rendiment i erosió del rodet',
-      'El blocatge tèrmic de la vàlvula de peu quan l\'aigua supera els 4 °C',
-      'L\'augment sobtat del cabal en tancar bruscament la llança (cop d\'ariet)'
+      'El blocatge tèrmic i mecànic de la vàlvula de peu del mànec d\'aspiració quan la temperatura de l\'aigua del riu supera els 4 °C en règim de cabal màxim',
+      'L\'augment sobtat i perillós del cabal d\'impulsió en tancar bruscament la llança de sortida (fenomen conegut com a cop d\'ariet en línia de mànegues)'
     ],
     correctIndex: 1,
     explanation: 'La cavitació es produeix quan la pressió a l\'aspiració baixa per sota de la pressió de vapor de l\'aigua; es formen bombolles que implosionen violentament a la zona d\'alta pressió del rodet, danyant-lo i fent caure el cabal.'
@@ -583,10 +583,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T15] Per què en un incendi estructural prolongat les bigues metàl·liques d\'acer laminat sense protecció passiva presenten un risc elevat de col·lapse sobtat?',
     options: [
-      'Perquè l\'acer fon completament a partir dels 400 °C',
+      'Perquè l\'acer laminat arriba al seu punt de fusió completa a partir dels 400 °C i degota sobre les plantes inferiors de l\'edifici',
       'Perquè l\'acer té una conductivitat tèrmica elevada, es dilata molt (empenyent murs perimetrals) i perd aproximadament el 50 % de la seva resistència mecànica al voltant dels 500–550 °C',
-      'Perquè l\'acer allibera gasos inflamables en escalfar-se per sobre de 300 °C',
-      'Perquè l\'acer es carbonata en contacte amb el CO₂ de l\'incendi'
+      'Perquè l\'acer allibera gasos inflamables i compostos tòxics per piròlisi metàl·lica en escalfar-se per sobre dels 300 °C en atmosfera confinada',
+      'Perquè l\'acer es carbonata ràpidament en contacte amb el CO₂ de l\'incendi, perdent secció útil a una velocitat constant d\'un mil·límetre per minut'
     ],
     correctIndex: 1,
     explanation: 'Tot i que l\'acer no és combustible i fon cap als 1.400–1.500 °C, la seva alta conductivitat tèrmica i dilatació fan que cap als 500–550 °C perdi prop de la meitat de la seva capacitat portant.'
@@ -611,10 +611,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T16] En una assistència tècnica per atrapament d\'una persona en un ascensor elèctric convencional aturat entre dues plantes, quina és la primera acció de seguretat imprescindible abans de fer cap maniobra manual a la cabina o a la sala de màquines?',
     options: [
-      'Forçar les portes de pis amb el separador hidràulic des del primer moment',
+      'Forçar immediatament les portes de pis amb el separador hidràulic des del primer moment per ventilar el forat i accedir a la cabina',
       'Tallar l\'alimentació elèctrica general de l\'ascensor (interruptor de força a la sala de màquines o quadre) i senyalitzar/bloquejar per evitar que ningú el rearmi',
-      'Deixar anar el fre electromecànic sense comprovar on és la cabina',
-      'Trucar a l\'empresa mantenidora i esperar sense apropar-se al forat'
+      'Deixar anar el fre electromecànic de la màquina tractora sense comprovar prèviament en quina planta es troba aturada la cabina',
+      'Trucar a l\'empresa mantenidora de l\'aparell elevador i esperar fora de l\'edifici sense apropar-se al forat ni contactar amb els ocupants'
     ],
     correctIndex: 1,
     explanation: 'En qualsevol rescat en ascensor, la mesura prèvia obligatòria és desconnectar el corrent elèctric de força (mantenint l\'enllumenat si és independent) per evitar una arrencada sobtada de la cabina durant la maniobra.'
@@ -624,10 +624,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T16] En l\'obertura forçada d\'una porta d\'habitatge (sense foc) per assistir una persona caiguda a l\'interior, quin criteri operatiu d\'intervenció s\'ha de seguir?',
     options: [
-      'Trencar sempre el pany amb l\'ariet per guanyar temps, encara que hi hagi finestres practicables segures',
+      'Trencar sempre el pany o el marc amb l\'ariet per guanyar temps operatiu des del primer segon, encara que hi hagi finestres practicables segures o accés fàcil per balcó',
       'Buscar la via d\'accés menys destructiva possible (p. ex. finestra o balcó accessible amb escala, o extracció de bombí) si el temps i la seguretat ho permeten, i deixar la porta assegurada o custodiada en acabar',
-      'No es pot accedir mai a un domicili sense una ordre judicial prèvia signada, encara que hi hagi perill imminent per a la vida',
-      'Utilitzar sempre una radial sobre les frontisses encara que hi hagi risc de projecció d\'espurnes a l\'interior'
+      'No es pot accedir mai a un domicili particular sense una ordre judicial prèvia signada pel jutjat de guàrdia, encara que existeixi un perill greu i imminent per a la vida de la persona',
+      'Utilitzar sempre una serra radial sobre les frontisses de seguretat de la porta encara que hi hagi risc evident de projecció d\'espurnes cap a l\'interior de l\'habitatge'
     ],
     correctIndex: 1,
     explanation: 'En assistències tècniques (obertures de domicili) s\'aplica el principi de mínima lesivitat: accés alternatiu segur o extracció neta del bombí si l\'urgència mèdica ho permet, sempre garantint la proporcionalitat.'
@@ -637,10 +637,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T16] Durant una intervenció per un element constructiu inestable en façana (cornisa o ràfec amb risc de caiguda a la via pública), quina zona s\'ha d\'establir i abalisar immediatament?',
     options: [
-      'Només l\'amplada exacta de la vorera sota la cornisa',
+      'Només l\'amplada exacta de la vorera situada directament sota la vertical de la cornisa inestable',
       'Un perímetre de seguretat ampli que contempli la possible trajectòria de caiguda i rebot dels fragments a la calçada i vorera',
-      'Únicament la porta d\'accés al vestíbul de l\'edifici',
-      'No cal abalisar si hi ha un agent de policia local dirigint el trànsit'
+      'Únicament la porta d\'accés al vestíbul de l\'edifici afectat i els dos primers metres de façana contigua',
+      'No cal abalisar cap zona a la via pública si hi ha un agent de policia local dirigint el trànsit rodat'
     ],
     correctIndex: 1,
     explanation: 'Els elements que cauen des d\'alçada poden rebotar o projectar fragments lluny de la vertical; cal un perímetre de seguretat suficient i abalisat abans de sanejar.'
@@ -652,10 +652,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Mitjà',
     question: '[BANC EXTRA · T17] En la xarxa de radiocomunicacions d\'emergències RESCAT de la Generalitat de Catalunya (tecnologia TETRA), què significa treballar en mode DMO (Direct Mode Operation)?',
     options: [
-      'Comunicació a través de la xarxa d\'antenes repetidores troncals (mode TMO)',
+      'Comunicació a través de la xarxa d\'antenes repetidores troncals de la Generalitat en cobertura ordinària (mode TMO)',
       'Comunicació directa terminal-a-terminal sense passar per la infraestructura de repetidors de la xarxa (útil dins de soterranis, túnels o zones sense cobertura)',
-      'Comunicació encriptada exclusiva per a trucades telefòniques a la xarxa pública',
-      'Mode de baix consum en què el terminal només rep dades GPS'
+      'Comunicació encriptada de punt a punt exclusiva per a trucades telefòniques connectades a la xarxa pública commutada',
+      'Mode d\'estalvi i baix consum energètic en què el terminal només rep coordenades de posicionament GPS sense emetre veu'
     ],
     correctIndex: 1,
     explanation: 'El mode DMO (Direct Mode Operation) permet la comunicació directa walkie-walkie entre terminals TETRA dins del seu abast ràdio, sense dependre de la cobertura dels repetidors (TMO).'
@@ -665,10 +665,10 @@ export const QUESTIONS_GENERADES_2 = [
     difficulty: 'Difícil',
     question: '[BANC EXTRA · T17] En una intervenció amb múltiples unitats treballant en una mateixa emissora en mode directe (símplex), quin problema operatiu es produeix si dos terminals premen el PTT (Push-To-Talk) simultàniament?',
     options: [
-      'Les dues veus se senten mesclades amb perfecta claredat a tots els receptors',
+      'Les dues veus se senten mesclades simultàniament amb perfecta claredat i sense pèrdua d\'intel·ligibilitat a tots els receptors del grup',
       'Es produeix una interferència/col·lisió de senyal (o bloqueig del canal) que impedeix la recepció intel·ligible; per això cal esperar que l\'interlocutor acabi i confirmar el «canvi»',
-      'L\'emissora canvia automàticament de banda de VHF a UHF',
-      'Es duplica l\'abast de la transmissió per suma de potències'
+      'L\'emissora canvia automàticament de banda de freqüència de VHF a UHF per separar les dues comunicacions en canals adjacents sense tallar cap missatge',
+      'Es duplica l\'abast efectiu de la transmissió per suma coherent de potències d\'emissió entre els dos terminals pròxims'
     ],
     correctIndex: 1,
     explanation: 'En comunicacions símplex per ràdio, només pot emetre un terminal alhora. Dues emissions simultànies col·lisionen i impedeixen entendre el missatge.'
