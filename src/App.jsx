@@ -223,7 +223,7 @@ export default function App() {
     };
   }, [activeView, selectedTopicId, progress.topicStatus]);
 
-  // Comprovació d'actualitzacions de l'app (version.json)
+  // Comprovació d'actualitzacions de l'app (version.json + Service Worker del navegador)
   useEffect(() => {
     let active = true;
     const checkVersion = async () => {
@@ -233,9 +233,7 @@ export default function App() {
         const data = await res.json();
         if (!active || !data || !data.version) return;
 
-        if (data.version !== APP_CLIENT_VERSION) {
-          setUpdateAvailable(true);
-        }
+        setUpdateAvailable(data.version !== APP_CLIENT_VERSION);
 
         if (data.isImportant && Array.isArray(data.cards) && data.cards.length > 0) {
           let seenVersion = '';
@@ -259,12 +257,56 @@ export default function App() {
       if (document.visibilityState === 'visible') checkVersion();
     };
     document.addEventListener('visibilitychange', onVis);
+
+    // Detecció nativa del navegador si hi ha un Service Worker en espera d'actualitzar
+    let swReg = null;
+    const onUpdateFound = () => {
+      if (!swReg?.installing) return;
+      const newWorker = swReg.installing;
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed' && navigator.serviceWorker.controller && active) {
+          setUpdateAvailable(true);
+        }
+      });
+    };
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistration().then((reg) => {
+        if (!active || !reg) return;
+        swReg = reg;
+        if (reg.waiting && navigator.serviceWorker.controller) {
+          setUpdateAvailable(true);
+        }
+        reg.addEventListener('updatefound', onUpdateFound);
+      }).catch(() => {});
+    }
+
     return () => {
       active = false;
       clearInterval(timer);
       document.removeEventListener('visibilitychange', onVis);
+      if (swReg) {
+        swReg.removeEventListener('updatefound', onUpdateFound);
+      }
     };
   }, []);
+
+  const handleApplyUpdate = async () => {
+    try {
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg?.waiting) {
+          reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+        }
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map((k) => caches.delete(k)));
+      }
+    } catch {
+      // ignore
+    }
+    window.location.reload();
+  };
 
   const dismissImportantRelease = () => {
     if (importantRelease?.version) {
@@ -832,7 +874,7 @@ export default function App() {
             Nova actualització disponible
           </span>
           <button
-            onClick={() => window.location.reload()}
+            onClick={handleApplyUpdate}
             className="rounded-xl bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 text-xs font-extrabold shadow-sm"
           >
             Recarregar
@@ -887,7 +929,7 @@ export default function App() {
                 <button
                   onClick={() => {
                     dismissImportantRelease();
-                    window.location.reload();
+                    handleApplyUpdate();
                   }}
                   className="rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
                 >
