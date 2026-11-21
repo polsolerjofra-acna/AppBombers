@@ -34,6 +34,24 @@ import { tema15RescatUrba } from './topics/tema15_rescat_urba';
 import { tema27Inundacions } from './topics/tema27_inundacions';
 import { QUESTIONS_81_25_BY_TOPIC } from './questions_81_25';
 import { QUESTIONS_SIMULACRE_81_26_BY_TOPIC } from './questions_simulacre_81_26';
+import { QUESTIONS_SIM_125 } from './questions_sim_125';
+import { QUESTIONS_SIM_126 } from './questions_sim_126';
+import { QUESTIONS_SIM_127 } from './questions_sim_127';
+import { QUESTIONS_SIM_128 } from './questions_sim_128';
+import { QUESTIONS_SIM_129 } from './questions_sim_129';
+import { QUESTIONS_SIM_130 } from './questions_sim_130';
+
+const ALL_SIMULACRE_ACAD_QUESTIONS = [
+  ...QUESTIONS_SIM_125,
+  ...QUESTIONS_SIM_126,
+  ...QUESTIONS_SIM_127,
+  ...QUESTIONS_SIM_128,
+  ...QUESTIONS_SIM_129,
+  ...QUESTIONS_SIM_130
+].map((q, idx) => ({
+  ...q,
+  id: q.id || `sim-acad-${idx + 1}`
+}));
 
 /**
  * Registre complet dels 34 temes oficials (Temes 1 al 34 sense cap buit!):
@@ -115,6 +133,7 @@ export const TOPICS = [
     quiz: [
       ...(topic.quiz || []),
       ...(QUESTIONS_81_25_BY_TOPIC[topic.number] || []),
-      ...(QUESTIONS_SIMULACRE_81_26_BY_TOPIC[topic.number] || [])
+      ...(QUESTIONS_SIMULACRE_81_26_BY_TOPIC[topic.number] || []),
+      ...ALL_SIMULACRE_ACAD_QUESTIONS.filter((q) => q.topic === topic.number)
     ]
   }));
