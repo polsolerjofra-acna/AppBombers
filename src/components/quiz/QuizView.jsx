@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   CheckCircle2,
   XCircle,
@@ -18,6 +18,27 @@ const DIFFICULTY_STYLES = {
   'Difícil': 'bg-red-100 text-red-800 dark:bg-red-950/80 dark:text-red-300 border-red-300/60 dark:border-red-800'
 };
 
+function shuffleQuestionOptions(q) {
+  if (!Array.isArray(q?.options) || q.options.length < 2) return q;
+  const hasPositionalRef = q.options.some((opt) =>
+    /\b(a\s+i\s+[bcd]|b\s+i\s+[cd]|c\s+i\s+d|totes\s+les\s+anteriors|cap\s+de\s+les\s+anteriors|totes\s+són\s+correctes|cap\s+és\s+correcta)\b/i.test(
+      String(opt || '')
+    )
+  );
+  if (hasPositionalRef) return q;
+  const indices = q.options.map((_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  const newCorrectIndex = indices.indexOf(q.correctIndex);
+  return {
+    ...q,
+    options: indices.map((i) => q.options[i]),
+    correctIndex: newCorrectIndex >= 0 ? newCorrectIndex : q.correctIndex
+  };
+}
+
 export default function QuizView({
   topic,
   extraQuestions = [],
@@ -27,14 +48,17 @@ export default function QuizView({
   focusedQuestionId = null,
   savedQuizResult
 }) {
-  const baseQuestions = [...(topic.quiz || []), ...(extraQuestions || [])];
-  // Si el tema té apartats marcats com a complicats o nota < 70%, prioritzem preguntes Difícil/Mitjà primer
-  const shouldPrioritizeHard =
-    difficultCount > 0 || (savedQuizResult && savedQuizResult.percentage < 70);
-  const diffRank = { 'Difícil': 0, 'Mitjà': 1, 'Fàcil': 2 };
-  const questions = shouldPrioritizeHard
-    ? [...baseQuestions].sort((a, b) => (diffRank[a.difficulty] ?? 1) - (diffRank[b.difficulty] ?? 1))
-    : baseQuestions;
+  const [shuffleSeed, setShuffleSeed] = useState(0);
+  const questions = useMemo(() => {
+    const baseQuestions = [...(topic.quiz || []), ...(extraQuestions || [])];
+    const shouldPrioritizeHard =
+      difficultCount > 0 || (savedQuizResult && savedQuizResult.percentage < 70);
+    const diffRank = { 'Difícil': 0, 'Mitjà': 1, 'Fàcil': 2 };
+    const ordered = shouldPrioritizeHard
+      ? [...baseQuestions].sort((a, b) => (diffRank[a.difficulty] ?? 1) - (diffRank[b.difficulty] ?? 1))
+      : baseQuestions;
+    return ordered.map(shuffleQuestionOptions);
+  }, [topic.id, topic.quiz, extraQuestions, difficultCount, savedQuizResult, shuffleSeed]);
   const [difficultyFilter, setDifficultyFilter] = useState('Totes');
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [draftSelections, setDraftSelections] = useState({});
@@ -108,6 +132,7 @@ export default function QuizView({
     setSelectedAnswers({});
     setDraftSelections({});
     setSubmittedResult(null);
+    setShuffleSeed((s) => s + 1);
   };
 
   const answeredCount = Object.keys(selectedAnswers).length;

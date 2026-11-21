@@ -62,6 +62,26 @@ function shuffleArray(arr) {
   return copy;
 }
 
+function shuffleQuestionOptions(q) {
+  if (!Array.isArray(q?.options) || q.options.length < 2) return q;
+  // No barregem si alguna opció fa referència posicional explícita ("a i c", "totes les anteriors", etc.)
+  const hasPositionalRef = q.options.some((opt) =>
+    /\b(a\s+i\s+[bcd]|b\s+i\s+[cd]|c\s+i\s+d|totes\s+les\s+anteriors|cap\s+de\s+les\s+anteriors|totes\s+són\s+correctes|cap\s+és\s+correcta)\b/i.test(
+      String(opt || '')
+    )
+  );
+  if (hasPositionalRef) return q;
+
+  const indices = shuffleArray(q.options.map((_, i) => i));
+  const newOptions = indices.map((i) => q.options[i]);
+  const newCorrectIndex = indices.indexOf(q.correctIndex);
+  return {
+    ...q,
+    options: newOptions,
+    correctIndex: newCorrectIndex >= 0 ? newCorrectIndex : q.correctIndex
+  };
+}
+
 function sortWithCooldown(arr, lastAskedMap = {}) {
   // Prioritza preguntes mai vistes (0) i després les que fa més temps que van sortir
   const shuffled = shuffleArray(arr);
@@ -215,7 +235,9 @@ export default function PracticeTestView({
     const weighted = targetMode === 'simulacre' ? true : useWeightedPractice;
     const lastAskedMap = loadJsonSet(LAST_ASKED_KEY);
 
-    const qs = buildWeightedExamQuestions(topics, targetIds, count, weighted, lastAskedMap);
+    const qs = buildWeightedExamQuestions(topics, targetIds, count, weighted, lastAskedMap).map(
+      shuffleQuestionOptions
+    );
     const now = Date.now();
     const updatedAsked = { ...lastAskedMap };
     qs.forEach((q, idx) => {
