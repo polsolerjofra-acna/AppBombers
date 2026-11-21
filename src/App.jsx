@@ -519,6 +519,20 @@ export default function App() {
           pomodoroTodayDate: todayISO,
           lastActiveDate: progress.lastActiveDate || todayISO,
           roundsCompleted: Object.values(progress.topicRounds || {}).filter((r) => r >= 1).length,
+          firstRoundCompleted: TOPICS.every(
+            (t) => (progress.topicRounds?.[t.id] || 0) >= 1 || progress.topicStatus?.[t.id] === 'completed'
+          ),
+          fullRoundsCompleted: TOPICS.reduce(
+            (minR, t) =>
+              Math.min(
+                minR,
+                progress.topicRounds?.[t.id] || (progress.topicStatus?.[t.id] === 'completed' ? 1 : 0)
+              ),
+            999
+          ),
+          totalCorrectAnswers: ans.totalCorrect || 0,
+          totalAnswered: ans.totalAnswered || 0,
+          statsResetEpoch: progress.statsResetEpoch || '',
           dailyEmailEnabled: progress.dailyEmailEnabled !== false
         },
         progress

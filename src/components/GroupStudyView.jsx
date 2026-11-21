@@ -1,7 +1,15 @@
 import React from 'react';
-import { Users, Trophy, Flame, Clock, CheckCircle2, Sparkles } from 'lucide-react';
+import { Users, Trophy, Flame, Clock, Award, Sparkles } from 'lucide-react';
 import { isFirebaseConfigured } from '../config/firebaseConfig';
 import { loginWithGoogle, logoutFirebase } from '../services/firebaseSync';
+import { STATS_RESET_EPOCH } from '../hooks/useStudyProgress';
+
+const ACCURACY_MILESTONES = [
+  { target: 500, label: '500 encerts', icon: '🥉', cls: 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800' },
+  { target: 1000, label: '1.000 encerts', icon: '🥈', cls: 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700' },
+  { target: 2000, label: '2.000 encerts', icon: '🥇', cls: 'bg-yellow-100 dark:bg-yellow-950/60 text-yellow-800 dark:text-yellow-300 border-yellow-300 dark:border-yellow-800' },
+  { target: 5000, label: '5.000 encerts', icon: '💎', cls: 'bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 border-cyan-300 dark:border-cyan-800' }
+];
 
 export default function GroupStudyView({
   user,
@@ -142,10 +150,18 @@ export default function GroupStudyView({
           <div className="grid grid-cols-1 gap-4">
             {groupProfiles.map((member, index) => {
               const isMe = member.uid === user.uid;
-              const pctTopics = Math.min(
-                100,
-                Math.round(((member.completedTopics || 0) / Math.max(1, topicsCount)) * 100)
+              const isResetSynced = member.statsResetEpoch === STATS_RESET_EPOCH;
+              const streakDays = isResetSynced ? member.streakDays || 0 : 0;
+              const todayMin = isResetSynced ? member.pomodoroTodayMinutes ?? member.todayMinutes ?? 0 : 0;
+              const totalMin = isResetSynced ? member.pomodoroTotalMinutes ?? member.totalMinutes ?? 0 : 0;
+              const quizAvg = isResetSynced ? member.quizAverage ?? member.averageQuiz ?? 0 : 0;
+              const correctCount = isResetSynced ? member.totalCorrectAnswers || 0 : 0;
+              const firstRoundDone = Boolean(
+                member.firstRoundCompleted || (member.completedTopics || 0) >= (member.totalTopics || topicsCount)
               );
+              const fullRounds = member.fullRoundsCompleted || (firstRoundDone ? 1 : 0);
+              const earnedMilestones = ACCURACY_MILESTONES.filter((m) => correctCount >= m.target);
+              const nextMilestone = ACCURACY_MILESTONES.find((m) => correctCount < m.target);
 
               return (
                 <div
@@ -203,28 +219,18 @@ export default function GroupStudyView({
 
                     <div className="flex flex-wrap items-center gap-4 text-xs">
                       <div className="text-center px-2">
-                        <div className="font-extrabold text-base text-slate-900 dark:text-white flex items-center justify-center gap-1">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                          <span>
-                            {member.completedTopics || 0}/{member.totalTopics || topicsCount}
-                          </span>
-                        </div>
-                        <div className="text-[11px] text-slate-500">Temes</div>
-                      </div>
-
-                      <div className="text-center px-2">
                         <div className="font-extrabold text-base text-slate-900 dark:text-white">
-                          {((member.quizAverage ?? member.averageQuiz ?? 0) / 10).toFixed(1)}/10
+                          {(quizAvg / 10).toFixed(1)}/10
                         </div>
                         <div className="text-[11px] text-slate-500">
-                          Nota ({member.quizAverage ?? member.averageQuiz ?? 0}%)
+                          Nota ({quizAvg}%)
                         </div>
                       </div>
 
                       <div className="text-center px-2">
                         <div className="font-extrabold text-base text-orange-600 dark:text-orange-400 flex items-center justify-center gap-1">
                           <Flame className="w-4 h-4" />
-                          <span>{member.streakDays || 0}d</span>
+                          <span>{streakDays}d</span>
                         </div>
                         <div className="text-[11px] text-slate-500">Ratxa</div>
                       </div>
@@ -232,27 +238,46 @@ export default function GroupStudyView({
                       <div className="text-center px-2">
                         <div className="font-extrabold text-base text-blue-600 dark:text-blue-400 flex items-center justify-center gap-1">
                           <Clock className="w-4 h-4" />
-                          <span>{member.pomodoroTodayMinutes ?? member.todayMinutes ?? 0}m</span>
+                          <span>{todayMin}m</span>
                         </div>
                         <div className="text-[11px] text-slate-500">
-                          Avui ({member.pomodoroTotalMinutes ?? member.totalMinutes ?? 0}m tot)
+                          Avui ({totalMin}m tot)
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Barra de progrés del temari */}
-                  <div className="mt-4">
-                    <div className="flex justify-between text-[11px] font-semibold text-slate-500 mb-1">
-                      <span>Progrés del temari ({member.completedPages || 0} pàgines)</span>
-                      <span>{pctTopics}%</span>
-                    </div>
-                    <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-red-600 to-orange-500 transition-all duration-500"
-                        style={{ width: `${pctTopics}%` }}
-                      />
-                    </div>
+                  {/* Distintius de volta completada i fites d'encerts (sense exposar % del temari) */}
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-2">
+                    {firstRoundDone ? (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 px-3 py-1 text-[11px] font-extrabold text-emerald-800 dark:text-emerald-300">
+                        <Award className="w-3.5 h-3.5" />
+                        <span>
+                          {fullRounds >= 2 ? `${fullRounds}a Volta Finalitzada` : '1a Volta Finalitzada'}
+                        </span>
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
+                        <Award className="w-3.5 h-3.5 text-slate-400" />
+                        <span>En preparació (1a volta)</span>
+                      </span>
+                    )}
+
+                    {earnedMilestones.map((m) => (
+                      <span
+                        key={m.target}
+                        className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-extrabold ${m.cls}`}
+                      >
+                        <span>{m.icon}</span>
+                        <span>{m.label}</span>
+                      </span>
+                    ))}
+
+                    {nextMilestone && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 px-2.5 py-1 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                        <span>🎯 {correctCount} / {nextMilestone.target} encerts</span>
+                      </span>
+                    )}
                   </div>
                 </div>
               );
