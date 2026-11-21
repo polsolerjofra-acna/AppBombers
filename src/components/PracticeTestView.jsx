@@ -150,6 +150,7 @@ export default function PracticeTestView({
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [answers, setAnswers] = useState({});
   const [draftSelections, setDraftSelections] = useState({});
+  const [simulacreImpugnations, setSimulacreImpugnations] = useState({});
   const [isFinished, setIsFinished] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(85 * 60); // 85 minuts oficials (70 + 7 reserva)
   const [emailCopiedNotice, setEmailCopiedNotice] = useState(false);
@@ -227,6 +228,7 @@ export default function PracticeTestView({
     setCurrentQuestionIdx(0);
     setAnswers({});
     setDraftSelections({});
+    setSimulacreImpugnations({});
     setIsFinished(false);
     setEmailCopiedNotice(false);
     setSecondsLeft(85 * 60);
@@ -263,8 +265,12 @@ export default function PracticeTestView({
       mode,
       type: mode === 'simulacre' ? 'impugnacio' : 'error',
       reason: reportDraft.trim(),
+      validated: mode === 'simulacre',
       createdAt: new Date().toISOString()
     };
+    if (mode === 'simulacre') {
+      setSimulacreImpugnations((prev) => ({ ...prev, [q.id]: entry }));
+    }
     setReportsMap((prev) => {
       const next = { ...prev, [q.id]: entry };
       try {
@@ -276,6 +282,14 @@ export default function PracticeTestView({
     });
     setOpenReportId(null);
     setReportDraft('');
+  };
+
+  const handleRemoveSimulacreImpugnation = (questionId) => {
+    setSimulacreImpugnations((prev) => {
+      const copy = { ...prev };
+      delete copy[questionId];
+      return copy;
+    });
   };
 
   const handleSelectOption = (q, optIdx) => {
@@ -351,7 +365,19 @@ export default function PracticeTestView({
   if (activeQuestions) {
     const totalQ = activeQuestions.length;
     const answeredCount = Object.keys(answers).length;
-    const mainQuestions = mode === 'simulacre' ? activeQuestions.slice(0, 70) : activeQuestions;
+    const rawMainQuestions = mode === 'simulacre' ? activeQuestions.slice(0, 70) : activeQuestions;
+    const reserveQuestions = mode === 'simulacre' ? activeQuestions.slice(70, 77) : [];
+    const impugnedMainCount =
+      mode === 'simulacre' && isFinished
+        ? Math.min(7, rawMainQuestions.filter((q) => Boolean(simulacreImpugnations[q.id])).length)
+        : 0;
+    const mainQuestions =
+      mode === 'simulacre' && isFinished
+        ? [
+            ...rawMainQuestions.filter((q) => !simulacreImpugnations[q.id]),
+            ...reserveQuestions.slice(0, impugnedMainCount)
+          ]
+        : rawMainQuestions;
     const mainTotal = mainQuestions.length;
     const mainAnswered = mainQuestions.filter((q) => answers[q.id] !== undefined).length;
     const correctCount = mainQuestions.filter((q) => answers[q.id] === q.correctIndex).length;
@@ -438,12 +464,13 @@ export default function PracticeTestView({
                   Encerts: <strong className="text-emerald-700 dark:text-emerald-400">{correctCount}</strong> ·{' '}
                   Errades: <strong className="text-red-600 dark:text-red-400">{wrongCount}</strong> (-0,33/errada) ·{' '}
                   En blanc: <strong>{blankCount}</strong>
-                  {Object.keys(reportsMap).filter((id) => activeQuestions.some((q) => q.id === id)).length > 0 && (
+                  {mode === 'simulacre' && impugnedMainCount > 0 && (
                     <>
-                      {' · '}Impugnades:{' '}
+                      {' · '}Impugnacions validades:{' '}
                       <strong className="text-amber-700 dark:text-amber-400">
-                        {Object.keys(reportsMap).filter((id) => activeQuestions.some((q) => q.id === id)).length}
-                      </strong>
+                        {impugnedMainCount}/7
+                      </strong>{' '}
+                      (Reserva activada: {impugnedMainCount}/7)
                     </>
                   )}
                 </p>
@@ -544,9 +571,28 @@ export default function PracticeTestView({
                     <span className="text-xs font-extrabold text-slate-500 dark:text-slate-400">
                       Pregunta #{idx + 1} · Tema {q._topicNumber}
                     </span>
-                    {mode === 'simulacre' && idx >= 70 && (
+                    {mode === 'simulacre' && idx >= 70 && (() => {
+                      const reserveIdx = idx - 70;
+                      const isActivated = isFinished && reserveIdx < impugnedMainCount;
+                      return (
+                        <span
+                          className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                            isActivated
+                              ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300'
+                              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                          }`}
+                        >
+                          {isFinished
+                            ? isActivated
+                              ? `RESERVA ${reserveIdx + 1}/7 · ACTIVADA PER IMPUGNACIÓ ✓`
+                              : `RESERVA ${reserveIdx + 1}/7 · NO ACTIVADA`
+                            : `RESERVA ${reserveIdx + 1}/7 · (només s'activa si s'impugna)`}
+                        </span>
+                      );
+                    })()}
+                    {mode === 'simulacre' && isFinished && idx < 70 && simulacreImpugnations[q.id] && (
                       <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">
-                        RESERVA {idx - 69}/7
+                        ANUL·LADA PER IMPUGNACIÓ
                       </span>
                     )}
                   </div>
@@ -556,28 +602,38 @@ export default function PracticeTestView({
                         {q.difficulty}
                       </span>
                     )}
-                    <button
-                      onClick={() => {
-                        setOpenReportId(openReportId === q.id ? null : q.id);
-                        setReportDraft(reportsMap[q.id]?.reason || '');
-                      }}
-                      className={`inline-flex items-center gap-1 rounded-lg px-2 py-0.5 text-[10px] font-bold border transition ${
-                        reportsMap[q.id]
-                          ? 'bg-amber-100 dark:bg-amber-950/60 border-amber-300 text-amber-800 dark:text-amber-300'
-                          : 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-amber-400 hover:text-amber-700'
-                      }`}
-                    >
-                      <AlertTriangle className="w-3 h-3" />
-                      <span>
-                        {reportsMap[q.id]
-                          ? mode === 'simulacre'
-                            ? 'Impugnada'
-                            : 'Reportat'
-                          : mode === 'simulacre'
-                          ? 'Impugnar pregunta'
-                          : 'Reportar error'}
-                      </span>
-                    </button>
+                    {((mode === 'simulacre' && isFinished && idx < 70) || (mode === 'practice' && showFeedback)) && (
+                      simulacreImpugnations[q.id] && mode === 'simulacre' ? (
+                        <button
+                          onClick={() => handleRemoveSimulacreImpugnation(q.id)}
+                          className="inline-flex items-center gap-1 rounded-lg px-2 py-0.5 text-[10px] font-bold border bg-amber-100 dark:bg-amber-950/60 border-amber-300 text-amber-800 dark:text-amber-300 hover:bg-amber-200 transition"
+                        >
+                          <AlertTriangle className="w-3 h-3" />
+                          <span>Impugnada · Anul·lar</span>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setOpenReportId(openReportId === q.id ? null : q.id);
+                            setReportDraft(reportsMap[q.id]?.reason || '');
+                          }}
+                          className={`inline-flex items-center gap-1 rounded-lg px-2 py-0.5 text-[10px] font-bold border transition ${
+                            reportsMap[q.id] && mode !== 'simulacre'
+                              ? 'bg-amber-100 dark:bg-amber-950/60 border-amber-300 text-amber-800 dark:text-amber-300'
+                              : 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-amber-400 hover:text-amber-700'
+                          }`}
+                        >
+                          <AlertTriangle className="w-3 h-3" />
+                          <span>
+                            {mode === 'simulacre'
+                              ? 'Impugnar pregunta'
+                              : reportsMap[q.id]
+                              ? 'Reportat'
+                              : 'Reportar error'}
+                          </span>
+                        </button>
+                      )
+                    )}
                   </div>
                 </div>
 
