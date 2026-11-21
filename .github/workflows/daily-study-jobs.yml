@@ -16,12 +16,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install firebase-admin
-        run: npm install --no-save firebase-admin
+      - name: Install firebase-admin i nodemailer
+        run: npm install --no-save firebase-admin nodemailer
       - name: Executar enviament de correus i generació de preguntes
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          FALLBACK_EMAIL: ${{ secrets.FALLBACK_EMAIL }}
           APP_BASE_URL: https://polsolerjofra-acna.github.io/AppBombers/
         run: node scripts/daily-automation.mjs
