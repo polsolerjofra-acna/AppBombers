@@ -152,6 +152,7 @@ export default function PracticeTestView({
   const [draftSelections, setDraftSelections] = useState({});
   const [simulacreImpugnations, setSimulacreImpugnations] = useState({});
   const [isFinished, setIsFinished] = useState(false);
+  const [showFinishConfirm, setShowFinishConfirm] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(85 * 60); // 85 minuts oficials (70 + 7 reserva)
   const [emailCopiedNotice, setEmailCopiedNotice] = useState(false);
 
@@ -230,6 +231,7 @@ export default function PracticeTestView({
     setDraftSelections({});
     setSimulacreImpugnations({});
     setIsFinished(false);
+    setShowFinishConfirm(false);
     setEmailCopiedNotice(false);
     setSecondsLeft(85 * 60);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -336,6 +338,7 @@ export default function PracticeTestView({
   };
 
   const finishExam = () => {
+    setShowFinishConfirm(false);
     setIsFinished(true);
     if (mode === 'simulacre' && onRecordQuestionOutcome && activeQuestions) {
       activeQuestions.forEach((q) => {
@@ -432,7 +435,7 @@ export default function PracticeTestView({
 
             {!isFinished ? (
               <button
-                onClick={finishExam}
+                onClick={() => (mode === 'simulacre' ? setShowFinishConfirm(true) : finishExam())}
                 className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold shadow-sm"
               >
                 Corregir i Finalitzar
@@ -549,7 +552,69 @@ export default function PracticeTestView({
           </div>
         )}
 
-        {/* Llista de preguntes: una seguida de l'altra mentre fas el test; totes en acabar per revisar */}
+        {/* Modal de confirmació abans de finalitzar el Simulacre */}
+        {showFinishConfirm && !isFinished && mode === 'simulacre' && (() => {
+          const unanswered = activeQuestions
+            .map((q, idx) => ({ q, idx }))
+            .filter(({ q }) => answers[q.id] === undefined);
+
+          return (
+            <div className="rounded-2xl border-2 border-amber-400 bg-amber-50 dark:bg-amber-950/50 p-5 shadow-md space-y-4">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                    Estàs segur que vols finalitzar i corregir el simulacre?
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mt-1">
+                    {unanswered.length === 0
+                      ? 'Has respost totes les 77 preguntes!'
+                      : `Tens ${unanswered.length} pregunta${unanswered.length === 1 ? '' : 'es'} en blanc. Clica qualsevol casella per anar-hi directament abans d'acabar:`}
+                  </p>
+                </div>
+              </div>
+
+              {unanswered.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto p-2 rounded-xl bg-white/80 dark:bg-slate-900/70 border border-amber-200 dark:border-amber-900/60">
+                  {unanswered.map(({ idx }) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => {
+                        setCurrentQuestionIdx(idx);
+                        setShowFinishConfirm(false);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950/40 px-2.5 py-1 text-xs font-extrabold text-slate-800 dark:text-slate-100 transition"
+                    >
+                      {idx >= 70 ? `R${idx - 69} (#${idx + 1})` : `#${idx + 1}`}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <div className="flex flex-wrap justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowFinishConfirm(false)}
+                  className="rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-extrabold text-slate-700 dark:text-slate-200 hover:bg-slate-100"
+                >
+                  Tornar a revisar
+                </button>
+                <button
+                  type="button"
+                  onClick={finishExam}
+                  className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold shadow-sm"
+                >
+                  Sí, finalitzar i corregir ✓
+                </button>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Llista de preguntes + graella lateral 1..77 en mode simulacre */}
+        <div className={!isFinished && mode === 'simulacre' ? 'grid grid-cols-1 lg:grid-cols-[1fr_270px] gap-5 items-start' : ''}>
+        <div className="space-y-4 min-w-0">
         <div className="space-y-4">
           {(isFinished
             ? activeQuestions.map((q, idx) => ({ q, idx }))
@@ -832,7 +897,7 @@ export default function PracticeTestView({
             ) : (
               <button
                 type="button"
-                onClick={finishExam}
+                onClick={() => (mode === 'simulacre' ? setShowFinishConfirm(true) : finishExam())}
                 className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold shadow-sm"
               >
                 <span>Corregir i Finalitzar ✓</span>
@@ -840,6 +905,89 @@ export default function PracticeTestView({
             )}
           </div>
         )}
+        </div>
+
+        {/* Panell lateral d'estat de les 77 preguntes en mode Simulacre */}
+        {!isFinished && mode === 'simulacre' && (
+          <aside className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm lg:sticky lg:top-24 space-y-3">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-200">
+                Full de Respostes (1–77)
+              </h3>
+              <span className="text-[11px] font-bold text-orange-600 dark:text-orange-400">
+                {answeredCount}/{totalQ}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 text-[10px] font-bold text-slate-500 dark:text-slate-400">
+              <span className="inline-flex items-center gap-1">
+                <span className="w-3 h-3 rounded bg-orange-500 inline-block" /> Resposta
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="w-3 h-3 rounded bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 inline-block" /> En blanc
+              </span>
+            </div>
+
+            <div className="grid grid-cols-7 gap-1.5">
+              {activeQuestions.slice(0, 70).map((q, idx) => {
+                const isAnswered = answers[q.id] !== undefined;
+                const isCurrent = currentQuestionIdx === idx;
+                return (
+                  <button
+                    key={q.id || idx}
+                    type="button"
+                    onClick={() => {
+                      setCurrentQuestionIdx(idx);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className={`h-8 rounded-lg text-[11px] font-extrabold border transition ${
+                      isAnswered
+                        ? 'bg-orange-500 border-orange-600 text-white hover:bg-orange-600'
+                        : 'bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-orange-400'
+                    } ${isCurrent ? 'ring-2 ring-slate-900 dark:ring-white ring-offset-1' : ''}`}
+                    title={`Pregunta ${idx + 1}${isAnswered ? ' (resposta)' : ' (en blanc)'}`}
+                  >
+                    {idx + 1}
+                  </button>
+                );
+              })}
+            </div>
+
+            {activeQuestions.length > 70 && (
+              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-1.5">
+                <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Reserva (71–77)
+                </div>
+                <div className="grid grid-cols-7 gap-1.5">
+                  {activeQuestions.slice(70, 77).map((q, rIdx) => {
+                    const idx = 70 + rIdx;
+                    const isAnswered = answers[q.id] !== undefined;
+                    const isCurrent = currentQuestionIdx === idx;
+                    return (
+                      <button
+                        key={q.id || idx}
+                        type="button"
+                        onClick={() => {
+                          setCurrentQuestionIdx(idx);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className={`h-8 rounded-lg text-[11px] font-extrabold border transition ${
+                          isAnswered
+                            ? 'bg-orange-500 border-orange-600 text-white hover:bg-orange-600'
+                            : 'bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-orange-400'
+                        } ${isCurrent ? 'ring-2 ring-slate-900 dark:ring-white ring-offset-1' : ''}`}
+                        title={`Reserva ${rIdx + 1} (#${idx + 1})${isAnswered ? ' (resposta)' : ' (en blanc)'}`}
+                      >
+                        {idx + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </aside>
+        )}
+        </div>
       </div>
     );
   }

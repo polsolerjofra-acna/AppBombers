@@ -38,7 +38,7 @@ export default function QuizView({
   const [difficultyFilter, setDifficultyFilter] = useState('Totes');
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [draftSelections, setDraftSelections] = useState({});
-  const [submittedScore, setSubmittedScore] = useState(null);
+  const [submittedResult, setSubmittedResult] = useState(null);
   const [showWhiteboard, setShowWhiteboard] = useState(false);
 
   useEffect(() => {
@@ -87,24 +87,27 @@ export default function QuizView({
         (acc, q) => (updated[q.id] === q.correctIndex ? acc + 1 : acc),
         0
       );
-      setSubmittedScore(correctCount);
+      setSubmittedResult({ correct: correctCount, total: questions.length });
       onSaveScore(topic.id, correctCount, questions.length);
     }
   };
 
   const handleFinishNow = () => {
-    const correctCount = questions.reduce(
+    const answeredList = questions.filter((q) => selectedAnswers[q.id] !== undefined);
+    const totalAnswered = answeredList.length;
+    if (totalAnswered === 0) return;
+    const correctCount = answeredList.reduce(
       (acc, q) => (selectedAnswers[q.id] === q.correctIndex ? acc + 1 : acc),
       0
     );
-    setSubmittedScore(correctCount);
-    onSaveScore(topic.id, correctCount, questions.length);
+    setSubmittedResult({ correct: correctCount, total: totalAnswered });
+    onSaveScore(topic.id, correctCount, totalAnswered);
   };
 
   const handleReset = () => {
     setSelectedAnswers({});
     setDraftSelections({});
-    setSubmittedScore(null);
+    setSubmittedResult(null);
   };
 
   const answeredCount = Object.keys(selectedAnswers).length;
@@ -213,7 +216,7 @@ export default function QuizView({
       </div>
 
       {/* Resum final quan s'ha desat la nota */}
-      {submittedScore !== null && (
+      {submittedResult !== null && (
         <div className="rounded-2xl border-2 border-emerald-500/40 bg-emerald-50/70 dark:bg-emerald-950/30 p-6 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md">
@@ -221,10 +224,10 @@ export default function QuizView({
             </div>
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                Test Registrat! Puntuació: {submittedScore} de {questions.length} ({Math.round((submittedScore / questions.length) * 100)}%)
+                Test Registrat! Puntuació: {submittedResult.correct} de {submittedResult.total} respostes ({Math.round((submittedResult.correct / Math.max(1, submittedResult.total)) * 100)}%)
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-300">
-                El resultat s'ha desat automàticament al teu panell de Seguiment i Estadístiques.
+                Les {questions.length - submittedResult.total} preguntes no respostes no s&apos;han comptabilitzat. El resultat s&apos;ha desat al teu Seguiment.
               </p>
             </div>
           </div>
@@ -364,29 +367,29 @@ export default function QuizView({
       </div>
 
       {/* Botó per registrar la puntuació si no s'han contestat totes */}
-      {answeredCount > 0 && submittedScore === null && (
+      {answeredCount > 0 && submittedResult === null && (
         <div className="flex justify-end">
           <button
             onClick={handleFinishNow}
             className="inline-flex items-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 text-white px-5 py-3 text-sm font-bold shadow-sm transition-colors"
           >
-            <span>Finalitzar i Registrar Puntuació ({liveCorrectCount}/{questions.length})</span>
+            <span>Acabar i Registrar Puntuació ({liveCorrectCount}/{answeredCount} respostes)</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       )}
 
       {/* Targeta final en acabar el test amb opció d'anar a dalt a veure el resultat */}
-      {submittedScore !== null && (
+      {submittedResult !== null && (
         <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 p-5 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Trophy className="w-6 h-6 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <div>
               <div className="text-sm font-extrabold text-emerald-950 dark:text-emerald-200">
-                Test completat: {submittedScore}/{questions.length} ({Math.round((submittedScore / Math.max(1, questions.length)) * 100)}%)
+                Test completat: {submittedResult.correct}/{submittedResult.total} ({Math.round((submittedResult.correct / Math.max(1, submittedResult.total)) * 100)}%)
               </div>
               <div className="text-xs text-emerald-800 dark:text-emerald-300">
-                La puntuació i els errors s&apos;han registrat al teu seguiment.
+                Només s&apos;han comptabilitzat les {submittedResult.total} preguntes respostes.
               </div>
             </div>
           </div>
