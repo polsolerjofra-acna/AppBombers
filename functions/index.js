@@ -88,7 +88,7 @@ exports.dailyGenerateQuestions = onSchedule(
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            contents: [{ parts: [{ text: `Genera 5 preguntes test en català d'oposicions de Bombers de la Generalitat per al Tema ${num} en format JSON array [{"difficulty":"Mitjà","question":"...","options":["A","B","C","D"],"correctIndex":0,"explanation":"..."}].` }] }],
+            contents: [{ parts: [{ text: `Genera 5 preguntes test en català d'oposicions de Bombers de la Generalitat per al Tema ${num} (almenys 3 "punyeteres" amb dues opcions gairebé idèntiques diferenciades només per un petit detall decisiu: termini, òrgan, excepció legal o procedimental) en format JSON array [{"difficulty":"Mitjà","question":"...","options":["A","B","C","D"],"correctIndex":0,"explanation":"..."}].` }] }],
             generationConfig: { responseMimeType: 'application/json' }
           })
         }

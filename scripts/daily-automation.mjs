@@ -331,6 +331,7 @@ async function generateDailyQuestions(todayISO, catalog) {
 
   for (const t of catalog) {
     const prompt = `Genera exactament 5 preguntes tipus test d'oposició de Bombers de la Generalitat en català sobre el "Tema ${t.number}: ${t.title}".
+IMPORTANT: Almenys 3 de les 5 preguntes han de ser "punyeteres" (nivell Mitjà/Difícil): dues opcions han de ser pràcticament idèntiques i només s'han de diferenciar per un petit detall decisiu (un termini exacte, un òrgan competent, "integrat" vs "integral", "contínua" vs "discontínua", una excepció legal, un ordre de maniobra o un signe matemàtic) que obligui a dominar el temari.
 Retorna NOMÉS un JSON array vàlid amb 5 objectes amb aquest esquema exacte:
 [{"difficulty":"Fàcil|Mitjà|Difícil","question":"...","options":["A","B","C","D"],"correctIndex":0,"explanation":"..."}]`;
 
