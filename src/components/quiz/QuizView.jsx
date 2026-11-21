@@ -49,7 +49,9 @@ export default function QuizView({
   savedQuizResult
 }) {
   const [shuffleSeed, setShuffleSeed] = useState(0);
-  const questions = useMemo(() => {
+  const shuffledSessionRef = useRef({ key: '', list: [] });
+  const sessionKey = `${topic.id}:${shuffleSeed}`;
+  if (shuffledSessionRef.current.key !== sessionKey) {
     const baseQuestions = [...(topic.quiz || []), ...(extraQuestions || [])];
     const shouldPrioritizeHard =
       difficultCount > 0 || (savedQuizResult && savedQuizResult.percentage < 70);
@@ -57,8 +59,12 @@ export default function QuizView({
     const ordered = shouldPrioritizeHard
       ? [...baseQuestions].sort((a, b) => (diffRank[a.difficulty] ?? 1) - (diffRank[b.difficulty] ?? 1))
       : baseQuestions;
-    return ordered.map(shuffleQuestionOptions);
-  }, [topic.id, topic.quiz, extraQuestions, difficultCount, savedQuizResult, shuffleSeed]);
+    shuffledSessionRef.current = {
+      key: sessionKey,
+      list: ordered.map(shuffleQuestionOptions)
+    };
+  }
+  const questions = shuffledSessionRef.current.list;
   const [difficultyFilter, setDifficultyFilter] = useState('Totes');
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [draftSelections, setDraftSelections] = useState({});
