@@ -95,6 +95,20 @@ export async function loadPrivateProgress(uid) {
   return Object.keys(rest).length > 0 ? rest : null;
 }
 
+export function subscribePrivateProgress(uid, callback) {
+  const fb = ensureFirebase();
+  if (!fb || !uid) return () => {};
+  const ref = doc(fb.db, 'studyProfiles', uid, 'private', 'progress');
+  return onSnapshot(ref, (snap) => {
+    if (!snap.exists() || snap.metadata.hasPendingWrites) return;
+    const data = snap.data() || {};
+    const { updatedAt: _u, uid: _uid, ...rest } = data;
+    if (Object.keys(rest).length > 0) {
+      callback(rest);
+    }
+  });
+}
+
 export async function saveCloudProgress(user, summaryPayload, fullProgressState) {
   const fb = ensureFirebase();
   if (!fb || !user?.uid) return;
@@ -126,10 +140,12 @@ export async function saveCloudProgress(user, summaryPayload, fullProgressState)
     studyPlan: fullProgressState.studyPlan || {},
     fridayCalcHistory: (fullProgressState.fridayCalcHistory || []).slice(0, 200),
     studySessions: (fullProgressState.studySessions || []).slice(0, 1000),
-    pomodoroStats: fullProgressState.pomodoroStats || {},
+    pomodoroStats: fullProgressState.pomodoroStats || { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} },
     dailyActivity: (fullProgressState.dailyActivity || []).slice(-366),
-    streakDays: fullProgressState.streakDays || 1,
+    streakDays: fullProgressState.streakDays ?? 0,
     lastActiveDate: fullProgressState.lastActiveDate || '',
+    answerStats: fullProgressState.answerStats || { totalAnswered: 0, totalCorrect: 0 },
+    statsResetEpoch: fullProgressState.statsResetEpoch || '',
     updatedAt: serverTimestamp()
   };
 

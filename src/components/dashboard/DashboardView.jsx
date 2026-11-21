@@ -37,16 +37,21 @@ export default function DashboardView({
   const quizEntries = Object.entries(progress.quizResults || {})
     .filter(([k, v]) => k !== '__mistakes' && v && typeof v.totalQuestions === 'number' && v.totalQuestions > 0)
     .map(([, v]) => v);
+  const ans = progress.answerStats || { totalAnswered: 0, totalCorrect: 0 };
   const totalQuizCorrect = quizEntries.reduce((s, q) => s + (q.lastScore ?? q.bestScore ?? 0), 0);
   const totalQuizAsked = quizEntries.reduce((s, q) => s + (q.totalQuestions || 0), 0);
   const averageQuizAccuracy =
-    totalQuizAsked > 0
+    ans.totalAnswered > 0
+      ? Math.round((ans.totalCorrect / ans.totalAnswered) * 100)
+      : totalQuizAsked > 0
       ? Math.round((totalQuizCorrect / totalQuizAsked) * 100)
       : quizEntries.length > 0
       ? Math.round(quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length)
       : 0;
   const averageQuizGrade10 =
-    totalQuizAsked > 0
+    ans.totalAnswered > 0
+      ? ((ans.totalCorrect / ans.totalAnswered) * 10).toFixed(1)
+      : totalQuizAsked > 0
       ? ((totalQuizCorrect / totalQuizAsked) * 10).toFixed(1)
       : (averageQuizAccuracy / 10).toFixed(1);
 
@@ -140,7 +145,7 @@ export default function DashboardView({
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
-              {progress.streakDays || 1}
+              {progress.streakDays ?? 0}
             </span>
             <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
               dies seguits

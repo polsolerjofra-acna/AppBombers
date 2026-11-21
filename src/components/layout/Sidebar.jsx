@@ -216,7 +216,7 @@ export default function Sidebar({
                       : 'bg-orange-500/15 text-orange-600 dark:text-orange-400'
                   }`}
                 >
-                  {progress.streakDays || 1}d 🔥
+                  {progress.streakDays ?? 0}d 🔥
                 </span>
               </button>
 

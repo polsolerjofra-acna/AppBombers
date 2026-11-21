@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const STORAGE_KEY = 'bombers_edtech_progress_v2';
+export const STATS_RESET_EPOCH = '2026-11-21-v1';
 
 // Intervals de la Corba de l'Oblit (Ebbinghaus) en dies
 export const EBBINGHAUS_INTERVALS = [1, 3, 7, 14, 30, 60];
@@ -13,32 +14,21 @@ const addDaysISO = (isoDate, days) => {
   return d.toISOString().split('T')[0];
 };
 
-const getInitialHistorySeed = () => {
-  const days = [];
-  const samplePages = [2, 3, 2, 3, 2, 3, 1];
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    const iso = d.toISOString().split('T')[0];
-    days.push({
-      date: iso,
-      pagesStudied: samplePages[6 - i],
-      quizzesCompleted: i % 2 === 0 ? 1 : 0
-    });
-  }
-  return days;
+const computeNextStreak = (prevStreak, prevLastActiveDate, today) => {
+  if (!prevLastActiveDate || !(prevStreak > 0)) return 1;
+  if (prevLastActiveDate === today) return prevStreak;
+  const yesterday = addDaysISO(today, -1);
+  if (prevLastActiveDate === yesterday) return prevStreak + 1;
+  return 1;
 };
 
 const defaultState = {
-  pageStatus: {
-    'tema-8': { 1: 'completed' }
-  },
+  pageStatus: {},
   difficultPages: {},
   readingSpeedFactor: 1.0,
-  topicStatus: {
-    'tema-8': 'in_progress'
-  },
+  topicStatus: {},
   quizResults: {},
+  answerStats: { totalAnswered: 0, totalCorrect: 0 },
   spacedRepetition: {},
   topicRounds: {},
   studyPlan: {},
@@ -51,17 +41,44 @@ const defaultState = {
     sessionsCompleted: 0,
     minutesByDay: {}
   },
-  dailyActivity: getInitialHistorySeed(),
-  streakDays: 5,
-  lastActiveDate: getTodayISO()
+  dailyActivity: [],
+  streakDays: 0,
+  lastActiveDate: '',
+  statsResetEpoch: STATS_RESET_EPOCH
 };
+
+function applyStatsResetIfNeeded(state) {
+  if (!state || typeof state !== 'object') return defaultState;
+  if (state.statsResetEpoch === STATS_RESET_EPOCH) {
+    return {
+      ...defaultState,
+      ...state,
+      answerStats: state.answerStats || { totalAnswered: 0, totalCorrect: 0 },
+      pomodoroStats: state.pomodoroStats || { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} }
+    };
+  }
+  // Reseteja ratxes, temps, activitat diària i percentatge d'encerts a 0 a partir d'avui (2026-11-21)
+  // per eliminar les dades falses anteriors de tothom en tots els dispositius.
+  return {
+    ...defaultState,
+    ...state,
+    quizResults: {},
+    answerStats: { totalAnswered: 0, totalCorrect: 0 },
+    studySessions: [],
+    pomodoroStats: { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} },
+    dailyActivity: [],
+    streakDays: 0,
+    lastActiveDate: '',
+    statsResetEpoch: STATS_RESET_EPOCH
+  };
+}
 
 export function useStudyProgress() {
   const [progress, setProgress] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        return JSON.parse(saved);
+        return applyStatsResetIfNeeded(JSON.parse(saved));
       }
     } catch (e) {
       console.error('Error llegint localStorage:', e);
@@ -123,6 +140,7 @@ export function useStudyProgress() {
           ? { ...(prev.spacedRepetition || {}), [topicId]: nextSpaced }
           : prev.spacedRepetition || {},
         dailyActivity: existingHistory.slice(-14),
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -166,6 +184,7 @@ export function useStudyProgress() {
         spacedRepetition: nextSpaced
           ? { ...(prev.spacedRepetition || {}), [topicId]: nextSpaced }
           : prev.spacedRepetition || {},
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -219,6 +238,7 @@ export function useStudyProgress() {
           }
         },
         dailyActivity: existingHistory.slice(-14),
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -296,6 +316,33 @@ export function useStudyProgress() {
         },
         studySessions: [newSession, ...(prev.studySessions || [])].slice(0, 40),
         spacedRepetition: updatedSpaced,
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
+        lastActiveDate: today
+      };
+    });
+  };
+
+  // Registra 1 minut real d'ús actiu de l'app (estudiant, fent tests, llegint manuals...)
+  const recordActiveMinute = () => {
+    const today = getTodayISO();
+    setProgress((prev) => {
+      const prevPom = prev.pomodoroStats || {
+        totalMinutes: 0,
+        sessionsCompleted: 0,
+        minutesByDay: {}
+      };
+      const prevMinutesToday = (prevPom.minutesByDay && prevPom.minutesByDay[today]) || 0;
+      return {
+        ...prev,
+        pomodoroStats: {
+          ...prevPom,
+          totalMinutes: (prevPom.totalMinutes || 0) + 1,
+          minutesByDay: {
+            ...(prevPom.minutesByDay || {}),
+            [today]: prevMinutesToday + 1
+          }
+        },
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -304,24 +351,14 @@ export function useStudyProgress() {
   const resetAllProgress = () => {
     localStorage.removeItem(STORAGE_KEY);
     setProgress({
-      pageStatus: {},
-      topicStatus: {},
-      quizResults: {},
-      spacedRepetition: {},
-      studySessions: [],
-      pomodoroStats: { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} },
-      dailyActivity: getInitialHistorySeed().map((d) => ({ ...d, pagesStudied: 0, quizzesCompleted: 0 })),
-      streakDays: 1,
-      lastActiveDate: getTodayISO()
+      ...defaultState,
+      statsResetEpoch: STATS_RESET_EPOCH
     });
   };
 
   const replaceProgressFromCloud = (cloudState) => {
     if (!cloudState || typeof cloudState !== 'object') return;
-    setProgress((prev) => ({
-      ...prev,
-      ...cloudState
-    }));
+    setProgress(applyStatsResetIfNeeded(cloudState));
   };
 
   // Completa una volta d'estudi d'un tema (1a volta -> 2a volta -> 3a...)
@@ -519,9 +556,18 @@ export function useStudyProgress() {
         }
       }
 
+      const prevAns = prev.answerStats || { totalAnswered: 0, totalCorrect: 0 };
+      const today = getTodayISO();
+
       return {
         ...prev,
         spacedRepetition: nextSpaced,
+        answerStats: {
+          totalAnswered: (prevAns.totalAnswered || 0) + 1,
+          totalCorrect: (prevAns.totalCorrect || 0) + (isCorrect ? 1 : 0)
+        },
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
+        lastActiveDate: today,
         quizResults: {
           ...prevQuiz,
           __mistakes: nextMistakes
@@ -563,6 +609,7 @@ export function useStudyProgress() {
     saveQuizScore,
     markTopicReviewed,
     logPomodoroSession,
+    recordActiveMinute,
     completeTopicRound,
     completeFirstRoundAll,
     scheduleTopicForDate,

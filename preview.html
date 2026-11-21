@@ -17540,6 +17540,20 @@ async function loadPrivateProgress(uid) {
   return Object.keys(rest).length > 0 ? rest : null;
 }
 
+function subscribePrivateProgress(uid, callback) {
+  const fb = ensureFirebase();
+  if (!fb || !uid) return () => {};
+  const ref = doc(fb.db, 'studyProfiles', uid, 'private', 'progress');
+  return onSnapshot(ref, (snap) => {
+    if (!snap.exists() || snap.metadata.hasPendingWrites) return;
+    const data = snap.data() || {};
+    const { updatedAt: _u, uid: _uid, ...rest } = data;
+    if (Object.keys(rest).length > 0) {
+      callback(rest);
+    }
+  });
+}
+
 async function saveCloudProgress(user, summaryPayload, fullProgressState) {
   const fb = ensureFirebase();
   if (!fb || !user?.uid) return;
@@ -17571,10 +17585,12 @@ async function saveCloudProgress(user, summaryPayload, fullProgressState) {
     studyPlan: fullProgressState.studyPlan || {},
     fridayCalcHistory: (fullProgressState.fridayCalcHistory || []).slice(0, 200),
     studySessions: (fullProgressState.studySessions || []).slice(0, 1000),
-    pomodoroStats: fullProgressState.pomodoroStats || {},
+    pomodoroStats: fullProgressState.pomodoroStats || { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} },
     dailyActivity: (fullProgressState.dailyActivity || []).slice(-366),
-    streakDays: fullProgressState.streakDays || 1,
+    streakDays: fullProgressState.streakDays ?? 0,
     lastActiveDate: fullProgressState.lastActiveDate || '',
+    answerStats: fullProgressState.answerStats || { totalAnswered: 0, totalCorrect: 0 },
+    statsResetEpoch: fullProgressState.statsResetEpoch || '',
     updatedAt: serverTimestamp()
   };
 
@@ -48466,6 +48482,7 @@ function pickBestCatalanVoice(voices = []) {
 }
 
 const STORAGE_KEY = 'bombers_edtech_progress_v2';
+const STATS_RESET_EPOCH = '2026-11-21-v1';
 
 // Intervals de la Corba de l'Oblit (Ebbinghaus) en dies
 const EBBINGHAUS_INTERVALS = [1, 3, 7, 14, 30, 60];
@@ -48478,32 +48495,21 @@ const addDaysISO = (isoDate, days) => {
   return d.toISOString().split('T')[0];
 };
 
-const getInitialHistorySeed = () => {
-  const days = [];
-  const samplePages = [2, 3, 2, 3, 2, 3, 1];
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    const iso = d.toISOString().split('T')[0];
-    days.push({
-      date: iso,
-      pagesStudied: samplePages[6 - i],
-      quizzesCompleted: i % 2 === 0 ? 1 : 0
-    });
-  }
-  return days;
+const computeNextStreak = (prevStreak, prevLastActiveDate, today) => {
+  if (!prevLastActiveDate || !(prevStreak > 0)) return 1;
+  if (prevLastActiveDate === today) return prevStreak;
+  const yesterday = addDaysISO(today, -1);
+  if (prevLastActiveDate === yesterday) return prevStreak + 1;
+  return 1;
 };
 
 const defaultState = {
-  pageStatus: {
-    'tema-8': { 1: 'completed' }
-  },
+  pageStatus: {},
   difficultPages: {},
   readingSpeedFactor: 1.0,
-  topicStatus: {
-    'tema-8': 'in_progress'
-  },
+  topicStatus: {},
   quizResults: {},
+  answerStats: { totalAnswered: 0, totalCorrect: 0 },
   spacedRepetition: {},
   topicRounds: {},
   studyPlan: {},
@@ -48516,17 +48522,44 @@ const defaultState = {
     sessionsCompleted: 0,
     minutesByDay: {}
   },
-  dailyActivity: getInitialHistorySeed(),
-  streakDays: 5,
-  lastActiveDate: getTodayISO()
+  dailyActivity: [],
+  streakDays: 0,
+  lastActiveDate: '',
+  statsResetEpoch: STATS_RESET_EPOCH
 };
+
+function applyStatsResetIfNeeded(state) {
+  if (!state || typeof state !== 'object') return defaultState;
+  if (state.statsResetEpoch === STATS_RESET_EPOCH) {
+    return {
+      ...defaultState,
+      ...state,
+      answerStats: state.answerStats || { totalAnswered: 0, totalCorrect: 0 },
+      pomodoroStats: state.pomodoroStats || { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} }
+    };
+  }
+  // Reseteja ratxes, temps, activitat diària i percentatge d'encerts a 0 a partir d'avui (2026-11-21)
+  // per eliminar les dades falses anteriors de tothom en tots els dispositius.
+  return {
+    ...defaultState,
+    ...state,
+    quizResults: {},
+    answerStats: { totalAnswered: 0, totalCorrect: 0 },
+    studySessions: [],
+    pomodoroStats: { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} },
+    dailyActivity: [],
+    streakDays: 0,
+    lastActiveDate: '',
+    statsResetEpoch: STATS_RESET_EPOCH
+  };
+}
 
 function useStudyProgress() {
   const [progress, setProgress] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        return JSON.parse(saved);
+        return applyStatsResetIfNeeded(JSON.parse(saved));
       }
     } catch (e) {
       console.error('Error llegint localStorage:', e);
@@ -48588,6 +48621,7 @@ function useStudyProgress() {
           ? { ...(prev.spacedRepetition || {}), [topicId]: nextSpaced }
           : prev.spacedRepetition || {},
         dailyActivity: existingHistory.slice(-14),
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -48631,6 +48665,7 @@ function useStudyProgress() {
         spacedRepetition: nextSpaced
           ? { ...(prev.spacedRepetition || {}), [topicId]: nextSpaced }
           : prev.spacedRepetition || {},
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -48684,6 +48719,7 @@ function useStudyProgress() {
           }
         },
         dailyActivity: existingHistory.slice(-14),
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -48761,6 +48797,33 @@ function useStudyProgress() {
         },
         studySessions: [newSession, ...(prev.studySessions || [])].slice(0, 40),
         spacedRepetition: updatedSpaced,
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
+        lastActiveDate: today
+      };
+    });
+  };
+
+  // Registra 1 minut real d'ús actiu de l'app (estudiant, fent tests, llegint manuals...)
+  const recordActiveMinute = () => {
+    const today = getTodayISO();
+    setProgress((prev) => {
+      const prevPom = prev.pomodoroStats || {
+        totalMinutes: 0,
+        sessionsCompleted: 0,
+        minutesByDay: {}
+      };
+      const prevMinutesToday = (prevPom.minutesByDay && prevPom.minutesByDay[today]) || 0;
+      return {
+        ...prev,
+        pomodoroStats: {
+          ...prevPom,
+          totalMinutes: (prevPom.totalMinutes || 0) + 1,
+          minutesByDay: {
+            ...(prevPom.minutesByDay || {}),
+            [today]: prevMinutesToday + 1
+          }
+        },
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
@@ -48769,24 +48832,14 @@ function useStudyProgress() {
   const resetAllProgress = () => {
     localStorage.removeItem(STORAGE_KEY);
     setProgress({
-      pageStatus: {},
-      topicStatus: {},
-      quizResults: {},
-      spacedRepetition: {},
-      studySessions: [],
-      pomodoroStats: { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} },
-      dailyActivity: getInitialHistorySeed().map((d) => ({ ...d, pagesStudied: 0, quizzesCompleted: 0 })),
-      streakDays: 1,
-      lastActiveDate: getTodayISO()
+      ...defaultState,
+      statsResetEpoch: STATS_RESET_EPOCH
     });
   };
 
   const replaceProgressFromCloud = (cloudState) => {
     if (!cloudState || typeof cloudState !== 'object') return;
-    setProgress((prev) => ({
-      ...prev,
-      ...cloudState
-    }));
+    setProgress(applyStatsResetIfNeeded(cloudState));
   };
 
   // Completa una volta d'estudi d'un tema (1a volta -> 2a volta -> 3a...)
@@ -48984,9 +49037,18 @@ function useStudyProgress() {
         }
       }
 
+      const prevAns = prev.answerStats || { totalAnswered: 0, totalCorrect: 0 };
+      const today = getTodayISO();
+
       return {
         ...prev,
         spacedRepetition: nextSpaced,
+        answerStats: {
+          totalAnswered: (prevAns.totalAnswered || 0) + 1,
+          totalCorrect: (prevAns.totalCorrect || 0) + (isCorrect ? 1 : 0)
+        },
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
+        lastActiveDate: today,
         quizResults: {
           ...prevQuiz,
           __mistakes: nextMistakes
@@ -49028,6 +49090,7 @@ function useStudyProgress() {
     saveQuizScore,
     markTopicReviewed,
     logPomodoroSession,
+    recordActiveMinute,
     completeTopicRound,
     completeFirstRoundAll,
     scheduleTopicForDate,
@@ -59677,16 +59740,21 @@ function DashboardView({
   const quizEntries = Object.entries(progress.quizResults || {})
     .filter(([k, v]) => k !== '__mistakes' && v && typeof v.totalQuestions === 'number' && v.totalQuestions > 0)
     .map(([, v]) => v);
+  const ans = progress.answerStats || { totalAnswered: 0, totalCorrect: 0 };
   const totalQuizCorrect = quizEntries.reduce((s, q) => s + (q.lastScore ?? q.bestScore ?? 0), 0);
   const totalQuizAsked = quizEntries.reduce((s, q) => s + (q.totalQuestions || 0), 0);
   const averageQuizAccuracy =
-    totalQuizAsked > 0
+    ans.totalAnswered > 0
+      ? Math.round((ans.totalCorrect / ans.totalAnswered) * 100)
+      : totalQuizAsked > 0
       ? Math.round((totalQuizCorrect / totalQuizAsked) * 100)
       : quizEntries.length > 0
       ? Math.round(quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length)
       : 0;
   const averageQuizGrade10 =
-    totalQuizAsked > 0
+    ans.totalAnswered > 0
+      ? ((ans.totalCorrect / ans.totalAnswered) * 10).toFixed(1)
+      : totalQuizAsked > 0
       ? ((totalQuizCorrect / totalQuizAsked) * 10).toFixed(1)
       : (averageQuizAccuracy / 10).toFixed(1);
 
@@ -59780,7 +59848,7 @@ function DashboardView({
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
-              {progress.streakDays || 1}
+              {progress.streakDays ?? 0}
             </span>
             <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
               dies seguits
@@ -60375,7 +60443,7 @@ function Sidebar({
                       : 'bg-orange-500/15 text-orange-600 dark:text-orange-400'
                   }`}
                 >
-                  {progress.streakDays || 1}d 🔥
+                  {progress.streakDays ?? 0}d 🔥
                 </span>
               </button>
 
@@ -61205,6 +61273,7 @@ function App() {
     saveQuizScore,
     markTopicReviewed,
     logPomodoroSession,
+    recordActiveMinute,
     completeTopicRound,
     completeFirstRoundAll,
     scheduleTopicForDate,
@@ -61257,6 +61326,7 @@ function App() {
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cloudUser, setCloudUser] = useState(null);
+  const cloudLoadedUidRef = React.useRef(null);
   const [groupProfiles, setGroupProfiles] = useState([]);
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
@@ -61544,29 +61614,52 @@ function App() {
     return sp?.nextReviewAt && sp.nextReviewAt <= todayISO;
   }).length;
 
+  // Comptador real de temps actiu fent servir l'app (1 minut per minut visible)
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        recordActiveMinute();
+      }
+    }, 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
+
   // Subscripció d'autenticació Firebase i càrrega del progrés al núvol
   useEffect(() => {
     const unsubAuth = subscribeAuth(async (user) => {
       setCloudUser(user || null);
       setAuthChecked(true);
-      if (user) {
-        if (user.email) {
-          try {
-            localStorage.setItem('bombers_last_google_email', user.email);
-          } catch {}
-        }
+      if (!user) {
+        cloudLoadedUidRef.current = null;
+        return;
+      }
+      if (user.email) {
         try {
-          const cloudState = await loadPrivateProgress(user.uid);
-          if (cloudState) {
-            replaceProgressFromCloud(cloudState);
-          }
-        } catch (err) {
-          setAuthError('No s\'ha pogut carregar el progrés del núvol: ' + (err?.message || ''));
+          localStorage.setItem('bombers_last_google_email', user.email);
+        } catch {}
+      }
+      try {
+        const cloudState = await loadPrivateProgress(user.uid);
+        if (cloudState) {
+          replaceProgressFromCloud(cloudState);
         }
+      } catch (err) {
+        setAuthError('No s\'ha pogut carregar el progrés del núvol: ' + (err?.message || ''));
+      } finally {
+        cloudLoadedUidRef.current = user.uid;
       }
     });
     return () => unsubAuth && unsubAuth();
   }, []);
+
+  // Sincronització en temps real entre mòbil, tauleta i ordinador
+  useEffect(() => {
+    if (!cloudUser?.uid) return () => {};
+    const unsubPrivate = subscribePrivateProgress(cloudUser.uid, (remoteState) => {
+      replaceProgressFromCloud(remoteState);
+    });
+    return () => unsubPrivate && unsubPrivate();
+  }, [cloudUser?.uid]);
 
   // Subscripció en temps real al rànquing del grup quan hi ha sessió iniciada
   useEffect(() => {
@@ -61580,7 +61673,7 @@ function App() {
 
   // Desa automàticament els avenços al núvol quan l'usuari està autenticat
   useEffect(() => {
-    if (!cloudUser) return;
+    if (!cloudUser || cloudLoadedUidRef.current !== cloudUser.uid) return;
     const todayISO = new Date().toISOString().split('T')[0];
     const completedTopics = TOPICS.filter(
       (t) => progress.topicStatus?.[t.id] === 'completed'
@@ -61592,10 +61685,13 @@ function App() {
     const quizEntries = Object.entries(progress.quizResults || {})
       .filter(([k, v]) => k !== '__mistakes' && v && typeof v.totalQuestions === 'number' && v.totalQuestions > 0)
       .map(([, v]) => v);
+    const ans = progress.answerStats || { totalAnswered: 0, totalCorrect: 0 };
     const totalCorrect = quizEntries.reduce((s, q) => s + (q.lastScore ?? q.bestScore ?? 0), 0);
     const totalAsked = quizEntries.reduce((s, q) => s + (q.totalQuestions || 0), 0);
     const averageQuiz =
-      totalAsked > 0
+      ans.totalAnswered > 0
+        ? Math.round((ans.totalCorrect / ans.totalAnswered) * 100)
+        : totalAsked > 0
         ? Math.round((totalCorrect / totalAsked) * 100)
         : quizEntries.length > 0
         ? Math.round(quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length)
@@ -61616,11 +61712,11 @@ function App() {
           totalPages,
           quizAverage: averageQuiz,
           quizzesCompleted: quizEntries.length,
-          streakDays: progress.streakDays || 1,
+          streakDays: progress.streakDays ?? 0,
           pomodoroTodayMinutes: Math.min(1440, todayMinutes),
           pomodoroTotalMinutes: Math.min(1000000, pom.totalMinutes || 0),
           pomodoroTodayDate: todayISO,
-          lastActiveDate: todayISO,
+          lastActiveDate: progress.lastActiveDate || todayISO,
           roundsCompleted: Object.values(progress.topicRounds || {}).filter((r) => r >= 1).length,
           dailyEmailEnabled: progress.dailyEmailEnabled !== false
         },

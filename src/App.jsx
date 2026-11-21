@@ -21,6 +21,7 @@ import {
   loginWithGoogle,
   logoutFirebase,
   loadPrivateProgress,
+  subscribePrivateProgress,
   saveCloudProgress,
   subscribeGroupProfiles,
   fetchDailyQuestions
@@ -73,6 +74,7 @@ export default function App() {
     saveQuizScore,
     markTopicReviewed,
     logPomodoroSession,
+    recordActiveMinute,
     completeTopicRound,
     completeFirstRoundAll,
     scheduleTopicForDate,
@@ -125,6 +127,7 @@ export default function App() {
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cloudUser, setCloudUser] = useState(null);
+  const cloudLoadedUidRef = React.useRef(null);
   const [groupProfiles, setGroupProfiles] = useState([]);
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
@@ -412,29 +415,52 @@ export default function App() {
     return sp?.nextReviewAt && sp.nextReviewAt <= todayISO;
   }).length;
 
+  // Comptador real de temps actiu fent servir l'app (1 minut per minut visible)
+  useEffect(() => {
+    const id = setInterval(() => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        recordActiveMinute();
+      }
+    }, 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
+
   // Subscripció d'autenticació Firebase i càrrega del progrés al núvol
   useEffect(() => {
     const unsubAuth = subscribeAuth(async (user) => {
       setCloudUser(user || null);
       setAuthChecked(true);
-      if (user) {
-        if (user.email) {
-          try {
-            localStorage.setItem('bombers_last_google_email', user.email);
-          } catch {}
-        }
+      if (!user) {
+        cloudLoadedUidRef.current = null;
+        return;
+      }
+      if (user.email) {
         try {
-          const cloudState = await loadPrivateProgress(user.uid);
-          if (cloudState) {
-            replaceProgressFromCloud(cloudState);
-          }
-        } catch (err) {
-          setAuthError('No s\'ha pogut carregar el progrés del núvol: ' + (err?.message || ''));
+          localStorage.setItem('bombers_last_google_email', user.email);
+        } catch {}
+      }
+      try {
+        const cloudState = await loadPrivateProgress(user.uid);
+        if (cloudState) {
+          replaceProgressFromCloud(cloudState);
         }
+      } catch (err) {
+        setAuthError('No s\'ha pogut carregar el progrés del núvol: ' + (err?.message || ''));
+      } finally {
+        cloudLoadedUidRef.current = user.uid;
       }
     });
     return () => unsubAuth && unsubAuth();
   }, []);
+
+  // Sincronització en temps real entre mòbil, tauleta i ordinador
+  useEffect(() => {
+    if (!cloudUser?.uid) return () => {};
+    const unsubPrivate = subscribePrivateProgress(cloudUser.uid, (remoteState) => {
+      replaceProgressFromCloud(remoteState);
+    });
+    return () => unsubPrivate && unsubPrivate();
+  }, [cloudUser?.uid]);
 
   // Subscripció en temps real al rànquing del grup quan hi ha sessió iniciada
   useEffect(() => {
@@ -448,7 +474,7 @@ export default function App() {
 
   // Desa automàticament els avenços al núvol quan l'usuari està autenticat
   useEffect(() => {
-    if (!cloudUser) return;
+    if (!cloudUser || cloudLoadedUidRef.current !== cloudUser.uid) return;
     const todayISO = new Date().toISOString().split('T')[0];
     const completedTopics = TOPICS.filter(
       (t) => progress.topicStatus?.[t.id] === 'completed'
@@ -460,10 +486,13 @@ export default function App() {
     const quizEntries = Object.entries(progress.quizResults || {})
       .filter(([k, v]) => k !== '__mistakes' && v && typeof v.totalQuestions === 'number' && v.totalQuestions > 0)
       .map(([, v]) => v);
+    const ans = progress.answerStats || { totalAnswered: 0, totalCorrect: 0 };
     const totalCorrect = quizEntries.reduce((s, q) => s + (q.lastScore ?? q.bestScore ?? 0), 0);
     const totalAsked = quizEntries.reduce((s, q) => s + (q.totalQuestions || 0), 0);
     const averageQuiz =
-      totalAsked > 0
+      ans.totalAnswered > 0
+        ? Math.round((ans.totalCorrect / ans.totalAnswered) * 100)
+        : totalAsked > 0
         ? Math.round((totalCorrect / totalAsked) * 100)
         : quizEntries.length > 0
         ? Math.round(quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length)
@@ -484,11 +513,11 @@ export default function App() {
           totalPages,
           quizAverage: averageQuiz,
           quizzesCompleted: quizEntries.length,
-          streakDays: progress.streakDays || 1,
+          streakDays: progress.streakDays ?? 0,
           pomodoroTodayMinutes: Math.min(1440, todayMinutes),
           pomodoroTotalMinutes: Math.min(1000000, pom.totalMinutes || 0),
           pomodoroTodayDate: todayISO,
-          lastActiveDate: todayISO,
+          lastActiveDate: progress.lastActiveDate || todayISO,
           roundsCompleted: Object.values(progress.topicRounds || {}).filter((r) => r >= 1).length,
           dailyEmailEnabled: progress.dailyEmailEnabled !== false
         },
