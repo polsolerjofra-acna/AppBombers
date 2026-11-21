@@ -1,18 +1,20 @@
 export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
   "1": {
-    "totalQuestions": 13,
+    "totalQuestions": 14,
     "subtopics": [
       {
         "label": "Constitució Espanyola (1978)",
-        "total": 5,
+        "total": 6,
         "byExam": {
           "81/21": 1,
           "81/19.2": 1,
           "81/19": 1,
           "81/18": 1,
-          "81/16": 1
+          "81/16": 1,
+          "81/25": 1
         },
         "concepts": [
+          "81/25: Irretroactivitat disposicions sancionadores (CE art. 9.3)",
           "81/21: Principis ADM",
           "81/19.2: Estructura",
           "81/19: Estructura",
@@ -41,11 +43,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "2": {
-    "totalQuestions": 15,
+    "totalQuestions": 17,
     "subtopics": [
       {
         "label": "Funció Pública, Situacions i Règim Disciplinari",
-        "total": 15,
+        "total": 17,
         "byExam": {
           "81/24": 1,
           "81/23": 1,
@@ -53,9 +55,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 3,
           "81/19": 3,
           "81/18": 3,
-          "81/16": 3
+          "81/16": 3,
+          "81/25": 2
         },
         "concepts": [
+          "81/25: Incompatibilitats segon lloc de treball, Excedència forçosa",
           "81/23: Concursos de provisió general",
           "81/21: Situació administrativa",
           "81/19.2: Accès f.p., Classes de funcionaris, Condició de funcionari",
@@ -65,11 +69,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "3": {
-    "totalQuestions": 16,
+    "totalQuestions": 17,
     "subtopics": [
       {
         "label": "LPRL 31/1995 (Drets, Participació i Serveis)",
-        "total": 16,
+        "total": 17,
         "byExam": {
           "81/24": 2,
           "81/23": 1,
@@ -77,9 +81,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 3,
           "81/19": 2,
           "81/18": 3,
-          "81/16": 3
+          "81/16": 3,
+          "81/25": 1
         },
         "concepts": [
+          "81/25: Risc laboral greu i imminent (Llei 31/1995)",
           "81/23: Quan usar EPI",
           "81/21: Núm. Delegats, Formació treballadors",
           "81/19.2: Núm. delegats prevenció, Comitè Seg. i Salut, Deures empresari",
@@ -95,16 +101,18 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "4": {
-    "totalQuestions": 6,
+    "totalQuestions": 8,
     "subtopics": [
       {
         "label": "Llei 19/2020 i Protocol d'Assetjament",
-        "total": 2,
+        "total": 4,
         "byExam": {
           "81/24": 1,
-          "81/23": 1
+          "81/23": 1,
+          "81/25": 2
         },
         "concepts": [
+          "81/25: Accions positives (Llei 19/2020), Transversalitat (Llei 17/2015)",
           "81/23: Definicions"
         ]
       },
@@ -124,11 +132,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "6": {
-    "totalQuestions": 18,
+    "totalQuestions": 20,
     "subtopics": [
       {
         "label": "Llei 5/1994 de Bombers de Catalunya",
-        "total": 10,
+        "total": 12,
         "byExam": {
           "81/24": 1,
           "81/23": 1,
@@ -136,9 +144,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 1,
           "81/19": 1,
           "81/18": 2,
-          "81/16": 2
+          "81/16": 2,
+          "81/25": 2
         },
         "concepts": [
+          "81/25: Deure específic uniforme (Llei 5/1994), Reserva dones 25-40%",
           "81/23: Funcions Dep. Interior (Art.13)",
           "81/21: Faltes, incoacció expedients",
           "81/19.2: Categories Bombers",
@@ -165,17 +175,19 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "7": {
-    "totalQuestions": 12,
+    "totalQuestions": 14,
     "subtopics": [
       {
         "label": "Decret 276/2016 (Guàrdia i Comandament)",
-        "total": 5,
+        "total": 7,
         "byExam": {
           "81/24": 1,
           "81/21": 1,
-          "81/19.2": 3
+          "81/19.2": 3,
+          "81/25": 2
         },
         "concepts": [
+          "81/25: Posicions àmbit operatiu (D. 276/2016), Funcions Sala Central",
           "81/21: Funcions àmbit operatiu",
           "81/19.2: Funcions àmbit operatiu, SISCOM, Organització àmbit operatiu"
         ]
@@ -199,11 +211,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "9": {
-    "totalQuestions": 43,
+    "totalQuestions": 52,
     "subtopics": [
       {
         "label": "Física (SI, Cinemàtica, Dinàmica, Energia)",
-        "total": 43,
+        "total": 52,
         "byExam": {
           "81/24": 5,
           "81/23": 5,
@@ -211,9 +223,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 7,
           "81/19": 5,
           "81/18": 8,
-          "81/16": 5
+          "81/16": 5,
+          "81/25": 9
         },
         "concepts": [
+          "81/25: Rampa energia 10 m/s, Politja ascensor, Pascal cisalla, Potència 9 kJ/30s, Força pujar escala, Parell força, Cargols M6-M10, Filera, Rodaments",
           "81/23: Magnitud fonamentals SI, Vectors x2, Càlcul Energia Potencial, càlcul treball",
           "81/21: Unitats SI, Càlcul x2, Unitats mesura, Vectors, Acceleració, Energia Potencial",
           "81/19.2: Unitats mesura, Càlcul x3, Energia mecànica, MRU",
@@ -223,11 +237,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "10": {
-    "totalQuestions": 39,
+    "totalQuestions": 43,
     "subtopics": [
       {
         "label": "Química (Estats, Àcids/Bases, Gasos, BLEVE)",
-        "total": 39,
+        "total": 43,
         "byExam": {
           "81/24": 7,
           "81/23": 6,
@@ -235,9 +249,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 6,
           "81/19": 6,
           "81/18": 4,
-          "81/16": 4
+          "81/16": 4,
+          "81/25": 4
         },
         "concepts": [
+          "81/25: Nombre atòmic Z, Reacció endotèrmica, Dilució lleixiu 40%→5%, Agent oxidant Cu2+",
           "81/23: Definició SPT, Densitat fluids, Canvis d'estat, Substància pura, definició vapor, reacció acetilè",
           "81/21: Canvis d'estat x2, Massa atòmica H i O, Àcids, BLEVE, Densitat Meta",
           "81/19.2: Canvis d'estat x3, Llei compressió i expansió gasos, Àcids i Bases, BLEVE",
@@ -247,11 +263,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "19": {
-    "totalQuestions": 79,
+    "totalQuestions": 83,
     "subtopics": [
       {
         "label": "Màquines Simples (Palanques, Politges, Torns)",
-        "total": 38,
+        "total": 42,
         "byExam": {
           "81/24": 4,
           "81/23": 5,
@@ -259,9 +275,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 6,
           "81/19": 7,
           "81/18": 5,
-          "81/16": 6
+          "81/16": 6,
+          "81/25": 4
         },
         "concepts": [
+          "81/25: Diferencial en girs, Intercooler turbo, Pneumàtic 195 amplada, Volant inèrcia = cigonyal 2000 rpm",
           "81/23: Volandera Grower, Unio peces metàl·liques, càlcul falques, Calcul Politges , Avanç rosca",
           "81/21: Calcul Politges x2, Palanques, Pla inclinat, Torn",
           "81/19.2: Càlcul pla inclinat, Càlcul torn, Torn, Palanques, Politges",
@@ -301,11 +319,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "8": {
-    "totalQuestions": 77,
+    "totalQuestions": 89,
     "subtopics": [
       {
         "label": "Teoria del Foc (Combustió, LII, Flashover/Backdraft)",
-        "total": 43,
+        "total": 55,
         "byExam": {
           "81/24": 6,
           "81/23": 7,
@@ -313,9 +331,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 7,
           "81/19": 4,
           "81/18": 7,
-          "81/16": 5
+          "81/16": 5,
+          "81/25": 12
         },
         "concepts": [
+          "81/25: Transmissió calor, Fourier, Backdraft, Pols ABC, FM200, FFFP-AR, CO2 a 42°C, Punt fusió alumini, LII CO, Classes foc",
           "81/23: Classes de foc, LII, Propagació calor, BLEVE, Velocitat propagació, Temperatura, Flashover i Backdraft",
           "81/21: Velocitat propagació, Coeficient conductivitat, Propagació calor, redox, Classes de foc, Triangle del foc",
           "81/19.2: Gasos del foc x2, Transferència de calor, Tipus de focs, Velocitat de propagació, Combustió",
@@ -344,11 +364,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "13": {
-    "totalQuestions": 37,
+    "totalQuestions": 48,
     "subtopics": [
       {
         "label": "Hidràulica (Pascal, Continuïtat, Bernoulli, Venturi)",
-        "total": 30,
+        "total": 41,
         "byExam": {
           "81/24": 3,
           "81/23": 3,
@@ -356,9 +376,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 6,
           "81/19": 5,
           "81/18": 4,
-          "81/16": 4
+          "81/16": 4,
+          "81/25": 11
         },
         "concepts": [
+          "81/25: Hidrants RD 513/2017 (<100m, H100), Mànega 25→45mm, Turbina Pelton, Bombes rotodinàmiques, Ventilador axial, Venturi, Columnes seques 60m, Pressió 90 mca, Buidatge dipòsit, BIE alta pressió",
           "81/23: Punts velocitat fluid, Torricelli, Cop d'ariet",
           "81/21: Arquimedes, Ariet, Reynolds, Calcul cabal i velocitat",
           "81/19.2: Càlcul hidrostàtica, Pèrdues de càrrega, Pascal, Venturi, Torricelli, Càlcul hidrodinàmica",
@@ -379,11 +401,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "27": {
-    "totalQuestions": 39,
+    "totalQuestions": 45,
     "subtopics": [
       {
         "label": "Risc Químic, ADR, NFPA 704 i Toxicologia",
-        "total": 37,
+        "total": 43,
         "byExam": {
           "81/24": 5,
           "81/23": 4,
@@ -391,9 +413,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 6,
           "81/19": 7,
           "81/18": 6,
-          "81/16": 5
+          "81/16": 5,
+          "81/25": 6
         },
         "concepts": [
+          "81/25: Límit IPVS (mg/m3 30 min), ADR 323, CLP H220, ONU inexistent 4552, Etiqueta classe 7 embalums, NFPA-704 groc 2",
           "81/23: Intoxicacions, Codi Perill, Classes ADR, Diamant de Perill",
           "81/21: Codi Perill,Intoxicacions, Etiqueta de Perill, Diamant de Perill,",
           "81/19.2: Intoxicacions, Etiqueta perill, Codi perill, Codi Hazchem, núm. ONU, Diamant de perill",
@@ -458,17 +482,19 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "12": {
-    "totalQuestions": 41,
+    "totalQuestions": 50,
     "subtopics": [
       {
         "label": "Instal·lacions i Xarxes de Gas (GLP / Natural)",
-        "total": 14,
+        "total": 23,
         "byExam": {
           "81/24": 4,
           "81/23": 4,
-          "81/21": 6
+          "81/21": 6,
+          "81/25": 9
         },
         "concepts": [
+          "81/25: Escomesa gas, Tub butà UNE 53539, Seccions REBT cuina/8mm², 2n circuit C1 48 punts, Diferencial allargador, Vàlvula mínima pressió, Armari regulació gas, Polietilè vs fosa",
           "81/23: Clau escomesa interior, Tipus aparells de gas, Materials canonades, Instal·lacio receptora",
           "81/21: Instal.lacio canonades, CC, Tipus aparells de gas x2, Clau escomeça, Accessibilitat,"
         ]
@@ -500,11 +526,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "11": {
-    "totalQuestions": 35,
+    "totalQuestions": 43,
     "subtopics": [
       {
         "label": "Electricitat (Magnituds, Circuits, Risc Elèctric)",
-        "total": 35,
+        "total": 43,
         "byExam": {
           "81/24": 3,
           "81/23": 4,
@@ -512,9 +538,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 6,
           "81/19": 6,
           "81/18": 8,
-          "81/16": 5
+          "81/16": 5,
+          "81/25": 8
         },
         "concepts": [
+          "81/25: Plaques sèrie 4,368 kW CC, 120V/600Ω=0,2A, Ohm CA impedància, Arc elèctric humitat, Polsador emergència NC/NO, Equilibri trifàsic, Estufa 2300W, Perillositat contacte",
           "81/23: Resistivitat, Potencial elèctric, Coulomb, 5 Regles d'or",
           "81/21: Llei d'Ohm, Tensions de Seguretat, Efectes electricitat en l'organisme",
           "81/19.2: Efecte Joule, Amperímetre, CT, Tipus motors, Instal·lació d'enllaç x2",
@@ -524,16 +552,18 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "28": {
-    "totalQuestions": 48,
+    "totalQuestions": 56,
     "subtopics": [
       {
         "label": "Anatomia, Fisiologia i Conceptes Mèdics",
-        "total": 8,
+        "total": 16,
         "byExam": {
           "81/24": 4,
-          "81/23": 4
+          "81/23": 4,
+          "81/25": 8
         },
         "concepts": [
+          "81/25: Tronc encèfal respiració, Neurona impuls nerviós, RCP 112→30:2→DEA, Polsos fase C, Alvèols pulmonars, PLS via aèria, Melsa quadrant esq., Traumatisme toràcic dret",
           "81/23: Sistema respiratori x3, Abdomen"
         ]
       },
@@ -559,11 +589,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "15": {
-    "totalQuestions": 68,
+    "totalQuestions": 78,
     "subtopics": [
       {
         "label": "Materials de Construcció i Comportament al Foc",
-        "total": 29,
+        "total": 39,
         "byExam": {
           "81/24": 4,
           "81/23": 4,
@@ -571,9 +601,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 4,
           "81/19": 4,
           "81/18": 7,
-          "81/16": 3
+          "81/16": 3,
+          "81/25": 10
         },
         "concepts": [
+          "81/25: Spalling formigó, Flexió formigó, Volta a la catalana, Perfil HEB acer, Aiguafons coberta, Escales especialment protegides CTE, Pilots fonamentació, Morter pobre, Sector risc mínim R30, CLT",
           "81/23: Elasticitat materials, Revoltons, Anisotropia, Combustibilitat i conductivitat materials",
           "81/21: Fusta, Acer, Guix",
           "81/19.2: Límit elàstic, Humitat materials, Formigó, Paret de càrrega",
@@ -602,11 +634,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "25": {
-    "totalQuestions": 23,
+    "totalQuestions": 24,
     "subtopics": [
       {
         "label": "Meteorologia Aplicada (Vent, Humitat, Núvols)",
-        "total": 19,
+        "total": 20,
         "byExam": {
           "81/24": 1,
           "81/23": 1,
@@ -614,9 +646,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 2,
           "81/19": 5,
           "81/18": 4,
-          "81/16": 4
+          "81/16": 4,
+          "81/25": 1
         },
         "concepts": [
+          "81/25: Corredor viari evacuació incendi forestal Vandellòs-Tivissa",
           "81/23: Núvols",
           "81/21: Temperatura de Rosada, Fronts",
           "81/19.2: Depressions, Vents",
@@ -639,11 +673,11 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "14": {
-    "totalQuestions": 28,
+    "totalQuestions": 36,
     "subtopics": [
       {
         "label": "Cartografia, Escales i Coordenades",
-        "total": 28,
+        "total": 36,
         "byExam": {
           "81/24": 1,
           "81/23": 1,
@@ -651,13 +685,45 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2": 7,
           "81/19": 6,
           "81/18": 5,
-          "81/16": 5
+          "81/16": 5,
+          "81/25": 8
         },
         "concepts": [
+          "81/25: Comarques (Rubió/Anoia), Riu Flamisell, UTM 1:50.000 rumb 180° 1km, Fogony, Montseny fageda, Punta Fangar Delta Ebre, Serra de la Llena, Serres SO-NE",
           "81/23: Projeccions",
           "81/21: Mapes, coordenades.",
           "81/19.2: GPS, Isolinies, Lectura mapes x2, Projeccions, UTM x2,",
           "81/19: Isolínies, Coordenades, UTM x2, GPS x2"
+        ]
+      }
+    ]
+  },
+  "18": {
+    "totalQuestions": 3,
+    "subtopics": [
+      {
+        "label": "Tema 18",
+        "total": 3,
+        "byExam": {
+          "81/25": 3
+        },
+        "concepts": [
+          "81/25: Parell motor Nm, Vehicle elèctric parell 0 rpm, Seguretat passiva airbag"
+        ]
+      }
+    ]
+  },
+  "30": {
+    "totalQuestions": 1,
+    "subtopics": [
+      {
+        "label": "Tema 30",
+        "total": 1,
+        "byExam": {
+          "81/25": 1
+        },
+        "concepts": [
+          "81/25: Sotapont apuntalament al sostre"
         ]
       }
     ]

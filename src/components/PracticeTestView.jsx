@@ -29,7 +29,7 @@ function loadJsonSet(key) {
 }
 
 // Pesos estadístics estimats per a un Simulacre Oficial SGO 2026 (sobre 100 preguntes)
-// Combina la freqüència històrica real (81/16–81/24: ~10-12% Lleis, ~32% Ciències/Tècnica, ~56% Operativa SGO)
+// Combina la freqüència històrica real (81/16–81/25: ~10% Lleis, ~38% Ciències/Tècnica, ~52% Operativa SGO)
 // ajustada pels nous manuals operatius del temari SGO 2026.
 const TOPIC_EXAM_WEIGHTS = {
   // Bloc General / Lleis (històricament menys preguntat: ~11% del total)
@@ -607,7 +607,7 @@ export default function PracticeTestView({
           Pràctica de Tests i Simulacre Oficial
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-          Escull entre <strong>Mode Pràctica</strong> (sense límit de temps, triant els temes i el nombre de preguntes) o <strong>Simulacre Oficial</strong> (70 preguntes + 7 de reserva en 85 minuts amb penalització -0,33 i distribució estadística IA + històric 81/16–81/24).
+          Escull entre <strong>Mode Pràctica</strong> (sense límit de temps, triant els temes i el nombre de preguntes) o <strong>Simulacre Oficial</strong> (70 preguntes + 7 de reserva en 85 minuts amb penalització -0,33 i distribució estadística IA + històric 81/16–81/25).
         </p>
 
         {/* Targetes de Mode */}
@@ -665,7 +665,7 @@ export default function PracticeTestView({
               <span>Model Estadístic de Probabilitat d&apos;Examen (SGO 2026)</span>
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Basat en la tònica 81/16–81/24 (el bloc de Lleis té menor pes ~11%) i ponderat pels nous temes operatius SGO.
+              Basat en la tònica 81/16–81/25 (el bloc de Lleis té menor pes ~10%) i ponderat pels nous temes operatius SGO.
             </p>
           </div>
           <button
