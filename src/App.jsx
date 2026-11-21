@@ -415,12 +415,16 @@ export default function App() {
       const pMap = progress.pageStatus?.[t.id] || {};
       return sum + Object.values(pMap).filter((s) => s === 'completed').length;
     }, 0);
-    const quizEntries = Object.values(progress.quizResults || {});
+    const quizEntries = Object.entries(progress.quizResults || {})
+      .filter(([k, v]) => k !== '__mistakes' && v && typeof v.totalQuestions === 'number' && v.totalQuestions > 0)
+      .map(([, v]) => v);
+    const totalCorrect = quizEntries.reduce((s, q) => s + (q.lastScore ?? q.bestScore ?? 0), 0);
+    const totalAsked = quizEntries.reduce((s, q) => s + (q.totalQuestions || 0), 0);
     const averageQuiz =
-      quizEntries.length > 0
-        ? Math.round(
-            quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length
-          )
+      totalAsked > 0
+        ? Math.round((totalCorrect / totalAsked) * 100)
+        : quizEntries.length > 0
+        ? Math.round(quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length)
         : 0;
     const pom = progress.pomodoroStats || {};
     const todayMinutes = (pom.minutesByDay && pom.minutesByDay[todayISO]) || 0;

@@ -34,11 +34,21 @@ export default function DashboardView({
     return sum + Object.values(pagesMap).filter((st) => st === 'review').length;
   }, 0);
 
-  const quizEntries = Object.values(progress.quizResults || {});
+  const quizEntries = Object.entries(progress.quizResults || {})
+    .filter(([k, v]) => k !== '__mistakes' && v && typeof v.totalQuestions === 'number' && v.totalQuestions > 0)
+    .map(([, v]) => v);
+  const totalQuizCorrect = quizEntries.reduce((s, q) => s + (q.lastScore ?? q.bestScore ?? 0), 0);
+  const totalQuizAsked = quizEntries.reduce((s, q) => s + (q.totalQuestions || 0), 0);
   const averageQuizAccuracy =
-    quizEntries.length > 0
+    totalQuizAsked > 0
+      ? Math.round((totalQuizCorrect / totalQuizAsked) * 100)
+      : quizEntries.length > 0
       ? Math.round(quizEntries.reduce((s, q) => s + (q.percentage || 0), 0) / quizEntries.length)
       : 0;
+  const averageQuizGrade10 =
+    totalQuizAsked > 0
+      ? ((totalQuizCorrect / totalQuizAsked) * 10).toFixed(1)
+      : (averageQuizAccuracy / 10).toFixed(1);
 
   const maxDailyPages = Math.max(5, ...dailyActivity.map((d) => d.pagesStudied || 0));
 
@@ -166,7 +176,7 @@ export default function DashboardView({
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Mitjana d'Encerts Test
+              Nota Global Tests
             </span>
             <span className="p-2 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
               <Trophy className="w-5 h-5" />
@@ -174,14 +184,16 @@ export default function DashboardView({
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
-              {averageQuizAccuracy}%
+              {averageQuizGrade10} / 10
             </span>
             <span className="text-xs font-semibold text-sky-600 dark:text-sky-400">
-              precisió global
+              ({averageQuizAccuracy}%)
             </span>
           </div>
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-            Objectiu recomanat d'oposició: &ge; 80%
+            {totalQuizAsked > 0
+              ? `${totalQuizCorrect} encerts de ${totalQuizAsked} preguntes`
+              : 'Objectiu recomanat d\'oposició: ≥ 8,0 / 10'}
           </p>
         </div>
 

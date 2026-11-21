@@ -214,9 +214,11 @@ export default function GroupStudyView({
 
                       <div className="text-center px-2">
                         <div className="font-extrabold text-base text-slate-900 dark:text-white">
-                          {member.quizAverage ?? member.averageQuiz ?? 0}%
+                          {((member.quizAverage ?? member.averageQuiz ?? 0) / 10).toFixed(1)}/10
                         </div>
-                        <div className="text-[11px] text-slate-500">Mitjana Tests</div>
+                        <div className="text-[11px] text-slate-500">
+                          Nota ({member.quizAverage ?? member.averageQuiz ?? 0}%)
+                        </div>
                       </div>
 
                       <div className="text-center px-2">
