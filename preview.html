@@ -50020,9 +50020,15 @@ function QuizView({
     const shouldPrioritizeHard =
       difficultCount > 0 || (savedQuizResult && savedQuizResult.percentage < 70);
     const diffRank = { 'Difícil': 0, 'Mitjà': 1, 'Fàcil': 2 };
-    const ordered = shouldPrioritizeHard
+    let ordered = shouldPrioritizeHard
       ? [...baseQuestions].sort((a, b) => (diffRank[a.difficulty] ?? 1) - (diffRank[b.difficulty] ?? 1))
-      : baseQuestions;
+      : [...baseQuestions];
+    if (shuffleSeed > 0) {
+      for (let i = ordered.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [ordered[i], ordered[j]] = [ordered[j], ordered[i]];
+      }
+    }
     shuffledSessionRef.current = {
       key: sessionKey,
       list: ordered.map(shuffleQuestionOptions)
@@ -50322,15 +50328,26 @@ function QuizView({
                       ? `Opció ${['A', 'B', 'C', 'D'][draftSelections[q.id]]} preseleccionada. Pots canviar-la o validar-la per corregir.`
                       : 'Selecciona una opció per poder validar-la.'}
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => handleValidateOption(q.id)}
-                    disabled={draftSelections[q.id] === undefined}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:pointer-events-none text-white px-4 py-2 text-xs font-extrabold shadow-sm transition"
-                  >
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Validar resposta</span>
-                  </button>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {answeredCount > 0 && submittedResult === null && (
+                      <button
+                        type="button"
+                        onClick={handleFinishNow}
+                        className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-3.5 py-2 text-xs font-extrabold shadow-sm transition"
+                      >
+                        <span>Acabar i guardar ({liveCorrectCount}/{answeredCount})</span>
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => handleValidateOption(q.id)}
+                      disabled={draftSelections[q.id] === undefined}
+                      className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:pointer-events-none text-white px-4 py-2 text-xs font-extrabold shadow-sm transition"
+                    >
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Validar resposta</span>
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -50343,13 +50360,24 @@ function QuizView({
                       : 'bg-red-50/70 dark:bg-red-950/20 border-red-200 dark:border-red-900/50 text-red-950 dark:text-red-200'
                   }`}
                 >
-                  <div className="flex items-center gap-2 font-bold mb-1">
-                    <HelpCircle className="w-4 h-4 shrink-0" />
-                    <span>
-                      {isCorrect
-                        ? 'Resposta Correcta!'
-                        : `Resposta Incorrecta (La correcta és la ${['A', 'B', 'C', 'D'][q.correctIndex]})`}
-                    </span>
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <div className="flex items-center gap-2 font-bold">
+                      <HelpCircle className="w-4 h-4 shrink-0" />
+                      <span>
+                        {isCorrect
+                          ? 'Resposta Correcta!'
+                          : `Resposta Incorrecta (La correcta és la ${['A', 'B', 'C', 'D'][q.correctIndex]})`}
+                      </span>
+                    </div>
+                    {answeredCount > 0 && submittedResult === null && (
+                      <button
+                        type="button"
+                        onClick={handleFinishNow}
+                        className="inline-flex items-center gap-1 rounded-lg bg-red-600 hover:bg-red-700 text-white px-3 py-1 text-xs font-extrabold shadow-sm transition"
+                      >
+                        <span>Acabar i guardar ({liveCorrectCount}/{answeredCount})</span>
+                      </button>
+                    )}
                   </div>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                     {q.explanation}
