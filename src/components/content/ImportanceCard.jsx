@@ -68,7 +68,8 @@ export default function ImportanceCard({
           {examStats && examStats.totalQuestions > 0 && (
             <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 py-1 text-xs font-extrabold shadow-xs">
               <BarChart3 className="w-3.5 h-3.5" />
-              {examStats.totalQuestions} preguntes oficials (81/16–81/24)
+              {examStats.totalQuestions} preguntes oficials (
+              {examStats.promotionQuestions > 0 ? '81/16–81/25 + Promoció Interna' : '81/16–81/25'})
             </span>
           )}
           <span className="inline-flex items-center gap-1.5 rounded-full bg-red-600/10 dark:bg-red-500/20 px-3 py-1 text-xs font-semibold text-red-700 dark:text-red-300 border border-red-300/60 dark:border-red-700/50">

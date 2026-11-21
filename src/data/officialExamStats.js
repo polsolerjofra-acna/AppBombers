@@ -1,6 +1,6 @@
 export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
   "1": {
-    "totalQuestions": 14,
+    "totalQuestions": 19,
     "subtopics": [
       {
         "label": "Constitució Espanyola (1978)",
@@ -39,11 +39,28 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2: Institucions",
           "81/19: Estructura"
         ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 5,
+        "byExam": {
+          "Oficial": 1,
+          "Sotsinspector": 1,
+          "Inspector": 3
+        },
+        "concepts": [
+          "Oficial: D'acord amb la Llei 26/2010 de règim jurídic i de procediment de les ...",
+          "Sotsinspector: Segons la Llei 9/2017 de Contractes del Sector Públic, quin principi ...",
+          "Inspector: D'acord amb l'Estatut d'Autonomia de Catalunya (art. 132) i la distri...",
+          "Inspector: En l'execució del pressupost públic de la Generalitat per part d'un c...",
+          "Oficial Inspector: Segons l'article 149.1.29 de la Constitució Espanyola i la doctrina d..."
+        ]
       }
-    ]
+    ],
+    "promotionQuestions": 5
   },
   "2": {
-    "totalQuestions": 17,
+    "totalQuestions": 22,
     "subtopics": [
       {
         "label": "Funció Pública, Situacions i Règim Disciplinari",
@@ -65,11 +82,29 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2: Accès f.p., Classes de funcionaris, Condició de funcionari",
           "81/19: Condició funcionari, Sistema provisió, Situació administrativa"
         ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 5,
+        "byExam": {
+          "Caporal": 1,
+          "Sergent": 2,
+          "Sotsinspector": 1,
+          "Inspector": 1
+        },
+        "concepts": [
+          "Caporal: Segons el règim disciplinari dels empleats públics (article 97 del TR...",
+          "Sergent: En la gestió de conflictes dins d'una guàrdia de parc, quin estil de ...",
+          "Sotsinspector: D'acord amb el Decret Legislatiu 1/1997 de Funció Pública de Cataluny...",
+          "Inspector: En la planificació directiva dels recursos humans del Cos de Bombers,...",
+          "Oficial Sergent: Segons el règim disciplinari dels empleats públics (TREBEP art. 97), ..."
+        ]
       }
-    ]
+    ],
+    "promotionQuestions": 5
   },
   "3": {
-    "totalQuestions": 17,
+    "totalQuestions": 21,
     "subtopics": [
       {
         "label": "LPRL 31/1995 (Drets, Participació i Serveis)",
@@ -97,8 +132,24 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
         "total": 0,
         "byExam": {},
         "concepts": []
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 4,
+        "byExam": {
+          "Caporal": 2,
+          "Oficial": 1,
+          "Sotsinspector": 1
+        },
+        "concepts": [
+          "Caporal: En la revisió de guàrdia d'un parc, quina responsabilitat directa té ...",
+          "Oficial: Segons la Llei 31/1995 de Prevenció de Riscos Laborals, en quina situ...",
+          "Sotsinspector: En la investigació interna d'un accident laboral greu sofert per un b...",
+          "Oficial Caporal: D'acord amb l'article 35 de la Llei 31/1995 de Prevenció de Riscos La..."
+        ]
       }
-    ]
+    ],
+    "promotionQuestions": 4
   },
   "4": {
     "totalQuestions": 8,
@@ -132,7 +183,7 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
     ]
   },
   "6": {
-    "totalQuestions": 20,
+    "totalQuestions": 33,
     "subtopics": [
       {
         "label": "Llei 5/1994 de Bombers de Catalunya",
@@ -171,11 +222,30 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/18: Estructura, Tipus de plans",
           "81/16: Tipus de plans"
         ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 13,
+        "byExam": {
+          "Caporal": 2,
+          "Sergent": 3,
+          "Oficial": 2,
+          "Sotsinspector": 3,
+          "Inspector": 3
+        },
+        "concepts": [
+          "Caporal: Segons l'article 15 de la Llei 5/1994 de prevenció i extinció d'incen...",
+          "Sergent: D'acord amb el Sistema de Comandament d'Incidents (SCI / ICS), quin é...",
+          "Sergent: Segons el Decret 30/2015 sobre Plans d'Autoprotecció (PAU) a Cataluny...",
+          "Oficial: Segons la Llei 4/1997 de protecció civil de Catalunya, quin òrgan int...",
+          "Oficial: Segons el Pla especial d'emergències per incendis forestals de Catalu..."
+        ]
       }
-    ]
+    ],
+    "promotionQuestions": 13
   },
   "7": {
-    "totalQuestions": 14,
+    "totalQuestions": 24,
     "subtopics": [
       {
         "label": "Decret 276/2016 (Guàrdia i Comandament)",
@@ -207,8 +277,85 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2: Estructura SGO, Unitats territorials",
           "81/16: Estructuta D. Interior"
         ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 10,
+        "byExam": {
+          "Caporal": 3,
+          "Sergent": 1,
+          "Oficial": 2,
+          "Sotsinspector": 2,
+          "Inspector": 2
+        },
+        "concepts": [
+          "Caporal: En una intervenció on arriba la primera dotació (una BRP amb caporal ...",
+          "Caporal: Segons el Decret 276/2016 que regula el servei de guàrdia dels Bomber...",
+          "Sergent: En l'estructura operativa dels Bombers de la Generalitat, quina és la...",
+          "Oficial: Dins de l'estructura operativa dels Bombers de la Generalitat, quin r...",
+          "Oficial: Quin document operatiu elabora el comandament en una emergència de ll..."
+        ]
       }
-    ]
+    ],
+    "promotionQuestions": 10
+  },
+  "8": {
+    "totalQuestions": 91,
+    "subtopics": [
+      {
+        "label": "Teoria del Foc (Combustió, LII, Flashover/Backdraft)",
+        "total": 55,
+        "byExam": {
+          "81/24": 6,
+          "81/23": 7,
+          "81/21": 7,
+          "81/19.2": 7,
+          "81/19": 4,
+          "81/18": 7,
+          "81/16": 5,
+          "81/25": 12
+        },
+        "concepts": [
+          "81/25: Transmissió calor, Fourier, Backdraft, Pols ABC, FM200, FFFP-AR, CO2 a 42°C, Punt fusió alumini, LII CO, Classes foc",
+          "81/23: Classes de foc, LII, Propagació calor, BLEVE, Velocitat propagació, Temperatura, Flashover i Backdraft",
+          "81/21: Velocitat propagació, Coeficient conductivitat, Propagació calor, redox, Classes de foc, Triangle del foc",
+          "81/19.2: Gasos del foc x2, Transferència de calor, Tipus de focs, Velocitat de propagació, Combustió",
+          "81/19: Tipus de flama, Tipus de foc x2, Combustió"
+        ]
+      },
+      {
+        "label": "Mètodes d'Extinció i Agents Extintors",
+        "total": 34,
+        "byExam": {
+          "81/24": 5,
+          "81/23": 6,
+          "81/21": 4,
+          "81/19.2": 5,
+          "81/19": 5,
+          "81/18": 5,
+          "81/16": 4
+        },
+        "concepts": [
+          "81/23: Problema escumes x2, Expansió escumes, CO2, Pols ABC, Mètode extinció",
+          "81/21: Escumes x2, Pols química, CO2,",
+          "81/19.2: Mètode extinció x2, Escumes x2, Halons",
+          "81/19: Foc elèctric, Combustió x2, Limitacions CO2, Escumes"
+        ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 2,
+        "byExam": {
+          "Sergent": 1,
+          "Caporal": 1
+        },
+        "concepts": [
+          "Sergent: Quan s'ataca un incendi de combustible líquid polar (com acetona o al...",
+          "Oficial Caporal: Segons la norma UNE-EN 2, a quina classe de foc corresponen els incen..."
+        ]
+      }
+    ],
+    "promotionQuestions": 2
   },
   "9": {
     "totalQuestions": 52,
@@ -262,8 +409,277 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
       }
     ]
   },
+  "11": {
+    "totalQuestions": 43,
+    "subtopics": [
+      {
+        "label": "Electricitat (Magnituds, Circuits, Risc Elèctric)",
+        "total": 43,
+        "byExam": {
+          "81/24": 3,
+          "81/23": 4,
+          "81/21": 3,
+          "81/19.2": 6,
+          "81/19": 6,
+          "81/18": 8,
+          "81/16": 5,
+          "81/25": 8
+        },
+        "concepts": [
+          "81/25: Plaques sèrie 4,368 kW CC, 120V/600Ω=0,2A, Ohm CA impedància, Arc elèctric humitat, Polsador emergència NC/NO, Equilibri trifàsic, Estufa 2300W, Perillositat contacte",
+          "81/23: Resistivitat, Potencial elèctric, Coulomb, 5 Regles d'or",
+          "81/21: Llei d'Ohm, Tensions de Seguretat, Efectes electricitat en l'organisme",
+          "81/19.2: Efecte Joule, Amperímetre, CT, Tipus motors, Instal·lació d'enllaç x2",
+          "81/19: Instal·lació d'enllaç x4, CT, REBT,"
+        ]
+      }
+    ]
+  },
+  "12": {
+    "totalQuestions": 56,
+    "subtopics": [
+      {
+        "label": "Instal·lacions i Xarxes de Gas (GLP / Natural)",
+        "total": 23,
+        "byExam": {
+          "81/24": 4,
+          "81/23": 4,
+          "81/21": 6,
+          "81/25": 9
+        },
+        "concepts": [
+          "81/25: Escomesa gas, Tub butà UNE 53539, Seccions REBT cuina/8mm², 2n circuit C1 48 punts, Diferencial allargador, Vàlvula mínima pressió, Armari regulació gas, Polietilè vs fosa",
+          "81/23: Clau escomesa interior, Tipus aparells de gas, Materials canonades, Instal·lacio receptora",
+          "81/21: Instal.lacio canonades, CC, Tipus aparells de gas x2, Clau escomeça, Accessibilitat,"
+        ]
+      },
+      {
+        "label": "Components i Aparells Elèctrics (ID, PIA, Trafo)",
+        "total": 7,
+        "byExam": {
+          "81/24": 3,
+          "81/23": 4
+        },
+        "concepts": [
+          "81/23: Transformador, Mecanisme accionament, Panell solar, Cablejat"
+        ]
+      },
+      {
+        "label": "Instal·lacions Elèctriques d'Enllaç i BT",
+        "total": 20,
+        "byExam": {
+          "81/24": 7,
+          "81/23": 4,
+          "81/21": 9
+        },
+        "concepts": [
+          "81/23: Fusibles CGP, CETAC, Ampers PIA, Ubicació comptador",
+          "81/21: CGP,IGA,PIA, PCS, Canalitzacions sotrrades, Regles d'or, Diferencial, Color conductors, Fusible"
+        ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 6,
+        "byExam": {
+          "Sergent": 1,
+          "Oficial": 2,
+          "Sotsinspector": 1,
+          "Inspector": 2
+        },
+        "concepts": [
+          "Sergent: Segons la Llei 3/2010 de prevenció i seguretat en matèria d'incendis ...",
+          "Oficial: Segons el Reglament de Seguretat contra Incendis en Establiments Indu...",
+          "Sotsinspector: D'acord amb la Llei 3/2010, en un procediment d'intervenció administr...",
+          "Inspector: Dins de les polítiques de prevenció estratègica de la DGPEIS, quin ob...",
+          "Oficial Oficial: Segons el CTE DB-SI (Secció SI-3 Evacuació d'ocupants), quina és l'am..."
+        ]
+      }
+    ],
+    "promotionQuestions": 6
+  },
+  "13": {
+    "totalQuestions": 51,
+    "subtopics": [
+      {
+        "label": "Hidràulica (Pascal, Continuïtat, Bernoulli, Venturi)",
+        "total": 41,
+        "byExam": {
+          "81/24": 3,
+          "81/23": 3,
+          "81/21": 5,
+          "81/19.2": 6,
+          "81/19": 5,
+          "81/18": 4,
+          "81/16": 4,
+          "81/25": 11
+        },
+        "concepts": [
+          "81/25: Hidrants RD 513/2017 (<100m, H100), Mànega 25→45mm, Turbina Pelton, Bombes rotodinàmiques, Ventilador axial, Venturi, Columnes seques 60m, Pressió 90 mca, Buidatge dipòsit, BIE alta pressió",
+          "81/23: Punts velocitat fluid, Torricelli, Cop d'ariet",
+          "81/21: Arquimedes, Ariet, Reynolds, Calcul cabal i velocitat",
+          "81/19.2: Càlcul hidrostàtica, Pèrdues de càrrega, Pascal, Venturi, Torricelli, Càlcul hidrodinàmica",
+          "81/19: Hidrodinàmica x2, Pèrdues de càrrega, Pressió estàtica, Aspiració"
+        ]
+      },
+      {
+        "label": "Instal·lacions de Fluids, Bombes i Vàlvules",
+        "total": 7,
+        "byExam": {
+          "81/24": 4,
+          "81/23": 3
+        },
+        "concepts": [
+          "81/23: Soldadura coure, Bomba centrífuga, Vies vàlvula"
+        ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 3,
+        "byExam": {
+          "Caporal": 2,
+          "Sergent": 1
+        },
+        "concepts": [
+          "Caporal: Si un caporal ordena muntar una instal·lació d'atac amb mànega de 25 ...",
+          "Sergent: En un abastament d'aigua a llarga distància mitjançant dues autobombe...",
+          "Oficial Caporal: En una aspiració amb bomba centrífuga a nivell del mar (pressió atmos..."
+        ]
+      }
+    ],
+    "promotionQuestions": 3
+  },
+  "14": {
+    "totalQuestions": 38,
+    "subtopics": [
+      {
+        "label": "Cartografia, Escales i Coordenades",
+        "total": 36,
+        "byExam": {
+          "81/24": 1,
+          "81/23": 1,
+          "81/21": 3,
+          "81/19.2": 7,
+          "81/19": 6,
+          "81/18": 5,
+          "81/16": 5,
+          "81/25": 8
+        },
+        "concepts": [
+          "81/25: Comarques (Rubió/Anoia), Riu Flamisell, UTM 1:50.000 rumb 180° 1km, Fogony, Montseny fageda, Punta Fangar Delta Ebre, Serra de la Llena, Serres SO-NE",
+          "81/23: Projeccions",
+          "81/21: Mapes, coordenades.",
+          "81/19.2: GPS, Isolinies, Lectura mapes x2, Projeccions, UTM x2,",
+          "81/19: Isolínies, Coordenades, UTM x2, GPS x2"
+        ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 2,
+        "byExam": {
+          "Sergent": 1,
+          "Caporal": 1
+        },
+        "concepts": [
+          "Sergent: En la cartografia operativa dels Bombers de la Generalitat (quadrícul...",
+          "Oficial Caporal: En un mapa topogràfic a escala 1:25.000 utilitzat en intervencions fo..."
+        ]
+      }
+    ],
+    "promotionQuestions": 2
+  },
+  "15": {
+    "totalQuestions": 81,
+    "subtopics": [
+      {
+        "label": "Materials de Construcció i Comportament al Foc",
+        "total": 39,
+        "byExam": {
+          "81/24": 4,
+          "81/23": 4,
+          "81/21": 3,
+          "81/19.2": 4,
+          "81/19": 4,
+          "81/18": 7,
+          "81/16": 3,
+          "81/25": 10
+        },
+        "concepts": [
+          "81/25: Spalling formigó, Flexió formigó, Volta a la catalana, Perfil HEB acer, Aiguafons coberta, Escales especialment protegides CTE, Pilots fonamentació, Morter pobre, Sector risc mínim R30, CLT",
+          "81/23: Elasticitat materials, Revoltons, Anisotropia, Combustibilitat i conductivitat materials",
+          "81/21: Fusta, Acer, Guix",
+          "81/19.2: Límit elàstic, Humitat materials, Formigó, Paret de càrrega",
+          "81/19: Formigó x2, Guix, Fusta"
+        ]
+      },
+      {
+        "label": "Esforços Estructurals, Fonaments i Cobertes",
+        "total": 39,
+        "byExam": {
+          "81/24": 4,
+          "81/23": 4,
+          "81/21": 8,
+          "81/19.2": 7,
+          "81/19": 6,
+          "81/18": 5,
+          "81/16": 5
+        },
+        "concepts": [
+          "81/23: Esforços encavallada, Fonaments, Accions, Estructures",
+          "81/21: Tipus Esforços, Accions, Encavallada, Façanes, Casa de cos, Peu català, Tipus Unions estructura, Estructures",
+          "81/19.2: Fonaments, Elements estructurals, Biga, Accions, Tipus esforços x3",
+          "81/19: Fonaments, Formigó, Mur cortina, Cobertes, Encavallada, Tipus d'esforços"
+        ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 3,
+        "byExam": {
+          "Caporal": 1,
+          "Oficial": 2
+        },
+        "concepts": [
+          "Caporal: En un incendi en una nau industrial amb estructura metàl·lica vista s...",
+          "Oficial: Segons el Codi Tècnic de l'Edificació (CTE DB-SI), què indica la clas...",
+          "Oficial Oficial: En la classificació europea de reacció al foc dels materials de const..."
+        ]
+      }
+    ],
+    "promotionQuestions": 3
+  },
+  "17": {
+    "totalQuestions": 2,
+    "promotionQuestions": 2,
+    "subtopics": [
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 2,
+        "byExam": {
+          "Caporal": 2
+        },
+        "concepts": [
+          "Caporal: En la gestió de comunicacions d'un sinistre, quan el caporal assumeix...",
+          "Oficial Caporal: A la xarxa de radiocomunicacions d'emergències de Catalunya (xarxa RE..."
+        ]
+      }
+    ]
+  },
+  "18": {
+    "totalQuestions": 3,
+    "subtopics": [
+      {
+        "label": "Tema 18",
+        "total": 3,
+        "byExam": {
+          "81/25": 3
+        },
+        "concepts": [
+          "81/25: Parell motor Nm, Vehicle elèctric parell 0 rpm, Seguretat passiva airbag"
+        ]
+      }
+    ]
+  },
   "19": {
-    "totalQuestions": 83,
+    "totalQuestions": 86,
     "subtopics": [
       {
         "label": "Màquines Simples (Palanques, Politges, Torns)",
@@ -315,131 +731,60 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2: Parts motor x2, Cicle funcionament motors, Components lubricació, Potencia motors electrics",
           "81/19: Cigonyal, Turbocompressor, Bomba d'injecció, Col·lector d'admissió, Carburador, Cicle funcionament motors"
         ]
-      }
-    ]
-  },
-  "8": {
-    "totalQuestions": 89,
-    "subtopics": [
-      {
-        "label": "Teoria del Foc (Combustió, LII, Flashover/Backdraft)",
-        "total": 55,
-        "byExam": {
-          "81/24": 6,
-          "81/23": 7,
-          "81/21": 7,
-          "81/19.2": 7,
-          "81/19": 4,
-          "81/18": 7,
-          "81/16": 5,
-          "81/25": 12
-        },
-        "concepts": [
-          "81/25: Transmissió calor, Fourier, Backdraft, Pols ABC, FM200, FFFP-AR, CO2 a 42°C, Punt fusió alumini, LII CO, Classes foc",
-          "81/23: Classes de foc, LII, Propagació calor, BLEVE, Velocitat propagació, Temperatura, Flashover i Backdraft",
-          "81/21: Velocitat propagació, Coeficient conductivitat, Propagació calor, redox, Classes de foc, Triangle del foc",
-          "81/19.2: Gasos del foc x2, Transferència de calor, Tipus de focs, Velocitat de propagació, Combustió",
-          "81/19: Tipus de flama, Tipus de foc x2, Combustió"
-        ]
       },
       {
-        "label": "Mètodes d'Extinció i Agents Extintors",
-        "total": 34,
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 3,
         "byExam": {
-          "81/24": 5,
-          "81/23": 6,
-          "81/21": 4,
-          "81/19.2": 5,
-          "81/19": 5,
-          "81/18": 5,
-          "81/16": 4
+          "Caporal": 1,
+          "Oficial": 1,
+          "Sergent": 1
         },
         "concepts": [
-          "81/23: Problema escumes x2, Expansió escumes, CO2, Pols ABC, Mètode extinció",
-          "81/21: Escumes x2, Pols química, CO2,",
-          "81/19.2: Mètode extinció x2, Escumes x2, Halons",
-          "81/19: Foc elèctric, Combustió x2, Limitacions CO2, Escumes"
+          "Caporal: En un rescat en alçada on s'instal·la un sistema de politges polispas...",
+          "Oficial: En una operació conjunta de rescat de muntanya amb helicòpter del GRA...",
+          "Oficial Sergent: En una instal·lació de rescat en alçada amb dos ancoratges independen..."
         ]
       }
-    ]
+    ],
+    "promotionQuestions": 3
   },
-  "13": {
-    "totalQuestions": 48,
+  "20": {
+    "totalQuestions": 2,
+    "promotionQuestions": 2,
     "subtopics": [
       {
-        "label": "Hidràulica (Pascal, Continuïtat, Bernoulli, Venturi)",
-        "total": 41,
-        "byExam": {
-          "81/24": 3,
-          "81/23": 3,
-          "81/21": 5,
-          "81/19.2": 6,
-          "81/19": 5,
-          "81/18": 4,
-          "81/16": 4,
-          "81/25": 11
-        },
-        "concepts": [
-          "81/25: Hidrants RD 513/2017 (<100m, H100), Mànega 25→45mm, Turbina Pelton, Bombes rotodinàmiques, Ventilador axial, Venturi, Columnes seques 60m, Pressió 90 mca, Buidatge dipòsit, BIE alta pressió",
-          "81/23: Punts velocitat fluid, Torricelli, Cop d'ariet",
-          "81/21: Arquimedes, Ariet, Reynolds, Calcul cabal i velocitat",
-          "81/19.2: Càlcul hidrostàtica, Pèrdues de càrrega, Pascal, Venturi, Torricelli, Càlcul hidrodinàmica",
-          "81/19: Hidrodinàmica x2, Pèrdues de càrrega, Pressió estàtica, Aspiració"
-        ]
-      },
-      {
-        "label": "Instal·lacions de Fluids, Bombes i Vàlvules",
-        "total": 7,
-        "byExam": {
-          "81/24": 4,
-          "81/23": 3
-        },
-        "concepts": [
-          "81/23: Soldadura coure, Bomba centrífuga, Vies vàlvula"
-        ]
-      }
-    ]
-  },
-  "27": {
-    "totalQuestions": 45,
-    "subtopics": [
-      {
-        "label": "Risc Químic, ADR, NFPA 704 i Toxicologia",
-        "total": 43,
-        "byExam": {
-          "81/24": 5,
-          "81/23": 4,
-          "81/21": 4,
-          "81/19.2": 6,
-          "81/19": 7,
-          "81/18": 6,
-          "81/16": 5,
-          "81/25": 6
-        },
-        "concepts": [
-          "81/25: Límit IPVS (mg/m3 30 min), ADR 323, CLP H220, ONU inexistent 4552, Etiqueta classe 7 embalums, NFPA-704 groc 2",
-          "81/23: Intoxicacions, Codi Perill, Classes ADR, Diamant de Perill",
-          "81/21: Codi Perill,Intoxicacions, Etiqueta de Perill, Diamant de Perill,",
-          "81/19.2: Intoxicacions, Etiqueta perill, Codi perill, Codi Hazchem, núm. ONU, Diamant de perill",
-          "81/19: Etiquetes perill x2, Líquids, Codi perill, Intoxicacions, Diamant de perill x2"
-        ]
-      },
-      {
-        "label": "Etiquetatge CLP i Pictogrames",
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
         "total": 2,
         "byExam": {
-          "81/23": 1,
-          "81/21": 1
+          "Sergent": 2
         },
         "concepts": [
-          "81/23: Etiquetatge",
-          "81/21: Frases H"
+          "Sergent: Davant d'un col·lapse estructural parcial d'un edifici de formigó arm...",
+          "Oficial Sergent: Quan s'executa un apuntalament d'emergència en un forjat de formigó a..."
+        ]
+      }
+    ]
+  },
+  "21": {
+    "totalQuestions": 2,
+    "promotionQuestions": 2,
+    "subtopics": [
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 2,
+        "byExam": {
+          "Oficial": 2
+        },
+        "concepts": [
+          "Oficial: En una gran inundació urbana amb múltiples avisos simultanis a una co...",
+          "Oficial Oficial: En una operació de rescat en aigües vives o riera desbordada (pla INU..."
         ]
       }
     ]
   },
   "23": {
-    "totalQuestions": 37,
+    "totalQuestions": 46,
     "subtopics": [
       {
         "label": "Protecció Activa (Extintors, BIE, Hidrants, Detecció)",
@@ -478,163 +823,48 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/19.2: Resistència al foc, Escala protegida, Euroclasses",
           "81/19: Resistència al foc x2"
         ]
-      }
-    ]
-  },
-  "12": {
-    "totalQuestions": 50,
-    "subtopics": [
-      {
-        "label": "Instal·lacions i Xarxes de Gas (GLP / Natural)",
-        "total": 23,
-        "byExam": {
-          "81/24": 4,
-          "81/23": 4,
-          "81/21": 6,
-          "81/25": 9
-        },
-        "concepts": [
-          "81/25: Escomesa gas, Tub butà UNE 53539, Seccions REBT cuina/8mm², 2n circuit C1 48 punts, Diferencial allargador, Vàlvula mínima pressió, Armari regulació gas, Polietilè vs fosa",
-          "81/23: Clau escomesa interior, Tipus aparells de gas, Materials canonades, Instal·lacio receptora",
-          "81/21: Instal.lacio canonades, CC, Tipus aparells de gas x2, Clau escomeça, Accessibilitat,"
-        ]
       },
       {
-        "label": "Components i Aparells Elèctrics (ID, PIA, Trafo)",
-        "total": 7,
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 9,
         "byExam": {
-          "81/24": 3,
-          "81/23": 4
+          "Caporal": 3,
+          "Sergent": 3,
+          "Oficial": 2,
+          "Sotsinspector": 1
         },
         "concepts": [
-          "81/23: Transformador, Mecanisme accionament, Panell solar, Cablejat"
-        ]
-      },
-      {
-        "label": "Instal·lacions Elèctriques d'Enllaç i BT",
-        "total": 20,
-        "byExam": {
-          "81/24": 7,
-          "81/23": 4,
-          "81/21": 9
-        },
-        "concepts": [
-          "81/23: Fusibles CGP, CETAC, Ampers PIA, Ubicació comptador",
-          "81/21: CGP,IGA,PIA, PCS, Canalitzacions sotrrades, Regles d'or, Diferencial, Color conductors, Fusible"
+          "Caporal: En un incendi d'interior amb fum dens i calent sota pressió en una pl...",
+          "Caporal: Durant la direcció d'un binomi d'atac en un incendi d'habitatge, quin...",
+          "Caporal: Quan s'aplica ventilació per pressió positiva (VPP) en un edifici d'h...",
+          "Sergent: En un incendi d'habitatge en planta 5a amb afectació de la caixa d'es...",
+          "Sergent: En un incendi en un túnel carreter bidireccional amb trànsit atrapat,..."
         ]
       }
-    ]
+    ],
+    "promotionQuestions": 9
   },
-  "11": {
-    "totalQuestions": 43,
+  "24": {
+    "totalQuestions": 3,
+    "promotionQuestions": 3,
     "subtopics": [
       {
-        "label": "Electricitat (Magnituds, Circuits, Risc Elèctric)",
-        "total": 43,
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 3,
         "byExam": {
-          "81/24": 3,
-          "81/23": 4,
-          "81/21": 3,
-          "81/19.2": 6,
-          "81/19": 6,
-          "81/18": 8,
-          "81/16": 5,
-          "81/25": 8
+          "Caporal": 2,
+          "Sergent": 1
         },
         "concepts": [
-          "81/25: Plaques sèrie 4,368 kW CC, 120V/600Ω=0,2A, Ohm CA impedància, Arc elèctric humitat, Polsador emergència NC/NO, Equilibri trifàsic, Estufa 2300W, Perillositat contacte",
-          "81/23: Resistivitat, Potencial elèctric, Coulomb, 5 Regles d'or",
-          "81/21: Llei d'Ohm, Tensions de Seguretat, Efectes electricitat en l'organisme",
-          "81/19.2: Efecte Joule, Amperímetre, CT, Tipus motors, Instal·lació d'enllaç x2",
-          "81/19: Instal·lació d'enllaç x4, CT, REBT,"
-        ]
-      }
-    ]
-  },
-  "28": {
-    "totalQuestions": 56,
-    "subtopics": [
-      {
-        "label": "Anatomia, Fisiologia i Conceptes Mèdics",
-        "total": 16,
-        "byExam": {
-          "81/24": 4,
-          "81/23": 4,
-          "81/25": 8
-        },
-        "concepts": [
-          "81/25: Tronc encèfal respiració, Neurona impuls nerviós, RCP 112→30:2→DEA, Polsos fase C, Alvèols pulmonars, PLS via aèria, Melsa quadrant esq., Traumatisme toràcic dret",
-          "81/23: Sistema respiratori x3, Abdomen"
-        ]
-      },
-      {
-        "label": "Atenció Sanitària, SVB, Hemorràgies i Xoc",
-        "total": 40,
-        "byExam": {
-          "81/24": 5,
-          "81/23": 5,
-          "81/21": 6,
-          "81/19.2": 6,
-          "81/19": 6,
-          "81/18": 6,
-          "81/16": 6
-        },
-        "concepts": [
-          "81/23: DEA, compressions, torniquet, pols, SVB",
-          "81/21: Control cervical, DEA, SVB, Hemorragies x2, cadena supervivència",
-          "81/19.2: RCP x3, PLS, Funcions vitals, Hemorràgies",
-          "81/19: ABCDE x2, AVDN, Estat hemodinàmic, PLS x2"
-        ]
-      }
-    ]
-  },
-  "15": {
-    "totalQuestions": 78,
-    "subtopics": [
-      {
-        "label": "Materials de Construcció i Comportament al Foc",
-        "total": 39,
-        "byExam": {
-          "81/24": 4,
-          "81/23": 4,
-          "81/21": 3,
-          "81/19.2": 4,
-          "81/19": 4,
-          "81/18": 7,
-          "81/16": 3,
-          "81/25": 10
-        },
-        "concepts": [
-          "81/25: Spalling formigó, Flexió formigó, Volta a la catalana, Perfil HEB acer, Aiguafons coberta, Escales especialment protegides CTE, Pilots fonamentació, Morter pobre, Sector risc mínim R30, CLT",
-          "81/23: Elasticitat materials, Revoltons, Anisotropia, Combustibilitat i conductivitat materials",
-          "81/21: Fusta, Acer, Guix",
-          "81/19.2: Límit elàstic, Humitat materials, Formigó, Paret de càrrega",
-          "81/19: Formigó x2, Guix, Fusta"
-        ]
-      },
-      {
-        "label": "Esforços Estructurals, Fonaments i Cobertes",
-        "total": 39,
-        "byExam": {
-          "81/24": 4,
-          "81/23": 4,
-          "81/21": 8,
-          "81/19.2": 7,
-          "81/19": 6,
-          "81/18": 5,
-          "81/16": 5
-        },
-        "concepts": [
-          "81/23: Esforços encavallada, Fonaments, Accions, Estructures",
-          "81/21: Tipus Esforços, Accions, Encavallada, Façanes, Casa de cos, Peu català, Tipus Unions estructura, Estructures",
-          "81/19.2: Fonaments, Elements estructurals, Biga, Accions, Tipus esforços x3",
-          "81/19: Fonaments, Formigó, Mur cortina, Cobertes, Encavallada, Tipus d'esforços"
+          "Caporal: En un accident de trànsit amb múltiples vehicles implicats i dues víc...",
+          "Sergent: En un accident de trànsit greu amb múltiples víctimes (IMV), quin cri...",
+          "Oficial Caporal: En un accident de trànsit amb un vehicle elèctric o híbrid d'alta ten..."
         ]
       }
     ]
   },
   "25": {
-    "totalQuestions": 24,
+    "totalQuestions": 31,
     "subtopics": [
       {
         "label": "Meteorologia Aplicada (Vent, Humitat, Núvols)",
@@ -669,49 +899,133 @@ export const OFFICIAL_EXAM_STATS_BY_TOPIC = {
           "81/23: Ubicació Pi negre",
           "81/21: Usos del sòl"
         ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 7,
+        "byExam": {
+          "Caporal": 2,
+          "Sergent": 2,
+          "Oficial": 1,
+          "Sotsinspector": 1,
+          "Inspector": 1
+        },
+        "concepts": [
+          "Caporal: En la direcció tàctica d'un incendi forestal en fase inicial, en quin...",
+          "Sergent: En un incendi forestal amb comportament convectiu i emissió de focus ...",
+          "Oficial: En la planificació estratègica d'un Gran Incendi Forestal (GIF) amb m...",
+          "Sotsinspector: En la gestió d'una campanya forestal amb simultaneïtat extrema de gra...",
+          "Inspector: En la planificació estratègica a llarg termini contra els grans incen..."
+        ]
       }
-    ]
+    ],
+    "promotionQuestions": 7
   },
-  "14": {
-    "totalQuestions": 36,
+  "27": {
+    "totalQuestions": 52,
     "subtopics": [
       {
-        "label": "Cartografia, Escales i Coordenades",
-        "total": 36,
+        "label": "Risc Químic, ADR, NFPA 704 i Toxicologia",
+        "total": 43,
         "byExam": {
-          "81/24": 1,
-          "81/23": 1,
-          "81/21": 3,
-          "81/19.2": 7,
-          "81/19": 6,
-          "81/18": 5,
+          "81/24": 5,
+          "81/23": 4,
+          "81/21": 4,
+          "81/19.2": 6,
+          "81/19": 7,
+          "81/18": 6,
           "81/16": 5,
+          "81/25": 6
+        },
+        "concepts": [
+          "81/25: Límit IPVS (mg/m3 30 min), ADR 323, CLP H220, ONU inexistent 4552, Etiqueta classe 7 embalums, NFPA-704 groc 2",
+          "81/23: Intoxicacions, Codi Perill, Classes ADR, Diamant de Perill",
+          "81/21: Codi Perill,Intoxicacions, Etiqueta de Perill, Diamant de Perill,",
+          "81/19.2: Intoxicacions, Etiqueta perill, Codi perill, Codi Hazchem, núm. ONU, Diamant de perill",
+          "81/19: Etiquetes perill x2, Líquids, Codi perill, Intoxicacions, Diamant de perill x2"
+        ]
+      },
+      {
+        "label": "Etiquetatge CLP i Pictogrames",
+        "total": 2,
+        "byExam": {
+          "81/23": 1,
+          "81/21": 1
+        },
+        "concepts": [
+          "81/23: Etiquetatge",
+          "81/21: Frases H"
+        ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 7,
+        "byExam": {
+          "Caporal": 1,
+          "Sergent": 1,
+          "Oficial": 4,
+          "Sotsinspector": 1
+        },
+        "concepts": [
+          "Caporal: Davant d'una fuita en un vehicle cisterna amb placa taronja 268 / 100...",
+          "Sergent: Quin fenomen físic defineix una BLEVE (Boiling Liquid Expanding Vapor...",
+          "Oficial: En una emergència en una indústria química afectada pel Reial Decret ...",
+          "Oficial: En una intervenció amb risc radiològic (font càpsula tipus Ir-192 ext...",
+          "Sotsinspector: En un accident greu en un túnel ferroviari transfronterer o de gran l..."
+        ]
+      }
+    ],
+    "promotionQuestions": 7
+  },
+  "28": {
+    "totalQuestions": 58,
+    "subtopics": [
+      {
+        "label": "Anatomia, Fisiologia i Conceptes Mèdics",
+        "total": 16,
+        "byExam": {
+          "81/24": 4,
+          "81/23": 4,
           "81/25": 8
         },
         "concepts": [
-          "81/25: Comarques (Rubió/Anoia), Riu Flamisell, UTM 1:50.000 rumb 180° 1km, Fogony, Montseny fageda, Punta Fangar Delta Ebre, Serra de la Llena, Serres SO-NE",
-          "81/23: Projeccions",
-          "81/21: Mapes, coordenades.",
-          "81/19.2: GPS, Isolinies, Lectura mapes x2, Projeccions, UTM x2,",
-          "81/19: Isolínies, Coordenades, UTM x2, GPS x2"
+          "81/25: Tronc encèfal respiració, Neurona impuls nerviós, RCP 112→30:2→DEA, Polsos fase C, Alvèols pulmonars, PLS via aèria, Melsa quadrant esq., Traumatisme toràcic dret",
+          "81/23: Sistema respiratori x3, Abdomen"
         ]
-      }
-    ]
-  },
-  "18": {
-    "totalQuestions": 3,
-    "subtopics": [
+      },
       {
-        "label": "Tema 18",
-        "total": 3,
+        "label": "Atenció Sanitària, SVB, Hemorràgies i Xoc",
+        "total": 40,
         "byExam": {
-          "81/25": 3
+          "81/24": 5,
+          "81/23": 5,
+          "81/21": 6,
+          "81/19.2": 6,
+          "81/19": 6,
+          "81/18": 6,
+          "81/16": 6
         },
         "concepts": [
-          "81/25: Parell motor Nm, Vehicle elèctric parell 0 rpm, Seguretat passiva airbag"
+          "81/23: DEA, compressions, torniquet, pols, SVB",
+          "81/21: Control cervical, DEA, SVB, Hemorragies x2, cadena supervivència",
+          "81/19.2: RCP x3, PLS, Funcions vitals, Hemorràgies",
+          "81/19: ABCDE x2, AVDN, Estat hemodinàmic, PLS x2"
+        ]
+      },
+      {
+        "label": "Promoció Interna (Caporal · Sergent · Oficial · Sotsinspector · Inspector)",
+        "total": 2,
+        "byExam": {
+          "Sergent": 1,
+          "Oficial": 1
+        },
+        "concepts": [
+          "Sergent: En un incident ferroviari amb catenària electrificada de 25.000 V en ...",
+          "Oficial Oficial: Davant d'una línia elèctrica d'alta tensió caiguda a terra amb risc d..."
         ]
       }
-    ]
+    ],
+    "promotionQuestions": 2
   },
   "30": {
     "totalQuestions": 1,

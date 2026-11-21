@@ -45,12 +45,25 @@ const TOPIC_EXAM_WEIGHTS = {
   30: 2.5, 31: 2.5, 32: 3.5, 33: 2.0, 34: 2.5
 };
 
-function getTopicWeight(topicNumber) {
+// Pesos addicionals procedents d'exàmens de Promoció Interna (Caporal, Sergent, Oficial, Sotsinspector, Inspector)
+// on tenen més pes la legislació operativa (T2, T6, T7), normativa PCI/edificació (T12, T15) i tàctica avançada (T23, T25, T27).
+const PROMOTION_WEIGHT_BOOST = {
+  1: 0.7, 2: 1.2, 3: 0.8, 6: 2.5, 7: 2.5,
+  8: 0.5, 12: 1.5, 13: 0.6, 14: 0.4, 15: 0.8,
+  17: 0.5, 19: 0.6, 20: 0.7, 21: 0.6, 23: 2.0,
+  24: 0.7, 25: 1.8, 27: 1.6, 28: 0.5
+};
+
+function getTopicWeight(topicNumber, includePromotionStats = false) {
+  let base;
   if (TOPIC_EXAM_WEIGHTS[topicNumber] !== undefined) {
-    return TOPIC_EXAM_WEIGHTS[topicNumber];
+    base = TOPIC_EXAM_WEIGHTS[topicNumber];
+  } else {
+    const hist = OFFICIAL_EXAM_STATS_BY_TOPIC[topicNumber];
+    base = hist ? Math.max(1.5, hist.totalQuestions / 8) : 2.0;
   }
-  const hist = OFFICIAL_EXAM_STATS_BY_TOPIC[topicNumber];
-  return hist ? Math.max(1.5, hist.totalQuestions / 8) : 2.0;
+  if (!includePromotionStats) return base;
+  return base + (PROMOTION_WEIGHT_BOOST[topicNumber] || 0);
 }
 
 function shuffleArray(arr) {
@@ -111,7 +124,7 @@ function buildWeightedExamQuestions(
   }
 
   // Distribució proporcional segons probabilitat estadística d'examen
-  const totalW = poolTopics.reduce((acc, t) => acc + getTopicWeight(t.number), 0);
+  const totalW = poolTopics.reduce((acc, t) => acc + getTopicWeight(t.number, includeExtension), 0);
   const byTopicShuffled = {};
   poolTopics.forEach((t) => {
     byTopicShuffled[t.id] = sortWithCooldown(
@@ -125,7 +138,7 @@ function buildWeightedExamQuestions(
 
   // Primera passada: assignació proporcional
   poolTopics.forEach((t) => {
-    const share = Math.round((getTopicWeight(t.number) / totalW) * count);
+    const share = Math.round((getTopicWeight(t.number, includeExtension) / totalW) * count);
     const list = byTopicShuffled[t.id] || [];
     for (let i = 0; i < share && i < list.length && picked.length < count; i++) {
       picked.push(list[i]);
@@ -137,7 +150,7 @@ function buildWeightedExamQuestions(
   if (picked.length < count) {
     const remaining = [];
     const sortedTopics = [...poolTopics].sort(
-      (a, b) => getTopicWeight(b.number) - getTopicWeight(a.number)
+      (a, b) => getTopicWeight(b.number, includeExtension) - getTopicWeight(a.number, includeExtension)
     );
     sortedTopics.forEach((t) => {
       (byTopicShuffled[t.id] || []).forEach((q) => {
@@ -210,21 +223,26 @@ export default function PracticeTestView({
     return () => clearInterval(interval);
   }, [activeQuestions, mode, isFinished]);
 
+  const usePromotionStats = mode === 'practice' && includeExtension;
+
   const blockStats = useMemo(() => {
     const groups = [
       { id: 'lleis', label: 'Bloc General / Lleis (T1–T7)', range: [1, 7], color: 'bg-slate-500' },
       { id: 'ciencies', label: 'Ciències i Tècnica (T8–T15)', range: [8, 15], color: 'bg-blue-600' },
       { id: 'operativa', label: 'Intervenció i Operativa SGO (T16–T34)', range: [16, 34], color: 'bg-red-600' }
     ];
-    const totalW = topics.reduce((acc, t) => acc + getTopicWeight(t.number), 0);
+    const totalW = topics.reduce((acc, t) => acc + getTopicWeight(t.number, usePromotionStats), 0);
     return groups.map((g) => {
       const gTopics = topics.filter((t) => t.number >= g.range[0] && t.number <= g.range[1]);
-      const w = gTopics.reduce((acc, t) => acc + getTopicWeight(t.number), 0);
+      const w = gTopics.reduce((acc, t) => acc + getTopicWeight(t.number, usePromotionStats), 0);
       const pct = totalW > 0 ? Math.round((w / totalW) * 100) : 0;
-      const totalAvail = gTopics.reduce((acc, t) => acc + (t.quiz?.length || 0), 0);
+      const totalAvail = gTopics.reduce(
+        (acc, t) => acc + (t.quiz || []).filter((q) => usePromotionStats || !q.isExtension).length,
+        0
+      );
       return { ...g, pct, topicsCount: gTopics.length, totalAvail };
     });
-  }, [topics]);
+  }, [topics, usePromotionStats]);
 
   const toggleTopic = (id) => {
     setSelectedTopicIds((prev) =>
@@ -699,6 +717,11 @@ export default function PracticeTestView({
                     )}
                   </div>
                   <div className="flex items-center gap-2 flex-wrap">
+                    {q.isOfficialExam && (
+                      <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800">
+                        Oficial
+                      </span>
+                    )}
                     {q.isExtension && (
                       <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
                         {q.extensionLabel || "Material d'ampliació"}
@@ -1123,7 +1146,9 @@ export default function PracticeTestView({
               <span>Model Estadístic de Probabilitat d&apos;Examen (SGO 2026)</span>
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Basat en la tònica 81/16–81/25 (el bloc de Lleis té menor pes ~10%) i ponderat pels nous temes operatius SGO.
+              {usePromotionStats
+                ? 'Ponderació adaptada amb exàmens 81/16–81/25 + Promoció Interna (Caporal, Sergent, Oficial, Sotsinspector i Inspector): puja el pes de legislació operativa (T2, T6, T7), PCI (T12) i tàctica avançada (T23, T25, T27).'
+                : 'Basat en la tònica 81/16–81/25 (el bloc de Lleis té menor pes ~11%) i ponderat pels nous temes operatius SGO 2026.'}
             </p>
           </div>
           <button
@@ -1155,8 +1180,8 @@ export default function PracticeTestView({
         {showStatsTable && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 pt-2">
             {topics.map((t) => {
-              const totalW = topics.reduce((acc, x) => acc + getTopicWeight(x.number), 0);
-              const prob = ((getTopicWeight(t.number) / totalW) * 100).toFixed(1);
+              const totalW = topics.reduce((acc, x) => acc + getTopicWeight(x.number, usePromotionStats), 0);
+              const prob = ((getTopicWeight(t.number, usePromotionStats) / totalW) * 100).toFixed(1);
               return (
                 <div key={t.id} className="rounded-lg border border-slate-200 dark:border-slate-800 px-2.5 py-1.5 text-[11px] flex items-center justify-between gap-2">
                   <span className="font-bold text-slate-700 dark:text-slate-200 truncate">

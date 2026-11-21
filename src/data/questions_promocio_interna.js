@@ -1128,5 +1128,484 @@ export const QUESTIONS_PROMOCIO_INTERNA = [
     ],
     correctIndex: 1,
     explanation: "Material d'ampliació (Inspector): La cultura de seguretat i millora contínua (After-Action Review / debriefing tècnic) reuneix els comandaments implicats per avaluar objectivament encerts, colls d'ampolla i actualitzar els procediments operatius."
+  },
+
+  // =========================================================================
+  // PREGUNTES OFICIALS DE CONVOCATÒRIES (PROMOCIÓ INTERNA I BÀSICA) (25 preguntes)
+  // =========================================================================
+  {
+    id: 'pi-66',
+    topic: 7,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial Promoció Interna · Caporal',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (SISCOM)",
+    question: "Dins del Sistema de Comandament (SISCOM) dels Bombers de la Generalitat, quina és la regla bàsica sobre l'assumpció del comandament d'un servei quan s'hi incorporen unitats de diferents categories?",
+    options: [
+      "El comandament recau sempre en el conductor del vehicle autobomba més antic del parc.",
+      "El primer comandament en arribar assumeix el comandament inicial fins que el traspassa formalment a un superior.",
+      "El comandament s'alterna cada 30 minuts entre tots els bombers de primera presents al sinistre.",
+      "No existeix comandament formal fins que arriba al lloc un membre de l'escala executiva."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Caporal · SISCOM): El primer comandament (o bomber més antic/responsable de la primera dotació) assumeix el comandament inicial i només se cedeix mitjançant traspàs formal de comandament a un comandament superior."
+  },
+  {
+    id: 'pi-67',
+    topic: 6,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial Promoció Interna · Caporal',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (Llei 5/1994)",
+    question: "Segons la Llei 5/1994, quina condició legal tenen els membres del Cos de Bombers de la Generalitat quan es troben en l'exercici de llurs funcions operatives?",
+    options: [
+      "Tenent la consideració de personal laboral eventual sense potestat d'autoritat pública.",
+      "Tenen la consideració d'agents de l'autoritat pública en l'exercici de les seves funcions.",
+      "Exerceixen únicament funcions consultives privades sense capacitat de restricció d'accessos.",
+      "Només adquireixen la condició d'agent de l'autoritat a partir de la categoria d'inspector."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Llei 5/1994, art. 14): Els membres del Cos de Bombers de la Generalitat, en l'exercici de les seves funcions, tenen la consideració d'agents de l'autoritat."
+  },
+  {
+    id: 'pi-68',
+    topic: 6,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sergent',
+    officialSource: 'Examen Oficial Promoció Interna · Sergent',
+    extensionLabel: "Material d'ampliació · Oficial Sergent (Decret 30/2015)",
+    question: "Segons el Decret 30/2015, cada quants anys s'ha de revisar obligatòriament un Pla d'Autoprotecció (PAU) homologat per mantenir-ne la vigència, llevat de modificacions substancials prèvies?",
+    options: [
+      "Cada 2 anys des de la data de la seva inscripció inicial al registre municipal.",
+      "Cada 4 anys com a màxim, o abans si es produeixen canvis substancials en l'activitat o l'entorn.",
+      "Cada 10 anys coincidint amb la renovació de la llicència ambiental de l'establiment.",
+      "Anualment mitjançant una declaració responsable sense necessitat d'actualització documental."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Sergent · Decret 30/2015, art. 11): El PAU s'ha de revisar com a màxim cada 4 anys i sempre que hi hagi modificacions substancials en les instal·lacions, activitat o riscos."
+  },
+  {
+    id: 'pi-69',
+    topic: 3,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial · LPRL 31/1995',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (LPRL)",
+    question: "D'acord amb l'article 35 de la Llei 31/1995 de Prevenció de Riscos Laborals, quants delegats de prevenció corresponen a una empresa o centre amb una plantilla compresa entre 101 i 500 treballadors?",
+    options: [
+      "2 delegats de prevenció escollits entre la representació del personal.",
+      "3 delegats de prevenció designats pels representants del personal.",
+      "4 delegats de prevenció nomenats directament per la direcció tècnica.",
+      "5 delegats de prevenció amb dedicació exclusiva a temps complet."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (LPRL art. 35.2): De 50 a 100 treballadors -> 2 delegats; de 101 a 500 -> 3 delegats; de 501 a 1.000 -> 4 delegats; de 1.001 a 2.000 -> 5 delegats."
+  },
+  {
+    id: 'pi-70',
+    topic: 2,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sergent',
+    officialSource: 'Examen Oficial · Funció Pública',
+    extensionLabel: "Material d'ampliació · Oficial Sergent (Funció Pública)",
+    question: "Segons el règim disciplinari dels empleats públics (TREBEP art. 97), quin és el termini de prescripció de les sancions imposades per faltes molt greus, greus i lleus, respectivament?",
+    options: [
+      "5 anys per a molt greus, 3 anys per a greus i 1 any per a lleus.",
+      "3 anys per a molt greus, 2 anys per a greus i 1 any per a lleus.",
+      "3 anys per a molt greus, 2 anys per a greus i 6 mesos per a lleus.",
+      "4 anys per a molt greus, 2 anys per a greus i 6 mesos per a lleus."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (TREBEP art. 97): Les faltes prescriuen als 3 anys / 2 anys / 6 mesos, mentre que les SANCIONS imposades prescriuen als 3 anys (molt greus), 2 anys (greus) i 1 any (lleus)."
+  },
+  {
+    id: 'pi-71',
+    topic: 12,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Oficial',
+    officialSource: 'Examen Oficial Promoció Interna · Oficial (CTE DB-SI)',
+    extensionLabel: "Material d'ampliació · Oficial (CTE DB-SI)",
+    question: "Segons el CTE DB-SI (Secció SI-3 Evacuació d'ocupants), quina és l'amplada mínima lliure d'una porta prevista per a l'evacuació d'ocupants en edificis d'ús general?",
+    options: [
+      "0,70 metres mesurats entre els fulls oberts a 90 graus.",
+      "0,80 metres, garantint el pas lliure sense obstacles en el recorregut d'evacuació.",
+      "1,20 metres en tots els casos independentment de l'ocupació del recinte.",
+      "0,60 metres quan es tracta de locals comercials de superfície inferior a 100 m²."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Oficial · CTE DB-SI 3): L'amplada mínima d'una porta d'evacuació és de 0,80 m (i la dels passadissos i escales protegides d'ús general és d'1,00 m)."
+  },
+  {
+    id: 'pi-72',
+    topic: 15,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Oficial',
+    officialSource: 'Examen Oficial Promoció Interna · Oficial (CTE DB-SI)',
+    extensionLabel: "Material d'ampliació · Oficial (Reacció al Foc)",
+    question: "En la classificació europea de reacció al foc dels materials de construcció (Euroclasses, EN 13501-1), què indica el paràmetre addicional 'd0' en una classificació com B-s1,d0?",
+    options: [
+      "Producció molt elevada de fum fosc i tòxic durant els primers 10 minuts d'assaig.",
+      "Absència total de caiguda de gotes o partícules inflamades durant l'assaig.",
+      "Durada de la resistència estructural del pilar durant 60 minuts sense deformació.",
+      "Densitat del material aïllant superior als 100 kg/m³ en façanes ventilades."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Oficial · Euroclasses): s1/s2/s3 mesura l'opacitat del fum (s1 = baixa); d0/d1/d2 mesura les gotes/partícules inflamades (d0 = cap gota ni partícula inflamada)."
+  },
+  {
+    id: 'pi-73',
+    topic: 23,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sergent',
+    officialSource: 'Examen Oficial Promoció Interna · Sergent',
+    extensionLabel: "Material d'ampliació · Oficial Sergent (Incendis Estructurals)",
+    question: "En un incendi d'interior confinat en fase de creixement per ventilació limitada, quin fenomen es caracteritza per la ignició sobtada i simultània de totes les superfícies combustibles del recinte per radiació tèrmica?",
+    options: [
+      "Backdraft o explosió de fums per aportació sobtada d'oxigen en un recinte hermètic.",
+      "Flashover o inflamació generalitzada súbita en assolir uns 500–600 °C al sostre.",
+      "Boilover per ebullició violenta de l'aigua acumulada al fons d'un tanc de petroli.",
+      "Slopover per projecció superficial d'escuma sobre un hidrocarbur lleuger."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Sergent): El flashover és la transició ràpida d'un incendi localitzat a un incendi totalment desenvolupat (totes les superfícies combustibles s'inflamen quasi alhora per radiació tèrmica del matalàs de gasos)."
+  },
+  {
+    id: 'pi-74',
+    topic: 25,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial Promoció Interna · Caporal (Forestals)',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (Regla del 30)",
+    question: "En l'anàlisi del comportament dels incendis forestals, quines tres condicions meteorològiques defineixen la 'regla del 30' d'alt risc de propagació extrema?",
+    options: [
+      "Temperatura > 30 °C, humitat relativa < 30 % i velocitat del vent > 30 km/h.",
+      "Temperatura > 30 °C, humitat relativa > 30 % i pendent del terreny > 30 graus.",
+      "Pressió atmosfèrica < 30 hPa, altitud > 300 m i cabal hidràulic > 30 L/min.",
+      "Velocitat del vent < 30 km/h, humitat del combustible fi > 30 % i radiació solar > 30 %."
+    ],
+    correctIndex: 0,
+    explanation: "Examen Oficial (Caporal · Forestals): La regla del 30-30-30 indica condicions crítiques de gran incendi quan T > 30 °C, HR < 30 % i Vent > 30 km/h."
+  },
+  {
+    id: 'pi-75',
+    topic: 25,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sergent',
+    officialSource: 'Examen Oficial Promoció Interna · Sergent (Forestals)',
+    extensionLabel: "Material d'ampliació · Oficial Sergent (Protocol OACEL)",
+    question: "Quin significat té cadascuna de les lletres de l'acrònim de seguretat forestal OACEL utilitzat pels comandaments dels Bombers de la Generalitat?",
+    options: [
+      "Ordre, Atac, Control, Extinció i Liquidació del perímetre.",
+      "Observació, Alerta, Comunicació, Escapament i Lloc segur.",
+      "Orientació, Aproximació, Contenció, Enfriament i Logística.",
+      "Operació, Ancoratge, Coordinació, Evacuació i Limitació."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Sergent · Forestals): OACEL (versió catalana de LACES) = Observació (vigilant), Alerta, Comunicació, rutes d'Escapament i Lloc segur (zona segura)."
+  },
+  {
+    id: 'pi-76',
+    topic: 27,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Oficial',
+    officialSource: 'Examen Oficial Promoció Interna · Oficial (ADR)',
+    extensionLabel: "Material d'ampliació · Oficial (ADR / Risc Químic)",
+    question: "En el transport de mercaderies perilloses (ADR), què indica el prefix 'X' davant el número d'identificació de perill (per exemple, X423) a la meitat superior del panell taronja?",
+    options: [
+      "Que la matèria només es pot transportar en cisternes criogèniques d'acer inoxidable.",
+      "Que la matèria reacciona perillosament amb l'aigua i no s'hi ha d'aplicar aigua en cap cas.",
+      "Que la càrrega conté material radioactiu fissible de categoria III-groga.",
+      "Que el vehicle transporta residus sanitaris infecciosos de classe 6.2 en règim d'exempció."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Oficial · ADR): La lletra X precedint el codi Kemler indica reacció perillosa amb l'aigua (p. ex. X423: sòlid inflamable que desprèn gasos inflamables en contacte amb l'aigua)."
+  },
+  {
+    id: 'pi-77',
+    topic: 13,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial · Hidràulica',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (Hidràulica)",
+    question: "En una aspiració amb bomba centrífuga a nivell del mar (pressió atmosfèrica = 10,33 m.c.a.), per què l'alçada màxima pràctica d'aspiració d'un vehicle autobomba se situa al voltant dels 7 a 7,5 metres?",
+    options: [
+      "Per la força gravitatòria inversa generada pels àleps del rodet en girar a 3.000 rpm.",
+      "Per les pèrdues de càrrega en el mangot, la pressió de vapor de l'aigua i el risc de cavitació.",
+      "Perquè la vàlvula de peu restringeix el pas d'aigua a partir dels 500 L/min de cabal.",
+      "Perquè el buit parcial del cebador només actua durant els primers 5 metres verticals."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Hidràulica): Tot i que l'alçada teòrica és 10,33 m, en restar pèrdues de càrrega del mangot/filtre, tensió de vapor i NPSH requerit per evitar cavitació, l'aspiració pràctica màxima és ~7–7,5 m."
+  },
+  {
+    id: 'pi-78',
+    topic: 8,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial · Teoria del Foc',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (Agents Extintors)",
+    question: "Segons la norma UNE-EN 2, a quina classe de foc corresponen els incendis provocats per olis i greixos vegetals o animals en aparells de cuina (fregidores industrials)?",
+    options: [
+      "Classe B (líquids inflamables i sòlids liquables).",
+      "Classe F (olis i greixos de cuina).",
+      "Classe D (metalls combustibles alcalins).",
+      "Classe C (gasos inflamables a pressió)."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Teoria del Foc · UNE-EN 2): La classe F correspon específicament a olis i greixos de cuina (on l'aigua provoca projecció violenta i calen agents per saponificació)."
+  },
+  {
+    id: 'pi-79',
+    topic: 24,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial · Rescat en Vehicles',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (Vehicles Elèctrics)",
+    question: "En un accident de trànsit amb un vehicle elèctric o híbrid d'alta tensió, de quin color està estandarditzat el cablejat d'alta tensió (HV) per identificar-lo i evitar tallar-lo?",
+    options: [
+      "Blau elèctric amb bandes reflectants blanques.",
+      "Taronja intens en tot el seu recorregut i connectors.",
+      "Groc fluorescent exclusivament dins del maleter posterior.",
+      "Verd llampant amb doble aïllament transparent."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Rescat en Vehicles): Els cables d'alta tensió (>60 V CC / >30 V CA) dels vehicles elèctrics i híbrids estan codificats universalment en color taronja."
+  },
+  {
+    id: 'pi-80',
+    topic: 19,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sergent',
+    officialSource: 'Examen Oficial · Rescat en Alçada',
+    extensionLabel: "Material d'ampliació · Oficial Sergent (Rescat Tècnic)",
+    question: "En una instal·lació de rescat en alçada amb dos ancoratges independents units mitjançant una cinta o corda en 'Y' (repartidor de càrregues), quin angle màxim entre les dues branques es recomana no superar per evitar sobrecarregar els ancoratges?",
+    options: [
+      "150 graus, ja que per sota d'aquest valor la càrrega es redueix a la meitat.",
+      "60 graus (i mai superar els 90–120 graus, on cada ancoratge suporta ja el 100 % del pes).",
+      "180 graus exactes per equilibrar horitzontalment les forces de cisallament.",
+      "15 graus com a límit absolut, fins i tot en ancoratges químics sobre formigó."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Rescat): En un triangle de forces (Y), a 60° cada ancoratge suporta ~58 % de la càrrega; a 120° cada ancoratge suporta el 100 % de la càrrega; per sobre de 120° la força sobre cada punt supera el pes total."
+  },
+  {
+    id: 'pi-81',
+    topic: 7,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sotsinspector',
+    officialSource: 'Examen Oficial Promoció Interna · Sotsinspector (D 276/2016)',
+    extensionLabel: "Material d'ampliació · Oficial Sotsinspector (Guàrdies)",
+    question: "Segons el Decret 276/2016 dels serveis de guàrdia dels Bombers de la Generalitat, quina és la durada ordinària d'una guàrdia operativa presencial completa de 24 hores en un parc de bombers?",
+    options: [
+      "De les 00.00 h a les 24.00 h amb dues hores de disponibilitat passiva sense relleu.",
+      "24 hores continuades amb relleu presencial a primera hora del matí al parc assignat.",
+      "12 hores diürnes presencials i 12 hores nocturnes en règim de localització domiciliària.",
+      "36 hores seguides amb descans compensatori obligatori de 72 hores."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Decret 276/2016): La guàrdia ordinària del personal operatiu té una durada de 24 hores presencials continuades (de 07:00/08:00 a l'endemà segons quadrant vigent) amb relleu al lloc."
+  },
+  {
+    id: 'pi-82',
+    topic: 6,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sotsinspector',
+    officialSource: 'Examen Oficial Promoció Interna · Sotsinspector (Llei 4/1997)',
+    extensionLabel: "Material d'ampliació · Oficial Sotsinspector (Protecció Civil)",
+    question: "Segons la Llei 4/1997 de Protecció Civil de Catalunya, quin organisme és l'òrgan col·legiat de coordinació, participació i consulta de les administracions públiques en matèria de protecció civil a Catalunya?",
+    options: [
+      "El Consell Assessor del Cos de Bombers Voluntaris de la Generalitat.",
+      "La Comissió de Protecció Civil de Catalunya.",
+      "La Junta de Seguretat Local dels municipis de més de 20.000 habitants.",
+      "El Centre d'Atenció i Gestió de Trucades d'Urgència 112."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Llei 4/1997): La Comissió de Protecció Civil de Catalunya és l'òrgan col·legiat superior de coordinació, participació i homologació dels plans de protecció civil a Catalunya."
+  },
+  {
+    id: 'pi-83',
+    topic: 27,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Oficial',
+    officialSource: 'Examen Oficial Promoció Interna · Oficial (PLASEQCAT)',
+    extensionLabel: "Material d'ampliació · Oficial (Risc Químic PLASEQCAT)",
+    question: "En l'activació del pla PLASEQCAT per un núvol tòxic procedent d'una indústria química, quina és la mesura de protecció poblacional inicial més eficaç i recomanada per a la població dins la zona d'intervenció?",
+    options: [
+      "Evacuació massiva immediata a peu per les carreteres principals en direcció al vent.",
+      "Confinament a l'interior dels edificis, tancant portes, finestres i sistemes de ventilació.",
+      "Obertura de totes les finestres de les plantes altes per dispersar els gasos pesants.",
+      "Desplaçament en vehicle particular cap als polígons industrials limítrofs."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (PLASEQCAT): Davant d'una fuita tòxica amb núvol químic, la mesura prioritària és el confinament immediat en edificis (tancant portes, finestres i climatització) i escoltar les indicacions de Protecció Civil."
+  },
+  {
+    id: 'pi-84',
+    topic: 20,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Sergent',
+    officialSource: 'Examen Oficial Promoció Interna · Sergent (Apuntalaments)',
+    extensionLabel: "Material d'ampliació · Oficial Sergent (Estructures)",
+    question: "Quan s'executa un apuntalament d'emergència en un forjat de formigó afectat per un incendi o sobrepès, on s'han de recolzar sempre els puntals de la planta afectada?",
+    options: [
+      "Directament sobre els envans de maó buit de la planta inferior sense repartidor de càrrega.",
+      "Sobre durments de repartició i transmetent la càrrega verticalment fins a solera o plantes inferiors apuntalades.",
+      "Exclusivament al centre geomètric de la bigueta més fissurada sense falques d'ajust.",
+      "Recolzats en diagonal contra els marcs metàl·lics de les finestres de la façana."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Sergent · Estructures): Els puntals han de treballar amb durments (repartiment de càrrega) i transmetre els esforços de forma contínua cap avall (reapuntalant plantes inferiors si el forjat inferior no suporta la càrrega)."
+  },
+  {
+    id: 'pi-85',
+    topic: 1,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Inspector',
+    officialSource: 'Examen Oficial Promoció Interna · Inspector (EAC / CE)',
+    extensionLabel: "Material d'ampliació · Oficial Inspector (Marc Constitucional)",
+    question: "Segons l'article 149.1.29 de la Constitució Espanyola i la doctrina del Tribunal Constitucional, a qui correspon la competència exclusiva sobre seguretat pública sense perjudici de la creació de policies autonòmiques?",
+    options: [
+      "A les diputacions provincials en coordinació amb els consells comarcals.",
+      "A l'Estat, sens perjudici de les competències exclusives de la Generalitat en protecció civil i prevenció d'incendis.",
+      "Exclusivament als ajuntaments de més de 50.000 habitants mitjançant ordenances municipals.",
+      "Al Parlament Europeu mitjançant reglaments d'aplicació directa en emergències locals."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Inspector · CE/EAC): L'art. 149.1.29 CE atribueix la seguretat pública a l'Estat, mentre que el TC ha delimitat que la protecció civil i els serveis d'extinció d'incendis són competència exclusiva autonòmica (art. 132 EAC) llevat d'emergències d'interès nacional."
+  },
+  {
+    id: 'pi-86',
+    topic: 17,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial · Comunicacions RESCAT',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (RESCAT)",
+    question: "A la xarxa de radiocomunicacions d'emergències de Catalunya (xarxa RESCAT basada en estàndard TETRA), què permet el mode DMO (Direct Mode Operation)?",
+    options: [
+      "Transmetre dades biomèdiques encriptades per satèl·lit directament als hospitals.",
+      "Comunicar terminals portàtils directament entre si quan no hi ha cobertura de repetidor (TMO), com en túnels o soterranis.",
+      "Duplicar automàticament la potència d'emissió fins a 100 W en tots els walkies portàtils.",
+      "Interconnectar les trucades telefòniques comercials amb el canal de comandament del CCA."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (RESCAT / TETRA): El mode DMO (Mode Directe) permet la comunicació terminal-a-terminal sense passar per la infraestructura de xarxa (TMO), essencial en soterranis, túnels o zones d'ombra."
+  },
+  {
+    id: 'pi-87',
+    topic: 21,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Oficial',
+    officialSource: 'Examen Oficial Promoció Interna · Oficial (INUNCAT)',
+    extensionLabel: "Material d'ampliació · Oficial (INUNCAT / Rescat Aquàtic)",
+    question: "En una operació de rescat en aigües vives o riera desbordada (pla INUNCAT), quin principi de seguretat regeix la intervenció dels equips a prop del corrent?",
+    options: [
+      "Lligar una corda fixa al rescatador en perpendicular al corrent sense sistema de desbloqueig ràpid.",
+      "Aplicar l'escala de risc progressiva (parlar, assolir, llançar, remar, nedar) i no ancorar mai rescatadors sense alliberament ràpid.",
+      "Entrar al llit del riu amb botes d'intervenció estructural pesades i sense armilla salvavides.",
+      "Creuar el corrent aigües amunt d'un obstacle submergit sense observadors aigües avall."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Oficial · Rescat Aquàtic): La regla 'Talk-Reach-Throw-Row-Go' prioritza rescatar sense entrar a l'aigua; si cal entrar, equipament específic, armilla amb alliberament ràpid (quick-release) i seguretat aigües avall."
+  },
+  {
+    id: 'pi-88',
+    topic: 14,
+    difficulty: 'Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Caporal',
+    officialSource: 'Examen Oficial · Cartografia',
+    extensionLabel: "Material d'ampliació · Oficial Caporal (Cartografia)",
+    question: "En un mapa topogràfic a escala 1:25.000 utilitzat en intervencions forestals, a quina distància real sobre el terreny equival un segment de 4 centímetres mesurat sobre el mapa?",
+    options: [
+      "250 metres en línia recta.",
+      "1.000 metres (1 quilòmetre).",
+      "2.500 metres (2,5 quilòmetres).",
+      "100 metres exactes."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Cartografia): A escala 1:25.000, 1 cm = 25.000 cm = 250 m. Per tant, 4 cm × 250 m/cm = 1.000 m = 1 km."
+  },
+  {
+    id: 'pi-89',
+    topic: 28,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Oficial',
+    officialSource: 'Examen Oficial Promoció Interna · Oficial (Electricitat)',
+    extensionLabel: "Material d'ampliació · Oficial (Risc Elèctric AT)",
+    question: "Davant d'una línia elèctrica d'alta tensió caiguda a terra amb risc de tensió de pas, com ha de sortir de la zona de perill una persona que es trobi prop del punt de contacte?",
+    options: [
+      "Fent passes molt llargues i ràpides cap a l'exterior per reduir el temps d'exposició.",
+      "Allunyant-se a peu junts (saltets curts o arrossegant els peus sense separar-los) fins a superar almenys 10–20 m.",
+      "Estirant-se completament a terra amb els braços i les cames oberts en creu.",
+      "Corrent en ziga-zaga tocant els pals metàl·lics de la tanca per descarregar el potencial."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Oficial · Risc Elèctric): Per evitar la diferència de potencial entre els dos peus (tensió de pas), cal allunyar-se amb els peus sempre junts (saltets curts o passes minúscules sense separar talons)."
+  },
+  {
+    id: 'pi-90',
+    topic: 12,
+    difficulty: 'Molt Difícil',
+    isExtension: true,
+    isOfficialExam: true,
+    extensionRank: 'Inspector',
+    officialSource: 'Examen Oficial Promoció Interna · Inspector (Llei 3/2010)',
+    extensionLabel: "Material d'ampliació · Oficial Inspector (Llei 3/2010)",
+    question: "Segons la Llei 3/2010 de prevenció i seguretat en matèria d'incendis a Catalunya, què són les ECA (Entitats Col·laboradores de l'Administració) en matèria de prevenció d'incendis?",
+    options: [
+      "Agrupacions de bombers voluntaris que fan guàrdies remunerades en festes majors.",
+      "Entitats tècniques acreditades que realitzen funcions de comprovació, inspecció i certificació en seguretat contra incendis.",
+      "Empreses constructores encarregades de redactar els plans d'emergència exterior Seveso.",
+      "Comissions municipals de festes responsables dels espectacles pirotècnics."
+    ],
+    correctIndex: 1,
+    explanation: "Examen Oficial (Inspector · Llei 3/2010): Les ECA acreditades realitzen els controls de posada en funcionament i revisions periòdiques de les condicions de seguretat contra incendis en els supòsits previstos per la Llei 3/2010."
   }
 ];
