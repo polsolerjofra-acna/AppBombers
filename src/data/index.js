@@ -33,6 +33,7 @@ import { tema14AccidentsMobilitat } from './topics/tema14_accidents_mobilitat';
 import { tema15RescatUrba } from './topics/tema15_rescat_urba';
 import { tema27Inundacions } from './topics/tema27_inundacions';
 import { QUESTIONS_81_25_BY_TOPIC } from './questions_81_25';
+import { QUESTIONS_SIMULACRE_81_26_BY_TOPIC } from './questions_simulacre_81_26';
 
 /**
  * Registre complet dels 34 temes oficials (Temes 1 al 34 sense cap buit!):
@@ -113,6 +114,7 @@ export const TOPICS = [
     pages: (topic.pages || []).slice(0, 10),
     quiz: [
       ...(topic.quiz || []),
-      ...(QUESTIONS_81_25_BY_TOPIC[topic.number] || [])
+      ...(QUESTIONS_81_25_BY_TOPIC[topic.number] || []),
+      ...(QUESTIONS_SIMULACRE_81_26_BY_TOPIC[topic.number] || [])
     ]
   }));
