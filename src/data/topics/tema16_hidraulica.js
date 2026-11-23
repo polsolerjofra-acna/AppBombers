@@ -135,6 +135,16 @@ export const tema16Hidraulica = {
             'Atenció a la trampa del radi vs. superfície! Si l’èmbol gran té el TRIPLE de superfície (S₂ = 3·S₁), la força es multiplica per 3. Però si té el TRIPLE de radi o diàmetre (R₂ = 3·R₁), la superfície és 3² = 9 vegades més gran i la força es multiplica per 9!',
           example:
             'Problema resolt: En un gat hidràulic, l’èmbol petit té superfície S₁ = 5 cm² i el gran S₂ = 100 cm². Quina força F₁ hem d’aplicar per aixecar una llosa de formigó de 3.000 kgf?\n• Factor multiplicador = S₂ / S₁ = 100 / 5 = 20.\n• F₁ = F₂ / 20 = 3.000 / 20 = 150 kgf (≈ 1.471,5 N).'
+        },
+        {
+          type: 'easy',
+          title: 'Parany Oficial 81/19 · Dipòsit sobre Llosa de Formigó (Força per m² vs Massa vs Pa)',
+          metaphor:
+            'Un dipòsit d’aigua de 20 m³ descansa sobre una llosa de formigó de 10 m², i està a la meitat de capacitat assolint una alçada d’1 m. Quina és la força que exerceix la llosa en cada metre quadrat?',
+          explanation:
+            "• DADA DISTRACTORA: Els 20 m³ de capacitat màxima NO fan falta si ja et donen l'alçada (h = 1 m)!\n• MÈTODE 1 (Stevin): La pressió hidrostàtica només depèn de l'alçada i la densitat:\n  P = ρ · g · h = 1.000 kg/m³ · 9,8 m/s² · 1 m = 9.800 Pa = 9.800 N/m².\n  Com que et demana «la força en cada m²», la resposta és 9.800 N (Newtons, MAI en kg!).\n\n• MÈTODE 2 (Comprovació per pes): Meitat de 20 m³ = 10 m³ d'aigua = 10.000 kg.\n  Força total = 10.000 kg × 9,8 m/s² = 98.000 N.\n  Repartida entre 10 m² → 98.000 N ÷ 10 m² = 9.800 N per cada m²!",
+          takeaway:
+            'Força per unitat de superfície = Pressió (N/m² = Pa). Si pregunta «quina força per m²», la unitat correcta són Newtons (9.800 N), no kg ni 980 Pa.'
         }
       ]
     },

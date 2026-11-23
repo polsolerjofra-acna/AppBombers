@@ -228,6 +228,39 @@ export const tema14AccidentsMobilitat = {
           trick:
             "1) ATRAPAMENT: Mecànic (portes encallades, il·lès) | Físic I (sense bloqueig de ferralla, retingut per LESIONS) | Físic II (presoner de FERRALLA/tablier).\n2) VEHICLE A vs. B: Vehicle A té la víctima; Vehicle B és a sobre → s'estabilitza PRIMER el B.\n3) FRACTURES: Compressió → Comminuta | Torsió → Espiroide.\n4) PLA A vs. PLA B: Pla A = controlat (~20 min, obertura òptima) | Pla B = immediat (~5 min, si empitjora XABCDE).\n5) MANIOBRES: Llauna de sardines (autobús) | La Catalana (sostre bolcada lateral) | La Tenda (vehicle sobre sostre).",
           example: 'Si et pregunten quin tipus d’atrapament pateix un conductor amb trauma vertebral greu que té espai lliure a les cames i al tòrax: Atrapament Físic Tipus I!'
+        },
+        {
+          type: 'table',
+          title: 'Resum Complet Apartat 4 (MAN.SVVH.000): Estabilització, Abordatge, Excarceració i Complementàries segons Posició',
+          subtitle: 'Estructura completa de totes les maniobres de l’Apartat 4 diferenciades per fase i posició del vehicle accidentat',
+          headers: ['Posició del Vehicle', '1. Estabilització', '2. Abordatge (Accés) i 3. Excarceració', '4. Maniobres Complementàries'],
+          rows: [
+            [
+              'Sobre les 4 rodes',
+              '• Urgència: 4 bombers (1 a cada cantonada).\n• Primària (3/4 punts): Blocs i falques esglaonades sota xassís + falcat de roda.\n• 5a Falca (5 punts): Sota part posterior central o muntant C abans de tallar sostre o entrar-hi 2 bombers.',
+              '• Abordatge: Porta no deformada, vidre lateral temperat o portó posterior.\n• Excarceració: Obertura/retirada de portes, Tercera Porta (2/3 portes), Obertura total lateral (sense muntant B), Abatiment/Retirada total de sostre (0°), Aixecament de tablier (tall d’alleujament base A + bloc sota muntant A/B + RAM).',
+              '• Vidres: Trencar temperat amb punxó; serrar laminat.\n• Electricitat: Desconnectar 12V/24V (negatiu primer) i identificar cablejat HV taronja.\n• Airbags: Regla 30-60-90 i protector de volant.\n• Protectors de talls vius a tots els muntants tallats.'
+            ],
+            [
+              'Bolcada lateral (sobre un costat)',
+              '• Estabilització manual inicial mentre es munten puntals telescòpics inclinats (costat sostre i/o xassís) + cintes/eslingues tensades + falques entre xassís/sostre i terra.',
+              '• Abordatge: Pel parabrisa laminat (retirat), portó posterior o luneta posterior.\n• Excarceració — "La Catalana": Tall dels muntants A, B i C i abatiment del panell del sostre cap a terra (o cap amunt), obrint tot l’habitacle sense deixar caure la víctima suspesa del cinturó.',
+              '• Subjectar la víctima abans de tallar o desabrotxar el cinturó superior.\n• Protegir les vores tallades del sostre i muntants.\n• Controlar possibles fuites de combustible o líquids del motor lateralitzat.'
+            ],
+            [
+              'Bolcada sobre el sostre (panxa enlaire)',
+              '• Falques i blocs esglaonats als buits entre capó/maleter, muntants i terra per bloquejar el balanceig i capcineig (sense aixafar l’habitacle).',
+              '• Abordatge: Pel portó posterior o finestra lateral si hi ha espai.\n• Excarceració — "La Tenda": Elevació progressiva de la part posterior/maleter amb cilindres RAM o coixins pneumàtics d’alta pressió ("aixecar 1 cm, falcar 1 cm") creant un espai triangular d’extracció.',
+              '• Falcat progressiu obligatori durant tota l’elevació.\n• En bolcada sobre sostre, atenció a la víctima invertida (cinturó) i al risc de caiguda de la bateria/líquids cap a l’habitacle.'
+            ],
+            [
+              'Vehicle sobre un altre (A sota / B a sobre) i Autobús',
+              '• Superposats: Estabilitzar SEMPRE PRIMER el Vehicle B (superior) amb puntals/falques i cintes, i després el Vehicle A (amb la víctima).\n• Autobús: Falques pesants de gran secció i puntals de càrrega.',
+              '• Autobús bolcat — "Llauna de sardines": Obertura del sostre/panells d’emergència.\n• Superposats: Separació o assegurament del Vehicle B abans de crear espai al Vehicle A.',
+              '• Autobús/Camió: Instal·lació elèctrica a 24 V (2×12V), tall de corrent al desconectador de cabina i control de suspensió pneumàtica (risc d’aixafament si es punxa).'
+            ]
+          ],
+          footnote: 'Resum complet de l’Apartat 4 de MAN.SVVH.000: Estabilització → Abordatge → Excarceració → Complementàries.'
         }
       ]
     }

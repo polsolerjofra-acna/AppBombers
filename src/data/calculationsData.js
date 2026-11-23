@@ -94,6 +94,19 @@ export const CALCULATION_SECTIONS = [
         ]
       },
       {
+        id: 'p-t9-2b',
+        title: 'Frenada en dos trams (20 → 10 → 0 m/s)',
+        statement: 'Un vehicle frena uniformement de 20 m/s a 10 m/s en 30 m. Quant espai més necessita per aturar-se si manté la mateixa desacceleració?',
+        hint: 'En MRUA l\'espai depèn del quadrat de la velocitat (v_f² - v_i² = 2·a·d). Compara (20² - 10²) amb (10² - 0²)!',
+        options: ['10 m', '15 m', '20 m', '30 m'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Primer tram (20 → 10 m/s): Δ(v²) = 20² - 10² = 400 - 100 = 300. En 30 m, 2·a·30 = -300 → a = -5 m/s².',
+          '2. Segon tram (10 → 0 m/s): Δ(v²) = 10² - 0² = 100. Espai restant = 100 ÷ (2 × 5) = 10 m.',
+          '3. Truc ràpid: 300 és 3 vegades 100, per tant el segon tram sempre és 1/3 del primer: 30 ÷ 3 = 10 m!'
+        ]
+      },
+      {
         id: 'p-t9-3',
         title: 'Palanca de 1r gènere per aixecar una llosa',
         statement: 'Volem aixecar una llosa de 600 kg amb una barra rígida de 3 m. Col·loquem el punt de suport (fulcre) a 0,5 m de la llosa. Quina força mínima (en kgf / daN) hem de fer a l\'altre extrem?',
@@ -458,6 +471,19 @@ export const CALCULATION_SECTIONS = [
           '2. Pèrdues de càrrega = 2,5 bar.',
           '3. Alçada = 30 m × 0,1 bar/m = 3,0 bar.',
           '4. P_bomba = 5 + 2,5 + 3,0 = 10,5 bar.'
+        ]
+      },
+      {
+        id: 'p-t13-1b',
+        title: 'Pressió sobre llosa de formigó (Examen Oficial 81/19)',
+        statement: 'Un dipòsit d\'aigua de 20 m³ de capacitat màxima descansa sobre una llosa de formigó plana. El dipòsit té una superfície de 10 m², i està a la meitat de capacitat, assolint una alçada d\'1 m. Quina és la força que exerceix la llosa de formigó en cada metre quadrat?',
+        hint: 'P = ρ · g · h (només depèn de l\'alçada de la columna, h = 1 m!). Atenció a les unitats de força (Newtons)!',
+        options: ['9.800 N', '9,8 kg', '980 Pa', '98.000 N'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Per Stevin: P = ρ · g · h = 1.000 kg/m³ · 9,8 m/s² · 1 m = 9.800 Pa = 9.800 N/m².',
+          '2. Comprovació per massa: meitat de 20 m³ = 10 m³ = 10.000 kg → F = 98.000 N repartits en 10 m² = 9.800 N/m².',
+          '3. La resposta correcta és 9.800 N (força en Newtons per cada m², mai en kg!).'
         ]
       },
       {

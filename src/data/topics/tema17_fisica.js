@@ -183,6 +183,16 @@ export const tema17Fisica = {
             "1) Truc de la Frenada (sense memoritzar fórmules llargues): si el camió va a 20 m/s (72 km/h) i perd 5 m/s cada segon fins a parar-se (0 m/s), triga 20 ÷ 5 = 4 segons. Quina ha estat la seva velocitat mitjana mentre frenava? La meitat de 20, és a dir 10 m/s! Doncs 10 m/s × 4 s = 40 metres recorreguts!\n\n2) Caiguda lliure: la gravetat et fa guanyar uns 10 m/s (9,8 m/s²) cada segon que caus.\n\n3) El parany del QUADRAT (v²): tant la distància de frenada com la força centrífuga que et fa bolcar en una corba (a_c = v²/r) porten v al quadrat. Si entres a una corba al DOBLE de velocitat, necessites 4 VEGADES més adherència (2² = 4) i 4 VEGADES més metres per frenar!",
           takeaway:
             'Velocitat × 2 ⇒ Distància de frenada × 4 i Força de bolcada × 4. Per calcular una frenada ràpida: (v_inicial ÷ 2) × temps.'
+        },
+        {
+          type: 'easy',
+          title: 'Parany Clàssic d’Examen · Frenada per Trams (20 → 10 m/s en 30 m, quant falta per a 0?)',
+          metaphor:
+            'Un vehicle frena uniformement de 20 m/s a 10 m/s en 30 m. Quant espai més necessita per aturar-se (de 10 a 0 m/s) mantenint la mateixa desacceleració?',
+          explanation:
+            "• ERROR TÍPIC (el 43% hi cau!): pensar «si baixar 10 m/s ha costat 30 m, baixar els altres 10 m/s costarà altres 30 m». FALS!\n• PER QUÈ? Perquè en MRUA la distància depèn del QUADRAT de la velocitat (Torricelli: v_f² - v_i² = 2·a·d):\n  1) De 20 a 10 m/s: v_i² - v_f² = 20² - 10² = 400 - 100 = 300.\n     Com que recorre 30 m → 2·a·30 = -300 → a = -5 m/s².\n  2) De 10 a 0 m/s: v_i² - v_f² = 10² - 0² = 100.\n     Espai restant: d = 100 / (2 × 5) = 10 METRES!\n\n• TRUC ULTRA-RÀPID SENSE CALCULAR 'a':\n  300 (de 20²-10²) és TRES VEGADES 100 (de 10²-0²). Per tant, el segon tram sempre és 1/3 del primer tram: 30 m ÷ 3 = 10 m!",
+          takeaway:
+            'En frenada uniforme, baixar la velocitat de v a v/2 consumeix 3/4 parts de la distància total; baixar de v/2 a 0 només consumeix 1/4 (un terç del primer tram!).'
         }
       ]
     },
