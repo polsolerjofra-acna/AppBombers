@@ -169,5 +169,11 @@ export const TOPICS = [
       ...(QUESTIONS_81_25_BY_TOPIC[topic.number] || []),
       ...(QUESTIONS_SIMULACRE_81_26_BY_TOPIC[topic.number] || []),
       ...ALL_SIMULACRE_ACAD_QUESTIONS.filter((q) => q.topic === topic.number)
-    ]
+    ].map((q) => ({
+      ...q,
+      question:
+        typeof q.question === 'string'
+          ? q.question.replace(/^\s*\[[^\]]+\]\s*/, '')
+          : q.question
+    }))
   }));

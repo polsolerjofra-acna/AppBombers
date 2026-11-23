@@ -102,6 +102,53 @@ function sortWithCooldown(arr, lastAskedMap = {}) {
   return shuffled.sort((a, b) => (lastAskedMap[a.id] || 0) - (lastAskedMap[b.id] || 0));
 }
 
+function isCalculationQuestion(q) {
+  if (!q) return false;
+  if (q.isCalculation) return true;
+  const txt = String(q.question || '');
+  return /\d+[\s,.]*\d*\s*(m\/s|km\/h|bar|mca|kPa|Pa|kg|L\/min|litres|kcal|Ω|V|W|A|kW|N|J|K|°C|%|cm|metres|minuts|segons|escala\s*1:|1:\d+)/i.test(
+    txt
+  ) || /\b(calcula|quin volum|quina pressió|quina força|quina velocitat|quina intensitat|quina resistència|quant temps|quants litres|quants metres|quin pendent)\b/i.test(
+    txt
+  );
+}
+
+function ensureMinCalculationsPerTen(picked, poolTopics, getTopicPool) {
+  if (!Array.isArray(picked) || picked.length === 0) return picked;
+  const calcPool = [];
+  const pickedIds = new Set(picked.map((q) => q.id));
+  poolTopics.forEach((t) => {
+    getTopicPool(t).forEach((q) => {
+      if (!pickedIds.has(q.id) && isCalculationQuestion(q)) {
+        calcPool.push({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title });
+      }
+    });
+  });
+  if (calcPool.length === 0) return picked;
+
+  const targetMinCalc =
+    picked.length >= 10
+      ? Math.floor(picked.length / 10)
+      : picked.length >= 5
+      ? 1
+      : 0;
+  if (targetMinCalc <= 0) return picked;
+
+  const currentCalcCount = picked.filter(isCalculationQuestion).length;
+  let needed = targetMinCalc - currentCalcCount;
+  if (needed <= 0) return picked;
+
+  const shuffledCalc = shuffleArray(calcPool);
+  const result = [...picked];
+  for (let i = 0; i < result.length && needed > 0 && shuffledCalc.length > 0; i++) {
+    if (!isCalculationQuestion(result[i])) {
+      result[i] = shuffledCalc.shift();
+      needed--;
+    }
+  }
+  return result;
+}
+
 function buildWeightedExamQuestions(
   topics,
   selectedIds,
@@ -131,7 +178,9 @@ function buildWeightedExamQuestions(
         all.push({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title });
       });
     });
-    return shuffleArray(shuffleArray(all).slice(0, count));
+    return shuffleArray(
+      ensureMinCalculationsPerTen(shuffleArray(all).slice(0, count), poolTopics, getTopicPool)
+    );
   }
 
   // Distribució proporcional segons probabilitat estadística d'examen
@@ -174,7 +223,7 @@ function buildWeightedExamQuestions(
     }
   }
 
-  return shuffleArray(picked);
+  return shuffleArray(ensureMinCalculationsPerTen(picked, poolTopics, getTopicPool));
 }
 
 export default function PracticeTestView({
