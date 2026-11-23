@@ -701,5 +701,355 @@ export const QUESTIONS_SEREBOMBER_DAILY = [
     ],
     correctIndex: 1,
     explanation: 'El mecanisme de l\'accident indica com s\'ha produït l\'incident o la lesió (caiguda, allau, relliscada, cop de roca), essencial per preveure lesions potencials i preparar el material sanitari i tècnic.'
+  },
+  {
+    id: 'sb-hyb-1',
+    topic: 1,
+    difficulty: 'Difícil',
+    question: "Si es volgués reformar l'article 28.2 de la Constitució Espanyola (dret a la vaga, ubicat a la Secció 1a del Capítol II del Títol I), quin procediment seria obligatori seguir?",
+    options: [
+      'Aprovació per majoria absoluta del Congrés i referèndum potestatiu si el demana 1/10 dels diputats.',
+      'Aprovació per majoria de 2/3 de cada cambra, dissolució immediata de les Corts, ratificació per 2/3 de les noves cambres i referèndum obligatori.',
+      'Aprovació per majoria de 3/5 de cada cambra sense necessitat de dissoldre les Corts ni convocar referèndum.',
+      'Aprovació per Llei Orgànica del Parlament de Catalunya i ratificació al Senat.'
+    ],
+    correctIndex: 1,
+    explanation: 'L\'art. 28.2 CE pertany a la Secció 1a del Capítol II del Títol I (drets fonamentals). Segons l\'art. 168 CE, exigeix el procediment agreujat: 2/3 de cada cambra, dissolució de les Corts, ratificació per 2/3 de les noves Corts i referèndum obligatori.'
+  },
+  {
+    id: 'sb-hyb-2',
+    topic: 2,
+    difficulty: 'Difícil',
+    question: "Un bomber funcionari de carrera acumula 8 anys i 11 mesos de serveis efectius reconeguts. Quants triennis té consolidats avui i en quina data exacta meritarà el següent?",
+    options: [
+      '3 triennis consolidats; el següent als 12 anys.',
+      '2 triennis consolidats; meritarà el 3r trienni quan compleixi els 9 anys complets (el mes vinent).',
+      '2 triennis consolidats; el 3r no es consolida fins a l\'1 de gener de l\'any següent.',
+      '3 triennis consolidats per arrodoniment administratiu superior a 8 anys i 6 mesos.'
+    ],
+    correctIndex: 1,
+    explanation: 'Els triennis es meriten per cada 3 anys complets de servei efectiu (3, 6, 9, 12...). Amb 8 anys i 11 mesos només té 2 triennis consolidats i meritarà el 3r en complir els 9 anys.'
+  },
+  {
+    id: 'sb-hyb-3',
+    topic: 3,
+    difficulty: 'Difícil',
+    question: "En un centre de treball o parc amb 42 treballadors, quants delegats de prevenció corresponen d'acord amb l'escala de l'article 35 de la Llei 31/1995 de Prevenció de Riscos Laborals?",
+    options: [
+      '1 delegat de prevenció, escollit per i entre els representants del personal.',
+      '2 delegats de prevenció.',
+      '3 delegats de prevenció.',
+      'Cap, perquè només són obligatoris a partir de 50 treballadors.'
+    ],
+    correctIndex: 0,
+    explanation: 'Segons l\'art. 35.2 de la Llei 31/1995: fins a 30 treballadors (el delegat de personal), de 31 a 49 treballadors correspon 1 delegat de prevenció (escollit entre els delegats de personal), i de 50 a 100 treballadors en corresponen 2.'
+  },
+  {
+    id: 'sb-hyb-4',
+    topic: 4,
+    difficulty: 'Difícil',
+    question: "En un procés selectiu d'accés al cos de bombers es produeix un empat final en la puntuació entre una candidata i un candidat igualment capacitats. D'acord amb la Llei 17/2015 d'igualtat efectiva, quin criteri de desempat s'aplica si les dones representen el 5% de la plantilla del cos?",
+    options: [
+      'Es resol automàticament per ordre alfabètic del primer cognom.',
+      'Té preferència la persona del sexe menys representat (la candidata), en ser la seva presència inferior al 40%.',
+      'Es repeteix obligatòriament la prova física de resistència.',
+      'Té preferència la persona de major edat sense excepció.'
+    ],
+    correctIndex: 1,
+    explanation: 'La Llei 17/2015 (i el TREBEP / legislació d\'igualtat) preveu l\'acció positiva en cas d\'empat entre igualment capacitats a favor del sexe menys representat quan la seva presència al cos o escala sigui inferior al 40%.'
+  },
+  {
+    id: 'sb-hyb-5',
+    topic: 5,
+    difficulty: 'Mitjana',
+    question: "Una persona ciutadana presenta una instància redactada en castellà en un registre de la Generalitat i sol·licita expressament que la notificació de la resolució se li faci en català. Com ha d'actuar l'Administració segons la Llei 1/1998 de Política Lingüística?",
+    options: [
+      'L\'ha de notificar en castellà obligatòriament perquè és la llengua de la sol·licitud inicial.',
+      'Ha de notificar-la en català, d\'acord amb l\'elecció expressa de la persona interessada.',
+      'Només pot notificar-la en català si l\'expedient s\'inicia d\'ofici.',
+      'Ha d\'exigir que presenti una nova instància en català prèviament.'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons la Llei 1/1998 (art. 10), en els procediments administratius els ciutadans tenen dret a rebre la resposta/notificació en la llengua oficial que elegeixin.'
+  },
+  {
+    id: 'sb-hyb-6',
+    topic: 6,
+    difficulty: 'Difícil',
+    question: "Durant una intervenció conjunta en un incendi forestal on coincideixen bombers funcionaris de la Generalitat i bombers voluntaris, qui assumeix la direcció operativa i quina consideració jurídica tenen els bombers voluntaris mentre estan en acte de servei?",
+    options: [
+      'Dirigeix sempre l\'alcalde del municipi; els voluntaris no tenen consideració d\'agents de l\'autoritat.',
+      'Els bombers funcionaris de la Generalitat assumeixen la direcció; durant el servei, els bombers tenen la consideració d\'agents de l\'autoritat.',
+      'Dirigeix el cap de guàrdia voluntari si ha arribat primer durant tota l\'emergència.',
+      'Només tenen consideració d\'agents de l\'autoritat els bombers de l\'escala superior.'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons la Llei 5/1994, en l\'exercici de les seves funcions els bombers tenen la consideració d\'agents de l\'autoritat, i en actuacions conjuntes la direcció correspon al comandament professional dels Bombers de la Generalitat.'
+  },
+  {
+    id: 'sb-hyb-7',
+    topic: 7,
+    difficulty: 'Mitjana',
+    question: "Dins l'organigrama actual del Departament d'Interior i Seguretat Pública, de qui depèn orgànicament la Direcció General de Prevenció, Extinció d'Incendis i Salvaments (DGPEIS)?",
+    options: [
+      'Directament del Parlament de Catalunya.',
+      'Del Departament d\'Interior i Seguretat Pública (a través de la Secretaria General / estructura del Departament).',
+      'De la Direcció General de la Policia (Mossos d\'Esquadra).',
+      'Del Ministeri de l\'Interior estatal.'
+    ],
+    correctIndex: 1,
+    explanation: 'La DGPEIS (de la qual depèn operativament el Cos de Bombers de la Generalitat) forma part de l\'estructura orgànica del Departament d\'Interior i Seguretat Pública de la Generalitat de Catalunya.'
+  },
+  {
+    id: 'sb-hyb-8',
+    topic: 8,
+    difficulty: 'Difícil',
+    question: "Un proporcionador d'escuma al 3% treballa amb un cabal total de mescla escumant de 400 L/min alimentant una llança de baixa expansió amb coeficient 1:10. Quants litres d'escumogen per minut consumeix i quin cabal d'escuma acabada genera?",
+    options: [
+      '12 L/min d\'escumogen i 4.000 L/min d\'escuma.',
+      '120 L/min d\'escumogen i 4.000 L/min d\'escuma.',
+      '12 L/min d\'escumogen i 400 L/min d\'escuma.',
+      '3 L/min d\'escumogen i 1.200 L/min d\'escuma.'
+    ],
+    correctIndex: 0,
+    explanation: 'Consum d\'escumogen = 3% de 400 L/min = 0,03 × 400 = 12 L/min. Cabal d\'escuma = cabal mescla × índex d\'expansió = 400 × 10 = 4.000 L/min.'
+  },
+  {
+    id: 'sb-hyb-9',
+    topic: 11,
+    difficulty: 'Difícil',
+    question: "Dues resistències de 12 Ω i 24 Ω es connecten en paral·lel a una bateria de 24 V en corrent continu. Quina intensitat total subministra la bateria i quina potència total dissipa el circuit?",
+    options: [
+      '0,67 A i 16 W.',
+      '3,0 A i 72 W.',
+      '2,0 A i 48 W.',
+      '3,0 A i 24 W.'
+    ],
+    correctIndex: 1,
+    explanation: 'Resistència equivalent en paral·lel: R_eq = (12·24)/(12+24) = 288/36 = 8 Ω. Intensitat total: I = V / R_eq = 24 / 8 = 3 A. Potència: P = V · I = 24 · 3 = 72 W.'
+  },
+  {
+    id: 'sb-hyb-10',
+    topic: 12,
+    difficulty: 'Mitjana',
+    question: "En una instal·lació interior de subministrament d'aigua d'un edifici, quin element evita el retorn d'aigua des de la xarxa privada cap a la xarxa pública de distribució?",
+    options: [
+      'La vàlvula reductora de pressió.',
+      'La vàlvula de retenció (antiretorn).',
+      'El vas d\'expansió tancat.',
+      'El purgador automàtic.'
+    ],
+    correctIndex: 1,
+    explanation: 'La vàlvula de retenció (o antiretorn) permet el pas del fluid en un únic sentit i impedeix la contaminació o retorn d\'aigua cap a la xarxa pública.'
+  },
+  {
+    id: 'sb-hyb-11',
+    topic: 14,
+    difficulty: 'Difícil',
+    question: "En un mapa topogràfic a escala 1:25.000, la distància en línia recta mesurada sobre el plànol entre dues torres de guaita és de 8 cm, i la diferència de cota entre ambdues és de 150 m. Quin és el pendent mitjà del terreny?",
+    options: [
+      '3,75 %.',
+      '7,5 %.',
+      '15,0 %.',
+      '18,75 %.'
+    ],
+    correctIndex: 1,
+    explanation: 'Distància horitzontal real = 8 cm × 25.000 = 200.000 cm = 2.000 m. Pendent (%) = (desnivell / distància horitzontal) × 100 = (150 / 2.000) × 100 = 7,5%.'
+  },
+  {
+    id: 'sb-hyb-12',
+    topic: 16,
+    difficulty: 'Difícil',
+    question: "En un rescat de persones atrapades dins la cabina d'un ascensor elèctric convencional aturat entre dues plantes, quina és la primera maniobra de seguretat obligatòria a la sala de màquines?",
+    options: [
+      'Obrir directament el fre electromecànic sense tocar el quadre elèctric.',
+      'Desconnectar l\'interruptor general de força motriu (mantenint l\'enllumenat si és independent) per evitar l\'arrencada sobtada.',
+      'Tallar els cables de tracció amb cisalla hidràulica.',
+      'Polsar l\'ordre de baixada ràpida des del quadre de maniobra.'
+    ],
+    correctIndex: 1,
+    explanation: 'Abans de moure la cabina manualment (alliberant fre i accionant el volant), cal tallar l\'alimentació de força motriu per impedir un moviment intempestiu que pugui atrapar els rescatadors o els ocupants.'
+  },
+  {
+    id: 'sb-hyb-13',
+    topic: 17,
+    difficulty: 'Mitjana',
+    question: "En un barranc profund o un aparcament subterrani sense cobertura de repetidors de la xarxa RESCAT (TETRA), quin mode de funcionament permet comunicar els terminals portàtils directament entre si?",
+    options: [
+      'Mode TMO (Trunked Mode Operation).',
+      'Mode DMO (Direct Mode Operation).',
+      'Mode Roaming automàtic.',
+      'Mode DMR encriptat de repetidor.'
+    ],
+    correctIndex: 1,
+    explanation: 'El mode DMO (Direct Mode Operation) permet la comunicació directa punt a punt entre terminals TETRA sense passar per la infraestructura de repetidors (TMO).'
+  },
+  {
+    id: 'sb-hyb-14',
+    topic: 19,
+    difficulty: 'Difícil',
+    question: "Un camió autobomba circula en emergència per un tram recte amb el mateix coeficient d'adherència. Si duplica la seva velocitat de 36 km/h (10 m/s) a 72 km/h (20 m/s), com varia la distància de frenada pura (sense comptar el temps de reacció)?",
+    options: [
+      'Es duplica (× 2).',
+      'Es triplica (× 3).',
+      'Es quadruplica (× 4).',
+      'Es multiplica per 1,41 (√2).'
+    ],
+    correctIndex: 2,
+    explanation: 'La distància de frenada és proporcional al quadrat de la velocitat: d = v² / (2·μ·g). En duplicar la velocitat (×2), la distància de frenada es multiplica per 2² = 4.'
+  },
+  {
+    id: 'sb-hyb-15',
+    topic: 21,
+    difficulty: 'Difícil',
+    question: "Davant d'una fuita greu en una indústria química inclosa dins la directiva Seveso fora del camp de Tarragona, quin pla especial de Protecció Civil de Catalunya s'activa?",
+    options: [
+      'PROCICAT.',
+      'PLASEQCAT (i al camp de Tarragona, el PLASEQTA).',
+      'TRANSCAT.',
+      'CAMCAT.'
+    ],
+    correctIndex: 1,
+    explanation: 'El PLASEQCAT és el Pla d\'emergència exterior del sector químic de Catalunya (establiments Seveso), mentre que al Camp de Tarragona s\'aplica el PLASEQTA; el TRANSCAT és per a transport de mercaderies perilloses.'
+  },
+  {
+    id: 'sb-hyb-16',
+    topic: 22,
+    difficulty: 'Mitjana',
+    question: "En un incendi industrial amb el SISCOM desplegat en dos sectors d'intervenció, arriba una dotació de reforç procedent d'un altre parc sense instrucció específica de sector. On s'ha de dirigir inicialment?",
+    options: [
+      'Directament a la primera línia de foc del Sector 1 per iniciativa pròpia.',
+      'Al Centre de Recepció de Mitjans (CRM) per registrar-se i esperar assignació del Comandament.',
+      'A la Zona Calenta a muntar una instal·lació d\'escuma.',
+      'Al Puesto de Mando Avançat a parlar directament amb el màxim càrrec polític.'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons la doctrina SISCOM, les dotacions de reforç sense assignació directa s\'incorporen al CRM (Centre de Recepció de Mitjans) per garantir el control, la seguretat i la unitat de comandament.'
+  },
+  {
+    id: 'sb-hyb-17',
+    topic: 24,
+    difficulty: 'Difícil',
+    question: "En arribar a un incendi confinat dins un local sense finestres, observes fum dens fosc/groguenc que entra i surt a polsacions per sota de la porta, vidres bruts de sutge i cap flama visible. Quin fenomen és imminent i quina actuació inicial és prioritària?",
+    options: [
+      'Rollover; obrir la porta de bat a bat per ventilar ràpidament.',
+      'Backdraft (explosió de fum); evitar l\'entrada sobtada d\'aire, refredar gasos i preparar ventilació controlada i línia en polvorització.',
+      'Flashover per excés d\'oxigen; entrar sense línia d\'aigua a cercar el focus.',
+      'BLEVE; aplicar CO₂ sobre la porta.'
+    ],
+    correctIndex: 1,
+    explanation: 'Les polsacions de fum, absència de flama per manca d\'O₂ i alta temperatura són senyals clàssics de risc imminent de Backdraft. Una entrada sobtada d\'aire provocaria la deflagració instantània.'
+  },
+  {
+    id: 'sb-hyb-18',
+    topic: 25,
+    difficulty: 'Difícil',
+    question: "Un incendi forestal puja per un pendent del 30% empès pel vent a favor, fent inviable i insegur l'atac directe al cap del foc. Des d'on s'ha d'ancorar l'atac segons la tàctica bàsica d'extinció?",
+    options: [
+      'Des del cap en descens sense ancoratge.',
+      'Ancorant a la cua o zona ja cremada i progressant pels flancs cap al cap.',
+      'Únicament al focus secundari més allunyat sense assegurar la cua.',
+      'Esperant que el foc arribi a la carena abans de desplegar cap línia.'
+    ],
+    correctIndex: 1,
+    explanation: 'Quan el cap té massa intensitat, la regla bàsica de seguretat i eficàcia és ancorar la maniobra en zona segura (cua / cremat) i tancar progressivament els flancs cap al cap.'
+  },
+  {
+    id: 'sb-hyb-19',
+    topic: 26,
+    difficulty: 'Mitjana',
+    question: "En l'extinció d'un vehicle elèctric amb la bateria de tracció d'ió-liti (Classe L) en embalaments tèrmics (thermal runaway), quina estratègia d'extinció és correcta?",
+    options: [
+      'Una descàrrega curta de CO₂ i donar el servei per extingit en 2 minuts.',
+      'Refrigeració sostinguda amb abundant aigua sobre el paquet de bateries i vigilància posterior per risc de reignició.',
+      'Aplicar pols ABC a pressió i marxar immediatament.',
+      'Cobrir el vehicle amb una manta de cotó sec sense aplicar aigua.'
+    ],
+    correctIndex: 1,
+    explanation: 'Les bateries Li-ion en embalament tèrmic generen oxigen internament i alliberen molta calor; requereixen refrigeració prolongada amb gran cabal d\'aigua i seguiment per possible reignició diferida.'
+  },
+  {
+    id: 'sb-hyb-20',
+    topic: 27,
+    difficulty: 'Difícil',
+    question: "En un accident d'un camió cisterna bolcat amb fuita de líquid, el panell taronja mostra «33» a la part superior i «1203» a la inferior. Què significa exactament el codi?",
+    options: [
+      'Gas tòxic inflamable (propà, ONU 1203).',
+      'Líquid molt inflamable (33) corresponent a benzina / gasolina (ONU 1203).',
+      'Matèria sòlida corrosiva que reacciona violentament amb l\'aigua.',
+      'Líquid comburent a alta temperatura (1203 °C).'
+    ],
+    correctIndex: 1,
+    explanation: 'Al panell taronja ADR: el 33 indica líquid molt inflamable (punt d\'inflamació < 23 °C) i el número ONU 1203 correspon a la benzina.'
+  },
+  {
+    id: 'sb-hyb-21',
+    topic: 29,
+    difficulty: 'Difícil',
+    question: "En un Incident amb Múltiples Víctimes (IMV), apliques el triatge START a un ferit que NO pot caminar per una fractura tancada de fèmur, però respira a 22 rpm, té un emplenament capil·lar d'1,5 segons i obeeix ordres senzilles. Quina targeta li assignes?",
+    options: [
+      'Verda (Prioritat 3).',
+      'Groga (Prioritat 2).',
+      'Vermella (Prioritat 1).',
+      'Negra / Blava (Prioritat 0).'
+    ],
+    correctIndex: 1,
+    explanation: 'Segons el mètode START: no camina (descarta Verda), respira < 30 rpm, perfusió < 2 s i estat mental normal (obeeix ordres) → Targeta Groga (prioritat 2, urgència demorable).'
+  },
+  {
+    id: 'sb-hyb-22',
+    topic: 30,
+    difficulty: 'Mitjana',
+    question: "Després del col·lapse d'un edifici, un forjat queda inclinat formant un angle agut en recolzar-se un extrem sobre el terra i l'altre sobre un mur mestre que ha resistit. Com s'anomena aquest tipus de col·lapse on sovint es formen espais vitals?",
+    options: [
+      'Col·lapse en «V» invertida sense buits.',
+      'Col·lapse inclinat o en falca (lean-to collapse).',
+      'Col·lapse en sandvitx (pancake) totalment compacte.',
+      'Col·lapse per torsió helicoïdal.'
+    ],
+    correctIndex: 1,
+    explanation: 'El col·lapse inclinat (lean-to) es produeix quan un extrem del forjat falla mentre l\'altre resta suportat per un mur o pilar, generant un espai triangular segur sota la llosa inclinada.'
+  },
+  {
+    id: 'sb-hyb-23',
+    topic: 32,
+    difficulty: 'Difícil',
+    question: "Abans de tallar un pilar B o C amb la cisalla hidràulica en un turisme modern amb airbags de cortina no desplegats, quina actuació prèvia és obligatòria?",
+    options: [
+      'Tallar directament per la part més alta del pilar sense retirar res.',
+      'Retirar els guarneixements interiors («pelar» els pilars) per localitzar els cartutxos generadors de gas i evitar tallar-los.',
+      'Punxar el cartutx amb un tornavís per despressuritzar-lo.',
+      'Desconnectar només el pol positiu de la bateria i tallar immediatament.'
+    ],
+    correctIndex: 1,
+    explanation: 'Els guarneixements amaguen cartutxos d\'alta pressió (pirotècnics/gas) i reforços d\'acer d\'alta resistència. Cal «pelar» sempre la zona abans de tallar per evitar projeccions o trencament de fulles.'
+  },
+  {
+    id: 'sb-hyb-24',
+    topic: 33,
+    difficulty: 'Difícil',
+    question: "Abans d'accedir a un pou o arqueta de clavegueram de 5 m per rescatar una persona inconscient, com s'ha de fer la lectura amb el detector multigas?",
+    options: [
+      'Mesurar només a la boca superior durant 3 segons.',
+      'Mesurar des de l\'exterior amb sonda a diferents altures (superior, mitjana i inferior) per detectar gasos tant més lleugers com més densos que l\'aire.',
+      'Baixar primer sense detector i mesurar un cop al fons.',
+      'Mesurar únicament el nivell de CO₂.'
+    ],
+    correctIndex: 1,
+    explanation: 'Els gasos tenen densitats diferents (el metà puja, l\'H₂S i el CO₂ s\'acumulen al fons). Cal mostrejar des de l\'exterior a tot el perfil vertical (O₂, LEL i tòxics).'
+  },
+  {
+    id: 'sb-hyb-25',
+    topic: 34,
+    difficulty: 'Mitjana',
+    question: "En un episodi d'inundacions, a partir de quina alçada aproximada d'aigua en moviment (riuada o gual inundat) un turisme convencional perd adherència per flotació i pot ser arrossegat pel corrent?",
+    options: [
+      'Només a partir d\'1,5 metres (quan cobreix el sostre).',
+      'Entre 30 i 50 cm d\'aigua corrent.',
+      'Només si supera els 2 metres de profunditat.',
+      'Un turisme no pot ser arrossegat mai si té el fre de mà posat.'
+    ],
+    correctIndex: 1,
+    explanation: 'Amb només 15 cm d\'aigua corrent es pot perdre el control de la direcció, i entre 30 i 50 cm la força d\'empenyiment i flotació ja pot arrossegar la majoria de turismes.'
   }
 ];

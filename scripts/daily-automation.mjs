@@ -331,7 +331,10 @@ async function generateDailyQuestions(todayISO, catalog) {
 
   for (const t of catalog) {
     const prompt = `Genera exactament 5 preguntes tipus test d'oposició de Bombers de la Generalitat en català sobre el "Tema ${t.number}: ${t.title}".
-IMPORTANT: Almenys 3 de les 5 preguntes han de ser "punyeteres" (nivell Mitjà/Difícil): dues opcions han de ser pràcticament idèntiques i només s'han de diferenciar per un petit detall decisiu (un termini exacte, un òrgan competent, "integrat" vs "integral", "contínua" vs "discontínua", una excepció legal, un ordre de maniobra o un signe matemàtic) que obligui a dominar el temari.
+ESTIL HÍBRID D'OPOSICIÓ (combina les dues tècniques):
+1. Casos pràctics i escenaris aplicats: planteja situacions concretes de servei, taules del manual o exemples numèrics reals (p. ex. aplicar un codi de fitxa, avaluar si un supòsit compleix una definició normativa o detectar trampes en dades fixes + variables). En temes de càlcul (Física T9, Química T10, Electricitat T11, Hidràulica T13, Cartografia T14), inclou almenys 2 problemes de càlcul amb dades realistes i distractors basats en errors típics.
+2. Precisió literal d'oposició ("punyeteres"): almenys 3 de les 5 preguntes han de tenir dues opcions pràcticament idèntiques diferenciades només per un detall decisiu (un termini exacte, un òrgan competent, "integrat" vs "integral", "gradual" vs "sobtat", una excepció legal, un ordre de maniobra o una unitat).
+No mencionis mai el nom de cap aplicació externa ni simulacre.
 Retorna NOMÉS un JSON array vàlid amb 5 objectes amb aquest esquema exacte:
 [{"difficulty":"Fàcil|Mitjà|Difícil","question":"...","options":["A","B","C","D"],"correctIndex":0,"explanation":"..."}]`;
 
