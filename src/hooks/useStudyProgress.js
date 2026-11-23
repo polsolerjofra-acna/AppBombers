@@ -394,7 +394,51 @@ export function useStudyProgress() {
 
   const replaceProgressFromCloud = (cloudState) => {
     if (!cloudState || typeof cloudState !== 'object') return;
-    setProgress(applyStatsResetIfNeeded(cloudState));
+    const normalizedCloud = applyStatsResetIfNeeded(cloudState);
+    setProgress((localPrev) => {
+      // Si el núvol és d'una època anterior al reset, respecta el reset
+      if (localPrev.statsResetEpoch !== normalizedCloud.statsResetEpoch) {
+        return normalizedCloud;
+      }
+
+      // Fusiona spacedRepetition conservant qualsevol repàs local més recent que el del núvol
+      const mergedSpaced = { ...(normalizedCloud.spacedRepetition || {}) };
+      Object.entries(localPrev.spacedRepetition || {}).forEach(([tid, localSp]) => {
+        const cloudSp = mergedSpaced[tid];
+        if (!cloudSp) {
+          mergedSpaced[tid] = localSp;
+          return;
+        }
+        const localDate = localSp?.lastStudiedAt || '';
+        const cloudDate = cloudSp?.lastStudiedAt || '';
+        const localCount = localSp?.reviewsCount || 0;
+        const cloudCount = cloudSp?.reviewsCount || 0;
+        if (localDate > cloudDate || (localDate === cloudDate && localCount > cloudCount)) {
+          mergedSpaced[tid] = localSp;
+        }
+      });
+
+      // Fusiona reviewHistory conservant entrades locals del mateix dia que encara no hagin pujat
+      const mergedHist = { ...(normalizedCloud.reviewHistory || {}) };
+      Object.entries(localPrev.reviewHistory || {}).forEach(([dateKey, localList]) => {
+        if (!Array.isArray(localList)) return;
+        const cloudList = Array.isArray(mergedHist[dateKey]) ? mergedHist[dateKey] : [];
+        const byTopic = new Map(cloudList.map((item) => [item.topicId, item]));
+        localList.forEach((item) => {
+          const existing = byTopic.get(item.topicId);
+          if (!existing || (item.stage ?? 0) > (existing.stage ?? 0)) {
+            byTopic.set(item.topicId, item);
+          }
+        });
+        mergedHist[dateKey] = Array.from(byTopic.values());
+      });
+
+      return {
+        ...normalizedCloud,
+        spacedRepetition: mergedSpaced,
+        reviewHistory: mergedHist
+      };
+    });
   };
 
   // Completa una volta d'estudi d'un tema (1a volta -> 2a volta -> 3a...)

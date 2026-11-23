@@ -493,7 +493,7 @@ export default function App() {
       ) {
         return;
       }
-      if (Date.now() - lastLocalChangeAtRef.current < 5000) {
+      if (Date.now() - lastLocalChangeAtRef.current < 15000) {
         return;
       }
       applyingRemoteRef.current = true;
@@ -586,10 +586,13 @@ export default function App() {
         progress
       )
         .then(() => setSyncStatus('synced'))
-        .catch(() => setSyncStatus('idle'));
-    }, 900);
+        .catch((err) => {
+          console.error('Error sincronitzant amb Firebase:', err);
+          setSyncStatus('idle');
+        });
+    }, 250);
     return () => clearTimeout(timer);
-  }, [cloudUser, progress, currentTopic]);
+  }, [cloudUser, progress]);
 
   const getViewLabel = (view, topicId) => {
     if (view === 'topic' && topicId) {
