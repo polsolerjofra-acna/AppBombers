@@ -53513,18 +53513,6 @@ function TopicView({
               <span>Punts Clau PDF</span>
             </button>
             <button
-              onClick={() => onSetTopicMark(topic.id, 'completed', totalPages)}
-              className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border transition-all ${
-                topicGlobalStatus === 'completed'
-                  ? 'bg-emerald-600 text-white border-emerald-600'
-                  : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-500'
-              }`}
-            >
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              {topicGlobalStatus === 'completed' ? 'Tema Completat' : 'Completar Tema'}
-            </button>
-
-            <button
               onClick={() => onSetTopicMark(topic.id, 'review', totalPages)}
               className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold border transition-all ${
                 topicGlobalStatus === 'review'
@@ -53536,25 +53524,56 @@ function TopicView({
               {topicGlobalStatus === 'review' ? 'Tema per Repassar' : 'Marcar per Repassar'}
             </button>
 
-            {onMarkTopicReviewed && (
-              <button
-                onClick={() => {
-                  const res = onMarkTopicReviewed(topic.id);
-                  if (res && res.nextReviewAt) {
-                    setReviewConfirmModal({
-                      topicTitle: `Tema ${topic.number} · ${topic.title}`,
-                      nextReviewAt: res.nextReviewAt,
-                      intervalDays: res.intervalDays
-                    });
+            {onMarkTopicReviewed && (() => {
+              const sp = progress?.spacedRepetition?.[topic.id];
+              const todayISO = new Date().toISOString().split('T')[0];
+              const isReviewedUpToDate = Boolean(sp?.nextReviewAt && sp.nextReviewAt > todayISO);
+              return (
+                <button
+                  onClick={() => {
+                    const res = onMarkTopicReviewed(topic.id);
+                    if (res && res.nextReviewAt) {
+                      setReviewConfirmModal({
+                        topicTitle: `Tema ${topic.number} · ${topic.title}`,
+                        nextReviewAt: res.nextReviewAt,
+                        intervalDays: res.intervalDays
+                      });
+                    }
+                  }}
+                  className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold border transition-all ${
+                    isReviewedUpToDate
+                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600 shadow-xs'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-emerald-400 dark:border-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/40'
+                  }`}
+                  title={
+                    isReviewedUpToDate
+                      ? `Repassat! Pròxim repàs: ${sp.nextReviewAt}`
+                      : "Toca repassar aquest tema! Clica per marcar-lo com a repassat i programar el següent dia"
                   }
-                }}
-                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
-                title="Marca aquest tema com a repassat avui i programa'l automàticament al següent interval de la regla de l'oblit"
-              >
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Repassat ✓</span>
-              </button>
-            )}
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>
+                    {isReviewedUpToDate
+                      ? `Repassat ✓ (${sp.nextReviewAt.slice(5).split('-').reverse().join('/')})`
+                      : 'Repassat'}
+                  </span>
+                </button>
+              );
+            })()}
+
+            <button
+              type="button"
+              onClick={() => setShowExpandedSummary((v) => !v)}
+              className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold border transition-all ${
+                showExpandedSummary
+                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
+                  : 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-800 hover:bg-indigo-100'
+              }`}
+              title="Desplega una ampliació esquemàtica amb més conceptes i detalls d'aquest tema"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{showExpandedSummary ? 'Amagar ampliació' : 'Ampliar resum (+ conceptes)'}</span>
+            </button>
 
             {onOpenPracticeForTopic && (
               <button
@@ -53568,6 +53587,98 @@ function TopicView({
             )}
           </div>
         </div>
+
+        {showExpandedSummary && (() => {
+          const seenText = new Set();
+          const detailSections = [];
+          pages
+            .filter((p) => !p.isSummary)
+            .forEach((p) => {
+              const bullets = [];
+              (p.blocks || []).forEach((b) => {
+                if (b.type === 'text' && Array.isArray(b.paragraphs)) {
+                  b.paragraphs.forEach((para) => {
+                    const clean = String(para || '').trim();
+                    const key = clean.slice(0, 80).toLowerCase();
+                    if (clean && !seenText.has(key)) {
+                      seenText.add(key);
+                      bullets.push(clean);
+                    }
+                  });
+                } else if (b.type === 'table' && Array.isArray(b.rows)) {
+                  b.rows.slice(0, 6).forEach((row) => {
+                    const joined = Array.isArray(row) ? row.join(' — ') : String(row);
+                    const key = joined.slice(0, 80).toLowerCase();
+                    if (joined && !seenText.has(key)) {
+                      seenText.add(key);
+                      bullets.push(joined);
+                    }
+                  });
+                } else if (b.type === 'easy' && b.takeaway) {
+                  const key = b.takeaway.slice(0, 80).toLowerCase();
+                  if (!seenText.has(key)) {
+                    seenText.add(key);
+                    bullets.push(`Clau: ${b.takeaway}`);
+                  }
+                }
+              });
+              if (bullets.length > 0) {
+                detailSections.push({
+                  title: p.title || p.shortLabel || `Pàgina ${p.pageNumber}`,
+                  bullets: bullets.slice(0, 6)
+                });
+              }
+            });
+
+          const kpEntry = KEY_POINTS_BY_TOPIC[topic.number];
+          const kpBullets = kpEntry && Array.isArray(kpEntry.points) ? kpEntry.points : [];
+
+          return (
+            <div className="mt-4 rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/50 dark:bg-indigo-950/20 p-4 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
+                  Ampliació Esquemàtica del Tema {topic.number} (Més conceptes sense redundàncies)
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowExpandedSummary(false)}
+                  className="text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:underline"
+                >
+                  Tancar
+                </button>
+              </div>
+              {kpBullets.length > 0 && (
+                <div className="rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 p-3.5 space-y-1.5">
+                  <div className="text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
+                    Punts Clau i Dades Complementàries
+                  </div>
+                  <ul className="list-disc pl-5 space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                    {kpBullets.slice(0, 8).map((pt, i) => (
+                      <li key={i}>{typeof pt === 'string' ? pt : pt.text || pt.title || JSON.stringify(pt)}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {detailSections.map((sec, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3.5 space-y-1.5"
+                  >
+                    <div className="text-xs font-extrabold text-slate-900 dark:text-white">
+                      {sec.title}
+                    </div>
+                    <ul className="list-disc pl-4 space-y-1 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {sec.bullets.map((b, bi) => (
+                        <li key={bi}>{b}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {showAudioPlayer && (
           <div className="mt-4">
@@ -53829,18 +53940,6 @@ function TopicView({
               {/* Controls d'estat de la pàgina individual */}
               <div className="flex flex-wrap items-center gap-2">
                 <button
-                  onClick={() => onSetPageMark(topic.id, currentPageNumber, 'completed')}
-                  className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold border transition-all ${
-                    currentPageStatus === 'completed'
-                      ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                      : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-400'
-                  }`}
-                >
-                  <CheckCircle2 className="w-4 h-4" />
-                  {currentPageStatus === 'completed' ? 'Pàgina Completada' : 'Completar Pàgina'}
-                </button>
-
-                <button
                   onClick={() => onSetPageMark(topic.id, currentPageNumber, 'review')}
                   className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold border transition-all ${
                     currentPageStatus === 'review'
@@ -53972,108 +54071,6 @@ function TopicView({
                 topicId={topic.id}
                 pageNumber={currentPageNumber}
               />
-
-              {/* Ampliar resum: contingut detallat sense redundàncies */}
-              <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/50 dark:bg-indigo-950/20 p-4 space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div>
-                    <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-                      Ampliació Esquemàtica del Tema {topic.number}
-                    </div>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-400">
-                      Detalls addicionals, classificacions i punts secundaris del temari sense repeticions.
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setShowExpandedSummary((v) => !v)}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-3.5 py-2 text-xs font-extrabold shadow-xs"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>{showExpandedSummary ? 'Amagar ampliació' : 'Ampliar resum (+ detall)'}</span>
-                  </button>
-                </div>
-
-                {showExpandedSummary && (() => {
-                  const seenText = new Set();
-                  const detailSections = [];
-                  pages
-                    .filter((p) => !p.isSummary)
-                    .forEach((p) => {
-                      const bullets = [];
-                      (p.blocks || []).forEach((b) => {
-                        if (b.type === 'text' && Array.isArray(b.paragraphs)) {
-                          b.paragraphs.forEach((para) => {
-                            const clean = String(para || '').trim();
-                            const key = clean.slice(0, 80).toLowerCase();
-                            if (clean && !seenText.has(key)) {
-                              seenText.add(key);
-                              bullets.push(clean);
-                            }
-                          });
-                        } else if (b.type === 'table' && Array.isArray(b.rows)) {
-                          b.rows.slice(0, 6).forEach((row) => {
-                            const joined = Array.isArray(row) ? row.join(' — ') : String(row);
-                            const key = joined.slice(0, 80).toLowerCase();
-                            if (joined && !seenText.has(key)) {
-                              seenText.add(key);
-                              bullets.push(joined);
-                            }
-                          });
-                        } else if (b.type === 'easy' && b.takeaway) {
-                          const key = b.takeaway.slice(0, 80).toLowerCase();
-                          if (!seenText.has(key)) {
-                            seenText.add(key);
-                            bullets.push(`Clau: ${b.takeaway}`);
-                          }
-                        }
-                      });
-                      if (bullets.length > 0) {
-                        detailSections.push({
-                          title: p.title || p.shortLabel || `Pàgina ${p.pageNumber}`,
-                          bullets: bullets.slice(0, 6)
-                        });
-                      }
-                    });
-
-                  const kpEntry = KEY_POINTS_BY_TOPIC[topic.number];
-                  const kpBullets = kpEntry && Array.isArray(kpEntry.points) ? kpEntry.points : [];
-
-                  return (
-                    <div className="space-y-3 pt-2 border-t border-indigo-200/70 dark:border-indigo-900/40">
-                      {kpBullets.length > 0 && (
-                        <div className="rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 p-3.5 space-y-1.5">
-                          <div className="text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
-                            Punts Clau i Dades Complementàries
-                          </div>
-                          <ul className="list-disc pl-5 space-y-1 text-xs text-slate-700 dark:text-slate-300">
-                            {kpBullets.slice(0, 8).map((pt, i) => (
-                              <li key={i}>{typeof pt === 'string' ? pt : pt.text || pt.title || JSON.stringify(pt)}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {detailSections.map((sec, idx) => (
-                          <div
-                            key={idx}
-                            className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3.5 space-y-1.5"
-                          >
-                            <div className="text-xs font-extrabold text-slate-900 dark:text-white">
-                              {sec.title}
-                            </div>
-                            <ul className="list-disc pl-4 space-y-1 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
-                              {sec.bullets.map((b, bi) => (
-                                <li key={bi}>{b}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })()}
-              </div>
             </div>
 
             {/* Peu de Paginació ("Anterior" / "Següent") */}
