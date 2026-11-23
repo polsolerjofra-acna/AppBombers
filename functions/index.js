@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 admin.initializeApp();
 const db = admin.firestore();
 
-const APP_BASE_URL = process.env.APP_BASE_URL || 'https://polsolerjofra-acna.github.io/AppBombers/';
+const APP_BASE_URL = process.env.APP_BASE_URL || 'https://appbombers-d22ed.web.app/';
 
 function getMadridTodayISO() {
   const parts = new Intl.DateTimeFormat('en-CA', {

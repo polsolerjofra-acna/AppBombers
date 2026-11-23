@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const APP_BASE_URL = process.env.APP_BASE_URL || 'https://polsolerjofra-acna.github.io/AppBombers/';
+const APP_BASE_URL = process.env.APP_BASE_URL || 'https://appbombers-d22ed.web.app/';
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 const SMTP_USER = process.env.SMTP_USER || '';
