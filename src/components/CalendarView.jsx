@@ -105,10 +105,18 @@ export default function CalendarView({
     calendarCells.push(`${viewMonth.year}-${mStr}-${dStr}`);
   }
 
+  const isDoneOnDate = (topicId, isoDate) => {
+    const hist = reviewHistory[isoDate] || [];
+    if (hist.some((item) => item.topicId === topicId)) return true;
+    const sp = spacedMap[topicId];
+    return Boolean(sp?.lastStudiedAt && sp.lastStudiedAt === isoDate);
+  };
+
   const getReviewsForDate = (isoDate) => {
     return topics.filter((t) => {
       const sp = spacedMap[t.id];
       if (!sp?.nextReviewAt) return false;
+      if (isDoneOnDate(t.id, isoDate)) return false;
       if (isoDate === todayISO) {
         return sp.nextReviewAt <= todayISO;
       }
@@ -119,9 +127,13 @@ export default function CalendarView({
   const getPlannedForDate = (isoDate) => {
     const directIds = studyPlan[isoDate] || [];
     if (isoDate !== todayISO) {
-      return directIds.map((id) => topics.find((t) => t.id === id)).filter(Boolean);
+      return directIds
+        .map((id) => topics.find((t) => t.id === id))
+        .filter((t) => t && !isDoneOnDate(t.id, isoDate));
     }
-    // Si és avui, arrosseguem també els temes manuals de dies anteriors que no s'han repassat
+    // Si és avui, arrosseguem també els temes manuals de dies anteriors que no s'han repassat,
+    // però excloem qualsevol tema que ja s'hagi marcat com a repassat avui o que ja sigui a repassos d'avui.
+    const reviewIdsToday = new Set(getReviewsForDate(todayISO).map((t) => t.id));
     const merged = new Set(directIds);
     Object.keys(studyPlan).forEach((d) => {
       if (d < todayISO && Array.isArray(studyPlan[d])) {
@@ -129,18 +141,36 @@ export default function CalendarView({
       }
     });
     return Array.from(merged)
+      .filter((id) => !isDoneOnDate(id, todayISO) && !reviewIdsToday.has(id))
       .map((id) => topics.find((t) => t.id === id))
       .filter(Boolean);
   };
 
   const getDoneForDate = (isoDate) => {
     const items = reviewHistory[isoDate] || [];
-    return items
-      .map((entry) => {
-        const t = topics.find((x) => x.id === entry.topicId);
-        return t ? { ...entry, topic: t } : null;
-      })
-      .filter(Boolean);
+    const seen = new Set();
+    const list = [];
+    items.forEach((entry) => {
+      const t = topics.find((x) => x.id === entry.topicId);
+      if (t && !seen.has(t.id)) {
+        seen.add(t.id);
+        list.push({ ...entry, topic: t });
+      }
+    });
+    // També incloem temes estudiats/repassats aquella data abans d'existir reviewHistory
+    topics.forEach((t) => {
+      const sp = spacedMap[t.id];
+      if (sp?.lastStudiedAt === isoDate && !seen.has(t.id)) {
+        seen.add(t.id);
+        list.push({
+          topicId: t.id,
+          stage: sp.reviewStage || 0,
+          nextReviewAt: sp.nextReviewAt || '',
+          topic: t
+        });
+      }
+    });
+    return list;
   };
 
   const handleMarkReviewedWithConfirm = (topic) => {
@@ -616,85 +646,35 @@ export default function CalendarView({
                           {rounds === 0 ? '1a Volta' : `Volta ${rounds + 1} (${rounds} ✓)`}
                         </span>
                       </div>
-                      <h4 className="text-xs font-extrabold text-slate-900 dark:text-white">
-                        Tema {topic.number} · {topic.title}
-                      </h4>
-                      <p className="text-[11px] font-semibold text-slate-600 dark:text-slate-400">
-                        {isSecondOrMore
-                          ? 'Recomanat (2a+ volta): Resums + Preguntes noves'
-                          : 'Recomanat (1a volta): Llegir manual complet'}
-                      </p>
+                      <button
+                        type="button"
+                        onClick={() => onOpenTopic(topic.id, 'summary')}
+                        className="text-left text-xs sm:text-sm font-extrabold text-red-700 dark:text-red-400 hover:underline flex items-center gap-1"
+                        title="Obrir el resum d'aquest tema"
+                      >
+                        <span>Tema {topic.number} · {topic.title} →</span>
+                      </button>
                     </div>
 
-                    {kind === 'plan' && (
+                    <div className="flex items-center gap-1.5 shrink-0">
                       <button
-                        onClick={() => onUnscheduleTopic(selectedDate, topic.id)}
-                        className="p-1 text-slate-400 hover:text-red-600"
-                        title="Treure del dia"
+                        type="button"
+                        onClick={() => handleMarkReviewedWithConfirm(topic)}
+                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white text-[11px] font-extrabold hover:bg-emerald-700"
                       >
-                        <X className="w-3.5 h-3.5" />
+                        Repassat ✓
                       </button>
-                    )}
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5">
-                    {isSecondOrMore ? (
-                      <>
+                      {kind === 'plan' && (
                         <button
-                          onClick={() => onOpenTopic(topic.id, 'summary')}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 text-[11px] font-extrabold hover:bg-amber-600"
+                          type="button"
+                          onClick={() => onUnscheduleTopic(selectedDate, topic.id)}
+                          className="p-1 text-slate-400 hover:text-red-600"
+                          title="Treure del dia"
                         >
-                          <Sparkles className="w-3 h-3" />
-                          <span>Resums</span>
+                          <X className="w-3.5 h-3.5" />
                         </button>
-                        <button
-                          onClick={() => onOpenTopic(topic.id, 'quiz')}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-red-600 text-white text-[11px] font-extrabold hover:bg-red-700"
-                        >
-                          <span>Preguntes noves</span>
-                        </button>
-                        <button
-                          onClick={() => onOpenTopic(topic.id, 'manual')}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-[11px] font-bold text-slate-700 dark:text-slate-200"
-                        >
-                          <BookOpen className="w-3 h-3" />
-                          <span>Manual</span>
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <button
-                          onClick={() => onOpenTopic(topic.id, 'summary')}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 text-[11px] font-extrabold hover:bg-amber-600"
-                        >
-                          <Sparkles className="w-3 h-3" />
-                          <span>Resum del Tema</span>
-                        </button>
-                        <button
-                          onClick={() => onOpenTopic(topic.id, 'manual')}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-extrabold"
-                        >
-                          <BookOpen className="w-3 h-3" />
-                          <span>Manual Complet</span>
-                        </button>
-                      </>
-                    )}
-
-                    <button
-                      onClick={() => handleMarkReviewedWithConfirm(topic)}
-                      className="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white text-[11px] font-bold hover:bg-emerald-700"
-                    >
-                      Repassat ✓
-                    </button>
-
-                    <button
-                      onClick={() => handleCompleteRoundClick(topic)}
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-[11px] font-extrabold hover:bg-emerald-100"
-                      title="Marca aquesta volta com a completada"
-                    >
-                      <CheckCircle2 className="w-3 h-3" />
-                      <span>Completar Volta</span>
-                    </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
