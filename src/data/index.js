@@ -57,6 +57,11 @@ import { QUESTIONS_PUNYETERES_3 } from './questions_punyeteres_3';
 import { QUESTIONS_PUNYETERES_4 } from './questions_punyeteres_4';
 import { QUESTIONS_PROMOCIO_INTERNA } from './questions_promocio_interna';
 import { QUESTIONS_SEREBOMBER_DAILY } from './questions_serebomber_daily';
+import { QUESTIONS_EXTRA_CALC_300 } from './questions_extra_calc_300';
+import { QUESTIONS_EXTRA_BLOC1 } from './questions_extra_bloc1';
+import { QUESTIONS_EXTRA_BLOC2 } from './questions_extra_bloc2';
+import { QUESTIONS_EXTRA_BLOC3 } from './questions_extra_bloc3';
+import { QUESTIONS_EXTRA_BLOC4 } from './questions_extra_bloc4';
 
 const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_125,
@@ -81,7 +86,12 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_PUNYETERES_3,
   ...QUESTIONS_PUNYETERES_4,
   ...QUESTIONS_PROMOCIO_INTERNA,
-  ...QUESTIONS_SEREBOMBER_DAILY
+  ...QUESTIONS_SEREBOMBER_DAILY,
+  ...QUESTIONS_EXTRA_CALC_300,
+  ...QUESTIONS_EXTRA_BLOC1,
+  ...QUESTIONS_EXTRA_BLOC2,
+  ...QUESTIONS_EXTRA_BLOC3,
+  ...QUESTIONS_EXTRA_BLOC4
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`
