@@ -65,6 +65,7 @@ service cloud.firestore {
     //   - dailyEmailEnabled: bool (optional)
     //   - reviewHistory: map (optional, <= 500 keys)
     //   - answerStats: map (optional, <= 20 keys)
+    //   - resumeState: map (optional, <= 20 keys)
     //   - statsResetEpoch: string (optional, 0..40 chars)
     //   - clientWriteId: string (optional, 0..64 chars)
     //   - updatedAt: timestamp (optional)
@@ -252,6 +253,7 @@ service cloud.firestore {
           'dailyEmailEnabled',
           'reviewHistory',
           'answerStats',
+          'resumeState',
           'statsResetEpoch',
           'clientWriteId',
           'updatedAt'
@@ -276,6 +278,7 @@ service cloud.firestore {
         isValidOptionalBool('dailyEmailEnabled') &&
         isValidOptionalMap('reviewHistory', 500) &&
         isValidOptionalMap('answerStats', 20) &&
+        isValidOptionalMap('resumeState', 20) &&
         isValidOptionalString('statsResetEpoch', 0, 40) &&
         isValidOptionalString('clientWriteId', 0, 64) &&
         (!('updatedAt' in data) || data.updatedAt is timestamp);

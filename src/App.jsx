@@ -88,6 +88,7 @@ export default function App() {
     setManualAnnotation,
     recordQuestionOutcome,
     clearUserMistake,
+    setResumeState,
     replaceProgressFromCloud,
     resetAllProgress
   } = useStudyProgress();
@@ -152,7 +153,24 @@ export default function App() {
   });
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [importantRelease, setImportantRelease] = useState(null);
-  const [resumePrompt, setResumePrompt] = useState(null); // { view, topicId?, label }
+  const [resumePrompt, setResumePrompt] = useState(null); // { view, topicId?, label, isRemoteDevice? }
+  const [remotePracticeResume, setRemotePracticeResume] = useState(null);
+  const localDeviceIdRef = React.useRef((() => {
+    try {
+      let id = localStorage.getItem('bombers_device_id_v1');
+      if (!id) {
+        id = `dev-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+        localStorage.setItem('bombers_device_id_v1', id);
+      }
+      return id;
+    } catch {
+      return `dev-${Math.random().toString(36).slice(2, 7)}`;
+    }
+  })());
+  const localDeviceLabel = typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)
+    ? 'Mòbil / Tauleta'
+    : 'Ordinador';
+  const practiceResumeRef = React.useRef(null);
   const [authReminderDismissed, setAuthReminderDismissed] = useState(() => {
     try {
       return sessionStorage.getItem('bombers_auth_reminder_dismissed') === '1';
@@ -210,15 +228,8 @@ export default function App() {
 
     const checkAwayTimeout = () => {
       try {
-        const raw = localStorage.getItem(LAST_ACTIVE_AT_KEY);
-        const lastAt = raw ? Number(raw) : 0;
-        const now = Date.now();
-        if (lastAt > 0 && now - lastAt > INACTIVITY_RESET_MS && activeView !== 'home') {
-          const pending = buildResumeIfUnfinished(activeView, selectedTopicId);
-          setActiveView('home');
-          if (pending) setResumePrompt(pending);
-        }
-        localStorage.setItem(LAST_ACTIVE_AT_KEY, String(now));
+        // Mantenim sempre la persona exactament a l'apartat/test on era en aquest dispositiu (sense tancar-lo).
+        localStorage.setItem(LAST_ACTIVE_AT_KEY, String(Date.now()));
       } catch {
         // ignore
       }
@@ -455,6 +466,55 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
+  const maybeOfferRemoteResume = (remoteState) => {
+    const rs = remoteState?.resumeState;
+    if (!rs || !rs.deviceId || rs.deviceId === localDeviceIdRef.current) return;
+    if (!rs.updatedAt || Date.now() - rs.updatedAt > 48 * 3600 * 1000) return;
+    try {
+      const lastAck = Number(localStorage.getItem('bombers_last_remote_resume_at') || 0);
+      if (rs.updatedAt <= lastAck) return;
+    } catch {}
+    if (!rs.view || rs.view === 'home') return;
+    setResumePrompt({ ...rs, isRemoteDevice: true });
+  };
+
+  const publishResumeState = (overridePractice = undefined) => {
+    if (cloudUser && cloudLoadedUidRef.current !== cloudUser.uid) return;
+    if (applyingRemoteRef.current) return;
+    const practice = overridePractice !== undefined ? overridePractice : practiceResumeRef.current;
+    let label = getViewLabel(activeView, selectedTopicId);
+    let topicPage = null;
+    let topicTab = null;
+    if (activeView === 'topic' && selectedTopicId) {
+      try {
+        const exact = JSON.parse(localStorage.getItem('bombers_exact_location_v1') || 'null');
+        if (exact && exact.topicId === selectedTopicId) {
+          topicPage = exact.pageNumber || 1;
+          topicTab = exact.activeTab || 'study';
+          label = `${label} · Pàg. ${topicPage}`;
+        }
+      } catch {}
+    } else if (activeView === 'practice' && practice?.active) {
+      label = `${practice.mode === 'simulacre' ? 'Simulacre' : 'Test pràctica'} · Pregunta ${(practice.currentQuestionIdx || 0) + 1}/${practice.totalQuestions || '?'}`;
+    }
+    setResumeState({
+      deviceId: localDeviceIdRef.current,
+      deviceLabel: localDeviceLabel,
+      view: activeView,
+      topicId: activeView === 'topic' ? selectedTopicId : null,
+      topicPage,
+      topicTab,
+      label,
+      practiceSession: practice?.active ? practice : null,
+      updatedAt: Date.now()
+    });
+  };
+
+  useEffect(() => {
+    if (cloudUser && cloudLoadedUidRef.current !== cloudUser.uid) return;
+    publishResumeState();
+  }, [activeView, selectedTopicId]);
+
   // Subscripció d'autenticació Firebase i càrrega del progrés al núvol
   useEffect(() => {
     const unsubAuth = subscribeAuth(async (user) => {
@@ -473,6 +533,7 @@ export default function App() {
         const cloudState = await loadPrivateProgress(user.uid);
         if (cloudState) {
           replaceProgressFromCloud(cloudState);
+          maybeOfferRemoteResume(cloudState);
         }
       } catch (err) {
         setAuthError('No s\'ha pogut carregar el progrés del núvol: ' + (err?.message || ''));
@@ -498,6 +559,7 @@ export default function App() {
       }
       applyingRemoteRef.current = true;
       replaceProgressFromCloud(remoteState);
+      maybeOfferRemoteResume(remoteState);
       setTimeout(() => {
         applyingRemoteRef.current = false;
       }, 100);
@@ -852,6 +914,11 @@ export default function App() {
             <PracticeTestView
               topics={TOPICS}
               initialTopicId={practiceInitialTopicId}
+              resumeSessionData={remotePracticeResume}
+              onUpdatePracticeResume={(pState) => {
+                practiceResumeRef.current = pState;
+                publishResumeState(pState);
+              }}
               onGoBack={navHistory.length > 0 ? handleGoBack : null}
               backLabel={navHistory.length > 0 ? navHistory[navHistory.length - 1].label : ''}
               userMistakes={progress.quizResults?.__mistakes || {}}
@@ -951,10 +1018,17 @@ export default function App() {
         onRecordQuestionOutcome={recordQuestionOutcome}
       />
 
-      {/* Missatge emergent per reprendre un tema o test inacabat després de > 10 min sense entrar */}
+      {/* Missatge emergent per reprendre exactament el punt d'un altre dispositiu */}
       {resumePrompt && (
         <div
-          onClick={() => setResumePrompt(null)}
+          onClick={() => {
+            try {
+              if (resumePrompt?.updatedAt) {
+                localStorage.setItem('bombers_last_remote_resume_at', String(resumePrompt.updatedAt));
+              }
+            } catch {}
+            setResumePrompt(null);
+          }}
           className="print:hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4"
         >
           <div
@@ -967,25 +1041,42 @@ export default function App() {
               </div>
               <div>
                 <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                  Benvingut de nou
+                  {resumePrompt.isRemoteDevice
+                    ? `Últim punt a l'altre dispositiu (${resumePrompt.deviceLabel || 'Altre dispositiu'})`
+                    : 'Benvingut de nou'}
                 </span>
                 <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
-                  Vols continuar on ho havies deixat?
+                  Vols reprendre exactament on ho havies deixat?
                 </h3>
               </div>
             </div>
 
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Tens pendent d&apos;acabar: <strong>{resumePrompt.label}</strong>.
+              Últim punt guardat: <strong>{resumePrompt.label}</strong>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-2 pt-1">
               <button
                 onClick={() => {
                   const target = resumePrompt;
+                  try {
+                    if (target?.updatedAt) {
+                      localStorage.setItem('bombers_last_remote_resume_at', String(target.updatedAt));
+                    }
+                  } catch {}
                   setResumePrompt(null);
-                  if (target.view === 'topic' && target.topicId) {
-                    handleSelectTopic(target.topicId, target.target || null);
+                  if (target.view === 'practice' && target.practiceSession) {
+                    setPracticeInitialTopicId(null);
+                    setRemotePracticeResume({ ...target.practiceSession, _ts: Date.now() });
+                    setActiveView('practice');
+                  } else if (target.view === 'topic' && target.topicId) {
+                    const topicTargetArg =
+                      target.topicTab === 'quiz'
+                        ? 'quiz'
+                        : target.topicPage
+                        ? `page:${target.topicPage}`
+                        : target.target || null;
+                    handleSelectTopic(target.topicId, topicTargetArg);
                   } else {
                     setActiveView(target.view);
                   }
@@ -997,14 +1088,21 @@ export default function App() {
                 }}
                 className="flex-1 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
               >
-                Tornar exactament on estava →
+                Reprendre exactament allà →
               </button>
               <button
                 type="button"
-                onClick={() => setResumePrompt(null)}
+                onClick={() => {
+                  try {
+                    if (resumePrompt?.updatedAt) {
+                      localStorage.setItem('bombers_last_remote_resume_at', String(resumePrompt.updatedAt));
+                    }
+                  } catch {}
+                  setResumePrompt(null);
+                }}
                 className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
               >
-                Quedar-me a l&apos;inici
+                Quedar-me aquí
               </button>
             </div>
           </div>

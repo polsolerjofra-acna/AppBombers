@@ -45,6 +45,7 @@ const defaultState = {
   dailyActivity: [],
   streakDays: 0,
   lastActiveDate: '',
+  resumeState: null,
   statsResetEpoch: STATS_RESET_EPOCH
 };
 
@@ -682,6 +683,13 @@ export function useStudyProgress() {
     }));
   };
 
+  const setResumeState = (nextResumeState) => {
+    setProgress((prev) => ({
+      ...prev,
+      resumeState: nextResumeState || null
+    }));
+  };
+
   return {
     progress,
     setPageMark,
@@ -701,6 +709,7 @@ export function useStudyProgress() {
     setManualAnnotation,
     recordQuestionOutcome,
     clearUserMistake,
+    setResumeState,
     replaceProgressFromCloud,
     resetAllProgress
   };

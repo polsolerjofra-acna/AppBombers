@@ -23,6 +23,21 @@ const BANK_ANSWERED_KEY = 'bombers_answered_bank_ids_v1';
 const BANK_CORRECT_KEY = 'bombers_correct_bank_ids_v1';
 const REPORTS_KEY = 'bombers_question_reports_v1';
 const LAST_ASKED_KEY = 'bombers_question_last_asked_v1';
+const ACTIVE_SESSION_KEY = 'bombers_active_practice_session_v1';
+
+function loadActiveSession() {
+  try {
+    const raw = localStorage.getItem(ACTIVE_SESSION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || !Array.isArray(parsed.activeQuestions) || parsed.activeQuestions.length === 0 || parsed.isFinished) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
 
 function loadJsonSet(key) {
   try {
@@ -237,16 +252,26 @@ export default function PracticeTestView({
   onRecordQuestionOutcome = null,
   onSaveQuizScore = null,
   onOpenTopicSummary = null,
-  onOpenOfficialManual = null
+  onOpenOfficialManual = null,
+  onUpdatePracticeResume = null,
+  resumeSessionData = null
 }) {
-  const [mode, setMode] = useState('practice'); // 'practice' | 'simulacre'
+  const savedSession = useMemo(() => (initialTopicId ? null : loadActiveSession()), []);
+
+  const [mode, setMode] = useState(() => savedSession?.mode || 'practice'); // 'practice' | 'simulacre'
   const [selectedTopicIds, setSelectedTopicIds] = useState(() =>
-    initialTopicId ? [initialTopicId] : topics.map((t) => t.id)
+    initialTopicId
+      ? [initialTopicId]
+      : savedSession?.selectedTopicIds || topics.map((t) => t.id)
   );
   const [questionCount, setQuestionCount] = useState(25);
   const [useWeightedPractice, setUseWeightedPractice] = useState(true);
-  const [practiceWithTimer, setPracticeWithTimer] = useState(false);
-  const [practiceElapsedSec, setPracticeElapsedSec] = useState(0);
+  const [practiceWithTimer, setPracticeWithTimer] = useState(
+    () => Boolean(savedSession?.practiceWithTimer)
+  );
+  const [practiceElapsedSec, setPracticeElapsedSec] = useState(
+    () => Number(savedSession?.practiceElapsedSec || 0)
+  );
   const [includeExtension, setIncludeExtension] = useState(true);
   const [showStatsTable, setShowStatsTable] = useState(false);
 
@@ -258,25 +283,98 @@ export default function PracticeTestView({
   const [reportDraft, setReportDraft] = useState('');
 
   // Estat de sessió activa
-  const [activeQuestions, setActiveQuestions] = useState(null);
-  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [draftSelections, setDraftSelections] = useState({});
-  const [simulacreImpugnations, setSimulacreImpugnations] = useState({});
+  const [activeQuestions, setActiveQuestions] = useState(() => savedSession?.activeQuestions || null);
+  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(() => Number(savedSession?.currentQuestionIdx || 0));
+  const [answers, setAnswers] = useState(() => savedSession?.answers || {});
+  const [draftSelections, setDraftSelections] = useState(() => savedSession?.draftSelections || {});
+  const [simulacreImpugnations, setSimulacreImpugnations] = useState(() => savedSession?.simulacreImpugnations || {});
   const [isFinished, setIsFinished] = useState(false);
   const [showFinishConfirm, setShowFinishConfirm] = useState(false);
-  const [secondsLeft, setSecondsLeft] = useState(85 * 60); // 85 minuts oficials (70 + 7 reserva)
+  const [secondsLeft, setSecondsLeft] = useState(() => Number(savedSession?.secondsLeft ?? 85 * 60)); // 85 minuts oficials (70 + 7 reserva)
   const [emailCopiedNotice, setEmailCopiedNotice] = useState(false);
+
+  // Restaura sessió remota si l'usuari accepta reprendre des d'un altre dispositiu
+  useEffect(() => {
+    if (!resumeSessionData || !Array.isArray(resumeSessionData.questionIds) || resumeSessionData.questionIds.length === 0) return;
+    const poolMap = new Map();
+    topics.forEach((t) => {
+      const pool = typeof t.quiz === 'function' ? t.quiz() : (t.quiz || []);
+      pool.forEach((q) => {
+        if (q?.id && !poolMap.has(q.id)) {
+          poolMap.set(q.id, {
+            ...q,
+            _topicId: q._topicId || t.id,
+            _topicNumber: q._topicNumber || t.number,
+            _topicTitle: q._topicTitle || t.title,
+            topicNumber: q.topicNumber || t.number,
+            topicTitle: q.topicTitle || t.title,
+            topicId: q.topicId || t.id
+          });
+        }
+      });
+    });
+    const rebuilt = resumeSessionData.questionIds.map((id) => poolMap.get(id)).filter(Boolean);
+    if (rebuilt.length === 0) return;
+    setMode(resumeSessionData.mode || 'practice');
+    if (Array.isArray(resumeSessionData.selectedTopicIds)) {
+      setSelectedTopicIds(resumeSessionData.selectedTopicIds);
+    }
+    setActiveQuestions(rebuilt);
+    setCurrentQuestionIdx(Math.min(Number(resumeSessionData.currentQuestionIdx || 0), rebuilt.length - 1));
+    setAnswers(resumeSessionData.answers || {});
+    setDraftSelections(resumeSessionData.draftSelections || {});
+    setPracticeWithTimer(Boolean(resumeSessionData.practiceWithTimer));
+    setPracticeElapsedSec(Number(resumeSessionData.practiceElapsedSec || 0));
+    setSecondsLeft(Number(resumeSessionData.secondsLeft ?? 85 * 60));
+    setIsFinished(false);
+  }, [resumeSessionData]);
 
   useEffect(() => {
     try {
       if (activeQuestions && !isFinished) {
         localStorage.setItem('bombers_active_test_pending', '1');
+        localStorage.setItem(
+          ACTIVE_SESSION_KEY,
+          JSON.stringify({
+            mode,
+            selectedTopicIds,
+            activeQuestions,
+            currentQuestionIdx,
+            answers,
+            draftSelections,
+            simulacreImpugnations,
+            secondsLeft,
+            practiceElapsedSec,
+            practiceWithTimer,
+            isFinished: false,
+            updatedAt: Date.now()
+          })
+        );
       } else {
         localStorage.removeItem('bombers_active_test_pending');
+        localStorage.removeItem(ACTIVE_SESSION_KEY);
       }
     } catch {}
-  }, [activeQuestions, isFinished]);
+    if (onUpdatePracticeResume) {
+      if (activeQuestions && !isFinished) {
+        onUpdatePracticeResume({
+          active: true,
+          mode,
+          selectedTopicIds,
+          questionIds: activeQuestions.map((q) => q.id),
+          currentQuestionIdx,
+          totalQuestions: activeQuestions.length,
+          answers,
+          draftSelections,
+          secondsLeft,
+          practiceElapsedSec,
+          practiceWithTimer
+        });
+      } else {
+        onUpdatePracticeResume({ active: false });
+      }
+    }
+  }, [activeQuestions, isFinished, currentQuestionIdx, answers, draftSelections, mode, selectedTopicIds, practiceWithTimer]);
 
   // Pre-selecciona un tema concret si venim des de "Fer test d'aquest tema"
   useEffect(() => {

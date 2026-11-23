@@ -150,6 +150,9 @@ export async function saveCloudProgress(user, summaryPayload, fullProgressState)
     clientWriteId: summaryPayload?.clientWriteId || '',
     updatedAt: serverTimestamp()
   };
+  if (fullProgressState.resumeState && typeof fullProgressState.resumeState === 'object') {
+    privateData.resumeState = fullProgressState.resumeState;
+  }
 
   await Promise.all([
     setDoc(publicRef, publicData, { merge: true }),
