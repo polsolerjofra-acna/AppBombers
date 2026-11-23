@@ -148,6 +148,42 @@ export const CALCULATION_SECTIONS = [
           '2. Ec = ½ × 1.000 × 10² = 500 × 100 = 50.000 J (50 kJ).',
           '3. Com que 72 km/h és el doble (20 m/s), l\'energia va amb v²: 2² = 4 vegades més (200 kJ).'
         ]
+      },
+      {
+        id: 'p-t9-6',
+        title: 'Frenada per trams (MRUA)',
+        statement: 'Un vehicle frena uniformement de 20 m/s a 10 m/s en 30 m. Quant espai més necessita per aturar-se si manté la mateixa desacceleració?',
+        hint: 'Troba primer l\'acceleració amb v₁² - v₀² = 2·a·Δx₁ i després aplica v₂² - v₁² = 2·a·Δx₂.',
+        options: ['10 m', '15 m', '20 m', '30 m'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. 10² - 20² = 2·a·30 → -300 = 60·a → a = -5 m/s².',
+          '2. 0² - 10² = 2·(-5)·Δx₂ → -100 = -10·Δx₂ → Δx₂ = 10 m.'
+        ]
+      },
+      {
+        id: 'p-t9-7',
+        title: 'Alçada efectiva d\'autoescala (amb torreta)',
+        statement: 'Una autoescala de 24 m s\'estén formant un angle de 60° amb l\'horitzontal (sin 60° ≈ 0,866), recolzada sobre una torreta situada a 2 m del terra. A quina alçada arriba respecte del terra?',
+        hint: 'Calcula el catet vertical (24 × sin 60°) i recorda sumar l\'alçada de la torreta!',
+        options: ['22,8 m', '20,8 m', '14,0 m', '26,0 m'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Alçada del tram d\'escala = 24 × 0,866 ≈ 20,8 m.',
+          '2. Sumem els 2 m de la torreta: 20,8 + 2 = 22,8 m.'
+        ]
+      },
+      {
+        id: 'p-t9-8',
+        title: 'Palanca de rescat (Llei de la palanca)',
+        statement: 'Volem aixecar una llosa que exerceix 3.000 N a 0,4 m del fulcre. Si apliquem la força a l\'altre extrem a 2,0 m del fulcre, quina força mínima necessitem?',
+        hint: 'F₁ · d₁ = F₂ · d₂.',
+        options: ['600 N', '1.200 N', '1.500 N', '300 N'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Moment resistent = 3.000 N × 0,4 m = 1.200 N·m.',
+          '2. F × 2,0 m = 1.200 → F = 1.200 ÷ 2,0 = 600 N.'
+        ]
       }
     ]
   },
@@ -276,6 +312,42 @@ export const CALCULATION_SECTIONS = [
           '1. Nombre de mols n = 64 g ÷ 16 g/mol = 4 mols.',
           '2. En CN, 1 mol ocupa 22,4 L → 4 × 22,4 = 89,6 litres.'
         ]
+      },
+      {
+        id: 'p-t10-6',
+        title: 'Cilindre amb tram fix + mòbil (Boyle-Mariotte)',
+        statement: 'En un cilindre tancat, la cambra d\'un gas ideal comprèn un tram fix de 20 mL i un tram graduat mòbil. El tram mòbil passa de 100 a 40 mL a temperatura constant. Si la pressió absoluta inicial és 1,20 bar, quina serà la final?',
+        hint: 'Compte amb el tram fix! Suma 20 mL tant al volum inicial com al final.',
+        options: ['2,40 bar', '3,00 bar', '1,80 bar', '0,60 bar'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. V₁ = 20 + 100 = 120 mL; V₂ = 20 + 40 = 60 mL.',
+          '2. P₁·V₁ = P₂·V₂ → 1,20 × 120 = P₂ × 60 → P₂ = 2,40 bar.'
+        ]
+      },
+      {
+        id: 'p-t10-7',
+        title: 'Estequiometria i reactiu limitant',
+        statement: 'En un model de reacció es combinen àtoms X i Y per formar X₂Y. Hi ha 0,70 mol d\'àtoms X i 0,45 mol d\'àtoms Y. Quants mols de Y queden sense reaccionar?',
+        hint: 'Per formar X₂Y calen 2 mols de X per cada 1 mol de Y.',
+        options: ['0,10 mol', '0,05 mol', '0,25 mol', '0,35 mol'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. 0,70 mol de X consumeixen 0,70 ÷ 2 = 0,35 mol de Y (X és el limitant).',
+          '2. Mols sobrants de Y = 0,45 - 0,35 = 0,10 mol.'
+        ]
+      },
+      {
+        id: 'p-t10-8',
+        title: 'Llei combinada dels gasos en dues etapes',
+        statement: 'Una mostra tancada de gas ideal ocupa 12 L a 300 K. Primer es refreda a pressió constant fins a 225 K. Tot seguit, a temperatura constant, es redueix la pressió absoluta a 3/4 de la inicial. Quin és el volum final?',
+        hint: 'Aplica primer Charles (V/T = constant) i després Boyle (P·V = constant).',
+        options: ['12,0 L', '9,00 L', '6,75 L', '16,0 L'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Refredament a P constant: V\' = 12 × (225 ÷ 300) = 9 L.',
+          '2. Reducció de pressió a T constant (P₂ = ¾·P₁): V₂ = 9 × (4/3) = 12,0 L.'
+        ]
       }
     ]
   },
@@ -392,6 +464,43 @@ export const CALCULATION_SECTIONS = [
         solutionSteps: [
           '1. V × cos(φ) = 230 × 0,8 = 184.',
           '2. I = 1.840 ÷ 184 = 10 A.'
+        ]
+      },
+      {
+        id: 'p-t11-6',
+        title: 'Resistències en paral·lel i potència',
+        statement: 'Dues resistències de 12 Ω i 24 Ω es connecten en paral·lel a una bateria de 24 V en CC. Quina intensitat total i quina potència dissipa el conjunt?',
+        hint: 'R_eq = (R₁·R₂)/(R₁+R₂), després I = V/R_eq i P = V·I.',
+        options: ['3,0 A i 72 W', '0,67 A i 16 W', '2,0 A i 48 W', '3,0 A i 24 W'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. R_eq = (12 × 24) ÷ (12 + 24) = 288 ÷ 36 = 8 Ω.',
+          '2. I = 24 V ÷ 8 Ω = 3 A.',
+          '3. P = 24 V × 3 A = 72 W.'
+        ]
+      },
+      {
+        id: 'p-t11-7',
+        title: 'Calor dissipada (Llei de Joule)',
+        statement: 'Per un cable amb una resistència de 2 Ω hi circula un corrent de 5 A durant 100 segons. Quina energia tèrmica (Joule) es dissipa?',
+        hint: 'Q = I² · R · t.',
+        options: ['5.000 J (5 kJ)', '1.000 J (1 kJ)', '2.500 J (2,5 kJ)', '10.000 J (10 kJ)'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. I² = 5² = 25 A².',
+          '2. Q = 25 × 2 × 100 = 5.000 J (5 kJ).'
+        ]
+      },
+      {
+        id: 'p-t11-8',
+        title: 'Focus en paral·lel alimentats a 230 V',
+        statement: 'Un grup electrogen de 230 V subministra 4.600 W en total a dos focus halògens idèntics connectats en paral·lel (cos φ = 1). Quina intensitat passa per CADA focus?',
+        hint: 'Troba la intensitat total I = P ÷ V i divideix entre els 2 focus.',
+        options: ['10 A', '20 A', '5 A', '40 A'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. I_total = 4.600 W ÷ 230 V = 20 A.',
+          '2. Com que són dos focus idèntics en paral·lel: 20 A ÷ 2 = 10 A per focus.'
         ]
       }
     ]
@@ -557,6 +666,42 @@ export const CALCULATION_SECTIONS = [
           '1. Volum de solució (aigua + escumogen) = 6 L ÷ 0,03 = 200 litres.',
           '2. Volum d\'escuma = 200 L × 10 (expansió) = 2.000 litres d\'escuma.'
         ]
+      },
+      {
+        id: 'p-t13-8',
+        title: 'Velocitat a partir de la pressió dinàmica',
+        statement: 'La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) de l\'aigua dins una mànega és de 0,125 bar. A quina velocitat circula?',
+        hint: 'Passa primer 0,125 bar a Pascals (1 bar = 100.000 Pa).',
+        options: ['5,0 m/s', '2,5 m/s', '10,0 m/s', '25,0 m/s'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. 0,125 bar = 12.500 Pa.',
+          '2. 12.500 = ½ × 1.000 × v² = 500·v² → v² = 25 → v = 5,0 m/s.'
+        ]
+      },
+      {
+        id: 'p-t13-9',
+        title: 'Pressió en bomba (llança + alçada + pèrdues)',
+        statement: 'Volem alimentar una llança a 6 bar en punta situada a 15 m d\'alçada. El tendit té 100 m de mànega de Ø45 mm amb una pèrdua de càrrega d\'1,2 bar per cada 100 m. Quina pressió ha de donar la bomba?',
+        hint: 'P_bomba = P_llança + P_alçada (0,1 bar/m) + P_pèrdues.',
+        options: ['8,7 bar', '7,2 bar', '7,5 bar', '9,5 bar'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Pressió per alçada = 15 m × 0,1 bar/m = 1,5 bar.',
+          '2. P_bomba = 6 + 1,5 + 1,2 = 8,7 bar.'
+        ]
+      },
+      {
+        id: 'p-t13-10',
+        title: 'Pressió i força sobre una llosa',
+        statement: 'Un dipòsit de 20 m³ descansa sobre una llosa plana de 10 m². Està a la meitat de capacitat, assolint 1 m d\'alçada d\'aigua. Quina força per m² exerceix la llosa?',
+        hint: 'P = ρ · g · h (amb ρ = 1.000 kg/m³ i g = 9,81 m/s²).',
+        options: ['9,81 kN/m² (≈ 10 kN/m²)', '4,91 kN/m²', '19,62 kN/m²', '98,1 kN/m²'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Meitat de capacitat = 10 m³ sobre 10 m² → h = 1 m.',
+          '2. P = 1.000 × 9,81 × 1 = 9.810 N/m² = 9,81 kN/m².'
+        ]
       }
     ]
   },
@@ -638,6 +783,44 @@ export const CALCULATION_SECTIONS = [
         solutionSteps: [
           '1. 60 km/h és el doble de 30 km/h (×2).',
           '2. Com que Fc depèn de v², 2² = 4 vegades més força centrífuga.'
+        ]
+      },
+      {
+        id: 'p-t19-4',
+        title: 'Distància total de detenció (reacció + frenada)',
+        statement: 'Un camió circula a 72 km/h (20 m/s). Amb un temps de reacció d\'1 segon i una desacceleració de frenada de 5 m/s², quina és la distància total de detenció?',
+        hint: 'd_total = d_reacció (v·t) + d_frenada (v² / 2a).',
+        options: ['60 m', '40 m', '50 m', '80 m'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. d_reacció = 20 m/s × 1 s = 20 m.',
+          '2. d_frenada = 20² ÷ (2 × 5) = 400 ÷ 10 = 40 m.',
+          '3. Total = 20 + 40 = 60 m.'
+        ]
+      },
+      {
+        id: 'p-t19-5',
+        title: 'Càlcul de desnivell en pista forestal',
+        statement: 'Una pista forestal puja amb un pendent constant del 12% durant 500 m de distància horitzontal. Quants metres de desnivell vertical s\'han pujat?',
+        hint: 'Desnivell = distància horitzontal × (% ÷ 100).',
+        options: ['60 m', '12 m', '41,6 m', '120 m'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. 12% significa 12 m cada 100 m.',
+          '2. En 500 m: 500 × 0,12 = 60 m de desnivell.'
+        ]
+      },
+      {
+        id: 'p-t19-6',
+        title: 'Autonomia de combustible en ruta',
+        statement: 'Una autobomba té un dipòsit de 240 L i consumeix 30 L/100 km. Si fa una ruta d\'anada de 150 km i tornada de 150 km sortint plena, quants litres li quedaran al dipòsit en tornar?',
+        hint: 'Calcula el recorregut total (300 km) i resta el consum a 240 L.',
+        options: ['150 L', '90 L', '195 L', '120 L'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Distància total = 150 + 150 = 300 km.',
+          '2. Consum = 3 × 30 L = 90 L.',
+          '3. Resten al dipòsit: 240 - 90 = 150 L.'
         ]
       }
     ]
