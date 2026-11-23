@@ -76,7 +76,7 @@ function shuffleArray(arr) {
   return copy;
 }
 
-function shuffleQuestionOptions(q) {
+function shufflePracticeQuestionOptions(q) {
   if (!Array.isArray(q?.options) || q.options.length < 2) return q;
   // No barregem si alguna opció fa referència posicional explícita ("a i c", "totes les anteriors", etc.)
   const hasPositionalRef = q.options.some((opt) =>
@@ -307,7 +307,7 @@ export default function PracticeTestView({
       lastAskedMap,
       allowExtension,
       targetMode === 'practice' ? correctBankMap : null
-    ).map(shuffleQuestionOptions);
+    ).map(shufflePracticeQuestionOptions);
     const now = Date.now();
     const updatedAsked = { ...lastAskedMap };
     qs.forEach((q, idx) => {
@@ -359,7 +359,7 @@ export default function PracticeTestView({
     const qs = targetList
       .map((m) => lookup.get(m.id))
       .filter(Boolean)
-      .map(shuffleQuestionOptions);
+      .map(shufflePracticeQuestionOptions);
 
     if (qs.length === 0) return;
 
