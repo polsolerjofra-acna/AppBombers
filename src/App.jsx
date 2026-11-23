@@ -132,6 +132,9 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cloudUser, setCloudUser] = useState(null);
   const cloudLoadedUidRef = React.useRef(null);
+  const lastLocalChangeAtRef = React.useRef(0);
+  const lastClientWriteIdRef = React.useRef('');
+  const applyingRemoteRef = React.useRef(false);
   const [groupProfiles, setGroupProfiles] = useState([]);
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
@@ -484,7 +487,20 @@ export default function App() {
   useEffect(() => {
     if (!cloudUser?.uid) return () => {};
     const unsubPrivate = subscribePrivateProgress(cloudUser.uid, (remoteState) => {
+      if (
+        remoteState?.clientWriteId &&
+        remoteState.clientWriteId === lastClientWriteIdRef.current
+      ) {
+        return;
+      }
+      if (Date.now() - lastLocalChangeAtRef.current < 5000) {
+        return;
+      }
+      applyingRemoteRef.current = true;
       replaceProgressFromCloud(remoteState);
+      setTimeout(() => {
+        applyingRemoteRef.current = false;
+      }, 100);
     });
     return () => unsubPrivate && unsubPrivate();
   }, [cloudUser?.uid]);
@@ -502,6 +518,10 @@ export default function App() {
   // Desa automàticament els avenços al núvol quan l'usuari està autenticat
   useEffect(() => {
     if (!cloudUser || cloudLoadedUidRef.current !== cloudUser.uid) return;
+    if (applyingRemoteRef.current) return;
+    lastLocalChangeAtRef.current = Date.now();
+    const writeId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    lastClientWriteIdRef.current = writeId;
     const todayISO = new Date().toISOString().split('T')[0];
     const completedTopics = TOPICS.filter(
       (t) => progress.topicStatus?.[t.id] === 'completed'
@@ -560,6 +580,7 @@ export default function App() {
           totalCorrectAnswers: ans.totalCorrect || 0,
           totalAnswered: ans.totalAnswered || 0,
           statsResetEpoch: progress.statsResetEpoch || '',
+          clientWriteId: writeId,
           dailyEmailEnabled: progress.dailyEmailEnabled !== false
         },
         progress

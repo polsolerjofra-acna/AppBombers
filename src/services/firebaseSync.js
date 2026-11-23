@@ -147,12 +147,13 @@ export async function saveCloudProgress(user, summaryPayload, fullProgressState)
     lastActiveDate: fullProgressState.lastActiveDate || '',
     answerStats: fullProgressState.answerStats || { totalAnswered: 0, totalCorrect: 0 },
     statsResetEpoch: fullProgressState.statsResetEpoch || '',
+    clientWriteId: summaryPayload?.clientWriteId || '',
     updatedAt: serverTimestamp()
   };
 
   await Promise.all([
     setDoc(publicRef, publicData, { merge: true }),
-    setDoc(privateRef, privateData, { merge: true })
+    setDoc(privateRef, privateData)
   ]);
 }
 
