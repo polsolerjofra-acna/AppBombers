@@ -62686,6 +62686,15 @@ function HomeView({
     }
   }, [storageKey]);
 
+  const hiddenKey = `bombers_daily_q_hidden_${todayISO}`;
+  const [isDailyHidden, setIsDailyHidden] = React.useState(() => {
+    try {
+      return localStorage.getItem(hiddenKey) === '1' || localStorage.getItem(storageKey) !== null;
+    } catch {
+      return false;
+    }
+  });
+
   const handleAnswerDaily = (optIdx) => {
     if (selectedDailyOpt !== null) return;
     setSelectedDailyOpt(optIdx);
@@ -62697,6 +62706,13 @@ function HomeView({
       const tNum = Number(String(dailyQuestion.topicId || '').replace('tema-', '')) || null;
       onRecordQuestionOutcome(dailyQuestion.topicId, tNum, dailyQuestion, isCorrect);
     }
+  };
+
+  const handleDismissDaily = () => {
+    setIsDailyHidden(true);
+    try {
+      localStorage.setItem(hiddenKey, '1');
+    } catch {}
   };
   const sections = [
     {
@@ -62958,7 +62974,8 @@ function HomeView({
       {/* Calendari complet integrat directament sota el títol */}
       {calendarElement}
 
-      {/* Pregunta del Dia (Actualitat, Serveis i Temari) */}
+      {/* Pregunta del Dia (Actualitat, Serveis i Temari) - desapareix un cop completada avui */}
+      {!isDailyHidden && (
       <section className="rounded-2xl border border-amber-200 dark:border-amber-900/60 bg-gradient-to-br from-amber-50/70 via-white to-orange-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/20 p-5 sm:p-6 shadow-sm space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 dark:bg-amber-950/70 px-3 py-1 text-xs font-extrabold text-amber-800 dark:text-amber-300">
@@ -63055,19 +63072,29 @@ function HomeView({
                 {dailyQuestion.howItAffectsUs}
               </div>
             )}
-            {typeof onOpenTopic === 'function' && dailyQuestion.topicId && (
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+              {typeof onOpenTopic === 'function' && dailyQuestion.topicId ? (
+                <button
+                  type="button"
+                  onClick={() => onOpenTopic(dailyQuestion.topicId)}
+                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-red-600 dark:text-red-400 hover:underline"
+                >
+                  <span>Repassar {dailyQuestion.topicLabel || dailyQuestion.topicId}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              ) : <span />}
               <button
                 type="button"
-                onClick={() => onOpenTopic(dailyQuestion.topicId)}
-                className="inline-flex items-center gap-1.5 text-xs font-extrabold text-red-600 dark:text-red-400 hover:underline"
+                onClick={handleDismissDaily}
+                className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-1.5 text-xs font-extrabold shadow-xs"
               >
-                <span>Repassar {dailyQuestion.topicLabel || dailyQuestion.topicId}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                Completada · Amagar fins demà ✓
               </button>
-            )}
+            </div>
           </div>
         )}
       </section>
+      )}
 
       {/* Repàs del Dia (1 pregunta de cada tema + 2 càlculs / 10 divendres) */}
       {dailyReviewStatus && onOpenDailyReview && (
