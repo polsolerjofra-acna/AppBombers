@@ -13,7 +13,8 @@ import {
   BookOpen,
   ExternalLink,
   Mail,
-  Check
+  Check,
+  ArrowLeft
 } from 'lucide-react';
 import { OFFICIAL_EXAM_STATS_BY_TOPIC } from '../data/officialExamStats';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
@@ -229,6 +230,8 @@ function buildWeightedExamQuestions(
 export default function PracticeTestView({
   topics,
   initialTopicId = null,
+  onGoBack = null,
+  backLabel = '',
   userMistakes = {},
   onClearMistake = null,
   onRecordQuestionOutcome = null,
@@ -655,13 +658,25 @@ export default function PracticeTestView({
                 Corregir i Finalitzar
               </button>
             ) : (
-              <button
-                onClick={() => setActiveQuestions(null)}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 text-xs font-extrabold"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Configurar nou test</span>
-              </button>
+              <div className="flex flex-wrap items-center gap-2">
+                {onGoBack && (
+                  <button
+                    type="button"
+                    onClick={onGoBack}
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 text-xs font-extrabold shadow-xs"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>Continuar on estava{backLabel ? ` (${backLabel})` : ''}</span>
+                  </button>
+                )}
+                <button
+                  onClick={() => setActiveQuestions(null)}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 text-xs font-extrabold"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Configurar nou test</span>
+                </button>
+              </div>
             )}
           </div>
         </div>

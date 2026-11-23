@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut, AlertTriangle } from 'lucide-react';
+import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut, AlertTriangle, ArrowLeft } from 'lucide-react';
 import { TOPICS } from './data';
 import { useStudyProgress } from './hooks/useStudyProgress';
 import Sidebar from './components/layout/Sidebar';
@@ -126,6 +126,7 @@ export default function App() {
   const [topicTarget, setTopicTarget] = useState(null); // null | 'manual' | 'summary' | 'quiz'
   const [manualTopicTarget, setManualTopicTarget] = useState(null);
   const [practiceInitialTopicId, setPracticeInitialTopicId] = useState(null);
+  const [navHistory, setNavHistory] = useState([]);
   const [calcInitialMode, setCalcInitialMode] = useState('all'); // 'all' | 'friday'
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -569,7 +570,71 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [cloudUser, progress, currentTopic]);
 
-  const handleSelectTopic = (topicId, target = null) => {
+  const getViewLabel = (view, topicId) => {
+    if (view === 'topic' && topicId) {
+      const t = TOPICS.find((x) => x.id === topicId);
+      return t ? `Tema ${t.number}: ${t.title}` : 'Tema';
+    }
+    const map = {
+      home: 'Inici',
+      dashboard: 'Seguiment',
+      calendar: 'Calendari',
+      quickstudy: 'Sessió Ràpida',
+      audio: 'Àudio-Resums',
+      practice: 'Tests i Simulacres',
+      calculations: 'Càlculs',
+      keypoints: 'Punts Clau',
+      mnemonics: 'Mnemotècnies',
+      manuals: 'Manuals PDF',
+      classes: 'Classes',
+      group: 'Grup'
+    };
+    return map[view] || view;
+  };
+
+  const pushCurrentLocation = () => {
+    setNavHistory((prev) => [
+      ...prev.slice(-9),
+      {
+        view: activeView,
+        topicId: selectedTopicId,
+        topicTarget,
+        scrollY: Math.round(window.scrollY || 0),
+        label: getViewLabel(activeView, selectedTopicId)
+      }
+    ]);
+  };
+
+  const navigateWithHistory = (nextView) => {
+    if (nextView !== activeView) {
+      pushCurrentLocation();
+    }
+    setActiveView(nextView);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleGoBack = () => {
+    if (navHistory.length === 0) {
+      setActiveView('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const prevLoc = navHistory[navHistory.length - 1];
+    setNavHistory((prev) => prev.slice(0, -1));
+    if (prevLoc.view === 'topic' && prevLoc.topicId) {
+      setSelectedTopicId(prevLoc.topicId);
+      setTopicTarget(prevLoc.topicTarget || null);
+    }
+    setActiveView(prevLoc.view || 'home');
+    setTimeout(() => {
+      window.scrollTo({ top: prevLoc.scrollY || 0, behavior: 'smooth' });
+    }, 120);
+  };
+
+  const handleSelectTopic = (topicId, target = null, skipHistory = false) => {
+    if (!skipHistory && (activeView !== 'topic' || selectedTopicId !== topicId)) {
+      pushCurrentLocation();
+    }
     setSelectedTopicId(topicId);
     setTopicTarget(target);
     setActiveView('topic');
@@ -584,45 +649,22 @@ export default function App() {
         activeView={activeView}
         selectedTopicId={selectedTopicId}
         onSelectTopic={(id) => handleSelectTopic(id, null)}
-        onSelectHome={() => {
-          setActiveView('home');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onSelectDashboard={() => setActiveView('dashboard')}
-        onSelectCalendar={() => {
-          setActiveView('calendar');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onSelectQuickStudy={() => {
-          setActiveView('quickstudy');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onSelectAudio={() => {
-          setActiveView('audio');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onSelectClasses={() => {
-          setActiveView('classes');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onSelectHome={() => navigateWithHistory('home')}
+        onSelectDashboard={() => navigateWithHistory('dashboard')}
+        onSelectCalendar={() => navigateWithHistory('calendar')}
+        onSelectQuickStudy={() => navigateWithHistory('quickstudy')}
+        onSelectAudio={() => navigateWithHistory('audio')}
+        onSelectClasses={() => navigateWithHistory('classes')}
         onSelectPractice={() => {
           setPracticeInitialTopicId(null);
-          setActiveView('practice');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          navigateWithHistory('practice');
         }}
         onSelectCalculations={() => {
           setCalcInitialMode('all');
-          setActiveView('calculations');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          navigateWithHistory('calculations');
         }}
-        onSelectKeyPoints={() => {
-          setActiveView('keypoints');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onSelectMnemonics={() => {
-          setActiveView('mnemonics');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onSelectKeyPoints={() => navigateWithHistory('keypoints')}
+        onSelectMnemonics={() => navigateWithHistory('mnemonics')}
         onSelectManuals={() => {
           setManualTopicTarget(null);
           setActiveView('manuals');
@@ -693,6 +735,18 @@ export default function App() {
 
         {/* Àrea de Lectura i Estudi (amplada màxima òptima per evitar fatiga visual) */}
         <main className={`flex-1 px-4 sm:px-6 lg:px-10 py-6 md:py-8 w-full mx-auto print:p-0 print:max-w-none ${activeView === 'manuals' ? 'max-w-7xl' : 'max-w-5xl'}`}>
+          {navHistory.length > 0 && activeView !== 'home' && (
+            <div className="print:hidden mb-4">
+              <button
+                type="button"
+                onClick={handleGoBack}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-1.5 text-xs font-extrabold text-slate-700 dark:text-slate-200 hover:border-red-400 shadow-xs transition"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Tornar enrere ({navHistory[navHistory.length - 1].label})</span>
+              </button>
+            </div>
+          )}
           <AppErrorBoundary
             key={`${activeView}-${selectedTopicId}`}
             onResetHome={() => setActiveView('home')}
@@ -733,10 +787,7 @@ export default function App() {
                   }}
                 />
               }
-              onNavigate={(view) => {
-                setActiveView(view);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+              onNavigate={(view) => navigateWithHistory(view)}
             />
           ) : activeView === 'dashboard' ? (
             <DashboardView
@@ -777,6 +828,8 @@ export default function App() {
             <PracticeTestView
               topics={TOPICS}
               initialTopicId={practiceInitialTopicId}
+              onGoBack={navHistory.length > 0 ? handleGoBack : null}
+              backLabel={navHistory.length > 0 ? navHistory[navHistory.length - 1].label : ''}
               userMistakes={progress.quizResults?.__mistakes || {}}
               onClearMistake={clearUserMistake}
               onRecordQuestionOutcome={recordQuestionOutcome}
@@ -843,6 +896,7 @@ export default function App() {
               onCompleteTopicRound={completeTopicRound}
               onMarkTopicReviewed={markTopicReviewed}
               onOpenPracticeForTopic={(tId) => {
+                pushCurrentLocation();
                 setPracticeInitialTopicId(tId);
                 setActiveView('practice');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
