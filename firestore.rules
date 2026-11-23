@@ -31,6 +31,12 @@ service cloud.firestore {
     //   - pomodoroTodayDate: string (optional, <= 16 chars)
     //   - lastActiveDate: string (optional, <= 32 chars)
     //   - roundsCompleted: number (optional, 0..100)
+    //   - firstRoundCompleted: bool (optional)
+    //   - fullRoundsCompleted: number (optional, 0..1000)
+    //   - totalCorrectAnswers: number (optional, 0..1000000)
+    //   - totalAnswered: number (optional, 0..1000000)
+    //   - statsResetEpoch: string (optional, 0..40 chars)
+    //   - clientWriteId: string (optional, 0..64 chars)
     //   - dailyEmailEnabled: bool (optional)
     //   - createdAt: timestamp (optional, immutable if set)
     //   - updatedAt: timestamp (optional)
@@ -57,6 +63,10 @@ service cloud.firestore {
     //   - readingSpeedFactor: number (optional, 0.3..3.0)
     //   - email: string (optional, 0..120 chars)
     //   - dailyEmailEnabled: bool (optional)
+    //   - reviewHistory: map (optional, <= 500 keys)
+    //   - answerStats: map (optional, <= 20 keys)
+    //   - statsResetEpoch: string (optional, 0..40 chars)
+    //   - clientWriteId: string (optional, 0..64 chars)
     //   - updatedAt: timestamp (optional)
     //
     // Collection: dailyQuestions/{topicId}/questions
@@ -181,6 +191,12 @@ service cloud.firestore {
           'pomodoroTodayDate',
           'lastActiveDate',
           'roundsCompleted',
+          'firstRoundCompleted',
+          'fullRoundsCompleted',
+          'totalCorrectAnswers',
+          'totalAnswered',
+          'statsResetEpoch',
+          'clientWriteId',
           'dailyEmailEnabled',
           'createdAt',
           'updatedAt'
@@ -203,6 +219,12 @@ service cloud.firestore {
         isValidOptionalString('pomodoroTodayDate', 0, 16) &&
         isValidOptionalString('lastActiveDate', 0, 32) &&
         isValidOptionalNumber('roundsCompleted', 0, 100) &&
+        isValidOptionalBool('firstRoundCompleted') &&
+        isValidOptionalNumber('fullRoundsCompleted', 0, 1000) &&
+        isValidOptionalNumber('totalCorrectAnswers', 0, 1000000) &&
+        isValidOptionalNumber('totalAnswered', 0, 1000000) &&
+        isValidOptionalString('statsResetEpoch', 0, 40) &&
+        isValidOptionalString('clientWriteId', 0, 64) &&
         isValidOptionalBool('dailyEmailEnabled') &&
         (!('createdAt' in data) || data.createdAt is timestamp) &&
         (!('updatedAt' in data) || data.updatedAt is timestamp);
@@ -228,6 +250,10 @@ service cloud.firestore {
           'readingSpeedFactor',
           'email',
           'dailyEmailEnabled',
+          'reviewHistory',
+          'answerStats',
+          'statsResetEpoch',
+          'clientWriteId',
           'updatedAt'
         ]) &&
         uidUnchanged() &&
@@ -248,6 +274,10 @@ service cloud.firestore {
         isValidOptionalNumber('readingSpeedFactor', 0.3, 3.0) &&
         isValidOptionalString('email', 0, 120) &&
         isValidOptionalBool('dailyEmailEnabled') &&
+        isValidOptionalMap('reviewHistory', 500) &&
+        isValidOptionalMap('answerStats', 20) &&
+        isValidOptionalString('statsResetEpoch', 0, 40) &&
+        isValidOptionalString('clientWriteId', 0, 64) &&
         (!('updatedAt' in data) || data.updatedAt is timestamp);
     }
 
