@@ -19,6 +19,7 @@ import { OFFICIAL_EXAM_STATS_BY_TOPIC } from '../data/officialExamStats';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
 
 const BANK_ANSWERED_KEY = 'bombers_answered_bank_ids_v1';
+const BANK_CORRECT_KEY = 'bombers_correct_bank_ids_v1';
 const REPORTS_KEY = 'bombers_question_reports_v1';
 const LAST_ASKED_KEY = 'bombers_question_last_asked_v1';
 
@@ -107,9 +108,19 @@ function buildWeightedExamQuestions(
   count,
   useOfficialWeights,
   lastAskedMap = {},
-  includeExtension = true
+  includeExtension = true,
+  correctBankMap = null
 ) {
-  const getTopicPool = (t) => (t.quiz || []).filter((q) => includeExtension || !q.isExtension);
+  const getTopicPool = (t) => {
+    const base = (t.quiz || []).filter((q) => includeExtension || !q.isExtension);
+    if (!correctBankMap) return base;
+    const unmastered = base.filter((q) => !correctBankMap[q.id]);
+    // Només repetim preguntes ja encertades quan s'ha esgotat el banc d'aquell tema
+    if (unmastered.length === 0) return base;
+    if (unmastered.length >= count) return unmastered;
+    const mastered = shuffleArray(base.filter((q) => Boolean(correctBankMap[q.id])));
+    return [...unmastered, ...mastered];
+  };
   const poolTopics = topics.filter((t) => selectedIds.includes(t.id) && getTopicPool(t).length > 0);
   if (poolTopics.length === 0) return [];
 
@@ -120,16 +131,15 @@ function buildWeightedExamQuestions(
         all.push({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title });
       });
     });
-    return shuffleArray(sortWithCooldown(all, lastAskedMap).slice(0, count));
+    return shuffleArray(shuffleArray(all).slice(0, count));
   }
 
   // Distribució proporcional segons probabilitat estadística d'examen
   const totalW = poolTopics.reduce((acc, t) => acc + getTopicWeight(t.number, includeExtension), 0);
   const byTopicShuffled = {};
   poolTopics.forEach((t) => {
-    byTopicShuffled[t.id] = sortWithCooldown(
-      getTopicPool(t).map((q) => ({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title })),
-      lastAskedMap
+    byTopicShuffled[t.id] = shuffleArray(
+      getTopicPool(t).map((q) => ({ ...q, _topicId: t.id, _topicNumber: t.number, _topicTitle: t.title }))
     );
   });
 
@@ -169,6 +179,7 @@ function buildWeightedExamQuestions(
 
 export default function PracticeTestView({
   topics,
+  initialTopicId = null,
   userMistakes = {},
   onClearMistake = null,
   onRecordQuestionOutcome = null,
@@ -177,14 +188,19 @@ export default function PracticeTestView({
   onOpenOfficialManual = null
 }) {
   const [mode, setMode] = useState('practice'); // 'practice' | 'simulacre'
-  const [selectedTopicIds, setSelectedTopicIds] = useState(() => topics.map((t) => t.id));
+  const [selectedTopicIds, setSelectedTopicIds] = useState(() =>
+    initialTopicId ? [initialTopicId] : topics.map((t) => t.id)
+  );
   const [questionCount, setQuestionCount] = useState(25);
   const [useWeightedPractice, setUseWeightedPractice] = useState(true);
+  const [practiceWithTimer, setPracticeWithTimer] = useState(false);
+  const [practiceElapsedSec, setPracticeElapsedSec] = useState(0);
   const [includeExtension, setIncludeExtension] = useState(true);
   const [showStatsTable, setShowStatsTable] = useState(false);
 
-  // Estat global del banc respost + informes/impugnacions
+  // Estat global del banc respost + encertat + informes/impugnacions
   const [answeredBankMap, setAnsweredBankMap] = useState(() => loadJsonSet(BANK_ANSWERED_KEY));
+  const [correctBankMap, setCorrectBankMap] = useState(() => loadJsonSet(BANK_CORRECT_KEY));
   const [reportsMap, setReportsMap] = useState(() => loadJsonSet(REPORTS_KEY));
   const [openReportId, setOpenReportId] = useState(null);
   const [reportDraft, setReportDraft] = useState('');
@@ -209,6 +225,24 @@ export default function PracticeTestView({
       }
     } catch {}
   }, [activeQuestions, isFinished]);
+
+  // Pre-selecciona un tema concret si venim des de "Fer test d'aquest tema"
+  useEffect(() => {
+    if (initialTopicId) {
+      setMode('practice');
+      setSelectedTopicIds([initialTopicId]);
+      setActiveQuestions(null);
+    }
+  }, [initialTopicId]);
+
+  // Cronòmetre opcional en Mode Pràctica (s'atura en finalitzar)
+  useEffect(() => {
+    if (!activeQuestions || mode !== 'practice' || !practiceWithTimer || isFinished) return;
+    const interval = setInterval(() => {
+      setPracticeElapsedSec((prev) => prev + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [activeQuestions, mode, practiceWithTimer, isFinished]);
 
   // Temporitzador en Mode Simulacre
   useEffect(() => {
@@ -271,7 +305,8 @@ export default function PracticeTestView({
       count,
       weighted,
       lastAskedMap,
-      allowExtension
+      allowExtension,
+      targetMode === 'practice' ? correctBankMap : null
     ).map(shuffleQuestionOptions);
     const now = Date.now();
     const updatedAsked = { ...lastAskedMap };
@@ -290,6 +325,7 @@ export default function PracticeTestView({
     setIsFinished(false);
     setShowFinishConfirm(false);
     setEmailCopiedNotice(false);
+    setPracticeElapsedSec(0);
     setSecondsLeft(85 * 60);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -433,6 +469,16 @@ export default function PracticeTestView({
 
     setAnswers((prev) => ({ ...prev, [q.id]: chosen }));
     markQuestionAnsweredInBank(q.id);
+    if (chosen === q.correctIndex) {
+      setCorrectBankMap((prev) => {
+        if (prev[q.id]) return prev;
+        const next = { ...prev, [q.id]: true };
+        try {
+          localStorage.setItem(BANK_CORRECT_KEY, JSON.stringify(next));
+        } catch {}
+        return next;
+      });
+    }
 
     if (onRecordQuestionOutcome) {
       onRecordQuestionOutcome(q._topicId, q._topicNumber, q, chosen === q.correctIndex);
@@ -445,7 +491,18 @@ export default function PracticeTestView({
     if (mode === 'simulacre' && onRecordQuestionOutcome && activeQuestions) {
       activeQuestions.forEach((q) => {
         if (answers[q.id] !== undefined) {
-          onRecordQuestionOutcome(q._topicId, q._topicNumber, q, answers[q.id] === q.correctIndex);
+          const isOk = answers[q.id] === q.correctIndex;
+          onRecordQuestionOutcome(q._topicId, q._topicNumber, q, isOk);
+          if (isOk) {
+            setCorrectBankMap((prev) => {
+              if (prev[q.id]) return prev;
+              const next = { ...prev, [q.id]: true };
+              try {
+                localStorage.setItem(BANK_CORRECT_KEY, JSON.stringify(next));
+              } catch {}
+              return next;
+            });
+          }
         }
       });
     }
@@ -522,6 +579,12 @@ export default function PracticeTestView({
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
+            {mode === 'practice' && practiceWithTimer && (
+              <div className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-extrabold border bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white">
+                <Clock className="w-4 h-4 text-blue-600" />
+                <span>{formatTime(practiceElapsedSec)}</span>
+              </div>
+            )}
             {mode === 'simulacre' && !isFinished && (
               <div
                 className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-extrabold border ${
@@ -567,8 +630,14 @@ export default function PracticeTestView({
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mt-0.5">
                   Encerts: <strong className="text-emerald-700 dark:text-emerald-400">{correctCount}</strong> ·{' '}
-                  Errades: <strong className="text-red-600 dark:text-red-400">{wrongCount}</strong> (-0,33/errada) ·{' '}
+                  Fallades: <strong className="text-red-600 dark:text-red-400">{wrongCount}</strong> (-0,33/errada) ·{' '}
                   En blanc: <strong>{blankCount}</strong>
+                  {mode === 'practice' && practiceWithTimer && (
+                    <>
+                      {' · '}Temps: <strong>{formatTime(practiceElapsedSec)}</strong> (
+                      <strong>{(practiceElapsedSec / Math.max(1, mainAnswered || 1)).toFixed(1)} s/preg</strong>)
+                    </>
+                  )}
                   {mode === 'simulacre' && impugnedMainCount > 0 && (
                     <>
                       {' · '}Impugnacions validades:{' '}
@@ -1003,11 +1072,23 @@ export default function PracticeTestView({
             {currentQuestionIdx < activeQuestions.length - 1 ? (
               <button
                 type="button"
+                disabled={
+                  mode === 'practice' &&
+                  activeQuestions[currentQuestionIdx] &&
+                  answers[activeQuestions[currentQuestionIdx].id] === undefined
+                }
                 onClick={() => {
                   setCurrentQuestionIdx((i) => Math.min(activeQuestions.length - 1, i + 1));
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-xs font-extrabold shadow-sm"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 disabled:opacity-40 disabled:pointer-events-none text-white px-4 py-2 text-xs font-extrabold shadow-sm"
+                title={
+                  mode === 'practice' &&
+                  activeQuestions[currentQuestionIdx] &&
+                  answers[activeQuestions[currentQuestionIdx].id] === undefined
+                    ? 'Valida la resposta per passar a la següent diapositiva'
+                    : 'Següent pregunta'
+                }
               >
                 <span>Següent →</span>
               </button>
@@ -1390,6 +1471,14 @@ export default function PracticeTestView({
                   onChange={(e) => setUseWeightedPractice(e.target.checked)}
                 />
                 <span>Prioritzar temes més preguntats</span>
+              </label>
+              <label className="flex items-center gap-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300 ml-2 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800/70 rounded-lg px-2.5 py-1 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={practiceWithTimer}
+                  onChange={(e) => setPracticeWithTimer(e.target.checked)}
+                />
+                <span>Amb cronòmetre (temps per pregunta)</span>
               </label>
               <label className="flex items-center gap-1.5 text-xs font-semibold text-amber-800 dark:text-amber-300 ml-2 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/70 rounded-lg px-2.5 py-1 cursor-pointer">
                 <input

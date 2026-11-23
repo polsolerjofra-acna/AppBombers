@@ -124,6 +124,7 @@ export default function App() {
   }, [activeView, selectedTopicId]);
   const [topicTarget, setTopicTarget] = useState(null); // null | 'manual' | 'summary' | 'quiz'
   const [manualTopicTarget, setManualTopicTarget] = useState(null);
+  const [practiceInitialTopicId, setPracticeInitialTopicId] = useState(null);
   const [calcInitialMode, setCalcInitialMode] = useState('all'); // 'all' | 'friday'
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -594,6 +595,7 @@ export default function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onSelectPractice={() => {
+          setPracticeInitialTopicId(null);
           setActiveView('practice');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
@@ -688,6 +690,9 @@ export default function App() {
             <HomeView
               topicsCount={TOPICS.length}
               dueReviewsCount={dueReviewsCount}
+              dueMistakesCount={Object.values(progress.quizResults?.__mistakes || {}).filter(
+                (m) => m && m.id && (!m.nextReviewAt || m.nextReviewAt <= new Date().toISOString().split('T')[0])
+              ).length}
               cloudUser={cloudUser}
               onSignIn={handleQuickGoogleLogin}
               onOpenTopic={(id) => handleSelectTopic(id)}
@@ -758,6 +763,7 @@ export default function App() {
           ) : activeView === 'practice' ? (
             <PracticeTestView
               topics={TOPICS}
+              initialTopicId={practiceInitialTopicId}
               userMistakes={progress.quizResults?.__mistakes || {}}
               onClearMistake={clearUserMistake}
               onRecordQuestionOutcome={recordQuestionOutcome}
@@ -823,6 +829,11 @@ export default function App() {
               onToggleDifficultPage={toggleDifficultPage}
               onCompleteTopicRound={completeTopicRound}
               onMarkTopicReviewed={markTopicReviewed}
+              onOpenPracticeForTopic={(tId) => {
+                setPracticeInitialTopicId(tId);
+                setActiveView('practice');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               onSaveQuizScore={saveQuizScore}
               onRecordQuestionOutcome={recordQuestionOutcome}
               onOpenOfficialManual={(topicNum) => {

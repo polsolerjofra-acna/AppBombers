@@ -30,6 +30,7 @@ const defaultState = {
   quizResults: {},
   answerStats: { totalAnswered: 0, totalCorrect: 0 },
   spacedRepetition: {},
+  reviewHistory: {},
   topicRounds: {},
   studyPlan: {},
   fridayCalcHistory: [],
@@ -245,29 +246,64 @@ export function useStudyProgress() {
   };
 
   // Registra un repàs fet avui segons la Corba de l'Oblit d'Ebbinghaus
+  // (també neteja el tema de planificacions manuals pendents fins avui i ho registra a reviewHistory per al calendari)
   const markTopicReviewed = (topicId) => {
     const today = getTodayISO();
+    const prevSpaced = (progress.spacedRepetition || {})[topicId];
+    const nextStage = prevSpaced
+      ? Math.min(EBBINGHAUS_INTERVALS.length - 1, (prevSpaced.reviewStage || 0) + 1)
+      : 0;
+    const intervalDays = EBBINGHAUS_INTERVALS[nextStage];
+    const nextDate = addDaysISO(today, intervalDays);
+
     setProgress((prev) => {
-      const prevSpaced = (prev.spacedRepetition || {})[topicId];
-      const nextStage = prevSpaced
-        ? Math.min(EBBINGHAUS_INTERVALS.length - 1, (prevSpaced.reviewStage || 0) + 1)
+      const curSpaced = (prev.spacedRepetition || {})[topicId];
+      const curNextStage = curSpaced
+        ? Math.min(EBBINGHAUS_INTERVALS.length - 1, (curSpaced.reviewStage || 0) + 1)
         : 0;
-      const intervalDays = EBBINGHAUS_INTERVALS[nextStage];
+      const curInterval = EBBINGHAUS_INTERVALS[curNextStage];
+      const curNextDate = addDaysISO(today, curInterval);
+
+      // Neteja planificacions manuals d'avui o endarrerides per aquest tema
+      const nextPlan = { ...(prev.studyPlan || {}) };
+      Object.keys(nextPlan).forEach((d) => {
+        if (d <= today && Array.isArray(nextPlan[d])) {
+          const filtered = nextPlan[d].filter((id) => id !== topicId);
+          if (filtered.length === 0) delete nextPlan[d];
+          else nextPlan[d] = filtered;
+        }
+      });
+
+      // Registra al calendari (en verd amb tic) que aquest tema s'ha repassat avui
+      const prevHist = prev.reviewHistory || {};
+      const todayHist = (prevHist[today] || []).filter((item) => item.topicId !== topicId);
+      const nextHist = {
+        ...prevHist,
+        [today]: [
+          ...todayHist,
+          { topicId, stage: curNextStage, nextReviewAt: curNextDate }
+        ]
+      };
 
       return {
         ...prev,
+        studyPlan: nextPlan,
+        reviewHistory: nextHist,
         spacedRepetition: {
           ...(prev.spacedRepetition || {}),
           [topicId]: {
             lastStudiedAt: today,
-            reviewStage: nextStage,
-            nextReviewAt: addDaysISO(today, intervalDays),
-            reviewsCount: ((prevSpaced && prevSpaced.reviewsCount) || 0) + 1
+            reviewStage: curNextStage,
+            nextReviewAt: curNextDate,
+            reviewsCount: ((curSpaced && curSpaced.reviewsCount) || 0) + 1
           }
         },
+        streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
     });
+
+    return { topicId, nextReviewAt: nextDate, intervalDays, nextStage };
   };
 
   // Registra una sessió de Pomodoro (minuts d'estudi diari + tema)

@@ -42,6 +42,7 @@ export default function TopicView({
   onToggleDifficultPage,
   onCompleteTopicRound,
   onMarkTopicReviewed,
+  onOpenPracticeForTopic = null,
   onSaveQuizScore,
   onRecordQuestionOutcome,
   onOpenOfficialManual
@@ -65,6 +66,7 @@ export default function TopicView({
     topic.importance ? 'radar' : hasSchemas ? -1 : 0
   );
   const [roundJustCompleted, setRoundJustCompleted] = useState(null);
+  const [reviewConfirmModal, setReviewConfirmModal] = useState(null);
   const [showAudioPlayer, setShowAudioPlayer] = useState(false);
 
   const roundsCompleted = (progress.topicRounds && progress.topicRounds[topic.id]) || 0;
@@ -298,22 +300,36 @@ export default function TopicView({
               </button>
             )}
 
-            {onMarkTopicReviewed && (() => {
-              const sp = progress?.spacedRepetition?.[topic.id];
-              const todayISO = new Date().toISOString().split('T')[0];
-              const isDue = Boolean(sp?.nextReviewAt && sp.nextReviewAt <= todayISO);
-              if (!isDue) return null;
-              return (
-                <button
-                  onClick={() => onMarkTopicReviewed(topic.id)}
-                  className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
-                  title="Marca aquest tema com a repassat avui i programa'l automàticament al següent interval de la regla de l'oblit"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Marcar repassat avui ✓</span>
-                </button>
-              );
-            })()}
+            {onMarkTopicReviewed && (
+              <button
+                onClick={() => {
+                  const res = onMarkTopicReviewed(topic.id);
+                  if (res && res.nextReviewAt) {
+                    setReviewConfirmModal({
+                      topicTitle: `Tema ${topic.number} · ${topic.title}`,
+                      nextReviewAt: res.nextReviewAt,
+                      intervalDays: res.intervalDays
+                    });
+                  }
+                }}
+                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
+                title="Marca aquest tema com a repassat avui i programa'l automàticament al següent interval de la regla de l'oblit"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Repassat ✓</span>
+              </button>
+            )}
+
+            {onOpenPracticeForTopic && (
+              <button
+                onClick={() => onOpenPracticeForTopic(topic.id)}
+                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-all"
+                title="Ves directe al format de pràctica només amb aquest tema seleccionat"
+              >
+                <ClipboardCheck className="w-3.5 h-3.5" />
+                <span>Fer test d&apos;aquest tema →</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -760,6 +776,43 @@ export default function TopicView({
             </div>
           </div>
           )}
+        </div>
+      )}
+      {reviewConfirmModal && (
+        <div
+          onClick={() => setReviewConfirmModal(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-sm w-full rounded-3xl border border-emerald-200 dark:border-emerald-900 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4 text-center"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-6 h-6" />
+            </div>
+            <div className="space-y-1">
+              <div className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                Repàs registrat ✓
+              </div>
+              <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                {reviewConfirmModal.topicTitle}
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 pt-1">
+                Aquest tema et toca repassar-lo el dia{' '}
+                <strong className="text-emerald-700 dark:text-emerald-300">
+                  {reviewConfirmModal.nextReviewAt.split('-').reverse().join('/')}
+                </strong>{' '}
+                (+{reviewConfirmModal.intervalDays} {reviewConfirmModal.intervalDays === 1 ? 'dia' : 'dies'}).
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setReviewConfirmModal(null)}
+              className="w-full rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 text-sm font-extrabold shadow-sm"
+            >
+              Okei
+            </button>
+          </div>
         </div>
       )}
     </div>

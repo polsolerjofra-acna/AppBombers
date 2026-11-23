@@ -83,10 +83,12 @@ export default function CalendarView({
   });
   const [topicToPlan, setTopicToPlan] = useState(topics[0]?.id || 'tema-1');
   const [congratsBanner, setCongratsBanner] = useState(null);
+  const [reviewConfirmModal, setReviewConfirmModal] = useState(null);
   const [showCurveInfo, setShowCurveInfo] = useState(true);
 
   const spacedMap = progress.spacedRepetition || {};
   const studyPlan = progress.studyPlan || {};
+  const reviewHistory = progress.reviewHistory || {};
   const topicRounds = progress.topicRounds || {};
   const dailyEmailEnabled = progress.dailyEmailEnabled !== false;
 
@@ -115,8 +117,41 @@ export default function CalendarView({
   };
 
   const getPlannedForDate = (isoDate) => {
-    const ids = studyPlan[isoDate] || [];
-    return ids.map((id) => topics.find((t) => t.id === id)).filter(Boolean);
+    const directIds = studyPlan[isoDate] || [];
+    if (isoDate !== todayISO) {
+      return directIds.map((id) => topics.find((t) => t.id === id)).filter(Boolean);
+    }
+    // Si és avui, arrosseguem també els temes manuals de dies anteriors que no s'han repassat
+    const merged = new Set(directIds);
+    Object.keys(studyPlan).forEach((d) => {
+      if (d < todayISO && Array.isArray(studyPlan[d])) {
+        studyPlan[d].forEach((id) => merged.add(id));
+      }
+    });
+    return Array.from(merged)
+      .map((id) => topics.find((t) => t.id === id))
+      .filter(Boolean);
+  };
+
+  const getDoneForDate = (isoDate) => {
+    const items = reviewHistory[isoDate] || [];
+    return items
+      .map((entry) => {
+        const t = topics.find((x) => x.id === entry.topicId);
+        return t ? { ...entry, topic: t } : null;
+      })
+      .filter(Boolean);
+  };
+
+  const handleMarkReviewedWithConfirm = (topic) => {
+    const res = onMarkTopicReviewed(topic.id);
+    if (res && res.nextReviewAt) {
+      setReviewConfirmModal({
+        topicTitle: `Tema ${topic.number} · ${topic.title}`,
+        nextReviewAt: res.nextReviewAt,
+        intervalDays: res.intervalDays
+      });
+    }
   };
 
   const isFriday = (isoDate) => {
@@ -125,6 +160,7 @@ export default function CalendarView({
 
   const selectedReviews = getReviewsForDate(selectedDate);
   const selectedPlanned = getPlannedForDate(selectedDate);
+  const selectedDone = getDoneForDate(selectedDate);
   const selectedIsFriday = isFriday(selectedDate);
 
   const topicsWithRound1 = topics.filter((t) => (topicRounds[t.id] || 0) >= 1).length;
@@ -267,6 +303,9 @@ export default function CalendarView({
           const dayNum = Number(iso.split('-')[2]);
           const revCount = getReviewsForDate(iso).length;
           const planCount = getPlannedForDate(iso).length;
+          const doneCount = getDoneForDate(iso).length;
+          const isPast = iso < todayISO;
+          const hasMissedPast = isPast && (revCount > 0 || planCount > 0);
           const friday = isFriday(iso);
           const isSelected = selectedDate === iso;
           const isToday = iso === todayISO;
@@ -283,6 +322,10 @@ export default function CalendarView({
               className={`h-20 sm:h-24 rounded-2xl border p-2 flex flex-col justify-between text-left transition-all ${
                 isSelected
                   ? 'border-red-600 bg-red-50/70 dark:bg-red-950/30 ring-2 ring-red-500/20'
+                  : hasMissedPast
+                  ? 'border-red-400 bg-red-50/80 dark:bg-red-950/30'
+                  : doneCount > 0 && revCount === 0 && planCount === 0
+                  ? 'border-emerald-400 bg-emerald-50/60 dark:bg-emerald-950/20'
                   : isToday
                   ? 'border-blue-400 bg-blue-50/50 dark:bg-blue-950/20'
                   : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
@@ -309,13 +352,22 @@ export default function CalendarView({
               </div>
 
               <div className="flex flex-wrap gap-1">
+                {doneCount > 0 && (
+                  <span className="px-1.5 py-0.5 rounded-md text-[10px] font-extrabold bg-emerald-600 text-white">
+                    ✓ {doneCount}
+                  </span>
+                )}
                 {revCount > 0 && (
                   <span className="px-1.5 py-0.5 rounded-md text-[10px] font-extrabold bg-red-600 text-white">
                     R:{revCount}
                   </span>
                 )}
                 {planCount > 0 && (
-                  <span className="px-1.5 py-0.5 rounded-md text-[10px] font-extrabold bg-blue-600 text-white">
+                  <span
+                    className={`px-1.5 py-0.5 rounded-md text-[10px] font-extrabold text-white ${
+                      isPast ? 'bg-red-600' : 'bg-blue-600'
+                    }`}
+                  >
                     E:{planCount}
                   </span>
                 )}
@@ -628,14 +680,12 @@ export default function CalendarView({
                       </>
                     )}
 
-                    {kind === 'review' && (
-                      <button
-                        onClick={() => onMarkTopicReviewed(topic.id)}
-                        className="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white text-[11px] font-bold hover:bg-emerald-700"
-                      >
-                        Repassat ✓
-                      </button>
-                    )}
+                    <button
+                      onClick={() => handleMarkReviewedWithConfirm(topic)}
+                      className="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white text-[11px] font-bold hover:bg-emerald-700"
+                    >
+                      Repassat ✓
+                    </button>
 
                     <button
                       onClick={() => handleCompleteRoundClick(topic)}
@@ -649,9 +699,71 @@ export default function CalendarView({
                 </div>
               );
             })}
+            {selectedDone.length > 0 && (
+              <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/70 dark:bg-emerald-950/25 p-3.5 space-y-2">
+                <div className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Repassats aquest dia ✓ ({selectedDone.length})</span>
+                </div>
+                <div className="space-y-1.5">
+                  {selectedDone.map((item, i) => (
+                    <div
+                      key={`${item.topicId}-${i}`}
+                      className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white dark:bg-slate-900 border border-emerald-200/80 dark:border-emerald-900/40 px-3 py-2 text-xs"
+                    >
+                      <span className="font-bold text-slate-900 dark:text-white">
+                        ✓ Tema {item.topic.number} · {item.topic.title}
+                      </span>
+                      <span className="text-[11px] font-extrabold text-emerald-700 dark:text-emerald-300">
+                        Pròxim repàs: {item.nextReviewAt}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Modal confirmació següent repàs (Regla de l'Oblit) */}
+      {reviewConfirmModal && (
+        <div
+          onClick={() => setReviewConfirmModal(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-sm w-full rounded-3xl border border-emerald-200 dark:border-emerald-900 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4 text-center"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-6 h-6" />
+            </div>
+            <div className="space-y-1">
+              <div className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                Repàs registrat ✓
+              </div>
+              <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                {reviewConfirmModal.topicTitle}
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 pt-1">
+                Aquest tema et toca repassar-lo el dia{' '}
+                <strong className="text-emerald-700 dark:text-emerald-300">
+                  {reviewConfirmModal.nextReviewAt.split('-').reverse().join('/')}
+                </strong>{' '}
+                (+{reviewConfirmModal.intervalDays} {reviewConfirmModal.intervalDays === 1 ? 'dia' : 'dies'}).
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setReviewConfirmModal(null)}
+              className="w-full rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 text-sm font-extrabold shadow-sm"
+            >
+              Okei
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Resum de voltes, estadístiques i avisos 01:00 AM (sota l'agenda) */}
       <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-sm space-y-5">
@@ -734,9 +846,71 @@ export default function CalendarView({
             <div className="text-[11px] text-slate-500 mt-0.5">
               {activeSpacedTopics.length}/{topics.length} temes en seguiment
             </div>
+            {selectedDone.length > 0 && (
+              <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/70 dark:bg-emerald-950/25 p-3.5 space-y-2">
+                <div className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Repassats aquest dia ✓ ({selectedDone.length})</span>
+                </div>
+                <div className="space-y-1.5">
+                  {selectedDone.map((item, i) => (
+                    <div
+                      key={`${item.topicId}-${i}`}
+                      className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white dark:bg-slate-900 border border-emerald-200/80 dark:border-emerald-900/40 px-3 py-2 text-xs"
+                    >
+                      <span className="font-bold text-slate-900 dark:text-white">
+                        ✓ Tema {item.topic.number} · {item.topic.title}
+                      </span>
+                      <span className="text-[11px] font-extrabold text-emerald-700 dark:text-emerald-300">
+                        Pròxim repàs: {item.nextReviewAt}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Modal confirmació següent repàs (Regla de l'Oblit) */}
+      {reviewConfirmModal && (
+        <div
+          onClick={() => setReviewConfirmModal(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-sm w-full rounded-3xl border border-emerald-200 dark:border-emerald-900 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4 text-center"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-6 h-6" />
+            </div>
+            <div className="space-y-1">
+              <div className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                Repàs registrat ✓
+              </div>
+              <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                {reviewConfirmModal.topicTitle}
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 pt-1">
+                Aquest tema et toca repassar-lo el dia{' '}
+                <strong className="text-emerald-700 dark:text-emerald-300">
+                  {reviewConfirmModal.nextReviewAt.split('-').reverse().join('/')}
+                </strong>{' '}
+                (+{reviewConfirmModal.intervalDays} {reviewConfirmModal.intervalDays === 1 ? 'dia' : 'dies'}).
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setReviewConfirmModal(null)}
+              className="w-full rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 text-sm font-extrabold shadow-sm"
+            >
+              Okei
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Cua completa de la Corba de l'Oblit */}
       {activeSpacedTopics.length > 0 && (

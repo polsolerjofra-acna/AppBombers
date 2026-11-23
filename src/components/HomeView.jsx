@@ -23,6 +23,7 @@ import { getTodayCurrentAffairsQuestion } from '../data/dailyCurrentAffairsQuest
 export default function HomeView({
   topicsCount = 34,
   dueReviewsCount = 0,
+  dueMistakesCount = 0,
   cloudUser = null,
   onSignIn,
   onNavigate,
@@ -270,6 +271,33 @@ export default function HomeView({
         )}
       </section>
 
+      {/* Avís diari de preguntes fallades pendents de repassar (Regla de l'Oblit) */}
+      {dueMistakesCount > 0 && (
+        <section className="rounded-2xl border border-rose-300 dark:border-rose-900/70 bg-gradient-to-r from-rose-50 via-white to-amber-50/50 dark:from-rose-950/40 dark:via-slate-900 dark:to-amber-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0">
+              <AlertTriangle className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xs font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                Avís diari · Regla de l&apos;Oblit
+              </div>
+              <p className="text-sm font-bold text-slate-900 dark:text-white">
+                Avui tens {dueMistakesCount} {dueMistakesCount === 1 ? 'pregunta fallada pendent' : 'preguntes fallades pendents'} de repassar!
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => onNavigate('practice')}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 text-xs font-extrabold shadow-xs"
+          >
+            <span>Repassar preguntes pendents</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </section>
+      )}
+
       {/* Calendari complet integrat directament sota el títol */}
       {calendarElement}
 
@@ -383,6 +411,33 @@ export default function HomeView({
           </div>
         )}
       </section>
+
+      {/* Avís diari de preguntes fallades pendents de repassar (Regla de l'Oblit) */}
+      {dueMistakesCount > 0 && (
+        <section className="rounded-2xl border border-rose-300 dark:border-rose-900/70 bg-gradient-to-r from-rose-50 via-white to-amber-50/50 dark:from-rose-950/40 dark:via-slate-900 dark:to-amber-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0">
+              <AlertTriangle className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xs font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                Avís diari · Regla de l&apos;Oblit
+              </div>
+              <p className="text-sm font-bold text-slate-900 dark:text-white">
+                Avui tens {dueMistakesCount} {dueMistakesCount === 1 ? 'pregunta fallada pendent' : 'preguntes fallades pendents'} de repassar!
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => onNavigate('practice')}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 text-xs font-extrabold shadow-xs"
+          >
+            <span>Repassar preguntes pendents</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </section>
+      )}
 
       {/* Resum de funcions principals de l'app */}
       <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3">

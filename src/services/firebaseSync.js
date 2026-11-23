@@ -136,6 +136,7 @@ export async function saveCloudProgress(user, summaryPayload, fullProgressState)
     topicStatus: fullProgressState.topicStatus || {},
     quizResults: fullProgressState.quizResults || {},
     spacedRepetition: fullProgressState.spacedRepetition || {},
+    reviewHistory: fullProgressState.reviewHistory || {},
     topicRounds: fullProgressState.topicRounds || {},
     studyPlan: fullProgressState.studyPlan || {},
     fridayCalcHistory: (fullProgressState.fridayCalcHistory || []).slice(0, 200),
