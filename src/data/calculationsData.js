@@ -1,4 +1,6 @@
-export const CALCULATION_SECTIONS = [
+import { CALCULATION_EXTRA_200 } from './calculationsExtra200';
+
+const BASE_CALCULATION_SECTIONS = [
   {
     id: 'calc-tema-9',
     topicNumber: 9,
@@ -826,3 +828,8 @@ export const CALCULATION_SECTIONS = [
     ]
   }
 ];
+
+export const CALCULATION_SECTIONS = BASE_CALCULATION_SECTIONS.map((sec) => ({
+  ...sec,
+  problems: [...sec.problems, ...(CALCULATION_EXTRA_200[sec.id] || [])]
+}));
