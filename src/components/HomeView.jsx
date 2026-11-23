@@ -24,6 +24,8 @@ export default function HomeView({
   topicsCount = 34,
   dueReviewsCount = 0,
   dueMistakesCount = 0,
+  dailyReviewStatus = null,
+  onOpenDailyReview = null,
   cloudUser = null,
   onSignIn,
   onNavigate,
@@ -271,6 +273,45 @@ export default function HomeView({
         )}
       </section>
 
+      {/* Repàs del Dia (1 pregunta de cada tema + 2 càlculs / 10 divendres) */}
+      {dailyReviewStatus && onOpenDailyReview && (
+        <section className="rounded-2xl border-2 border-red-300 dark:border-red-900/70 bg-gradient-to-r from-red-50 via-white to-orange-50/60 dark:from-red-950/40 dark:via-slate-900 dark:to-orange-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <Flame className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300">
+                  Repàs del Dia · {dailyReviewStatus.isFriday ? 'Divendres (34 + 10 càlculs)' : '34 temes + 2 càlculs'}
+                </span>
+                <span className="rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 text-[10px] font-extrabold">
+                  {dailyReviewStatus.answered}/{dailyReviewStatus.total}
+                </span>
+              </div>
+              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
+                {dailyReviewStatus.completed
+                  ? 'Repàs d’avui completat ✓ (es reinicia a les 00:00)'
+                  : '1 pregunta nova de cada tema + càlculs diaris per no oblidar res del temari.'}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onOpenDailyReview}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
+          >
+            <span>
+              {dailyReviewStatus.completed
+                ? 'Veure resum d’avui'
+                : dailyReviewStatus.answered > 0
+                ? 'Continuar Repàs del Dia →'
+                : 'Començar Repàs del Dia →'}
+            </span>
+          </button>
+        </section>
+      )}
+
       {/* Avís diari de preguntes fallades pendents de repassar (Regla de l'Oblit) */}
       {dueMistakesCount > 0 && (
         <section className="rounded-2xl border border-rose-300 dark:border-rose-900/70 bg-gradient-to-r from-rose-50 via-white to-amber-50/50 dark:from-rose-950/40 dark:via-slate-900 dark:to-amber-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
@@ -411,6 +452,45 @@ export default function HomeView({
           </div>
         )}
       </section>
+
+      {/* Repàs del Dia (1 pregunta de cada tema + 2 càlculs / 10 divendres) */}
+      {dailyReviewStatus && onOpenDailyReview && (
+        <section className="rounded-2xl border-2 border-red-300 dark:border-red-900/70 bg-gradient-to-r from-red-50 via-white to-orange-50/60 dark:from-red-950/40 dark:via-slate-900 dark:to-orange-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <Flame className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300">
+                  Repàs del Dia · {dailyReviewStatus.isFriday ? 'Divendres (34 + 10 càlculs)' : '34 temes + 2 càlculs'}
+                </span>
+                <span className="rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 text-[10px] font-extrabold">
+                  {dailyReviewStatus.answered}/{dailyReviewStatus.total}
+                </span>
+              </div>
+              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
+                {dailyReviewStatus.completed
+                  ? 'Repàs d’avui completat ✓ (es reinicia a les 00:00)'
+                  : '1 pregunta nova de cada tema + càlculs diaris per no oblidar res del temari.'}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onOpenDailyReview}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
+          >
+            <span>
+              {dailyReviewStatus.completed
+                ? 'Veure resum d’avui'
+                : dailyReviewStatus.answered > 0
+                ? 'Continuar Repàs del Dia →'
+                : 'Començar Repàs del Dia →'}
+            </span>
+          </button>
+        </section>
+      )}
 
       {/* Avís diari de preguntes fallades pendents de repassar (Regla de l'Oblit) */}
       {dueMistakesCount > 0 && (

@@ -56,6 +56,7 @@ import { QUESTIONS_PUNYETERES_2 } from './questions_punyeteres_2';
 import { QUESTIONS_PUNYETERES_3 } from './questions_punyeteres_3';
 import { QUESTIONS_PUNYETERES_4 } from './questions_punyeteres_4';
 import { QUESTIONS_PROMOCIO_INTERNA } from './questions_promocio_interna';
+import { QUESTIONS_SEREBOMBER_DAILY } from './questions_serebomber_daily';
 
 const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_125,
@@ -79,7 +80,8 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_PUNYETERES_2,
   ...QUESTIONS_PUNYETERES_3,
   ...QUESTIONS_PUNYETERES_4,
-  ...QUESTIONS_PROMOCIO_INTERNA
+  ...QUESTIONS_PROMOCIO_INTERNA,
+  ...QUESTIONS_SEREBOMBER_DAILY
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`

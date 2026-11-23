@@ -46077,6 +46077,488 @@ const QUESTIONS_PROMOCIO_INTERNA = [
   }
 ];
 
+// Preguntes noves estil Serebomber (formulació precisa amb referència exacta al manual/llei)
+// 1 pregunta per cada tema del 1 al 34 per enriquir el Repàs del Dia i el banc global.
+
+const QUESTIONS_SEREBOMBER_DAILY = [
+  {
+    id: 'sb-t1',
+    topic: 1,
+    difficulty: 'Difícil',
+    question: "Segons l'article 9.3 de la Constitució Espanyola, quin dels principis següents garanteix expressament la Constitució?",
+    options: [
+      'La retroactivitat de les disposicions sancionadores no favorables.',
+      'La irretroactivitat de les disposicions sancionadores no favorables o restrictives de drets individuals.',
+      'La derogació automàtica dels reglaments autonòmics cada quatre anys.',
+      'La confidencialitat absoluta de totes les normes amb rang de llei orgànica.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: Constitució Espanyola (art. 9.3). Garanteix la legalitat, jerarquia normativa, publicitat de les normes i la irretroactivitat de les disposicions sancionadores no favorables.'
+  },
+  {
+    id: 'sb-t2',
+    topic: 2,
+    difficulty: 'Difícil',
+    question: "D'acord amb el TREBEP (RDL 5/2015), en quina situació administrativa es troba un funcionari de carrera quan és nomenat per ocupar un lloc de caràcter polític o d'alt càrrec?",
+    options: [
+      'Excedència voluntària per interès particular.',
+      'Serveis especials.',
+      'Suspensió provisional de funcions.',
+      'Servei en altres administracions públiques.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: TREBEP art. 87. Els funcionaris de carrera declarats en serveis especials reben la retribució del càrrec i se\'ls computa el temps a efectes d\'antiguitat i triennis.'
+  },
+  {
+    id: 'sb-t3',
+    topic: 3,
+    difficulty: 'Difícil',
+    question: "Segons el Reial Decret 773/1997 sobre utilització d'Equips de Protecció Individual (EPI), quina característica ha de complir l'ús d'un EPI?",
+    options: [
+      'Substitueix sempre les mesures de protecció col·lectiva per reduir costos.',
+      'És d\'ús personal, tot i que excepcionalment pot utilitzar-lo més d\'una persona si s\'adopta higiene i manteniment adequats.',
+      'Només és obligatori quan ho sol·liciti expressament el delegat de prevenció per escrit.',
+      'No requereix marcatge CE si es fabrica dins l\'Estat espanyol.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: RD 773/1997 art. 7. L\'EPI és en principi d\'ús personal; si les circumstàncies exigeixen ús compartit, cal garantir que no ocasioni cap problema de salut o higiene.'
+  },
+  {
+    id: 'sb-t4',
+    topic: 4,
+    difficulty: 'Difícil',
+    question: "Segons la Llei 17/2015 d'igualtat efectiva de dones i homes, què s'entén per 'transversalitat' de la perspectiva de gènere?",
+    options: [
+      'Limitar les polítiques d\'igualtat exclusivament al Departament d\'Igualtat i Feminismes.',
+      'Integrar el principi d\'igualtat en totes les polítiques públiques, normes i actuacions dels poders públics.',
+      'Aplicar quotes únicament en els càrrecs electes municipals de més de 50.000 habitants.',
+      'Substituir tots els processos selectius per sortejos paritaris.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: Llei 17/2015 art. 4. La transversalitat implica incorporar l\'enfocament de gènere en el disseny, execució i avaluació de totes les polítiques públiques.'
+  },
+  {
+    id: 'sb-t5',
+    topic: 5,
+    difficulty: 'Mitjà',
+    question: "Segons l'article 11 de la Llei 1/1998 de política lingüística, quin dret té el personal al servei de les administracions públiques de Catalunya respecte a la capacitació lingüística?",
+    options: [
+      'Acreditar un nivell adequat i suficient de les dues llengües oficials en els processos de selecció.',
+      'Quedar exempt de conèixer el català en l\'atenció directa al públic.',
+      'Utilitzar exclusivament el castellà en les comunicacions internes escrites.',
+      'Triar si vol fer el curs selectiu en francès o anglès.'
+    ],
+    correctIndex: 0,
+    explanation: 'Referència: Llei 1/1998 art. 11. El personal al servei de les administracions de Catalunya ha de tenir un nivell de coneixement adequat i suficient d\'ambdues llengües oficials.'
+  },
+  {
+    id: 'sb-t6',
+    topic: 6,
+    difficulty: 'Difícil',
+    question: "Segons la Llei 5/1994, quin organisme té la competència de planificar, coordinar i dirigir els serveis de prevenció i extinció d'incendis i salvaments de la Generalitat?",
+    options: [
+      'Els consells comarcals de cada vegueria de forma autònoma.',
+      'El Departament competent en matèria de seguretat pública / interior a través de la DGPEIS.',
+      'La Direcció General de Protecció Civil de l\'Estat.',
+      'Els ajuntaments de menys de 20.000 habitants.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: Llei 5/1994. Correspon al Departament d\'Interior (mitjançant la DGPEIS) la direcció, coordinació i gestió del Cos de Bombers de la Generalitat.'
+  },
+  {
+    id: 'sb-t7',
+    topic: 7,
+    difficulty: 'Difícil',
+    question: "Segons el Decret 276/2016 dels serveis de guàrdia, quin principi s'aplica quan una dotació supera l'hora prevista de relleu per trobar-se en una intervenció activa?",
+    options: [
+      'Abandona el servei immediatament a l\'hora exacta del canvi de torn encara que no hi hagi relleu.',
+      'Manté la continuïtat del servei fins que arribi el relleu o finalitzi la intervenció.',
+      'Traspassa automàticament la responsabilitat a la policia local present al lloc.',
+      'Suspèn l\'extinció durant 30 minuts per signar l\'acta de guàrdia al parc.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: Decret 276/2016. El servei operatiu es regeix pel principi de continuïtat fins que es produeix el relleu efectiu o s\'autoritza la retirada.'
+  },
+  {
+    id: 'sb-t8',
+    topic: 8,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.GRAL.008 (Teoria del foc), quin tipus de transmissió de la calor és el principal responsable de la propagació d'un incendi a través d'un mur o biga metàl·lica sense obertures?",
+    options: [
+      'Convecció.',
+      'Conducció.',
+      'Radiació.',
+      'Advecció.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.008. La conducció transmet la calor per contacte directe entre molècules dins dels sòlids (especialment metalls com bigues d\'acer).'
+  },
+  {
+    id: 'sb-t9',
+    topic: 9,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.GRAL.003 (Física), en un polispast simple on el moviment de la càrrega es reparteix entre 3 trams de corda que sostenen la politja mòbil, quin avantatge mecànic teòric té?",
+    options: [
+      '2:1.',
+      '3:1.',
+      '4:1.',
+      '6:1.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.003. L\'avantatge mecànic teòric d\'un polispast simple és igual al nombre de trams de corda que suporten directament la politja mòbil (3 trams = 3:1).'
+  },
+  {
+    id: 'sb-t10',
+    topic: 10,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.GRAL.004 (Química), quina temperatura en graus Celsius equival exactament a 500 K?",
+    options: [
+      '200 °C.',
+      '227 °C.',
+      '273 °C.',
+      '773 °C.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.004. T(°C) = T(K) - 273 = 500 - 273 = 227 °C.'
+  },
+  {
+    id: 'sb-t11',
+    topic: 11,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.GRAL.005 (Electricitat), quina és la missió principal d'un interruptor diferencial en una instal·lació elèctrica de baixa tensió?",
+    options: [
+      'Protegir exclusivament els cables contra sobreintensitats i curtcircuits.',
+      'Protegir les persones contra contactes indirectes i directes detectant fuites de corrent a terra.',
+      'Augmentar la tensió de 230 V a 400 V en circuits trifàsics.',
+      'Substituir la presa de terra física de l\'edifici.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.005. El diferencial compara el corrent d\'entrada i sortida; si detecta una fuita a terra (ex. ≥ 30 mA en habitatges), talla el circuit.'
+  },
+  {
+    id: 'sb-t12',
+    topic: 12,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.GRAL.007 (Instal·lacions), de quin color està normalitzada la canonada de subministrament de gas natural en edificis quan s'identifica per codi de colors?",
+    options: [
+      'Blau fosc.',
+      'Groc.',
+      'Vermell.',
+      'Verd.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.007. El color normalitzat per a canonades de gas combustible és el groc (vermell per a extinció d\'incendis, blau/verd per a aigua).'
+  },
+  {
+    id: 'sb-t13',
+    topic: 13,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.GRAL.009 (Hidràulica), què és el cop d'ariet en una instal·lació d'impulsió amb mànegues o canonades?",
+    options: [
+      'La formació de bombolles de vapor a l\'entrada de la bomba per buit excessiu.',
+      'Una sobrepressió brusca generada en tancar o obrir sobtadament una vàlvula o llança.',
+      'La pèrdua de càrrega causada pel fregament amb les parets de la mànega.',
+      'La caiguda de pressió estàtica en baixar per un pendent.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.009. El cop d\'ariet és l\'ona de sobrepressió causada per l\'aturada sobtada de la massa d\'aigua en moviment en tancar de cop una llança o vàlvula.'
+  },
+  {
+    id: 'sb-t14',
+    topic: 14,
+    difficulty: 'Mitjà',
+    question: "Segons el manual MAN.GRAL.002 (Cartografia), en un mapa topogràfic, què indica el fet que les corbes de nivell estiguin molt juntes entre si?",
+    options: [
+      'Una plana horitzontal sense desnivell apreciable.',
+      'Un pendent molt pronunciat o fort desnivell del terreny.',
+      'Una zona inundable amb presència d\'aqüífers subterranis.',
+      'Un error d\'impressió de l\'equidistància cartogràfica.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.002. Com més juntes estan les corbes de nivell, més ràpid canvia la cota en poca distància horitzontal, indicant un pendent molt fort.'
+  },
+  {
+    id: 'sb-t15',
+    topic: 15,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.GRAL.006 (Construcció), a quin esforç mecànic principal treballa una biga horitzontal simplement recolzada als extrems quan suporta una càrrega al centre?",
+    options: [
+      'Compressió pura uniforme en tota la secció.',
+      'Flexió (compressió a la fibra superior i tracció a la fibra inferior).',
+      'Torsió pura sense deformació vertical.',
+      'Tracció pura uniforme en tota la longitud.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.GRAL.006. Una biga bi-recolzada sota càrrega vertical treballa a flexió: es comprimeix per dalt i s\'estira (tracció) per baix.'
+  },
+  {
+    id: 'sb-t16',
+    topic: 16,
+    difficulty: 'Mitjà',
+    question: "Segons el manual MAN.ATXX.000 (Assistències tècniques), en una obertura de porta d'habitatge sense incendi ni risc vital immediat, quin criteri s'ha de prioritzar?",
+    options: [
+      'Enderrocar sempre el marc amb la massa de ferro des del primer segon.',
+      'Utilitzar la tècnica menys destructiva possible (radiografia/lliscament o extracció de bombí) si la porta no és blindada.',
+      'Trencar el vidre del balcó del veí superior abans de comprovar el pany.',
+      'No intervenir mai si la porta és de fusta massissa.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.ATXX.000. En assistències tècniques d\'obertura d\'accessos sense urgència vital extrema, es prioritzen tècniques netes i de menor dany possible.'
+  },
+  {
+    id: 'sb-t17',
+    topic: 17,
+    difficulty: 'Mitjà',
+    question: "Segons el manual MAN.COMU.000 (Comunicacions), en l'alfabet fonètic internacional utilitzat per lletrejar matrícules o codis per ràdio, a quines lletres corresponen 'Kilo' i 'X-Ray'?",
+    options: [
+      'K i X.',
+      'C i Z.',
+      'Q i S.',
+      'K i Y.'
+    ],
+    correctIndex: 0,
+    explanation: 'Referència: MAN.COMU.000. En l\'alfabet fonètic OACI/OTAN: K = Kilo, X = X-Ray.'
+  },
+  {
+    id: 'sb-t18',
+    topic: 18,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.EQIP.000 (Vehicles), quina nomenclatura correspon a una Bomba Rural Pesant dins de la flota dels Bombers de la Generalitat?",
+    options: [
+      'BUP.',
+      'BRP.',
+      'BUL.',
+      'BFP.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.EQIP.000. BRP = Bomba Rural Pesant (vehícle tot terreny polivalent per a àmbit rural i urbà); BUP = Bomba Urbana Pesant; BUL = Bomba Urbana Lleugera; BFP = Bomba Forestal Pesant.'
+  },
+  {
+    id: 'sb-t19',
+    topic: 19,
+    difficulty: 'Difícil',
+    question: "Segons el manual de Conducció i Rescat en Alçada / Medi Natural (T19), quin nus s'utilitza principalment per unir dues cordes del mateix diàmetre amb seguretat?",
+    options: [
+      'Nus de ballestrinque.',
+      'Nus de pescador doble (o vuit per xicot si és encordament).',
+      'Nus corredís simple sense seguretat.',
+      'Nus de mig punt sense bloqueig.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T19. El pescador doble és el nus de referència per unir dues cordes d\'igual diàmetre en maniobres de rescat.'
+  },
+  {
+    id: 'sb-t20',
+    topic: 20,
+    difficulty: 'Difícil',
+    question: "Davant d'un col·lapse estructural en edificació antiga amb parets de càrrega, quin tipus d'esfondrament forma un espai triangular segur al costat d'un mur que ha quedat dret?",
+    options: [
+      'Col·lapse en sandvitx (pancake).',
+      'Col·lapse en cobert / inclinació lateral (lean-to).',
+      'Col·lapse per punxonament invers sense buits.',
+      'Col·lapse en V invertida sense parets.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T20 (Col·lapses). El col·lapse en cobert (lean-to) es produeix quan un extrem del forjat cedeix i l\'altre queda recolzat al mur, creant un buit triangular d\'alta probabilitat de supervivència.'
+  },
+  {
+    id: 'sb-t21',
+    topic: 21,
+    difficulty: 'Difícil',
+    question: "En un rescat en aigües vives, quin fenomen hidràulic es forma al peu d'una presa o salt d'aigua i pot atrapar una persona fent-la girar en cercle?",
+    options: [
+      'Flux laminar lineal.',
+      'Rebuf o retorn hidràulic (drossa / rulo).',
+      'Efecte Venturi atmosfèric.',
+      'Cavitació superficial estàtica.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T21. Al peu de rescloses i salts es forma un retorn d\'aigua (rebuf o rulo) que arrossega cap al fons i retorna cap al salt, essent un perill mortal.'
+  },
+  {
+    id: 'sb-t22',
+    topic: 22,
+    difficulty: 'Mitjà',
+    question: "En mecànica de vehicles pesants (T22), per a què serveix el bloqueig del diferencial en un camió tot terreny quan una roda patina sobre fang o neu?",
+    options: [
+      'Per desconnectar el motor de la caixa de canvis en baixades.',
+      'Per fer girar solidàriament les dues rodes del mateix eix (o eixos) i recuperar tracció.',
+      'Per augmentar la pressió del circuit pneumàtic dels frens de tambor.',
+      'Per invertir el sentit de gir de la presa de força de la bomba.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T22. El bloqueig del diferencial anul·la l\'efecte diferencial i envia parell a la roda que sí que té adherència.'
+  },
+  {
+    id: 'sb-t23',
+    topic: 23,
+    difficulty: 'Difícil',
+    question: "En un incendi d'interior, què és el 'pla neutre' (o línia neutra) dins d'un recinte amb fum calent?",
+    options: [
+      'La paret exterior que no ha estat afectada per les flames.',
+      'El nivell d\'alçada on la pressió interior dels gasos s\'iguala amb la pressió atmosfèrica exterior.',
+      'La distància mínima de seguretat entre el camió i la façana.',
+      'El punt d\'ebullició de l\'aigua dins la llança.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T23 (Incendis d\'interior). Per sobre del pla neutre hi ha sobrepressió i surten gasos/fum; per sota hi ha depressió i entra aire fresc.'
+  },
+  {
+    id: 'sb-t24',
+    topic: 24,
+    difficulty: 'Difícil',
+    question: "Segons el manual MAN.SVVH.000 (Accidents de mobilitat viària), en quina ordre s'ha d'estabilitzar quan un Vehicle B ha quedat muntat a sobre d'un Vehicle A (que conté les víctimes)?",
+    options: [
+      'Primer el Vehicle A perquè conté les víctimes, i després el Vehicle B.',
+      'Sempre primer el Vehicle B (el de sobre) i després el Vehicle A (el de sota).',
+      'Només el Vehicle A si el Vehicle B té el fre de mà posat.',
+      'No s\'estabilitza cap dels dos fins a retirar les portes.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: MAN.SVVH.000. Sempre s\'estabilitza primer el Vehicle B (superior) per evitar que llisqui o caigui sobre el Vehicle A i els equips.'
+  },
+  {
+    id: 'sb-t25',
+    topic: 25,
+    difficulty: 'Difícil',
+    question: "En incendis forestals (T25), com s'anomena la part del perímetre de l'incendi oposada al cap, on l'avanç és més lent i la longitud de flama és menor?",
+    options: [
+      'Flanc dret.',
+      'Cua.',
+      'Llengua.',
+      'Focus secundari.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T25. La cua és la part posterior de l\'incendi (origen o zona oposada al cap), amb menor intensitat i velocitat de propagació, ideal com a punt d\'ancoratge.'
+  },
+  {
+    id: 'sb-t26',
+    topic: 26,
+    difficulty: 'Mitjà',
+    question: "En el maneig d'agents extintors (T26), quin tipus de bromera/escuma té un coeficient d'expansió comprès entre 20 i 200?",
+    options: [
+      'Escuma de baixa expansió.',
+      'Escuma de mitjana expansió.',
+      'Escuma d\'alta expansió.',
+      'Aigua additivada sense expansió.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T26. Baixa expansió: < 20; Mitjana expansió: 20 a 200; Alta expansió: > 200.'
+  },
+  {
+    id: 'sb-t27',
+    topic: 27,
+    difficulty: 'Difícil',
+    question: "En el transport de mercaderies perilloses (ADR, T27), a quina classe pertanyen els 'Gasos' (comprimits, liquats o dissolts a pressió)?",
+    options: [
+      'Classe 1.',
+      'Classe 2.',
+      'Classe 3.',
+      'Classe 4.1.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T27 (ADR). Classe 1: Explosius; Classe 2: Gasos; Classe 3: Líquids inflamables; Classe 4: Sòlids inflamables.'
+  },
+  {
+    id: 'sb-t28',
+    topic: 28,
+    difficulty: 'Difícil',
+    question: "Davant d'una intervenció en un centre de transformació elèctrica d'alta tensió (T28), quin agent extintor NO s'ha d'utilitzar mai si la instal·lació continua en tensió?",
+    options: [
+      'Diòxid de carboni (CO₂).',
+      'Raig ple d\'aigua o escuma aquosa.',
+      'Pols química seca BC/ABC.',
+      'Gas inert homologat.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T28. L\'aigua a raig ple i l\'escuma són conductores de l\'electricitat i comporten risc mortal d\'electrocució per arc elèctric.'
+  },
+  {
+    id: 'sb-t29',
+    topic: 29,
+    difficulty: 'Difícil',
+    question: "En assistència sanitària inicial a un politraumatitzat (protocol XABCDE, T29), què representa la lletra 'X' al principi de la seqüència?",
+    options: [
+      'Control immediat d\'hemorràgies exsanguinants (massives) externes.',
+      'Exploració neurològica completa amb escala de Glasgow.',
+      'Radiografia portàtil al lloc de l\'accident.',
+      'Descompressió gàstrica immediata.'
+    ],
+    correctIndex: 0,
+    explanation: 'Referència: T29 (XABCDE). La X inicial prioritza aturar qualsevol hemorràgia massiva exsanguinant (pressió directa, torniquet) abans fins i tot de la via aèria A.'
+  },
+  {
+    id: 'sb-t30',
+    topic: 30,
+    difficulty: 'Mitjà',
+    question: "En intervencions en edificis amb ascensors (T30), quin és el procediment segur per rescatar persones atrapades dins d'una cabina aturada entre plantes?",
+    options: [
+      'Obrir directament la porta exterior sense tallar el corrent i fer saltar les persones pel forat.',
+      'Tallar el subministrament elèctric a la sala de màquines, comprovar l\'estat i accionar el fre/volant per anivellar a planta.',
+      'Tallar els cables de tracció principals amb cisalla hidràulica.',
+      'Inundar el fossat per amortir la baixada.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T30. Primer es talla la força a la sala de màquines (deixant llum de cabina), es comunica amb les víctimes i s\'anivella la cabina a planta amb el fre/volant d\'inèrcia.'
+  },
+  {
+    id: 'sb-t31',
+    topic: 31,
+    difficulty: 'Mitjà',
+    question: "En meteorologia aplicada als incendis (T31), què indica una situació d'inversió tèrmica nocturna en una vall?",
+    options: [
+      'Que l\'aire més fred i dens queda atrapat al fons de la vall sota una capa d\'aire més càlid, dificultant la dispersió del fum.',
+      'Que la temperatura augmenta 10 °C cada 100 metres de baixada.',
+      'Que el vent bufa sempre en vertical ascendent a més de 80 km/h.',
+      'Que la humitat relativa baixa automàticament al 5%.'
+    ],
+    correctIndex: 0,
+    explanation: 'Referència: T31. En una inversió tèrmica, l\'aire fred s\'estanca al fons de la vall i el fum queda atrapat a baixa alçada sense ascendir.'
+  },
+  {
+    id: 'sb-t32',
+    topic: 32,
+    difficulty: 'Difícil',
+    question: "En la protecció contra incendis en edificis (T32), quina funció té una columna seca en un edifici de gran alçada?",
+    options: [
+      'És una canonada buida d\'ús exclusiu per als bombers amb presa a façana per impulsar aigua cap a les plantes superiors.',
+      'És una canonada sempre plena d\'aigua a pressió connectada a les BIEs dels veïns.',
+      'És un conducte de ventilació natural de la caixa d\'escala.',
+      'És el baixant de pluvials de la coberta.'
+    ],
+    correctIndex: 0,
+    explanation: 'Referència: T32 (PCI). La columna seca està normalment buida i permet als bombers connectar l\'autobomba a la presa de façana i disposar de sortides en plantes.'
+  },
+  {
+    id: 'sb-t33',
+    topic: 33,
+    difficulty: 'Mitjà',
+    question: "En l'organització dels salvaments en medi rural o agrícola (T33), quin risc específic presenten els sitges (silos) de gra o farratge?",
+    options: [
+      'Atmosferes deficients en oxigen, fermentació amb CO₂/metà, pols combustible (ATEX) i atrapament per enfonsament.',
+      'Radiació ionitzant directa superior a 50 mSv/h.',
+      'Corrent altern de 25.000 V a la base metàl·lica.',
+      'Congelació instantània per nitrogen líquid.'
+    ],
+    correctIndex: 0,
+    explanation: 'Referència: T33. Els sitges combinen risc d\'espai confinat (CO₂/NO₂), enfonsament/engoliment en el gra i risc d\'explosió de pols orgànica.'
+  },
+  {
+    id: 'sb-t34',
+    topic: 34,
+    difficulty: 'Difícil',
+    question: "En la geografia i relleu de Catalunya aplicada a les emergències (T34), quin riu travessa successivament les comarques de la Cerdanya, l'Alt Urgell, la Noguera i el Segrià?",
+    options: [
+      'El Ter.',
+      'El Segre.',
+      'El Llobregat.',
+      'La Muga.'
+    ],
+    correctIndex: 1,
+    explanation: 'Referència: T34 (Geografia de Catalunya). El riu Segre neix a l\'Alta Cerdanya i recorre la Cerdanya, l\'Alt Urgell, la Noguera i el Segrià abans de confluir amb l\'Ebre.'
+  }
+];
+
 /**
  * Banc de preguntes d'actualitat, notícies, actualitzacions normatives i cultura bombera
  * vinculades al temari SGO 2026 (40 preguntes).
@@ -46847,7 +47329,8 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_PUNYETERES_2,
   ...QUESTIONS_PUNYETERES_3,
   ...QUESTIONS_PUNYETERES_4,
-  ...QUESTIONS_PROMOCIO_INTERNA
+  ...QUESTIONS_PROMOCIO_INTERNA,
+  ...QUESTIONS_SEREBOMBER_DAILY
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`
@@ -52836,15 +53319,15 @@ function TopicView({
   const [currentPageIndex, setCurrentPageIndex] = useState(
     topic.importance ? 'radar' : hasSchemas ? -1 : 0
   );
-  const [roundJustCompleted, setRoundJustCompleted] = useState(null);
   const [reviewConfirmModal, setReviewConfirmModal] = useState(null);
   const [showAudioPlayer, setShowAudioPlayer] = useState(false);
+  const [showExpandedSummary, setShowExpandedSummary] = useState(false);
 
   const roundsCompleted = (progress.topicRounds && progress.topicRounds[topic.id]) || 0;
 
   // Salt directe quan s'obre des del calendari o des d'un enllaç de correu
   useEffect(() => {
-    setRoundJustCompleted(null);
+    setShowExpandedSummary(false);
     if (initialTarget === 'quiz') {
       setActiveTab('quiz');
       setCurrentPageIndex(0);
@@ -53053,24 +53536,6 @@ function TopicView({
               {topicGlobalStatus === 'review' ? 'Tema per Repassar' : 'Marcar per Repassar'}
             </button>
 
-            {onCompleteTopicRound && (
-              <button
-                onClick={() => {
-                  onCompleteTopicRound(topic.id);
-                  setRoundJustCompleted(roundsCompleted + 1);
-                }}
-                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold border border-blue-300 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-all"
-                title="Registra una volta completa d'aquest tema"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>
-                  {roundsCompleted > 0
-                    ? `Volta ${roundsCompleted} ✓ · +1 Volta`
-                    : 'Completar 1a Volta'}
-                </span>
-              </button>
-            )}
-
             {onMarkTopicReviewed && (
               <button
                 onClick={() => {
@@ -53103,15 +53568,6 @@ function TopicView({
             )}
           </div>
         </div>
-
-        {roundJustCompleted && (
-          <div className="mt-4 rounded-2xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 px-4 py-3 text-xs font-bold text-emerald-800 dark:text-emerald-200">
-            Enhorabona! Has completat la Volta {roundJustCompleted} d&apos;aquest tema.
-            {roundJustCompleted === 1
-              ? ' A partir d\'ara el calendari et recomanarà prioritàriament els resums i les preguntes noves!'
-              : ''}
-          </div>
-        )}
 
         {showAudioPlayer && (
           <div className="mt-4">
@@ -53516,6 +53972,108 @@ function TopicView({
                 topicId={topic.id}
                 pageNumber={currentPageNumber}
               />
+
+              {/* Ampliar resum: contingut detallat sense redundàncies */}
+              <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/50 dark:bg-indigo-950/20 p-4 space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
+                      Ampliació Esquemàtica del Tema {topic.number}
+                    </div>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                      Detalls addicionals, classificacions i punts secundaris del temari sense repeticions.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowExpandedSummary((v) => !v)}
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-3.5 py-2 text-xs font-extrabold shadow-xs"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{showExpandedSummary ? 'Amagar ampliació' : 'Ampliar resum (+ detall)'}</span>
+                  </button>
+                </div>
+
+                {showExpandedSummary && (() => {
+                  const seenText = new Set();
+                  const detailSections = [];
+                  pages
+                    .filter((p) => !p.isSummary)
+                    .forEach((p) => {
+                      const bullets = [];
+                      (p.blocks || []).forEach((b) => {
+                        if (b.type === 'text' && Array.isArray(b.paragraphs)) {
+                          b.paragraphs.forEach((para) => {
+                            const clean = String(para || '').trim();
+                            const key = clean.slice(0, 80).toLowerCase();
+                            if (clean && !seenText.has(key)) {
+                              seenText.add(key);
+                              bullets.push(clean);
+                            }
+                          });
+                        } else if (b.type === 'table' && Array.isArray(b.rows)) {
+                          b.rows.slice(0, 6).forEach((row) => {
+                            const joined = Array.isArray(row) ? row.join(' — ') : String(row);
+                            const key = joined.slice(0, 80).toLowerCase();
+                            if (joined && !seenText.has(key)) {
+                              seenText.add(key);
+                              bullets.push(joined);
+                            }
+                          });
+                        } else if (b.type === 'easy' && b.takeaway) {
+                          const key = b.takeaway.slice(0, 80).toLowerCase();
+                          if (!seenText.has(key)) {
+                            seenText.add(key);
+                            bullets.push(`Clau: ${b.takeaway}`);
+                          }
+                        }
+                      });
+                      if (bullets.length > 0) {
+                        detailSections.push({
+                          title: p.title || p.shortLabel || `Pàgina ${p.pageNumber}`,
+                          bullets: bullets.slice(0, 6)
+                        });
+                      }
+                    });
+
+                  const kpEntry = KEY_POINTS_BY_TOPIC[topic.number];
+                  const kpBullets = kpEntry && Array.isArray(kpEntry.points) ? kpEntry.points : [];
+
+                  return (
+                    <div className="space-y-3 pt-2 border-t border-indigo-200/70 dark:border-indigo-900/40">
+                      {kpBullets.length > 0 && (
+                        <div className="rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 p-3.5 space-y-1.5">
+                          <div className="text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
+                            Punts Clau i Dades Complementàries
+                          </div>
+                          <ul className="list-disc pl-5 space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                            {kpBullets.slice(0, 8).map((pt, i) => (
+                              <li key={i}>{typeof pt === 'string' ? pt : pt.text || pt.title || JSON.stringify(pt)}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {detailSections.map((sec, idx) => (
+                          <div
+                            key={idx}
+                            className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3.5 space-y-1.5"
+                          >
+                            <div className="text-xs font-extrabold text-slate-900 dark:text-white">
+                              {sec.title}
+                            </div>
+                            <ul className="list-disc pl-4 space-y-1 text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                              {sec.bullets.map((b, bi) => (
+                                <li key={bi}>{b}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
             </div>
 
             {/* Peu de Paginació ("Anterior" / "Següent") */}
@@ -54942,9 +55500,6 @@ function CalendarView({
                             Endarrerit ({sp.nextReviewAt})
                           </span>
                         )}
-                        <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                          {rounds === 0 ? '1a Volta' : `Volta ${rounds + 1} (${rounds} ✓)`}
-                        </span>
                       </div>
                       <button
                         type="button"
@@ -55045,38 +55600,11 @@ function CalendarView({
         </div>
       )}
 
-      {/* Resum de voltes, estadístiques i avisos 01:00 AM (sota l'agenda) */}
+      {/* Estadístiques de repassos i avisos 01:00 AM (sota l'agenda) */}
       <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-center">
-              <div className="text-[11px] font-bold uppercase text-slate-500">1a Volta</div>
-              <div className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">
-                {topicsWithRound1}/{topics.length}
-              </div>
-            </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-center">
-              <div className="text-[11px] font-bold uppercase text-slate-500">2a+ Volta</div>
-              <div className="text-lg font-extrabold text-blue-600 dark:text-blue-400">
-                {topicsWithRound2}/{topics.length}
-              </div>
-            </div>
-            {topicsWithRound1 < topics.length && onCompleteFirstRoundAll && (
-              <button
-                onClick={() => {
-                  onCompleteFirstRoundAll();
-                  setCongratsBanner({
-                    topicTitle: `tots els ${topics.length} temes`,
-                    roundNumber: 1
-                  });
-                }}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 px-3.5 py-2.5 text-xs font-extrabold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition"
-                title="Marca tots els temes del temari com a 1a volta feta per passar directament a resums i preguntes noves"
-              >
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Donar per feta la 1a volta de tots ({topics.length})</span>
-              </button>
-            )}
+          <div className="text-xs font-extrabold text-slate-700 dark:text-slate-300">
+            Control de Repassos Espaiats (Regla de l&apos;Oblit)
           </div>
 
           <button
@@ -60038,6 +60566,409 @@ function ClassesView({ topics = [], user = null }) {
   );
 }
 
+const DAILY_REVIEW_SEEN_KEY = 'bombers_daily_review_seen_v1';
+
+function getMadridTodayInfo() {
+  const now = new Date();
+  try {
+    const iso = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Madrid',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(now);
+    const weekday = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Europe/Madrid',
+      weekday: 'short'
+    }).format(now);
+    return { iso, isFriday: weekday === 'Fri' };
+  } catch {
+    return {
+      iso: now.toISOString().split('T')[0],
+      isFriday: now.getDay() === 5
+    };
+  }
+}
+
+function shuffleDailyArr(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function shuffleDailyOptions(q) {
+  if (!Array.isArray(q?.options) || q.options.length < 2) return q;
+  const hasPositionalRef = q.options.some((opt) =>
+    /\b(a\s+i\s+[bcd]|b\s+i\s+[cd]|c\s+i\s+d|totes\s+les\s+anteriors|cap\s+de\s+les\s+anteriors|totes\s+són\s+correctes|cap\s+és\s+correcta)\b/i.test(
+      String(opt || '')
+    )
+  );
+  if (hasPositionalRef) return q;
+  const indices = shuffleDailyArr(q.options.map((_, i) => i));
+  return {
+    ...q,
+    options: indices.map((i) => q.options[i]),
+    correctIndex: indices.indexOf(q.correctIndex)
+  };
+}
+
+function buildDailyReviewSet(topics, todayISO, isFriday) {
+  let seenMap = {};
+  try {
+    seenMap = JSON.parse(localStorage.getItem(DAILY_REVIEW_SEEN_KEY) || '{}');
+  } catch {
+    seenMap = {};
+  }
+
+  const pickedTopics = [];
+  const nextSeen = { ...seenMap };
+  const nowTs = Date.now();
+
+  // 1 pregunta de CADA un dels 34 temes
+  const sortedTopics = [...topics].sort((a, b) => a.number - b.number);
+  sortedTopics.forEach((t) => {
+    const pool = (t.quiz || []).filter((q) => !q.isExtension);
+    const fallbackPool = pool.length > 0 ? pool : t.quiz || [];
+    if (fallbackPool.length === 0) return;
+
+    const unseen = fallbackPool.filter((q) => !seenMap[q.id]);
+    const candidates = unseen.length > 0 ? unseen : fallbackPool;
+    const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+    nextSeen[chosen.id] = nowTs;
+
+    pickedTopics.push(
+      shuffleDailyOptions({
+        ...chosen,
+        _kind: 'topic',
+        _topicId: t.id,
+        _topicNumber: t.number,
+        _topicTitle: t.title
+      })
+    );
+  });
+
+  // 2 preguntes de càlcul cada dia, i 10 els divendres
+  const calcTarget = isFriday ? 10 : 2;
+  const allCalc = CALCULATION_SECTIONS.flatMap((sec) =>
+    sec.problems.map((p) => ({
+      id: `daily-calc-${p.id}`,
+      rawId: p.id,
+      _kind: 'calc',
+      _topicNumber: sec.topicNumber,
+      _topicTitle: sec.shortTitle,
+      question: p.statement,
+      options: p.options,
+      correctIndex: p.correctIndex,
+      explanation: (p.solutionSteps || []).join(' '),
+      hint: p.hint || ''
+    }))
+  );
+
+  const unseenCalc = allCalc.filter((c) => !seenMap[c.id]);
+  const calcPool = shuffleDailyArr(unseenCalc.length >= calcTarget ? unseenCalc : allCalc);
+  const pickedCalc = calcPool.slice(0, calcTarget).map((c) => {
+    nextSeen[c.id] = nowTs;
+    return shuffleDailyOptions(c);
+  });
+
+  try {
+    localStorage.setItem(DAILY_REVIEW_SEEN_KEY, JSON.stringify(nextSeen));
+  } catch {}
+
+  return [...pickedTopics, ...pickedCalc];
+}
+
+function getDailyReviewStatus(topicsCount = 34) {
+  const { iso, isFriday } = getMadridTodayInfo();
+  const calcCount = isFriday ? 10 : 2;
+  const expectedTotal = topicsCount + calcCount;
+  try {
+    const raw = localStorage.getItem(`bombers_daily_review_v1_${iso}`);
+    if (!raw) return { iso, isFriday, answered: 0, total: expectedTotal, completed: false };
+    const parsed = JSON.parse(raw);
+    const total = parsed.questions?.length || expectedTotal;
+    const answered = Object.keys(parsed.answers || {}).length;
+    return {
+      iso,
+      isFriday,
+      answered,
+      total,
+      completed: Boolean(parsed.finished) || answered >= total
+    };
+  } catch {
+    return { iso, isFriday, answered: 0, total: expectedTotal, completed: false };
+  }
+}
+
+function DailyReviewModal({
+  topics,
+  isOpen,
+  onClose,
+  onRecordQuestionOutcome = null
+}) {
+  const { iso: todayISO, isFriday } = useMemo(() => getMadridTodayInfo(), []);
+  const storageKey = `bombers_daily_review_v1_${todayISO}`;
+
+  const [sessionState, setSessionState] = useState(() => {
+    try {
+      const raw = localStorage.getItem(storageKey);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+          return parsed;
+        }
+      }
+    } catch {}
+    return {
+      date: todayISO,
+      isFriday,
+      questions: buildDailyReviewSet(topics, todayISO, isFriday),
+      currentIdx: 0,
+      answers: {},
+      finished: false
+    };
+  });
+
+  const [draftOpt, setDraftOpt] = useState(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(sessionState));
+    } catch {}
+  }, [storageKey, sessionState]);
+
+  useEffect(() => {
+    setDraftOpt(null);
+  }, [sessionState.currentIdx]);
+
+  if (!isOpen) return null;
+
+  const { questions, currentIdx, answers, finished } = sessionState;
+  const totalQ = questions.length;
+  const currentQ = questions[currentIdx];
+  const answeredCount = Object.keys(answers).length;
+  const correctCount = questions.filter((q) => answers[q.id] === q.correctIndex).length;
+  const wrongCount = answeredCount - correctCount;
+
+  const handleValidate = () => {
+    if (!currentQ || draftOpt === null || answers[currentQ.id] !== undefined) return;
+    const isOk = draftOpt === currentQ.correctIndex;
+    setSessionState((prev) => ({
+      ...prev,
+      answers: { ...prev.answers, [currentQ.id]: draftOpt }
+    }));
+    if (currentQ._kind === 'topic' && onRecordQuestionOutcome) {
+      onRecordQuestionOutcome(currentQ._topicId, currentQ._topicNumber, currentQ, isOk);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIdx < totalQ - 1) {
+      setSessionState((prev) => ({ ...prev, currentIdx: prev.currentIdx + 1 }));
+    } else {
+      setSessionState((prev) => ({ ...prev, finished: true }));
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-xs p-3 sm:p-5 overflow-y-auto">
+      <div className="max-w-2xl w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl overflow-hidden my-auto">
+        {/* Capçalera */}
+        <div className="bg-gradient-to-r from-red-600 to-orange-500 px-5 py-4 text-white flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <Flame className="w-5 h-5 shrink-0" />
+            <div>
+              <div className="text-[11px] font-extrabold uppercase tracking-wider opacity-90">
+                Repàs del Dia · {todayISO} {isFriday ? '· DIVENDRES (10 CÀLCULS!)' : ''}
+              </div>
+              <h2 className="text-sm sm:text-base font-extrabold">
+                1 pregunta de cada tema (34) + {isFriday ? '10' : '2'} de càlcul
+              </h2>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1.5 rounded-xl bg-white/15 hover:bg-white/25 transition"
+            title="Continuar més tard"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Barra de progrés */}
+        <div className="px-5 pt-4 space-y-1.5">
+          <div className="flex justify-between text-xs font-extrabold text-slate-600 dark:text-slate-300">
+            <span>
+              Progrés d&apos;avui: {answeredCount}/{totalQ} ({correctCount}✓ / {wrongCount}✗)
+            </span>
+            <span>Es reinicia a les 00:00</span>
+          </div>
+          <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-red-600 to-emerald-500 transition-all"
+              style={{ width: `${Math.round((answeredCount / Math.max(1, totalQ)) * 100)}%` }}
+            />
+          </div>
+        </div>
+
+        <div className="p-5 sm:p-6 space-y-4">
+          {finished ? (
+            <div className="text-center space-y-4 py-4">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+                <Trophy className="w-7 h-7" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                  Repàs del Dia Completat!
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  Has encertat <strong className="text-emerald-600">{correctCount}</strong> de{' '}
+                  <strong>{totalQ}</strong> ({Math.round((correctCount / Math.max(1, totalQ)) * 100)}%).
+                  Les preguntes fallades s&apos;han guardat a la regla de l&apos;oblit.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 text-sm font-extrabold"
+              >
+                Tornar a l&apos;app
+              </button>
+            </div>
+          ) : currentQ ? (
+            <>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-extrabold ${
+                    currentQ._kind === 'calc'
+                      ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300'
+                      : 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300'
+                  }`}
+                >
+                  {currentQ._kind === 'calc' ? (
+                    <Calculator className="w-3.5 h-3.5" />
+                  ) : (
+                    <BookOpen className="w-3.5 h-3.5" />
+                  )}
+                  <span>
+                    {currentQ._kind === 'calc'
+                      ? `Càlcul · ${currentQ._topicTitle}`
+                      : `Tema ${currentQ._topicNumber} · ${currentQ._topicTitle}`}
+                  </span>
+                </span>
+                <span className="text-xs font-extrabold text-slate-500">
+                  Pregunta {currentIdx + 1} / {totalQ}
+                </span>
+              </div>
+
+              <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white leading-snug">
+                {currentQ.question}
+              </h3>
+
+              <div className="space-y-2">
+                {currentQ.options.map((opt, oIdx) => {
+                  const validatedOpt = answers[currentQ.id];
+                  const isValidated = validatedOpt !== undefined;
+                  const isSelected = isValidated ? validatedOpt === oIdx : draftOpt === oIdx;
+                  const isCorrect = oIdx === currentQ.correctIndex;
+
+                  let cls =
+                    'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-red-300 text-slate-800 dark:text-slate-200';
+                  if (!isValidated && isSelected) {
+                    cls =
+                      'border-blue-500 bg-blue-50 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200';
+                  } else if (isValidated) {
+                    if (isCorrect) {
+                      cls =
+                        'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200';
+                    } else if (isSelected) {
+                      cls =
+                        'border-red-500 bg-red-50 dark:bg-red-950/40 text-red-900 dark:text-red-200';
+                    } else {
+                      cls =
+                        'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-slate-400';
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={oIdx}
+                      type="button"
+                      disabled={isValidated}
+                      onClick={() => setDraftOpt(oIdx)}
+                      className={`w-full text-left rounded-xl border px-3.5 py-2.5 text-xs sm:text-sm font-medium transition flex items-start gap-2.5 ${cls}`}
+                    >
+                      <span className="font-extrabold shrink-0">
+                        {String.fromCharCode(65 + oIdx)}.
+                      </span>
+                      <span className="flex-1">{opt}</span>
+                      {isValidated && isCorrect && (
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      )}
+                      {isValidated && isSelected && !isCorrect && (
+                        <XCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {answers[currentQ.id] !== undefined && (
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-3.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <strong
+                    className={
+                      answers[currentQ.id] === currentQ.correctIndex
+                        ? 'text-emerald-600 dark:text-emerald-400'
+                        : 'text-red-600 dark:text-red-400'
+                    }
+                  >
+                    {answers[currentQ.id] === currentQ.correctIndex ? 'Correcte! ' : 'Incorrecte. '}
+                  </strong>
+                  {currentQ.explanation}
+                </div>
+              )}
+
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="text-xs font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+                >
+                  Fer-ho més tard
+                </button>
+
+                {answers[currentQ.id] === undefined ? (
+                  <button
+                    type="button"
+                    disabled={draftOpt === null}
+                    onClick={handleValidate}
+                    className="rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white px-5 py-2.5 text-xs font-extrabold shadow-sm"
+                  >
+                    Validar resposta
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-xs font-extrabold shadow-sm"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{currentIdx < totalQ - 1 ? 'Següent pregunta →' : 'Finalitzar Repàs ✓'}</span>
+                  </button>
+                )}
+              </div>
+            </>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const ACCURACY_MILESTONES = [
   { target: 500, label: '500 encerts', icon: '🥉', cls: 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800' },
   { target: 1000, label: '1.000 encerts', icon: '🥈', cls: 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700' },
@@ -61245,7 +62176,7 @@ function Sidebar({
           >
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              <span>Calendari i Voltes</span>
+              <span>Calendari i Repassos</span>
             </div>
             <span
               className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
@@ -61712,6 +62643,8 @@ function HomeView({
   topicsCount = 34,
   dueReviewsCount = 0,
   dueMistakesCount = 0,
+  dailyReviewStatus = null,
+  onOpenDailyReview = null,
   cloudUser = null,
   onSignIn,
   onNavigate,
@@ -61959,6 +62892,45 @@ function HomeView({
         )}
       </section>
 
+      {/* Repàs del Dia (1 pregunta de cada tema + 2 càlculs / 10 divendres) */}
+      {dailyReviewStatus && onOpenDailyReview && (
+        <section className="rounded-2xl border-2 border-red-300 dark:border-red-900/70 bg-gradient-to-r from-red-50 via-white to-orange-50/60 dark:from-red-950/40 dark:via-slate-900 dark:to-orange-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <Flame className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300">
+                  Repàs del Dia · {dailyReviewStatus.isFriday ? 'Divendres (34 + 10 càlculs)' : '34 temes + 2 càlculs'}
+                </span>
+                <span className="rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 text-[10px] font-extrabold">
+                  {dailyReviewStatus.answered}/{dailyReviewStatus.total}
+                </span>
+              </div>
+              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
+                {dailyReviewStatus.completed
+                  ? 'Repàs d’avui completat ✓ (es reinicia a les 00:00)'
+                  : '1 pregunta nova de cada tema + càlculs diaris per no oblidar res del temari.'}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onOpenDailyReview}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
+          >
+            <span>
+              {dailyReviewStatus.completed
+                ? 'Veure resum d’avui'
+                : dailyReviewStatus.answered > 0
+                ? 'Continuar Repàs del Dia →'
+                : 'Començar Repàs del Dia →'}
+            </span>
+          </button>
+        </section>
+      )}
+
       {/* Avís diari de preguntes fallades pendents de repassar (Regla de l'Oblit) */}
       {dueMistakesCount > 0 && (
         <section className="rounded-2xl border border-rose-300 dark:border-rose-900/70 bg-gradient-to-r from-rose-50 via-white to-amber-50/50 dark:from-rose-950/40 dark:via-slate-900 dark:to-amber-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
@@ -62099,6 +63071,45 @@ function HomeView({
           </div>
         )}
       </section>
+
+      {/* Repàs del Dia (1 pregunta de cada tema + 2 càlculs / 10 divendres) */}
+      {dailyReviewStatus && onOpenDailyReview && (
+        <section className="rounded-2xl border-2 border-red-300 dark:border-red-900/70 bg-gradient-to-r from-red-50 via-white to-orange-50/60 dark:from-red-950/40 dark:via-slate-900 dark:to-orange-950/20 p-4 sm:p-5 shadow-sm flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <Flame className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300">
+                  Repàs del Dia · {dailyReviewStatus.isFriday ? 'Divendres (34 + 10 càlculs)' : '34 temes + 2 càlculs'}
+                </span>
+                <span className="rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 text-[10px] font-extrabold">
+                  {dailyReviewStatus.answered}/{dailyReviewStatus.total}
+                </span>
+              </div>
+              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
+                {dailyReviewStatus.completed
+                  ? 'Repàs d’avui completat ✓ (es reinicia a les 00:00)'
+                  : '1 pregunta nova de cada tema + càlculs diaris per no oblidar res del temari.'}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onOpenDailyReview}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
+          >
+            <span>
+              {dailyReviewStatus.completed
+                ? 'Veure resum d’avui'
+                : dailyReviewStatus.answered > 0
+                ? 'Continuar Repàs del Dia →'
+                : 'Començar Repàs del Dia →'}
+            </span>
+          </button>
+        </section>
+      )}
 
       {/* Avís diari de preguntes fallades pendents de repassar (Regla de l'Oblit) */}
       {dueMistakesCount > 0 && (
@@ -62309,6 +63320,16 @@ function App() {
   const [authError, setAuthError] = useState('');
   const [authChecked, setAuthChecked] = useState(false);
   const [showAuthReminder, setShowAuthReminder] = useState(false);
+  const [showDailyReview, setShowDailyReview] = useState(() => {
+    try {
+      const st = getDailyReviewStatus(TOPICS.length);
+      if (st.completed) return false;
+      const dismissedDate = sessionStorage.getItem('bombers_daily_review_dismissed_date');
+      return dismissedDate !== st.iso;
+    } catch {
+      return false;
+    }
+  });
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [importantRelease, setImportantRelease] = useState(null);
   const [resumePrompt, setResumePrompt] = useState(null); // { view, topicId?, label }
@@ -62867,6 +63888,8 @@ function App() {
               dueMistakesCount={Object.values(progress.quizResults?.__mistakes || {}).filter(
                 (m) => m && m.id && (!m.nextReviewAt || m.nextReviewAt <= new Date().toISOString().split('T')[0])
               ).length}
+              dailyReviewStatus={getDailyReviewStatus(TOPICS.length)}
+              onOpenDailyReview={() => setShowDailyReview(true)}
               cloudUser={cloudUser}
               onSignIn={handleQuickGoogleLogin}
               onOpenTopic={(id) => handleSelectTopic(id)}
@@ -63020,6 +64043,19 @@ function App() {
           </AppErrorBoundary>
         </main>
       </div>
+
+      <DailyReviewModal
+        topics={TOPICS}
+        isOpen={showDailyReview}
+        onClose={() => {
+          setShowDailyReview(false);
+          try {
+            const st = getDailyReviewStatus(TOPICS.length);
+            sessionStorage.setItem('bombers_daily_review_dismissed_date', st.iso);
+          } catch {}
+        }}
+        onRecordQuestionOutcome={recordQuestionOutcome}
+      />
 
       {/* Missatge emergent per reprendre un tema o test inacabat després de > 10 min sense entrar */}
       {resumePrompt && (

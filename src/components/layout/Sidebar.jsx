@@ -138,7 +138,7 @@ export default function Sidebar({
           >
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              <span>Calendari i Voltes</span>
+              <span>Calendari i Repassos</span>
             </div>
             <span
               className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${

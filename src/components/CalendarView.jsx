@@ -642,9 +642,6 @@ export default function CalendarView({
                             Endarrerit ({sp.nextReviewAt})
                           </span>
                         )}
-                        <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                          {rounds === 0 ? '1a Volta' : `Volta ${rounds + 1} (${rounds} ✓)`}
-                        </span>
                       </div>
                       <button
                         type="button"
@@ -745,38 +742,11 @@ export default function CalendarView({
         </div>
       )}
 
-      {/* Resum de voltes, estadístiques i avisos 01:00 AM (sota l'agenda) */}
+      {/* Estadístiques de repassos i avisos 01:00 AM (sota l'agenda) */}
       <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-sm space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-center">
-              <div className="text-[11px] font-bold uppercase text-slate-500">1a Volta</div>
-              <div className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">
-                {topicsWithRound1}/{topics.length}
-              </div>
-            </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-center">
-              <div className="text-[11px] font-bold uppercase text-slate-500">2a+ Volta</div>
-              <div className="text-lg font-extrabold text-blue-600 dark:text-blue-400">
-                {topicsWithRound2}/{topics.length}
-              </div>
-            </div>
-            {topicsWithRound1 < topics.length && onCompleteFirstRoundAll && (
-              <button
-                onClick={() => {
-                  onCompleteFirstRoundAll();
-                  setCongratsBanner({
-                    topicTitle: `tots els ${topics.length} temes`,
-                    roundNumber: 1
-                  });
-                }}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 px-3.5 py-2.5 text-xs font-extrabold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition"
-                title="Marca tots els temes del temari com a 1a volta feta per passar directament a resums i preguntes noves"
-              >
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Donar per feta la 1a volta de tots ({topics.length})</span>
-              </button>
-            )}
+          <div className="text-xs font-extrabold text-slate-700 dark:text-slate-300">
+            Control de Repassos Espaiats (Regla de l&apos;Oblit)
           </div>
 
           <button

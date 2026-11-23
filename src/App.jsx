@@ -16,6 +16,7 @@ import QuickStudyView from './components/QuickStudyView';
 import GroupStudyView from './components/GroupStudyView';
 import AudioSummariesView from './components/AudioSummariesView';
 import ClassesView from './components/ClassesView';
+import DailyReviewModal, { getDailyReviewStatus } from './components/DailyReviewModal';
 import PomodoroWidget from './components/PomodoroWidget';
 import {
   subscribeAuth,
@@ -135,6 +136,16 @@ export default function App() {
   const [authError, setAuthError] = useState('');
   const [authChecked, setAuthChecked] = useState(false);
   const [showAuthReminder, setShowAuthReminder] = useState(false);
+  const [showDailyReview, setShowDailyReview] = useState(() => {
+    try {
+      const st = getDailyReviewStatus(TOPICS.length);
+      if (st.completed) return false;
+      const dismissedDate = sessionStorage.getItem('bombers_daily_review_dismissed_date');
+      return dismissedDate !== st.iso;
+    } catch {
+      return false;
+    }
+  });
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [importantRelease, setImportantRelease] = useState(null);
   const [resumePrompt, setResumePrompt] = useState(null); // { view, topicId?, label }
@@ -693,6 +704,8 @@ export default function App() {
               dueMistakesCount={Object.values(progress.quizResults?.__mistakes || {}).filter(
                 (m) => m && m.id && (!m.nextReviewAt || m.nextReviewAt <= new Date().toISOString().split('T')[0])
               ).length}
+              dailyReviewStatus={getDailyReviewStatus(TOPICS.length)}
+              onOpenDailyReview={() => setShowDailyReview(true)}
               cloudUser={cloudUser}
               onSignIn={handleQuickGoogleLogin}
               onOpenTopic={(id) => handleSelectTopic(id)}
@@ -846,6 +859,19 @@ export default function App() {
           </AppErrorBoundary>
         </main>
       </div>
+
+      <DailyReviewModal
+        topics={TOPICS}
+        isOpen={showDailyReview}
+        onClose={() => {
+          setShowDailyReview(false);
+          try {
+            const st = getDailyReviewStatus(TOPICS.length);
+            sessionStorage.setItem('bombers_daily_review_dismissed_date', st.iso);
+          } catch {}
+        }}
+        onRecordQuestionOutcome={recordQuestionOutcome}
+      />
 
       {/* Missatge emergent per reprendre un tema o test inacabat després de > 10 min sense entrar */}
       {resumePrompt && (
