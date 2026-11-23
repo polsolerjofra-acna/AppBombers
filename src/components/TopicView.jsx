@@ -376,8 +376,11 @@ export default function TopicView({
               }
             });
 
-          const kpEntry = KEY_POINTS_BY_TOPIC[topic.number];
-          const kpBullets = kpEntry && Array.isArray(kpEntry.points) ? kpEntry.points : [];
+          const kpBullets = (typeof KEY_POINT_GROUPS !== 'undefined' && Array.isArray(KEY_POINT_GROUPS)
+            ? KEY_POINT_GROUPS.flatMap((g) => g.items || [])
+                .filter((item) => item.topicNumber === topic.number)
+                .map((item) => `${item.concept}: ${item.value}${item.confusionWarning ? ` (${item.confusionWarning})` : ''}`)
+            : []);
 
           return (
             <div className="mt-4 rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/50 dark:bg-indigo-950/20 p-4 space-y-3">
