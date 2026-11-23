@@ -19,6 +19,7 @@ import NumericTable from './content/NumericTable';
 import MnemonicCard from './content/MnemonicCard';
 import DiagramContainer from './content/DiagramContainer';
 import TopicOutlineCard from './content/TopicOutlineCard';
+import IdealGasLawsDiagram from './content/IdealGasLawsDiagram';
 import QuizView from './quiz/QuizView';
 import PageMnemonicsBox from './PageMnemonicsBox';
 import AudioSummaryPlayer from './AudioSummaryPlayer';
@@ -40,6 +41,7 @@ export default function TopicView({
   onSetTopicMark,
   onToggleDifficultPage,
   onCompleteTopicRound,
+  onMarkTopicReviewed,
   onSaveQuizScore,
   onRecordQuestionOutcome,
   onOpenOfficialManual
@@ -95,6 +97,28 @@ export default function TopicView({
   const topicPagesStatus = progress.pageStatus?.[topic.id] || {};
   const currentPageStatus = topicPagesStatus[currentPageNumber] || 'pending';
   const topicGlobalStatus = progress.topicStatus?.[topic.id] || 'in_progress';
+
+  useEffect(() => {
+    const saveExact = () => {
+      try {
+        localStorage.setItem(
+          'bombers_exact_location_v1',
+          JSON.stringify({
+            view: 'topic',
+            topicId: topic.id,
+            pageNumber: currentPageNumber,
+            activeTab,
+            scrollY: Math.round(window.scrollY || 0),
+            label: `Tema ${topic.number}: ${topic.title} · Pàg. ${currentPageNumber}${activeTab === 'quiz' ? ' (Qüestionari)' : ''}`,
+            updatedAt: Date.now()
+          })
+        );
+      } catch {}
+    };
+    saveExact();
+    window.addEventListener('scroll', saveExact, { passive: true });
+    return () => window.removeEventListener('scroll', saveExact);
+  }, [topic.id, topic.number, topic.title, currentPageNumber, activeTab]);
 
   const studyContentRef = useRef(null);
   const theoryStartRef = useRef(null);
@@ -273,6 +297,23 @@ export default function TopicView({
                 </span>
               </button>
             )}
+
+            {onMarkTopicReviewed && (() => {
+              const sp = progress?.spacedRepetition?.[topic.id];
+              const todayISO = new Date().toISOString().split('T')[0];
+              const isDue = Boolean(sp?.nextReviewAt && sp.nextReviewAt <= todayISO);
+              if (!isDue) return null;
+              return (
+                <button
+                  onClick={() => onMarkTopicReviewed(topic.id)}
+                  className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
+                  title="Marca aquest tema com a repassat avui i programa'l automàticament al següent interval de la regla de l'oblit"
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Marcar repassat avui ✓</span>
+                </button>
+              );
+            })()}
           </div>
         </div>
 
@@ -626,6 +667,14 @@ export default function TopicView({
                         metaphor={block.metaphor}
                         explanation={block.explanation}
                         takeaway={block.takeaway}
+                      />
+                    );
+
+                  case 'gasLawsSimulator':
+                    return (
+                      <IdealGasLawsDiagram
+                        key={bIdx}
+                        initialLaw={block.initialLaw || 'boyle'}
                       />
                     );
 

@@ -401,9 +401,9 @@ export default function DashboardView({
                       <button
                         onClick={() => onMarkTopicReviewed(item.topic.id)}
                         className="px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700"
-                        title="Avança al següent interval d'Ebbinghaus"
+                        title="Marca com a repassat i programa el següent interval de la regla de l'oblit"
                       >
-                        Fet avui ✓
+                        Marcar repassat ✓
                       </button>
                     )}
                   </div>

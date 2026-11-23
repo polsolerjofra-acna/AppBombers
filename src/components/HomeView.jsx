@@ -15,7 +15,8 @@ import {
   CheckCircle2,
   ClipboardCheck,
   Newspaper,
-  XCircle
+  XCircle,
+  GraduationCap
 } from 'lucide-react';
 import { getTodayCurrentAffairsQuestion } from '../data/dailyCurrentAffairsQuestions';
 
@@ -188,6 +189,17 @@ export default function HomeView({
       icon: Users,
       accent: 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50 text-emerald-700 dark:text-emerald-300',
       btn: 'bg-emerald-600 hover:bg-emerald-700 text-white'
+    },
+    {
+      id: 'classes',
+      title: 'Classes Particulars i Conjuntes',
+      badge: '10€–40€ · 25€ grup',
+      description:
+        'Reserva classes particulars (15 min 10 €, 30 min 20 €, 1 h 40 €) escollint tema, subapartat i comentari, o uneix-te a classes conjuntes (mínim 4 persones · 2 h · 25 €).',
+      cta: 'Veure Classes',
+      icon: GraduationCap,
+      accent: 'bg-indigo-50 dark:bg-indigo-950/30 border-indigo-200 dark:border-indigo-900/50 text-indigo-700 dark:text-indigo-300',
+      btn: 'bg-indigo-600 hover:bg-indigo-700 text-white'
     }
   ];
 

@@ -17,7 +17,8 @@ import {
   Sun,
   Moon,
   X,
-  Headphones
+  Headphones,
+  GraduationCap
 } from 'lucide-react';
 
 export default function Sidebar({
@@ -28,6 +29,7 @@ export default function Sidebar({
   onSelectHome,
   onSelectDashboard,
   onSelectCalendar,
+  onSelectClasses,
   onSelectQuickStudy,
   onSelectPractice,
   onSelectCalculations,
@@ -150,6 +152,34 @@ export default function Sidebar({
               {dueReviewsCount > 0 ? `${dueReviewsCount} avui` : 'Al dia'}
             </span>
           </button>
+
+          {onSelectClasses && (
+            <button
+              onClick={() => {
+                onSelectClasses();
+                onCloseMobile();
+              }}
+              className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                activeView === 'classes'
+                  ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                  : 'bg-indigo-50/80 dark:bg-indigo-950/30 text-indigo-800 dark:text-indigo-200 hover:bg-indigo-100/80 dark:hover:bg-indigo-950/50'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <GraduationCap className="w-4 h-4" />
+                <span>Classes Particulars i Grup</span>
+              </div>
+              <span
+                className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                  activeView === 'classes'
+                    ? 'bg-white/20 text-white'
+                    : 'bg-indigo-200/80 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200'
+                }`}
+              >
+                Nou
+              </span>
+            </button>
+          )}
 
           <button
             onClick={() => {

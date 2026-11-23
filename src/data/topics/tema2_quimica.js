@@ -260,6 +260,10 @@ export const tema2Quimica = {
             "1) EVAPORACIÓ vs. EBULLICIÓ: l'evaporació és quan s'eixuga un bassal a 20 °C a poc a poc, només per la superfície. L'ebullició és l'olla a 100 °C fent bombolles violentes des de dins de tot el líquid alhora!\n\n2) GAS vs. VAPOR (Temperatura Crítica Tc): un VAPOR (com el butà o el propà) està per sota de la seva Tc: si el comprimeixes fort dins d'un encenedor o bombona, el pots tornar líquid! Un GAS permanent (com l'aire de l'ERA a temperatura ambient) està per sobre de la seva Tc: per molt que el xafis amb una premsa gegant, les molècules tenen massa energia i MAI es tornen líquides només comprimint!\n\n3) BOYLE-MARIOTTE (T = constant): tapa una xeringa plena d'aire amb el dit i prem l'èmbol fins a la meitat d'espai (de 10 mL a 5 mL). Com que hi ha els mateixos xocs en la meitat d'espai, la pressió a dins es multiplica per 2!",
           takeaway:
             'Sota de Tc = Vapor (liquable per pressió). Sobre de Tc = Gas (no liquable per molta pressió que facis). Boyle: meitat de volum = doble de pressió.'
+        },
+        {
+          type: 'gasLawsSimulator',
+          initialLaw: 'boyle'
         }
       ]
     },
@@ -310,6 +314,10 @@ export const tema2Quimica = {
             "1) Gasos ideals: \"PaVo\" (Pressió × Volum) beuen \"Te\" (Temperatura divideix) → (P·V)/T = cte.\n2) Gay-Lussac → Volum → Gran Via (V constant: P₁/T₁ = P₂/T₂).\n3) Boyle → Temperatura → BTT (T constant: P₁·V₁ = P₂·V₂).\n4) Charles → Pressió → CP (Cicle Professional, P constant: V₁/T₁ = V₂/T₂).\n5) Redox: PORC (combustible: Perd e⁻, s'Oxida, Reductor) | GROC (comburent: Guanya e⁻, es Redueix, Oxidant).",
           example:
             'Equació P·V = n·R·T ("PaVo / Te"). Recorda: 27 °C = 300 K i 327 °C = 600 K (el doble de T absoluta!).'
+        },
+        {
+          type: 'gasLawsSimulator',
+          initialLaw: 'charles'
         }
       ]
     },

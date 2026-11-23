@@ -15,6 +15,7 @@ import PracticeTestView from './components/PracticeTestView';
 import QuickStudyView from './components/QuickStudyView';
 import GroupStudyView from './components/GroupStudyView';
 import AudioSummariesView from './components/AudioSummariesView';
+import ClassesView from './components/ClassesView';
 import PomodoroWidget from './components/PomodoroWidget';
 import {
   subscribeAuth,
@@ -30,7 +31,7 @@ import {
 const APP_CLIENT_VERSION = '2026.11.20.2';
 const SEEN_RELEASE_KEY = 'bombers_seen_release_v1';
 const LAST_ACTIVE_AT_KEY = 'bombers_last_active_at_v1';
-const INACTIVITY_RESET_MS = 10 * 60 * 1000; // 10 minuts sense entrar a l'app
+const INACTIVITY_RESET_MS = 3 * 60 * 1000; // 3 minuts fora de l'app per oferir tornar exactament on estaves
 
 class AppErrorBoundary extends React.Component {
   constructor(props) {
@@ -93,7 +94,7 @@ export default function App() {
   const [activeView, setActiveView] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('bombers_last_nav_v1') || '{}');
-      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'audio', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'group'];
+      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'audio', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'classes', 'group'];
       return allowed.includes(saved.activeView) ? saved.activeView : 'home';
     } catch {
       return 'home';
@@ -157,8 +158,20 @@ export default function App() {
   // Si fa > 10 minuts sense entrar a l'app, torna a l'inici i pregunta si vol reprendre l'apartat inacabat
   useEffect(() => {
     const buildResumeIfUnfinished = (view, topicId) => {
-      if (view === 'topic') {
-        if (progress.topicStatus?.[topicId] === 'completed') return null;
+      if (view === 'topic' && topicId) {
+        try {
+          const exactRaw = localStorage.getItem('bombers_exact_location_v1');
+          const exact = exactRaw ? JSON.parse(exactRaw) : null;
+          if (exact && exact.topicId === topicId) {
+            return {
+              view: 'topic',
+              topicId,
+              target: exact.activeTab === 'quiz' ? 'quiz' : `page:${exact.pageNumber || 1}`,
+              scrollY: exact.scrollY || 0,
+              label: exact.label || topicId
+            };
+          }
+        } catch {}
         const found = TOPICS.find((t) => t.id === topicId);
         return found
           ? { view: 'topic', topicId, label: `Tema ${found.number} · ${found.title}` }
@@ -170,11 +183,12 @@ export default function App() {
         } catch {
           return null;
         }
-        return { view: 'practice', label: 'Tests i Simulacres (test en curs)' };
+        return { view: 'practice', scrollY: Math.round(window.scrollY || 0), label: 'Tests i Simulacres (test en curs)' };
       }
-      if (view === 'calculations') return { view: 'calculations', label: 'Càlculs, Fórmules i Problemes' };
-      if (view === 'quickstudy') return { view: 'quickstudy', label: 'Sessió Ràpida' };
-      if (view === 'manuals') return { view: 'manuals', label: 'Manuals Oficials (PDF)' };
+      if (view === 'calculations') return { view: 'calculations', scrollY: Math.round(window.scrollY || 0), label: 'Càlculs, Fórmules i Problemes' };
+      if (view === 'quickstudy') return { view: 'quickstudy', scrollY: Math.round(window.scrollY || 0), label: 'Sessió Ràpida' };
+      if (view === 'manuals') return { view: 'manuals', scrollY: Math.round(window.scrollY || 0), label: 'Manuals Oficials (PDF)' };
+      if (view === 'classes') return { view: 'classes', scrollY: Math.round(window.scrollY || 0), label: 'Classes Particulars i Conjuntes' };
       return null;
     };
 
@@ -575,6 +589,10 @@ export default function App() {
           setActiveView('audio');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectClasses={() => {
+          setActiveView('classes');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectPractice={() => {
           setActiveView('practice');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -783,6 +801,8 @@ export default function App() {
               topics={TOPICS}
               onOpenTopic={(id, target) => handleSelectTopic(id, target)}
             />
+          ) : activeView === 'classes' ? (
+            <ClassesView topics={TOPICS} user={cloudUser} />
           ) : activeView === 'group' ? (
             <GroupStudyView
               user={cloudUser}
@@ -802,6 +822,7 @@ export default function App() {
               onSetTopicMark={setTopicMark}
               onToggleDifficultPage={toggleDifficultPage}
               onCompleteTopicRound={completeTopicRound}
+              onMarkTopicReviewed={markTopicReviewed}
               onSaveQuizScore={saveQuizScore}
               onRecordQuestionOutcome={recordQuestionOutcome}
               onOpenOfficialManual={(topicNum) => {
@@ -849,14 +870,19 @@ export default function App() {
                   const target = resumePrompt;
                   setResumePrompt(null);
                   if (target.view === 'topic' && target.topicId) {
-                    handleSelectTopic(target.topicId, null);
+                    handleSelectTopic(target.topicId, target.target || null);
                   } else {
                     setActiveView(target.view);
+                  }
+                  if (target.scrollY > 0) {
+                    setTimeout(() => {
+                      window.scrollTo({ top: target.scrollY, behavior: 'smooth' });
+                    }, 180);
                   }
                 }}
                 className="flex-1 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
               >
-                Continuar on estava →
+                Tornar exactament on estava →
               </button>
               <button
                 type="button"

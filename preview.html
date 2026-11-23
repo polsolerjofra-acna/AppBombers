@@ -11560,6 +11560,10 @@ const tema2Quimica = {
             "1) EVAPORACIÓ vs. EBULLICIÓ: l'evaporació és quan s'eixuga un bassal a 20 °C a poc a poc, només per la superfície. L'ebullició és l'olla a 100 °C fent bombolles violentes des de dins de tot el líquid alhora!\n\n2) GAS vs. VAPOR (Temperatura Crítica Tc): un VAPOR (com el butà o el propà) està per sota de la seva Tc: si el comprimeixes fort dins d'un encenedor o bombona, el pots tornar líquid! Un GAS permanent (com l'aire de l'ERA a temperatura ambient) està per sobre de la seva Tc: per molt que el xafis amb una premsa gegant, les molècules tenen massa energia i MAI es tornen líquides només comprimint!\n\n3) BOYLE-MARIOTTE (T = constant): tapa una xeringa plena d'aire amb el dit i prem l'èmbol fins a la meitat d'espai (de 10 mL a 5 mL). Com que hi ha els mateixos xocs en la meitat d'espai, la pressió a dins es multiplica per 2!",
           takeaway:
             'Sota de Tc = Vapor (liquable per pressió). Sobre de Tc = Gas (no liquable per molta pressió que facis). Boyle: meitat de volum = doble de pressió.'
+        },
+        {
+          type: 'gasLawsSimulator',
+          initialLaw: 'boyle'
         }
       ]
     },
@@ -11610,6 +11614,10 @@ const tema2Quimica = {
             "1) Gasos ideals: \"PaVo\" (Pressió × Volum) beuen \"Te\" (Temperatura divideix) → (P·V)/T = cte.\n2) Gay-Lussac → Volum → Gran Via (V constant: P₁/T₁ = P₂/T₂).\n3) Boyle → Temperatura → BTT (T constant: P₁·V₁ = P₂·V₂).\n4) Charles → Pressió → CP (Cicle Professional, P constant: V₁/T₁ = V₂/T₂).\n5) Redox: PORC (combustible: Perd e⁻, s'Oxida, Reductor) | GROC (comburent: Guanya e⁻, es Redueix, Oxidant).",
           example:
             'Equació P·V = n·R·T ("PaVo / Te"). Recorda: 27 °C = 300 K i 327 °C = 600 K (el doble de T absoluta!).'
+        },
+        {
+          type: 'gasLawsSimulator',
+          initialLaw: 'charles'
         }
       ]
     },
@@ -51637,6 +51645,372 @@ function TopicOutlineCard({
   );
 }
 
+const LAWS = [
+  { id: 'boyle', label: '1. Boyle-Mariotte (Xeringa)', badge: 'T = cte (Isoterma)' },
+  { id: 'charles', label: '2. Charles (Pilota al Sol)', badge: 'P = cte (Isòbara)' },
+  { id: 'gaylussac', label: '3. Gay-Lussac (Ampolla al Foc)', badge: 'V = cte (Isòcora)' }
+];
+
+// Posicions deterministes de partícules que es mouen dinàmicament amb el temps
+const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
+  id: i,
+  fx: ((i * 37 + 13) % 86) / 100 + 0.07,
+  fy: ((i * 53 + 29) % 80) / 100 + 0.1,
+  dx: i % 2 === 0 ? 1 : -1,
+  dy: i % 3 === 0 ? 1 : -1
+}));
+
+function IdealGasLawsDiagram({ initialLaw = 'boyle' }) {
+  const [law, setLaw] = useState(initialLaw || 'boyle');
+  const [boyleVolumePct, setBoyleVolumePct] = useState(100); // 25..100
+  const [charlesTempC, setCharlesTempC] = useState(27); // -23..127 °C
+  const [glTempC, setGlTempC] = useState(27); // 27..327 °C
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTick((t) => (t + 1) % 3600);
+    }, 60);
+    return () => clearInterval(id);
+  }, []);
+
+  // Càlculs físics reals per a cada llei
+  const boylePressureBar = +(100 / boyleVolumePct).toFixed(2); // 1.00 bar a 100%, 4.00 bar a 25%
+  const charlesKelvin = charlesTempC + 273;
+  const charlesScale = Math.max(0.65, Math.min(1.42, charlesKelvin / 300));
+  const glKelvin = glTempC + 273;
+  const glPressureBar = Math.round(200 * (glKelvin / 300)); // 200 bar a 300 K -> 400 bar a 600 K
+
+  // Velocitat visual de les partícules segons T
+  const activeSpeed =
+    law === 'boyle'
+      ? 1.1
+      : law === 'charles'
+      ? 0.6 + (charlesKelvin / 300) * 1.1
+      : 0.7 + (glKelvin / 300) * 1.4;
+
+  const renderAnimatedParticles = (xMin, xMax, yMin, yMax, color) => {
+    const w = Math.max(12, xMax - xMin);
+    const h = Math.max(12, yMax - yMin);
+    return PARTICLES.map((p) => {
+      const phaseX = Math.abs(Math.sin((tick * 0.045 * activeSpeed * p.dx) + p.id * 1.1));
+      const phaseY = Math.abs(Math.cos((tick * 0.052 * activeSpeed * p.dy) + p.id * 0.7));
+      const cx = xMin + 6 + phaseX * (w - 12);
+      const cy = yMin + 6 + phaseY * (h - 12);
+      return (
+        <circle
+          key={p.id}
+          cx={cx}
+          cy={cy}
+          r={3.2}
+          fill={color}
+          opacity={0.85}
+        />
+      );
+    });
+  };
+
+  return (
+    <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-gradient-to-br from-indigo-50/60 via-white to-sky-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/20 p-5 shadow-sm space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-600 text-white shadow-xs">
+            <Sparkles className="w-4 h-4" />
+          </span>
+          <div>
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+              Simulador Visual Dinàmic · Gasos Ideals
+            </span>
+            <h4 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">
+              {LAWS.find((l) => l.id === law)?.label}
+            </h4>
+          </div>
+        </div>
+        <span className="text-[11px] font-extrabold px-2.5 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300">
+          {LAWS.find((l) => l.id === law)?.badge}
+        </span>
+      </div>
+
+      {/* Selector de llei */}
+      <div className="flex flex-wrap gap-2">
+        {LAWS.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setLaw(item.id)}
+            className={`rounded-xl px-3 py-1.5 text-xs font-extrabold transition ${
+              law === item.id
+                ? 'bg-indigo-600 text-white shadow-xs'
+                : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+            }`}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Dibuix SVG Dinàmic + Controls */}
+      <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-4 items-center">
+        <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-3 flex items-center justify-center">
+          {law === 'boyle' && (
+            <svg viewBox="0 0 360 175" className="w-full max-w-md h-44">
+              {/* Cos de la xeringa */}
+              <rect x="40" y="48" width="210" height="78" rx="8" fill="#f1f5f9" stroke="#334155" strokeWidth="3" />
+              {/* Broquet tapat amb tap vermell */}
+              <rect x="250" y="77" width="28" height="20" rx="3" fill="#e2e8f0" stroke="#334155" strokeWidth="2.5" />
+              <rect x="275" y="72" width="14" height="30" rx="4" fill="#dc2626" />
+              <text x="282" y="116" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#dc2626">
+                TAPAT
+              </text>
+
+              {/* Cambra de gas variable */}
+              {(() => {
+                const chamberStart = 248 - (boyleVolumePct / 100) * 185;
+                return (
+                  <>
+                    <rect
+                      x={chamberStart}
+                      y="51"
+                      width={248 - chamberStart}
+                      height="72"
+                      fill="#dbeafe"
+                      opacity="0.7"
+                    />
+                    {renderAnimatedParticles(chamberStart, 248, 52, 122, '#2563eb')}
+                    {/* Èmbol mòbil */}
+                    <rect x={chamberStart - 12} y="51" width="12" height="72" rx="2" fill="#1e293b" />
+                    <rect x={chamberStart - 62} y="82" width="50" height="10" fill="#64748b" />
+                    <rect x={chamberStart - 70} y="65" width="10" height="44" rx="3" fill="#334155" />
+                  </>
+                );
+              })()}
+
+              {/* Manòmetre connectat */}
+              <circle cx="322" cy="52" r="24" fill="#ffffff" stroke="#334155" strokeWidth="2.5" />
+              <path d="M 264 77 L 264 52 L 298 52" fill="none" stroke="#334155" strokeWidth="2.5" />
+              <text x="322" y="48" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#0f172a">
+                {boylePressureBar}
+              </text>
+              <text x="322" y="60" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#64748b">
+                bar
+              </text>
+              <text x="145" y="152" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#1e40af">
+                V = {boyleVolumePct}% · P = {boylePressureBar} bar · T = 20 °C (cte)
+              </text>
+            </svg>
+          )}
+
+          {law === 'charles' && (
+            <svg viewBox="0 0 360 175" className="w-full max-w-md h-44">
+              {/* Sol / Fred segons temperatura */}
+              {charlesTempC >= 20 ? (
+                <g>
+                  <circle cx="54" cy="42" r="18" fill="#f59e0b" />
+                  {[0, 45, 90, 135, 180, 225, 270, 315].map((ang) => {
+                    const rad = ((ang + tick * 2) * Math.PI) / 180;
+                    return (
+                      <line
+                        key={ang}
+                        x1={54 + Math.cos(rad) * 22}
+                        y1={42 + Math.sin(rad) * 22}
+                        x2={54 + Math.cos(rad) * 30}
+                        y2={42 + Math.sin(rad) * 30}
+                        stroke="#f59e0b"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                      />
+                    );
+                  })}
+                  <text x="54" y="84" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#b45309">
+                    SOL / CALOR
+                  </text>
+                </g>
+              ) : (
+                <g>
+                  <circle cx="54" cy="42" r="18" fill="#38bdf8" opacity="0.25" stroke="#0284c7" strokeWidth="2" />
+                  <text x="54" y="47" textAnchor="middle" fontSize="18">❄️</text>
+                  <text x="54" y="84" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#0369a1">
+                    FRED
+                  </text>
+                </g>
+              )}
+
+              {/* Pilota dinàmica que s'infla/desinfla */}
+              {(() => {
+                const r = 36 * charlesScale;
+                const cx = 205;
+                const cy = 84;
+                return (
+                  <>
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={r}
+                      fill={charlesTempC >= 50 ? '#fed7aa' : '#bae6fd'}
+                      stroke={charlesTempC >= 50 ? '#ea580c' : '#0284c7'}
+                      strokeWidth="3"
+                    />
+                    {renderAnimatedParticles(cx - r * 0.65, cx + r * 0.65, cy - r * 0.65, cy + r * 0.65, '#ea580c')}
+                    <path
+                      d={`M ${cx - r * 0.65} ${cy - r * 0.3} Q ${cx} ${cy} ${cx + r * 0.65} ${cy - r * 0.3}`}
+                      fill="none"
+                      stroke="#334155"
+                      strokeWidth="1.5"
+                      strokeDasharray="3 3"
+                    />
+                  </>
+                );
+              })()}
+
+              <text x="195" y="160" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#9a3412">
+                T = {charlesTempC} °C ({charlesKelvin} K) · V = {Math.round(charlesScale * 100)}% · P = 1 atm (cte)
+              </text>
+            </svg>
+          )}
+
+          {law === 'gaylussac' && (
+            <svg viewBox="0 0 360 175" className="w-full max-w-md h-44">
+              {/* Ampolla metàl·lica rígida (Volum constant) */}
+              <rect x="115" y="34" width="84" height="96" rx="22" fill="#e2e8f0" stroke="#334155" strokeWidth="3.5" />
+              <rect x="145" y="18" width="24" height="18" rx="3" fill="#475569" />
+              {renderAnimatedParticles(122, 192, 42, 122, glPressureBar >= 320 ? '#dc2626' : '#0284c7')}
+
+              {/* Flames sota l'ampolla si s'escalfa */}
+              {glTempC > 40 && (
+                <g transform={`translate(130, ${132 + Math.sin(tick * 0.4) * 2})`}>
+                  <path d="M 8 18 Q 14 0 20 18 Q 27 2 34 18 Q 41 0 47 18 Z" fill="#f97316" />
+                  <path d="M 15 18 Q 20 6 25 18 Q 31 7 37 18 Z" fill="#facc15" />
+                </g>
+              )}
+
+              {/* Manòmetre connectat */}
+              <path d="M 169 27 L 235 27 L 235 46" fill="none" stroke="#334155" strokeWidth="2.5" />
+              <circle
+                cx="235"
+                cy="74"
+                r="28"
+                fill="#ffffff"
+                stroke={glPressureBar >= 320 ? '#dc2626' : '#334155'}
+                strokeWidth="3"
+              />
+              <text
+                x="235"
+                y="72"
+                textAnchor="middle"
+                fontSize="12"
+                fontWeight="bold"
+                fill={glPressureBar >= 320 ? '#dc2626' : '#0f172a'}
+              >
+                {glPressureBar}
+              </text>
+              <text x="235" y="86" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#64748b">
+                bar
+              </text>
+              {glPressureBar >= 320 && (
+                <text x="295" y="78" fontSize="10" fontWeight="bold" fill="#dc2626">
+                  ⚠ RISC!
+                </text>
+              )}
+
+              <text x="180" y="164" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#991b1b">
+                V = 6 L (cte) · T = {glTempC} °C ({glKelvin} K) · P = {glPressureBar} bar
+              </text>
+            </svg>
+          )}
+        </div>
+
+        {/* Controls interactius + explicació */}
+        <div className="space-y-3">
+          {law === 'boyle' && (
+            <>
+              <div className="space-y-1">
+                <div className="flex justify-between text-xs font-extrabold text-slate-700 dark:text-slate-200">
+                  <span>Prem l&apos;èmbol de la xeringa (Volum):</span>
+                  <span className="text-blue-600 dark:text-blue-400">{boyleVolumePct}%</span>
+                </div>
+                <input
+                  type="range"
+                  min={25}
+                  max={100}
+                  step={5}
+                  value={boyleVolumePct}
+                  onChange={(e) => setBoyleVolumePct(Number(e.target.value))}
+                  className="w-full accent-indigo-600"
+                />
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>Exemple visual (Xeringa tapada):</strong> Si redueixes el volum a la meitat (del 100% al 50%), les molècules xoquen el doble de vegades contra les parets i la pressió es multiplica per 2 (de 1 bar a 2 bar), mantenint T constant.
+              </p>
+              <div className="rounded-lg bg-indigo-100/70 dark:bg-indigo-950/40 px-3 py-2 text-xs font-extrabold text-indigo-900 dark:text-indigo-200">
+                P₁ · V₁ = P₂ · V₂ → Inversament proporcionals
+              </div>
+            </>
+          )}
+
+          {law === 'charles' && (
+            <>
+              <div className="space-y-1">
+                <div className="flex justify-between text-xs font-extrabold text-slate-700 dark:text-slate-200">
+                  <span className="flex items-center gap-1">
+                    <Sun className="w-3.5 h-3.5 text-amber-500" />
+                    Temperatura (Sol / Fred):
+                  </span>
+                  <span className="text-amber-600 dark:text-amber-400">{charlesTempC} °C ({charlesKelvin} K)</span>
+                </div>
+                <input
+                  type="range"
+                  min={-23}
+                  max={127}
+                  step={5}
+                  value={charlesTempC}
+                  onChange={(e) => setCharlesTempC(Number(e.target.value))}
+                  className="w-full accent-amber-500"
+                />
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>Exemple visual (Pilota al sol):</strong> Quan li toca el sol, l&apos;aire interior s&apos;escalfa, les molècules es mouen més ràpid i la pilota s&apos;infla (augmenta V). A l&apos;ombra freda s&apos;encongeix. En incendis, els fums calents es dilaten i pugen.
+              </p>
+              <div className="rounded-lg bg-amber-100/70 dark:bg-amber-950/40 px-3 py-2 text-xs font-extrabold text-amber-900 dark:text-amber-200">
+                V₁ / T₁ = V₂ / T₂ → Directament proporcionals (en Kelvin!)
+              </div>
+            </>
+          )}
+
+          {law === 'gaylussac' && (
+            <>
+              <div className="space-y-1">
+                <div className="flex justify-between text-xs font-extrabold text-slate-700 dark:text-slate-200">
+                  <span className="flex items-center gap-1">
+                    <Flame className="w-3.5 h-3.5 text-red-500" />
+                    Escalfa l&apos;ampolla rígida:
+                  </span>
+                  <span className="text-red-600 dark:text-red-400">{glTempC} °C ({glKelvin} K)</span>
+                </div>
+                <input
+                  type="range"
+                  min={27}
+                  max={327}
+                  step={15}
+                  value={glTempC}
+                  onChange={(e) => setGlTempC(Number(e.target.value))}
+                  className="w-full accent-red-600"
+                />
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>Exemple visual (Ampolla rígida al foc):</strong> Com que les parets metàl·liques no es poden dilatar (V = cte), en duplicar la temperatura absoluta de 300 K (27 °C) a 600 K (327 °C), la pressió interna es duplica de 200 a 400 bar!
+              </p>
+              <div className="rounded-lg bg-red-100/70 dark:bg-red-950/40 px-3 py-2 text-xs font-extrabold text-red-900 dark:text-red-200 flex items-center gap-1.5">
+                <Gauge className="w-3.5 h-3.5 shrink-0" />
+                <span>P₁ / T₁ = P₂ / T₂ → Risc d&apos;explosió / BLEVE en incendi</span>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function WhiteboardCanvas({ title = 'Pissarra per a càlculs i esquemes', onClose }) {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -52955,6 +53329,7 @@ function TopicView({
   onSetTopicMark,
   onToggleDifficultPage,
   onCompleteTopicRound,
+  onMarkTopicReviewed,
   onSaveQuizScore,
   onRecordQuestionOutcome,
   onOpenOfficialManual
@@ -53010,6 +53385,28 @@ function TopicView({
   const topicPagesStatus = progress.pageStatus?.[topic.id] || {};
   const currentPageStatus = topicPagesStatus[currentPageNumber] || 'pending';
   const topicGlobalStatus = progress.topicStatus?.[topic.id] || 'in_progress';
+
+  useEffect(() => {
+    const saveExact = () => {
+      try {
+        localStorage.setItem(
+          'bombers_exact_location_v1',
+          JSON.stringify({
+            view: 'topic',
+            topicId: topic.id,
+            pageNumber: currentPageNumber,
+            activeTab,
+            scrollY: Math.round(window.scrollY || 0),
+            label: `Tema ${topic.number}: ${topic.title} · Pàg. ${currentPageNumber}${activeTab === 'quiz' ? ' (Qüestionari)' : ''}`,
+            updatedAt: Date.now()
+          })
+        );
+      } catch {}
+    };
+    saveExact();
+    window.addEventListener('scroll', saveExact, { passive: true });
+    return () => window.removeEventListener('scroll', saveExact);
+  }, [topic.id, topic.number, topic.title, currentPageNumber, activeTab]);
 
   const studyContentRef = useRef(null);
   const theoryStartRef = useRef(null);
@@ -53188,6 +53585,23 @@ function TopicView({
                 </span>
               </button>
             )}
+
+            {onMarkTopicReviewed && (() => {
+              const sp = progress?.spacedRepetition?.[topic.id];
+              const todayISO = new Date().toISOString().split('T')[0];
+              const isDue = Boolean(sp?.nextReviewAt && sp.nextReviewAt <= todayISO);
+              if (!isDue) return null;
+              return (
+                <button
+                  onClick={() => onMarkTopicReviewed(topic.id)}
+                  className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
+                  title="Marca aquest tema com a repassat avui i programa'l automàticament al següent interval de la regla de l'oblit"
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Marcar repassat avui ✓</span>
+                </button>
+              );
+            })()}
           </div>
         </div>
 
@@ -53541,6 +53955,14 @@ function TopicView({
                         metaphor={block.metaphor}
                         explanation={block.explanation}
                         takeaway={block.takeaway}
+                      />
+                    );
+
+                  case 'gasLawsSimulator':
+                    return (
+                      <IdealGasLawsDiagram
+                        key={bIdx}
+                        initialLaw={block.initialLaw || 'boyle'}
                       />
                     );
 
@@ -59181,6 +59603,596 @@ function PracticeTestView({
   );
 }
 
+const PRIVATE_DURATIONS = [
+  { id: '15m', label: '15 minuts', price: 10, desc: 'Resolució ràpida de dubtes concrets o fórmules.' },
+  { id: '30m', label: '30 minuts', price: 20, desc: 'Repàs enfocat d\'un apartat o supòsit pràctic.' },
+  { id: '60m', label: '1 hora', price: 40, desc: 'Classe completa de tema, càlculs o simulacre comentat.' }
+];
+
+const DEFAULT_GROUP_CLASSES = [
+  {
+    id: 'grp-hidraulica-1',
+    title: 'Hidràulica d\'Examen: Pèrdues de Càrrega, Venturi i Bombes en Sèrie',
+    topicLabel: 'Tema 13 · Hidràulica i Bombes',
+    dateLabel: 'Dimecres · 19:00 – 21:00 h',
+    durationHours: 2,
+    pricePerPerson: 25,
+    minPeople: 4,
+    participants: ['Pol Soler Jofra', 'Marc V.'],
+    notes: 'Sessió 100% pràctica amb problemes tipus 81/25 i 81/26.'
+  },
+  {
+    id: 'grp-gasos-quimica-2',
+    title: 'Química, Estequiometria i Lleis dels Gasos Ideals (Kelvin sense errors)',
+    topicLabel: 'Tema 10 · Química i Termoquímica',
+    dateLabel: 'Divendres · 18:00 – 20:00 h',
+    durationHours: 2,
+    pricePerPerson: 25,
+    minPeople: 4,
+    participants: ['Laura G.'],
+    notes: 'Inclou reactiu limitant, Boyle, Charles, Gay-Lussac i PV=nRT.'
+  },
+  {
+    id: 'grp-lleis-sgo-3',
+    title: 'Bloc Jurídic + Llei 5/1994, Decret 16/2026 i Protecció Civil',
+    topicLabel: 'Temes 1–7 · Bloc General / Lleis',
+    dateLabel: 'Dissabte · 10:00 – 12:00 h',
+    durationHours: 2,
+    pricePerPerson: 25,
+    minPeople: 4,
+    participants: ['Pol Soler Jofra', 'Jaume Baltà', 'Anna R.', 'David M.'],
+    notes: 'Repàs comparatiu de terminis, escales i novetats 2026.'
+  }
+];
+
+const PRIVATE_BOOKINGS_KEY = 'bombers_private_class_bookings_v1';
+const GROUP_CLASSES_KEY = 'bombers_group_classes_v1';
+
+function ClassesView({ topics = [], user = null }) {
+  const [activeTab, setActiveTab] = useState('private'); // 'private' | 'group'
+
+  // Formulari classe particular
+  const [selectedDurationId, setSelectedDurationId] = useState('30m');
+  const [selectedTopicId, setSelectedTopicId] = useState(() => topics[0]?.id || 'altres');
+  const [selectedSubtopic, setSelectedSubtopic] = useState('');
+  const [preferredSchedule, setPreferredSchedule] = useState('');
+  const [comment, setComment] = useState('');
+  const [studentName, setStudentName] = useState(() => user?.displayName || '');
+  const [studentEmail, setStudentEmail] = useState(() => user?.email || '');
+  const [bookingConfirmed, setBookingConfirmed] = useState(null);
+
+  const [privateBookings, setPrivateBookings] = useState(() => {
+    try {
+      const raw = localStorage.getItem(PRIVATE_BOOKINGS_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [groupClasses, setGroupClasses] = useState(() => {
+    try {
+      const raw = localStorage.getItem(GROUP_CLASSES_KEY);
+      return raw ? JSON.parse(raw) : DEFAULT_GROUP_CLASSES;
+    } catch {
+      return DEFAULT_GROUP_CLASSES;
+    }
+  });
+
+  const [groupProposalText, setGroupProposalText] = useState('');
+  const [groupProposalSent, setGroupProposalSent] = useState(false);
+
+  useEffect(() => {
+    if (user?.displayName && !studentName) setStudentName(user.displayName);
+    if (user?.email && !studentEmail) setStudentEmail(user.email);
+  }, [user]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(PRIVATE_BOOKINGS_KEY, JSON.stringify(privateBookings));
+    } catch {}
+  }, [privateBookings]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(GROUP_CLASSES_KEY, JSON.stringify(groupClasses));
+    } catch {}
+  }, [groupClasses]);
+
+  const selectedTopicObj = useMemo(
+    () => topics.find((t) => t.id === selectedTopicId) || null,
+    [topics, selectedTopicId]
+  );
+
+  const subtopicOptions = useMemo(() => {
+    if (!selectedTopicObj || selectedTopicId === 'altres') {
+      return ['Altres'];
+    }
+    const pageLabels = (selectedTopicObj.pages || []).map(
+      (p, idx) => p.shortLabel || p.title || `Apartat ${idx + 1}`
+    );
+    return [...pageLabels, 'Altres'];
+  }, [selectedTopicObj, selectedTopicId]);
+
+  useEffect(() => {
+    setSelectedSubtopic(subtopicOptions[0] || 'Altres');
+  }, [selectedTopicId, subtopicOptions]);
+
+  const selectedDuration =
+    PRIVATE_DURATIONS.find((d) => d.id === selectedDurationId) || PRIVATE_DURATIONS[1];
+
+  const handleBookPrivateClass = (e) => {
+    e.preventDefault();
+    const topicText =
+      selectedTopicId === 'altres'
+        ? 'Altres'
+        : selectedTopicObj
+        ? `Tema ${selectedTopicObj.number} · ${selectedTopicObj.title}`
+        : selectedTopicId;
+
+    const newBooking = {
+      id: `priv-${Date.now()}`,
+      createdAt: new Date().toLocaleString('ca-ES'),
+      durationLabel: selectedDuration.label,
+      price: selectedDuration.price,
+      topic: topicText,
+      subtopic: selectedSubtopic || 'Altres',
+      preferredSchedule: preferredSchedule.trim() || 'A convenir',
+      comment: comment.trim(),
+      studentName: studentName.trim() || 'Opositor',
+      studentEmail: studentEmail.trim()
+    };
+
+    setPrivateBookings((prev) => [newBooking, ...prev]);
+    setBookingConfirmed(newBooking);
+    setComment('');
+  };
+
+  const currentParticipantName = (user?.displayName || studentName || 'Opositor').trim();
+
+  const toggleJoinGroupClass = (classId) => {
+    setGroupClasses((prev) =>
+      prev.map((gc) => {
+        if (gc.id !== classId) return gc;
+        const alreadyIn = gc.participants.includes(currentParticipantName);
+        return {
+          ...gc,
+          participants: alreadyIn
+            ? gc.participants.filter((p) => p !== currentParticipantName)
+            : [...gc.participants, currentParticipantName]
+        };
+      })
+    );
+  };
+
+  const handleProposeGroupClass = (e) => {
+    e.preventDefault();
+    if (!groupProposalText.trim()) return;
+    const newGroup = {
+      id: `grp-${Date.now()}`,
+      title: groupProposalText.trim(),
+      topicLabel: 'Proposta d\'opositors',
+      dateLabel: 'Horari a consensuar (2 hores)',
+      durationHours: 2,
+      pricePerPerson: 25,
+      minPeople: 4,
+      participants: [currentParticipantName],
+      notes: 'Grup obert! Quan arribi a 4 persones es confirma la sessió.'
+    };
+    setGroupClasses((prev) => [newGroup, ...prev]);
+    setGroupProposalText('');
+    setGroupProposalSent(true);
+    setTimeout(() => setGroupProposalSent(false), 3500);
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Capçalera */}
+      <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white via-indigo-50/40 to-amber-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/20 p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 dark:bg-indigo-950/60 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
+          <GraduationCap className="w-3.5 h-3.5" />
+          <span>Suport i Tutories · Oposicions Bombers</span>
+        </div>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Classes Particulars i Conjuntes
+        </h1>
+        <p className="text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+          Reserva sessions individuals a mida per resoldre dubtes concrets del temari o uneix-te a una classe grupal programada (mínim 4 persones · 2 hores · 25 €/persona).
+        </p>
+
+        {/* Pestanyes */}
+        <div className="flex flex-wrap gap-2 pt-1">
+          <button
+            type="button"
+            onClick={() => setActiveTab('private')}
+            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold transition ${
+              activeTab === 'private'
+                ? 'bg-indigo-600 text-white shadow-sm'
+                : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+            }`}
+          >
+            <Clock className="w-4 h-4" />
+            <span>Classes Particulars (10 € – 40 €)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('group')}
+            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold transition ${
+              activeTab === 'group'
+                ? 'bg-emerald-600 text-white shadow-sm'
+                : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+            }`}
+          >
+            <Users className="w-4 h-4" />
+            <span>Classes Conjuntes (25 €/persona · 2 h)</span>
+          </button>
+        </div>
+      </div>
+
+      {activeTab === 'private' ? (
+        <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 items-start">
+          {/* Formulari reserva particular */}
+          <form
+            onSubmit={handleBookPrivateClass}
+            className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-5"
+          >
+            <h2 className="text-base font-extrabold text-slate-900 dark:text-white">
+              Configura la teva Classe Particular
+            </h2>
+
+            {/* 1. Durada i preu */}
+            <div className="space-y-2">
+              <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                1. Tria la durada
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {PRIVATE_DURATIONS.map((d) => {
+                  const active = selectedDurationId === d.id;
+                  return (
+                    <button
+                      key={d.id}
+                      type="button"
+                      onClick={() => setSelectedDurationId(d.id)}
+                      className={`text-left rounded-xl border-2 p-3.5 transition ${
+                        active
+                          ? 'border-indigo-600 bg-indigo-50/70 dark:bg-indigo-950/30'
+                          : 'border-slate-200 dark:border-slate-800 hover:border-indigo-300'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-extrabold text-slate-900 dark:text-white">
+                          {d.label}
+                        </span>
+                        <span className="text-sm font-black text-indigo-600 dark:text-indigo-400">
+                          {d.price} €
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+                        {d.desc}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 2. Tema i Subapartat */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="class-topic-select"
+                  className="block text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+                >
+                  2. Tema a treballar
+                </label>
+                <select
+                  id="class-topic-select"
+                  value={selectedTopicId}
+                  onChange={(e) => setSelectedTopicId(e.target.value)}
+                  className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2.5 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white"
+                >
+                  {topics.map((t) => (
+                    <option key={t.id} value={t.id}>
+                      Tema {t.number} · {t.title}
+                    </option>
+                  ))}
+                  <option value="altres">Altres (especifica al comentari)</option>
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="class-subtopic-select"
+                  className="block text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+                >
+                  3. Subapartat concret
+                </label>
+                <select
+                  id="class-subtopic-select"
+                  value={selectedSubtopic}
+                  onChange={(e) => setSelectedSubtopic(e.target.value)}
+                  className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2.5 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white"
+                >
+                  {subtopicOptions.map((sub, idx) => (
+                    <option key={idx} value={sub}>
+                      {sub}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* 4. Comentari lliure */}
+            <div className="space-y-1.5">
+              <label
+                htmlFor="class-comment"
+                className="block text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+              >
+                4. Comentari o dubtes concrets (si has triat &quot;Altres&quot; o vols concretar)
+              </label>
+              <textarea
+                id="class-comment"
+                rows={3}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Ex: Vull practicar càlculs de Boyle vs Gay-Lussac en ampolles ERA o resoldre dubtes del Decret 16/2026..."
+                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            {/* Dades de contacte */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="space-y-1">
+                <label className="block text-[11px] font-bold text-slate-500">Nom</label>
+                <input
+                  type="text"
+                  required
+                  value={studentName}
+                  onChange={(e) => setStudentName(e.target.value)}
+                  placeholder="El teu nom"
+                  className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-xs font-semibold text-slate-900 dark:text-white"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="block text-[11px] font-bold text-slate-500">Correu electrònic</label>
+                <input
+                  type="email"
+                  required
+                  value={studentEmail}
+                  onChange={(e) => setStudentEmail(e.target.value)}
+                  placeholder="correu@exemple.com"
+                  className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-xs font-semibold text-slate-900 dark:text-white"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="block text-[11px] font-bold text-slate-500">Disponibilitat horària</label>
+                <input
+                  type="text"
+                  value={preferredSchedule}
+                  onChange={(e) => setPreferredSchedule(e.target.value)}
+                  placeholder="Ex: Dimarts tarda"
+                  className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-xs font-semibold text-slate-900 dark:text-white"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <div className="text-xs text-slate-600 dark:text-slate-300">
+                Total seleccionat:{' '}
+                <strong className="text-base text-indigo-600 dark:text-indigo-400">
+                  {selectedDuration.label} · {selectedDuration.price} €
+                </strong>
+              </div>
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 text-xs sm:text-sm font-extrabold shadow-sm"
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Sol·licitar Classe Particular</span>
+              </button>
+            </div>
+
+            {bookingConfirmed && (
+              <div className="rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 p-4 space-y-2">
+                <div className="text-xs font-extrabold text-emerald-800 dark:text-emerald-300">
+                  ✓ Sol·licitud registrada correctament! ({bookingConfirmed.durationLabel} · {bookingConfirmed.price} €)
+                </div>
+                <p className="text-xs text-slate-700 dark:text-slate-300">
+                  <strong>Tema:</strong> {bookingConfirmed.topic} → <strong>Subapartat:</strong> {bookingConfirmed.subtopic}
+                </p>
+                <a
+                  href={`mailto:polsolerjofra@gmail.com?subject=${encodeURIComponent(
+                    `Sol·licitud Classe Particular (${bookingConfirmed.durationLabel} - ${bookingConfirmed.price}€)`
+                  )}&body=${encodeURIComponent(
+                    `Nom: ${bookingConfirmed.studentName}\nCorreu: ${bookingConfirmed.studentEmail}\nDurada: ${bookingConfirmed.durationLabel} (${bookingConfirmed.price} €)\nTema: ${bookingConfirmed.topic}\nSubapartat: ${bookingConfirmed.subtopic}\nDisponibilitat: ${bookingConfirmed.preferredSchedule}\nComentari: ${bookingConfirmed.comment || '-'}`
+                  )}`}
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-extrabold"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>Enviar confirmació per correu</span>
+                </a>
+              </div>
+            )}
+          </form>
+
+          {/* Resum de tarifes i sol·licituds recents */}
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3">
+              <h3 className="text-sm font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>Tarifes Classes Particulars</span>
+              </h3>
+              <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                <li className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-1.5">
+                  <span>Sessió exprés (15 minuts)</span>
+                  <strong className="text-slate-900 dark:text-white">10 €</strong>
+                </li>
+                <li className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-1.5">
+                  <span>Sessió enfocada (30 minuts)</span>
+                  <strong className="text-slate-900 dark:text-white">20 €</strong>
+                </li>
+                <li className="flex justify-between">
+                  <span>Sessió completa (1 hora)</span>
+                  <strong className="text-slate-900 dark:text-white">40 €</strong>
+                </li>
+              </ul>
+            </div>
+
+            {privateBookings.length > 0 && (
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3">
+                <h3 className="text-sm font-extrabold text-slate-900 dark:text-white">
+                  Les teves sol·licituds ({privateBookings.length})
+                </h3>
+                <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
+                  {privateBookings.map((b) => (
+                    <div
+                      key={b.id}
+                      className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-3 text-xs space-y-1"
+                    >
+                      <div className="flex justify-between font-extrabold text-slate-900 dark:text-white">
+                        <span>{b.durationLabel} · {b.price} €</span>
+                        <span className="text-[11px] font-semibold text-slate-500">{b.preferredSchedule}</span>
+                      </div>
+                      <div className="text-slate-700 dark:text-slate-300 font-semibold">
+                        {b.topic} — {b.subtopic}
+                      </div>
+                      {b.comment && (
+                        <div className="text-[11px] text-slate-500 italic flex items-start gap-1">
+                          <MessageSquare className="w-3 h-3 mt-0.5 shrink-0" />
+                          <span>{b.comment}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {/* Banner condicions grups */}
+          <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/60 dark:bg-emerald-950/20 p-5 flex flex-wrap items-center justify-between gap-4">
+            <div className="space-y-1">
+              <h2 className="text-base font-extrabold text-slate-900 dark:text-white">
+                Classes Conjuntes Programades · 25 €/persona (2 hores)
+              </h2>
+              <p className="text-xs text-slate-600 dark:text-slate-300">
+                Cada sessió requereix un <strong>mínim de 4 persones inscrites</strong> per confirmar-se. Uneix-te a un grup o proposa un nou tema.
+              </p>
+            </div>
+          </div>
+
+          {/* Llista de classes conjuntes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {groupClasses.map((gc) => {
+              const count = gc.participants.length;
+              const isConfirmed = count >= gc.minPeople;
+              const isJoined = gc.participants.includes(currentParticipantName);
+              const pct = Math.min(100, Math.round((count / gc.minPeople) * 100));
+
+              return (
+                <div
+                  key={gc.id}
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm flex flex-col justify-between space-y-4"
+                >
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className={`text-[10px] font-extrabold px-2.5 py-0.5 rounded-full ${
+                          isConfirmed
+                            ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300'
+                            : 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300'
+                        }`}
+                      >
+                        {isConfirmed ? 'Grup Confirmat ✓' : `Falten ${gc.minPeople - count} persones`}
+                      </span>
+                      <span className="text-xs font-black text-emerald-600 dark:text-emerald-400">
+                        {gc.pricePerPerson} €/pers · {gc.durationHours}h
+                      </span>
+                    </div>
+
+                    <h3 className="text-sm font-extrabold text-slate-900 dark:text-white leading-snug">
+                      {gc.title}
+                    </h3>
+                    <div className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                      {gc.topicLabel}
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>{gc.dateLabel}</span>
+                    </div>
+                    {gc.notes && (
+                      <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                        {gc.notes}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-[11px] font-bold text-slate-600 dark:text-slate-300">
+                        <span>Inscrits: {count} (mínim {gc.minPeople})</span>
+                        <span>{pct}%</span>
+                      </div>
+                      <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all ${
+                            isConfirmed ? 'bg-emerald-500' : 'bg-amber-500'
+                          }`}
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => toggleJoinGroupClass(gc.id)}
+                      className={`w-full rounded-xl px-4 py-2 text-xs font-extrabold transition ${
+                        isJoined
+                          ? 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-rose-100 hover:text-rose-700'
+                          : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
+                      }`}
+                    >
+                      {isJoined ? 'Inscrit/a ✓ (Desapuntar-me)' : `Unir-m'hi (${gc.pricePerPerson} €)`}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Proposar una nova classe conjunta */}
+          <form
+            onSubmit={handleProposeGroupClass}
+            className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm flex flex-col sm:flex-row gap-3 items-stretch sm:items-center"
+          >
+            <input
+              type="text"
+              value={groupProposalText}
+              onChange={(e) => setGroupProposalText(e.target.value)}
+              placeholder="Proposa un tema per obrir un nou grup de 2 hores (mínim 4 persones · 25 €/persona)..."
+              className="flex-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white"
+            />
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 text-xs font-extrabold shrink-0"
+            >
+              <PlusCircle className="w-4 h-4" />
+              <span>Obrir Nou Grup</span>
+            </button>
+            {groupProposalSent && (
+              <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                Grup creat ✓
+              </span>
+            )}
+          </form>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const ACCURACY_MILESTONES = [
   { target: 500, label: '500 encerts', icon: '🥉', cls: 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800' },
   { target: 1000, label: '1.000 encerts', icon: '🥈', cls: 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700' },
@@ -60128,9 +61140,9 @@ function DashboardView({
                       <button
                         onClick={() => onMarkTopicReviewed(item.topic.id)}
                         className="px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700"
-                        title="Avança al següent interval d'Ebbinghaus"
+                        title="Marca com a repassat i programa el següent interval de la regla de l'oblit"
                       >
-                        Fet avui ✓
+                        Marcar repassat ✓
                       </button>
                     )}
                   </div>
@@ -60279,6 +61291,7 @@ function Sidebar({
   onSelectHome,
   onSelectDashboard,
   onSelectCalendar,
+  onSelectClasses,
   onSelectQuickStudy,
   onSelectPractice,
   onSelectCalculations,
@@ -60401,6 +61414,34 @@ function Sidebar({
               {dueReviewsCount > 0 ? `${dueReviewsCount} avui` : 'Al dia'}
             </span>
           </button>
+
+          {onSelectClasses && (
+            <button
+              onClick={() => {
+                onSelectClasses();
+                onCloseMobile();
+              }}
+              className={`w-full flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs font-bold transition-all ${
+                activeView === 'classes'
+                  ? 'bg-red-600 text-white shadow-sm shadow-red-600/20'
+                  : 'bg-indigo-50/80 dark:bg-indigo-950/30 text-indigo-800 dark:text-indigo-200 hover:bg-indigo-100/80 dark:hover:bg-indigo-950/50'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <GraduationCap className="w-4 h-4" />
+                <span>Classes Particulars i Grup</span>
+              </div>
+              <span
+                className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                  activeView === 'classes'
+                    ? 'bg-white/20 text-white'
+                    : 'bg-indigo-200/80 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200'
+                }`}
+              >
+                Nou
+              </span>
+            </button>
+          )}
 
           <button
             onClick={() => {
@@ -60991,6 +62032,17 @@ function HomeView({
       icon: Users,
       accent: 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50 text-emerald-700 dark:text-emerald-300',
       btn: 'bg-emerald-600 hover:bg-emerald-700 text-white'
+    },
+    {
+      id: 'classes',
+      title: 'Classes Particulars i Conjuntes',
+      badge: '10€–40€ · 25€ grup',
+      description:
+        'Reserva classes particulars (15 min 10 €, 30 min 20 €, 1 h 40 €) escollint tema, subapartat i comentari, o uneix-te a classes conjuntes (mínim 4 persones · 2 h · 25 €).',
+      cta: 'Veure Classes',
+      icon: GraduationCap,
+      accent: 'bg-indigo-50 dark:bg-indigo-950/30 border-indigo-200 dark:border-indigo-900/50 text-indigo-700 dark:text-indigo-300',
+      btn: 'bg-indigo-600 hover:bg-indigo-700 text-white'
     }
   ];
 
@@ -61253,7 +62305,7 @@ function HomeView({
 const APP_CLIENT_VERSION = '2026.11.20.2';
 const SEEN_RELEASE_KEY = 'bombers_seen_release_v1';
 const LAST_ACTIVE_AT_KEY = 'bombers_last_active_at_v1';
-const INACTIVITY_RESET_MS = 10 * 60 * 1000; // 10 minuts sense entrar a l'app
+const INACTIVITY_RESET_MS = 3 * 60 * 1000; // 3 minuts fora de l'app per oferir tornar exactament on estaves
 
 class AppErrorBoundary extends React.Component {
   constructor(props) {
@@ -61316,7 +62368,7 @@ function App() {
   const [activeView, setActiveView] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('bombers_last_nav_v1') || '{}');
-      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'audio', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'group'];
+      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'audio', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'classes', 'group'];
       return allowed.includes(saved.activeView) ? saved.activeView : 'home';
     } catch {
       return 'home';
@@ -61380,8 +62432,20 @@ function App() {
   // Si fa > 10 minuts sense entrar a l'app, torna a l'inici i pregunta si vol reprendre l'apartat inacabat
   useEffect(() => {
     const buildResumeIfUnfinished = (view, topicId) => {
-      if (view === 'topic') {
-        if (progress.topicStatus?.[topicId] === 'completed') return null;
+      if (view === 'topic' && topicId) {
+        try {
+          const exactRaw = localStorage.getItem('bombers_exact_location_v1');
+          const exact = exactRaw ? JSON.parse(exactRaw) : null;
+          if (exact && exact.topicId === topicId) {
+            return {
+              view: 'topic',
+              topicId,
+              target: exact.activeTab === 'quiz' ? 'quiz' : `page:${exact.pageNumber || 1}`,
+              scrollY: exact.scrollY || 0,
+              label: exact.label || topicId
+            };
+          }
+        } catch {}
         const found = TOPICS.find((t) => t.id === topicId);
         return found
           ? { view: 'topic', topicId, label: `Tema ${found.number} · ${found.title}` }
@@ -61393,11 +62457,12 @@ function App() {
         } catch {
           return null;
         }
-        return { view: 'practice', label: 'Tests i Simulacres (test en curs)' };
+        return { view: 'practice', scrollY: Math.round(window.scrollY || 0), label: 'Tests i Simulacres (test en curs)' };
       }
-      if (view === 'calculations') return { view: 'calculations', label: 'Càlculs, Fórmules i Problemes' };
-      if (view === 'quickstudy') return { view: 'quickstudy', label: 'Sessió Ràpida' };
-      if (view === 'manuals') return { view: 'manuals', label: 'Manuals Oficials (PDF)' };
+      if (view === 'calculations') return { view: 'calculations', scrollY: Math.round(window.scrollY || 0), label: 'Càlculs, Fórmules i Problemes' };
+      if (view === 'quickstudy') return { view: 'quickstudy', scrollY: Math.round(window.scrollY || 0), label: 'Sessió Ràpida' };
+      if (view === 'manuals') return { view: 'manuals', scrollY: Math.round(window.scrollY || 0), label: 'Manuals Oficials (PDF)' };
+      if (view === 'classes') return { view: 'classes', scrollY: Math.round(window.scrollY || 0), label: 'Classes Particulars i Conjuntes' };
       return null;
     };
 
@@ -61798,6 +62863,10 @@ function App() {
           setActiveView('audio');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onSelectClasses={() => {
+          setActiveView('classes');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onSelectPractice={() => {
           setActiveView('practice');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -62006,6 +63075,8 @@ function App() {
               topics={TOPICS}
               onOpenTopic={(id, target) => handleSelectTopic(id, target)}
             />
+          ) : activeView === 'classes' ? (
+            <ClassesView topics={TOPICS} user={cloudUser} />
           ) : activeView === 'group' ? (
             <GroupStudyView
               user={cloudUser}
@@ -62025,6 +63096,7 @@ function App() {
               onSetTopicMark={setTopicMark}
               onToggleDifficultPage={toggleDifficultPage}
               onCompleteTopicRound={completeTopicRound}
+              onMarkTopicReviewed={markTopicReviewed}
               onSaveQuizScore={saveQuizScore}
               onRecordQuestionOutcome={recordQuestionOutcome}
               onOpenOfficialManual={(topicNum) => {
@@ -62072,14 +63144,19 @@ function App() {
                   const target = resumePrompt;
                   setResumePrompt(null);
                   if (target.view === 'topic' && target.topicId) {
-                    handleSelectTopic(target.topicId, null);
+                    handleSelectTopic(target.topicId, target.target || null);
                   } else {
                     setActiveView(target.view);
+                  }
+                  if (target.scrollY > 0) {
+                    setTimeout(() => {
+                      window.scrollTo({ top: target.scrollY, behavior: 'smooth' });
+                    }, 180);
                   }
                 }}
                 className="flex-1 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5 text-xs font-extrabold shadow-sm"
               >
-                Continuar on estava →
+                Tornar exactament on estava →
               </button>
               <button
                 type="button"
