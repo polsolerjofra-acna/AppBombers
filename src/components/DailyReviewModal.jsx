@@ -185,6 +185,8 @@ export default function DailyReviewModal({
   isOpen,
   onClose,
   cloudUser = null,
+  dailyReviewHistory = {},
+  onSaveDailyHistory = null,
   onRecordQuestionOutcome = null
 }) {
   const { iso: todayISO, isFriday } = useMemo(() => getMadridTodayInfo(), []);
@@ -258,13 +260,25 @@ export default function DailyReviewModal({
     if (!currentQ || draftOpt === null || answers[currentQ.id] !== undefined) return;
     const isOk = draftOpt === currentQ.correctIndex;
     const nextAnswers = { ...answers, [currentQ.id]: draftOpt };
+    const nextAnswered = Object.keys(nextAnswers).length;
     const nextCorrect = questions.filter((q) => nextAnswers[q.id] === q.correctIndex).length;
+    const nextWrong = nextAnswered - nextCorrect;
     setSessionState((prev) => ({
       ...prev,
       answers: nextAnswers
     }));
     if (currentQ._kind === 'topic' && onRecordQuestionOutcome) {
       onRecordQuestionOutcome(currentQ._topicId, currentQ._topicNumber, currentQ, isOk);
+    }
+    if (onSaveDailyHistory) {
+      onSaveDailyHistory(todayISO, {
+        dateISO: todayISO,
+        answered: nextAnswered,
+        correct: nextCorrect,
+        wrong: nextWrong,
+        total: totalQ,
+        completed: nextAnswered >= totalQ
+      });
     }
     if (cloudUser?.uid) {
       saveDailyReviewSubmission(cloudUser, todayISO, nextAnswers, nextCorrect, totalQ).catch(() => {});
@@ -276,6 +290,16 @@ export default function DailyReviewModal({
       setSessionState((prev) => ({ ...prev, currentIdx: prev.currentIdx + 1 }));
     } else {
       setSessionState((prev) => ({ ...prev, finished: true }));
+      if (onSaveDailyHistory) {
+        onSaveDailyHistory(todayISO, {
+          dateISO: todayISO,
+          answered: answeredCount,
+          correct: correctCount,
+          wrong: wrongCount,
+          total: totalQ,
+          completed: true
+        });
+      }
     }
   };
 

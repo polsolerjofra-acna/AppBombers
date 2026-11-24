@@ -608,7 +608,7 @@ export const QUESTIONS_SEREBOMBER_DAILY = [
     id: 'sb-train-10',
     topic: 13,
     difficulty: 'Difícil',
-    question: "La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) de l'aigua que circula per una mànega és de 0,125 bar. A quina velocitat circula?",
+    question: "La pressió dinàmica (ρ = 1.000 kg/m³) de l'aigua que circula per una mànega és de 0,125 bar. A quina velocitat circula?",
     options: [
       '2,5 m/s.',
       '5,0 m/s.',
@@ -888,7 +888,7 @@ export const QUESTIONS_SEREBOMBER_DAILY = [
     id: 'sb-hyb-14',
     topic: 19,
     difficulty: 'Difícil',
-    question: "Un camió autobomba circula en emergència per un tram recte amb el mateix coeficient d'adherència. Si duplica la seva velocitat de 36 km/h (10 m/s) a 72 km/h (20 m/s), com varia la distància de frenada pura (sense comptar el temps de reacció)?",
+    question: "Un camió autobomba circula en emergència per un tram recte amb el mateix coeficient d'adherència. Si duplica la seva velocitat de 36 km/h a 72 km/h, com varia la distància de frenada pura (sense comptar el temps de reacció)?",
     options: [
       'Es duplica (× 2).',
       'Es triplica (× 3).',

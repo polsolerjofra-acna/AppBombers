@@ -64,6 +64,7 @@ service cloud.firestore {
     //   - email: string (optional, 0..120 chars)
     //   - dailyEmailEnabled: bool (optional)
     //   - reviewHistory: map (optional, <= 500 keys)
+    //   - dailyReviewHistory: map (optional, <= 400 keys)
     //   - answerStats: map (optional, <= 20 keys)
     //   - resumeState: map (optional, <= 20 keys)
     //   - statsResetEpoch: string (optional, 0..40 chars)
@@ -267,6 +268,7 @@ service cloud.firestore {
           'email',
           'dailyEmailEnabled',
           'reviewHistory',
+          'dailyReviewHistory',
           'answerStats',
           'resumeState',
           'statsResetEpoch',
@@ -292,6 +294,7 @@ service cloud.firestore {
         isValidOptionalString('email', 0, 120) &&
         isValidOptionalBool('dailyEmailEnabled') &&
         isValidOptionalMap('reviewHistory', 500) &&
+        isValidOptionalMap('dailyReviewHistory', 400) &&
         isValidOptionalMap('answerStats', 20) &&
         isValidOptionalMap('resumeState', 20) &&
         isValidOptionalString('statsResetEpoch', 0, 40) &&

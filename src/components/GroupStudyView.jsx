@@ -17,9 +17,13 @@ export default function GroupStudyView({
   topicsCount,
   syncStatus,
   authError,
-  onClearError
+  onClearError,
+  dailyReviewHistory = {}
 }) {
   const configured = isFirebaseConfigured();
+  const dailyEntries = Object.values(dailyReviewHistory || {})
+    .filter((d) => d && d.dateISO && (d.answered > 0 || d.completed))
+    .sort((a, b) => String(b.dateISO).localeCompare(String(a.dateISO)));
 
   return (
     <div className="space-y-6">
@@ -283,6 +287,64 @@ export default function GroupStudyView({
               );
             })}
           </div>
+        </div>
+      )}
+
+      {/* Historial Personal del Repàs del Dia */}
+      {user && (
+        <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h2 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                <Flame className="w-5 h-5 text-red-500" />
+                <span>El teu Historial del Repàs del Dia</span>
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Evolució diària d&apos;encerts i errors a les 36 preguntes compartides (44 els divendres).
+              </p>
+            </div>
+            <span className="text-xs font-extrabold text-slate-500 dark:text-slate-400">
+              {dailyEntries.length} dies registrats
+            </span>
+          </div>
+
+          {dailyEntries.length === 0 ? (
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Encara no has respost cap Repàs del Dia amb aquest compte. Quan en comencis un, veuràs aquí els teus encerts i errors de cada dia.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {dailyEntries.map((entry) => {
+                const total = entry.total || entry.answered || 36;
+                const correct = entry.correct || 0;
+                const wrong = entry.wrong ?? Math.max(0, (entry.answered || 0) - correct);
+                const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+                return (
+                  <div
+                    key={entry.dateISO}
+                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-3.5 space-y-2"
+                  >
+                    <div className="flex items-center justify-between text-xs font-extrabold">
+                      <span className="text-slate-800 dark:text-slate-200">{entry.dateISO}</span>
+                      <span className={pct >= 70 ? 'text-emerald-600' : pct >= 50 ? 'text-amber-600' : 'text-red-600'}>
+                        {pct}% ({correct}/{total})
+                      </span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-emerald-500"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between text-[11px] font-bold">
+                      <span className="text-emerald-600 dark:text-emerald-400">✓ {correct} encertades</span>
+                      <span className="text-red-600 dark:text-red-400">✗ {wrong} fallades</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
     </div>

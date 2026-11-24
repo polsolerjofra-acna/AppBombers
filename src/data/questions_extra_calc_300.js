@@ -144,7 +144,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-11",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 1000 kg circula a 10 m/s (36 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 1000 kg circula a 10 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "10 kJ",
       "50 kJ",
@@ -158,7 +158,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-12",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 1200 kg circula a 15 m/s (54 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 1200 kg circula a 15 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "67,5 kJ",
       "18 kJ",
@@ -172,7 +172,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-13",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 1500 kg circula a 20 m/s (72 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 1500 kg circula a 20 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "600 kJ",
       "150 kJ",
@@ -186,7 +186,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-14",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 2000 kg circula a 10 m/s (36 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 2000 kg circula a 10 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "100 kJ",
       "200 kJ",
@@ -200,7 +200,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-15",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 800 kg circula a 20 m/s (72 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 800 kg circula a 20 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "16 kJ",
       "160 kJ",
@@ -214,7 +214,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-16",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 1600 kg circula a 15 m/s (54 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 1600 kg circula a 15 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "90 kJ",
       "24 kJ",
@@ -228,7 +228,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-17",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 2500 kg circula a 12 m/s (43 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 2500 kg circula a 12 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "360 kJ",
       "90 kJ",
@@ -242,7 +242,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-18",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 1800 kg circula a 10 m/s (36 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 1800 kg circula a 10 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "90 kJ",
       "180 kJ",
@@ -256,7 +256,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-19",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 1400 kg circula a 20 m/s (72 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 1400 kg circula a 20 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "28 kJ",
       "280 kJ",
@@ -270,7 +270,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t9-20",
     "topic": 9,
     "difficulty": "Mitjà",
-    "question": "Un vehicle de 3000 kg circula a 10 m/s (36 km/h). Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
+    "question": "Un vehicle de 3000 kg circula a 10 m/s. Quina energia cinètica hauran d'absorbir els frens per aturar-lo?",
     "options": [
       "75 kJ",
       "30 kJ",
@@ -1264,7 +1264,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t10-41",
     "topic": 10,
     "difficulty": "Difícil",
-    "question": "En la combustió completa del metà (CH₄ + 2 O₂ → CO₂ + 2 H₂O) es consumeixen exactament 32 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
+    "question": "En la combustió completa del metà es consumeixen exactament 32 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
     "options": [
       "40 g",
       "32 g",
@@ -1278,7 +1278,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t10-42",
     "topic": 10,
     "difficulty": "Difícil",
-    "question": "En la combustió completa del metà (CH₄ + 2 O₂ → CO₂ + 2 H₂O) es consumeixen exactament 64 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
+    "question": "En la combustió completa del metà es consumeixen exactament 64 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
     "options": [
       "96 g",
       "80 g",
@@ -1292,7 +1292,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t10-43",
     "topic": 10,
     "difficulty": "Difícil",
-    "question": "En la combustió completa del metà (CH₄ + 2 O₂ → CO₂ + 2 H₂O) es consumeixen exactament 96 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
+    "question": "En la combustió completa del metà es consumeixen exactament 96 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
     "options": [
       "104 g",
       "136 g",
@@ -1306,7 +1306,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t10-44",
     "topic": 10,
     "difficulty": "Difícil",
-    "question": "En la combustió completa del metà (CH₄ + 2 O₂ → CO₂ + 2 H₂O) es consumeixen exactament 128 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
+    "question": "En la combustió completa del metà es consumeixen exactament 128 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
     "options": [
       "128 g",
       "136 g",
@@ -1320,7 +1320,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t10-45",
     "topic": 10,
     "difficulty": "Difícil",
-    "question": "En la combustió completa del metà (CH₄ + 2 O₂ → CO₂ + 2 H₂O) es consumeixen exactament 160 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
+    "question": "En la combustió completa del metà es consumeixen exactament 160 g d'oxigen, sense reactius sobrants. Quina massa total de productes (CO₂ + H₂O) s'obté?",
     "options": [
       "200 g",
       "160 g",
@@ -3504,7 +3504,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-1",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 36 km/h (10 m/s). Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 36 km/h. Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "20 m",
       "10 m",
@@ -3518,7 +3518,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-2",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 54 km/h (15 m/s). Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 54 km/h. Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "56,3 m",
       "37,5 m",
@@ -3532,7 +3532,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-3",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 72 km/h (20 m/s). Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 72 km/h. Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "20 m",
       "90 m",
@@ -3546,7 +3546,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-4",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 90 km/h (25 m/s). Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 90 km/h. Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "62,5 m",
       "25 m",
@@ -3560,7 +3560,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-5",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 108 km/h (30 m/s). Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 108 km/h. Amb un temps de reacció de 1 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "120 m",
       "90 m",
@@ -3574,7 +3574,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-6",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 54 km/h (15 m/s). Amb un temps de reacció de 1 s i una desacceleració de 4,5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 54 km/h. Amb un temps de reacció de 1 s i una desacceleració de 4,5 m/s², quina és la distància total de detenció?",
     "options": [
       "60 m",
       "40 m",
@@ -3588,7 +3588,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-7",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 72 km/h (20 m/s). Amb un temps de reacció de 1 s i una desacceleració de 4 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 72 km/h. Amb un temps de reacció de 1 s i una desacceleració de 4 m/s², quina és la distància total de detenció?",
     "options": [
       "20 m",
       "105 m",
@@ -3602,7 +3602,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-8",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 72 km/h (20 m/s). Amb un temps de reacció de 1 s i una desacceleració de 8 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 72 km/h. Amb un temps de reacció de 1 s i una desacceleració de 8 m/s², quina és la distància total de detenció?",
     "options": [
       "25 m",
       "20 m",
@@ -3616,7 +3616,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-9",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 90 km/h (25 m/s). Amb un temps de reacció de 1 s i una desacceleració de 6,25 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 90 km/h. Amb un temps de reacció de 1 s i una desacceleració de 6,25 m/s², quina és la distància total de detenció?",
     "options": [
       "75 m",
       "50 m",
@@ -3630,7 +3630,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-10",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 36 km/h (10 m/s). Amb un temps de reacció de 1,5 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 36 km/h. Amb un temps de reacció de 1,5 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "37,5 m",
       "25 m",
@@ -3644,7 +3644,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-11",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 54 km/h (15 m/s). Amb un temps de reacció de 1,5 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 54 km/h. Amb un temps de reacció de 1,5 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "67,5 m",
       "Cap de les anteriors (3)",
@@ -3658,7 +3658,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-12",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 72 km/h (20 m/s). Amb un temps de reacció de 1,5 s i una desacceleració de 4 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 72 km/h. Amb un temps de reacció de 1,5 s i una desacceleració de 4 m/s², quina és la distància total de detenció?",
     "options": [
       "50 m",
       "30 m",
@@ -3672,7 +3672,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-13",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 108 km/h (30 m/s). Amb un temps de reacció de 1 s i una desacceleració de 6 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 108 km/h. Amb un temps de reacció de 1 s i una desacceleració de 6 m/s², quina és la distància total de detenció?",
     "options": [
       "105 m",
       "75 m",
@@ -3686,7 +3686,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-14",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 90 km/h (25 m/s). Amb un temps de reacció de 0,8 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 90 km/h. Amb un temps de reacció de 0,8 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "123,8 m",
       "82,5 m",
@@ -3700,7 +3700,7 @@ export const QUESTIONS_EXTRA_CALC_300 = [
     "id": "ex-calc-t19-15",
     "topic": 19,
     "difficulty": "Difícil",
-    "question": "Una autobomba circula a 72 km/h (20 m/s). Amb un temps de reacció de 0,5 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
+    "question": "Una autobomba circula a 72 km/h. Amb un temps de reacció de 0,5 s i una desacceleració de 5 m/s², quina és la distància total de detenció?",
     "options": [
       "10 m",
       "75 m",

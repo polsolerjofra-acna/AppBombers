@@ -34,6 +34,7 @@ const defaultState = {
   topicRounds: {},
   studyPlan: {},
   fridayCalcHistory: [],
+  dailyReviewHistory: {},
   dailyEmailEnabled: true,
   manualAnnotations: {},
   studySessions: [],
@@ -600,22 +601,6 @@ export function useStudyProgress() {
           lastReviewedAt: today,
           nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[0])
         };
-
-        // Entrelliga l'error amb la regla de l'oblit: si el tema no té repàs imminent, el programa per avui/demà
-        if (topicId) {
-          const targetDate = newCount >= 2 ? today : addDaysISO(today, 1);
-          const prevSp = nextSpaced[topicId];
-          if (!prevSp?.nextReviewAt || prevSp.nextReviewAt > targetDate) {
-            nextSpaced = {
-              ...nextSpaced,
-              [topicId]: {
-                ...(prevSp || { reviewStage: 0 }),
-                lastReviewedAt: prevSp?.lastReviewedAt || today,
-                nextReviewAt: targetDate
-              }
-            };
-          }
-        }
       } else if (nextMistakes[questionObj.id]) {
         // Regla de l'oblit aplicada a preguntes fallades:
         // Cada encert puja una etapa (1d -> 3d -> 7d -> 14d). A la 4a consolidació es considera assimilada!
@@ -690,6 +675,17 @@ export function useStudyProgress() {
     }));
   };
 
+  const saveDailyReviewHistory = (dateISO, entry) => {
+    if (!dateISO || !entry) return;
+    setProgress((prev) => ({
+      ...prev,
+      dailyReviewHistory: {
+        ...(prev.dailyReviewHistory || {}),
+        [dateISO]: entry
+      }
+    }));
+  };
+
   return {
     progress,
     setPageMark,
@@ -710,6 +706,7 @@ export function useStudyProgress() {
     recordQuestionOutcome,
     clearUserMistake,
     setResumeState,
+    saveDailyReviewHistory,
     replaceProgressFromCloud,
     resetAllProgress
   };

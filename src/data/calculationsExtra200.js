@@ -3,7 +3,7 @@ export const CALCULATION_EXTRA_200 = {
   "calc-tema-9": [
     {
       "id": "p-t9-x1",
-      "title": "Velocitat i distància recorreguda (54 km/h)",
+      "title": "Velocitat i distància recorreguda",
       "statement": "Un vehicle d'emergència circula a 54 km/h constants durant 20 segons. Quina distància recorre en metres?",
       "hint": "Passa primer 54 km/h a m/s dividint per 3,6 i multiplica pel temps.",
       "options": [
@@ -20,7 +20,7 @@ export const CALCULATION_EXTRA_200 = {
     },
     {
       "id": "p-t9-x2",
-      "title": "Velocitat i distància recorreguda (72 km/h)",
+      "title": "Velocitat i distància recorreguda",
       "statement": "Un vehicle d'emergència circula a 72 km/h constants durant 15 segons. Quina distància recorre en metres?",
       "hint": "Passa primer 72 km/h a m/s dividint per 3,6 i multiplica pel temps.",
       "options": [
@@ -37,7 +37,7 @@ export const CALCULATION_EXTRA_200 = {
     },
     {
       "id": "p-t9-x3",
-      "title": "Velocitat i distància recorreguda (90 km/h)",
+      "title": "Velocitat i distància recorreguda",
       "statement": "Un vehicle d'emergència circula a 90 km/h constants durant 12 segons. Quina distància recorre en metres?",
       "hint": "Passa primer 90 km/h a m/s dividint per 3,6 i multiplica pel temps.",
       "options": [
@@ -54,7 +54,7 @@ export const CALCULATION_EXTRA_200 = {
     },
     {
       "id": "p-t9-x4",
-      "title": "Velocitat i distància recorreguda (108 km/h)",
+      "title": "Velocitat i distància recorreguda",
       "statement": "Un vehicle d'emergència circula a 108 km/h constants durant 10 segons. Quina distància recorre en metres?",
       "hint": "Passa primer 108 km/h a m/s dividint per 3,6 i multiplica pel temps.",
       "options": [
@@ -71,7 +71,7 @@ export const CALCULATION_EXTRA_200 = {
     },
     {
       "id": "p-t9-x5",
-      "title": "Velocitat i distància recorreguda (36 km/h)",
+      "title": "Velocitat i distància recorreguda",
       "statement": "Un vehicle d'emergència circula a 36 km/h constants durant 45 segons. Quina distància recorre en metres?",
       "hint": "Passa primer 36 km/h a m/s dividint per 3,6 i multiplica pel temps.",
       "options": [
@@ -88,7 +88,7 @@ export const CALCULATION_EXTRA_200 = {
     },
     {
       "id": "p-t9-x6",
-      "title": "Velocitat i distància recorreguda (126 km/h)",
+      "title": "Velocitat i distància recorreguda",
       "statement": "Un vehicle d'emergència circula a 126 km/h constants durant 8 segons. Quina distància recorre en metres?",
       "hint": "Passa primer 126 km/h a m/s dividint per 3,6 i multiplica pel temps.",
       "options": [
@@ -106,7 +106,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x7",
       "title": "Frenada uniforme des de 20 m/s",
-      "statement": "Un furgó de rescat circula a 20 m/s (72 km/h) i frena uniformement amb una desacceleració de 4 m/s². Quina distància recorre fins a aturar-se?",
+      "statement": "Un furgó de rescat circula a 20 m/s i frena uniformement amb una desacceleració de 4 m/s². Quina distància recorre fins a aturar-se?",
       "hint": "Aplica Δx = v₀² ÷ (2·a).",
       "options": [
         "100 m (en 10 s)",
@@ -123,7 +123,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x8",
       "title": "Frenada uniforme des de 30 m/s",
-      "statement": "Un furgó de rescat circula a 30 m/s (108 km/h) i frena uniformement amb una desacceleració de 5 m/s². Quina distància recorre fins a aturar-se?",
+      "statement": "Un furgó de rescat circula a 30 m/s i frena uniformement amb una desacceleració de 5 m/s². Quina distància recorre fins a aturar-se?",
       "hint": "Aplica Δx = v₀² ÷ (2·a).",
       "options": [
         "45 m (en 3 s)",
@@ -140,7 +140,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x9",
       "title": "Frenada uniforme des de 24 m/s",
-      "statement": "Un furgó de rescat circula a 24 m/s (86 km/h) i frena uniformement amb una desacceleració de 6 m/s². Quina distància recorre fins a aturar-se?",
+      "statement": "Un furgó de rescat circula a 24 m/s i frena uniformement amb una desacceleració de 6 m/s². Quina distància recorre fins a aturar-se?",
       "hint": "Aplica Δx = v₀² ÷ (2·a).",
       "options": [
         "96 m (en 4 s)",
@@ -157,7 +157,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x10",
       "title": "Frenada uniforme des de 16 m/s",
-      "statement": "Un furgó de rescat circula a 16 m/s (58 km/h) i frena uniformement amb una desacceleració de 4 m/s². Quina distància recorre fins a aturar-se?",
+      "statement": "Un furgó de rescat circula a 16 m/s i frena uniformement amb una desacceleració de 4 m/s². Quina distància recorre fins a aturar-se?",
       "hint": "Aplica Δx = v₀² ÷ (2·a).",
       "options": [
         "32 m (en 4 s)",
@@ -174,7 +174,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x11",
       "title": "Frenada uniforme des de 18 m/s",
-      "statement": "Un furgó de rescat circula a 18 m/s (65 km/h) i frena uniformement amb una desacceleració de 3 m/s². Quina distància recorre fins a aturar-se?",
+      "statement": "Un furgó de rescat circula a 18 m/s i frena uniformement amb una desacceleració de 3 m/s². Quina distància recorre fins a aturar-se?",
       "hint": "Aplica Δx = v₀² ÷ (2·a).",
       "options": [
         "108 m (en 12 s)",
@@ -191,7 +191,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x12",
       "title": "Frenada uniforme des de 28 m/s",
-      "statement": "Un furgó de rescat circula a 28 m/s (101 km/h) i frena uniformement amb una desacceleració de 7 m/s². Quina distància recorre fins a aturar-se?",
+      "statement": "Un furgó de rescat circula a 28 m/s i frena uniformement amb una desacceleració de 7 m/s². Quina distància recorre fins a aturar-se?",
       "hint": "Aplica Δx = v₀² ÷ (2·a).",
       "options": [
         "28 m (en 2 s)",
@@ -582,8 +582,8 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x35",
       "title": "Energia cinètica (1200 kg a 10 m/s)",
-      "statement": "Un vehicle de 1200 kg circula a 10 m/s (36 km/h). Quina energia cinètica té en kJ?",
-      "hint": "Ec = ½ · m · v² (divideix per 1.000 per passar de J a kJ).",
+      "statement": "Un vehicle de 1200 kg circula a 10 m/s. Quina energia cinètica té en kJ?",
+      "hint": "Ec = ½ · m · v².",
       "options": [
         "30 kJ",
         "12 kJ",
@@ -599,8 +599,8 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x36",
       "title": "Energia cinètica (1500 kg a 20 m/s)",
-      "statement": "Un vehicle de 1500 kg circula a 20 m/s (72 km/h). Quina energia cinètica té en kJ?",
-      "hint": "Ec = ½ · m · v² (divideix per 1.000 per passar de J a kJ).",
+      "statement": "Un vehicle de 1500 kg circula a 20 m/s. Quina energia cinètica té en kJ?",
+      "hint": "Ec = ½ · m · v².",
       "options": [
         "600 kJ",
         "150 kJ",
@@ -616,8 +616,8 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x37",
       "title": "Energia cinètica (2000 kg a 15 m/s)",
-      "statement": "Un vehicle de 2000 kg circula a 15 m/s (54 km/h). Quina energia cinètica té en kJ?",
-      "hint": "Ec = ½ · m · v² (divideix per 1.000 per passar de J a kJ).",
+      "statement": "Un vehicle de 2000 kg circula a 15 m/s. Quina energia cinètica té en kJ?",
+      "hint": "Ec = ½ · m · v².",
       "options": [
         "225 kJ",
         "450 kJ",
@@ -633,8 +633,8 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x38",
       "title": "Energia cinètica (800 kg a 25 m/s)",
-      "statement": "Un vehicle de 800 kg circula a 25 m/s (90 km/h). Quina energia cinètica té en kJ?",
-      "hint": "Ec = ½ · m · v² (divideix per 1.000 per passar de J a kJ).",
+      "statement": "Un vehicle de 800 kg circula a 25 m/s. Quina energia cinètica té en kJ?",
+      "hint": "Ec = ½ · m · v².",
       "options": [
         "20 kJ",
         "250 kJ",
@@ -650,8 +650,8 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x39",
       "title": "Energia cinètica (1000 kg a 30 m/s)",
-      "statement": "Un vehicle de 1000 kg circula a 30 m/s (108 km/h). Quina energia cinètica té en kJ?",
-      "hint": "Ec = ½ · m · v² (divideix per 1.000 per passar de J a kJ).",
+      "statement": "Un vehicle de 1000 kg circula a 30 m/s. Quina energia cinètica té en kJ?",
+      "hint": "Ec = ½ · m · v².",
       "options": [
         "225 kJ",
         "30 kJ",
@@ -667,8 +667,8 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t9-x40",
       "title": "Energia cinètica (1600 kg a 10 m/s)",
-      "statement": "Un vehicle de 1600 kg circula a 10 m/s (36 km/h). Quina energia cinètica té en kJ?",
-      "hint": "Ec = ½ · m · v² (divideix per 1.000 per passar de J a kJ).",
+      "statement": "Un vehicle de 1600 kg circula a 10 m/s. Quina energia cinètica té en kJ?",
+      "hint": "Ec = ½ · m · v².",
       "options": [
         "160 kJ",
         "40 kJ",
@@ -2302,7 +2302,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t13-x15",
       "title": "Velocitat per pressió dinàmica (0,125 bar)",
-      "statement": "La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) dins una conducció és de 0,125 bar. A quina velocitat circula l'aigua?",
+      "statement": "La pressió dinàmica (ρ = 1.000 kg/m³) dins una conducció és de 0,125 bar. A quina velocitat circula l'aigua?",
       "hint": "Passa 0,125 bar a Pa (× 100.000) i iguala a 500·v².",
       "options": [
         "2,5 m/s",
@@ -2319,7 +2319,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t13-x16",
       "title": "Velocitat per pressió dinàmica (0,5 bar)",
-      "statement": "La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) dins una conducció és de 0,5 bar. A quina velocitat circula l'aigua?",
+      "statement": "La pressió dinàmica (ρ = 1.000 kg/m³) dins una conducció és de 0,5 bar. A quina velocitat circula l'aigua?",
       "hint": "Passa 0,5 bar a Pa (× 100.000) i iguala a 500·v².",
       "options": [
         "20 m/s",
@@ -2336,7 +2336,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t13-x17",
       "title": "Velocitat per pressió dinàmica (2 bar)",
-      "statement": "La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) dins una conducció és de 2 bar. A quina velocitat circula l'aigua?",
+      "statement": "La pressió dinàmica (ρ = 1.000 kg/m³) dins una conducció és de 2 bar. A quina velocitat circula l'aigua?",
       "hint": "Passa 2 bar a Pa (× 100.000) i iguala a 500·v².",
       "options": [
         "20 m/s",
@@ -2353,7 +2353,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t13-x18",
       "title": "Velocitat per pressió dinàmica (1,125 bar)",
-      "statement": "La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) dins una conducció és de 1,125 bar. A quina velocitat circula l'aigua?",
+      "statement": "La pressió dinàmica (ρ = 1.000 kg/m³) dins una conducció és de 1,125 bar. A quina velocitat circula l'aigua?",
       "hint": "Passa 1,125 bar a Pa (× 100.000) i iguala a 500·v².",
       "options": [
         "18 m/s",
@@ -2370,7 +2370,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t13-x19",
       "title": "Velocitat per pressió dinàmica (0,32 bar)",
-      "statement": "La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) dins una conducció és de 0,32 bar. A quina velocitat circula l'aigua?",
+      "statement": "La pressió dinàmica (ρ = 1.000 kg/m³) dins una conducció és de 0,32 bar. A quina velocitat circula l'aigua?",
       "hint": "Passa 0,32 bar a Pa (× 100.000) i iguala a 500·v².",
       "options": [
         "4 m/s",
@@ -2387,7 +2387,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t13-x20",
       "title": "Velocitat per pressió dinàmica (0,72 bar)",
-      "statement": "La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) dins una conducció és de 0,72 bar. A quina velocitat circula l'aigua?",
+      "statement": "La pressió dinàmica (ρ = 1.000 kg/m³) dins una conducció és de 0,72 bar. A quina velocitat circula l'aigua?",
       "hint": "Passa 0,72 bar a Pa (× 100.000) i iguala a 500·v².",
       "options": [
         "24 m/s",
@@ -2739,7 +2739,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x1",
       "title": "Distància total de detenció a 72 km/h",
-      "statement": "Un camió circula a 72 km/h (20 m/s). Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 72 km/h. Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "60 m",
@@ -2757,7 +2757,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x2",
       "title": "Distància total de detenció a 54 km/h",
-      "statement": "Un camió circula a 54 km/h (15 m/s). Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 54 km/h. Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "52,5 m",
@@ -2775,7 +2775,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x3",
       "title": "Distància total de detenció a 90 km/h",
-      "statement": "Un camió circula a 90 km/h (25 m/s). Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 90 km/h. Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "25 m",
@@ -2793,7 +2793,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x4",
       "title": "Distància total de detenció a 36 km/h",
-      "statement": "Un camió circula a 36 km/h (10 m/s). Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 36 km/h. Si el temps de reacció és de 1 s i frena amb 5 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "10 m",
@@ -2811,7 +2811,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x5",
       "title": "Distància total de detenció a 72 km/h",
-      "statement": "Un camió circula a 72 km/h (20 m/s). Si el temps de reacció és de 0,8 s i frena amb 4 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 72 km/h. Si el temps de reacció és de 0,8 s i frena amb 4 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "66 m",
@@ -2829,7 +2829,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x6",
       "title": "Distància total de detenció a 108 km/h",
-      "statement": "Un camió circula a 108 km/h (30 m/s). Si el temps de reacció és de 1 s i frena amb 6 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 108 km/h. Si el temps de reacció és de 1 s i frena amb 6 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "120 m",
@@ -2847,7 +2847,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x7",
       "title": "Distància total de detenció a 54 km/h",
-      "statement": "Un camió circula a 54 km/h (15 m/s). Si el temps de reacció és de 1 s i frena amb 4,5 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 54 km/h. Si el temps de reacció és de 1 s i frena amb 4,5 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "15 m",
@@ -2865,7 +2865,7 @@ export const CALCULATION_EXTRA_200 = {
     {
       "id": "p-t19-x8",
       "title": "Distància total de detenció a 72 km/h",
-      "statement": "Un camió circula a 72 km/h (20 m/s). Si el temps de reacció és de 1,2 s i frena amb 8 m/s², quina és la distància total de detenció?",
+      "statement": "Un camió circula a 72 km/h. Si el temps de reacció és de 1,2 s i frena amb 8 m/s², quina és la distància total de detenció?",
       "hint": "Suma distància de reacció (v·t_r) + distància de frenada (v² ÷ 2a).",
       "options": [
         "25 m",

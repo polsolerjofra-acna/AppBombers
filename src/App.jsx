@@ -89,6 +89,7 @@ export default function App() {
     recordQuestionOutcome,
     clearUserMistake,
     setResumeState,
+    saveDailyReviewHistory,
     replaceProgressFromCloud,
     resetAllProgress
   } = useStudyProgress();
@@ -456,15 +457,39 @@ export default function App() {
     return sp?.nextReviewAt && sp.nextReviewAt <= todayISO;
   }).length;
 
-  // Comptador real de temps actiu fent servir l'app (1 minut per minut visible)
+  // Comptador real de temps útil fent servir l'app (només compta si hi ha hagut interacció recent en els darrers 2 min)
+  const lastUserInteractionAtRef = React.useRef(Date.now());
   useEffect(() => {
+    const bumpInteraction = () => {
+      lastUserInteractionAtRef.current = Date.now();
+    };
+    const events = ['pointerdown', 'keydown', 'scroll', 'touchstart', 'click'];
+    events.forEach((ev) => window.addEventListener(ev, bumpInteraction, { passive: true }));
     const id = setInterval(() => {
-      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+      if (
+        typeof document !== 'undefined' &&
+        document.visibilityState === 'visible' &&
+        Date.now() - lastUserInteractionAtRef.current <= 120 * 1000
+      ) {
         recordActiveMinute();
       }
     }, 60 * 1000);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      events.forEach((ev) => window.removeEventListener(ev, bumpInteraction));
+    };
   }, []);
+
+  const syncDailyReviewDismissalFromCloud = (stateObj) => {
+    try {
+      const st = getDailyReviewStatus(TOPICS.length);
+      const entry = stateObj?.dailyReviewHistory?.[st.iso];
+      if (entry && (entry.completed || (entry.answered >= (entry.total || st.total)))) {
+        setShowDailyReview(false);
+        sessionStorage.setItem('bombers_daily_review_dismissed_date', st.iso);
+      }
+    } catch {}
+  };
 
   const maybeOfferRemoteResume = (remoteState) => {
     const rs = remoteState?.resumeState;
@@ -533,6 +558,7 @@ export default function App() {
         const cloudState = await loadPrivateProgress(user.uid);
         if (cloudState) {
           replaceProgressFromCloud(cloudState);
+          syncDailyReviewDismissalFromCloud(cloudState);
           maybeOfferRemoteResume(cloudState);
         }
       } catch (err) {
@@ -559,6 +585,7 @@ export default function App() {
       }
       applyingRemoteRef.current = true;
       replaceProgressFromCloud(remoteState);
+      syncDailyReviewDismissalFromCloud(remoteState);
       maybeOfferRemoteResume(remoteState);
       setTimeout(() => {
         applyingRemoteRef.current = false;
@@ -974,6 +1001,7 @@ export default function App() {
               syncStatus={syncStatus}
               authError={authError}
               onClearError={() => setAuthError('')}
+              dailyReviewHistory={progress.dailyReviewHistory || {}}
             />
           ) : (
             <TopicView
@@ -1009,6 +1037,8 @@ export default function App() {
         topics={TOPICS}
         isOpen={showDailyReview}
         cloudUser={cloudUser}
+        dailyReviewHistory={progress.dailyReviewHistory || {}}
+        onSaveDailyHistory={saveDailyReviewHistory}
         onClose={() => {
           setShowDailyReview(false);
           try {

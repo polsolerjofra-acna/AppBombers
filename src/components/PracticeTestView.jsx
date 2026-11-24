@@ -172,7 +172,8 @@ function buildWeightedExamQuestions(
   useOfficialWeights,
   lastAskedMap = {},
   includeExtension = true,
-  correctBankMap = null
+  correctBankMap = null,
+  userMistakes = null
 ) {
   const getTopicPool = (t) => {
     const base = (t.quiz || []).filter((q) => includeExtension || !q.isExtension);
@@ -199,8 +200,20 @@ function buildWeightedExamQuestions(
     );
   }
 
-  // Distribució proporcional segons probabilitat estadística d'examen
-  const totalW = poolTopics.reduce((acc, t) => acc + getTopicWeight(t.number, includeExtension), 0);
+  // Distribució proporcional segons probabilitat estadística d'examen + temes amb més preguntes fallades
+  const mistakesByTopic = {};
+  if (userMistakes) {
+    Object.values(userMistakes).forEach((m) => {
+      if (m?.topicId) mistakesByTopic[m.topicId] = (mistakesByTopic[m.topicId] || 0) + (m.count || 1);
+    });
+  }
+  const getEffectiveTopicWeight = (t) => {
+    const base = getTopicWeight(t.number, includeExtension);
+    const mCount = mistakesByTopic[t.id] || 0;
+    return base * (1 + Math.min(2.5, mCount * 0.5));
+  };
+
+  const totalW = poolTopics.reduce((acc, t) => acc + getEffectiveTopicWeight(t), 0);
   const byTopicShuffled = {};
   poolTopics.forEach((t) => {
     byTopicShuffled[t.id] = shuffleArray(
@@ -213,7 +226,7 @@ function buildWeightedExamQuestions(
 
   // Primera passada: assignació proporcional
   poolTopics.forEach((t) => {
-    const share = Math.round((getTopicWeight(t.number, includeExtension) / totalW) * count);
+    const share = Math.round((getEffectiveTopicWeight(t) / totalW) * count);
     const list = byTopicShuffled[t.id] || [];
     for (let i = 0; i < share && i < list.length && picked.length < count; i++) {
       picked.push(list[i]);
@@ -456,7 +469,8 @@ export default function PracticeTestView({
       weighted,
       lastAskedMap,
       allowExtension,
-      targetMode === 'practice' ? correctBankMap : null
+      targetMode === 'practice' ? correctBankMap : null,
+      targetMode === 'practice' ? userMistakes : null
     ).map(shufflePracticeQuestionOptions);
     const now = Date.now();
     const updatedAsked = { ...lastAskedMap };

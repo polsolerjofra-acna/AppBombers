@@ -148,7 +148,7 @@ const BASE_CALCULATION_SECTIONS = [
         solutionSteps: [
           '1. 36 km/h = 10 m/s.',
           '2. Ec = ½ × 1.000 × 10² = 500 × 100 = 50.000 J (50 kJ).',
-          '3. Com que 72 km/h és el doble (20 m/s), l\'energia va amb v²: 2² = 4 vegades més (200 kJ).'
+          '3. Com que 72 km/h és el doble, l\'energia va amb v²: 2² = 4 vegades més (200 kJ).'
         ]
       },
       {
@@ -672,7 +672,7 @@ const BASE_CALCULATION_SECTIONS = [
       {
         id: 'p-t13-8',
         title: 'Velocitat a partir de la pressió dinàmica',
-        statement: 'La pressió dinàmica (½·ρ·v², amb ρ = 1.000 kg/m³) de l\'aigua dins una mànega és de 0,125 bar. A quina velocitat circula?',
+        statement: 'La pressió dinàmica (ρ = 1.000 kg/m³) de l\'aigua dins una mànega és de 0,125 bar. A quina velocitat circula?',
         hint: 'Passa primer 0,125 bar a Pascals (1 bar = 100.000 Pa).',
         options: ['5,0 m/s', '2,5 m/s', '10,0 m/s', '25,0 m/s'],
         correctIndex: 0,
@@ -790,7 +790,7 @@ const BASE_CALCULATION_SECTIONS = [
       {
         id: 'p-t19-4',
         title: 'Distància total de detenció (reacció + frenada)',
-        statement: 'Un camió circula a 72 km/h (20 m/s). Amb un temps de reacció d\'1 segon i una desacceleració de frenada de 5 m/s², quina és la distància total de detenció?',
+        statement: 'Un camió circula a 72 km/h. Amb un temps de reacció d\'1 segon i una desacceleració de frenada de 5 m/s², quina és la distància total de detenció?',
         hint: 'd_total = d_reacció (v·t) + d_frenada (v² / 2a).',
         options: ['60 m', '40 m', '50 m', '80 m'],
         correctIndex: 0,
