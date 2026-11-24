@@ -171,7 +171,7 @@ export default function TopicView({
 
   const goNext = () => {
     if (typeof currentPageIndex === 'number' && currentPageIndex >= 0 && currentPageStatus !== 'completed') {
-      onSetPageMark(topic.id, currentPageNumber, 'completed');
+      onSetPageMark(topic.id, currentPageNumber, 'completed', totalPages);
     }
     if (typeof currentPageIndex === 'number' && currentPageIndex < totalPages - 1) {
       setCurrentPageIndex((i) => i + 1);
@@ -295,15 +295,19 @@ export default function TopicView({
                   }`}
                   title={
                     isReviewedUpToDate
-                      ? `Repassat! Pròxim repàs: ${sp.nextReviewAt}`
-                      : "Toca repassar aquest tema! Clica per marcar-lo com a repassat i programar el següent dia"
+                      ? `Validat! Pròxim repàs a la Corba de l'Oblit: ${sp.nextReviewAt}`
+                      : sp
+                      ? "Toca repassar aquest tema! Valida que l'has acabat per passar al següent dia de la Corba de l'Oblit (màx. 4/dia)"
+                      : "Valida que has acabat el tema i que és apte per entrar a la Corba de l'Oblit (màx. 4/dia)"
                   }
                 >
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>
                     {isReviewedUpToDate
-                      ? `Repassat ✓ (${sp.nextReviewAt.slice(5).split('-').reverse().join('/')})`
-                      : 'Repassat'}
+                      ? `Validat ✓ (${sp.nextReviewAt.slice(5).split('-').reverse().join('/')})`
+                      : sp
+                      ? 'Validar repàs ✓'
+                      : 'Validar tema (Oblit) ✓'}
                   </span>
                 </button>
               );

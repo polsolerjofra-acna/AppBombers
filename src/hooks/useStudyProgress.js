@@ -5,6 +5,7 @@ export const STATS_RESET_EPOCH = '2026-11-21-v1';
 
 // Intervals de la Corba de l'Oblit (Ebbinghaus) en dies
 export const EBBINGHAUS_INTERVALS = [1, 3, 7, 14, 30, 60];
+export const MAX_REVIEWS_PER_DAY = 4;
 
 const getTodayISO = () => new Date().toISOString().split('T')[0];
 
@@ -13,6 +14,46 @@ const addDaysISO = (isoDate, days) => {
   d.setDate(d.getDate() + days);
   return d.toISOString().split('T')[0];
 };
+
+// Troba el primer dia >= targetDateISO que tingui menys de MAX_REVIEWS_PER_DAY temes programats
+function findNextAvailableReviewDate(spacedMap, targetDateISO, excludeTopicId = null) {
+  let candidate = targetDateISO;
+  for (let guard = 0; guard < 365; guard++) {
+    let count = 0;
+    Object.entries(spacedMap || {}).forEach(([tid, entry]) => {
+      if (tid !== excludeTopicId && entry?.nextReviewAt === candidate) {
+        count += 1;
+      }
+    });
+    if (count < MAX_REVIEWS_PER_DAY) return candidate;
+    candidate = addDaysISO(candidate, 1);
+  }
+  return candidate;
+}
+
+// Garanteix que cap dia superi MAX_REVIEWS_PER_DAY temes (desplaça l'excés als dies següents)
+function rebalanceSpacedMap(spacedMap, todayISO) {
+  if (!spacedMap || typeof spacedMap !== 'object') return {};
+  const entries = Object.entries(spacedMap).filter(([, v]) => v && v.nextReviewAt);
+  entries.sort((a, b) => {
+    const da = a[1].nextReviewAt || '';
+    const db = b[1].nextReviewAt || '';
+    if (da !== db) return da.localeCompare(db);
+    return (a[1].reviewStage || 0) - (b[1].reviewStage || 0);
+  });
+  const countsByDate = {};
+  const result = {};
+  entries.forEach(([tid, entry]) => {
+    let target = entry.nextReviewAt;
+    while ((countsByDate[target] || 0) >= MAX_REVIEWS_PER_DAY) {
+      const base = target < todayISO ? todayISO : target;
+      target = addDaysISO(base, 1);
+    }
+    countsByDate[target] = (countsByDate[target] || 0) + 1;
+    result[tid] = target === entry.nextReviewAt ? entry : { ...entry, nextReviewAt: target };
+  });
+  return result;
+}
 
 const computeNextStreak = (prevStreak, prevLastActiveDate, today) => {
   if (!prevLastActiveDate || !(prevStreak > 0)) return 1;
@@ -46,23 +87,62 @@ const defaultState = {
   dailyActivity: [],
   streakDays: 0,
   lastActiveDate: '',
+  dailyReadResetDate: '',
   resumeState: null,
   statsResetEpoch: STATS_RESET_EPOCH
 };
 
-function applyStatsResetIfNeeded(state) {
-  if (!state || typeof state !== 'object') return defaultState;
-  if (state.statsResetEpoch === STATS_RESET_EPOCH) {
+function applyDailyReadResetIfNeeded(state) {
+  if (!state || typeof state !== 'object') return state;
+  const today = getTodayISO();
+  const rebalancedSpaced = rebalanceSpacedMap(state.spacedRepetition || {}, today);
+  if (state.dailyReadResetDate === today) {
     return {
+      ...state,
+      spacedRepetition: rebalancedSpaced
+    };
+  }
+  // Cada nou dia es reinicia el color verd dels temes i pàgines llegides (implica que avui encara no s'han llegit)
+  const nextTopicStatus = {};
+  Object.entries(state.topicStatus || {}).forEach(([tid, st]) => {
+    if (st && st !== 'completed') {
+      nextTopicStatus[tid] = st;
+    }
+  });
+  const nextPageStatus = {};
+  Object.entries(state.pageStatus || {}).forEach(([tid, pMap]) => {
+    const cleaned = {};
+    Object.entries(pMap || {}).forEach(([pNum, pSt]) => {
+      if (pSt && pSt !== 'completed') {
+        cleaned[pNum] = pSt;
+      }
+    });
+    if (Object.keys(cleaned).length > 0) {
+      nextPageStatus[tid] = cleaned;
+    }
+  });
+  return {
+    ...state,
+    topicStatus: nextTopicStatus,
+    pageStatus: nextPageStatus,
+    spacedRepetition: rebalancedSpaced,
+    dailyReadResetDate: today
+  };
+}
+
+function applyStatsResetIfNeeded(state) {
+  if (!state || typeof state !== 'object') return applyDailyReadResetIfNeeded(defaultState);
+  if (state.statsResetEpoch === STATS_RESET_EPOCH) {
+    return applyDailyReadResetIfNeeded({
       ...defaultState,
       ...state,
       answerStats: state.answerStats || { totalAnswered: 0, totalCorrect: 0 },
       pomodoroStats: state.pomodoroStats || { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} }
-    };
+    });
   }
   // Reseteja ratxes, temps, activitat diària i percentatge d'encerts a 0 a partir d'avui (2026-11-21)
   // per eliminar les dades falses anteriors de tothom en tots els dispositius.
-  return {
+  return applyDailyReadResetIfNeeded({
     ...defaultState,
     ...state,
     quizResults: {},
@@ -73,7 +153,7 @@ function applyStatsResetIfNeeded(state) {
     streakDays: 0,
     lastActiveDate: '',
     statsResetEpoch: STATS_RESET_EPOCH
-  };
+  });
 }
 
 export function useStudyProgress() {
@@ -97,14 +177,32 @@ export function useStudyProgress() {
     }
   }, [progress]);
 
+  useEffect(() => {
+    const id = setInterval(() => {
+      const today = getTodayISO();
+      setProgress((prev) =>
+        prev.dailyReadResetDate && prev.dailyReadResetDate !== today
+          ? applyDailyReadResetIfNeeded(prev)
+          : prev
+      );
+    }, 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
+
   // Marca una pàgina com a 'completed', 'review' o 'pending'
-  const setPageMark = (topicId, pageNumber, status) => {
+  // (només marca el progrés de lectura d'avui; NO entra a la Corba de l'Oblit fins que l'usuari ho validi explícitament)
+  const setPageMark = (topicId, pageNumber, status, totalPages = 0) => {
     const today = getTodayISO();
 
     setProgress((prev) => {
       const currentTopicPages = prev.pageStatus[topicId] || {};
       const previousStatus = currentTopicPages[pageNumber];
       const nextStatus = previousStatus === status ? 'pending' : status;
+
+      const nextTopicPages = {
+        ...currentTopicPages,
+        [pageNumber]: nextStatus
+      };
 
       const existingHistory = [...(prev.dailyActivity || [])];
       const todayIndex = existingHistory.findIndex((d) => d.date === today);
@@ -119,29 +217,29 @@ export function useStudyProgress() {
         existingHistory.push({ date: today, pagesStudied: 1, quizzesCompleted: 0 });
       }
 
-      const prevSpaced = (prev.spacedRepetition || {})[topicId];
-      const nextSpaced =
-        nextStatus === 'completed'
-          ? prevSpaced || {
-              lastStudiedAt: today,
-              reviewStage: 0,
-              nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[0]),
-              reviewsCount: 1
-            }
-          : prevSpaced;
+      let nextTopicStatus = prev.topicStatus || {};
+      if (totalPages > 0) {
+        let allRead = true;
+        for (let i = 1; i <= totalPages; i++) {
+          if (nextTopicPages[i] !== 'completed') {
+            allRead = false;
+            break;
+          }
+        }
+        if (allRead) {
+          nextTopicStatus = { ...nextTopicStatus, [topicId]: 'completed' };
+        } else if (nextTopicStatus[topicId] === 'completed') {
+          nextTopicStatus = { ...nextTopicStatus, [topicId]: 'in_progress' };
+        }
+      }
 
       return {
         ...prev,
+        topicStatus: nextTopicStatus,
         pageStatus: {
           ...prev.pageStatus,
-          [topicId]: {
-            ...currentTopicPages,
-            [pageNumber]: nextStatus
-          }
+          [topicId]: nextTopicPages
         },
-        spacedRepetition: nextSpaced
-          ? { ...(prev.spacedRepetition || {}), [topicId]: nextSpaced }
-          : prev.spacedRepetition || {},
         dailyActivity: existingHistory.slice(-14),
         streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
@@ -163,17 +261,6 @@ export function useStudyProgress() {
         }
       }
 
-      const prevSpaced = (prev.spacedRepetition || {})[topicId];
-      const nextSpaced =
-        nextStatus === 'completed'
-          ? prevSpaced || {
-              lastStudiedAt: today,
-              reviewStage: 0,
-              nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[0]),
-              reviewsCount: 1
-            }
-          : prevSpaced;
-
       return {
         ...prev,
         topicStatus: {
@@ -184,9 +271,6 @@ export function useStudyProgress() {
           ...prev.pageStatus,
           [topicId]: updatedTopicPages
         },
-        spacedRepetition: nextSpaced
-          ? { ...(prev.spacedRepetition || {}), [topicId]: nextSpaced }
-          : prev.spacedRepetition || {},
         streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
@@ -212,12 +296,6 @@ export function useStudyProgress() {
         existingHistory.push({ date: today, pagesStudied: 1, quizzesCompleted: 1 });
       }
 
-      const prevSpaced = (prev.spacedRepetition || {})[topicId];
-      const currentStage = prevSpaced ? prevSpaced.reviewStage || 0 : 0;
-      const nextStage =
-        percentage >= 60 ? Math.min(EBBINGHAUS_INTERVALS.length - 1, currentStage + 1) : 0;
-      const intervalDays = EBBINGHAUS_INTERVALS[nextStage];
-
       return {
         ...prev,
         quizResults: {
@@ -231,15 +309,6 @@ export function useStudyProgress() {
             updatedAt: today
           }
         },
-        spacedRepetition: {
-          ...(prev.spacedRepetition || {}),
-          [topicId]: {
-            lastStudiedAt: today,
-            reviewStage: nextStage,
-            nextReviewAt: addDaysISO(today, intervalDays),
-            reviewsCount: ((prevSpaced && prevSpaced.reviewsCount) || 0) + 1
-          }
-        },
         dailyActivity: existingHistory.slice(-14),
         streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
@@ -247,8 +316,8 @@ export function useStudyProgress() {
     });
   };
 
-  // Registra un repàs fet avui segons la Corba de l'Oblit d'Ebbinghaus
-  // (també neteja el tema de planificacions manuals pendents fins avui i ho registra a reviewHistory per al calendari)
+  // ÚNICA entrada a la Corba de l'Oblit d'Ebbinghaus: validació explícita de l'usuari.
+  // Limita a MAX_REVIEWS_PER_DAY (4) temes per dia i desplaça l'excés al dia següent disponible.
   const markTopicReviewed = (topicId) => {
     const today = getTodayISO();
     const prevSpaced = (progress.spacedRepetition || {})[topicId];
@@ -256,7 +325,8 @@ export function useStudyProgress() {
       ? Math.min(EBBINGHAUS_INTERVALS.length - 1, (prevSpaced.reviewStage || 0) + 1)
       : 0;
     const intervalDays = EBBINGHAUS_INTERVALS[nextStage];
-    const nextDate = addDaysISO(today, intervalDays);
+    const rawNextDate = addDaysISO(today, intervalDays);
+    const nextDate = findNextAvailableReviewDate(progress.spacedRepetition || {}, rawNextDate, topicId);
 
     setProgress((prev) => {
       const curSpaced = (prev.spacedRepetition || {})[topicId];
@@ -264,7 +334,8 @@ export function useStudyProgress() {
         ? Math.min(EBBINGHAUS_INTERVALS.length - 1, (curSpaced.reviewStage || 0) + 1)
         : 0;
       const curInterval = EBBINGHAUS_INTERVALS[curNextStage];
-      const curNextDate = addDaysISO(today, curInterval);
+      const curRawNextDate = addDaysISO(today, curInterval);
+      const curNextDate = findNextAvailableReviewDate(prev.spacedRepetition || {}, curRawNextDate, topicId);
 
       // Neteja planificacions manuals d'avui o endarrerides per aquest tema
       const nextPlan = { ...(prev.studyPlan || {}) };
@@ -276,7 +347,7 @@ export function useStudyProgress() {
         }
       });
 
-      // Registra al calendari (en verd amb tic) que aquest tema s'ha repassat avui
+      // Registra al calendari (en verd amb tic) que aquest tema s'ha repassat/validat avui
       const prevHist = prev.reviewHistory || {};
       const todayHist = (prevHist[today] || []).filter((item) => item.topicId !== topicId);
       const nextHist = {
@@ -289,6 +360,10 @@ export function useStudyProgress() {
 
       return {
         ...prev,
+        topicStatus: {
+          ...(prev.topicStatus || {}),
+          [topicId]: 'completed'
+        },
         studyPlan: nextPlan,
         reviewHistory: nextHist,
         spacedRepetition: {
@@ -329,19 +404,6 @@ export function useStudyProgress() {
         minutes: safeMinutes
       };
 
-      const prevSpaced = topicId ? (prev.spacedRepetition || {})[topicId] : null;
-      const updatedSpaced = topicId
-        ? {
-            ...(prev.spacedRepetition || {}),
-            [topicId]: prevSpaced || {
-              lastStudiedAt: today,
-              reviewStage: 0,
-              nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[0]),
-              reviewsCount: 1
-            }
-          }
-        : prev.spacedRepetition || {};
-
       return {
         ...prev,
         pomodoroStats: {
@@ -353,7 +415,6 @@ export function useStudyProgress() {
           }
         },
         studySessions: [newSession, ...(prev.studySessions || [])].slice(0, 40),
-        spacedRepetition: updatedSpaced,
         streakDays: computeNextStreak(prev.streakDays, prev.lastActiveDate, today),
         lastActiveDate: today
       };
@@ -453,6 +514,11 @@ export function useStudyProgress() {
       const nextStage = prevSpaced
         ? Math.min(EBBINGHAUS_INTERVALS.length - 1, (prevSpaced.reviewStage || 0) + 1)
         : 0;
+      const nextDate = findNextAvailableReviewDate(
+        prev.spacedRepetition || {},
+        addDaysISO(today, EBBINGHAUS_INTERVALS[nextStage]),
+        topicId
+      );
       return {
         ...prev,
         topicRounds: {
@@ -468,7 +534,7 @@ export function useStudyProgress() {
           [topicId]: {
             lastStudiedAt: today,
             reviewStage: nextStage,
-            nextReviewAt: addDaysISO(today, EBBINGHAUS_INTERVALS[nextStage]),
+            nextReviewAt: nextDate,
             reviewsCount: ((prevSpaced && prevSpaced.reviewsCount) || 0) + 1
           }
         },

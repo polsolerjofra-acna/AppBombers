@@ -174,7 +174,9 @@ function buildWeightedExamQuestions(
   lastAskedMap = {},
   includeExtension = true,
   correctBankMap = null,
-  userMistakes = null
+  userMistakes = null,
+  quizResults = null,
+  topicRounds = null
 ) {
   const getTopicPool = (t) => {
     const base = (t.quiz || []).filter((q) => includeExtension || !q.isExtension);
@@ -211,7 +213,26 @@ function buildWeightedExamQuestions(
   const getEffectiveTopicWeight = (t) => {
     const base = getTopicWeight(t.number, includeExtension);
     const mCount = mistakesByTopic[t.id] || 0;
-    return base * (1 + Math.min(2.5, mCount * 0.5));
+    const mistakeBoost = 1 + Math.min(2.0, mCount * 0.4);
+
+    // Estadística interna: % d'encert per tema i freqüència d'estudi/pràctica
+    const qRes = quizResults?.[t.id];
+    const attempts = qRes?.attempts || 0;
+    const rounds = topicRounds?.[t.id] || 0;
+    const studyFreq = attempts + rounds;
+
+    let accuracyFactor = 1.0;
+    if (attempts > 0 && typeof qRes.percentage === 'number') {
+      if (qRes.percentage < 50) accuracyFactor = 1.8;
+      else if (qRes.percentage < 70) accuracyFactor = 1.4;
+      else if (qRes.percentage < 85) accuracyFactor = 1.0;
+      else accuracyFactor = 0.65;
+    } else {
+      accuracyFactor = 1.25; // Temes encara poc o gens testats
+    }
+
+    const freqFactor = 1 + 0.35 / (1 + studyFreq);
+    return base * mistakeBoost * accuracyFactor * freqFactor;
   };
 
   const totalW = poolTopics.reduce((acc, t) => acc + getEffectiveTopicWeight(t), 0);
@@ -262,6 +283,8 @@ export default function PracticeTestView({
   onGoBack = null,
   backLabel = '',
   userMistakes = {},
+  quizResults = {},
+  topicRounds = {},
   onClearMistake = null,
   onRecordQuestionOutcome = null,
   onSaveQuizScore = null,
@@ -471,7 +494,9 @@ export default function PracticeTestView({
       lastAskedMap,
       allowExtension,
       targetMode === 'practice' ? correctBankMap : null,
-      targetMode === 'practice' ? userMistakes : null
+      targetMode === 'practice' ? userMistakes : null,
+      targetMode === 'practice' ? quizResults : null,
+      targetMode === 'practice' ? topicRounds : null
     ).map(shufflePracticeQuestionOptions);
     const now = Date.now();
     const updatedAsked = { ...lastAskedMap };

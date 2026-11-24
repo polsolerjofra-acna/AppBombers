@@ -984,6 +984,8 @@ export default function App() {
               onGoBack={navHistory.length > 0 ? handleGoBack : null}
               backLabel={navHistory.length > 0 ? navHistory[navHistory.length - 1].label : ''}
               userMistakes={progress.quizResults?.__mistakes || {}}
+              quizResults={progress.quizResults || {}}
+              topicRounds={progress.topicRounds || {}}
               onClearMistake={clearUserMistake}
               onRecordQuestionOutcome={recordQuestionOutcome}
               onSaveQuizScore={saveQuizScore}
@@ -1016,6 +1018,8 @@ export default function App() {
             <KeyPointsView
               onSelectTopic={(id) => handleSelectTopic(id, null)}
               userMistakes={progress.quizResults?.__mistakes || {}}
+              quizResults={progress.quizResults || {}}
+              topicRounds={progress.topicRounds || {}}
               onClearMistake={clearUserMistake}
               onOpenOfficialManual={(topicNum, searchQuery = '') => {
                 setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
