@@ -76,6 +76,21 @@ service cloud.firestore {
     //          Cloud Function (Admin SDK). Readable by authenticated users,
     //          read-only from client SDKs.
     //
+    // Collection: dailyReviewStats/{dateISO}/submissions
+    // Document ID: {userId} (must match request.auth.uid)
+    // Purpose: Shared daily review community stats per date. Readable by
+    //          authenticated users; owner-only create, update, delete.
+    //          Must NOT contain PII.
+    // Fields:
+    //   - uid: string (required, must equal request.auth.uid)
+    //   - displayName: string (required, 1..60 chars)
+    //   - photoURL: string (optional, valid http/https URL, <= 500 chars)
+    //   - dateISO: string (required, 10 chars, YYYY-MM-DD)
+    //   - answers: map (optional, <= 60 keys)
+    //   - correctCount: number (optional, 0..60)
+    //   - totalQuestions: number (optional, 1..60)
+    //   - updatedAt: timestamp (optional)
+    //
     // ===============================================================
 
     // ===============================================================
@@ -284,6 +299,28 @@ service cloud.firestore {
         (!('updatedAt' in data) || data.updatedAt is timestamp);
     }
 
+    function isValidDailySubmission(data) {
+      return hasOnlyAllowedFields([
+          'uid',
+          'displayName',
+          'photoURL',
+          'dateISO',
+          'answers',
+          'correctCount',
+          'totalQuestions',
+          'updatedAt'
+        ]) &&
+        data.uid is string &&
+        data.uid == request.auth.uid &&
+        validStringLength('displayName', 1, 60) &&
+        (!('photoURL' in data) || (isValidUrl(data.photoURL) && data.photoURL.size() <= 500)) &&
+        validStringLength('dateISO', 10, 10) &&
+        isValidOptionalMap('answers', 60) &&
+        isValidOptionalNumber('correctCount', 0, 60) &&
+        isValidOptionalNumber('totalQuestions', 1, 60) &&
+        (!('updatedAt' in data) || data.updatedAt is timestamp);
+    }
+
     // ===============================================================
     // Collection Rules
     // ===============================================================
@@ -321,6 +358,13 @@ service cloud.firestore {
     match /dailyQuestions/{topicId}/questions/{questionId} {
       allow read: if isAuthenticated();
       allow write: if false;
+    }
+
+    // Shared daily review community stats (authenticated read, owner write)
+    match /dailyReviewStats/{dateISO}/submissions/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isOwner(userId) && isValidDailySubmission(request.resource.data);
+      allow delete: if isOwner(userId);
     }
 
     // ===============================================================

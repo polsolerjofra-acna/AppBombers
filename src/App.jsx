@@ -1008,6 +1008,7 @@ export default function App() {
       <DailyReviewModal
         topics={TOPICS}
         isOpen={showDailyReview}
+        cloudUser={cloudUser}
         onClose={() => {
           setShowDailyReview(false);
           try {

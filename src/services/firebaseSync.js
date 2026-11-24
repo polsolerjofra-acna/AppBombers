@@ -197,3 +197,45 @@ export async function fetchDailyQuestions(topicId) {
     return [];
   }
 }
+
+export async function saveDailyReviewSubmission(user, dateISO, answers, correctCount, totalQuestions) {
+  const fb = ensureFirebase();
+  if (!fb || !user?.uid || !dateISO) return;
+  const ref = doc(fb.db, 'dailyReviewStats', dateISO, 'submissions', user.uid);
+  const payload = {
+    uid: user.uid,
+    displayName: (user.displayName || user.email || 'Opositor').slice(0, 60),
+    dateISO,
+    answers: answers || {},
+    correctCount: Math.max(0, Math.min(60, Number(correctCount || 0))),
+    totalQuestions: Math.max(1, Math.min(60, Number(totalQuestions || 36))),
+    updatedAt: serverTimestamp()
+  };
+  if (user.photoURL && /^https?:\/\//.test(user.photoURL) && user.photoURL.length <= 500) {
+    payload.photoURL = user.photoURL;
+  }
+  await setDoc(ref, payload, { merge: true });
+}
+
+export function subscribeDailyReviewStats(dateISO, callback) {
+  const fb = ensureFirebase();
+  if (!fb || !dateISO) {
+    callback([]);
+    return () => {};
+  }
+  const colRef = collection(fb.db, 'dailyReviewStats', dateISO, 'submissions');
+  return onSnapshot(
+    colRef,
+    (snapshot) => {
+      const list = [];
+      snapshot.forEach((d) => list.push({ id: d.id, ...d.data() }));
+      list.sort(
+        (a, b) =>
+          (b.correctCount || 0) - (a.correctCount || 0) ||
+          Object.keys(b.answers || {}).length - Object.keys(a.answers || {}).length
+      );
+      callback(list);
+    },
+    () => callback([])
+  );
+}
