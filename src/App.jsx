@@ -142,17 +142,10 @@ export default function App() {
   const [syncStatus, setSyncStatus] = useState('idle');
   const [authError, setAuthError] = useState('');
   const [authChecked, setAuthChecked] = useState(false);
+  const [cloudProgressReady, setCloudProgressReady] = useState(false);
   const [showAuthReminder, setShowAuthReminder] = useState(false);
-  const [showDailyReview, setShowDailyReview] = useState(() => {
-    try {
-      const st = getDailyReviewStatus(TOPICS.length);
-      if (st.completed) return false;
-      const dismissedDate = sessionStorage.getItem('bombers_daily_review_dismissed_date');
-      return dismissedDate !== st.iso;
-    } catch {
-      return false;
-    }
-  });
+  const [showDailyReview, setShowDailyReview] = useState(false);
+  const dailyReviewAutoTriggeredRef = React.useRef('');
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [importantRelease, setImportantRelease] = useState(null);
   const [resumePrompt, setResumePrompt] = useState(null); // { view, topicId?, label, isRemoteDevice? }
@@ -365,16 +358,13 @@ export default function App() {
     setImportantRelease(null);
   };
 
-  // Recordatori emergent després d'una estona navegant sense iniciar sessió
+  // Demana decidir si iniciar sessió o continuar sense sessió abans de mostrar el Repàs del Dia
   useEffect(() => {
     if (!authChecked || cloudUser || authReminderDismissed) {
       setShowAuthReminder(false);
       return;
     }
-    const timer = setTimeout(() => {
-      setShowAuthReminder(true);
-    }, 90000); // 90 segons navegant sense sessió iniciada
-    return () => clearTimeout(timer);
+    setShowAuthReminder(true);
   }, [authChecked, cloudUser, authReminderDismissed]);
 
   const handleQuickGoogleLogin = async () => {
@@ -548,8 +538,10 @@ export default function App() {
       setAuthChecked(true);
       if (!user) {
         cloudLoadedUidRef.current = null;
+        setCloudProgressReady(false);
         return;
       }
+      setCloudProgressReady(false);
       if (user.email) {
         try {
           localStorage.setItem('bombers_last_google_email', user.email);
@@ -566,10 +558,50 @@ export default function App() {
         setAuthError('No s\'ha pogut carregar el progrés del núvol: ' + (err?.message || ''));
       } finally {
         cloudLoadedUidRef.current = user.uid;
+        setCloudProgressReady(true);
       }
     });
     return () => unsubAuth && unsubAuth();
   }, []);
+
+  // Obre el Repàs del Dia només després que l'usuari hagi decidit si inicia sessió o no
+  useEffect(() => {
+    if (!authChecked) return;
+    if (cloudUser) {
+      if (!cloudProgressReady) return;
+      const triggerKey = `user:${cloudUser.uid}`;
+      if (dailyReviewAutoTriggeredRef.current === triggerKey) return;
+      dailyReviewAutoTriggeredRef.current = triggerKey;
+      try {
+        const st = getDailyReviewStatus(TOPICS.length);
+        const cloudEntry = progress?.dailyReviewHistory?.[st.iso];
+        const cloudCompleted = Boolean(
+          cloudEntry && (cloudEntry.completed || cloudEntry.answered >= (cloudEntry.total || st.total))
+        );
+        const dismissedDate = sessionStorage.getItem('bombers_daily_review_dismissed_date');
+        if (!cloudCompleted && !st.completed && dismissedDate !== st.iso) {
+          setShowDailyReview(true);
+        } else {
+          setShowDailyReview(false);
+        }
+      } catch {}
+      return;
+    }
+
+    if (!authReminderDismissed) return;
+    const triggerKey = 'guest';
+    if (dailyReviewAutoTriggeredRef.current === triggerKey) return;
+    dailyReviewAutoTriggeredRef.current = triggerKey;
+    try {
+      const st = getDailyReviewStatus(TOPICS.length);
+      const dismissedDate = sessionStorage.getItem('bombers_daily_review_dismissed_date');
+      if (!st.completed && dismissedDate !== st.iso) {
+        setShowDailyReview(true);
+      } else {
+        setShowDailyReview(false);
+      }
+    } catch {}
+  }, [authChecked, cloudUser, cloudProgressReady, authReminderDismissed, progress?.dailyReviewHistory]);
 
   // Sincronització en temps real entre mòbil, tauleta i ordinador
   useEffect(() => {
