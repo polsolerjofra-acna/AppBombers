@@ -11,7 +11,8 @@ import {
   Calculator,
   AlertTriangle,
   Download,
-  Headphones
+  Headphones,
+  ExternalLink
 } from 'lucide-react';
 import ImportanceCard from './content/ImportanceCard';
 import EasyExplanationCard from './content/EasyExplanationCard';
@@ -25,6 +26,7 @@ import PageMnemonicsBox from './PageMnemonicsBox';
 import AudioSummaryPlayer from './AudioSummaryPlayer';
 import { TOPIC_OUTLINES } from '../data/topicOutlines';
 import { KEY_POINT_GROUPS } from '../data/keyPointsData';
+import { TOPIC_YOUTUBE_VIDEOS } from '../data/youtubeVideosData';
 import {
   buildTopicKeyPointsDoc,
   downloadKeyPointsPdf
@@ -821,6 +823,34 @@ export default function TopicView({
                 topicId={topic.id}
                 pageNumber={currentPageNumber}
               />
+              {TOPIC_YOUTUBE_VIDEOS[topic.number]?.length > 0 && (
+                <div className="rounded-2xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/60 dark:bg-rose-950/20 p-4 space-y-2.5">
+                  <div className="text-xs font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                    ▶ Vídeos explicatius recomanats (YouTube)
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {TOPIC_YOUTUBE_VIDEOS[topic.number].map((vid, vIdx) => (
+                      <a
+                        key={vIdx}
+                        href={vid.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-start justify-between gap-2 rounded-xl border border-rose-200/80 dark:border-rose-900/50 bg-white dark:bg-slate-900 px-3 py-2 text-xs hover:border-rose-400 transition"
+                      >
+                        <div>
+                          <div className="font-extrabold text-slate-900 dark:text-white leading-snug">
+                            {vid.title}
+                          </div>
+                          <div className="text-[11px] font-semibold text-rose-600 dark:text-rose-400 mt-0.5">
+                            {vid.channel}
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-rose-500 shrink-0 mt-0.5" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Peu de Paginació ("Anterior" / "Següent") */}

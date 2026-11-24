@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Zap, Filter, CheckCircle2, XCircle, Calculator, ArrowRight } from 'lucide-react';
+import { Zap, Filter, CheckCircle2, XCircle, Calculator, ArrowRight, ExternalLink } from 'lucide-react';
+import { FEATURED_YOUTUBE_CHANNELS } from '../data/youtubeVideosData';
 
 const BLOCK_TRICKS = [
   {
@@ -314,6 +315,37 @@ export default function CalcTricksView({ onOpenCalculations = null }) {
           </div>
         </div>
       ))}
+
+      {/* Canals recomanats de YouTube per entendre els càlculs */}
+      <div className="rounded-3xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/50 dark:bg-rose-950/20 p-5 sm:p-6 space-y-3">
+        <div className="text-xs font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+          ▶ Vídeos i canals recomanats per entendre els conceptes (YouTube)
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {FEATURED_YOUTUBE_CHANNELS.map((ch, i) => (
+            <a
+              key={i}
+              href={ch.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-rose-200/80 dark:border-rose-900/50 bg-white dark:bg-slate-900 p-4 hover:border-rose-400 transition flex flex-col justify-between gap-2"
+            >
+              <div>
+                <div className="text-sm font-extrabold text-slate-900 dark:text-white flex items-center justify-between gap-2">
+                  <span>{ch.name}</span>
+                  <ExternalLink className="w-4 h-4 text-rose-500 shrink-0" />
+                </div>
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                  {ch.desc}
+                </p>
+              </div>
+              <span className="text-[11px] font-extrabold text-rose-600 dark:text-rose-400">
+                Obrir a YouTube →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
