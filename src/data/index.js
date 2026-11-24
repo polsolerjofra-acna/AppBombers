@@ -70,6 +70,17 @@ import { QUESTIONS_EXTRA_GILITO } from './questions_extra_gilito';
 import { QUESTIONS_EXTRA_GOMORRA } from './questions_extra_gomorra';
 import { QUESTIONS_EXTRA_GTAVI } from './questions_extra_gtavi';
 import { QUESTIONS_EXTRA_MACGYVER } from './questions_extra_macgyver';
+import { QUESTIONS_EXTRA_PALILLO } from './questions_extra_palillo';
+import { QUESTIONS_EXTRA_PASTANAGA } from './questions_extra_pastanaga';
+import { QUESTIONS_EXTRA_SANANDREAS } from './questions_extra_sanandreas';
+import { QUESTIONS_EXTRA_POLLASTRE } from './questions_extra_pollastre';
+import { QUESTIONS_EXTRA_RAMBO } from './questions_extra_rambo';
+import { QUESTIONS_EXTRA_LOSSANTOS } from './questions_extra_lossantos';
+import { QUESTIONS_EXTRA_RONALDINHO } from './questions_extra_ronaldinho';
+import { QUESTIONS_EXTRA_MARADONA } from './questions_extra_maradona';
+import { QUESTIONS_EXTRA_SODOMA } from './questions_extra_sodoma';
+import { QUESTIONS_EXTRA_LIBERTYCITY } from './questions_extra_libertycity';
+import { QUESTIONS_EXTRA_VICECITY } from './questions_extra_vicecity';
 
 const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_125,
@@ -107,7 +118,18 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_EXTRA_GILITO,
   ...QUESTIONS_EXTRA_GOMORRA,
   ...QUESTIONS_EXTRA_GTAVI,
-  ...QUESTIONS_EXTRA_MACGYVER
+  ...QUESTIONS_EXTRA_MACGYVER,
+  ...QUESTIONS_EXTRA_PALILLO,
+  ...QUESTIONS_EXTRA_PASTANAGA,
+  ...QUESTIONS_EXTRA_SANANDREAS,
+  ...QUESTIONS_EXTRA_POLLASTRE,
+  ...QUESTIONS_EXTRA_RAMBO,
+  ...QUESTIONS_EXTRA_LOSSANTOS,
+  ...QUESTIONS_EXTRA_RONALDINHO,
+  ...QUESTIONS_EXTRA_MARADONA,
+  ...QUESTIONS_EXTRA_SODOMA,
+  ...QUESTIONS_EXTRA_LIBERTYCITY,
+  ...QUESTIONS_EXTRA_VICECITY
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`
