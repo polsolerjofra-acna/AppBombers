@@ -11,6 +11,8 @@ import {
   Users
 } from 'lucide-react';
 import { CALCULATION_SECTIONS } from '../data/calculationsData';
+import { OFFICIAL_MANUALS } from '../data/manualsData';
+import { extractManualSearchQuery } from '../utils/manualSearchQuery';
 import {
   saveDailyReviewSubmission,
   subscribeDailyReviewStats
@@ -187,6 +189,7 @@ export default function DailyReviewModal({
   cloudUser = null,
   dailyReviewHistory = {},
   onSaveDailyHistory = null,
+  onOpenOfficialManual = null,
   onRecordQuestionOutcome = null
 }) {
   const { iso: todayISO, isFriday } = useMemo(() => getMadridTodayInfo(), []);
@@ -559,17 +562,29 @@ export default function DailyReviewModal({
               </div>
 
               {answers[currentQ.id] !== undefined && (
-                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-3.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                  <strong
-                    className={
-                      answers[currentQ.id] === currentQ.correctIndex
-                        ? 'text-emerald-600 dark:text-emerald-400'
-                        : 'text-red-600 dark:text-red-400'
-                    }
-                  >
-                    {answers[currentQ.id] === currentQ.correctIndex ? 'Correcte! ' : 'Incorrecte. '}
-                  </strong>
-                  {currentQ.explanation}
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 p-3.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-2">
+                  <div>
+                    <strong
+                      className={
+                        answers[currentQ.id] === currentQ.correctIndex
+                          ? 'text-emerald-600 dark:text-emerald-400'
+                          : 'text-red-600 dark:text-red-400'
+                      }
+                    >
+                      {answers[currentQ.id] === currentQ.correctIndex ? 'Correcte! ' : 'Incorrecte. '}
+                    </strong>
+                    {currentQ.explanation}
+                  </div>
+                  {onOpenOfficialManual && OFFICIAL_MANUALS.some((m) => m.topicNumber === currentQ._topicNumber) && (
+                    <button
+                      type="button"
+                      onClick={() => onOpenOfficialManual(currentQ._topicNumber, extractManualSearchQuery(currentQ))}
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 px-2.5 py-1 text-[11px] font-bold text-amber-900 dark:text-amber-300 hover:border-amber-500"
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>Veure subratllat en groc al Manual Oficial (PDF) →</span>
+                    </button>
+                  )}
                 </div>
               )}
 

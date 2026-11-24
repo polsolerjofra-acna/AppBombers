@@ -107,7 +107,7 @@ function drawStrokesOnCanvas(canvas, strokes) {
   }
 }
 
-function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOpenTopicSummary }) {
+function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOpenTopicSummary, initialSearchQuery = '' }) {
   const [pdfDoc, setPdfDoc] = useState(null);
   const [numPages, setNumPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
@@ -118,6 +118,8 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOp
   const [loadingPdf, setLoadingPdf] = useState(true);
   const [pdfError, setPdfError] = useState('');
   const [exportProgress, setExportProgress] = useState('');
+  const [activeSearchQuery, setActiveSearchQuery] = useState(initialSearchQuery || '');
+  const [matchedPages, setMatchedPages] = useState([]);
 
   const [tool, setTool] = useState('highlighter'); // 'highlighter' | 'pen' | 'eraser'
   const [highlightColor, setHighlightColor] = useState('#facc15');
@@ -180,6 +182,71 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOp
     };
   }, [manual.url]);
 
+  useEffect(() => {
+    setActiveSearchQuery(initialSearchQuery || '');
+  }, [initialSearchQuery]);
+
+  const highlightTerms = useMemo(() => {
+    const normalize = (str) =>
+      String(str || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+    return normalize(activeSearchQuery)
+      .split(/\s+/)
+      .map((w) => w.trim())
+      .filter((w) => w.length >= 3);
+  }, [activeSearchQuery]);
+
+  // Cerca automàticament la pàgina del manual que millor encaixa amb la justificació i hi salta
+  useEffect(() => {
+    if (!pdfDoc || highlightTerms.length === 0) {
+      setMatchedPages([]);
+      return;
+    }
+    let cancelled = false;
+    const normalize = (str) =>
+      String(str || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+    (async () => {
+      let bestPage = 1;
+      let bestScore = 0;
+      const hits = [];
+      for (let p = 1; p <= pdfDoc.numPages; p++) {
+        if (cancelled) return;
+        try {
+          const page = await pdfDoc.getPage(p);
+          const tc = await page.getTextContent();
+          const text = normalize(tc.items.map((it) => it.str).join(' '));
+          let score = 0;
+          highlightTerms.forEach((term) => {
+            if (text.includes(term)) score += 1;
+          });
+          if (score > 0) hits.push({ page: p, score });
+          if (score > bestScore) {
+            bestScore = score;
+            bestPage = p;
+          }
+        } catch {}
+      }
+      if (!cancelled) {
+        hits.sort((a, b) => b.score - a.score);
+        setMatchedPages(hits.slice(0, 6).map((h) => h.page));
+        if (bestScore > 0) {
+          setPageNum(bestPage);
+          setPageInput(String(bestPage));
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [pdfDoc, highlightTerms]);
+
   // Renderitzat de la pàgina PDF (independent dels traços perquè no es cancel·li)
   const renderCurrentPage = useCallback(async () => {
     if (!pdfDoc || !pdfCanvasRef.current || !annotCanvasRef.current) return;
@@ -223,11 +290,38 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOp
       const task = page.render({ canvasContext: ctx, viewport });
       renderTaskRef.current = task;
       await task.promise;
+
+      // Subratllat automàtic en groc de les paraules clau de la justificació
+      if (highlightTerms.length > 0 && window.pdfjsLib?.Util) {
+        try {
+          const tc = await page.getTextContent();
+          const normalize = (str) =>
+            String(str || '')
+              .toLowerCase()
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '');
+          ctx.save();
+          ctx.fillStyle = 'rgba(250, 204, 21, 0.45)';
+          for (const item of tc.items) {
+            const normStr = normalize(item.str);
+            if (!normStr || normStr.length < 2) continue;
+            const hasHit = highlightTerms.some((term) => normStr.includes(term) || (normStr.length >= 4 && term.includes(normStr)));
+            if (!hasHit) continue;
+            const tx = window.pdfjsLib.Util.transform(viewport.transform, item.transform);
+            const fontHeight = Math.hypot(tx[2], tx[3]) || item.height * viewport.scale || 14;
+            const rectW = (item.width || 20) * viewport.scale;
+            const rectX = tx[4];
+            const rectY = tx[5] - fontHeight * 0.85;
+            ctx.fillRect(rectX - 2, rectY, rectW + 4, fontHeight * 1.1);
+          }
+          ctx.restore();
+        } catch {}
+      }
     } catch (err) {
       if (err && err.name === 'RenderingCancelledException') return;
       console.error('Error renderitzant pàgina PDF:', err);
     }
-  }, [pdfDoc, pageNum, scale, fitWidth, rotation]);
+  }, [pdfDoc, pageNum, scale, fitWidth, rotation, highlightTerms]);
 
   useEffect(() => {
     renderCurrentPage();
@@ -747,6 +841,47 @@ function ManualPdfEditor({ manual, savedStore, onUpdateManualStore, onBack, onOp
         </div>
       )}
 
+      {/* Subratllat automàtic en groc des d'una justificació */}
+      {pdfDoc && activeSearchQuery && (
+        <div className="rounded-2xl border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 px-4 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="flex flex-wrap items-center gap-2 text-amber-900 dark:text-amber-200 font-bold">
+            <span className="inline-block w-3 h-3 rounded-sm bg-yellow-300 border border-amber-500" />
+            <span>Subratllat en groc al manual: «{activeSearchQuery}»</span>
+            {matchedPages.length > 0 && (
+              <span className="flex items-center gap-1">
+                {matchedPages.map((p) => (
+                  <button
+                    key={p}
+                    type="button"
+                    onClick={() => {
+                      setPageNum(p);
+                      setPageInput(String(p));
+                    }}
+                    className={`px-2 py-0.5 rounded-lg font-extrabold ${
+                      p === pageNum
+                        ? 'bg-amber-500 text-white'
+                        : 'bg-white/80 dark:bg-slate-800 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700'
+                    }`}
+                  >
+                    Pàg. {p}
+                  </button>
+                ))}
+              </span>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveSearchQuery('');
+              setMatchedPages([]);
+            }}
+            className="text-[11px] font-bold text-amber-800 dark:text-amber-300 underline hover:opacity-80"
+          >
+            Treure subratllat
+          </button>
+        </div>
+      )}
+
       {/* Notes personals de la pàgina */}
       {pdfDoc && showNotesPanel && (
         <div className="rounded-2xl border border-indigo-200 dark:border-indigo-900/60 bg-indigo-50/60 dark:bg-indigo-950/20 p-3.5">
@@ -838,9 +973,18 @@ export default function ManualsView({
     ...loadSavedAnnotations(),
     ...(cloudAnnotations || {})
   }));
+  const resolvedTopicNum =
+    typeof initialManualTopicNumber === 'object' && initialManualTopicNumber !== null
+      ? initialManualTopicNumber.topicNumber
+      : initialManualTopicNumber;
+  const resolvedSearchQuery =
+    typeof initialManualTopicNumber === 'object' && initialManualTopicNumber !== null
+      ? initialManualTopicNumber.searchQuery || ''
+      : '';
+
   const [selectedManual, setSelectedManual] = useState(() => {
-    if (initialManualTopicNumber) {
-      return OFFICIAL_MANUALS.find((m) => m.topicNumber === initialManualTopicNumber) || null;
+    if (resolvedTopicNum) {
+      return OFFICIAL_MANUALS.find((m) => m.topicNumber === resolvedTopicNum) || null;
     }
     return null;
   });
@@ -856,11 +1000,11 @@ export default function ManualsView({
   }, [cloudAnnotations]);
 
   useEffect(() => {
-    if (initialManualTopicNumber) {
-      const match = OFFICIAL_MANUALS.find((m) => m.topicNumber === initialManualTopicNumber);
+    if (resolvedTopicNum) {
+      const match = OFFICIAL_MANUALS.find((m) => m.topicNumber === resolvedTopicNum);
       if (match) setSelectedManual(match);
     }
-  }, [initialManualTopicNumber]);
+  }, [resolvedTopicNum, resolvedSearchQuery]);
 
   const handleUpdateManualStore = (manualId, nextData) => {
     setSavedStore((prev) => {
@@ -881,6 +1025,7 @@ export default function ManualsView({
         onUpdateManualStore={handleUpdateManualStore}
         onBack={() => setSelectedManual(null)}
         onOpenTopicSummary={onOpenTopicSummary}
+        initialSearchQuery={resolvedSearchQuery}
       />
     );
   }

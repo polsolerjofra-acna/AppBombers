@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { OFFICIAL_EXAM_STATS_BY_TOPIC } from '../data/officialExamStats';
 import { OFFICIAL_MANUALS } from '../data/manualsData';
+import { extractManualSearchQuery } from '../utils/manualSearchQuery';
 
 const BANK_ANSWERED_KEY = 'bombers_answered_bank_ids_v1';
 const BANK_CORRECT_KEY = 'bombers_correct_bank_ids_v1';
@@ -1186,11 +1187,11 @@ export default function PracticeTestView({
                         {manualRef && (
                           onOpenOfficialManual ? (
                             <button
-                              onClick={() => onOpenOfficialManual(q._topicNumber)}
-                              className="inline-flex items-center gap-1 rounded-lg bg-white/80 dark:bg-slate-900/80 border border-slate-300/70 dark:border-slate-700 px-2.5 py-1 text-[11px] font-bold text-indigo-700 dark:text-indigo-300 hover:border-indigo-400"
+                              onClick={() => onOpenOfficialManual(q._topicNumber, extractManualSearchQuery(q))}
+                              className="inline-flex items-center gap-1 rounded-lg bg-amber-100/90 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 px-2.5 py-1 text-[11px] font-bold text-amber-900 dark:text-amber-300 hover:border-amber-500"
                             >
                               <ExternalLink className="w-3 h-3" />
-                              <span>Manual Oficial ({manualRef.code})</span>
+                              <span>Manual Oficial ({manualRef.code}) · Subratllat groc</span>
                             </button>
                           ) : (
                             <a

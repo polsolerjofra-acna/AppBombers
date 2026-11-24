@@ -157,15 +157,27 @@ export const tema1TeoriaFoc = {
         },
         {
           type: 'table',
-          title: '9. Els 3 Mecanismes de Transmissió de la Calor i la Propagació',
-          subtitle: 'Conducció, Convecció i Radiació (Secció 9.1 de MAN.GRAL.008)',
+          title: '9. Els Mecanismes de Transmissió de la Calor i la Propagació',
+          subtitle: 'Conducció, Convecció, Radiació i Desplaçament de partícules (Secció 9 de MAN.GRAL.008)',
           headers: ['Mecanisme', 'Física del Transport', 'Llei i Impacte en l’Incendi'],
           rows: [
             ['9.1.1. Conducció', 'Contacte directe molècula a molècula sense desplaçament de matèria (propi dels sòlids).', 'Bigues metàl·liques o canonades que travessen un mur tallafoc i encenen l’habitació contigua. L’aigua condueix 20 vegades més que l’aire.'],
             ['9.1.2. Convecció', 'Moviment real de massa d’un fluid calent (gasos o líquids) per diferència de densitat.', 'Principal mecanisme de propagació VERTICAL i interior (efecte xemeneia per buits d’escala i patis de llums; mou el 70-80% de la calor del plomall).'],
-            ['9.1.3. Radiació', 'Ones electromagnètiques (infraroges) a la velocitat de la llum; NO necessita medi material (viatja pel buit).', 'Llei de Stefan-Boltzmann: l’energia radiada creix amb la QUARTA POTÈNCIA de la Tª absoluta (E ∝ T⁴). Si T(K) es duplica, la radiació es multiplica per 16 (2⁴)! ÉS la causa del Flashover i la propagació entre façanes.']
+            ['9.1.3. Radiació', 'Ones electromagnètiques (infraroges) a la velocitat de la llum; NO necessita medi material (viatja pel buit).', 'Llei de Stefan-Boltzmann: l’energia radiada creix amb la QUARTA POTÈNCIA de la Tª absoluta (E ∝ T⁴). Si T(K) es duplica, la radiació es multiplica per 16 (2⁴)! ÉS la causa del Flashover i la propagació entre façanes.'],
+            ['9.1.4. Desplaçament de Partícules (Brases / Paveses)', 'Transport físic de partícules enceses (espurnes, brases) o projecció de líquids inflamables per corrents d’aire o vessaments.', 'Genera focus secundaris a distància (clau en incendis forestals —focus secundaris— i en vessaments de líquids en pendent).']
           ],
           footnote: 'A més de l’atenuació amb el quadrat de la distància (1/d²), la radiació viatja en línia recta en totes direccions (360°).'
+        },
+        {
+          type: 'text',
+          heading: '9.2. Seqüència Completa de Propagació i Evolució d’un Incendi Interior',
+          paragraphs: [
+            "1) IGNICIÓ I FASE INICIAL (ILC): El foc comença localitzat amb oxigen abundant (21%). Predomina la convecció ascendent del plomall tèrmic cap al sostre, formant el coixí de fums calents.",
+            "2) CREIXEMENT I PROPAGACIÓ: La calor es transmet per conducció (elements constructius), convecció (70–80% del plomall cap a sostres i plantes superiors) i radiació progressiva des del coixí de fums cap al mobiliari inferior.",
+            "3) INFLAMACIÓ GENERALITZADA SOBTADA (FLASHOVER): Transició brusca on la radiació del coixí de fums (≥ 20 kW/m²) i la temperatura (500–600 °C) pirolitzen i inflamen simultàniament totes les superfícies combustibles del recinte.",
+            "4) INCENDI PLENAMENT DESENVOLUPAT (ILV): L'incendi queda limitat per la ventilació (O₂ < 15%), amb temperatures màximes, flames per obertures i risc màxim de propagació a altres sectors/façanes.",
+            "5) DECAÏMENT I RISC DE BACKDRAFT: En esgotar-se l'oxigen disminueix la flama però romanen gasos de piròlisi molt calents (> temperatura d'autoignició) per sobre del LSI; una entrada sobtada d'aire desencadena una explosió de fum (Backdraft)."
+          ]
         }
       ]
     },

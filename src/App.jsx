@@ -953,8 +953,8 @@ export default function App() {
               onRecordQuestionOutcome={recordQuestionOutcome}
               onSaveQuizScore={saveQuizScore}
               onOpenTopicSummary={(id) => handleSelectTopic(id, null)}
-              onOpenOfficialManual={(topicNum) => {
-                setManualTopicTarget(topicNum);
+              onOpenOfficialManual={(topicNum, searchQuery = '') => {
+                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
                 setActiveView('manuals');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
@@ -1022,8 +1022,8 @@ export default function App() {
               }}
               onSaveQuizScore={saveQuizScore}
               onRecordQuestionOutcome={recordQuestionOutcome}
-              onOpenOfficialManual={(topicNum) => {
-                setManualTopicTarget(topicNum);
+              onOpenOfficialManual={(topicNum, searchQuery = '') => {
+                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
                 setActiveView('manuals');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
@@ -1039,6 +1039,12 @@ export default function App() {
         cloudUser={cloudUser}
         dailyReviewHistory={progress.dailyReviewHistory || {}}
         onSaveDailyHistory={saveDailyReviewHistory}
+        onOpenOfficialManual={(topicNum, searchQuery = '') => {
+          setShowDailyReview(false);
+          setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
+          setActiveView('manuals');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onClose={() => {
           setShowDailyReview(false);
           try {
