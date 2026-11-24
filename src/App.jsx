@@ -7,6 +7,7 @@ import HomeView from './components/HomeView';
 import TopicView from './components/TopicView';
 import DashboardView from './components/dashboard/DashboardView';
 import CalculationsView from './components/CalculationsView';
+import CalcTricksView from './components/CalcTricksView';
 import CalendarView from './components/CalendarView';
 import KeyPointsView from './components/KeyPointsView';
 import MnemonicsView from './components/MnemonicsView';
@@ -97,7 +98,7 @@ export default function App() {
   const [activeView, setActiveView] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('bombers_last_nav_v1') || '{}');
-      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'audio', 'practice', 'calculations', 'keypoints', 'mnemonics', 'manuals', 'classes', 'group'];
+      const allowed = ['home', 'topic', 'dashboard', 'calendar', 'quickstudy', 'audio', 'practice', 'calculations', 'calctricks', 'keypoints', 'mnemonics', 'manuals', 'classes', 'group'];
       return allowed.includes(saved.activeView) ? saved.activeView : 'home';
     } catch {
       return 'home';
@@ -696,6 +697,7 @@ export default function App() {
       audio: 'Àudio-Resums',
       practice: 'Tests i Simulacres',
       calculations: 'Càlculs',
+      calctricks: 'Trucs de Càlcul',
       keypoints: 'Punts Clau',
       mnemonics: 'Mnemotècnies',
       manuals: 'Manuals PDF',
@@ -776,6 +778,7 @@ export default function App() {
           setCalcInitialMode('all');
           navigateWithHistory('calculations');
         }}
+        onSelectCalcTricks={() => navigateWithHistory('calctricks')}
         onSelectKeyPoints={() => navigateWithHistory('keypoints')}
         onSelectMnemonics={() => navigateWithHistory('mnemonics')}
         onSelectManuals={() => {
@@ -964,6 +967,13 @@ export default function App() {
               initialMode={calcInitialMode}
               fridayHistory={progress.fridayCalcHistory || []}
               onSaveFridaySession={saveFridayCalcSession}
+            />
+          ) : activeView === 'calctricks' ? (
+            <CalcTricksView
+              onOpenCalculations={() => {
+                setCalcInitialMode('all');
+                navigateWithHistory('calculations');
+              }}
             />
           ) : activeView === 'keypoints' ? (
             <KeyPointsView
