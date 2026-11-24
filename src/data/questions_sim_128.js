@@ -726,10 +726,10 @@ export const QUESTIONS_SIM_128 = [
       'Aplicar aigua amb cura i restringir la ingesta d\'aigua',
       'Traslladar-lo a l\'ombra i cobrir-lo amb mantes humides',
       'Ruixar-lo amb aigua fresca, compreses fredes i administrar oxigen',
-      'Ruixar-lo amb aigua, aplicar alcohol en zones irrigades, ombra i administrar-li aigua progressivament'
+      'Ruixar-lo amb aigua, posar-lo a l\'ombra i administrar-li hidratació progressiva'
     ],
     correctIndex: 3,
-    explanation: 'En cops de calor en animals: baixar temperatura amb ruixats d\'aigua, alcohol en zones irrigades, ombra i hidratació progressiva.'
+    explanation: 'En cops de calor en animals (correcció 2026): baixar temperatura amb ruixats d\'aigua, ombra i hidratació progressiva fins al relleu veterinari.'
   },
   {
     topic: 30,

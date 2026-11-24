@@ -1813,7 +1813,7 @@ export const QUESTIONS_EXTRA_BLOC2 = [
     "id": "ex-b2-t20-5",
     "topic": 20,
     "difficulty": "Mitjà",
-    "question": "Per què la roba d'incendi forestal (UNE-EN 15614 / ISO 15384) és monocapa i molt transpirable en lloc de portar les 4 capes de la roba estructural?",
+    "question": "Per què la roba d'incendi forestal (EN ISO 15384) és monocapa i molt transpirable en lloc de portar les 4 capes de la roba estructural?",
     "options": [
       "Perquè en incendis forestals no hi ha calor radiant ni risc de cremades.",
       "Per evitar el cop de calor (estrès tèrmic) durant l'esforç físic prolongat en entorns forestals.",
@@ -1821,7 +1821,7 @@ export const QUESTIONS_EXTRA_BLOC2 = [
       "Perquè la normativa europea prohibeix portar folres tèrmics a l'aire lliure."
     ],
     "correctIndex": 1,
-    "explanation": "Taula 2.2–2.3: l'EPI lleuger forestal (UNE-EN 15614 / ISO 15384) és monocapa ignífuga lleugera i molt transpirable per evitar el cop de calor en esforç prolongat."
+    "explanation": "Taula 2.2–2.3: l'EPI lleuger forestal (EN ISO 15384) és monocapa ignífuga lleugera i molt transpirable per evitar el cop de calor en esforç prolongat."
   },
   {
     "id": "ex-b2-t20-6",

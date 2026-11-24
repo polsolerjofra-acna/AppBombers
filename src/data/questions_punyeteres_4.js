@@ -104,7 +104,7 @@ export const QUESTIONS_PUNYETERES_4 = [
       'UNE-EN 16471 per al casc forestal i UNE-EN 15614 per al casc de rescat tècnic'
     ],
     correctIndex: 1,
-    explanation: 'El detall decisiu és no intercanviar els dos codis quasi idèntics: UNE-EN 16471 és el casc forestal i UNE-EN 16473 és el casc de rescat tècnic (mentre que UNE-EN 443 és el casc estructural Tipus B i UNE-EN 15614 és la roba forestal).'
+    explanation: 'El detall decisiu és no intercanviar els dos codis quasi idèntics: UNE-EN 16471 és el casc forestal i UNE-EN 16473 és el casc de rescat tècnic (mentre que UNE-EN 443 és el casc estructural Tipus B i EN ISO 15384 és la roba forestal).'
   },
   {
     topic: 20,

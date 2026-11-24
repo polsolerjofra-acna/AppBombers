@@ -12,7 +12,7 @@ export const tema6EpiEra = {
       "Manual cabdal que combina normativa de prevenció (Llei 31/1995, RD 773/1997 i Reglament UE 2016/425), totes les normes UNE-EN de les peces d'EPI, els vestits químics Tipus 1 a 6, el funcionament i CÀLCUL D'AUTONOMIA de l'ERA (amb pàgina pròpia de càlcul a la Pàg. 4) i la descontaminació de partícules cancerígenes. A les Pàg. 6 i 7 tens el Formulari i Resum Executiu complet.",
     hotTopics: [
       'Cap. 1-2.1: Llei 31/1995, RD 773/1997 i Categories d’EPI I (risc mínim), II (intermedi) i III (risc mortal/irreversible → ERA, EPI foc, arnesos).',
-      'Cap. 2.2-2.4: Normes EN 469 (foc estructural Xf/Xr/Y/Z Nivell 2), EN 15614 / ISO 15384 (forestal), EN 443 (casc estructural), EN 16471 (casc forestal), EN 16473 (casc rescat), EN 15090 (botes F1/F2/F3), EN 659 (guants) i Vestits químics Tipus 1 a 6.',
+      'Cap. 2.2-2.4: Normes EN 469 (foc estructural Xf/Xr/Y/Z Nivell 2), EN ISO 15384 (forestal), EN 443 (casc estructural), EN 16471 (casc forestal), EN 16473 (casc rescat), EN 15090 (botes F1/F2/F3), EN 659 (guants) i Vestits químics Tipus 1 a 6.',
       'Cap. 3.1-3.3: ERA circuit obert (EN 137) a 300 bar → 1a etapa (6-8 bar) → pulmobanda (+1,5 a +3,9 mbar), avisos 170 / 110 / 60 bar (xiulet ≥ 90 dB a 55±5 bar) i Home Mort (30 s prealarma + 10 s alarma).',
       'Cap. 3.4 (CÀLCUL): Volum d’aire (6,8 L × 300 bar = 2.040 L), Reserva 25% (510 L / 75 bar), Aire útil (1.530 L) i Autonomia a 50 L/min = 30,6 min.',
       'Cap. 4: Gestió de contaminants (descontaminació In situ, A parc i Avançada industrial).'
@@ -74,7 +74,7 @@ export const tema6EpiEra = {
           headers: ['Peça d’EPI', 'Norma Oficial UNE-EN / ISO', 'Paràmetres i Nivells Clau d’Examen'],
           rows: [
             ['Jaqueta i Cubrepantaló Estructural (EPI Pesant)', 'UNE-EN 469', '4 capes (teixit exterior + membrana impermeable/transpirable + barrera tèrmica + folre). Avalua 4 índexs en Nivell 1 o Nivell 2 (Bombers usa Nivell 2!): Xf (transferència calor flama), Xr (calor radiant), Y (impermeabilitat a l’aigua) i Z (resistència al vapor d’aigua / transpirabilitat).'],
-            ['Roba d’Incendi Forestal i Rescat (EPI Lleuger)', 'UNE-EN 15614 / ISO 15384', 'Monocapa ignífuga lleugera i molt transpirable (evita el cop de calor en esforç prolongat).'],
+            ['Roba d’Incendi Forestal i Rescat (EPI Lleuger)', 'EN ISO 15384', 'Monocapa ignífuga lleugera i molt transpirable (evita el cop de calor en esforç prolongat).'],
             ['Casc d’Incendi Estructural', 'UNE-EN 443', 'Casc integral (Tipus B, cobreix orelles i clatell) amb pantalla facial i ocular, resistent a flama directa, impacte, perforació i aïllament elèctric.'],
             ['Casc d’Incendi Forestal', 'UNE-EN 16471', 'Casc lleuger ventilat per a extinció d’incendis en espais naturals.'],
             ['Casc de Rescat Tècnic', 'UNE-EN 16473', 'Casc per a salvament i rescat tècnic (sovint combinat en un sol casc dual forestal/rescat EN 16471 + EN 16473).'],
@@ -255,7 +255,7 @@ export const tema6EpiEra = {
             ['Llei 31/1995 i RD 773/1997', 'Marc legal d’ús dels EPI', 'Reglament (UE) 2016/425 per a comercialització i Categories I, II i III'],
             ['Categoria III (CE + 4 dígits)', 'EPI contra riscos mortals o irreversibles', 'Inclou ERA, roba de foc, cascs, botes, guants de foc, vestits químics i arnesos'],
             ['UNE-EN 469 (Nivell 2)', 'Jaqueta i cubrepantaló d’incendi estructural', '4 capes i 4 índexs: Xf (flama), Xr (radiació), Y (impermeabilitat), Z (vapor)'],
-            ['UNE-EN 15614 / ISO 15384', 'Roba d’incendi forestal (EPI Lleuger)', 'Monocapa ignífuga transpirable per evitar l’estrès tèrmic'],
+            ['EN ISO 15384', 'Roba d’incendi forestal (EPI Lleuger)', 'Monocapa ignífuga transpirable per evitar l’estrès tèrmic'],
             ['UNE-EN 443', 'Casc d’incendi estructural', 'Integral (Tipus B) per a foc en edificis'],
             ['UNE-EN 16471 i UNE-EN 16473', 'Casc forestal (16471) i Casc rescat tècnic (16473)', '71 = Forestal | 73 = Rescat tècnic'],
             ['UNE-EN 15090 (F1 / F2 / F3)', 'Botes de bomber', 'F1 = Forestal/exterior | F2 = Estructural (F2A antiestàtica) | F3 = Risc químic'],
@@ -274,7 +274,7 @@ export const tema6EpiEra = {
       difficulty: 'Fàcil',
       question: "Quina norma europea regula el vestit d'intervenció per a incendis estructurals (jaqueta i cubrepantaló de 4 capes) i quins són els seus 4 paràmetres d'assaig?",
       options: [
-        'UNE-EN 15614 (paràmetres A, B, C, D)',
+        'EN ISO 15384 (vestuari de protecció forestal)',
         'UNE-EN 469 (paràmetres Xf, Xr, Y, Z)',
         'UNE-EN 443 (paràmetres F1, F2, F3)',
         'UNE-EN 137 (paràmetres Tipus 1 a Tipus 6)'
@@ -483,12 +483,12 @@ export const tema6EpiEra = {
       question: "Quines normes UNE-EN corresponen respectivament a la roba d'incendi forestal (EPI lleuger), als guants d'incendi estructural i al sotacasc (capuz) ignífug?",
       options: [
         "Roba forestal: UNE-EN 469 | Guants foc: UNE-EN 388 | Sotacasc: UNE-EN 443.",
-        "Roba forestal: UNE-EN 15614 (ISO 15384) | Guants foc: UNE-EN 659 | Sotacasc: UNE-EN 13911.",
+        "Roba forestal: EN ISO 15384 | Guants foc: UNE-EN 659 | Sotacasc: UNE-EN 13911.",
         "Roba forestal: UNE-EN 16471 | Guants foc: UNE-EN 15090 | Sotacasc: ISO 20471.",
         "Roba forestal: UNE-EN 136 | Guants foc: UNE-EN 137 | Sotacasc: UNE-EN 943."
       ],
       correctIndex: 1,
-      explanation: "Segons la taula de normes del manual: roba forestal = UNE-EN 15614 / ISO 15384; guants d'incendi estructural = UNE-EN 659 (els de rescat mecànic són EN 388); sotacasc = UNE-EN 13911."
+      explanation: "Segons la taula de normes del manual: roba forestal = EN ISO 15384; guants d'incendi estructural = UNE-EN 659 (els de rescat mecànic són EN 388); sotacasc = UNE-EN 13911."
     },
     {
       id: 'q20-18',

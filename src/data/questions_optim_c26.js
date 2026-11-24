@@ -849,13 +849,13 @@ export const QUESTIONS_OPTIM_C26 = [
     difficulty: 'Fàcil',
     question: '[ÒPTIM C\'26 · P70] En relació amb les normes principals de vestuari de protecció per a bombers, quina combinació és CORRECTA?',
     options: [
-      'L\'EN 469 prioritza la lleugeresa i la transpirabilitat per a exposicions tèrmiques moderades, mentre que l\'EN 15614 / EN ISO 15384 està destinada a entorns amb foc intens.',
+      'L\'EN 469 prioritza la lleugeresa i la transpirabilitat per a exposicions tèrmiques moderades, mentre que l\'EN ISO 15384 està destinada a entorns amb foc intens.',
       'Ambdues normes estableixen el mateix nivell de protecció tèrmica i es diferencien principalment pel tipus de bandes reflectants exigides.',
-      'L\'EN 469 està orientada a incendis urbans i industrials amb risc tèrmic molt alt i vestuari multicapa, mentre que l\'EN 15614 / EN ISO 15384 està orientada a incendis forestals, amb protecció tèrmica moderada i major lleugeresa i transpirabilitat.',
-      'L\'EN 469 correspon al vestit forestal d\'una sola capa, mentre que l\'EN 15614 / EN ISO 15384 regula el vestit estructural multicapa.'
+      'L\'EN 469 està orientada a incendis urbans i industrials amb risc tèrmic molt alt i vestuari multicapa, mentre que l\'EN ISO 15384 està orientada a incendis forestals, amb protecció tèrmica moderada i major lleugeresa i transpirabilitat.',
+      'L\'EN 469 correspon al vestit forestal d\'una sola capa, mentre que l\'EN ISO 15384 regula el vestit estructural multicapa.'
     ],
     correctIndex: 2,
-    explanation: 'EN 469 regula el vestuari estructural multicapa (incendis urbans/industrials); EN 15614 / EN ISO 15384 regula el vestuari lleuger per a incendis forestals.'
+    explanation: 'EN 469 regula el vestuari estructural multicapa (incendis urbans/industrials); EN ISO 15384 regula el vestuari lleuger per a incendis forestals.'
   },
   {
     topic: 19,

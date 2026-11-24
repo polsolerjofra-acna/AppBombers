@@ -1261,7 +1261,7 @@ export const OUTLINES_PART2 = {
               label: 'Roba de Foc i Cascs',
               children: [
                 'Estructural pesant: UNE-EN 469 (4 capes; Bombers usa Nivell 2 en 4 índexs: Xf flama, Xr radiant, Y impermeabilitat, Z vapor/transpirabilitat)',
-                'Forestal / rescat lleuger: UNE-EN 15614 / ISO 15384 (monocapa ignífuga molt transpirable)',
+                'Forestal / rescat lleuger: EN ISO 15384 (monocapa ignífuga molt transpirable)',
                 'Cascs: UNE-EN 443 (estructural integral Tipus B) · UNE-EN 16471 (forestal) · UNE-EN 16473 (rescat tècnic)'
               ]
             },

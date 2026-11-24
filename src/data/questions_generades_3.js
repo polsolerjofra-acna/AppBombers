@@ -107,7 +107,7 @@ export const QUESTIONS_GENERADES_3 = [
   {
     topic: 20,
     difficulty: 'Fàcil',
-    question: '[BANC EXTRA · T20] Quina diferència fonamental existeix entre el vestit d\'intervenció estructural (EN 469) i el vestit d\'intervenció en incendis forestals (EN 15614 / ISO 15384)?',
+    question: '[BANC EXTRA · T20] Quina diferència fonamental existeix entre el vestit d\'intervenció estructural (EN 469) i el vestit d\'intervenció en incendis forestals (EN ISO 15384)?',
     options: [
       'El vestit estructural és monocapa ignífug per afavorir l\'evaporació de la suor en interiors, mentre que el forestal incorpora barrera d\'humitat impermeable i doble capa d\'aïllament tèrmic contra el vent',
       'El vestit estructural incorpora capes tèrmica i barrera d\'humitat per protegir contra alta radiació i vapor en espais tancats, mentre que el forestal prioritza la lleugeresa i transpirabilitat per evitar l\'estrès tèrmic en marxes llargues',
