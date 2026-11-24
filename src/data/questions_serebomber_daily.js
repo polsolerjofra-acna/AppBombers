@@ -1051,5 +1051,285 @@ export const QUESTIONS_SEREBOMBER_DAILY = [
     ],
     correctIndex: 1,
     explanation: 'Amb només 15 cm d\'aigua corrent es pot perdre el control de la direcció, i entre 30 i 50 cm la força d\'empenyiment i flotació ja pot arrossegar la majoria de turismes.'
+  },
+  {
+    id: 'sb-puny-1',
+    topic: 28,
+    difficulty: 'Difícil',
+    question: "En quins casos NO són fiables les lectures amb el pulsioxímetre convencional?",
+    options: [
+      'Víctimes per inhalació de diòxid de carboni (CO₂).',
+      'Pacients amb hipertèrmia.',
+      'Les dues opcions anteriors (A i B) són correctes.',
+      'Pacients amb hipotèrmia.'
+    ],
+    correctIndex: 3,
+    explanation: 'TRAMPA CLÀSSICA: El pulsioxímetre falla amb el MONÒXID de carboni (CO, que forma carboxihemoglobina), NO pas amb el diòxid de carboni (CO₂)! En canvi, en pacients amb HIPOTÈRMIA (vasoconstricció perifèrica) la lectura NO és fiable.'
+  },
+  {
+    id: 'sb-puny-2',
+    topic: 28,
+    difficulty: 'Difícil',
+    question: "On s'ha de col·locar un torniquet homologat en una hemorràgia arterial exsanguinant d'extremitat, segons les correccions actualitzades de MAN.SANI.000?",
+    options: [
+      'Exactament a 2 cm per sobre de la ferida, o directament sobre l\'articulació si cal.',
+      'De 5 a 7 cm per sota de la ferida (en sentit distal) per no danyar el retorn venós.',
+      'De 5 a 7 cm per sobre de la ferida, mai sobre una articulació (si cal, per sobre de l\'articulació).',
+      'De 5 a 7 cm per sobre de la ferida, afluixant-lo 30 segons cada 15 minuts.'
+    ],
+    correctIndex: 2,
+    explanation: 'Detall decisiu: 5–7 cm per SOBRE (proximal) de la ferida, MAI sobre una articulació (si cau sobre articulació, s\'aplica per sobre d\'aquesta), registrant l\'hora i sense afluixar-lo mai.'
+  },
+  {
+    id: 'sb-puny-3',
+    topic: 28,
+    difficulty: 'Difícil',
+    question: "Segons la classificació oficial d'edat actualitzada de MAN.SANI.000 (Punt 2.1 d), quina franja correspon exactament a 'Nen/a' i quina a 'Lactant'?",
+    options: [
+      'Lactant: d\'1 mes a 1 any | Nen/a: d\'1 any fins a la pubertat.',
+      'Lactant: fins a 1 any | Nen/a: d\'1 a 12 anys (i Adolescent: de 13 a 18 anys).',
+      'Lactant: de 0 a 28 dies | Nen/a: d\'1 mes a 14 anys.',
+      'Lactant: fins a 2 anys | Nen/a: de 2 a 12 anys.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial 2026: Nadó/nounat (immediatament després del part), Lactant (fins a 1 any), Nen/a (d\'1 a 12 anys), Adolescent (de 13 a 18 anys), Adult/a (≥ 18 anys o considerat adult pel reanimador).'
+  },
+  {
+    id: 'sb-puny-4',
+    topic: 28,
+    difficulty: 'Difícil',
+    question: "En RCP pediàtrica en un lactant (< 1 any), quina tècnica de compressions toràciques és la preferent segons el Punt 4.5 actualitzat?",
+    options: [
+      'Compressions al terç superior de l\'estèrnum amb el taló d\'una mà.',
+      'Compressions sobre la meitat inferior de l\'estèrnum utilitzant preferentment l\'encerclament del tòrax amb dos polzes.',
+      'Compressions abdominals subdiafragmàtiques (Heimlich) alternades amb 2 ventilacions.',
+      'Compressions amb dues mans entrellaçades al centre de l\'abdomen.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció 2026: les compressions toràciques es fan sobre la meitat inferior de l\'estèrnum; en lactants s\'utilitza preferentment la tècnica d\'encerclament del tòrax amb dos polzes.'
+  },
+  {
+    id: 'sb-puny-5',
+    topic: 20,
+    difficulty: 'Difícil',
+    question: "Quina norma europea/internacional regula específicament el vestuari de protecció per a incendis forestals (EPI lleuger) segons la correcció oficial del Punt 2.2.2?",
+    options: [
+      'EN 469 (Nivell 2).',
+      'EN 15614.',
+      'EN ISO 15384.',
+      'EN 16471.'
+    ],
+    correctIndex: 2,
+    explanation: 'Correcció oficial 2026: la norma del vestuari de protecció per a incendis forestals és EN ISO 15384 (substitueix l\'antiga referència EN 15614). EN 16471 és el casc forestal.'
+  },
+  {
+    id: 'sb-puny-6',
+    topic: 21,
+    difficulty: 'Difícil',
+    question: "Quina afirmació és CORRECTA sobre els plans especials de Protecció Civil a Catalunya segons la correcció oficial del Punt 4.1.1?",
+    options: [
+      'FERROCAT regula els accidents ferroviaris i AEROCAT els accidents aeris.',
+      'AEROCAT regula les emergències aeronàutiques (i FERROCAT no és un pla especial autònom: s\'integra dins PROCICAT).',
+      'El PBEM és un pla especial exclusiu per a riscos químics municipals.',
+      'AEROCAT i FERROCAT són els dos únics plans territorials de Catalunya.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial 2026: se suprimeix FERROCAT de la llista de plans especials i AEROCAT passa a denominar-se "emergències aeronàutiques". El PBEM és pla municipal multirisc per a riscos no especials.'
+  },
+  {
+    id: 'sb-puny-7',
+    topic: 24,
+    difficulty: 'Difícil',
+    question: "En un incendi d'habitatge confinat, una víctima es troba en una habitació propera separada per UNA sola porta tancada (Categoria de supervivència Mitja). Quina és la supervivència estimada segons la taula corregida del manual?",
+    options: [
+      '6 – 10 minuts.',
+      '< 6 minuts.',
+      '> 10 minuts.',
+      'Quasi il·limitada.'
+    ],
+    correctIndex: 2,
+    explanation: 'TRAMPA DE TAULA CORREGIDA (Punt 4.3.1): Alta (2 portes o EI) = Quasi il·limitada; Mitja (1 porta tancada) = > 10 min; Baixa (porta oberta) = 6–10 min; Mínima (dins recinte del foc) = < 6 min.'
+  },
+  {
+    id: 'sb-puny-8',
+    topic: 26,
+    difficulty: 'Difícil',
+    question: "Segons la correcció oficial del Punt 2.2.2 del manual d'incendis varis (MAN.INXX.000), quin d'aquests gasos en vehicles presenta risc d'explosió tipus BLEVE?",
+    options: [
+      'Només el GNC (Gas Natural Comprimit), per estar a 200 bar.',
+      'Tant el GLP com el GNC presenten risc de BLEVE idèntic.',
+      'El GLP (Gas Liquat del Petroli), ja que s\'emmagatzema liquat a pressió.',
+      'Cap gas liquat pot patir BLEVE, només el dièsel.'
+    ],
+    correctIndex: 2,
+    explanation: 'Correcció oficial 2026: la BLEVE (Boiling Liquid Expanding Vapor Explosion) es produeix en gasos LIQUATS a pressió (GLP), NO en gasos comprimits no liquats com el GNC.'
+  },
+  {
+    id: 'sb-puny-9',
+    topic: 25,
+    difficulty: 'Difícil',
+    question: "En un incendi forestal amb dotacions atrapades en fase crítica (Situació 3 del Punt 5.5), quin missatge exacte ha de transmetre el cap de la UBI fent servir la marcació d'alarma del terminal?",
+    options: [
+      '«SOS INDIVIDUAL, bomber ferit».',
+      '«ATRAPAMENT EN ZONA BLAVA, sol·licitem evacuació».',
+      '«CODI VERMELL, dotacions atrapades en fase crítica».',
+      '«CODI NEGRE, retirada immediata del flanc».'
+    ],
+    correctIndex: 2,
+    explanation: 'Correcció oficial Punt 5.5: en Situació 2 transmet "CODI VERMELL", i en Situació 3 transmet exactament "CODI VERMELL, dotacions atrapades en fase crítica".'
+  },
+  {
+    id: 'sb-puny-10',
+    topic: 18,
+    difficulty: 'Difícil',
+    question: "Segons les correccions oficials de MAN.EQIP.000, quin és l'angle d'atac d'una BUP (Punt 3.3) i quina és la sigla correcta dels vehicles de transport de personal i càrrega (Punt 5.3.1)?",
+    options: [
+      'Angle d\'atac 4° | Sigla UCP.',
+      'Angle d\'atac 13° | Sigla UPC.',
+      'Angle d\'atac 13° | Sigla UCP.',
+      'Angle d\'atac 4° | Sigla UPC.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial 2026: l\'angle d\'atac de la BUP és 13° (no 4°) i la sigla del vehicle de transport de personal i càrrega és UPC (UCP és la Unitat de Comandament Pesant!).'
+  },
+  {
+    id: 'sb-puny-11',
+    topic: 17,
+    difficulty: 'Difícil',
+    question: "En la correcció oficial del Punt 5.3.6 de comunicacions per ràdio, entre un cap de parc i quina sala s'envia el missatge de suport logístic?",
+    options: [
+      'Sala CCB.',
+      'Sala SCB.',
+      'Sala CECAT.',
+      'Sala 112.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial Punt 5.3.6: l\'exemple oficial indica l\'enviament d\'un missatge de suport logístic entre un cap de parc i la Sala SCB (no pas Sala CCB).'
+  },
+  {
+    id: 'sb-puny-12',
+    topic: 32,
+    difficulty: 'Difícil',
+    question: "En excarceració (MAN.SVVH.000), a quina maniobra correspon exactament la denominació col·loquial 'catalana' segons la correcció del Punt 4.4?",
+    options: [
+      'Desplaçament o tall del seient (catalana).',
+      'Abatiment de seient (catalana).',
+      'Elevació de sostre amb separador (catalana).',
+      'Desmunt de pedals (catalana).'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial Punt 4.4: "(catalana)" correspon a l\'Abatiment de seient (no al desplaçament o tall del seient); la "tenda" correspon a l\'elevació de sostre amb separador.'
+  },
+  {
+    id: 'sb-puny-13',
+    topic: 32,
+    difficulty: 'Difícil',
+    question: "Segons el Punt 4.2.3 corregit de MAN.SVVH.000, en quins turismes es pot aplicar aquella tècnica d'obertura i quants tipus de maniobres hi ha al Punt 4?",
+    options: [
+      'Turismes de dues o quatre portes | Tres tipus de maniobres.',
+      'Turismes de cinc o tres portes | Quatre tipus de maniobres.',
+      'Turismes de dues o quatre portes | Quatre tipus de maniobres.',
+      'Només furgonetes | Tres tipus de maniobres.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correccions Punt 4 i Punt 4.2.3: parlem de QUATRE tipus de maniobres, i s\'aplica en turismes de CINC o TRES portes (no dues o quatre).'
+  },
+  {
+    id: 'sb-puny-14',
+    topic: 33,
+    difficulty: 'Difícil',
+    question: "Respecte al contrapès en un ascensor hidràulic (Punt 3.1.2 corregit), quina afirmació és EXACTA?",
+    options: [
+      'Un ascensor hidràulic no incorpora mai cap contrapès ni cables en cap configuració.',
+      'Un ascensor hidràulic sempre porta un contrapès equivalent al 50% de la càrrega nominal.',
+      'Generalment no necessita contrapès, tot i que algunes configuracions d\'accionament indirecte poden incorporar-ne (amb cables/politges).',
+      'Només porta contrapès quan funciona sense oli.'
+    ],
+    correctIndex: 2,
+    explanation: 'Correcció oficial Punt 3.1.2: els ascensors hidràulics generalment no necessiten contrapès, però algunes configuracions d\'accionament indirecte poden incorporar-ne juntament amb cables d\'acer i politges.'
+  },
+  {
+    id: 'sb-puny-15',
+    topic: 23,
+    difficulty: 'Difícil',
+    question: "Segons el Punt 5.2.2 a) corregit de prevenció bàsica d'incendis (MAN.SP.000), quants caràcters té el CODI PARC en la nomenclatura?",
+    options: [
+      'Sempre 4 lletres exactes.',
+      '3 o 4 lletres.',
+      '2 dígits numèrics.',
+      '5 dígits.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial Punt 5.2.2 a): on deia "CODI PARC (4 lletres)" ara ha de dir "CODI PARC (3 o 4 lletres)".'
+  },
+  {
+    id: 'sb-puny-16',
+    topic: 10,
+    difficulty: 'Difícil',
+    question: "Quin és el nom correcte de l'isòtop H-3 de l'hidrogen (símbol T) i quina és la fórmula general dels alquens?",
+    options: [
+      'Trici | CₙH₂.',
+      'Triti | CₙH₂ₙ.',
+      'Deuteri | CₙH₂ₙ₊₂.',
+      'Triti | CₙH₂ₙ₋₂.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correccions Punt 2.4 i 8.2: l\'isòtop H-3 s\'anomena TRITI (no trici) i la fórmula general dels alquens és CₙH₂ₙ (no CₙH₂).'
+  },
+  {
+    id: 'sb-puny-17',
+    topic: 8,
+    difficulty: 'Difícil',
+    question: "En la propietat física de l'aigua com a agent extintor (Punt 13.2.1 corregit), quin terme tècnic s'ha substituït a 'Elevada capacitat calorífica'?",
+    options: [
+      'Elevada conductivitat tèrmica.',
+      'Elevada calor específica.',
+      'Elevada entalpia de sublimació.',
+      'Baixa calor latent.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial Punt 13.2.1 (MAN.GRAL.008): on deia "Elevada capacitat calorífica" ara ha de dir "Elevada calor específica".'
+  },
+  {
+    id: 'sb-puny-18',
+    topic: 15,
+    difficulty: 'Mitjana',
+    question: "Segons el Punt 5.4.1 b) corregit de construcció (MAN.GRAL.006), quin nom rep el sistema constructiu porticat?",
+    options: [
+      'Sistema de pilars i formats (porticat).',
+      'Sistema de pilars i forjats (porticat).',
+      'Sistema de murs de càrrega i arcs.',
+      'Sistema d\'encavallades triangulades.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial Punt 5.4.1 b): "Sistema de pilars i forjats (porticat)" (corregeix l\'errata "formats").'
+  },
+  {
+    id: 'sb-puny-19',
+    topic: 27,
+    difficulty: 'Difícil',
+    question: "Dins quina zona d'intervenció NRBQ (Punts 5.1.1 i 5.1.2 substituïts) s'ubiquen els punts de descontaminació de persones i equips (ABD) i dins quina s'ubiquen les àrees de preparació logística?",
+    options: [
+      'ABD a la Zona Tèbia | Preparació logística a la Zona Calenta.',
+      'ABD a la Zona Calenta | Preparació logística a la Zona Tèbia.',
+      'Tots dos a la Zona Freda.',
+      'ABD a la Zona Freda | Preparació logística a la Zona Calenta.'
+    ],
+    correctIndex: 1,
+    explanation: 'Correcció oficial Punts 5.1.1 i 5.1.2: els punts de descontaminació de persones i equips (ABD) són dins la Zona Calenta, mentre que a la Zona Tèbia s\'estableixen les àrees de preparació logística.'
+  },
+  {
+    id: 'sb-puny-20',
+    topic: 16,
+    difficulty: 'Difícil',
+    question: "En un cop de calor en un animal (Punt 2.5 corregit de MAN.ATXX.000), quina mesura s'ha ELIMINAT del protocol?",
+    options: [
+      'Ruixats d\'aigua per baixar la temperatura corporal.',
+      'Posar l\'animal a l\'ombra.',
+      'Aplicar alcohol en zones irrigades.',
+      'Hidratació progressiva fins al relleu veterinari.'
+    ],
+    correctIndex: 2,
+    explanation: 'Correcció oficial Punt 2.5: s\'ha suprimit "alcohol en zones irrigades", mantenint ruixats d\'aigua, ombra i hidratació progressiva fins al relleu veterinari.'
   }
 ];
