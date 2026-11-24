@@ -147,6 +147,12 @@ const BLOCK_TRICKS = [
         fastTrick: 'Concentrat = % × Cabal total. Escuma = Cabal total × Índex d’expansió.',
         discardRule: 'Si et donen litres de garrafa (ex. 6 L al 3%), divideix 6 ÷ 0,03 = 200 L de mescla abans de multiplicar per l’expansió.',
         example: '400 L/min al 3% i exp. 1:10 → 12 L/min escumogen i 4.000 L/min escuma.'
+      },
+      {
+        problem: 'Volum d’aigua dins cada tram de mànega (20 m)',
+        fastTrick: 'Memoritza: Ø25 = ~10 L (0,5 L/m) | Ø40 = ~25 L (1,26 L/m) | Ø45 = ~32 L (1,6 L/m) | Ø70 = ~77 L (3,85 L/m).',
+        discardRule: 'Si el diàmetre passa de 25 a 50 mm (×2), el volum per metre es multiplica per 4 (0,5 → 2,0 L/m)!',
+        example: '3 trams de 20 m Ø70 + 2 trams de 20 m Ø45 → (3 × 77) + (2 × 32) = 295 L retinguts.'
       }
     ]
   },

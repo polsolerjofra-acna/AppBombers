@@ -704,6 +704,32 @@ const BASE_CALCULATION_SECTIONS = [
           '1. Meitat de capacitat = 10 m³ sobre 10 m² → h = 1 m.',
           '2. P = 1.000 × 9,81 × 1 = 9.810 N/m² = 9,81 kN/m².'
         ]
+      },
+      {
+        id: 'p-t13-11',
+        title: 'Volum d\'aigua retingut en un tendit (Ø70 i Ø45)',
+        statement: 'Despleguem un tendit amb 2 trams de 20 m de mànega Ø70 mm (3,85 L/m) i 3 trams de 20 m de Ø45 mm (1,59 L/m). Quants litres d\'aigua hi caben aproximadament dins tot el tendit?',
+        hint: 'Cada tram de 20 m de Ø70 porta ~77 L i cada tram de 20 m de Ø45 porta ~31,8 L.',
+        options: ['~249 L', '~154 L', '~320 L', '~110 L'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Ø70 mm: 2 × 20 m × 3,85 L/m = 154 L.',
+          '2. Ø45 mm: 3 × 20 m × 1,59 L/m = 95,4 L.',
+          '3. Total ≈ 154 + 95,4 ≈ 249,4 L.'
+        ]
+      },
+      {
+        id: 'p-t13-12',
+        title: 'Capacitat d\'aigua en mànegues de Ø25 mm i Ø40 mm',
+        statement: 'Quina quantitat aproximada d\'aigua contenen 2 trams de 20 m de mànega Ø25 mm i 2 trams de 20 m de mànega Ø40 mm plens?',
+        hint: 'En 20 m: Ø25 mm ≈ 9,8 L (~10 L) i Ø40 mm ≈ 25,1 L (π·r²·L).',
+        options: ['~70 L', '~40 L', '~100 L', '~25 L'],
+        correctIndex: 0,
+        solutionSteps: [
+          '1. Ø25 mm: 40 m × 0,49 L/m = 19,6 L (≈ 20 L).',
+          '2. Ø40 mm: 40 m × 1,26 L/m = 50,3 L (≈ 50 L).',
+          '3. Total ≈ 20 + 50 = 70 L.'
+        ]
       }
     ]
   },

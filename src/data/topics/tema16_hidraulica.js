@@ -356,16 +356,17 @@ export const tema16Hidraulica = {
         {
           type: 'table',
           title: 'Taula Oficial de Mànegues d’Impulsió i Aspiració (MAN.GRAL.009 Cap. 6.1)',
-          subtitle: 'Diàmetres, longituds, pressions de treball, capacitat per metre i per tram de 20 m',
-          headers: ['Tipus i Diàmetre', 'Longitud del Tram', 'Pressió de Treball', 'Volum per Metre (L/m)', 'Volum Total per Tram (20 m) i Raccord'],
+          subtitle: 'Diàmetres, pressions de treball i capacitat exacta d’aigua per metre i per tram (15 m / 20 m / 25 m)',
+          headers: ['Tipus i Diàmetre', 'Pressió de Treball', 'Volum per Metre (L/m)', 'Volum per Tram (15 m / 20 m / 25 m)', 'Raccord / Ús'],
           rows: [
-            ['Semirígida Ø 25 mm (Pronto Socors)', '20 m (o 40 m en devanadora)', '40 bar (Alta Pressió)', '≈ 0,5 L/m (0,49 L/m)', '≈ 10 L per tram de 20 m · Raccord Barcelona'],
-            ['Flexible Ø 45 mm (Atac interior)', '20 m', '20 bar (Baixa Pressió)', '≈ 1,5 L/m (1,59 L/m)', '≈ 30 L (31,8 L) per tram de 20 m · Barcelona'],
-            ['Flexible Ø 70 mm (Alimentació / Monitor)', '20 m', '18 bar (Baixa Pressió)', '≈ 4,0 L/m (3,85 L/m)', '≈ 77 L (80 L) per tram de 20 m · Barcelona'],
-            ['Manegot rígid Ø 110 mm (Aspiració camió)', '2 m (o 1,6 / 2,5 m)', 'Depressió (Buit) / 15 bar', '≈ 9,5 L/m', '≈ 19 L per manegot de 2 m · Raccord STORZ'],
-            ['Manegot rígid Ø 80 mm (Motobomba)', '2 m (o 2,5 m)', 'Depressió (Buit)', '≈ 5,0 L/m', '≈ 10 L per manegot de 2 m · Raccord STORZ']
+            ['Semirígida Ø 25 mm (Pronto Socors)', '40 bar (Alta Pressió)', '0,49 L/m (≈ 0,5 L/m)', '15 m: 7,4 L · 20 m: 9,8 L (≈10 L) · 25 m: 12,3 L', 'Barcelona · Devanadora (20 o 40 m)'],
+            ['Mànega Ø 40 mm (referència càlcul)', '18–20 bar', '1,26 L/m (≈ 1,25 L/m)', '15 m: 18,9 L · 20 m: 25,1 L · 25 m: 31,4 L', 'Fórmula: V = π·(0,2 dm)²·L(dm)'],
+            ['Flexible Ø 45 mm (Atac interior)', '20 bar (Baixa Pressió)', '1,59 L/m (≈ 1,6 L/m)', '15 m: 23,9 L · 20 m: 31,8 L (≈32 L) · 25 m: 39,8 L', 'Barcelona · Atac interior'],
+            ['Flexible Ø 70 mm (Alimentació / Monitor)', '18 bar (Baixa Pressió)', '3,85 L/m (≈ 4,0 L/m)', '15 m: 57,7 L · 20 m: 77,0 L · 25 m: 96,2 L', 'Barcelona · Alimentació / Monitor'],
+            ['Manegot rígid Ø 80 mm (Motobomba)', 'Depressió (Buit)', '5,03 L/m (≈ 5,0 L/m)', '2 m: 10,1 L · 2,5 m: 12,6 L', 'STORZ · Aspiració motobomba'],
+            ['Manegot rígid Ø 110 mm (Aspiració camió)', 'Depressió / 15 bar', '9,50 L/m (≈ 9,5 L/m)', '2 m: 19,0 L · 2,5 m: 23,8 L', 'STORZ · Aspiració camió']
           ],
-          footnote: 'Memoritza la regla 10 – 30 – 77 L (o 0,5 – 1,5 – 4 L/m) i les pressions 40 – 20 – 18 bar per a Ø25, Ø45 i Ø70!'
+          footnote: 'Memoritza per 20 m: Ø25 = ~10 L | Ø40 = ~25 L | Ø45 = ~32 L | Ø70 = ~77 L! Fórmula ràpida: L/m ≈ 0,785 × D(dm)².'
         },
         {
           type: 'text',
