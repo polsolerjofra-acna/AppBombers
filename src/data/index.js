@@ -62,6 +62,14 @@ import { QUESTIONS_EXTRA_BLOC1 } from './questions_extra_bloc1';
 import { QUESTIONS_EXTRA_BLOC2 } from './questions_extra_bloc2';
 import { QUESTIONS_EXTRA_BLOC3 } from './questions_extra_bloc3';
 import { QUESTIONS_EXTRA_BLOC4 } from './questions_extra_bloc4';
+import { QUESTIONS_EXTRA_BATUCADA } from './questions_extra_batucada';
+import { QUESTIONS_EXTRA_VENTURAS } from './questions_extra_venturas';
+import { QUESTIONS_EXTRA_CARXOFA } from './questions_extra_carxofa';
+import { QUESTIONS_EXTRA_GAT } from './questions_extra_gat';
+import { QUESTIONS_EXTRA_GILITO } from './questions_extra_gilito';
+import { QUESTIONS_EXTRA_GOMORRA } from './questions_extra_gomorra';
+import { QUESTIONS_EXTRA_GTAVI } from './questions_extra_gtavi';
+import { QUESTIONS_EXTRA_MACGYVER } from './questions_extra_macgyver';
 
 const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_SIM_125,
@@ -91,7 +99,15 @@ const ALL_SIMULACRE_ACAD_QUESTIONS = [
   ...QUESTIONS_EXTRA_BLOC1,
   ...QUESTIONS_EXTRA_BLOC2,
   ...QUESTIONS_EXTRA_BLOC3,
-  ...QUESTIONS_EXTRA_BLOC4
+  ...QUESTIONS_EXTRA_BLOC4,
+  ...QUESTIONS_EXTRA_BATUCADA,
+  ...QUESTIONS_EXTRA_VENTURAS,
+  ...QUESTIONS_EXTRA_CARXOFA,
+  ...QUESTIONS_EXTRA_GAT,
+  ...QUESTIONS_EXTRA_GILITO,
+  ...QUESTIONS_EXTRA_GOMORRA,
+  ...QUESTIONS_EXTRA_GTAVI,
+  ...QUESTIONS_EXTRA_MACGYVER
 ].map((q, idx) => ({
   ...q,
   id: q.id || `sim-acad-${idx + 1}`
