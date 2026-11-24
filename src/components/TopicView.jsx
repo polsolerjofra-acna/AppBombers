@@ -596,6 +596,7 @@ export default function TopicView({
           onRecordOutcome={onRecordQuestionOutcome}
           focusedQuestionId={focusedQuestionId}
           savedQuizResult={progress.quizResults?.[topic.id]}
+          onOpenOfficialManual={onOpenOfficialManual}
         />
       ) : (
         <div ref={studyContentRef} className="scroll-mt-20 space-y-6">

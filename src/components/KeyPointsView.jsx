@@ -5,9 +5,11 @@ import {
   Filter,
   FileText,
   Download,
-  ExternalLink
+  ExternalLink,
+  BookOpen
 } from 'lucide-react';
 import { KEY_POINT_GROUPS } from '../data/keyPointsData';
+import { extractManualSearchQuery } from '../utils/manualSearchQuery';
 import { TOPICS } from '../data/index';
 import { TOPIC_OUTLINES } from '../data/topicOutlines';
 import {
@@ -24,7 +26,8 @@ import {
 export default function KeyPointsView({
   onSelectTopic,
   userMistakes = {},
-  onClearMistake = null
+  onClearMistake = null,
+  onOpenOfficialManual = null
 }) {
   const [viewMode, setViewMode] = useState('pdf-sheets'); // 'pdf-sheets' | 'posters-pdf' | 'confusions' | 'my-errors'
   const mistakesList = useMemo(
@@ -518,6 +521,25 @@ export default function KeyPointsView({
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                     {err.explanation}
                   </p>
+                )}
+                {onOpenOfficialManual && err.topicNumber && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onOpenOfficialManual(
+                        err.topicNumber,
+                        extractManualSearchQuery({
+                          options: [err.correctAnswer || ''],
+                          correctIndex: 0,
+                          explanation: err.explanation || ''
+                        })
+                      )
+                    }
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 px-2.5 py-1 text-[11px] font-bold text-amber-900 dark:text-amber-300 hover:border-amber-500"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Veure subratllat en groc al Manual Oficial (PDF) →</span>
+                  </button>
                 )}
               </div>
             ))

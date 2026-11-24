@@ -8,8 +8,10 @@ import {
   Filter,
   ArrowRight,
   Sparkles,
-  Check
+  Check,
+  BookOpen
 } from 'lucide-react';
+import { extractManualSearchQuery } from '../../utils/manualSearchQuery';
 import WhiteboardCanvas from '../WhiteboardCanvas';
 
 const DIFFICULTY_STYLES = {
@@ -46,7 +48,8 @@ export default function QuizView({
   onSaveScore,
   onRecordOutcome = null,
   focusedQuestionId = null,
-  savedQuizResult
+  savedQuizResult,
+  onOpenOfficialManual = null
 }) {
   const [shuffleSeed, setShuffleSeed] = useState(0);
   const shuffledSessionRef = useRef({ key: '', list: [] });
@@ -418,6 +421,16 @@ export default function QuizView({
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                     {q.explanation}
                   </p>
+                  {onOpenOfficialManual && (
+                    <button
+                      type="button"
+                      onClick={() => onOpenOfficialManual(topic.number, extractManualSearchQuery(q))}
+                      className="mt-2.5 inline-flex items-center gap-1.5 rounded-lg bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 px-2.5 py-1 text-[11px] font-bold text-amber-900 dark:text-amber-300 hover:border-amber-500"
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>Veure subratllat en groc al Manual Oficial (PDF) →</span>
+                    </button>
+                  )}
                 </div>
               )}
             </div>

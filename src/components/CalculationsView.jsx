@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { CALCULATION_SECTIONS } from '../data/calculationsData';
 import WhiteboardCanvas from './WhiteboardCanvas';
+import { extractManualSearchQuery } from '../utils/manualSearchQuery';
 
 const CALC_FAILED_KEY = 'bombers_calc_failed_v1';
 const CALC_FRIDAY_SESSION_KEY = 'bombers_calc_friday_session_v1';
@@ -111,7 +112,8 @@ function restoreFridaySession(failedIds) {
 export default function CalculationsView({
   initialMode = 'all',
   fridayHistory = [],
-  onSaveFridaySession
+  onSaveFridaySession,
+  onOpenOfficialManual = null
 }) {
   const [failedCalcIds, setFailedCalcIds] = useState(() => loadJson(CALC_FAILED_KEY, []));
   const [initialFriday] = useState(() => restoreFridaySession(loadJson(CALC_FAILED_KEY, [])));
@@ -412,6 +414,25 @@ export default function CalculationsView({
                   <strong>Truc / Aproximació ràpida:</strong> {prob.quickTrick || QUICK_TRICKS_BY_ID[prob.id]}
                 </span>
               </div>
+            )}
+            {onOpenOfficialManual && (prob.topicNumber || activeSection?.topicNumber) && (
+              <button
+                type="button"
+                onClick={() =>
+                  onOpenOfficialManual(
+                    prob.topicNumber || activeSection.topicNumber,
+                    extractManualSearchQuery({
+                      options: prob.options,
+                      correctIndex: prob.correctIndex,
+                      explanation: `${prob.title || ''} ${(prob.solutionSteps || []).join(' ')}`
+                    })
+                  )
+                }
+                className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 px-2.5 py-1 text-[11px] font-bold text-amber-900 dark:text-amber-300 hover:border-amber-500"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Veure subratllat en groc al Manual Oficial (PDF) →</span>
+              </button>
             )}
           </div>
         )}

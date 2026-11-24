@@ -967,6 +967,11 @@ export default function App() {
               initialMode={calcInitialMode}
               fridayHistory={progress.fridayCalcHistory || []}
               onSaveFridaySession={saveFridayCalcSession}
+              onOpenOfficialManual={(topicNum, searchQuery = '') => {
+                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
+                setActiveView('manuals');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
           ) : activeView === 'calctricks' ? (
             <CalcTricksView
@@ -980,6 +985,11 @@ export default function App() {
               onSelectTopic={(id) => handleSelectTopic(id, null)}
               userMistakes={progress.quizResults?.__mistakes || {}}
               onClearMistake={clearUserMistake}
+              onOpenOfficialManual={(topicNum, searchQuery = '') => {
+                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
+                setActiveView('manuals');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
           ) : activeView === 'mnemonics' ? (
             <MnemonicsView
