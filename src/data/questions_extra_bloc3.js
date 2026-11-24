@@ -1795,15 +1795,15 @@ export const QUESTIONS_EXTRA_BLOC3 = [
     "id": "ex-b3-t28-4",
     "topic": 28,
     "difficulty": "Mitjà",
-    "question": "Segons les franges d'edat ERC del manual MAN.SANI.000, quina edat comprèn la categoria de 'Lactant' i en quina artèria i amb quina tècnica se li valora el pols i es fan les compressions en RCP?",
+    "question": "Segons la classificació d'edat i la tècnica de RCP pediàtrica actualitzades del manual MAN.SANI.000, quina edat comprèn la categoria de 'Lactant' i com s'hi fan les compressions toràciques?",
     "options": [
-      "D'1 mes a 1 any (< 1 any) | Pols a l'artèria braquial (cara interna del braç) | Compressions amb 2 dits (o 2 polzes abraçant el tòrax).",
-      "De 0 a 28 dies | Pols radial | Compressions amb una mà.",
-      "D'1 any fins a la pubertat | Pols carotidi | Compressions amb dues mans.",
-      "Fins als 8 anys | Pols femoral | Compressions amb el taló d'una mà."
+      "Fins a 1 any | Sobre la meitat inferior de l'estèrnum, utilitzant preferentment la tècnica d'encerclament del tòrax amb dos polzes.",
+      "De 0 a 28 dies | Compressions al centre de l'abdomen amb una mà.",
+      "D'1 a 12 anys | Compressions al terç superior de l'estèrnum amb dues mans.",
+      "De 13 a 18 anys | Compressions amb un sol dit sobre el xifoides."
     ],
     "correctIndex": 0,
-    "explanation": "En ERC: Nounat (0–28 dies), Lactant (1 mes a < 1 any), Nen (1 any a pubertat), Adult (des de pubertat). En lactants, el pols es busca a l'artèria braquial i les compressions es fan amb 2 dits o 2 polzes abraçant el tòrax."
+    "explanation": "Classificació actualitzada (Punt 2.1 d): Nadó o nounat (immediatament després del part), Lactant (fins a 1 any), Nen/a (d'1 a 12 anys), Adolescent (13 a 18 anys), Adult/a (≥ 18 anys o considerada adulta pel reanimador). En lactants: compressions sobre la meitat inferior de l'estèrnum preferentment amb encerclament del tòrax amb dos polzes."
   },
   {
     "id": "ex-b3-t28-5",

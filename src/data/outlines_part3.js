@@ -1176,7 +1176,7 @@ export const OUTLINES_PART3 = {
               label: 'Definicions Clíniques i Edats ERC',
               children: [
                 'Emergència (risc vital imminent) vs. Urgència · Signe (objectiu/mesurable) vs. Símptoma (subjectiu)',
-                'Edats RCP: Nounat (≤ 28 d), Lactant (1 mes a < 1 any, pols braquial), Nen (1 any a pubertat), Adult (≥ pubertat)'
+                'Edats RCP (Correcció 2026): Nadó/nounat (immediatament després del part), Lactant (fins a 1 any, pols braquial i encerclament amb 2 polzes), Nen/a (1 a 12 anys), Adolescent (13 a 18 anys), Adult/a (≥ 18 anys o considerat adult pel reanimador)'
               ]
             }
           ]
