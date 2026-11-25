@@ -155,16 +155,43 @@ export const tema10IncendisForestals = {
     },
     {
       pageNumber: 4,
-      shortLabel: 'Pàg. 4 · Cap. 4 Eines i Fases',
-      title: '4. Maniobres Forestals: Cadena d’Eines Manuals, Foc Tècnic, 3 Etapes vs. 4 Fases INFOCAT',
-      subtitle: 'Ordre d’eines (Motxilla → Batefocs → Pulaski → Pala), estesa de mànegues i estats oficials del foc.',
+      shortLabel: 'Pàg. 4 · Cap. 4 Maniobres i Fases',
+      title: '4. Maniobres d’Extinció (Directes vs. Indirectes), Parts de l’Incendi i Fases INFOCAT',
+      subtitle: 'Classificació oficial MAN.INVE.000: quines maniobres són directes o indirectes i on s’apliquen (Cap, Flancs, Cua, Focus secundaris).',
       blocks: [
         {
           type: 'text',
-          heading: '4.1.2. Atac Directe Manual vs. Atac Indirecte (Foc Tècnic)',
+          heading: '4.1 i 4.2. Atac Directe vs. Atac Indirecte (o Paral·lel)',
           paragraphs: [
-            "L'atac directe amb eines manuals només és viable quan la llargada de flama és inferior a 1 metre (Lf < 1 m) i la velocitat d'avanç és inferior a 1 km/h, treballant en fila amb separació mínima de 3 m entre operadors.",
-            "Quan Lf > 5 m o l'atac directe no és segur, s'aplica atac indirecte a distància del front (línies de defensa o foc tècnic amb cremes d'eixamplament i contrafocs)."
+            "Les maniobres d'extinció es divideixen segons la seva posició respecte al front de flames: en l'ATAC DIRECTE s'actua directament sobre la línia de foc / zona de combustió activa (viable quan la intensitat i la seguretat ho permeten, p. ex. eines manuals amb Lf < 1 m i v < 1 km/h, separació mínima de 3 m entre operadors).",
+            "En l'ATAC INDIRECTE (o paral·lel) es treballa a distància del front de flames, actuant sobre el combustible no cremat per crear franges de contenció i seguretat — imprescindible quan la intensitat és alta o l'atac directe no és segur."
+          ]
+        },
+        {
+          type: 'table',
+          heading: 'Classificació Oficial de Maniobres (MAN.INVE.000 Cap. 4)',
+          headers: ['Tipus', 'Maniobra / Recurs', 'Com actua i aplicació clau'],
+          rows: [
+            ['Atac Directe', '4.1.1. Línia d’aigua (estesa de mànegues)', "Llançament d'aigua a alta pressió directe sobre flames baixes/superfície; rebaixa intensitat abans d'eines manuals i és clau en el refredament i remat."],
+            ['Atac Directe', '4.1.2. Eines manuals i línies a mà', "Cadena Motxilla → Batefocs → Pulaski → Pala (Lf < 1 m, v < 1 km/h). Inclou obertura de caixa (tala de matoll/part d'arbrat), condicionament d'espais oberts i línia de defensa fins a sòl mineral."],
+            ['Atac Directe', '4.1.3. Mitjans aeris', "Helicòpters (precisió en focus o punts crítics) i avions (grans volums). Tenen efecte temporal: cal consolidació immediata per terra."],
+            ['Atac Directe', '4.3. Helitransport de personal', "Inserció ràpida d'equips reduïts i especialitzats en atac inicial directe (llamps o zones de difícil accés)."],
+            ['Atac Indirecte / Paral·lel', '4.2.1. Maquinària pesada', "Bulldozers i tractors forestals per obrir línies de defensa amples i contínues fins a sòl mineral a distància; molt ràpids en grans superfícies i base d'ancoratge per a eines o foc tècnic."],
+            ['Atac Indirecte / Paral·lel', '4.2.2. Foc tècnic · Definició de perímetre', "Simplificar perímetres sinuosos cremant el combustible entre el front actiu i ancoratges sòlids (naturals o construïts) per obtenir una línia més curta, recta i defensable."],
+            ['Atac Indirecte / Paral·lel', '4.2.2. Foc tècnic · Crema d’eixamplament', "Eliminar combustible amb foc controlat des d'una línia d'ancoratge cap al front (aprofitant l'efecte succió) per confinar l'incendi."],
+            ['Atac Indirecte / Paral·lel', '4.2.2. Foc tècnic · Contrafoc', "Encendre un nou front que avança EN CONTRA del front principal perquè competeixin pel combustible i les columnes es neutralitzin. Alta intensitat, sacrifica terreny i finestres d'actuació molt curtes (només personal format i validat pel Cap d'Intervenció)."],
+            ['Atac Indirecte / Paral·lel', '4.2.3. Retardants i escumògens', "Retardants (fosfats d'amoni, sobretot aeris): persisteixen un cop evaporada l'aigua per reforçar línies de defensa. Escumògens: efecte a curt termini, aïllen oxigen, milloren penetració i redueixen consum d'aigua."]
+          ]
+        },
+        {
+          type: 'table',
+          heading: 'On S’aplica Cada Maniobra Segons la Part de l’Incendi (Cap. 2.1 i 4)',
+          headers: ['Part de l’incendi', 'Comportament', 'Maniobra recomanada'],
+          rows: [
+            ['Cap (Front)', 'Part més ràpida i intensa (a favor de vent/pendent).', "L'atac directe frontal és molt arriscat i sovint desaconsellat. Control amb ATAC INDIRECTE (maquinària, foc tècnic, retardants), confinament o atac des de flancs segurs."],
+            ['Flancs (Dret / Esquerre)', 'Velocitat i intensitat moderades (mirant de cua a cap).', "ZONA PRINCIPAL D'ATAC DIRECTE (línies d'aigua, eines manuals) o maniobres combinades per tancar cap al cap."],
+            ['Cua (Ancoratge)', 'Part menys activa (propaga contra vent i pendent).', "ÚNIC lloc on, en incendis de baixa intensitat, es pot plantejar atac directe segur des de l'inici; serveix de PUNT D'ANCORATGE."],
+            ['Focus secundaris', 'Salt d’espurnes fora del perímetre principal.', "CONTROL PRIORITARI (atac directe ràpid: mitjans aeris, helitransport, línia d'aigua/eines): poden saltar discontinuïtats, generar nous caps i atrapar unitats."]
           ]
         },
         {
@@ -307,6 +334,16 @@ export const tema10IncendisForestals = {
           trick:
             "1) SECTORS FORESTALS: Sector 0 = Cua; mirant de cua a cap, ESQUERRA = Imparells (1, 3, 5) i DRETA = Parells (2, 4, 6).\n2) EINES MANUALS (Lf < 1 m, v < 1 km/h): 1r Motxilla → 2n Batefocs → 3r Pulaski → 4t Pala.\n3) 3 ETAPES vs. 4 FASES: Etapes (equips) = Atac, Remat, Rereguarda; Fases (INFOCAT) = Actiu, Estabilitzat, Controlat, Extingit.\n4) ESTABILITZAT vs. CONTROLAT: Estabilitzat = no avança lliurement però perímetre incomplet; Controlat = perímetre 100% tancat.\n5) LACES: Radi de Zona Segura R ≥ 4 × Lf (sobreviure sense cabina ni autoprotecció).",
           example: 'Si una flama de capçades fa 15 metres de llargada (Lf = 15 m), el radi mínim de la Zona Segura fins al combustible és 4 × 15 = 60 metres.'
+        },
+        {
+          type: 'table',
+          heading: '📌 Síntesi Ràpida: Directe vs. Indirecte i Zones d’Aplicació',
+          headers: ['Concepte', 'Maniobres Directes', 'Maniobres Indirectes / Paral·leles'],
+          rows: [
+            ['On actuen', 'Directament sobre la flama / vora activa.', 'A distància del front, sobre combustible sense cremar.'],
+            ['Quines són', "Línia d'aigua (alta pressió), eines manuals (Motxilla-Batefocs-Pulaski-Pala, obertura de caixa, espais oberts, línia defensa), mitjans aeris, helitransport.", "Maquinària pesada (bulldozers), foc tècnic (definició perímetre, crema eixamplament, contrafoc), retardants (persistents) i escumògens."],
+            ['Parts de l’incendi', 'Cua (ancoratge segur en baixa intensitat), Flancs (atac directe o combinat) i Focus secundaris (prioritaris).', "Cap / Front d'alta intensitat (atac directe molt arriscat; confinament, línies indirectes o des de flancs segurs)."]
+          ]
         }
       ]
     }
