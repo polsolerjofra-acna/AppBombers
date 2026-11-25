@@ -15,12 +15,12 @@ export const tema4Comunicacions = {
       'Cap. 3: Ordre d’inici de trucada ("RECEPTOR de EMISSOR"), regla dels 30 segons d’espera i escala de qualitat del senyal (1 a 5).',
       'Cap. 4: Els 4 tipus de canals en gran emergència (Trànsit, Servei, Sector/Tàctic i Directe DMO).',
       'Cap. 5: Xarxa RESCAT (57.000 usuaris, 37.000 terminals, 317 TBS, 98,5% cobertura), TMO vs. DMO, tecla 0 (5 s → GPS), SDS (120 caràcters) i Pont de ràdio (Gateway) vs. Mode Repetidor.',
-      'Annexos 1 i 2: Marcadors numèrics i tots els Codis ZULU (Z-0 a Z-11).'
+      'Annexos 1 i 2: Marcadors estàndard de comunicació i Codis ZULU oficials (ZULU PAPA, ZULU MIKE, ZULU 5, ZULU 55, ZULU 6, ZULU DELTA, ZULU ALFA).'
     ],
     traps: [
       'Invertir l’ordre de crida: a Bombers de la Generalitat SEMPRE es diu primer a qui crides i després qui ets ("RECEPTOR de EMISSOR").',
       'Confondre Pont de ràdio / Gateway (enllaça DMO amb la xarxa troncal TMO) amb Mode Repetidor (amplia cobertura DMO → DMO sense connectar a TMO).',
-      'Confondre Z-2 (Sortida parc) amb Z-4 (Arribada al lloc), Z-5 (Retorn disponible) i Z-6 (Retorn NO disponible).'
+      'Confondre ZULU 5 (ferit greu) amb ZULU 55 (bomber ferit greu), o ZULU DELTA (situació delictiva) amb ZULU ALFA (intent d’autòlisi).'
     ]
   },
   pages: [
@@ -156,29 +156,37 @@ export const tema4Comunicacions = {
     },
     {
       pageNumber: 4,
-      shortLabel: 'Pàg. 4 · Annexos 1 i 2 (ZULU)',
-      title: 'Annexos 1 i 2: Marcadors Operatius i Taula Completa dels Codis ZULU',
-      subtitle: 'Tots els estats codificats ZULU (Z-0 a Z-11) d’enviament SDS i marcadors d’emissora.',
+      shortLabel: 'Pàg. 4 · Annexos 1 i 2 (Codis ZULU)',
+      title: 'Annexos 1 i 2: Codis ZULU Oficials i Marcadors Estàndard de Comunicació',
+      subtitle: 'Codificació oficial de missatges sensibles i actuants (MAN.COMU.000 Annex 2) i marcadors de ràdio (Annex 1).',
       blocks: [
         {
           type: 'table',
-          title: 'Annex 2. Taula Oficial Completa dels Codis ZULU (Memorització Literal Obligatòria)',
-          subtitle: 'Codis d’estat que els vehicles envien a la Sala de Control per gestionar la mobilització al SIG',
-          headers: ['Codi ZULU', 'Significat Oficial (MAN.COMU.000 Annex 2)', 'Explicació Operativa'],
+          title: 'Annex 2. Codis ZULU Oficials de Bombers (MAN.COMU.000 p. 28/28)',
+          subtitle: 'Codis per abreujar i protegir informació sensible per ràdio',
+          headers: ['Codi ZULU', 'Descripció Oficial (MAN.COMU.000)', 'Exemple del Manual'],
           rows: [
-            ['Z-0', 'Rebut / Assabentat del servei', 'Confirmació que la dotació ha rebut l’avís de sortida.'],
-            ['Z-1', 'Disponible al parc', 'Vehicle operatiu i disponible dins del parc de bombers.'],
-            ['Z-2', 'Sortida cap al servei', 'El vehicle surt del parc (o del punt on era) en direcció a l’emergència.'],
-            ['Z-3', 'Urgència ràdio / Demana parlar amb Sala de Control', 'Petició prioritària de contacte de veu amb l’operador de la Sala de Control.'],
-            ['Z-4', 'Arribada al lloc del servei ("En lloc")', 'El vehicle acaba d’arribar a l’escenari del sinistre.'],
-            ['Z-5', 'Retorn al parc DISPONIBLE', 'Finalitza l’actuació al lloc i torna cap al parc podent ser desviat a un altre servei.'],
-            ['Z-6', 'Retorn al parc NO DISPONIBLE', 'Torna al parc però NO pot anar a un altre servei (ex: falta d’aigua/ERA buits, avaria o contaminació).'],
-            ['Z-7', 'Arribada al parc', 'El vehicle ja ha entrat al parc de bombers.'],
-            ['Z-8', 'Fora de servei (Inoperatiu)', 'Vehicle temporalment inoperatiu (manteniment, repostar, pràctiques).'],
-            ['Z-9', 'Sortida en comissió de servei (No urgent)', 'Desplaçament no operatiu (ex: portar material, revisió d’hidrants, taller).'],
-            ['Z-10 / Z-11', 'Estats auxiliars de localització / finalització', 'Confirmació de tancament o gestió interna de flota al SIG.']
+            ['ZULU PAPA', 'Identifica serveis policials', '«Control per 10.40, ZULÚ PAPA a lloc.»'],
+            ['ZULU MIKE', 'Identifica serveis sanitaris', '«Control per 10.40, demanem presència ZULÚ MIKE.»'],
+            ['ZULU 5', 'Identifica ferit greu', '«Control per 10.40, confirmo que la primera víctima és ZULÚ 5.»'],
+            ['ZULU 55', 'Identifica bomber ferit greu', '«Silenci ràdio, silenci ràdio, Control aquí Echo 0, tenim un ZULÚ 55.»'],
+            ['ZULU 6', 'Identifica persona èxitus', '«Control per 10.40, informo que la persona precipitada és ZULÚ 6.»'],
+            ['ZULU DELTA', 'Identifica que hi ha situació delictiva', '«Control per 10.40, tenim un ZULÚ DELTA. Demano presència ZULÚ PAPA.»'],
+            ['ZULU ALFA', 'Identifica intent d’autòlisi', '«Echo 0 per 10.40, hem trobat a la persona, sembla un ZULÚ ALFA.»']
           ],
-          footnote: 'Els 5 codis ZULU que cauen al 99% dels exàmens són: Z-2 (Sortida al servei), Z-4 (Arribada a lloc), Z-5 (Retorn disponible), Z-6 (Retorn NO disponible) i Z-7 (Arribada al parc).'
+          footnote: 'Truc: P = Policia (Papa) · M = Metge/Sanitari (Mike) · D = Delictiva (Delta) · A = Autòlisi (Alfa) · 5 = Ferit greu · 55 = Bomber ferit greu · 6 = Èxitus.'
+        },
+        {
+          type: 'table',
+          title: 'Annex 1 (Selecció Clau) + Estats de Flota Z-0 a Z-9',
+          subtitle: 'Marcadors estàndard del manual i estats operatius de mobilització de vehicles',
+          headers: ['Concepte / Codi', 'Significat i Ús'],
+          rows: [
+            ['Marcadors d’obertura i tancament', 'PER/DE/AQUÍ · DEMANANT · ENDAVANT · REBUT · CANVI · CANVI I TALLO · ESPERI · REPETEIXI'],
+            ['Marcadors d’alerta i seguretat', 'PRIORITARI · SILENCI RÀDIO · CODI VERMELL (aspecte crític de seguretat) · A TOTA LA MALLA'],
+            ['Marcadors operatius', 'SORTIDA · EN TRAJECTE · ARRIBADA A LLOC · CONFIRMADA · INFORME DE PROGRÉS / SITUACIÓ · FINALITZAT · RECTIFICO · LLETREJO'],
+            ['Estats de flota SDS (Z-0 a Z-9)', 'Z-0 Rebut · Z-1 Disponible parc · Z-2 Sortida · Z-3 Urgència ràdio · Z-4 En lloc · Z-5 Retorn disponible · Z-6 Retorn NO disponible · Z-7 Al parc · Z-8 Fora servei · Z-9 Comissió servei']
+          ]
         }
       ]
     },
@@ -225,7 +233,7 @@ export const tema4Comunicacions = {
           title: 'Les 4 Regles d’Or de Comunicacions per a l’Examen',
           acronym: 'RECEPTOR DE EMISSOR | TMO vs DMO | GATEWAY vs REPETIDOR | Z-5 vs Z-6',
           trick:
-            "• FÓRMULA D'INICI: Sempre «[RECEPTOR] de [EMISSOR]» (ex: «Control Girona de BUP Girona»).\n• TMO vs. DMO: TMO usa les 317 antenes (TBS) de RESCAT; DMO és directe terminal a terminal sense xarxa.\n• GATEWAY vs. REPETIDOR: Gateway enllaça DMO ↔ TMO (pel camió); Repetidor només amplia DMO ↔ DMO.\n• RETORN Z-5 vs. Z-6: Z-5 = torna disponible | Z-6 = torna NO disponible (sense aigua, ERA buit o avaria).",
+            "• FÓRMULA D'INICI: Sempre «[RECEPTOR] de [EMISSOR]» (ex: «Control Girona de BUP Girona»).\n• TMO vs. DMO: TMO usa les 317 antenes (TBS) de RESCAT; DMO és directe terminal a terminal sense xarxa.\n• GATEWAY vs. REPETIDOR: Gateway enllaça DMO ↔ TMO (pel camió); Repetidor només amplia DMO ↔ DMO.\n• CODIS ZULU ANNEX 2: ZULU PAPA (Policia) · ZULU MIKE (Sanitaris) · ZULU 5 (Ferit greu) · ZULU 55 (Bomber ferit greu) · ZULU 6 (Èxitus) · ZULU DELTA (Delictiva) · ZULU ALFA (Autòlisi).",
           example: 'Un binomi entra a un pàrquing soterrani (-3) sense cobertura de xarxa RESCAT: ha de passar a Canal Directe (DMO) i activar el Pont (Gateway) del camió si vol enllaçar amb TMO.'
         }
       ]
