@@ -99,9 +99,80 @@ export const tema4IgualtatAssetjament = {
     },
     {
       pageNumber: 3,
-      shortLabel: 'Pàg. 3 · Resum I (Lleis 19/20 i 17/15)',
-      title: '3. Resum Imprescindible (I): Lleis 19/2020 i 17/2015',
-      subtitle: 'Xifres, articles i límits constitucionals',
+      shortLabel: 'Pàg. 3 · Conceptes i Discriminació',
+      title: '3. Glossari de Conceptes Clau: Igualtat, Paritat i Tipus de Discriminació',
+      subtitle: 'Definicions oficials per no confondre termes semblants a l\'examen (Llei 19/2020 i Llei 17/2015)',
+      isSummary: false,
+      blocks: [
+        {
+          type: 'table',
+          title: '3.1. Igualtat, Equitat, Paritat i Acció Positiva (No confondre!)',
+          subtitle: 'Conceptes bàsics de la Llei 19/2020 i la Llei 17/2015',
+          headers: ['Concepte', 'Definició oficial i matís clau'],
+          rows: [
+            ['Igualtat de tracte i no-discriminació (Llei 19/2020)', 'Absència de tota discriminació, directa o indirecta, per qualsevol motiu (llista oberta a–l: sexe, origen, edat, religió, orientació sexual, discapacitat, etc.).'],
+            ['Igualtat efectiva / d’oportunitats (Llei 17/2015)', 'Igualtat real i efectiva de dones i homes en tots els àmbits, eliminant obstacles perquè tinguin les mateixes condicions de partida i resultats.'],
+            ['Equitat de gènere', 'Tractar dones i homes segons les seves necessitats específiques (tracte diferenciat quan cal per compensar desigualtats històriques i arribar a la igualtat real).'],
+            ['Representació paritària / Paritat (Llei 17/2015, art. 2)', 'Presència equilibrada de dones i homes en òrgans, llistes i tribunals: cap dels dos sexes no supera el 60% ni queda per sota del 40%, tendint al 50%.'],
+            ['Accions positives (Llei 17/2015)', 'Mesures específiques i temporals a favor d’un sexe per corregir situacions patents de desigualtat de fet (p. ex. reserva de places). No són discriminatòries mentre duri la desigualtat.'],
+            ['Transversalitat (Mainstreaming de gènere)', 'Integrar la perspectiva de gènere en totes les polítiques, normes, pressupostos i actuacions públiques des del seu disseny.']
+          ],
+          footnote: 'Trampa clàssica: Paritat NO és sempre 50%-50% exacte, sinó la forquilla 60%–40% tendint al 50%.'
+        },
+        {
+          type: 'table',
+          title: '3.2. Tots els Tipus de Discriminació (Directa, Indirecta, Múltiple, Segon Ordre...)',
+          subtitle: 'Definicions exactes de la Llei 19/2020 (art. 4) i la Llei 17/2015 (art. 2)',
+          headers: ['Tipus de discriminació', 'Definició i exemple pràctic'],
+          rows: [
+            ['Discriminació directa', 'Tractar una persona de manera menys favorable que una altra en situació anàloga o comparable per raó d’un motiu prohibit (sexe, edat, origen...). A la 17/2015 inclou expressament tot tracte desfavorable per embaràs o maternitat.'],
+            ['Discriminació indirecta', 'Una disposició, criteri o pràctica aparentment neutres (i "interpretació" a la 17/2015 i Protocol!) posen persones d’un col·lectiu en desavantatge particular, llevat que hi hagi justificació objectiva legítima i mitjans proporcionats.'],
+            ['Discriminació per associació', 'Discriminar una persona per la seva relació o vinculació amb una altra persona o grup que té una característica protegida (p. ex. perjudicar un bomber per tenir un familiar amb discapacitat).'],
+            ['Discriminació per error', 'Discriminar algú per una apreciació errònia sobre les seves característiques (atribuir-li un motiu protegit que en realitat no té).'],
+            ['Discriminació múltiple (i interseccional)', 'Concorren o interactuen dos o més motius de discriminació sobre la mateixa persona alhora (p. ex. dona + edat + origen). Recorda: "una DONA" només a la 17/2015; "una PERSONA" a la 19/2020 i al Protocol!'],
+            ['Discriminació de segon ordre (i represàlia)', 'Patir un tracte advers o conseqüències negatives per haver donat suport a una víctima de discriminació o assetjament, o per haver presentat una queixa, denúncia o testimoni en defensa seva.'],
+            ['Ordre / Inducció a discriminar', 'Donar instruccions o induir altres persones a cometre una discriminació. Es considera discriminació en si mateixa encara que qui dóna l’ordre no l’executi directament.']
+          ]
+        }
+      ]
+    },
+    {
+      pageNumber: 4,
+      shortLabel: 'Pàg. 4 · Tipus d\'Assetjament i Jerarquia',
+      title: '4. Assetjament: Sexual, per Raó de Sexe, per Gènere i Jeràrquic',
+      subtitle: 'Diferències clau entre els tipus d’assetjament i la posició jeràrquica al Protocol 2023',
+      isSummary: false,
+      blocks: [
+        {
+          type: 'table',
+          title: '4.1. Tipus d’Assetjament Segons el Motiu (Protocol 2023, Llei 17/2015 i 19/2020)',
+          subtitle: 'Distingeix el contingut sexual, el sexe, el gènere i la discriminació general',
+          headers: ['Tipus d’assetjament', 'Nucli definitori i diferència d’examen'],
+          rows: [
+            ['Assetjament sexual (Protocol ap. 4)', 'Comportament verbal, no verbal o físic D’ÍNDOLE SEXUAL no desitjat que atempta contra la dignitat i crea un entorn intimidatori, hostil, degradant, humiliant, ofensiu o MOLEST.'],
+            ['Assetjament per raó de sexe (Llei 17/2015 art. 2.o)', 'Comportament no desitjat relacionat amb el SEXE d’una persona (embaràs, maternitat, paternitat, rols), SENSE contingut sexual, que crea un entorn intimidatori, hostil, degradant, humiliant, ofensiu o MOLEST.'],
+            ['Assetjament per orientació sexual, identitat o expressió de gènere (Protocol 2023)', 'Comportament no desitjat basat en l’orientació sexual, la identitat sentida o l’expressió de gènere (LGTBI-fòbia) que atempta contra la dignitat i crea un entorn intimidatori, hostil, degradant, humiliant, ofensiu o molest.'],
+            ['Assetjament discriminatori (Llei 19/2020 art. 4.e)', 'Conducta no desitjada per qualsevol motiu de discriminació (edat, raça, religió, llengua...) que atempta contra la dignitat i crea un entorn intimidatori, hostil, degradant, humiliant, ofensiu o VEXATORI.']
+          ]
+        },
+        {
+          type: 'table',
+          title: '4.2. Assetjament Segons la Posició Jeràrquica (Protocol 2023)',
+          subtitle: 'Classificació operativa segons qui exerceix la conducta',
+          headers: ['Modalitat jeràrquica', 'Descripció'],
+          rows: [
+            ['Descendent / Jeràrquic (i Xantatge o Quid pro quo)', 'D’un superior jeràrquic cap a una persona subordinada. En xantatge sexual ("quid pro quo"), es condiciona un dret, ascens, torn o condició laboral a l’acceptació d’un favor sexual.'],
+            ['Horitzontal (o Ambiental)', 'Entre companys/es del mateix rang jeràrquic (sense relació de superioritat), creant un ambient de treball hostil, ofensiu, humiliant o intimidatori.'],
+            ['Ascendent', 'D’una o més persones subordinades cap a una persona amb càrrec o comandament superior.']
+          ]
+        }
+      ]
+    },
+    {
+      pageNumber: 5,
+      shortLabel: 'Pàg. 5 · Resum I (Lleis i Glossari)',
+      title: '5. Resum Imprescindible (I): Lleis 19/2020, 17/2015 i Glossari Clau',
+      subtitle: 'Xifres, articles, definicions i límits constitucionals',
       isSummary: true,
       blocks: [
         {
@@ -118,14 +189,20 @@ export const tema4IgualtatAssetjament = {
             ['STC 159/2016', 'Anul·la arts. 33, 40, 44 i parts dels 36, 39 i 41 de la Llei 17/2015']
           ],
           footnote: 'Llei 17/2015 art. 16: paritat obligatòria als tribunals de selecció; art. 17.2: auditories de gènere.'
+        },
+        {
+          type: 'mnemonic',
+          title: 'Regla Mnemotècnica · Discriminacions que es confonen',
+          trick: '• DIRECTA = tracte pitjor directe · INDIRECTA = norma neutra que perjudica ("interpretació" a la 17/2015 i Protocol).\n• ASSOCIACIÓ = per relació amb algú protegit · PER ERROR = per creure erròniament que ho és.\n• MÚLTIPLE = 2+ motius ("dona" a la 17/2015; "persona" a la 19/2020 i Protocol).\n• SEGON ORDRE = represàlia contra qui ajuda o denuncia a favor d’una víctima.',
+          example: 'Si un comandament aparta un bomber perquè va declarar com a testimoni a favor d’una companya assetjada, és discriminació de SEGON ORDRE.'
         }
       ]
     },
     {
-      pageNumber: 4,
-      shortLabel: 'Pàg. 4 · Resum II (Protocol i Trampes)',
-      title: '4. Resum Imprescindible (II): Protocol 2023 i Regles Mnemotècniques',
-      subtitle: 'Terminis 5-15-10 i diferències verbals',
+      pageNumber: 6,
+      shortLabel: 'Pàg. 6 · Resum II (Protocol i Trampes)',
+      title: '6. Resum Imprescindible (II): Protocol 2023, Assetjaments i Regles Mnemotècniques',
+      subtitle: 'Terminis 5-15-10, jerarquia i diferències verbals',
       isSummary: true,
       blocks: [
         {
