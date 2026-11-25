@@ -109,20 +109,6 @@ export const tema19Instalacions = {
         },
         {
           type: 'table',
-          title: 'Escala de Pressions de Distribució de Gas Natural (MAN.GRAL.007) i Claus de Pas',
-          subtitle: 'Classificació reglamentària de pressions i accessibilitat de les vàlvules de tall',
-          headers: ['Escaló / Grau', 'Rang de Pressió / Accessibilitat', 'Funció i Observacions'],
-          rows: [
-            ['APB (Alta Pressió B)', '> 16 bar fins a 45 bar', 'Xarxa primària de transport i grans gasoductes'],
-            ['APA (Alta Pressió A)', '> 4 bar fins a 16 bar', 'Xarxa de distribució d’alta pressió fins a estacions reguladores'],
-            ['MPB (Mitjana Pressió B)', '> 0,4 bar fins a 4 bar', 'Xarxa de distribució urbana cap a armaris reguladors'],
-            ['MPA (Mitjana Pressió A)', '> 0,05 bar fins a 0,4 bar', 'Distribució cap a edificis abans del regulador de finca'],
-            ['BP (Baixa Pressió)', '≤ 0,05 bar (20 mbar en ús domèstic)', 'Xarxa interior d’habitatges i aparells de consum'],
-            ['Claus de Pas: Grau 1 · 2 · 3', 'Grau 1: directa sense clau · Grau 2: amb clau normalitzada · Grau 3: cal escala o accés a zona privada', 'Determina el temps i els mitjans necessaris per tallar el subministrament']
-          ]
-        },
-        {
-          type: 'table',
           title: '2.2.7–2.3. Dispositius del Quadre Interior i Proteccions (MAN.GRAL.007)',
           subtitle: 'Funció tècnica i valors reglamentaris',
           headers: ['Dispositiu (en ordre al quadre)', 'Funció Principal', 'Mecanisme Intern / Valors d’Examen'],
@@ -174,9 +160,10 @@ export const tema19Instalacions = {
       blocks: [
         {
           type: 'text',
-          heading: '3.1. Aigua Potable (Ordre del Comptador General i Muntants) i 3.2. Sanejament',
+          heading: '3.1. Aigua Potable (Escomesa, Comptador General i Muntants) i 3.2. Sanejament',
           paragraphs: [
-            "Aigua potable — Armari del comptador general (6 elements en ordre de pas de l'aigua):\n1) Clau de tall general → 2) Filtre tipus Y (malla d'acer inoxidable de 25 a 50 μm per retenir sorres) → 3) Comptador general → 4) Aixeta de prova → 5) Vàlvula de retenció (antiretorn perquè l'aigua no torni a la xarxa pública) → 6) Clau de sortida.",
+            "Escomesa d'aigua potable (connexió amb la xarxa exterior, Cap. 3.1.1): consta de 3 elements principals — 1) Clau o collet de presa (en càrrega, connectat a la canonada de distribució), 2) Tub d'escomesa (uneix la presa amb la clau general) i 3) Clau de tall exterior (accessible des de fora de la propietat dins una arqueta amb tapa sobre llit de sorra i solera de formigó). Després segueixen: instal·lació general → tubs d'alimentació → distribuïdor principal (en anell en edificis sanitaris) → ascendents/muntants → comptadors divisionaris → instal·lació particular.",
+            "Aigua potable — Armari o arqueta del comptador general (6 elements en ordre de pas de l'aigua):\n1) Clau de tall general → 2) Filtre tipus Y (malla d'acer inoxidable de 25 a 50 μm per retenir sorres) → 3) Comptador general → 4) Aixeta o ràcord de prova → 5) Vàlvula de retenció (antiretorn perquè l'aigua no torni a la xarxa pública) → 6) Clau de sortida.",
             "A la base de cada muntant ascendent hi ha: 1) Vàlvula de retenció, 2) Clau de tall i 3) Aixeta de buidatge (i dalt de tot de l'edifici una vàlvula purgadora d'aire).",
             "Sanejament i evacuació:\n• Tipus d'aigües: negres o fecals (vàters), grises (piques, dutxes, rentadores) i pluvials (pluja).\n• Xarxes: unitàries (tot al mateix col·lector) o separatives (residuals i pluvials separades).\n• Sifó hidràulic: reté un tap d'aigua permanent de 5 cm que impedeix l'entrada de gasos tòxics i olors de la claveguera al pis."
           ]
