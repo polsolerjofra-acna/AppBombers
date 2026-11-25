@@ -75,12 +75,22 @@ export const tema5PoliticaLinguistica = {
         },
         {
           type: 'text',
-          heading: '2.2 Capacitació i selecció de personal (art. 11)',
+          heading: '2.2 Capacitació, selecció (art. 11) i empreses/serveis públics (art. 12)',
           paragraphs: [
             'L\'Administració ha de garantir que el personal al seu servei conegui les 2 llengües oficials (exigència general).',
-            'No confondre! En els processos de selecció (inclòs el personal laboral, art. 11.2), el que s\'ha d\'acreditar específicament és el coneixement del CATALÀ.'
+            'No confondre! En els processos de selecció (inclòs el personal laboral, art. 11.2), el que s\'ha d\'acreditar específicament és el coneixement del CATALÀ.',
+            'Empreses públiques, concessionàries i serveis públics (art. 12): han d\'emprar normalment el català en llurs actuacions i documentació internes i en la retolació, i han de garantir l\'atenció al públic en qualsevol de les dues llengües oficials.'
           ]
-        },
+        }
+      ]
+    },
+    {
+      pageNumber: 3,
+      shortLabel: 'Pàg. 3 · Justícia, Docs i Registres',
+      title: '3. Justícia (art. 13), Documents Públics (art. 14), Privats (15) i Registres (17)',
+      subtitle: 'Les regles d’or del tram final del Capítol I (arts. 13–17)',
+      isSummary: false,
+      blocks: [
         {
           type: 'table',
           title: 'Justícia (art. 13), Documents Públics (art. 14), Privats (15) i Registres (17)',
@@ -91,6 +101,7 @@ export const tema5PoliticaLinguistica = {
             ['Art. 14 (Docs públics)', 'Sense ACORD entre atorgants → en totes dues llengües · Sense TRIA expressa → en català'],
             ['Art. 14 (Fedataris)', 'Notaris/fedataris tradueixen sota la seva responsabilitat SENSE necessitat de protocol·litzar la traducció'],
             ['Art. 15 (Docs privats)', 'Vàlids en qualsevol idioma; xecs, pagarés i efectes de comerç redactats almenys en català'],
+            ['Art. 16 (Convenis col·lectius)', 'Els convenis col·lectius de treball s’han de redactar en català o en totes dues llengües si les parts ho acorden.'],
             ['Art. 17 (Registres)', 'L\'assentament segueix la llengua del document (llevat registres de caràcter només administratiu)']
           ],
           footnote: 'No confonguis "sense acord" (totes dues) amb "sense tria expressa" (català) a l\'article 14!'
@@ -98,9 +109,31 @@ export const tema5PoliticaLinguistica = {
       ]
     },
     {
-      pageNumber: 3,
-      shortLabel: 'Pàg. 3 · Resum I (Arts. 1–11)',
-      title: '3. Resum Imprescindible (I): Principis i Administració',
+      pageNumber: 4,
+      shortLabel: 'Pàg. 4 · Contrastos i Paranys',
+      title: '4. Contrastos Verbals i Paranys del Tribunal (Llei 1/1998)',
+      subtitle: 'Taula comparativa de matisos que decideixen les preguntes tipus test',
+      isSummary: false,
+      blocks: [
+        {
+          type: 'table',
+          title: 'Matisos Literals de la Llei 1/1998 que NO Pots Confondre',
+          subtitle: 'Atenció als adverbis i excepcions',
+          headers: ['Parella de conceptes', 'Regla exacta i parany habitual'],
+          rows: [
+            ['Art. 9.1: «Han d’emprar» vs «Normalment»', 'Cap endins i entre administracions catalanes: HAN d’emprar el català (obligatori). En la relació amb ciutadans: l’empren NORMALMENT (respectant l’opció del ciutadà).'],
+            ['Art. 10: Escrits vs Notificacions', 'Presentar escrits o manifestar-se en castellà: SENSE sol·licitud prèvia. Rebre notificacions en castellà: CAL demanar-ho expressament.'],
+            ['Art. 11: Exigència general vs Selecció', 'Capacitació del personal: conèixer les 2 llengües oficials. Processos de selecció (funcionaris i laborals): acreditar el CATALÀ.'],
+            ['Art. 14: Sense ACORD vs Sense TRIA', 'Si hi ha desacord entre els atorgants → s’atorga en TOTES DUES llengües. Si ningú tria expressament → s’atorga en CATALÀ.'],
+            ['Art. 7 vs Llei 35/2010', 'L’art. 7 (aranès) està DEROGAT per la Llei 35/2010 de l’occità, aranès a l’Aran.']
+          ]
+        }
+      ]
+    },
+    {
+      pageNumber: 5,
+      shortLabel: 'Pàg. 5 · Resum I (Arts. 1–12)',
+      title: '5. Resum Imprescindible (I): Principis i Administració',
       subtitle: 'Arts. 1–11 en format taula ràpida',
       isSummary: true,
       blocks: [
@@ -123,9 +156,9 @@ export const tema5PoliticaLinguistica = {
       ]
     },
     {
-      pageNumber: 4,
-      shortLabel: 'Pàg. 4 · Resum II (Arts. 13–17)',
-      title: '4. Resum Imprescindible (II): Justícia, Notaris i Regles Mnemotècniques',
+      pageNumber: 6,
+      shortLabel: 'Pàg. 6 · Resum II (Arts. 13–17)',
+      title: '6. Resum Imprescindible (II): Justícia, Notaris i Regles Mnemotècniques',
       subtitle: 'Tancament del Tema 5',
       isSummary: true,
       blocks: [

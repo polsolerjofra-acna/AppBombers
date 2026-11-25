@@ -154,8 +154,38 @@ export const tema3PrlEpi = {
     },
     {
       pageNumber: 4,
-      shortLabel: 'Pàg. 4 · Resum I (LPRL)',
-      title: '4. Resum Imprescindible (I): Llei 31/1995 de Prevenció',
+      shortLabel: 'Pàg. 4 · Drets, Formació i Obligacions',
+      title: '4. Drets, Formació (art. 19), Emergències (art. 20) i Obligacions (art. 29)',
+      subtitle: 'Deures de l’empresari i del treballador, i detall dels 13 riscos mortals de Categoria III',
+      isSummary: false,
+      blocks: [
+        {
+          type: 'table',
+          title: '4.1. Articles Clau de Gestió Preventiva (Arts. 14, 18, 19, 20 i 29 LPRL)',
+          subtitle: 'Drets i deures bàsics molt preguntats en tests de legislació',
+          headers: ['Article LPRL', 'Contingut essencial d’examen'],
+          rows: [
+            ['Art. 14 (Dret a protecció eficaç)', 'Deure general de protecció permanent. Art. 14.5: el cost de les mesures relatives a seguretat i salut NO pot recaure en cap cas sobre els treballadors.'],
+            ['Art. 18 (Informació i consulta)', 'Informar sobre riscos generals i del lloc de treball, mesures de protecció i emergència. Dret de consulta i participació dels treballadors.'],
+            ['Art. 19 (Formació)', 'Formació teòrica i pràctica, suficient i adequada: al moment de contractar, en canvis de funcions o noves tecnologies. S’imparteix DINS la jornada (o descomptant el temps) i és gratuïta.'],
+            ['Art. 20 (Mesures d’emergència)', 'Analitzar possibles emergències i designar personal per a primers auxilis, lluita contra incendis i evacuació; comprovar-ne periòdicament el funcionament i organitzar les relacions amb serveis externs.'],
+            ['Art. 29 (Obligacions del treballador)', 'Vetllar per la pròpia seguretat i la de tercers; usar correctament eines, màquines i EPI; no anul·lar dispositius de seguretat; avisar de riscos immediats i cooperar. L’incompliment és falta laboral/disciplinària.']
+          ]
+        },
+        {
+          type: 'text',
+          heading: '4.2. Detall de la Categoria III (UE 2016/425) i Senyalització (RD 485/1997)',
+          paragraphs: [
+            'Els 13 riscos mortals o irreversibles de Categoria III inclouen: substàncies i mescles perilloses per a la salut, atmosferes amb manca d’oxigen, agents biològics nocius, radiacions ionitzants, ambients càlids ≥ 100 °C, ambients freds ≤ -50 °C, caigudes d’altura, descàrregues elèctriques i treballs en tensió, ofegament, talls per serres de cadena portàtils, raigs d’alta pressió, ferides de bala o arma blanca i sorolls nocius.',
+            'Senyalització (RD 485/1997): Prohibició = rodona, pictograma negre sobre blanc amb vora i banda vermella (≥ 35%); Advertència = triangular, groc amb vora negra (≥ 50%); Obligació (EPI) = rodona, blanc sobre blau (≥ 50%); Salvament/Emergència = rectangular/quadrada, blanc sobre verd (≥ 50%); Lluita contra incendis = rectangular/quadrada, blanc sobre vermell (≥ 50%).'
+          ]
+        }
+      ]
+    },
+    {
+      pageNumber: 5,
+      shortLabel: 'Pàg. 5 · Resum I (LPRL)',
+      title: '5. Resum Imprescindible (I): Llei 31/1995 de Prevenció',
       subtitle: 'Articles, terminis i escala de delegats',
       isSummary: true,
       blocks: [
@@ -183,9 +213,9 @@ export const tema3PrlEpi = {
       ]
     },
     {
-      pageNumber: 5,
-      shortLabel: 'Pàg. 5 · Resum II (EPI i UE)',
-      title: '5. Resum Imprescindible (II): EPI, UE 2016/425 i Guia INSST',
+      pageNumber: 6,
+      shortLabel: 'Pàg. 6 · Resum II (EPI i UE)',
+      title: '6. Resum Imprescindible (II): EPI, UE 2016/425 i Guia INSST',
       subtitle: 'Classificació per risc, RD 773/1997 i límits tècnics',
       isSummary: true,
       blocks: [

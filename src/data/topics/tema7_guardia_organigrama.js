@@ -137,8 +137,43 @@ export const tema7GuardiaOrganigrama = {
     },
     {
       pageNumber: 4,
-      shortLabel: 'Pàg. 4 · Resum I (D. 276/2016)',
-      title: '4. Resum Imprescindible (I): Guàrdies i Comandament (D. 276/2016)',
+      shortLabel: 'Pàg. 4 · 5 Subdireccions i Nivells',
+      title: '4. Detall de les 5 Subdireccions DGPEIS i Escala dels 5 Nivells de Comandament',
+      subtitle: 'Funcions de cada Subdirecció General (Decret 16/2026) i activació per nivells (Decret 276/2016)',
+      isSummary: false,
+      blocks: [
+        {
+          type: 'table',
+          title: '4.1. Les 5 Subdireccions Generals de la DGPEIS + Àrea de Comunicació',
+          subtitle: 'Estructura directiva consolidada (Decret 12/2023 + Decret 16/2026)',
+          headers: ['Òrgan directe del DG', 'Funcions i unitats que agrupa'],
+          rows: [
+            ['1. SG Operativa (Cap de Bombers)', 'Dirigida per un/a inspector/a en cap. Agrupa les 4 Divisions centrals (Planificació i Gestió, Emergències Climàtiques i GOE, Operacions, Coordinació d’Emergències) i les 8 Regions d’Emergències.'],
+            ['2. SG Tècnica', 'Agrupa 5 Àrees: Equipaments Operatius, Tecnologia, Mobilitat Operativa, Infraestructures i Sostenibilitat, i Prevenció i Inspecció d’Incendis (d’on pengen orgànicament les 7 Unitats de Prevenció).'],
+            ['3. SG Contractació i Pressupost', 'Gestió econòmica, pressupostària, contractació pública, patrimoni i subministraments de la DGPEIS.'],
+            ['4. SG Persones i Organització', 'Gestió de recursos humans, selecció, provisió, jornada, guàrdies, prevenció de riscos laborals i organització interna.'],
+            ['5. SG Assumptes Jurídics i Institucionals (nova 2026)', 'Assessorament jurídic, elaboració normativa, recursos, responsabilitat patrimonial i relacions institucionals.'],
+            ['Àrea de Comunicació i Premsa', 'Única àrea que depèn directament del Director General (personal amb vinculació laboral).']
+          ]
+        },
+        {
+          type: 'table',
+          title: '4.2. Criteris d’Activació, Modalitats i Suplències (Decret 276/2016)',
+          subtitle: 'Diferències clau entre posicions i centres de guàrdia',
+          headers: ['Concepte', 'Regla exacta del Decret 276/2016'],
+          rows: [
+            ['Determinació del nivell (art. 22)', 'La Sala de Control Territorial (SCT) determina el nivell de comandament inicial de l’emergència (Nivells 1 a 5 de l’art. 21).'],
+            ['Modalitats de guàrdia', 'Disponibilitat immediata (presencial al parc o centre) vs Localització (localitzable per activar-se). El Sotscap territorial NOMÉS treballa en disponibilitat immediata.'],
+            ['PAGI i Brífings', 'Només tenen assignat PAGI i realitzen brífings les dues posicions superiors: Cap operatiu (9 funcions) i Cap territorial (11 funcions).'],
+            ['Suplència del Cap de Bombers', 'El Subdirector General Operatiu fa guàrdia en modalitat de localització; el seu suplent obligatori ha de ser inspector habilitat com a cap operatiu.']
+          ]
+        }
+      ]
+    },
+    {
+      pageNumber: 5,
+      shortLabel: 'Pàg. 5 · Resum I (D. 276/2016)',
+      title: '5. Resum Imprescindible (I): Guàrdies i Comandament (D. 276/2016)',
       subtitle: 'Posicions, habilitacions, centres i 5 nivells',
       isSummary: true,
       blocks: [
@@ -160,9 +195,9 @@ export const tema7GuardiaOrganigrama = {
       ]
     },
     {
-      pageNumber: 5,
-      shortLabel: 'Pàg. 5 · Resum II (Organigrama 2026)',
-      title: '5. Resum Imprescindible (II): Organigrama DGPEIS (2026)',
+      pageNumber: 6,
+      shortLabel: 'Pàg. 6 · Resum II (Organigrama 2026)',
+      title: '6. Resum Imprescindible (II): Organigrama DGPEIS (2026)',
       subtitle: 'Números màgics: 7-3 / 5-1 / 4-8-19-6-7',
       isSummary: true,
       blocks: [
