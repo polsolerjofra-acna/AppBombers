@@ -26,6 +26,8 @@ export default function HomeView({
   dueMistakesCount = 0,
   dailyReviewStatus = null,
   onOpenDailyReview = null,
+  dailyNewsHistory = {},
+  onSaveDailyNewsState = null,
   cloudUser = null,
   onSignIn,
   onNavigate,
@@ -52,7 +54,11 @@ export default function HomeView({
     [todayISO, dailyOffset]
   );
   const storageKey = `bombers_daily_q_${todayISO}_${dailyQuestion.id}`;
+  const cloudDailyEntry = dailyNewsHistory?.[todayISO] || null;
+  const cloudSelectedOpt = cloudDailyEntry?.answers?.[dailyQuestion.id];
+
   const [selectedDailyOpt, setSelectedDailyOpt] = React.useState(() => {
+    if (typeof cloudSelectedOpt === 'number') return cloudSelectedOpt;
     try {
       const saved = localStorage.getItem(storageKey);
       return saved !== null ? Number(saved) : null;
@@ -62,16 +68,24 @@ export default function HomeView({
   });
 
   React.useEffect(() => {
+    if (typeof cloudSelectedOpt === 'number') {
+      setSelectedDailyOpt(cloudSelectedOpt);
+      try {
+        localStorage.setItem(storageKey, String(cloudSelectedOpt));
+      } catch {}
+      return;
+    }
     try {
       const saved = localStorage.getItem(storageKey);
       setSelectedDailyOpt(saved !== null ? Number(saved) : null);
     } catch {
       setSelectedDailyOpt(null);
     }
-  }, [storageKey]);
+  }, [storageKey, cloudSelectedOpt]);
 
   const hiddenKey = `bombers_daily_q_hidden_${todayISO}`;
   const [isDailyHidden, setIsDailyHidden] = React.useState(() => {
+    if (cloudDailyEntry?.hidden || typeof cloudSelectedOpt === 'number') return true;
     try {
       return localStorage.getItem(hiddenKey) === '1' || localStorage.getItem(storageKey) !== null;
     } catch {
@@ -79,12 +93,26 @@ export default function HomeView({
     }
   });
 
+  const justAnsweredRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (cloudDailyEntry?.hidden || (typeof cloudSelectedOpt === 'number' && !justAnsweredRef.current)) {
+      setIsDailyHidden(true);
+    }
+  }, [cloudDailyEntry?.hidden, cloudSelectedOpt]);
+
   const handleAnswerDaily = (optIdx) => {
     if (selectedDailyOpt !== null) return;
+    justAnsweredRef.current = true;
     setSelectedDailyOpt(optIdx);
     try {
       localStorage.setItem(storageKey, String(optIdx));
     } catch {}
+    if (typeof onSaveDailyNewsState === 'function') {
+      onSaveDailyNewsState(todayISO, {
+        answers: { [dailyQuestion.id]: optIdx }
+      });
+    }
     if (typeof onRecordQuestionOutcome === 'function') {
       const isCorrect = optIdx === dailyQuestion.correctIndex;
       const tNum = Number(String(dailyQuestion.topicId || '').replace('tema-', '')) || null;
@@ -97,6 +125,9 @@ export default function HomeView({
     try {
       localStorage.setItem(hiddenKey, '1');
     } catch {}
+    if (typeof onSaveDailyNewsState === 'function') {
+      onSaveDailyNewsState(todayISO, { hidden: true });
+    }
   };
   const sections = [
     {

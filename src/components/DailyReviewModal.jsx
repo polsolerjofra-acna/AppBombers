@@ -160,25 +160,49 @@ function buildDailyReviewSet(topics, todayISO, isFriday) {
   return [...pickedTopics, ...pickedCalc];
 }
 
-export function getDailyReviewStatus(topicsCount = 34) {
+export function getDailyReviewStatus(topicsCount = 34, dailyReviewHistory = null) {
   const { iso, isFriday } = getMadridTodayInfo();
   const calcCount = isFriday ? 10 : 2;
   const expectedTotal = topicsCount + calcCount;
+  const cloudEntry = dailyReviewHistory?.[iso] || null;
+  const cloudAnswered = Math.max(
+    cloudEntry?.answered || 0,
+    Object.keys(cloudEntry?.answers || {}).length
+  );
+  const cloudCompleted = Boolean(cloudEntry?.completed);
+
   try {
     const raw = localStorage.getItem(`${DAILY_REVIEW_KEY_PREFIX}${iso}`);
-    if (!raw) return { iso, isFriday, answered: 0, total: expectedTotal, completed: false };
+    if (!raw) {
+      const total = cloudEntry?.total || expectedTotal;
+      return {
+        iso,
+        isFriday,
+        answered: cloudAnswered,
+        total,
+        completed: cloudCompleted || cloudAnswered >= total
+      };
+    }
     const parsed = JSON.parse(raw);
-    const total = parsed.questions?.length || expectedTotal;
-    const answered = Object.keys(parsed.answers || {}).length;
+    const total = parsed.questions?.length || cloudEntry?.total || expectedTotal;
+    const localAnswered = Object.keys(parsed.answers || {}).length;
+    const answered = Math.max(localAnswered, cloudAnswered);
     return {
       iso,
       isFriday,
       answered,
       total,
-      completed: Boolean(parsed.finished) || answered >= total
+      completed: Boolean(parsed.finished) || cloudCompleted || answered >= total
     };
   } catch {
-    return { iso, isFriday, answered: 0, total: expectedTotal, completed: false };
+    const total = cloudEntry?.total || expectedTotal;
+    return {
+      iso,
+      isFriday,
+      answered: cloudAnswered,
+      total,
+      completed: cloudCompleted || cloudAnswered >= total
+    };
   }
 }
 
@@ -235,6 +259,46 @@ export default function DailyReviewModal({
     return () => unsub && unsub();
   }, [isOpen, cloudUser?.uid, todayISO]);
 
+  // Hidrata les respostes del núvol (dailyReviewHistory o submission d'avui a Firestore)
+  // perquè en obrir l'app en un altre dispositiu (ex. tablet/mòbil) continuï per on ho vas deixar
+  useEffect(() => {
+    const historyEntry = dailyReviewHistory?.[todayISO];
+    const historyAnswers = historyEntry?.answers || {};
+    const mySub = cloudUser?.uid
+      ? communitySubs.find((s) => s.id === cloudUser.uid)
+      : null;
+    const subAnswers = mySub?.answers || {};
+    const cloudAnswers = { ...subAnswers, ...historyAnswers };
+    const cloudHasAnswers = Object.keys(cloudAnswers).length > 0;
+    const cloudCompleted = Boolean(historyEntry?.completed);
+
+    if (!cloudHasAnswers && !cloudCompleted) return;
+
+    setSessionState((prev) => {
+      const prevAnswers = prev.answers || {};
+      const mergedAnswers = { ...cloudAnswers, ...prevAnswers };
+      const addedFromCloud = Object.keys(mergedAnswers).length > Object.keys(prevAnswers).length;
+      const shouldFinish = prev.finished || cloudCompleted || Object.keys(mergedAnswers).length >= prev.questions.length;
+
+      if (!addedFromCloud && shouldFinish === prev.finished) return prev;
+
+      const firstUnansweredIdx = prev.questions.findIndex((q) => mergedAnswers[q.id] === undefined);
+      const nextIdx =
+        firstUnansweredIdx >= 0
+          ? firstUnansweredIdx
+          : Math.max(0, prev.questions.length - 1);
+
+      return {
+        ...prev,
+        answers: mergedAnswers,
+        currentIdx: prevAnswers[prev.questions[prev.currentIdx]?.id] !== undefined || prev.currentIdx === 0
+          ? nextIdx
+          : prev.currentIdx,
+        finished: shouldFinish
+      };
+    });
+  }, [dailyReviewHistory, communitySubs, cloudUser?.uid, todayISO]);
+
   if (!isOpen) return null;
 
   const { questions, currentIdx, answers, finished } = sessionState;
@@ -280,7 +344,8 @@ export default function DailyReviewModal({
         correct: nextCorrect,
         wrong: nextWrong,
         total: totalQ,
-        completed: nextAnswered >= totalQ
+        completed: nextAnswered >= totalQ,
+        answers: nextAnswers
       });
     }
     if (cloudUser?.uid) {

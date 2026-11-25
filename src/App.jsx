@@ -91,6 +91,7 @@ export default function App() {
     clearUserMistake,
     setResumeState,
     saveDailyReviewHistory,
+    saveDailyNewsState,
     replaceProgressFromCloud,
     resetAllProgress
   } = useStudyProgress();
@@ -906,8 +907,10 @@ export default function App() {
               dueMistakesCount={Object.values(progress.quizResults?.__mistakes || {}).filter(
                 (m) => m && m.id && (!m.nextReviewAt || m.nextReviewAt <= new Date().toISOString().split('T')[0])
               ).length}
-              dailyReviewStatus={getDailyReviewStatus(TOPICS.length)}
+              dailyReviewStatus={getDailyReviewStatus(TOPICS.length, progress.dailyReviewHistory)}
               onOpenDailyReview={() => setShowDailyReview(true)}
+              dailyNewsHistory={progress.dailyNewsHistory || {}}
+              onSaveDailyNewsState={saveDailyNewsState}
               cloudUser={cloudUser}
               onSignIn={handleQuickGoogleLogin}
               onOpenTopic={(id) => handleSelectTopic(id)}

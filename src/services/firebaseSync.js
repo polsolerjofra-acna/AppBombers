@@ -141,6 +141,7 @@ export async function saveCloudProgress(user, summaryPayload, fullProgressState)
     studyPlan: fullProgressState.studyPlan || {},
     fridayCalcHistory: (fullProgressState.fridayCalcHistory || []).slice(0, 200),
     dailyReviewHistory: fullProgressState.dailyReviewHistory || {},
+    dailyNewsHistory: fullProgressState.dailyNewsHistory || {},
     studySessions: (fullProgressState.studySessions || []).slice(0, 1000),
     pomodoroStats: fullProgressState.pomodoroStats || { totalMinutes: 0, sessionsCompleted: 0, minutesByDay: {} },
     dailyActivity: (fullProgressState.dailyActivity || []).slice(-366),

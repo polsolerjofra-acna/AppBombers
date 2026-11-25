@@ -76,6 +76,7 @@ const defaultState = {
   studyPlan: {},
   fridayCalcHistory: [],
   dailyReviewHistory: {},
+  dailyNewsHistory: {},
   dailyEmailEnabled: true,
   manualAnnotations: {},
   studySessions: [],
@@ -743,13 +744,52 @@ export function useStudyProgress() {
 
   const saveDailyReviewHistory = (dateISO, entry) => {
     if (!dateISO || !entry) return;
-    setProgress((prev) => ({
-      ...prev,
-      dailyReviewHistory: {
-        ...(prev.dailyReviewHistory || {}),
-        [dateISO]: entry
-      }
-    }));
+    setProgress((prev) => {
+      const prevEntry = prev.dailyReviewHistory?.[dateISO] || {};
+      const mergedAnswers = {
+        ...(prevEntry.answers || {}),
+        ...(entry.answers || {})
+      };
+      const answeredCount = Math.max(
+        entry.answered || 0,
+        prevEntry.answered || 0,
+        Object.keys(mergedAnswers).length
+      );
+      return {
+        ...prev,
+        dailyReviewHistory: {
+          ...(prev.dailyReviewHistory || {}),
+          [dateISO]: {
+            ...prevEntry,
+            ...entry,
+            answered: answeredCount,
+            completed: Boolean(entry.completed || prevEntry.completed),
+            answers: mergedAnswers
+          }
+        }
+      };
+    });
+  };
+
+  const saveDailyNewsState = (dateISO, patch) => {
+    if (!dateISO || !patch) return;
+    setProgress((prev) => {
+      const prevDay = prev.dailyNewsHistory?.[dateISO] || {};
+      return {
+        ...prev,
+        dailyNewsHistory: {
+          ...(prev.dailyNewsHistory || {}),
+          [dateISO]: {
+            ...prevDay,
+            ...patch,
+            answers: {
+              ...(prevDay.answers || {}),
+              ...(patch.answers || {})
+            }
+          }
+        }
+      };
+    });
   };
 
   return {
@@ -773,6 +813,7 @@ export function useStudyProgress() {
     clearUserMistake,
     setResumeState,
     saveDailyReviewHistory,
+    saveDailyNewsState,
     replaceProgressFromCloud,
     resetAllProgress
   };
