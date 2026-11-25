@@ -280,6 +280,7 @@ function buildWeightedExamQuestions(
 export default function PracticeTestView({
   topics,
   initialTopicId = null,
+  initialTopicIds = null,
   onGoBack = null,
   backLabel = '',
   userMistakes = {},
@@ -293,11 +294,20 @@ export default function PracticeTestView({
   onUpdatePracticeResume = null,
   resumeSessionData = null
 }) {
-  const savedSession = useMemo(() => (initialTopicId ? null : loadActiveSession()), []);
+  const savedSession = useMemo(
+    () => (initialTopicId || (Array.isArray(initialTopicIds) && initialTopicIds.length > 0) ? null : loadActiveSession()),
+    []
+  );
 
-  const [mode, setMode] = useState(() => savedSession?.mode || 'practice'); // 'practice' | 'simulacre'
+  const [mode, setMode] = useState(() =>
+    Array.isArray(initialTopicIds) && initialTopicIds.length > 0
+      ? 'practice'
+      : savedSession?.mode || 'practice'
+  ); // 'practice' | 'simulacre'
   const [selectedTopicIds, setSelectedTopicIds] = useState(() =>
-    initialTopicId
+    Array.isArray(initialTopicIds) && initialTopicIds.length > 0
+      ? initialTopicIds
+      : initialTopicId
       ? [initialTopicId]
       : savedSession?.selectedTopicIds || topics.map((t) => t.id)
   );
@@ -305,6 +315,9 @@ export default function PracticeTestView({
   const [useWeightedPractice, setUseWeightedPractice] = useState(true);
   const [practiceWithTimer, setPracticeWithTimer] = useState(
     () => Boolean(savedSession?.practiceWithTimer)
+  );
+  const [practiceTimeLimitMin, setPracticeTimeLimitMin] = useState(
+    () => savedSession?.practiceTimeLimitMin ?? ''
   );
   const [practiceElapsedSec, setPracticeElapsedSec] = useState(
     () => Number(savedSession?.practiceElapsedSec || 0)
@@ -422,14 +435,36 @@ export default function PracticeTestView({
     }
   }, [initialTopicId]);
 
-  // Cronòmetre opcional en Mode Pràctica (s'atura en finalitzar)
   useEffect(() => {
-    if (!activeQuestions || mode !== 'practice' || !practiceWithTimer || isFinished) return;
+    if (Array.isArray(initialTopicIds) && initialTopicIds.length > 0) {
+      setMode('practice');
+      setSelectedTopicIds(initialTopicIds);
+      setActiveQuestions(null);
+    }
+  }, [initialTopicIds]);
+
+  // Cronòmetre o compte enrere opcional en Mode Pràctica (s'atura en finalitzar)
+  const activePracticeLimitSec =
+    mode === 'practice' && Number(practiceTimeLimitMin) > 0
+      ? Math.round(Number(practiceTimeLimitMin) * 60)
+      : 0;
+
+  useEffect(() => {
+    if (!activeQuestions || mode !== 'practice' || (!practiceWithTimer && activePracticeLimitSec <= 0) || isFinished) return;
     const interval = setInterval(() => {
       setPracticeElapsedSec((prev) => prev + 1);
+      if (activePracticeLimitSec > 0) {
+        setSecondsLeft((prev) => {
+          if (prev <= 1) {
+            setIsFinished(true);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }
     }, 1000);
     return () => clearInterval(interval);
-  }, [activeQuestions, mode, practiceWithTimer, isFinished]);
+  }, [activeQuestions, mode, practiceWithTimer, activePracticeLimitSec, isFinished]);
 
   // Temporitzador en Mode Simulacre
   useEffect(() => {
@@ -516,7 +551,14 @@ export default function PracticeTestView({
     setShowFinishConfirm(false);
     setEmailCopiedNotice(false);
     setPracticeElapsedSec(0);
-    setSecondsLeft(85 * 60);
+    const limitMin = Number(practiceTimeLimitMin);
+    setSecondsLeft(
+      targetMode === 'simulacre'
+        ? 85 * 60
+        : limitMin > 0
+        ? Math.round(limitMin * 60)
+        : 0
+    );
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -769,12 +811,23 @@ export default function PracticeTestView({
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
-            {mode === 'practice' && practiceWithTimer && (
+            {mode === 'practice' && (activePracticeLimitSec > 0 ? (
+              <div
+                className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-extrabold border ${
+                  secondsLeft <= 120
+                    ? 'bg-red-50 dark:bg-red-950/60 border-red-400 text-red-700 dark:text-red-300 animate-pulse'
+                    : 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200'
+                }`}
+              >
+                <Clock className="w-4 h-4" />
+                <span>{formatTime(secondsLeft)}</span>
+              </div>
+            ) : practiceWithTimer ? (
               <div className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-extrabold border bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white">
                 <Clock className="w-4 h-4 text-blue-600" />
                 <span>{formatTime(practiceElapsedSec)}</span>
               </div>
-            )}
+            ) : null)}
             {mode === 'simulacre' && !isFinished && (
               <div
                 className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-sm font-extrabold border ${
@@ -1585,6 +1638,14 @@ export default function PracticeTestView({
       {/* Configuració específica segons Mode */}
       {mode === 'practice' ? (
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-5">
+          {Array.isArray(initialTopicIds) && initialTopicIds.length > 0 && (
+            <div className="rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 px-4 py-3 text-xs font-bold text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+              <span>
+                Proposta de Test dels Temes Repassats: s&apos;han seleccionat automàticament els {initialTopicIds.length} temes que has marcat com a repassats. Tria el nombre de preguntes i el temps (si en vols).
+              </span>
+            </div>
+          )}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="space-y-1">
               <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
@@ -1680,7 +1741,29 @@ export default function PracticeTestView({
                   checked={practiceWithTimer}
                   onChange={(e) => setPracticeWithTimer(e.target.checked)}
                 />
-                <span>Amb cronòmetre (temps per pregunta)</span>
+                <span>Amb cronòmetre</span>
+              </label>
+              <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 ml-2">
+                <span>Temps màxim (min, opcional):</span>
+                <input
+                  type="number"
+                  min={1}
+                  max={240}
+                  placeholder="Sense límit"
+                  value={practiceTimeLimitMin}
+                  onChange={(e) => {
+                    const raw = e.target.value;
+                    if (raw === '') {
+                      setPracticeTimeLimitMin('');
+                      return;
+                    }
+                    const n = parseInt(raw, 10);
+                    if (!Number.isNaN(n)) {
+                      setPracticeTimeLimitMin(Math.max(1, Math.min(240, n)));
+                    }
+                  }}
+                  className="w-24 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-2.5 py-1 text-xs font-extrabold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </label>
               <label className="flex items-center gap-1.5 text-xs font-semibold text-amber-800 dark:text-amber-300 ml-2 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/70 rounded-lg px-2.5 py-1 cursor-pointer">
                 <input

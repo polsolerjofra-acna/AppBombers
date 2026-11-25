@@ -73,7 +73,8 @@ export default function CalendarView({
   onToggleDailyEmail,
   cloudUser,
   homeOnlyGrid = false,
-  onOpenFullCalendar = null
+  onOpenFullCalendar = null,
+  onStartReviewedTopicsTest = null
 }) {
   const todayISO = new Date().toISOString().split('T')[0];
   const [selectedDate, setSelectedDate] = useState(todayISO);
@@ -614,6 +615,24 @@ export default function CalendarView({
                     </div>
                   ))}
                 </div>
+                {typeof onStartReviewedTopicsTest === 'function' && (
+                  <div className="pt-1.5 border-t border-emerald-200/80 dark:border-emerald-900/50 flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-[11px] font-bold text-emerald-800 dark:text-emerald-200">
+                      Vols consolidar-los amb un test barrejat ({selectedDone.map((d) => `T${d.topic.number}`).join(', ')})?
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onStartReviewedTopicsTest([
+                          ...new Set(selectedDone.map((d) => d.topicId))
+                        ])
+                      }
+                      className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-extrabold shadow-xs transition"
+                    >
+                      Proposta de Test ({selectedDone.length} {selectedDone.length === 1 ? 'tema' : 'temes'}) →
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -734,6 +753,24 @@ export default function CalendarView({
                     </div>
                   ))}
                 </div>
+                {typeof onStartReviewedTopicsTest === 'function' && (
+                  <div className="pt-1.5 border-t border-emerald-200/80 dark:border-emerald-900/50 flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-[11px] font-bold text-emerald-800 dark:text-emerald-200">
+                      Vols consolidar-los amb un test barrejat ({selectedDone.map((d) => `T${d.topic.number}`).join(', ')})?
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onStartReviewedTopicsTest([
+                          ...new Set(selectedDone.map((d) => d.topicId))
+                        ])
+                      }
+                      className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-extrabold shadow-xs transition"
+                    >
+                      Proposta de Test ({selectedDone.length} {selectedDone.length === 1 ? 'tema' : 'temes'}) →
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>

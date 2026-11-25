@@ -130,6 +130,7 @@ export default function App() {
   const [topicTarget, setTopicTarget] = useState(null); // null | 'manual' | 'summary' | 'quiz'
   const [manualTopicTarget, setManualTopicTarget] = useState(null);
   const [practiceInitialTopicId, setPracticeInitialTopicId] = useState(null);
+  const [practiceInitialTopicIds, setPracticeInitialTopicIds] = useState(null);
   const [navHistory, setNavHistory] = useState([]);
   const [calcInitialMode, setCalcInitialMode] = useState('all'); // 'all' | 'friday'
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
@@ -936,6 +937,11 @@ export default function App() {
                     setActiveView('calendar');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
+                  onStartReviewedTopicsTest={(topicIds) => {
+                    setPracticeInitialTopicId(null);
+                    setPracticeInitialTopicIds(topicIds);
+                    navigateWithHistory('practice');
+                  }}
                 />
               }
               onNavigate={(view) => navigateWithHistory(view)}
@@ -966,6 +972,11 @@ export default function App() {
               onUnscheduleTopic={unscheduleTopicForDate}
               onToggleDailyEmail={setDailyEmailEnabled}
               cloudUser={cloudUser}
+              onStartReviewedTopicsTest={(topicIds) => {
+                setPracticeInitialTopicId(null);
+                setPracticeInitialTopicIds(topicIds);
+                navigateWithHistory('practice');
+              }}
             />
           ) : activeView === 'quickstudy' ? (
             <QuickStudyView
@@ -979,6 +990,7 @@ export default function App() {
             <PracticeTestView
               topics={TOPICS}
               initialTopicId={practiceInitialTopicId}
+              initialTopicIds={practiceInitialTopicIds}
               resumeSessionData={remotePracticeResume}
               onUpdatePracticeResume={(pState) => {
                 practiceResumeRef.current = pState;
