@@ -25,58 +25,70 @@ export const tema4IgualtatAssetjament = {
   pages: [
     {
       pageNumber: 1,
-      shortLabel: 'Pàg. 1 · Llei 19/2020 i 17/2015',
-      title: '1. Llei 19/2020 (Igualtat de Tracte) i Llei 17/2015 (Dones i Homes)',
-      subtitle: 'Àmbit, drets, plans d\'igualtat de Bombers i sentències clau',
+      shortLabel: 'Pàg. 1 · Sentit, Reserva i Òrgans',
+      title: '1. Què Regulen les 3 Normes, Reserva de Places (25%–40%) i Òrgans Responsables',
+      subtitle: 'Significat de cada llei, percentatges mínim/màxim de reserva per a dones i qui promou les polítiques d’igualtat',
       isSummary: false,
       blocks: [
         {
           type: 'text',
-          heading: '1.1 Llei 19/2020 d\'Igualtat de Tracte i No-discriminació (Títols I–III)',
+          heading: '1.1. Què vol dir i per a què serveix cada norma? (Visió clara)',
           paragraphs: [
-            'La Llei 19/2020 (30 de desembre, 52 articles; entren els Títols I–III) protegeix contra la discriminació per qualsevol motiu amb una llista oberta de 12 lletres (a–l) i defineix 10 fòbies específiques.',
-            'L\'art. 15 garanteix l\'accessibilitat i la lectura fàcil; l\'art. 21.4 prohibeix els perfils racials en l\'actuació policial; i el Pla de país té vigència quadriennal (art. 28).',
-            'L\'art. 26 distingeix l\'acció popular administrativa (art. 26.2, SENSE partits polítics) de l\'acció judicial (art. 26.3, AMB partits polítics i autorització expressa de la persona afectada).'
+            '• Llei 19/2020, d’igualtat de tracte i no-discriminació (52 arts., Títols I–III): és l’escut GENERAL contra qualsevol discriminació. Protegeix totes les persones davant tractes injustos per una llista oberta de 12 motius (lletres a–l: sexe, edat, origen, religió, llengua, orientació sexual, discapacitat...) i defineix 10 fòbies específiques. Prohibeix els perfils racials policials (art. 21.4), garanteix la lectura fàcil (art. 15) i preveu un Pla de país cada 4 anys (art. 28).',
+            '• Llei 17/2015, d’igualtat efectiva de dones i homes (64 arts., Cap. I, III, IV): és l’escut ESPECÍFIC DE GÈNERE (11 finalitats i 8 principis). Busca la igualtat real entre dones i homes: obliga els tribunals de selecció a ser paritaris (art. 16), exigeix auditories de gènere (art. 17.2) i obliga el sector públic —esmentant expressament el Cos de Bombers a l’art. 15.4.c!— a aprovar plans d’igualtat cada 2 anys (amb avaluació cada 4). La STC 159/2016 en va anul·lar els arts. 33, 40, 44 i parts dels 36, 39 i 41.',
+            '• Protocol d’Assetjament de la Generalitat (2023): aprovat a la Mesa el 09/03/2023 i ratificat per Acord de Govern el 28/03/2023. Té 9 apartats (no articles!) i fixa com s’ha d’actuar dins l’Administració quan hi ha assetjament sexual o per raó de sexe, orientació sexual, identitat o expressió de gènere.'
           ]
         },
         {
-          type: 'text',
-          heading: '1.2 Llei 17/2015 d\'Igualtat Efectiva de Dones i Homes (Cap. I, III, IV)',
-          paragraphs: [
-            'La Llei 17/2015 (21 de juliol, 64 articles; entren Cap. I, III, IV) té 11 finalitats i 8 principis. Fixa la representació paritària (60%–40% tendint al 50%) i exigeix paritat als tribunals de selecció (art. 16) i auditories de gènere (art. 17.2).',
-            'L\'article 15 obliga el sector públic a elaborar plans d\'igualtat cada 2 anys amb avaluació quadriennal — i l\'article 15.4.c hi esmenta expressament el Cos de Bombers!',
-            'Atenció a la STC 159/2016: va anul·lar els articles 33, 40, 44 i parts dels articles 36, 39 i 41 de la Llei 17/2015.'
-          ]
+          type: 'table',
+          title: '1.2. Paritat i Reserva de Places per a Dones a Bombers (Mínim i Màxim)',
+          subtitle: 'Percentatges clau que pregunten als exàmens',
+          headers: ['Concepte', 'Percentatge exacte', 'Com s’aplica'],
+          rows: [
+            ['Representació paritària (Llei 17/2015)', 'Mínim 40% – Màxim 60% (tendint al 50%)', 'Cap dels dos sexes pot superar el 60% ni quedar per sota del 40% en òrgans, llistes i tribunals de selecció (art. 16).'],
+            ['Reserva de places per a dones en cossos operatius (Bombers)', 'Mínim 25% – Màxim 40% de les places convocades', 'Mesura d’acció positiva temporal (habilitada per lleis d’acompanyament pressupostari) per corregir la subrepresentació històrica; a les convocatòries recents de Bombers s’aplica el màxim del 40%.']
+          ],
+          footnote: 'No confonguis la paritat general (forquilla 40%–60%) amb la reserva de places a Bombers (entre el 25% mínim i el 40% màxim).'
         },
         {
-          type: 'easy',
-          title: 'Mode Nen Petit · Dues lleis germanes amb missions diferents',
-          metaphor: 'Imagina dos escuts: un escut gegant que protegeix tothom per tot (19/2020) i un escut específic per igualar homes i dones (17/2015).',
-          explanation:
-            'La Llei 19/2020 és l\'escut general: ningú et pot discriminar per edat, origen, religió, idioma, orientació sexual o aspecte. La Llei 17/2015 és l\'escut de gènere: se centra a fer que homes i dones tinguin les mateixes oportunitats (paritat als tribunals, plans d\'igualtat als Bombers cada 2 anys).',
-          takeaway: '19/2020 = tots els motius (12 lletres, 10 fòbies). 17/2015 = igualtat efectiva dones i homes (Bombers al 15.4.c).'
+          type: 'table',
+          title: '1.3. Òrgans i Entitats Responsables de Promoure i Gestionar les Polítiques',
+          subtitle: 'Qui impulsa, gestiona, assessora i avalua',
+          headers: ['Òrgan / Entitat', 'Funció principal'],
+          rows: [
+            ['Oficina d’Igualtat de Tracte i No-discriminació (Llei 19/2020)', 'Òrgan de la Generalitat encarregat de promoure la igualtat de tracte, rebre denúncies de discriminació, oferir atenció/mediació i impulsar procediments sancionadors.'],
+            ['Institut Català de les Dones (ICD) i Unitats d’Igualtat departamentals', 'Impulsen, coordinen i avaluen les polítiques d’igualtat efectiva de dones i homes (Llei 17/2015) i l’elaboració dels plans d’igualtat (com el de Bombers).'],
+            ['OPPI (Oficina de Polítiques de Promoció de la Igualtat / òrgan paritari)', 'Fa el seguiment estadístic i avalua el funcionament del Protocol d’Assetjament 2023 cada 3 anys.'],
+            ['Servei de Prevenció de Riscos Laborals (SPRL) i Comissió d’Investigació', 'Gestionen les comunicacions internes d’assetjament a la feina, donen suport a la víctima, proposen mesures cautelars i instrueixen l’expedient d’investigació.']
+          ]
         }
       ]
     },
     {
       pageNumber: 2,
-      shortLabel: 'Pàg. 2 · Protocol 2023 i Contrast',
-      title: '2. Protocol d\'Assetjament (2023) i Taula de Contrastos Creuats',
-      subtitle: 'Terminis d\'investigació i les paraules exactes de cada text',
+      shortLabel: 'Pàg. 2 · Camí de Denúncia i Contrast',
+      title: '2. A Qui Es Comunica i Quin Camí Segueix una Discriminació o Assetjament',
+      subtitle: 'Circuit complet pas a pas (5–15–10 dies hàbils), vies externes i Taula de Contrastos Creuats',
       isSummary: false,
       blocks: [
         {
-          type: 'text',
-          heading: '2.1 Protocol de la Generalitat (2023)',
-          paragraphs: [
-            'El Protocol per a la prevenció, la detecció, l\'actuació i la resolució de situacions d\'assetjament sexual, per raó de sexe, orientació sexual, identitat o expressió de gènere es va aprovar a la Mesa el 9 de març de 2023 i es va ratificar per Acord de Govern el 28 de març de 2023. Té 9 apartats (no té articles!).',
-            'S\'aplica sempre que la víctima formi part de l\'àmbit subjectiu inclòs al Protocol. L\'Oficina de Polítiques de Promoció de la Igualtat (OPPI) n\'avalua el funcionament cada 3 anys. El procediment d\'investigació té 3 terminis clau en dies hàbils: 5 dies per contactar amb la víctima, 15 dies per emetre l\'informe de conclusions i 10 dies per dictar la resolució.'
-          ]
+          type: 'table',
+          title: '2.1. Camí del Procediment dins el Protocol d’Assetjament (2023)',
+          subtitle: 'A qui es comunica i fases pas a pas des de l’avís fins a la resolució',
+          headers: ['Fase / Pas', 'A qui es dirigeix / Qui actua', 'Què passa i termini (dies hàbils)'],
+          rows: [
+            ['1. Comunicació inicial', 'Servei de Prevenció (SPRL), Bústia ètica, Unitat d’Igualtat o comandament/RRHH', 'Ho pot comunicar la víctima, un testimoni o representant sindical. S’activa sempre que la VÍCTIMA estigui dins l’àmbit subjectiu del Protocol.'],
+            ['2. Primer contacte i mesures cautelars', 'Persona referent / Servei de Prevenció (SPRL)', 'Màxim 5 dies hàbils per contactar amb la víctima, informar-la, oferir suport psicològic/mèdic i valorar mesures cautelars de separació o protecció.'],
+            ['3. Investigació i informe', 'Comissió d’Investigació / persona instructora', 'Màxim 15 dies hàbils per fer entrevistes confidencials, recollir proves i emetre l’Informe de conclusions.'],
+            ['4. Resolució', 'Òrgan competent (Secretaria General / Direcció de Serveis)', 'Màxim 10 dies hàbils per dictar resolució motivada (arxivament, mesures organitzatives o obertura d’expedient disciplinari).'],
+            ['5. Vies externes (Llei 19/2020, art. 26)', 'Oficina d’Igualtat de Tracte · Síndic · Inspecció de Treball · Jutjats', 'Acció popular administrativa (art. 26.2): SENSE partits polítics. Acció judicial (art. 26.3): AMB partits polítics i autorització expressa de la víctima.']
+          ],
+          footnote: 'Recorda: tots els terminis del Protocol (5 – 15 – 10) són en dies HÀBILS.'
         },
         {
           type: 'table',
-          title: 'Taula de Contrastos Creuats (Pregunta directa d\'examen)',
-          subtitle: 'On apareix cada paraula o requisit exacte',
+          title: '2.2. Taula de Contrastos Creuats (Pregunta directa d\'examen)',
+          subtitle: 'On apareix cada paraula o requisit exacte entre les 3 normes',
           headers: ['Concepte', 'Llei 19/2020', 'Llei 17/2015', 'Protocol 2023'],
           rows: [
             ['Adjectiu "vexatori"', 'SÍ (art. 4.e)', 'No als mateixos termes', '0 cops al Protocol'],
@@ -86,14 +98,6 @@ export const tema4IgualtatAssetjament = {
             ['Inversió càrrega prova', 'Art. 22.4: "indicis RACIONALS i fonamentats" (tot)', 'Art. 32.2.e: "indicis fonamentats" (només sexual/sexe)', 'Remissió legal']
           ],
           footnote: 'Memoritza: "Vexatori = 19/2020" · "Molest = 17/2015 (sexe) i Protocol (sexual)" · "Una dona = només 17/2015".'
-        },
-        {
-          type: 'easy',
-          title: 'Mode Nen Petit · Assetjament sexual vs per raó de sexe (No confondre!)',
-          metaphor: 'Tots dos fan un entorn intimidatori o "molest", però un té contingut sexual i l\'altre ataca algú pel fet de ser home o dona.',
-          explanation:
-            '1) ASSETJAMENT SEXUAL (ap. 4 Protocol): comportament verbal, no verbal o físic d\'ÍNDOLE SEXUAL (acudits sexuals, tocaments, xantatge sexual).\n2) ASSETJAMENT PER RAÓ DE SEXE (art. 2.o Llei 17/2015): comportament EN FUNCIÓ DEL SEXE d\'una persona (menysprear una bombera o un bomber pel seu sexe o embaràs/paternitat), sense que hi hagi desig ni contingut sexual.',
-          takeaway: 'Sexual = d\'índole sexual. Per raó de sexe = en funció del sexe.'
         }
       ]
     },
