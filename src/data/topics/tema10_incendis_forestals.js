@@ -241,10 +241,23 @@ export const tema10IncendisForestals = {
       blocks: [
         {
           type: 'text',
-          heading: '5.3–5.4. Protocols RAF i LACES en Incendis Forestals',
+          heading: '5.3–5.4. Consciència de Situació (RAF) i Protocols RAF / LACES',
           paragraphs: [
-            "El protocol RAF marca els passos davant un canvi brusc de comportament del foc: Reagrupament de tota la dotació, Autoprotecció i Fugida cap a la Zona Segura per una ruta coneguda.",
-            "El protocol LACES (Lookouts, Anchor/Awareness, Communications, Escape routes, Safety zones) exigeix que la Zona Segura tingui un radi mínim R ≥ 4 × Lf on sobreviure sense cabina ni manta."
+            "Segons el capítol 5.3 de MAN.INVE.000, la consciència de situació es construeix a partir de la informació prèvia i diària de la guàrdia de suport i es concreta en el RAF (Recomanació d'Actuacions Forestals), document publicat diàriament durant la campanya forestal (motiu pel qual la lletra A de LACES va passar d'«Ancoratge» a «Ancoratge i Awareness»).",
+            "Nota pràctica: en maniobres d'autoprotecció sobre el terreny també s'usa l'acrònim operatiu RAF (Reagrupament, Autoprotecció, Fugida) davant un canvi brusc del foc. El protocol LACES (Lookouts, Anchor/Awareness, Communications, Escape routes, Safety zones) exigeix una Zona Segura amb radi mínim R ≥ 4 × Lf on sobreviure sense cabina ni manta."
+          ]
+        },
+        {
+          type: 'table',
+          title: '5.3. Estructura Oficial del Document RAF (Recomanació d’Actuacions Forestals)',
+          subtitle: 'Apartats del document diari de la guàrdia de suport (MAN.INVE.000 p. 37/40)',
+          headers: ['Apartat del RAF', 'Contingut que inclou'],
+          rows: [
+            ['1. Capçalera i Nivell RAF global', 'Data de validesa i nivell de risc global de la jornada (ex. 5/6).'],
+            ['2. Risc, complexitat i comportament esperat', 'Escales de comportament per nivell: longitud de flama al cap (LF), % de torxejos o carreres sostingudes, velocitat de propagació (km/h) i distància de focus secundaris (puntuals i massius).'],
+            ['3. Nivells territorials, mapes i patrons', 'Nivell RAF per cada Regió d’Emergència (REC, REG, REMN, RELL nord/sud, REMS, RET, RETE), mapes per franges horàries (Complexitat, Piroconvecció, Creixement inicial 3 h) i patrons esperats (Convecció estàndard, Vent amb relleu, Vent a les planes, Topogràfic litoral).'],
+            ['4. «On estem»', 'Diagnòstic de situació: episodi meteorològic, inèrcia/disponibilitat del combustible, presència de llamps i evolució de les finestres horàries d’actuació.'],
+            ['5. «Preocupacions seguretat»', 'Alertes específiques per als equips (p. ex. risc de perdre consciència de situació o pautes d’hidratació/cops de calor).']
           ]
         },
         {

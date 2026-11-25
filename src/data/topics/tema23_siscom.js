@@ -81,6 +81,19 @@ export const tema23Siscom = {
             ['PAI (Pla d’Acció Incident)', 'MAN.COMD.003', 'Defineix els objectius estratègics, la tàctica i les maniobres per a un període operatiu'],
             ['Tram de Control', 'Entre 3 i 5 línies directes (òptim: 3 a 5)', 'Nombre màxim de subordinats o unitats que un comandament pot controlar directament']
           ]
+        },
+        {
+          type: 'table',
+          title: '4.3 i 5.1. Estructura i Rols al voltant del PAI (Pla d’Acció de la Intervenció)',
+          subtitle: 'Com s’elabora i s’executa el PAI segons MAN.COMD.001 (el procés detallat remet a MAN.COMD.003)',
+          headers: ['Element / Funció', 'Paper respecte al PAI'],
+          rows: [
+            ['Concepte i objectiu (Cap. 4.3)', 'Pla elaborat pel Cap d’Intervenció (CI) per resoldre l’incident totalment o parcialment assumint el mínim risc possible; integra i orienta tots els recursos actuants (desenvolupat al MAN.COMD.003).'],
+            ['Comandament / CI', 'Defineix el PAI i estableix l’estratègia, els objectius tàctics i les prioritats. En Comandament Integrat (al CCA) o Unificat (territoris limítrofs) tots els cossos comparteixen o consensuen un únic PAI.'],
+            ['Planificació (Àrea de Suport)', 'Recopila, avalua i difon la informació operativa, i prepara i documenta el PAI i els mapes.'],
+            ['Operacions', 'Dirigeix els recursos sobre el terreny i executa el PAI.'],
+            ['Aplicació específica en trànsit (MAN.SVVH.000)', 'Valorat conjuntament entre Bombers i Sanitaris en dues opcions: Pla A (extracció controlada i progressiva amb gran generació d’espais) i Pla B (pla alternatiu ràpid preestablert per si la víctima empitjora).']
+          ]
         }
       ]
     },
