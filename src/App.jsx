@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut, AlertTriangle, ArrowLeft } from 'lucide-react';
+import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut, AlertTriangle, ArrowLeft, X } from 'lucide-react';
 import { TOPICS } from './data';
 import { useStudyProgress } from './hooks/useStudyProgress';
 import Sidebar from './components/layout/Sidebar';
@@ -129,6 +129,7 @@ export default function App() {
   }, [activeView, selectedTopicId]);
   const [topicTarget, setTopicTarget] = useState(null); // null | 'manual' | 'summary' | 'quiz'
   const [manualTopicTarget, setManualTopicTarget] = useState(null);
+  const [manualOverlayTarget, setManualOverlayTarget] = useState(null);
   const [practiceInitialTopicId, setPracticeInitialTopicId] = useState(null);
   const [practiceInitialTopicIds, setPracticeInitialTopicIds] = useState(null);
   const [navHistory, setNavHistory] = useState([]);
@@ -1006,9 +1007,7 @@ export default function App() {
               onSaveQuizScore={saveQuizScore}
               onOpenTopicSummary={(id) => handleSelectTopic(id, null)}
               onOpenOfficialManual={(topicNum, searchQuery = '') => {
-                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
-                setActiveView('manuals');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setManualOverlayTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
               }}
             />
           ) : activeView === 'calculations' ? (
@@ -1017,9 +1016,7 @@ export default function App() {
               fridayHistory={progress.fridayCalcHistory || []}
               onSaveFridaySession={saveFridayCalcSession}
               onOpenOfficialManual={(topicNum, searchQuery = '') => {
-                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
-                setActiveView('manuals');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setManualOverlayTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
               }}
             />
           ) : activeView === 'calctricks' ? (
@@ -1037,9 +1034,7 @@ export default function App() {
               topicRounds={progress.topicRounds || {}}
               onClearMistake={clearUserMistake}
               onOpenOfficialManual={(topicNum, searchQuery = '') => {
-                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
-                setActiveView('manuals');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setManualOverlayTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
               }}
             />
           ) : activeView === 'mnemonics' ? (
@@ -1094,9 +1089,7 @@ export default function App() {
               onSaveQuizScore={saveQuizScore}
               onRecordQuestionOutcome={recordQuestionOutcome}
               onOpenOfficialManual={(topicNum, searchQuery = '') => {
-                setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
-                setActiveView('manuals');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setManualOverlayTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
               }}
             />
           )}
@@ -1111,10 +1104,7 @@ export default function App() {
         dailyReviewHistory={progress.dailyReviewHistory || {}}
         onSaveDailyHistory={saveDailyReviewHistory}
         onOpenOfficialManual={(topicNum, searchQuery = '') => {
-          setShowDailyReview(false);
-          setManualTopicTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
-          setActiveView('manuals');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          setManualOverlayTarget({ topicNumber: topicNum, searchQuery, _ts: Date.now() });
         }}
         onClose={() => {
           setShowDailyReview(false);
@@ -1125,6 +1115,44 @@ export default function App() {
         }}
         onRecordQuestionOutcome={recordQuestionOutcome}
       />
+
+      {/* Finestra sobreposada del Manual Oficial per no perdre el test ni la pregunta actual */}
+      {manualOverlayTarget && (
+        <div className="fixed inset-0 z-[70] bg-slate-950/75 backdrop-blur-xs overflow-y-auto p-2 sm:p-5">
+          <div className="max-w-6xl mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-2xl overflow-hidden">
+            <div className="sticky top-0 z-20 flex items-center justify-between gap-3 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+              <button
+                type="button"
+                onClick={() => setManualOverlayTarget(null)}
+                className="inline-flex items-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-xs font-extrabold shadow-xs transition"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Tancar i tornar a la pregunta</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setManualOverlayTarget(null)}
+                className="p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+                title="Tancar manual"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-3 sm:p-5">
+              <ManualsView
+                initialManualTopicNumber={manualOverlayTarget}
+                cloudAnnotations={progress.manualAnnotations || {}}
+                onUpdateCloudAnnotation={setManualAnnotation}
+                onOpenTopicSummary={(topicNum) => {
+                  setManualOverlayTarget(null);
+                  const found = TOPICS.find((t) => t.number === topicNum);
+                  if (found) handleSelectTopic(found.id, null);
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Missatge emergent per reprendre exactament el punt d'un altre dispositiu */}
       {resumePrompt && (

@@ -353,6 +353,12 @@ export default function DailyReviewModal({
     }
   };
 
+  const handlePrev = () => {
+    if (currentIdx > 0) {
+      setSessionState((prev) => ({ ...prev, currentIdx: prev.currentIdx - 1 }));
+    }
+  };
+
   const handleNext = () => {
     if (currentIdx < totalQ - 1) {
       setSessionState((prev) => ({ ...prev, currentIdx: prev.currentIdx + 1 }));
@@ -654,13 +660,23 @@ export default function DailyReviewModal({
               )}
 
               <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="text-xs font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
-                >
-                  Fer-ho més tard
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handlePrev}
+                    disabled={currentIdx === 0}
+                    className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-xs font-extrabold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-40 transition"
+                  >
+                    ← Anterior
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="text-xs font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-2"
+                  >
+                    Fer-ho més tard
+                  </button>
+                </div>
 
                 {answers[currentQ.id] === undefined ? (
                   <button
