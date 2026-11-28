@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut, AlertTriangle, ArrowLeft, X } from 'lucide-react';
+import { Menu, Flame, Users, Sun, Moon, LogIn, LogOut, AlertTriangle, ArrowLeft, X, Download, WifiOff } from 'lucide-react';
 import { TOPICS } from './data';
 import { useStudyProgress } from './hooks/useStudyProgress';
 import Sidebar from './components/layout/Sidebar';
@@ -137,7 +137,57 @@ export default function App() {
   const [dailyQuestionsByTopic, setDailyQuestionsByTopic] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cloudUser, setCloudUser] = useState(null);
+  const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
+  const [isStandalone, setIsStandalone] = useState(() =>
+    typeof window !== 'undefined' &&
+    (window.matchMedia?.('(display-mode: standalone)')?.matches || window.navigator?.standalone === true)
+  );
+  const [isOnline, setIsOnline] = useState(() =>
+    typeof navigator !== 'undefined' ? navigator.onLine : true
+  );
+  const [showInstallModal, setShowInstallModal] = useState(false);
   const cloudLoadedUidRef = React.useRef(null);
+
+  useEffect(() => {
+    const onBeforeInstall = (e) => {
+      e.preventDefault();
+      setDeferredInstallPrompt(e);
+    };
+    const onAppInstalled = () => {
+      setDeferredInstallPrompt(null);
+      setIsStandalone(true);
+      setShowInstallModal(false);
+    };
+    const onOnline = () => setIsOnline(true);
+    const onOffline = () => setIsOnline(false);
+
+    window.addEventListener('beforeinstallprompt', onBeforeInstall);
+    window.addEventListener('appinstalled', onAppInstalled);
+    window.addEventListener('online', onOnline);
+    window.addEventListener('offline', onOffline);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', onBeforeInstall);
+      window.removeEventListener('appinstalled', onAppInstalled);
+      window.removeEventListener('online', onOnline);
+      window.removeEventListener('offline', onOffline);
+    };
+  }, []);
+
+  const handleInstallAppClick = async () => {
+    if (deferredInstallPrompt) {
+      try {
+        deferredInstallPrompt.prompt();
+        const { outcome } = await deferredInstallPrompt.userChoice;
+        if (outcome === 'accepted') {
+          setDeferredInstallPrompt(null);
+        }
+        return;
+      } catch {
+        // Fallback al modal d'instruccions
+      }
+    }
+    setShowInstallModal(true);
+  };
   const lastLocalChangeAtRef = React.useRef(0);
   const lastClientWriteIdRef = React.useRef('');
   const applyingRemoteRef = React.useRef(false);
@@ -852,6 +902,25 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-1.5">
+            {!isOnline && (
+              <span
+                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 text-[11px] font-extrabold text-amber-800 dark:text-amber-300"
+                title="Sense connexió: el temari, resums, càlculs i tests funcionen offline"
+              >
+                <WifiOff className="w-3.5 h-3.5" />
+                <span className="hidden md:inline">Offline</span>
+              </span>
+            )}
+            {!isStandalone && (
+              <button
+                onClick={handleInstallAppClick}
+                className="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                title="Instal·lar App i activar estudi offline"
+              >
+                <Download className="w-4 h-4 text-red-600" />
+                <span className="hidden md:inline">Instal·lar App</span>
+              </button>
+            )}
             <button
               onClick={() =>
                 setActiveView(activeView === 'group' ? 'home' : 'group')
@@ -1361,6 +1430,62 @@ export default function App() {
                 className="rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 text-xs font-extrabold"
               >
                 Entès, continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal d'instal·lació PWA i estudi offline */}
+      {showInstallModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-6 space-y-4">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="h-10 w-10 rounded-2xl bg-red-600/15 text-red-600 flex items-center justify-center">
+                  <Download className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                    Instal·lar App i Estudi Offline
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Disponible a mòbil, tauleta i ordinador
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowInstallModal(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 p-3.5 text-xs text-emerald-900 dark:text-emerald-200 space-y-1">
+              <p className="font-extrabold">Què funciona sense connexió?</p>
+              <p className="leading-relaxed">
+                Tot el temari (34 temes), resums, càlculs, regles mnemotècniques, tests locals, Pomodoro i qualsevol manual PDF que hagis obert un cop queden desats al dispositiu.
+              </p>
+            </div>
+
+            <div className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-3">
+                <p className="font-extrabold text-slate-900 dark:text-white mb-0.5">iPhone / iPad (Safari)</p>
+                <p>Toca el botó <strong>Compartir</strong> (quadrat amb fletxa amunt) i selecciona <strong>&laquo;Afegir a la pantalla d&apos;inici&raquo;</strong>.</p>
+              </div>
+              <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-3">
+                <p className="font-extrabold text-slate-900 dark:text-white mb-0.5">Android / Chrome / Edge</p>
+                <p>Obre el menú del navegador (⋮) i toca <strong>&laquo;Instal·lar aplicació&raquo;</strong> o <strong>&laquo;Afegir a la pantalla d&apos;inici&raquo;</strong>.</p>
+              </div>
+            </div>
+
+            <div className="flex justify-end">
+              <button
+                onClick={() => setShowInstallModal(false)}
+                className="rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 text-xs font-extrabold"
+              >
+                Entès
               </button>
             </div>
           </div>

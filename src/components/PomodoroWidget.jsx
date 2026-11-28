@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Clock, Flame, RotateCcw, X, CheckCircle2, GripVertical } from 'lucide-react';
+import { Clock, Flame, RotateCcw, X, CheckCircle2, GripVertical, BellRing, Coffee, Play } from 'lucide-react';
 
 const POS_STORAGE_KEY = 'bombers_pomodoro_pos';
 
@@ -35,12 +35,17 @@ export default function PomodoroWidget({
   const [secondsLeft, setSecondsLeft] = useState(PRESETS[0].study * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [justFinishedMsg, setJustFinishedMsg] = useState('');
+  const [alarmPrompt, setAlarmPrompt] = useState(null); // null | { type: 'rest' | 'study', minutesCompleted: number }
   const [pos, setPos] = useState(() => loadSavedPos()); // { x, y } o null (per defecte a baix a la dreta)
 
   const buttonRef = useRef(null);
   const panelRef = useRef(null);
   const dragStateRef = useRef(null);
   const didDragRef = useRef(false);
+  const endTimeRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const alarmIntervalRef = useRef(null);
+  const alarmTimeoutRef = useRef(null);
 
   const clampPos = useCallback((x, y, el) => {
     const margin = 8;
@@ -119,60 +124,125 @@ export default function PomodoroWidget({
   activeTopicRef.current = activeTopic;
   activeViewRef.current = activeView;
 
-  const playBeep = () => {
+  const ensureAudioContext = useCallback(() => {
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(880, ctx.currentTime);
-      gain.gain.setValueAtTime(0.15, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.6);
+      if (!AudioCtx) return null;
+      if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') {
+        audioCtxRef.current = new AudioCtx();
+      }
+      if (audioCtxRef.current.state === 'suspended') {
+        audioCtxRef.current.resume().catch(() => {});
+      }
+      return audioCtxRef.current;
+    } catch {
+      return null;
+    }
+  }, []);
+
+  const playAlarmChime = useCallback(() => {
+    try {
+      const ctx = ensureAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const notes = [880, 1108.73, 1318.51]; // La5 -> Do#6 -> Mi6
+      notes.forEach((freq, idx) => {
+        const start = now + idx * 0.16;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, start);
+        gain.gain.setValueAtTime(0.001, start);
+        gain.gain.linearRampToValueAtTime(0.22, start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.45);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 0.46);
+      });
     } catch {
       // Ignora si el navegador bloqueja àudio
     }
-  };
+  }, [ensureAudioContext]);
+
+  const stopAlarmLoop = useCallback(() => {
+    if (alarmIntervalRef.current) {
+      clearInterval(alarmIntervalRef.current);
+      alarmIntervalRef.current = null;
+    }
+    if (alarmTimeoutRef.current) {
+      clearTimeout(alarmTimeoutRef.current);
+      alarmTimeoutRef.current = null;
+    }
+  }, []);
+
+  const startAlarmLoop = useCallback(() => {
+    stopAlarmLoop();
+    playAlarmChime();
+    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+      try {
+        navigator.vibrate([300, 150, 300]);
+      } catch {
+        // Ignora si no suporta vibració
+      }
+    }
+    alarmIntervalRef.current = setInterval(() => {
+      playAlarmChime();
+    }, 2400);
+    alarmTimeoutRef.current = setTimeout(() => {
+      stopAlarmLoop();
+    }, 30000);
+  }, [playAlarmChime, stopAlarmLoop]);
 
   useEffect(() => {
-    if (!isRunning) return;
-    const timer = setInterval(() => {
-      setSecondsLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          setIsRunning(false);
-          playBeep();
+    return () => stopAlarmLoop();
+  }, [stopAlarmLoop]);
 
-          if (mode === 'study') {
-            const t = activeViewRef.current === 'topic' ? activeTopicRef.current : null;
-            const title =
-              activeViewRef.current === 'calculations'
-                ? 'Càlculs i Problemes'
-                : t
-                ? `Tema ${t.number} · ${t.title}`
-                : 'Estudi General';
-            onLogSession(t ? t.id : 'general', title, preset.study);
-            setJustFinishedMsg(`+${preset.study} min registrats! Toca descansar.`);
-            setMode('rest');
-            return preset.rest * 60;
-          } else {
-            setJustFinishedMsg('Descans completat! Tornem a estudiar.');
-            setMode('study');
-            return preset.study * 60;
-          }
+  useEffect(() => {
+    if (!isRunning) {
+      endTimeRef.current = null;
+      return;
+    }
+    endTimeRef.current = Date.now() + secondsLeft * 1000;
+
+    const timer = setInterval(() => {
+      const remaining = Math.max(0, Math.ceil((endTimeRef.current - Date.now()) / 1000));
+      if (remaining <= 0) {
+        clearInterval(timer);
+        endTimeRef.current = null;
+        setIsRunning(false);
+        startAlarmLoop();
+
+        if (mode === 'study') {
+          const t = activeViewRef.current === 'topic' ? activeTopicRef.current : null;
+          const title =
+            activeViewRef.current === 'calculations'
+              ? 'Càlculs i Problemes'
+              : t
+              ? `Tema ${t.number} · ${t.title}`
+              : 'Estudi General';
+          onLogSession(t ? t.id : 'general', title, preset.study);
+          setJustFinishedMsg(`+${preset.study} min registrats! Toca descansar.`);
+          setMode('rest');
+          setSecondsLeft(preset.rest * 60);
+          setAlarmPrompt({ type: 'rest', minutesCompleted: preset.study });
+        } else {
+          setJustFinishedMsg('Descans completat! Tornem a estudiar.');
+          setMode('study');
+          setSecondsLeft(preset.study * 60);
+          setAlarmPrompt({ type: 'study', minutesCompleted: preset.rest });
         }
-        return prev - 1;
-      });
-    }, 1000);
+        return;
+      }
+      setSecondsLeft(remaining);
+    }, 500);
+
     return () => clearInterval(timer);
-  }, [isRunning, mode, preset, onLogSession]);
+  }, [isRunning, mode, preset, onLogSession, startAlarmLoop]);
 
   const selectPreset = (p) => {
+    stopAlarmLoop();
+    setAlarmPrompt(null);
     setIsRunning(false);
     setPreset(p);
     setMode('study');
@@ -181,6 +251,8 @@ export default function PomodoroWidget({
   };
 
   const switchMode = (nextMode) => {
+    stopAlarmLoop();
+    setAlarmPrompt(null);
     setIsRunning(false);
     setMode(nextMode);
     setSecondsLeft((nextMode === 'study' ? preset.study : preset.rest) * 60);
@@ -188,6 +260,8 @@ export default function PomodoroWidget({
   };
 
   const resetTimer = () => {
+    stopAlarmLoop();
+    setAlarmPrompt(null);
     setIsRunning(false);
     setSecondsLeft((mode === 'study' ? preset.study : preset.rest) * 60);
     setJustFinishedMsg('');
@@ -210,45 +284,122 @@ export default function PomodoroWidget({
   const mins = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
   const secs = String(secondsLeft % 60).padStart(2, '0');
 
+  const handleStartFromPrompt = () => {
+    stopAlarmLoop();
+    ensureAudioContext();
+    setAlarmPrompt(null);
+    setJustFinishedMsg('');
+    setIsOpen(false);
+    setIsRunning(true);
+  };
+
+  const handleLaterFromPrompt = () => {
+    stopAlarmLoop();
+    setAlarmPrompt(null);
+    setIsOpen(false);
+    setIsRunning(false);
+  };
+
+  const renderAlarmModal = () => {
+    if (!alarmPrompt) return null;
+    const isRestPrompt = alarmPrompt.type === 'rest';
+    return (
+      <div className="print:hidden fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4">
+        <div className="w-full max-w-sm rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-6 space-y-4 text-center">
+          <div
+            className={`mx-auto h-14 w-14 rounded-2xl flex items-center justify-center ${
+              isRestPrompt
+                ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
+                : 'bg-red-500/15 text-red-600 dark:text-red-400'
+            }`}
+          >
+            {isRestPrompt ? <Coffee className="w-7 h-7 animate-bounce" /> : <BellRing className="w-7 h-7 animate-bounce" />}
+          </div>
+
+          <div className="space-y-1.5">
+            <div className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+              {isRestPrompt ? 'Sessió completada' : 'Descans finalitzat'}
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+              {isRestPrompt
+                ? `+${alarmPrompt.minutesCompleted} min d'estudi registrats!`
+                : 'Hora de tornar a estudiar!'}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              {isRestPrompt
+                ? `Vols iniciar ara el descans de ${preset.rest} minuts?`
+                : `Vols iniciar ara una nova sessió d'estudi de ${preset.study} minuts?`}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-2 pt-1">
+            <button
+              onClick={handleStartFromPrompt}
+              className={`w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-sm transition ${
+                isRestPrompt ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-red-600 hover:bg-red-700'
+              }`}
+            >
+              <Play className="w-4 h-4 fill-current" />
+              <span>
+                {isRestPrompt
+                  ? `Iniciar descans (${preset.rest} min)`
+                  : `Iniciar estudi (${preset.study} min)`}
+              </span>
+            </button>
+            <button
+              onClick={handleLaterFromPrompt}
+              className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-xs font-extrabold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+            >
+              Fer-ho més tard
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   if (!isOpen) {
     const buttonStyle = pos
       ? { left: `${pos.x}px`, top: `${pos.y}px` }
       : undefined;
 
     return (
-      <button
-        ref={buttonRef}
-        onPointerDown={(e) => startDrag(e, buttonRef)}
-        onClick={() => {
-          if (didDragRef.current) {
-            didDragRef.current = false;
-            return;
-          }
-          setIsOpen(true);
-        }}
-        style={buttonStyle}
-        className={`print:hidden fixed ${
-          pos ? '' : 'bottom-5 right-5'
-        } z-40 flex items-center gap-2 rounded-2xl px-3.5 py-3 shadow-xl border select-none touch-none cursor-grab active:cursor-grabbing transition-shadow ${
-          isRunning
-            ? mode === 'study'
-              ? 'bg-red-600 text-white border-red-500 animate-pulse'
-              : 'bg-emerald-600 text-white border-emerald-500'
-            : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-700 dark:border-slate-200 hover:shadow-2xl'
-        }`}
-        title="Obrir temporitzador Pomodoro (arrossega per moure'l)"
-      >
-        <GripVertical className="w-3.5 h-3.5 opacity-60 -ml-1 shrink-0" />
-        <Clock className="w-4 h-4 shrink-0" />
-        <span className="font-extrabold text-sm tracking-tight">
-          {isRunning ? `${mins}:${secs}` : 'Pomodoro'}
-        </span>
-        {todayMinutes > 0 && (
-          <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 dark:bg-slate-900/15">
-            {todayMinutes}m avui
+      <>
+        {renderAlarmModal()}
+        <button
+          ref={buttonRef}
+          onPointerDown={(e) => startDrag(e, buttonRef)}
+          onClick={() => {
+            if (didDragRef.current) {
+              didDragRef.current = false;
+              return;
+            }
+            setIsOpen(true);
+          }}
+          style={buttonStyle}
+          className={`print:hidden fixed ${
+            pos ? '' : 'bottom-5 right-5'
+          } z-40 flex items-center gap-2 rounded-2xl px-3.5 py-3 shadow-xl border select-none touch-none cursor-grab active:cursor-grabbing transition-shadow ${
+            isRunning
+              ? mode === 'study'
+                ? 'bg-red-600 text-white border-red-500 animate-pulse'
+                : 'bg-emerald-600 text-white border-emerald-500'
+              : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-700 dark:border-slate-200 hover:shadow-2xl'
+          }`}
+          title="Obrir temporitzador Pomodoro (arrossega per moure'l)"
+        >
+          <GripVertical className="w-3.5 h-3.5 opacity-60 -ml-1 shrink-0" />
+          <Clock className="w-4 h-4 shrink-0" />
+          <span className="font-extrabold text-sm tracking-tight">
+            {isRunning ? `${mins}:${secs}` : 'Pomodoro'}
           </span>
-        )}
-      </button>
+          {todayMinutes > 0 && (
+            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/20 dark:bg-slate-900/15">
+              {todayMinutes}m avui
+            </span>
+          )}
+        </button>
+      </>
     );
   }
 
@@ -264,8 +415,10 @@ export default function PomodoroWidget({
     : undefined;
 
   return (
-    <div
-      ref={panelRef}
+    <>
+      {renderAlarmModal()}
+      <div
+        ref={panelRef}
       style={panelStyle}
       className={`print:hidden fixed ${
         pos ? '' : 'bottom-5 right-5'
@@ -371,6 +524,9 @@ export default function PomodoroWidget({
       <div className="flex items-center gap-2">
         <button
           onClick={() => {
+            ensureAudioContext();
+            stopAlarmLoop();
+            setAlarmPrompt(null);
             setJustFinishedMsg('');
             setIsRunning((r) => !r);
           }}
@@ -404,5 +560,6 @@ export default function PomodoroWidget({
         )}
       </div>
     </div>
+    </>
   );
 }
