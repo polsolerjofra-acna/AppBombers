@@ -281,6 +281,8 @@ export default function PracticeTestView({
   topics,
   initialTopicId = null,
   initialTopicIds = null,
+  reviewHistory = {},
+  spacedRepetition = {},
   onGoBack = null,
   backLabel = '',
   userMistakes = {},
@@ -294,6 +296,26 @@ export default function PracticeTestView({
   onUpdatePracticeResume = null,
   resumeSessionData = null
 }) {
+  const todayReviewedIds = useMemo(() => {
+    const todayISO = new Date().toISOString().split('T')[0];
+    const validIds = new Set(topics.map((t) => t.id));
+    const seen = new Set();
+    const list = [];
+    (reviewHistory?.[todayISO] || []).forEach((entry) => {
+      if (entry?.topicId && validIds.has(entry.topicId) && !seen.has(entry.topicId)) {
+        seen.add(entry.topicId);
+        list.push(entry.topicId);
+      }
+    });
+    topics.forEach((t) => {
+      if (spacedRepetition?.[t.id]?.lastStudiedAt === todayISO && !seen.has(t.id)) {
+        seen.add(t.id);
+        list.push(t.id);
+      }
+    });
+    return list;
+  }, [topics, reviewHistory, spacedRepetition]);
+
   const savedSession = useMemo(
     () => (initialTopicId || (Array.isArray(initialTopicIds) && initialTopicIds.length > 0) ? null : loadActiveSession()),
     []
@@ -309,7 +331,8 @@ export default function PracticeTestView({
       ? initialTopicIds
       : initialTopicId
       ? [initialTopicId]
-      : savedSession?.selectedTopicIds || topics.map((t) => t.id)
+      : savedSession?.selectedTopicIds ||
+        (todayReviewedIds.length > 0 ? todayReviewedIds : topics.map((t) => t.id))
   );
   const [questionCount, setQuestionCount] = useState(25);
   const [useWeightedPractice, setUseWeightedPractice] = useState(true);
@@ -1638,14 +1661,21 @@ export default function PracticeTestView({
       {/* Configuració específica segons Mode */}
       {mode === 'practice' ? (
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-5">
-          {Array.isArray(initialTopicIds) && initialTopicIds.length > 0 && (
+          {Array.isArray(initialTopicIds) && initialTopicIds.length > 0 ? (
             <div className="rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 px-4 py-3 text-xs font-bold text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
               <span>
                 Proposta de Test dels Temes Repassats: s&apos;han seleccionat automàticament els {initialTopicIds.length} temes que has marcat com a repassats. Tria el nombre de preguntes i el temps (si en vols).
               </span>
             </div>
-          )}
+          ) : !initialTopicId && !savedSession && todayReviewedIds.length > 0 ? (
+            <div className="rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 px-4 py-3 text-xs font-bold text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+              <span>
+                Temes repassats avui seleccionats automàticament ({todayReviewedIds.length}). Pots afegir-ne o treure&apos;n lliurement abans de començar.
+              </span>
+            </div>
+          ) : null}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="space-y-1">
               <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
@@ -1658,6 +1688,14 @@ export default function PracticeTestView({
             </div>
 
             <div className="flex flex-wrap gap-1.5">
+              {todayReviewedIds.length > 0 && (
+                <button
+                  onClick={() => setSelectedTopicIds(todayReviewedIds)}
+                  className="rounded-lg bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1 text-xs font-extrabold"
+                >
+                  Repassats avui ({todayReviewedIds.length})
+                </button>
+              )}
               <button onClick={() => selectByRange(1, 34)} className="rounded-lg bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs font-bold">Tots</button>
               <button onClick={() => selectByRange(1, 7)} className="rounded-lg bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs font-bold">Lleis (T1–T7)</button>
               <button onClick={() => selectByRange(8, 15)} className="rounded-lg bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs font-bold">Ciències (T8–T15)</button>

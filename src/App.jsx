@@ -1061,6 +1061,8 @@ export default function App() {
               topics={TOPICS}
               initialTopicId={practiceInitialTopicId}
               initialTopicIds={practiceInitialTopicIds}
+              reviewHistory={progress.reviewHistory || {}}
+              spacedRepetition={progress.spacedRepetition || {}}
               resumeSessionData={remotePracticeResume}
               onUpdatePracticeResume={(pState) => {
                 practiceResumeRef.current = pState;
